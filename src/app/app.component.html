@@ -1,20 +1,79 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
+<button id="opal">Opal</button>
+<button id="flat">Flat</button>
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-lg-3 example-col">
+      <p>Default Button</p>
+      
+      <p class="k-block">
+        <button kendoButton (click)="onButtonClick()">Browse</button>
+        <button kendoButton (click)="onButtonClick()" [icon]="'folder'">Browse</button>
+        <button kendoButton (click)="onButtonClick()" [icon]="'folder'"></button>
+      </p>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-3 example-col">
+      <p>Bare Button</p>
+      <p class="k-block">
+        <button kendoButton (click)="onButtonClick()" [look]="'bare'">Browse</button>
+        <button kendoButton (click)="onButtonClick()" [icon]="'folder'" [look]="'bare'">Browse</button>
+        <button kendoButton (click)="onButtonClick()" [icon]="'folder'" [look]="'bare'"></button>
+      </p>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-3 example-col">
+      <p>Flat Button</p>
+      <p class="k-block">
+        <button kendoButton (click)="onButtonClick()" [look]="'flat'">Browse</button>
+        <button kendoButton (click)="onButtonClick()" [icon]="'folder'" [look]="'flat'">Browse</button>
+        <button kendoButton (click)="onButtonClick()" [icon]="'folder'" [look]="'flat'"></button>
+      </p>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-3 example-col">
+      <p>Outline Button</p>
+      <p class="k-block">
+        <button kendoButton (click)="onButtonClick()" [look]="'outline'">Browse</button>
+        <button kendoButton (click)="onButtonClick()" [icon]="'folder'" [look]="'outline'">Browse</button>
+        <button kendoButton (click)="onButtonClick()" [icon]="'folder'" [look]="'outline'"></button>
+      </p>
+    </div>
+  </div>
+
+
+
+<h1>Heading Typography</h1>
+
+<h1>This is heading 1</h1>
+<h2>This is heading 2</h2>
+<h3>This is heading 3</h3>
+<h4>This is heading 4</h4>
+<h5>This is heading 5</h5>
+<h6>This is heading 6</h6>
+
+<h1>Button Typography</h1>
+<button>Button 1</button>
+
+
+<h1>Text Typography</h1>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+<a href="javascript:void('0');">Link</a>
+<h1>{{title}}</h1>
+
+
+<!-- 
+<link rel="stylesheet" href="../assets/css/theme/kendo.custom.flat.css" *ngIf="abc==true">
+<link rel="stylesheet" href="../assets/css/theme/kendo.custom.blue.opal.css"*ngIf="abc==false" > -->
+<!-- <link rel="stylesheet" type="text/css" href="../assets/css/theme/kendo.custom.flat.css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="../assets/css/theme/kendo.custom.blue.opal.css"> -->
+
+
+
+
+
+
 

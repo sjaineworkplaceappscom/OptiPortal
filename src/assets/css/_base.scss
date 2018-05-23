@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+
+// imports for all mixins + global project variables
+@import '_typography';
+@import '_button';
+@import '_grid';
+
+
+// Truncate
+@mixin truncate($truncation-boundary) {
+    max-width: $truncation-boundary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// font size
+$font-family-lato: 'Lato', sans-serif;
+@mixin font($size: false, $weight: false,  $lh: false) {
+    font-family: $font-family-lato; 
+    @if $size { font-size: $size; }
+    @if $weight { font-weight: $weight; }
+    @if $lh { line-height: $lh; }
+}
+
+// pseudo
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+// To quickly centre a block element
+@mixin push--auto {
+    margin: { 
+        left: auto;
+        right: auto;
+    }
+}
+
+// border radius
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+            border-radius: $radius;
+  }
+
+ // margin
+@mixin margin($top: false, $right: false, $bottom: false,  $left: false) {
+    @if margin-bottom {margin-bottom: $bottom;}
+    @if margin-right   {margin-right: $right;}
+    @if margin-left     {margin-left: $left;}
+    @if margin-top       {margin-top: $top;}
+ }
+
+ // padding
+@mixin padding($top: false, $right: false, $bottom: false,  $left: false) {
+    @if padding-bottom {padding-bottom: $bottom;}
+    @if padding-right   {padding-right: $right;}
+    @if padding-left     {padding-left: $left;}
+    @if padding-top       {padding-top: $top;}
+ }
+
+// Background Gradient
+// @param {Color} $startColor [#3C3C3C] - Start Color
+// @param {Color} $endColor [#999999] - End Color
+// @mixin background-gradient($startColor: $start-color, $endColor: $end-color){
+//     background-color: $startColor;
+//     background-image: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor));
+//     background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+//     background-image: -moz-linear-gradient(top, $startColor, $endColor);
+//     background-image: -ms-linear-gradient(top, $startColor, $endColor);
+//     background-image: -o-linear-gradient(top, $startColor, $endColor);
+//     background-image: linear-gradient(top, $startColor, $endColor);
+//     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
+// }
