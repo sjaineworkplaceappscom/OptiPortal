@@ -23,11 +23,8 @@
     "@progress/kendo-angular-buttons": "^4.1.1",
     "@progress/kendo-angular-l10n": "^1.2.0",
     "@progress/kendo-theme-bootstrap": "^2.13.4",
-<<<<<<< HEAD
     "bootstrap": "^4.1.1",
-=======
     "classlist.js": "^1.1.20150312",
->>>>>>> 3407f5e72bdaf76bc13bb03eaf703e00e24ea1a6
     "core-js": "^2.5.4",
     "jquery": "^3.3.1",
     "rxjs": "^6.0.0",
