@@ -1,5 +1,11 @@
+//===============================================================================
+// © 2018 Optipro.  All rights reserved.
+// Original Author: Shashank Jain
+// Original Date: 10 March 2018
+//==============================================================================
+
 import { Component } from '@angular/core';
-import $ from "jquery";
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-root',
