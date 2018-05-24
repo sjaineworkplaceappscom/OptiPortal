@@ -2564,3 +2564,17 @@ a:hover{
 h1, h2, h3, h4, h5, h6{
   color: #8e8e8e;
 }
+
+
+/* css for layout */
+#opti_LeftPanelID{
+  background-color: #2eb3a6;
+}
+
+#opti_RightPanelID{
+  background-color: #ffffff;
+}
+
+section#opti_TopBarID {
+  background-color: #fe633f;
+}

@@ -23,6 +23,7 @@
     "@progress/kendo-angular-buttons": "^4.1.1",
     "@progress/kendo-angular-l10n": "^1.2.0",
     "@progress/kendo-theme-bootstrap": "^2.13.4",
+    "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.1.0",

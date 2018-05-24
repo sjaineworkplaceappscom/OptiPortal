@@ -1,0 +1,49 @@
+@import '_base';
+
+////////////////////////////////////////////////////////////////
+/////////////////////1. Layout css///////////////////////////
+////////////////////////////////////////////////////////////////
+#opti_WrapperID{
+    display: flex;
+    align-items: stretch;
+    #opti_LeftPanelID{
+        min-width: 250px;
+        max-width: 250px;
+        // transition: all 0.3s;
+    }
+
+    // left panel id
+    #opti_LeftPanelID.opti_sidebar-minimize {
+        min-width: 80px;
+        max-width: 80px;
+        
+    }
+
+    #opti_LeftPanelID{
+        height: 100vh;
+    }
+    
+    // right panel id
+    #opti_RightPanelID.opti_sidebar-minimize { // width after close sidebar
+        width: calc(100% - 80px);
+    }
+
+    #opti_RightPanelID{ // width after open sidebar
+        width: calc(100% - 250px);
+    }
+
+    #opti_RightPanelID{
+        height: 100vh;
+    }
+
+    // mian content area
+    #opti_MainContentID { // main content height(After deduct top bar height)
+        height: calc(100% - 80px);
+        overflow-y: scroll;
+    }
+
+    // top panel
+    section#opti_TopBarID {
+        min-height: 80px;
+    }
+}
