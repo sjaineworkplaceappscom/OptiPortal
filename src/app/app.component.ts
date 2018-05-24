@@ -16,8 +16,8 @@ export class AppComponent {
   title = 'app';
   constructor(){
     // Apply default theme css
-    var cssfile = '<link rel="stylesheet" href="../assets/css/theme/kendo.custom.blue.opal.css?v=' + (new Date()).getTime() + '" />';
-    document.write(cssfile);
+    // var cssfile = '<link rel="stylesheet" href="../assets/css/theme/kendo.custom.blue.opal.css?v=' + (new Date()).getTime() + '" />';
+    // document.write(cssfile);
   }
   
   ngOnInit(){

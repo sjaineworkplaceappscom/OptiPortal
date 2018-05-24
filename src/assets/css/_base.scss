@@ -5,6 +5,9 @@
 // @import '_button';
 // @import '_grid';
 
+// Some Basic Variable
+$top-bar-height:70px;
+
 
 // Truncate
 @mixin truncate($truncation-boundary) {
@@ -75,3 +78,26 @@ $font-family-lato: 'Lato', sans-serif;
 //     background-image: linear-gradient(top, $startColor, $endColor);
 //     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
 // }
+
+// padding
+.opti_table-v-middle{
+    display: table;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    .opti_table-cell-v-middle{
+      display: table-cell;
+      vertical-align: middle;
+      width: 100%;
+    }
+  }
+  
+  .opti_vertical-align{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .opti_mouse-pointer{
+      cursor: pointer;
+  }

@@ -2548,15 +2548,16 @@ h1, h2, h3, h4, h5, h6{
 
 /* css for layout */
 #opti_LeftPanelID{
-  background-color: #13688c;
-  height: 100vh;
+  background-color: #f0f0f0;
+  
 }
+
 #opti_RightPanelID{
   background-color: #fff;
-  height: 100vh;
+  
 }
 
 section#opti_TopBarID {
-  background-color: #2eb3a6;
-  min-height: 80px;
+  background-color: #13688c;
+  
 }

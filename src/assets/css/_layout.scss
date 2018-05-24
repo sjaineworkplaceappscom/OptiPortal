@@ -1,5 +1,9 @@
 @import '_base';
 
+// 1. Layout CSS
+// 2. Logo CSS
+// 3. Top Bar CSS
+
 ////////////////////////////////////////////////////////////////
 /////////////////////1. Layout css///////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -25,7 +29,8 @@
     
     // right panel id
     #opti_RightPanelID.opti_sidebar-minimize { // width after close sidebar
-        width: calc(100% - 80px);
+        // $top-bar-height : 70px;
+        width: calc(100% - 70px);
     }
 
     #opti_RightPanelID{ // width after open sidebar
@@ -38,12 +43,55 @@
 
     // mian content area
     #opti_MainContentID { // main content height(After deduct top bar height)
-        height: calc(100% - 80px);
+        // $top-bar-height : 70px;
+        height: calc(100% - 70px);
         overflow-y: scroll;
     }
 
     // top panel
     section#opti_TopBarID {
-        min-height: 80px;
+        min-height: $top-bar-height;
     }
+}
+
+
+////////////////////////////////////////////////////////////////
+/////////////////////2. Logo css///////////////////////////
+////////////////////////////////////////////////////////////////
+
+// set width and height of logo
+.opti_logo.opti_vertical-align{
+    height: $top-bar-height;
+    img{
+        width: 100%;
+    }
+}
+
+// if left panel close
+.opti_sidebar-minimize{
+    .opti_logo{
+        .opti_large-logo{
+            display: none;
+        }
+        .opti_small-logo{
+            display: block;
+        }
+    }
+}
+
+// if left panel open
+.opti_logo{
+    .opti_large-logo{
+        display: block;
+    }
+    .opti_small-logo{
+        display: none;
+    }
+}
+
+////////////////////////////////////////////////////////////////
+/////////////////////3. Top Bar css///////////////////////////
+////////////////////////////////////////////////////////////////
+#sidebarCollapse.opti_vertical-align{
+    height: $top-bar-height;
 }
