@@ -1,0 +1,83 @@
+#opti_WrapperID{
+    display: block;
+    align-items: stretch;
+
+    #opti_LeftPanelID{
+        min-width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+    
+    #opti_RightPanelID{ 
+        width: 100%;
+        height: auto;
+    }
+
+    // mian content area
+    #opti_MainContentID { // main content height(After deduct top bar height)
+        height: calc(100% - 70px);
+        overflow-y: scroll;
+    }
+
+    // top panel
+    #opti_TopBarID {
+        min-height: $top-bar-height;
+    }
+
+    // Application logo 
+    .opti_mobile-logo{
+        display: block;  
+        float: left; 
+    }
+    .opti_device-logo{
+        display: none;   
+    }
+
+    // side panel navigation
+    app-left{
+        position: fixed;
+        display: none;
+    }
+    .opti_menusidebar-mobile-open{
+        app-left {
+            width: 100%;
+            height: calc(100% - 70px);
+            z-index: 999;
+            display: block;
+            .opti_menusidebar-mobile-open{
+                height: 100%;
+            }
+        }
+    }
+
+
+    // change Hamburger and cross icon
+    .opti_menusidebar-mobile-open{
+        app-top{
+            .opti_hamburger{
+                display: none;
+            }
+            .opti_close-hamburger{
+                display: block;
+            }
+        }
+    }
+
+    // to fix the header in mobile
+    app-top{
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+        .opti_hamburger{
+            display: block;
+        }
+        .opti_close-hamburger{
+            display: none;
+        }
+    }
+
+    #opti_MainContentID {
+        margin-top: 70px;
+    }
+}

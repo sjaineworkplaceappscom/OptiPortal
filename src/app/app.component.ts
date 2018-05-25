@@ -4,8 +4,8 @@
 // Original Date: 10 March 2018
 //==============================================================================
 
-import { Component } from '@angular/core';
-import * as $ from "jquery";
+import { Component, HostListener } from '@angular/core';
+// import * as $ from "jquery";
 
 @Component({
   selector: 'app-root',
@@ -14,33 +14,48 @@ import * as $ from "jquery";
 })
 export class AppComponent {
   title = 'app';
+  deviceWidth:number;
+  deviceHeight:number;
+  deviceNameOnTheBasisOfDimension:string;
+
   constructor(){ }
   
   ngOnInit(){
-    this.manageThemeCssFile();  
-    this.manageSidebarAndRightSectionWidth();
-  }
-
-  // start apply theme css
-  manageThemeCssFile(){
-    $(document).ready(function(){
-        $('#flat').click(function (){
-            $('footer').find('link.opti__theme-css-file').remove();  
-            $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo.custom.flat.css?v=' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
-        });
-
-        $('#opal').click(function (){
-            $('footer').find('link.opti__theme-css-file').remove();
-            $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo.custom.blue.opal.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
-        });
-    });
+    this.getDeviceDimension(); 
+    this.manageSidebarAndRightSectionWidth(); 
   }
 
   // start sidebar and right panel manage
+  // this function will call only for desktop and ipad
   manageSidebarAndRightSectionWidth(){
+      let this1 = this;
       document.getElementById('sidebarCollapse').onclick = function() {
-        document.getElementById('opti_LeftPanelID').classList.toggle('opti_sidebar-minimize');  
-        document.getElementById('opti_RightPanelID').classList.toggle('opti_sidebar-minimize');
+        if(this1.deviceNameOnTheBasisOfDimension == 'not mobile'){ 
+          document.getElementById('opti_LeftPanelID').classList.toggle('opti_sidebar-minimize');  
+          document.getElementById('opti_RightPanelID').classList.toggle('opti_sidebar-minimize');
+        }else{
+          document.getElementById('opti_LeftPanelID').classList.toggle('opti_menusidebar-mobile-open');  
+          document.getElementById('opti_RightPanelID').classList.toggle('opti_menusidebar-mobile-open');
+        }
       };
+    
   }
+
+
+  getDeviceDimension(){
+    let getDeviceWidth = window.outerWidth;
+    let getDeviceHeight = window.outerHeight;
+    if(getDeviceWidth <= 767){
+      this.deviceNameOnTheBasisOfDimension = 'mobile'; 
+    }else{
+      this.deviceNameOnTheBasisOfDimension = 'not mobile'; 
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.getDeviceDimension();
+    this.manageSidebarAndRightSectionWidth(); 
+  }
+
 }

@@ -30,7 +30,7 @@
     // right panel id
     #opti_RightPanelID.opti_sidebar-minimize { // width after close sidebar
         // $top-bar-height : 70px;
-        width: calc(100% - 70px);
+        width: calc(100% - 80px);
     }
 
     #opti_RightPanelID{ // width after open sidebar
@@ -87,9 +87,38 @@
     }
 }
 
+.opti_mobile-logo{
+    display: none;   
+}
+.opti_device-logo{
+    display: block;   
+}
+
 ////////////////////////////////////////////////////////////////
 /////////////////////3. Top Bar css///////////////////////////
 ////////////////////////////////////////////////////////////////
 #sidebarCollapse.opti_vertical-align{
     height: $top-bar-height;
+}
+
+// if left panel close
+.opti_sidebar-minimize{
+    #sidebarCollapse{
+        .opti_hamburger{
+            display: none;
+        }
+        .opti_close-hamburger{
+            display: block;
+        }
+    }
+}
+
+// if left panel open
+#sidebarCollapse{
+    .opti_hamburger{
+        display: block;
+    }
+    .opti_close-hamburger{
+        display: none;
+    }
 }

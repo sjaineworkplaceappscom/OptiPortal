@@ -2578,3 +2578,13 @@ h1, h2, h3, h4, h5, h6{
 section#opti_TopBarID {
   background-color: #8ebc00;
 }
+
+
+/* mobile sidebar panel color */
+.opti_menusidebar-mobile-open app-left {
+  background: rgba(0,0,0,0.5);
+}
+
+.opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
+  background: transparent;
+}
