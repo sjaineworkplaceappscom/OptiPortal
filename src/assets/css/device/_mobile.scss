@@ -3,9 +3,9 @@
     align-items: stretch;
 
     #opti_LeftPanelID{
-        min-width: 100%;
+        min-width: 50%;
         max-width: 100%;
-        height: auto;
+        height: 100%;
     }
     
     #opti_RightPanelID{ 
@@ -79,5 +79,11 @@
 
     #opti_MainContentID {
         margin-top: 70px;
+    }
+
+
+    #opti_LeftPanelID.opti_menusidebar-mobile-open{
+        width: 60%;
+        height: 100%;
     }
 }

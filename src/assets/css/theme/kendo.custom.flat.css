@@ -2588,3 +2588,7 @@ section#opti_TopBarID {
 .opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
   background: transparent;
 }
+
+.opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
+  background-color: #f0f0f0;
+}
