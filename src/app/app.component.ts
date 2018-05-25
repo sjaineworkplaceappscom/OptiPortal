@@ -5,6 +5,7 @@
 //==============================================================================
 
 import { Component, HostListener } from '@angular/core';
+import { UIHelper } from './helpers/ui.helpers';
 // import * as $ from "jquery";
 
 @Component({
@@ -13,49 +14,24 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
-  deviceWidth:number;
-  deviceHeight:number;
-  deviceNameOnTheBasisOfDimension:string;
-
+  title = 'OptiPortals';    
+  isMobile:boolean;
   constructor(){ }
   
-  ngOnInit(){
-    this.getDeviceDimension(); 
-    this.manageSidebarAndRightSectionWidth(); 
-  }
+  ngOnInit(){    
 
-  // start sidebar and right panel manage
-  // this function will call only for desktop and ipad
-  manageSidebarAndRightSectionWidth(){
-      let this1 = this;
-      document.getElementById('sidebarCollapse').onclick = function() {
-        if(this1.deviceNameOnTheBasisOfDimension == 'not mobile'){ 
-          document.getElementById('opti_LeftPanelID').classList.toggle('opti_sidebar-minimize');  
-          document.getElementById('opti_RightPanelID').classList.toggle('opti_sidebar-minimize');
-        }else{
-          document.getElementById('opti_LeftPanelID').classList.toggle('opti_menusidebar-mobile-open');  
-          document.getElementById('opti_RightPanelID').classList.toggle('opti_menusidebar-mobile-open');
-        }
-      };
+    // UI operations
     
+    this.isMobile =UIHelper.isMobile();
+    UIHelper.manageNavigationPanel();
   }
-
-
-  getDeviceDimension(){
-    let getDeviceWidth = window.outerWidth;
-    let getDeviceHeight = window.outerHeight;
-    if(getDeviceWidth <= 767){
-      this.deviceNameOnTheBasisOfDimension = 'mobile'; 
-    }else{
-      this.deviceNameOnTheBasisOfDimension = 'not mobile'; 
-    }
-  }
-
+  
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.getDeviceDimension();
-    this.manageSidebarAndRightSectionWidth(); 
+  onResize(event) { 
+    // UI operations   
+    this.isMobile =UIHelper.isMobile();
+    UIHelper.manageNavigationPanel();
+
   }
 
 }

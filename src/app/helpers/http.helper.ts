@@ -18,7 +18,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
     providedIn: "root"
 })
 
-
 /**
  * This class provides the helper method to execute Web API request.
  */

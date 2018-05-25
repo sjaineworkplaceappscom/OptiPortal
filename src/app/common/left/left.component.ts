@@ -4,7 +4,7 @@
 // Original Date: 10 March 2018
 //==============================================================================
 import { Component, OnInit } from '@angular/core';
-import * as $ from "jquery";
+import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({
   selector: 'app-left',
@@ -16,22 +16,6 @@ export class LeftComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.manageThemeCssFile();
+    UIHelper.manageThemeCssFile();
   }
-
-  // start apply theme css
-  manageThemeCssFile(){
-    $(document).ready(function(){
-        $('#flat').click(function (){
-            $('footer').find('link.opti__theme-css-file').remove();  
-            $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo.custom.flat.css?v=' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
-        });
-
-        $('#opal').click(function (){
-            $('footer').find('link.opti__theme-css-file').remove();
-            $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo.custom.blue.opal.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
-        });
-    });
-  }
-
 }

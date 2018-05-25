@@ -101,3 +101,13 @@ $font-family-lato: 'Lato', sans-serif;
   .opti_mouse-pointer{
       cursor: pointer;
   }
+
+  .opti_icon-spacing{
+      padding: 0 5px;
+  }
+  .opti_icon-spacing:first-child{
+      padding: 0 5px 0 0;
+  }
+  .opti_icon-spacing:last-child{
+      padding: 0 0 0 5px;
+  }
