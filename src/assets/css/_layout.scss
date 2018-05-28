@@ -3,6 +3,7 @@
 // 1. Layout CSS
 // 2. Logo CSS
 // 3. Top Bar CSS
+// 4. Theme changing Panel
 
 ////////////////////////////////////////////////////////////////
 /////////////////////1. Layout css///////////////////////////
@@ -43,8 +44,8 @@
 
     // mian content area
     #opti_MainContentID { // main content height(After deduct top bar height)
-        // $top-bar-height : 70px;
-        height: calc(100% - 70px);
+        // $top-bar-height : 65px;
+        height: calc(100% - 65px);
         overflow-y: scroll;
     }
 
@@ -91,7 +92,7 @@
     display: none;   
 }
 .opti_device-logo{
-    display: block;   
+    // display: block;   
 }
 
 ////////////////////////////////////////////////////////////////
@@ -121,4 +122,23 @@
     .opti_close-hamburger{
         display: none;
     }
+}
+
+
+
+////////////////////////////////////////////////////////////////
+/////////////////////4. Theme changing Panel////////////////////
+////////////////////////////////////////////////////////////////
+#opti_ThemeSettingID{
+    position: fixed;
+    right: 0;
+    padding-top: 15px;
+    padding-bottom: 15px; 
+    height: calc(100% - 65px);
+    z-index: 999;
+    width: 200px;
+    display: none;
+}
+#opti_ThemeSettingID.opt_show{
+    display: block;
 }

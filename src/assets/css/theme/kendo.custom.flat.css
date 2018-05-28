@@ -1,3 +1,61 @@
+/*****************************************************************************************/
+/*********************************** OUR CUSTOM CODE *************************************/
+/*****************************************************************************************/
+body{
+  color: #555;
+}
+p, span, strong, div{
+  color: #232323;
+}
+a{
+  color: rgb(16, 196, 178);
+}
+a:hover{
+  color: rgb(46, 179, 166);
+}
+h1, h2, h3, h4, h5, h6{
+  color: #8e8e8e;
+}
+
+
+/* css for layout */
+#opti_LeftPanelID, #opti_ThemeSettingID{
+  background-color: #f0f0f0;
+}
+
+#opti_RightPanelID{
+  background-color: #ffffff;
+}
+
+section#opti_TopBarID {
+  background-color: #8ebc00;
+}
+
+
+/* mobile sidebar panel color */
+.opti_menusidebar-mobile-open app-left {
+  background: rgba(0,0,0,0.5);
+}
+
+.opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
+  background: transparent;
+}
+
+.opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
+  background-color: #f0f0f0;
+}
+button{
+  background-color: #10c4b2;
+  color: white;
+  border-color: #10c4b2;
+}
+
+
+/*****************************************************************************************/
+/*********************************** END OUR CUSTOM CODE *********************************/
+/*****************************************************************************************/
+
+
 /* Kendo skin */
 .k-theme-test-class,
 .ktb-theme-id-flat {
@@ -2546,49 +2604,4 @@ html .km-pane-wrapper .km-widget,
 .k-grid-header .k-i-sort-desc-sm,
 .k-grid-header .k-sort-order {
   color: #10c4b2;
-}
-
-/* OUR CUSTOM CODE */
-body{
-  color: #555;
-}
-p, span, strong, div{
-  color: #232323;
-}
-a{
-  color: rgb(16, 196, 178);
-}
-a:hover{
-  color: rgb(46, 179, 166);
-}
-h1, h2, h3, h4, h5, h6{
-  color: #8e8e8e;
-}
-
-
-/* css for layout */
-#opti_LeftPanelID{
-  background-color: #f0f0f0;
-}
-
-#opti_RightPanelID{
-  background-color: #ffffff;
-}
-
-section#opti_TopBarID {
-  background-color: #8ebc00;
-}
-
-
-/* mobile sidebar panel color */
-.opti_menusidebar-mobile-open app-left {
-  background: rgba(0,0,0,0.5);
-}
-
-.opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
-  background: transparent;
-}
-
-.opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
-  background-color: #f0f0f0;
 }

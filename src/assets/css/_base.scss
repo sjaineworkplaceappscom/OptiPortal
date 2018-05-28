@@ -6,7 +6,7 @@
 // @import '_grid';
 
 // Some Basic Variable
-$top-bar-height:70px;
+$top-bar-height:65px;
 
 
 // Truncate
@@ -102,6 +102,7 @@ $font-family-lato: 'Lato', sans-serif;
       cursor: pointer;
   }
 
+   // Icon spacing
   .opti_icon-spacing{
       padding: 0 5px;
   }
@@ -110,4 +111,9 @@ $font-family-lato: 'Lato', sans-serif;
   }
   .opti_icon-spacing:last-child{
       padding: 0 0 0 5px;
+  }
+
+
+  .opt_top-bar-height{
+      height: $top-bar-height;
   }

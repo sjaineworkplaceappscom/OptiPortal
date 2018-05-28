@@ -3,14 +3,52 @@
     <div class="row">
         <div class="col-md-12">
             <!-- this logo only for mobile -->
-            <img src="assets/images/deletelater/airbnblogo1.svg" alt="Logo" class="opti_small-logo opti_mobile-logo opti_mouse-pointer opti_icon-spacing" width="30" height="70" />
-            <div id="sidebarCollapse" class="opti_vertical-align opti_icon-spacing">
+            <img src="assets/images/deletelater/airbnblogo1.svg" alt="Logo" class="opti_small-logo opti_mobile-logo opti_mouse-pointer opti_icon-spacing float-left" width="30" height="65" />
+            <!-- ebd this logo only for mobile -->
+            <div id="sidebarCollapse" class="opti_vertical-align opti_icon-spacing float-left">
               <!-- hamburger and close icon -->
               <img src="assets/images/common/hammenu.svg" class="opti_mouse-pointer opti_hamburger" alt="hamburger" width="20" height="20" />
               <img src="assets/images/common/close.svg" class="opti_mouse-pointer opti_close-hamburger" alt="close hamburger" width="20" height="20" />
               
             </div>
+
+            <!-- setting icon -->
+            <div class="opti_vertical-align pull-right opt_top-bar-height opti_icon-spacing float-left">
+                <img src="assets/images/common/settings.svg" (click)="themeSetting();" class="opti_mouse-pointer opti_theme-setting" alt="Theme Setting" width="20" height="30" />
+            </div>
+
         </div>
       </div>
   </div>
+</section>
+
+<!-- Theme setting -->
+<section id="opti_ThemeSettingID" [ngClass]="{'opt_show': themeSettingSidebar==true}">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>
+                  Setting <span class="float-right"><img src="assets/images/common/close-theme-panel.svg" (click)="themeSetting();" class="opti_mouse-pointer" alt="Close Right Panel" width="15" height="15" /></span>
+                </h4>  
+                <!-- theme change  -->
+                <div id="opti_changeThemeID">
+                    <button id="opal">
+                        Opal
+                    </button>
+                    <br/>
+                    <br/>
+                    <button id="flat">
+                        Flat
+                    </button>
+                    <br/>
+                    <br/>
+                    <button id="bootstrap">
+                        Boot-V3
+                    </button>
+                </div>
+                <!-- end theme change -->
+            </div>
+         </div>
+    </div>
+  
 </section>

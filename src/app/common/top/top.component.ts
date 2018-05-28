@@ -5,6 +5,7 @@
 //==============================================================================
 
 import { Component, OnInit } from '@angular/core';
+import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({
   selector: 'app-top',
@@ -12,10 +13,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top.component.scss']
 })
 export class TopComponent implements OnInit {
-
+  themeSettingSidebar:boolean=false;
   constructor() { }
 
   ngOnInit() {
+    UIHelper.manageThemeCssFile();
+  }
+
+  // open and close theme setting side panel
+  themeSetting(){
+    this.themeSettingSidebar = !this.themeSettingSidebar;
   }
 
 }

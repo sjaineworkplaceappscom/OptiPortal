@@ -4,7 +4,7 @@
 // Original Date: 10 March 2018
 //==============================================================================
 import { Component, OnInit } from '@angular/core';
-import { UIHelper } from '../../helpers/ui.helpers';
+// import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({
   selector: 'app-left',
@@ -16,6 +16,6 @@ export class LeftComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    UIHelper.manageThemeCssFile();
+    // UIHelper.manageThemeCssFile();
   }
 }
