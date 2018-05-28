@@ -22,8 +22,8 @@ import { RightComponent } from './common/right/right.component'';
     AppComponent,
     LeftComponent,    
     TopComponent,
-    MainContentComponen,
-    RightComponentt
+    MainContentComponent,
+    RightComponent
   ],
   imports: [
     BrowserModule,
