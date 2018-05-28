@@ -10,9 +10,7 @@ import { Observable } from 'rxjs';
 
 import { Headers, Response, RequestMethod, RequestOptions, ResponseContentType } from '@angular/http';
 import { getLocaleDateTimeFormat } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 @Injectable({
     providedIn: "root"
@@ -45,8 +43,8 @@ export class HttpHelper {
 
 
         headers = headers.set('Content-Type', 'application/json')
-            .set('Accept', 'application/json')
-            .set("Authorization", 'Bearer ' + localStorage.getItem("AccessToken"));
+            .set('Accept', 'application/json');
+        //.set("Authorization", 'Bearer ' + localStorage.getItem("AccessToken"));
 
         return this._http.get<T>(url, { headers: headers });
 
@@ -67,8 +65,8 @@ export class HttpHelper {
         }
 
         headers = headers.set('Content-Type', 'application/json')
-            .set('Accept', 'application/json')
-            .set("Authorization", 'Bearer ' + localStorage.getItem("AccessToken"));
+            .set('Accept', 'application/json');
+        //.set("Authorization", 'Bearer ' + localStorage.getItem("AccessToken"));
 
         // Call server API
         return this._http.put<T>(url, JSON.stringify(data), { headers });
@@ -92,9 +90,10 @@ export class HttpHelper {
 
         if (addDefaultHeaders) {
             // Add default header 
-            headers = headers.set('Content-Type', 'application/json')
-            headers = headers.set('Accept', 'application/json');
-            headers = headers.set("Authorization", 'Bearer ' + localStorage.getItem("AccessToken"));
+            headers = headers
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json');
+            //headers = headers.set("Authorization", 'Bearer ' + localStorage.getItem("AccessToken"));
             data = JSON.stringify(data)
         }
 
