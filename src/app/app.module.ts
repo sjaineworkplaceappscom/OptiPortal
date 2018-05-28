@@ -14,8 +14,8 @@ import { LeftComponent } from './common/left/left.component';
 import { TopComponent } from './common/top/top.component';
 import { MainContentComponent } from './common/main-content/main-content.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './guards/intercepters/authIntercepter;
-import { RightComponent } from './common/right/right.component'';
+import { AuthInterceptor } from './guards/intercepters/authIntercepter';
+import { RightComponent } from './common/right/right.component';
 
 @NgModule({
   declarations: [
