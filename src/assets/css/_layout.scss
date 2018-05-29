@@ -8,6 +8,17 @@
 ////////////////////////////////////////////////////////////////
 /////////////////////1. Layout css///////////////////////////
 ////////////////////////////////////////////////////////////////
+ul {
+    padding: 0;
+    margin: 0;
+}
+.opti_display-inline{
+    display: inline;
+}
+.opti_display-inline-flex{
+    display: inline-flex;
+}
+
 #opti_WrapperID{
     display: flex;
     align-items: stretch;
@@ -123,6 +134,26 @@
         display: none;
     }
 }
+
+#opti_TopBarID{
+    .opti_vertical-align{
+        height: $top-bar-height;
+    }
+    .opti_topbar-rightpanel{
+        ul{
+            li{
+                list-style: none;
+            }
+        }
+    }
+
+    .opti_user-profile{
+        img{
+            border-radius: 50%;
+        }
+    }
+}
+
 
 
 

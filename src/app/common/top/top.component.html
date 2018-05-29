@@ -5,18 +5,37 @@
             <!-- this logo only for mobile -->
             <img src="assets/images/deletelater/airbnblogo1.svg" alt="Logo" class="opti_small-logo opti_mobile-logo opti_mouse-pointer opti_icon-spacing float-left" width="30" height="65" />
             <!-- ebd this logo only for mobile -->
-            <div id="sidebarCollapse" class="opti_vertical-align opti_icon-spacing float-left">
+            <div id="sidebarCollapse" class="opti_vertical-align float-left">
               <!-- hamburger and close icon -->
               <img src="assets/images/common/hammenu.svg" class="opti_mouse-pointer opti_hamburger" alt="hamburger" width="20" height="20" />
               <img src="assets/images/common/close.svg" class="opti_mouse-pointer opti_close-hamburger" alt="close hamburger" width="20" height="20" />
               
             </div>
 
-            <!-- setting icon -->
-            <div class="opti_vertical-align pull-right opt_top-bar-height opti_icon-spacing float-left">
-                <img src="assets/images/common/settings.svg" (click)="themeSetting();" class="opti_mouse-pointer opti_theme-setting" alt="Theme Setting" width="20" height="30" />
-            </div>
-
+            <!-- Top Right Section -->
+            <div class="opti_topbar-rightpanel float-right">
+                <div class="opti_vertical-align">
+                    <ul class="opti_display-inline-flex">
+                        <li class="opti_icon-spacing">
+                            <img src="assets/images/common/settings.svg" (click)="themeSetting();" class="opti_mouse-pointer opti_theme-setting" alt="Theme Setting" width="20" height="30" />
+                        </li>
+                        <li class="opti_icon-spacing">
+                            <img src="assets/images/common/settings.svg" (click)="themeSetting();" class="opti_mouse-pointer opti_theme-setting" alt="Theme Setting" width="20" height="30" />
+                        </li>
+                        <li class="opti_icon-spacing opti_user-profile dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown"><img src="https://cdn0.iconfinder.com/data/icons/PRACTIKA/256/user.png" class="opti_mouse-pointer opti_theme-setting" alt="User Profile" width="30" height="30" /></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">HTML</a></li>
+                                <li><a href="#">CSS</a></li>
+                                <li><a href="#">JavaScript</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>    
+                <!-- <div class="opti_vertical-align opt_top-bar-height opti_icon-spacing float-left">
+                    <img src="assets/images/common/settings.svg" (click)="themeSetting();" class="opti_mouse-pointer opti_theme-setting" alt="Theme Setting" width="20" height="30" />
+                </div> -->
+            </div>    
         </div>
       </div>
   </div>
