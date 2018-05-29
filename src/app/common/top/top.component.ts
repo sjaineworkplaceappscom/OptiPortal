@@ -13,7 +13,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
   styleUrls: ['./top.component.scss']
 })
 export class TopComponent implements OnInit {
-  themeSettingSidebar:boolean=false;
+  openThemeSetting: boolean = false;
   constructor() { }
 
   ngOnInit() {
@@ -21,8 +21,13 @@ export class TopComponent implements OnInit {
   }
 
   // open and close theme setting side panel
-  themeSetting(){
-    this.themeSettingSidebar = !this.themeSettingSidebar;
+  openCloseRightPanel() {
+    this.openThemeSetting = !this.openThemeSetting;
+  }
+
+  // evenet emitted by client(right) to parenet(top).
+  receiverMessage($evenet) {
+    this.openThemeSetting = $evenet;
   }
 
 }
