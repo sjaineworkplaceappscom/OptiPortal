@@ -19,7 +19,11 @@ h1, h2, h3, h4, h5, h6{
 
 
 /* css for layout */
-#opti_LeftPanelID, #opti_ThemeSettingID{
+#opti_LeftPanelID{
+  background-color:#fff;
+}
+
+#opti_ThemeSettingID{
   background-color: #f0f0f0;
 }
 
@@ -29,6 +33,7 @@ h1, h2, h3, h4, h5, h6{
 
 section#opti_TopBarID {
   background-color: #8ebc00;
+  /* background: linear-gradient(141deg, #a2df53 0%, #29b643 51%); */
 }
 
 
@@ -48,6 +53,10 @@ button{
   background-color: #10c4b2;
   color: white;
   border-color: #10c4b2;
+}
+
+app-left .opti_left-nav-ul li:hover{
+  background-color: #ddffd0;
 }
 
 

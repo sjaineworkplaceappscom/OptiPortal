@@ -17,6 +17,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './guards/intercepters/authIntercepter';
 import { RightComponent } from './common/right/right.component';
 
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; // Bootstrap Dropdown
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,8 @@ import { RightComponent } from './common/right/right.component';
   ],
   imports: [
     BrowserModule,
-    ButtonsModule
+    ButtonsModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

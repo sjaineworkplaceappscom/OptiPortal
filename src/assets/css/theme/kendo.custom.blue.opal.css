@@ -19,7 +19,10 @@ h1, h2, h3, h4, h5, h6{
 
 
 /* css for layout */
-#opti_LeftPanelID, #opti_ThemeSettingID{
+#opti_LeftPanelID{
+  background-color:#fff;
+}
+#opti_ThemeSettingID{
   background-color: #f0f0f0;
   
 }
@@ -45,6 +48,11 @@ section#opti_TopBarID {
 .opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
   background-color: #f0f0f0;
 }
+
+app-left .opti_left-nav-ul li:hover{
+  background-color: #daecf4;
+}
+
 
 /*****************************************************************************************/
 /*********************************** END OUR CUSTOM CODE *********************************/

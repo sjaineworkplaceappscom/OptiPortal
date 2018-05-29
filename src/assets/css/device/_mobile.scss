@@ -58,11 +58,14 @@
     // change Hamburger and cross icon
     .opti_menusidebar-mobile-open{
         app-top{
-            .opti_hamburger{
+            .opti_backarrow{
                 display: none;
             }
-            .opti_close-hamburger{
+            .opti_hamburger{
                 display: block;
+            }
+            .opti_desktop-menu-icon{
+                display: none;
             }
         }
     }
@@ -73,10 +76,13 @@
         top: 0;
         width: 100%;
         z-index: 999;
-        .opti_hamburger{
+        .opti_backarrow{
             display: block;
         }
-        .opti_close-hamburger{
+        .opti_desktop-menu-icon{
+            display: none;
+        }
+        .opti_hamburger{
             display: none;
         }
     }

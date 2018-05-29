@@ -7,8 +7,11 @@
             <!-- ebd this logo only for mobile -->
             <div id="sidebarCollapse" class="opti_vertical-align float-left">
               <!-- hamburger and close icon -->
-              <img src="assets/images/common/hammenu.svg" class="opti_mouse-pointer opti_hamburger" alt="hamburger" width="20" height="20" />
-              <img src="assets/images/common/close.svg" class="opti_mouse-pointer opti_close-hamburger" alt="close hamburger" width="20" height="20" />
+              <img src="assets/images/common/back.svg" class="opti_desktop-menu-icon opti_mouse-pointer opti_backarrow" alt="hamburger" width="20" height="20" />
+              <img src="assets/images/common/hammenu.svg" class="opti_desktop-menu-icon opti_mouse-pointer opti_hamburger" alt="close hamburger" width="20" height="20" />
+
+              <img src="assets/images/common/hammenu.svg" class="opti_mobile-menu-icon opti_mouse-pointer opti_backarrow" alt="hamburger" width="20" height="20" />
+              <img src="assets/images/common/close.svg" class="opti_mobile-menu-icon opti_mouse-pointer opti_hamburger" alt="close hamburger" width="20" height="20" />
               
             </div>
 
@@ -17,17 +20,83 @@
                 <div class="opti_vertical-align">
                     <ul class="opti_display-inline-flex">
                         <li class="opti_icon-spacing">
-                            <img src="assets/images/common/settings.svg" (click)="themeSetting();" class="opti_mouse-pointer opti_theme-setting" alt="Theme Setting" width="20" height="30" />
+                            <div class="md-form">
+                                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                            </div>
                         </li>
                         <li class="opti_icon-spacing">
-                            <img src="assets/images/common/settings.svg" (click)="themeSetting();" class="opti_mouse-pointer opti_theme-setting" alt="Theme Setting" width="20" height="30" />
+                            <img src="assets/images/common/settings.svg" (click)="openCloseRightPanel();" class="opti_mouse-pointer opti_theme-setting" alt="Theme Setting" width="20" height="30" />
                         </li>
-                        <li class="opti_icon-spacing opti_user-profile dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown"><img src="https://cdn0.iconfinder.com/data/icons/PRACTIKA/256/user.png" class="opti_mouse-pointer opti_theme-setting" alt="User Profile" width="30" height="30" /></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">HTML</a></li>
-                                <li><a href="#">CSS</a></li>
-                                <li><a href="#">JavaScript</a></li>
+                        
+                        <!-- if notifications not  avialble -->
+                        <!-- <li class="opti_icon-spacing">
+                            <img src="assets/images/common/notifications-button.svg" class="opti_mouse-pointer opti_theme-setting" alt="Theme Setting" width="20" height="30" />
+                        </li> -->
+
+                        <!-- if notifications avialble -->
+                        <li class="opti_icon-spacing">
+                            <img src="assets/images/common/notifications-button.svg" class="float-left opti_mouse-pointer opti_theme-setting" alt="Theme Setting" width="20" height="30" />
+                            <span class="opt_topbar-count">99+</span>
+                        </li>
+
+                        <li class="opti_icon-spacing opti_user-profile opt_position-relative" dropdown>
+                            <a dropdownToggle class="dropdown-toggle"><img src="https://cdn0.iconfinder.com/data/icons/PRACTIKA/256/user.png" class="opti_mouse-pointer opti_theme-setting" alt="User Profile" width="30" height="30" /></a>
+                            <ul class="dropdown-menu opti_user-profile-drop-down" *dropdownMenu>
+                                <li>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="opti_profile-box">
+                                                    <div class="opti_profile-box-img">
+                                                        <img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/users/1.jpg" alt="user image" width="80">
+                                                    </div>
+                                                    <div class="opti_profile-box-text">
+                                                        <h5>Prashant</h5>
+                                                        <p>Company name</p>
+                                                        <p>Short Description</p>
+                                                        <p class="opti_profile-para"><span class="btn btn-rounded btn-danger btn-sm">View Profile</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>            
+                                </li>
+                                
+                                <li class="opti_seprator"></li>
+                                
+                                <li class="opti_mouse-pointer">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <img src="assets/images/common/settings-black.svg" alt="setting" width="20" /> Setting
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                                <li class="opti_seprator"></li>
+                                
+                                <li class="opti_mouse-pointer">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <img src="assets/images/common/Help.svg" alt="setting" width="20" /> Help
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                                <li class="opti_seprator"></li>
+
+                                <li class="opti_mouse-pointer">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <img src="assets/images/common/logout.svg" alt="setting" width="20" /> LogOut
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -37,6 +106,7 @@
                 </div> -->
             </div>    
         </div>
+    </div>
     </div>
 </section>
 

@@ -7,7 +7,11 @@
 
 // Some Basic Variable
 $top-bar-height:65px;
-
+$list-hover-bg-color: #f2f4f8;
+$list-bg-color: #F8F8F8;
+$list-seprator-color:rgba(120, 130, 140, 0.13);
+$light-black:#333;
+$dark-black:#333;
 
 // Truncate
 @mixin truncate($truncation-boundary) {
@@ -86,34 +90,64 @@ $font-family-lato: 'Lato', sans-serif;
     position: absolute;
     height: 100%;
     .opti_table-cell-v-middle{
-      display: table-cell;
-      vertical-align: middle;
-      width: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        width: 100%;
     }
-  }
+}
   
-  .opti_vertical-align{
+.opti_vertical-align{
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
-  }
+}
 
-  .opti_mouse-pointer{
-      cursor: pointer;
-  }
+.opti_mouse-pointer{
+    cursor: pointer;
+}
 
-   // Icon spacing
-  .opti_icon-spacing{
-      padding: 0 5px;
-  }
-  .opti_icon-spacing:first-child{
-      padding: 0 5px 0 0;
-  }
-  .opti_icon-spacing:last-child{
-      padding: 0 0 0 5px;
-  }
+.opti_display-inline{
+    display: inline;
+}
+
+.opti_display-inline-flex{
+    display: inline-flex;
+}
+
+.opt_position-relative{
+    position: relative;
+}
+
+.opti_seprator{
+    height: 1px;
+    // margin: 9px 0;
+    overflow: hidden;
+    
+    background-color: $list-seprator-color;
+    padding: 0;
+}
+ul{
+    li{
+        list-style: none;
+    }
+}
+// Icon spacing
+.opti_icon-spacing{
+    padding: 0 10px;
+}
+.opti_icon-spacing:first-child{
+    padding: 0 10px 0 0;
+}
+.opti_icon-spacing:last-child{
+    padding: 0 0 0 10px;
+}
 
 
-  .opt_top-bar-height{
-      height: $top-bar-height;
-  }
+.opt_top-bar-height{
+    height: $top-bar-height;
+}
+
+.opt_content-padding{
+    padding-top: 15px;
+    padding-bottom:15px;
+}

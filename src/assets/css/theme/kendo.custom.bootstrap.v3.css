@@ -19,18 +19,21 @@ h1, h2, h3, h4, h5, h6{
 
 
 /* css for layout */
-#opti_LeftPanelID, #opti_ThemeSettingID{
+#opti_LeftPanelID{
+  background-color: #fff;
+}
+#opti_ThemeSettingID{
+  background-color: #fff;
+}
+
+#opti_RightPanelID{
   background-color: #f0f0f0;
   
 }
 
-#opti_RightPanelID{
-  background-color: #fff;
-  
-}
-
 section#opti_TopBarID {
-  background-color: #1e88e5;
+  /* background-color: #1e88e5; */
+  background: linear-gradient(141deg, #5bc0de 0%, #428bca 51%);
 }
 
 /* mobile sidebar panel color */
@@ -50,6 +53,11 @@ button{
   color: white;
   border-color: #26c6da;
 }
+
+app-left .opti_left-nav-ul li:hover{
+  background-color: #e5f5fa;
+}
+ 
 
 /*****************************************************************************************/
 /*********************************** END OUR CUSTOM CODE *********************************/
