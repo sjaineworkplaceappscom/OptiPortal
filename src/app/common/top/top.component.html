@@ -1,28 +1,33 @@
 <section id="opti_TopBarID">
-  <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <!-- this logo only for mobile -->
-            <img src="assets/images/deletelater/airbnblogo1.svg" alt="Logo" class="opti_small-logo opti_mobile-logo opti_mouse-pointer opti_icon-spacing float-left" width="30" height="65" />
-            <!-- ebd this logo only for mobile -->
-            <div id="sidebarCollapse" class="opti_vertical-align opti_icon-spacing float-left">
-              <!-- hamburger and close icon -->
-              <img src="assets/images/common/hammenu.svg" class="opti_mouse-pointer opti_hamburger" alt="hamburger" width="20" height="20" />
-              <img src="assets/images/common/close.svg" class="opti_mouse-pointer opti_close-hamburger" alt="close hamburger" width="20" height="20" />
-              
-            </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- this logo only for mobile -->
+                <img src="assets/images/deletelater/airbnblogo1.svg" alt="Logo" class="opti_small-logo opti_mobile-logo opti_mouse-pointer opti_icon-spacing float-left"
+                    width="30" height="65" />
+                <!-- ebd this logo only for mobile -->
+                <div id="sidebarCollapse" class="opti_vertical-align opti_icon-spacing float-left">
+                    <!-- hamburger and close icon -->
+                    <img src="assets/images/common/hammenu.svg" class="opti_mouse-pointer opti_hamburger" alt="hamburger" width="20" height="20"
+                    />
+                    <img src="assets/images/common/close.svg" class="opti_mouse-pointer opti_close-hamburger" alt="close hamburger" width="20"
+                        height="20" />
 
-            <!-- setting icon -->
-            <div class="opti_vertical-align pull-right opt_top-bar-height opti_icon-spacing float-left">
-                <img src="assets/images/common/settings.svg" (click)="themeSetting();" class="opti_mouse-pointer opti_theme-setting" alt="Theme Setting" width="20" height="30" />
-            </div>
+                </div>
 
+                <!-- setting icon -->
+                <div class="opti_vertical-align pull-right opt_top-bar-height opti_icon-spacing float-left">
+                    <img src="assets/images/common/settings.svg" (click)="openCloseRightPanel();" class="opti_mouse-pointer opti_theme-setting"
+                        alt="Theme Setting" width="20" height="30" />
+                </div>
+
+            </div>
         </div>
-      </div>
-  </div>
+    </div>
 </section>
 
 <!-- Theme setting -->
-<section id="opti_ThemeSettingID" [ngClass]="{'opt_show': themeSettingSidebar==true}">
-    <app-right></app-right>
+<section id="opti_ThemeSettingID" [ngClass]="{'opt_show': openThemeSetting==true}">
+    
+    <app-right (messageEvent)=receiverMessage($event)></app-right>
 </section>
