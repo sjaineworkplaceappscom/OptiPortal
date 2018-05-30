@@ -6,7 +6,7 @@
 
 import { Component, HostListener } from '@angular/core';
 import { UIHelper } from './helpers/ui.helpers';
-// import * as $ from "jquery";
+
 
 @Component({
   selector: 'app-root',
