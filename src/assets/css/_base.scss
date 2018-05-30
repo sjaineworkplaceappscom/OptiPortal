@@ -83,7 +83,7 @@ $font-family-lato: 'Lato', sans-serif;
 //     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
 // }
 
-// padding
+// Align Vertically
 .opti_table-v-middle{
     display: table;
     width: 100%;
@@ -102,35 +102,35 @@ $font-family-lato: 'Lato', sans-serif;
     justify-content: center;
 }
 
+// Anchor Pointer
 .opti_mouse-pointer{
     cursor: pointer;
 }
 
+// Display Inline
 .opti_display-inline{
     display: inline;
 }
 
+// Display Inline Flex
 .opti_display-inline-flex{
     display: inline-flex;
 }
 
+// Position Relative
 .opt_position-relative{
     position: relative;
 }
 
+// Line Seprator
 .opti_seprator{
     height: 1px;
     // margin: 9px 0;
     overflow: hidden;
-    
     background-color: $list-seprator-color;
     padding: 0;
 }
-ul{
-    li{
-        list-style: none;
-    }
-}
+
 // Icon spacing
 .opti_icon-spacing{
     padding: 0 10px;
@@ -142,17 +142,35 @@ ul{
     padding: 0 0 0 10px;
 }
 
-
+// Default Top Bar Height
 .opt_top-bar-height{
     height: $top-bar-height;
 }
 
+// Content Padding
 .opt_content-padding{
     padding-top: 15px;
     padding-bottom:15px;
 }
 
-
+// Hide element In Desktop And Ipad
 .opti_hide-in-desktop-ipad{
     display: none;
+}
+
+// Styling For List
+ul{
+    padding: 0;
+    margin: 0;
+    li.opti_list{
+        padding: 10px 15px;
+        border-bottom: 1px solid rgba(120, 130, 140, 0.13);
+        cursor: pointer;
+    }
+}
+
+ul{
+    li{
+        list-style: none;
+    }
 }

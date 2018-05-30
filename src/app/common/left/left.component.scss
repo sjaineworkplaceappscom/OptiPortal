@@ -1,89 +1,96 @@
 @import '../../../assets/css/_base';
-.opti_left-nav-ul{
-    li{
-        list-style: none;
-        padding: 10px 15px;
-        background-color: $list-bg-color;
-        border-bottom: 1px solid $list-seprator-color;
-        cursor: pointer;
-        a{
-            color: $light-black;
-            &:hover{
-                text-decoration: none;
-                color: $dark-black;
-            }
-            img{
-                margin-top: -4px;
-            }
-        }
-    }
-}
 
-.opti_sidebar-minimize{
-    ul {
+// 1. Css Start Related to left panel menu listing
+// 2. CSS Start  Related To Logo
+
+
+// 1. Css Start Related to left panel menu listing //
+    .opti_left-nav-ul{
         li{
-            @include truncate(80px);
-        }
-    }
-}
-
-//////////////////////////// Logo Css/////////////////////////////
-
-.opti_logo.opti_vertical-align{
-    height: $top-bar-height;
-    width: 100%;
-}
-
-// if left panel close
-.opti_sidebar-minimize{
-    .opti_logo{
-        .opti_large-logo{
-            display: none;
-        }
-        .opti_small-logo{
-            display: block;
-        }
-    }
-}
-
-// if left panel open
-.opti_logo{
-    .opti_large-logo{
-        display: block;
-    }
-    .opti_small-logo{
-        display: none;
-    }
-}
-
-
-
-.opti_device-logo{
-    // display: block;   
-    img{
-        height: 100%;
-        width: 100%;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-}
-
-
-.opti_left-navigation ul li span {
-    margin-left: 5px;
-}
-
-#opti_LeftPanelID.opti_sidebar-minimize{
-    .opti_left-navigation{
-        ul {
-            li{
-                img{
-                    width: 100%;
+            list-style: none;
+            padding: 10px 15px;
+            background-color: $list-bg-color;
+            border-bottom: 1px solid $list-seprator-color;
+            cursor: pointer;
+            a{
+                color: $light-black;
+                &:hover{
+                    text-decoration: none;
+                    color: $dark-black;
                 }
-                span{
-                   display: none;
+                img{
+                    margin-top: -4px;
                 }
             }
         }
     }
-}
+
+    .opti_left-navigation ul li span {
+        margin-left: 5px;
+    }
+    
+    #opti_LeftPanelID.opti_sidebar-minimize{
+        .opti_left-navigation{
+            ul {
+                li{
+                    img{
+                        width: 100%;
+                    }
+                    span{
+                       display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    // If left Sidebar is Minimize
+        .opti_sidebar-minimize{
+            ul {
+                li{
+                    @include truncate(80px);
+                }
+            }
+        }
+// End Css Related to left panel menu listing //        
+
+
+// 2. CSS Start  Related To Logo //
+    .opti_logo.opti_vertical-align{
+        height: $top-bar-height;
+        width: 100%;
+    }
+
+    // if left panel close
+        .opti_sidebar-minimize{
+            .opti_logo{
+                .opti_large-logo{
+                    display: none;
+                }
+                .opti_small-logo{
+                    display: block;
+                }
+            }
+        }
+
+    // if left panel open
+        .opti_logo{
+            .opti_large-logo{
+                display: block;
+            }
+            .opti_small-logo{
+                display: none;
+            }
+        }
+
+    // Css Related To Desktop and Ipad Logo
+        .opti_device-logo{
+            // display: block;   
+            img{
+                height: 100%;
+                width: 100%;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+// CSS End  Related To Logo //       

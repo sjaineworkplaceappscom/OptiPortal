@@ -54,13 +54,12 @@ button{
   border-color: #26c6da;
 }
 
-app-left #opti_LeftPanelID .opti_left-nav-ul li:hover{
+app-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
+.opti_user-profile-drop-down li.opti_mouse-pointer:hover,
+li.opti_list:hover{
   background-color: #e5f5fa;
 }
 
-.opti_user-profile-drop-down li.opti_mouse-pointer:hover {
-  background-color: #e5f5fa;
-}
 
 /*****************************************************************************************/
 /*********************************** END OUR CUSTOM CODE *********************************/
