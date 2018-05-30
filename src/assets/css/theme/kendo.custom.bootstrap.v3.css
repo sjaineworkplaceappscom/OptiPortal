@@ -57,7 +57,10 @@ button{
 app-left #opti_LeftPanelID .opti_left-nav-ul li:hover{
   background-color: #e5f5fa;
 }
- 
+
+.opti_user-profile-drop-down li.opti_mouse-pointer:hover {
+  background-color: #e5f5fa;
+}
 
 /*****************************************************************************************/
 /*********************************** END OUR CUSTOM CODE *********************************/

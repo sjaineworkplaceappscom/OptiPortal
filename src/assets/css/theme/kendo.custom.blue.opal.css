@@ -52,6 +52,10 @@ app-left #opti_LeftPanelID .opti_left-nav-ul li:hover{
   background-color: #daecf4;
 }
 
+.opti_user-profile-drop-down li.opti_mouse-pointer:hover {
+  background-color: #daecf4;
+}
+
 
 /*****************************************************************************************/
 /*********************************** END OUR CUSTOM CODE *********************************/

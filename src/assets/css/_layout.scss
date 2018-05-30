@@ -30,6 +30,10 @@ ul {
     #opti_LeftPanelID{
         height: 100vh;
     }
+    .opti_left-navigation{
+        height: calc(100% - 65px);
+        overflow-y: auto;
+    }
     
     // right panel id
     #opti_RightPanelID.opti_sidebar-minimize { // width after close sidebar

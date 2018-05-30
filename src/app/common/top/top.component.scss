@@ -68,6 +68,9 @@
         top: 44px !important;
         width: 270px;
         padding-bottom: 0;
+        img{
+            border: 0;
+        }
     }
 
     .opti_profile-box{
@@ -90,13 +93,18 @@
         }
         
     }
+    .opti_profile-box-logout img, 
+    .opti_profile-box-help img, 
+    .opti_profile-box-setting img{margin-top: -4px;margin-right: 5px;}
 
     .opti_user-profile-drop-down li {
-        padding-top: 4px;
-        padding-bottom: 4px;
-        &.opti_mouse-pointer:hover{
-            background-color: $list-hover-bg-color;
-        }
+        padding-top: 10px;
+        padding-bottom: 10px;
+        
+        // &.opti_mouse-pointer:hover{
+        //     background-color: $list-hover-bg-color;
+        // }
+        
     }
 
     .opti_user-profile-drop-down li.opti_seprator {

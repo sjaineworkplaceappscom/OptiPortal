@@ -2,7 +2,7 @@
 .opti_left-nav-ul{
     li{
         list-style: none;
-        padding: 5px 15px;
+        padding: 10px 15px;
         background-color: $list-bg-color;
         border-bottom: 1px solid $list-seprator-color;
         cursor: pointer;
@@ -11,6 +11,9 @@
             &:hover{
                 text-decoration: none;
                 color: $dark-black;
+            }
+            img{
+                margin-top: -4px;
             }
         }
     }
@@ -62,5 +65,25 @@
         width: 100%;
         padding-top: 10px;
         padding-bottom: 10px;
+    }
+}
+
+
+.opti_left-navigation ul li span {
+    margin-left: 5px;
+}
+
+#opti_LeftPanelID.opti_sidebar-minimize{
+    .opti_left-navigation{
+        ul {
+            li{
+                img{
+                    width: 100%;
+                }
+                span{
+                   display: none;
+                }
+            }
+        }
     }
 }
