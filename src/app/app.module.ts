@@ -18,6 +18,7 @@ import { AuthInterceptor } from './guards/intercepters/authIntercepter';
 import { RightComponent } from './common/right/right.component';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; // Bootstrap Dropdown
+import { ModalModule } from 'ngx-bootstrap/modal'; // Bootstrap modal
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; // Bootstrap Dropdown
   imports: [
     BrowserModule,
     ButtonsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,
