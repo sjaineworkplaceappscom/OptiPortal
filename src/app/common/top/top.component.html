@@ -10,8 +10,8 @@
               <img src="assets/images/common/back.svg" class="opti_desktop-menu-icon opti_mouse-pointer opti_backarrow" alt="hamburger" width="20" height="20" />
               <img src="assets/images/common/hammenu.svg" class="opti_desktop-menu-icon opti_mouse-pointer opti_hamburger" alt="close hamburger" width="20" height="20" />
 
-              <img src="assets/images/common/hammenu.svg" class="opti_mobile-menu-icon opti_mouse-pointer opti_backarrow" alt="hamburger" width="20" height="20" />
-              <img src="assets/images/common/close.svg" class="opti_mobile-menu-icon opti_mouse-pointer opti_hamburger" alt="close hamburger" width="20" height="20" />
+              <img src="assets/images/common/back.svg" class="opti_mobile-menu-icon opti_mouse-pointer opti_backarrow" alt="hamburger" width="20" height="20" />
+              <img src="assets/images/common/hammenu.svg" class="opti_mobile-menu-icon opti_mouse-pointer opti_hamburger" alt="close hamburger" width="20" height="20" />
               
             </div>
 
@@ -20,9 +20,37 @@
                 <div class="opti_vertical-align">
                     <ul class="opti_display-inline-flex">
                         <li class="opti_icon-spacing">
-                            <div class="md-form">
+
+                            <!-- search for desktop and ipad -->
+                            <div class="opti_search-form opti_hide-in-mobile">
                                 <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                                <span class="opti_top-search-icon opti_vertical-align opti_mouse-pointer"><img src="assets/images/common/search.svg" class="" alt="Search" width="15" /></span>
                             </div>
+                            <!-- end search for desktop and ipad -->
+
+                            <!-- search for mobile -->
+                            <div class="opti_search-form opti_hide-in-desktop-ipad " >
+                                <!-- <input class="form-control" type="text" placeholder="Search" aria-label="Search"> -->
+                                <span class="opti_top-search-icon opti_vertical-align opti_mouse-pointer" (click)="openSearchMobileModal(template)"><img src="assets/images/common/search-white.svg" class="" alt="Search" width="20" height="30" /></span>
+
+                                <ng-template #template class="">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title pull-left">Search </h4>
+                                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body opti_mobile-search-modal">
+                                        <div class="opti_search-form">
+                                            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                                            <span class="opti_top-search-icon opti_vertical-align opti_mouse-pointer" (click)="modalRef.hide()"><img src="assets/images/common/search.svg" class="" alt="Search" width="15" /></span>
+                                        </div>
+                                    </div>
+                                </ng-template>
+
+                            </div>
+                            <!-- end search for mobile -->
+
                         </li>
                         <li class="opti_icon-spacing">
                             <img src="assets/images/common/settings.svg" (click)="openCloseRightPanel();" class="opti_mouse-pointer opti_theme-setting" alt="Theme Setting" width="20" height="30" />

@@ -54,7 +54,7 @@ button{
   border-color: #26c6da;
 }
 
-app-left .opti_left-nav-ul li:hover{
+app-left #opti_LeftPanelID .opti_left-nav-ul li:hover{
   background-color: #e5f5fa;
 }
  

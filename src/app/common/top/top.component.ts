@@ -4,8 +4,11 @@
 // Original Date: 10 March 2018
 //==============================================================================
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
+
+import { BsModalService } from 'ngx-bootstrap/modal'; // Bootstrap Modal
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service'; // Bootstrap Modal
 
 @Component({
   selector: 'app-top',
@@ -13,8 +16,9 @@ import { UIHelper } from '../../helpers/ui.helpers';
   styleUrls: ['./top.component.scss']
 })
 export class TopComponent implements OnInit {
+  modalRef: BsModalRef;
   openThemeSetting: boolean = false;
-  constructor() { }
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
     UIHelper.manageThemeCssFile();
@@ -28,6 +32,10 @@ export class TopComponent implements OnInit {
   // evenet emitted by client(right) to parenet(top).
   receiverMessage($evenet) {
     this.openThemeSetting = $evenet;
+  }
+
+  openSearchMobileModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }

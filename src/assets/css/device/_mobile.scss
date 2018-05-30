@@ -2,14 +2,21 @@
     display: block;
     align-items: stretch;
 
+    .opti_hide-in-mobile{
+        display: none;
+    }
+    .opti_hide-in-desktop-ipad{
+        display: block;
+    }
+
     #opti_LeftPanelID{
         min-width: 50%;
         max-width: 100%;
         height: 100%;
-        .opti_mobile-leftpanel-padding{
-            padding-top: 15px;
-            padding-bottom: 15px;
-        }
+        // .opti_mobile-leftpanel-padding{
+        //     padding-top: 15px;
+        //     padding-bottom: 15px;
+        // }
     }
     
     #opti_RightPanelID{ 
@@ -42,6 +49,11 @@
         position: fixed;
         display: none;
     }
+
+    #sidebarCollapse .opti_mobile-menu-icon{
+        display: block;
+    }
+
     .opti_menusidebar-mobile-open{
         app-left {
             width: 100%;
@@ -58,13 +70,13 @@
     // change Hamburger and cross icon
     .opti_menusidebar-mobile-open{
         app-top{
-            .opti_backarrow{
-                display: none;
-            }
-            .opti_hamburger{
+            #sidebarCollapse .opti_backarrow{
                 display: block;
             }
-            .opti_desktop-menu-icon{
+            #sidebarCollapse .opti_hamburger{
+                display: none;
+            }
+            #sidebarCollapse .opti_desktop-menu-icon{
                 display: none;
             }
         }
@@ -76,13 +88,15 @@
         top: 0;
         width: 100%;
         z-index: 999;
-        .opti_backarrow{
-            display: block;
-        }
-        .opti_desktop-menu-icon{
+
+        
+        #sidebarCollapse .opti_backarrow{
             display: none;
         }
-        .opti_hamburger{
+        #sidebarCollapse .opti_hamburger{
+            display: block;
+        }
+        #sidebarCollapse .opti_desktop-menu-icon{
             display: none;
         }
     }
@@ -95,5 +109,38 @@
     #opti_LeftPanelID.opti_menusidebar-mobile-open{
         width: 60%;
         height: 100%;
+    }
+
+    // search box start
+    #opti_TopBarID{
+        .opti_search-form{
+            background-color: transparent;
+            .opti_top-search-icon{
+                padding: 0;
+            }
+        }
+    }
+
+  
+        
+    // search box end
+}
+
+
+// css for modal
+.modal-body.opti_mobile-search-modal{
+    .opti_search-form{
+        background-color: #fff;
+        height: 30px;
+        border-radius: 0;
+        border-bottom: 1px solid #c7c7c7;
+        input{
+            width: 288px;
+            min-width: 275px;
+        }
+        .opti_top-search-icon{
+            height: 30px;
+            padding: 0 10px;
+        }
     }
 }

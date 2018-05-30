@@ -1,0 +1,66 @@
+@import '../../../assets/css/_base';
+.opti_left-nav-ul{
+    li{
+        list-style: none;
+        padding: 5px 15px;
+        background-color: $list-bg-color;
+        border-bottom: 1px solid $list-seprator-color;
+        cursor: pointer;
+        a{
+            color: $light-black;
+            &:hover{
+                text-decoration: none;
+                color: $dark-black;
+            }
+        }
+    }
+}
+
+.opti_sidebar-minimize{
+    ul {
+        li{
+            @include truncate(80px);
+        }
+    }
+}
+
+//////////////////////////// Logo Css/////////////////////////////
+
+.opti_logo.opti_vertical-align{
+    height: $top-bar-height;
+    width: 100%;
+}
+
+// if left panel close
+.opti_sidebar-minimize{
+    .opti_logo{
+        .opti_large-logo{
+            display: none;
+        }
+        .opti_small-logo{
+            display: block;
+        }
+    }
+}
+
+// if left panel open
+.opti_logo{
+    .opti_large-logo{
+        display: block;
+    }
+    .opti_small-logo{
+        display: none;
+    }
+}
+
+
+
+.opti_device-logo{
+    // display: block;   
+    img{
+        height: 100%;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}

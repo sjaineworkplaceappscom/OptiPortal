@@ -23,12 +23,11 @@ h1, h2, h3, h4, h5, h6{
   background-color:#fff;
 }
 #opti_ThemeSettingID{
-  background-color: #f0f0f0;
-  
+  background-color: #fff;
 }
 
 #opti_RightPanelID{
-  background-color: #fff;
+  background-color: #f0f0f0;
   
 }
 
@@ -49,7 +48,7 @@ section#opti_TopBarID {
   background-color: #f0f0f0;
 }
 
-app-left .opti_left-nav-ul li:hover{
+app-left #opti_LeftPanelID .opti_left-nav-ul li:hover{
   background-color: #daecf4;
 }
 
