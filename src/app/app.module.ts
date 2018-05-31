@@ -20,6 +20,9 @@ import { RightComponent } from './common/right/right.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; // Bootstrap Dropdown
 import { ModalModule } from 'ngx-bootstrap/modal'; // Bootstrap modal
 
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'; // perfect scroll bar
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,12 +35,13 @@ import { ModalModule } from 'ngx-bootstrap/modal'; // Bootstrap modal
     BrowserModule,
     ButtonsModule,
     BsDropdownModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    PerfectScrollbarModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
-    multi: true
+    multi: true,
   }],
   bootstrap: [AppComponent]
 })
