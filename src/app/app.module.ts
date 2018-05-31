@@ -37,9 +37,10 @@ const routes: Routes = [
   
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: SigninComponent },
-  { path: 'home', component: HomeComponent,canActivate:[AuthGuard] },
+  // { path: 'home', component: HomeComponent,canActivate:[AuthGuard] },
+  { path: 'home', component: HomeComponent },
   {path:'resetpassword',component:ResetPasswordComponent},
-  {path:'changepassword',component:ChangePasswordComponent,canActivate:[AuthGuard]},
+  {path:'changepassword',component:ChangePasswordComponent},
   {path:'setpassword',component:SetPasswordComponent},
   {path:'tenantselection',component:TenantselectionComponent},
  // {path:'manageusers',component:UserListWithStatusComponent},
