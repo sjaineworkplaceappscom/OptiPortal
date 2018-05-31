@@ -31,9 +31,9 @@ p{
 }
 a{
     @include font($size: $font-size-regular,$weight: $font-weight-regular,  $lh: false);
-    &:hover{
+    // &:hover{
        
-    }
+    // }
 }
 h1{
     @include font($size: $font-size-xxx-large,$weight: $font-weight-regular,  $lh: false);
