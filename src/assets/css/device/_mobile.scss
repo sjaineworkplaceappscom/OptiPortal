@@ -140,12 +140,24 @@
         border-radius: 0;
         border-bottom: 1px solid #c7c7c7;
         input{
-            width: 288px;
-            min-width: 275px;
+            // width: 288px;
+            // min-width: 275px;
+            width:calc(100% - 40px);
+            min-width:calc(100% - 40px);
         }
         .opti_top-search-icon{
             height: 30px;
             padding: 0 10px;
         }
     }
+}
+
+// Css Related to Notification
+.opti_notification-drop-down{
+    width: 270px !important;
+}
+@media screen and (orientation:landscape) {
+    .opti_notification-drop-down{
+        max-height: 200px !important;
+    }   
 }

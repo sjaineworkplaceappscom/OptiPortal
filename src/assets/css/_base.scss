@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+// @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 
 // imports for all mixins + global project variables
 // @import '_typography';
@@ -22,9 +23,10 @@ $dark-black:#333;
 }
 
 // font size
-$font-family-lato: 'Lato', sans-serif;
+// $font-family-lato: 'Lato', sans-serif;
+$font-family-roboto: 'Roboto', sans-serif;
 @mixin font($size: false, $weight: false,  $lh: false) {
-    font-family: $font-family-lato; 
+    font-family: $font-family-roboto; 
     @if $size { font-size: $size; }
     @if $weight { font-weight: $weight; }
     @if $lh { line-height: $lh; }
@@ -172,5 +174,33 @@ ul{
 ul{
     li{
         list-style: none;
+    }
+}
+
+// List Style One
+ul.opti_liststyle-one-ul{
+    .opti_liststyle-one-li{
+        display: flex;
+        padding: 10px 15px;
+        border-bottom: 1px solid rgba(120, 130, 140, 0.13);
+        cursor: pointer;
+        .opti_liststyle-one-image {
+            width: 30px;
+            float: left;
+        }
+        .opti_liststyle-one-text {
+            float: left;
+            width: calc(100% - 30px);
+            padding-left: 10px;
+            h5, p{
+                margin-bottom: 0;
+            }
+            p.opti_date {
+                font-size: 12px;
+            }
+        }
+        img{
+            border-radius: 50%;
+        }
     }
 }

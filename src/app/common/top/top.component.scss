@@ -6,7 +6,8 @@
     height: 30px;
     border-radius: 5px;
     input{
-        width: 171px;
+        // width: 171px;
+        width:calc(100% - 40px);
         float: left;
         background-color: transparent;
         &.form-control{
@@ -65,7 +66,7 @@
     .opti_user-profile-drop-down {
         right: 0 !important;
         left: auto !important;
-        top: 44px !important;
+        top: 46px !important;
         width: 270px;
         padding-bottom: 0;
         img{
@@ -152,4 +153,19 @@
 // hide down arrow from mobile search
 .dropdown-toggle::after{
     display: none;
+}
+
+// Css Related to Notification
+.opti_notification-drop-down{
+    left: auto !important;
+    right: 13px !important;
+    top: 44px !important;
+    width: 357px;
+    height: auto;
+    overflow-y: auto;
+    max-height: 400px;
+    
+}
+.dropdown-menu.opti_notification-drop-down.show {
+    padding: 0;
 }

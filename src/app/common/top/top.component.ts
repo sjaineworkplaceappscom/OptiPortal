@@ -19,7 +19,7 @@ export class TopComponent implements OnInit {
   modalRef: BsModalRef;
   openThemeSetting: boolean = false;
   constructor(private modalService: BsModalService) { }
-
+  
   ngOnInit() {
     UIHelper.manageThemeCssFile();
   }

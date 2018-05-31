@@ -75,3 +75,8 @@
         }
     }
 }
+
+
+#opti_TopBarID{ // if we will add this css in top bar than background color will not change from theme file becuase it will take high prioraty that's why i add here
+    background-color: #f0f0f0;
+}
