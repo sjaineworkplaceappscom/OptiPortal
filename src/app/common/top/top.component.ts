@@ -9,6 +9,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
 
 import { BsModalService } from 'ngx-bootstrap/modal'; // Bootstrap Modal
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service'; // Bootstrap Modal
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top',
@@ -18,7 +19,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service'; // Bootst
 export class TopComponent implements OnInit {
   modalRef: BsModalRef;
   openThemeSetting: boolean = false;
-  constructor(private modalService: BsModalService) { }
+  constructor(private modalService: BsModalService,private router: Router) { }
   
   ngOnInit() {
     UIHelper.manageThemeCssFile();
@@ -36,6 +37,11 @@ export class TopComponent implements OnInit {
 
   openSearchMobileModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  signOut() {
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
   }
 
 }

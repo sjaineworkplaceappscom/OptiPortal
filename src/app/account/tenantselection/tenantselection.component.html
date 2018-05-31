@@ -1,0 +1,22 @@
+<div class="tenanntSelection">
+
+
+  <div class="container">
+    <h2>Select Tenanat</h2>
+    <p class="lead">Seems that you are register in diffrent tenents so please select one in th following tenants.</p>
+
+
+    <div *ngFor="let user of userData">
+      <a  class="list-group-item active item" (click)="login(user)">
+        <h4 class="list-group-item-heading">{{user.LoginTenantName}}</h4>
+        <p class="list-group-item-text">List Group Item Text</p>
+      </a>
+      <br>
+    </div>
+
+
+
+  </div>
+
+
+</div>

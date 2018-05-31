@@ -19,19 +19,7 @@ export class AppComponent {
   constructor(){ }
   
   ngOnInit(){    
-
-    // UI operations
-    
-    this.isMobile =UIHelper.isMobile();
-    UIHelper.manageNavigationPanel();
   }
   
-  @HostListener('window:resize', ['$event'])
-  onResize(event) { 
-    // UI operations   
-    this.isMobile =UIHelper.isMobile();
-    UIHelper.manageNavigationPanel();
-
-  }
 
 }
