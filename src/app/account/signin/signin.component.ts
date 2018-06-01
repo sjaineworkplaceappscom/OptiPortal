@@ -22,6 +22,10 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
     this.userName = '';
     this.password = '';
+
+    const element = document.getElementsByTagName("body")[0];
+    element.classList.add("opti_body-login");
+
   }
 
   public async login(userName: string, password: string) {

@@ -1,45 +1,30 @@
-<div class="login-form background">
+
+      
+  <div class="opti_outer-login-form">    
+    <div class="opti_vertcal-align-outer-box">
+
+      <div class="panel-body">
+          <div class="opti_login-brandlogo"><img src="https://www.optiproerp.com/wp-content/uploads/2018/03/logos-1-1.png" alt="brandlogo"></div>
+        <form class="k-form">
+                <label class="k-form-field">
+                    <span>Username</span>
+                    <input class="k-textbox" value="bbatista" placeholder="Your username" />
+                </label>
+                <label class="k-form-field">
+                    <span>Password</span>
+                    <input type="password" class="k-textbox" value="123456" placeholder="Your password"/>
+                </label>
+                <label class="k-form-field">
+                    <input type="checkbox" id="auth-2fa" class="k-checkbox" checked="checked">
+                    <label class="k-checkbox-label" for="auth-2fa">Remember Me</label>
+                </label>
+            
+            <div class="text-right">
+              <button type="button" class="k-button k-primary">Login</button>
+            </div>
+        </form>
+      </div>  
+    </div>  
+  </div>  
+          
    
-  <form method="post">
-    <div class="avatar">
-      <img src="../../../assets/user.png" alt="Avatar">
-    </div>	
-      <h2 class="text-center">Log in</h2> 
-
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-user"></i>
-          </span>
-          <input type="text" class="form-control" (value)="userName" #userName  name="username" placeholder="Username" required="required">
-        </div>
-      </div>   
-
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-lock"></i>          
-          </span>
-          <input type="password" (value)="password" #password class="form-control"  name="password" placeholder="Password"
-            required="required">
-        </div>
-      </div> 
-
-
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block btn-lg"  (click)="login(userName.value,password.value)">Sign In</button>
-      </div>
-      <div class="clearfix">
-          <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-          <a  routerLink="/resetpassword" class="pull-right">Forgot Password?</a>
-      </div>        
-  </form>
-  <p style="color: white" class="text-center" routerLink="/signup" >Don't have an account?<a style="color: white" > Create an Account Here.</a></p>
-
-  
-
-    <div *ngIf="isError==true" class="alert alert-danger">
-        <i class="glyphicon glyphicon-info-sign"></i> Incorrect username or password.
-      </div>
-</div>
-

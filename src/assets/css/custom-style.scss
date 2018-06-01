@@ -2,3 +2,37 @@
 @import '_button';
 @import '_layout';
 @import '_responsive';
+
+  
+  body.opti_body-login{
+    width: 100%;
+    background: -webkit-linear-gradient(left, #22d686, #24d3d3, #22d686, #24d3d3);
+    background: linear-gradient(to right, #5bc0de, #428bca);
+    background-size: 600% 100%;
+    -webkit-animation: HeroBG 20s ease infinite;
+            animation: HeroBG 20s ease infinite;
+  }
+  
+  @-webkit-keyframes HeroBG {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+  @keyframes HeroBG {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }

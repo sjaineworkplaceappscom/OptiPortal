@@ -40,20 +40,29 @@ export  class UIHelper{
     // Apply Theme CSS FILE
     public static manageThemeCssFile(){
         $(document).ready(function(){
-            $('#flat').click(function (){
-                $('footer').find('link.opti__theme-css-file').remove();  
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo.custom.flat.css?v=' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
-            });
-
+            
             $('#opal').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo.custom.blue.opal.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_blue_opal.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
 
-            $('#bootstrap').click(function (){
+            // $('#bootstrap').click(function (){
+            //     $('footer').find('link.opti__theme-css-file').remove();
+            //     $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo.custom.bootstrap.v3.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+            // });
+
+            $('#urban').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo.custom.bootstrap.v3.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_urban.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
+
+            $('#skype').click(function (){
+                $('footer').find('link.opti__theme-css-file').remove();
+                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_skype.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+            });
+
+
+            
         });
     }
 

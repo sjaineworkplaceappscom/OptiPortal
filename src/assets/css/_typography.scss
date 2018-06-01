@@ -61,15 +61,16 @@ h6{
             border:2px solid #fff;
         }
     }
+
+    input[type = 'text'], input[type = 'email']{
+        height: 30px;
+        line-height: normal;
+    }
+    
+    input[type = 'text']:focus, input[type = 'email']:focus{
+        border-color: transparent;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem transparent;
+    }
 }
 
-input[type = 'text'], input[type = 'email']{
-    height: 30px;
-    line-height: normal;
-}
-
-input[type = 'text']:focus, input[type = 'email']:focus{
-    border-color: transparent;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem transparent;
-}
