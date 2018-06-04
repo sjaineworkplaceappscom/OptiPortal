@@ -14,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class LeftComponent implements OnInit {
 
   constructor() { }
+  iconColor:string = '#FF8382'; 
 
   ngOnInit() {
     // UIHelper.manageThemeCssFile();

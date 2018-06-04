@@ -23,6 +23,7 @@
     "@progress/kendo-angular-buttons": "^4.1.1",
     "@progress/kendo-angular-l10n": "^1.2.0",
     "@progress/kendo-theme-bootstrap": "^2.13.4",
+    "angular-svg-icon": "^6.0.0",
     "bootstrap": "^4.1.1",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",

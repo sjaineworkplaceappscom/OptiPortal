@@ -32,6 +32,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 
+// for svg icon
+// import { HttpClientModule } from '@angular/common/http'; also need this module
+import { AngularSvgIconModule } from 'angular-svg-icon';
+
 
 const routes: Routes = [
   
@@ -74,7 +78,8 @@ const routes: Routes = [
     ModalModule.forRoot(),
     PerfectScrollbarModule,
     RouterModule.forRoot(routes),
-   
+    HttpClientModule, 
+    AngularSvgIconModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

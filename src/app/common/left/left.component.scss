@@ -18,8 +18,14 @@
                     text-decoration: none;
                     color: $dark-black;
                 }
-                img{
-                    margin-top: -4px;
+                
+                // img{
+                //     margin-top: -4px;
+                // }
+
+                svg-icon {
+                    position: relative;
+                    top: 5px;
                 }
             }
         }
@@ -49,6 +55,7 @@
             ul {
                 li{
                     @include truncate(80px);
+                    text-align: center;
                 }
             }
         }
