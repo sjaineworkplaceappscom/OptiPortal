@@ -61,6 +61,33 @@ export  class UIHelper{
                 $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_skype.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
 
+            $('#green').click(function (){
+                $('footer').find('link.opti__theme-css-file').remove();
+                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_green.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+            });
+
+            $('#stripe').click(function (){
+                $('footer').find('link.opti__theme-css-file').remove();
+                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_stripe.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+            });
+
+            $('#coffee').click(function (){
+                $('footer').find('link.opti__theme-css-file').remove();
+                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_coffee.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+            });
+
+            $('#newtrend').click(function (){
+                $('footer').find('link.opti__theme-css-file').remove();
+                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_newtrend18.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+            });
+            $('#castify').click(function (){
+                $('footer').find('link.opti__theme-css-file').remove();
+                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_castify.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+            });
+
+            
+
+            
 
             
         });

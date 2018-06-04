@@ -8,13 +8,13 @@ body{
     color: #232323;
   }
   a{
-    color: #a3d0e4;
+    color: #73a9c9;
   }
   a:hover{
-    color: #7bd2f6;
+    color: #73a9c9;
   }
   h1, h2, h3, h4, h5, h6{
-    color: #8e8e8e;
+    color: #73a9c9;
   }
   
   
@@ -48,6 +48,12 @@ body{
     background-color: #f0f0f0;
   }
   
+  button{
+    background-color: #ff804d;
+    color: white;
+    border-color: #ff804d;
+  }
+
   app-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
   .opti_user-profile-drop-down li.opti_mouse-pointer:hover,
   li.opti_list:hover,
