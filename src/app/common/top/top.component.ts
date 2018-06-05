@@ -6,6 +6,7 @@
 
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
+import { Commonservice } from '../../services/commonservice.service';
 
 import { BsModalService } from 'ngx-bootstrap/modal'; // Bootstrap Modal
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service'; // Bootstrap Modal
@@ -19,7 +20,8 @@ import { Router } from '@angular/router';
 export class TopComponent implements OnInit {
   modalRef: BsModalRef;
   openThemeSetting: boolean = false;
-  constructor(private modalService: BsModalService,private router: Router) { }
+  constructor(private modalService: BsModalService,private router: Router, private commonService: Commonservice) { }
+  selectedThemeColor: string = '#5bc0de';
   
   ngOnInit() {
     UIHelper.manageThemeCssFile();
@@ -28,6 +30,13 @@ export class TopComponent implements OnInit {
   // open and close theme setting side panel
   openCloseRightPanel() {
     this.openThemeSetting = !this.openThemeSetting;
+    
+    // get theme color
+    this.commonService.themeCurrentData.subscribe(
+      data => {
+        this.selectedThemeColor = data;
+      }
+    )
   }
 
   // evenet emitted by client(right) to parenet(top).

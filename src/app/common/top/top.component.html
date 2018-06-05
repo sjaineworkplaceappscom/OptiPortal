@@ -98,7 +98,10 @@
                                                         <h5>Prashant</h5>
                                                         <p>Company name</p>
                                                         <p>Short Description</p>
-                                                        <p class="opti_profile-para"><span class="btn btn-rounded btn-danger btn-sm">View Profile</span></p>
+                                                        <p class="opti_profile-para">
+                                                            <!-- <span class="btn btn-rounded btn-danger btn-sm">View Profile</span> -->
+                                                            <button>View Profile</button>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -112,7 +115,7 @@
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <img src="assets/images/common/settings-black.svg" alt="setting" width="20" height="20" /> Setting
+                                                <svg-icon src="assets/images/common/settings-black.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon> Setting
                                             </div>
                                         </div>
                                     </div>
@@ -124,7 +127,7 @@
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <img src="assets/images/common/Help.svg" alt="setting" width="20" height="20"  /> Help
+                                                <svg-icon src="assets/images/common/Help.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon>Help
                                             </div>
                                         </div>
                                     </div>
@@ -136,7 +139,7 @@
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-12"(click)="signOut()" >
-                                                <img src="assets/images/common/logout.svg" alt="setting" width="20" height="20"  /> LogOut
+                                                <svg-icon src="assets/images/common/logout.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon>LogOut
                                             </div>
                                         </div>
                                     </div>

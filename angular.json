@@ -27,9 +27,9 @@
               "src/assets"
             ],
             "styles": [
-               "src/styles.scss",
-               "node_modules/@progress/kendo-theme-bootstrap/dist/all.css",
-               "src/assets/css/custom-style.scss"
+              "src/styles.scss",
+              "node_modules/@progress/kendo-theme-bootstrap/dist/all.css",
+              "src/assets/css/custom-style.scss"
             ],
             "scripts": []
           },
@@ -78,6 +78,9 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
+              {
+                "input": "node_modules/@progress/kendo-theme-default/scss/all.scss"
+              },
               "src/styles.scss"
             ],
             "scripts": [],

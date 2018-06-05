@@ -34,7 +34,12 @@ import { HomeComponent } from './home/home.component';
 
 // for svg icon
 // import { HttpClientModule } from '@angular/common/http'; also need this module
-import { AngularSvgIconModule } from 'angular-svg-icon';
+import { AngularSvgIconModule } from 'angular-svg-icon'
+
+// It's for dropdown module
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 const routes: Routes = [
@@ -79,7 +84,9 @@ const routes: Routes = [
     PerfectScrollbarModule,
     RouterModule.forRoot(routes),
     HttpClientModule, 
-    AngularSvgIconModule
+    AngularSvgIconModule, 
+    DropDownsModule, 
+    BrowserAnimationsModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

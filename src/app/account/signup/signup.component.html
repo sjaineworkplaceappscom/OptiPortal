@@ -1,89 +1,177 @@
-<div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post">
-      <h2>Create Account</h2>
-      <p class="lead">It hardly takes more than 30 seconds.</p>
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-building"></i>
-          </span>
-          <input type="text" class="form-control" [(ngModel)]="registerReq.CompanyName" name="companyName" placeholder="Company Name"
-            required="required">
-        </div>
-      </div>
-  
-      <div class="form-group">
-        <p>Primary Contact Details: </p>
-  
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-user"></i>
-          </span>
-          <input type="text" class="form-control" [(ngModel)]="registerReq.PrimaryUserFirstName" name="firstName" placeholder="First Name"
-            required="required">
-        </div>
-  
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-user"></i>
-          </span>
-          <input type="text" class="form-control" [(ngModel)]="registerReq.PrimaryUserLastName" name="lastName" placeholder="Last Name"
-            required="required">
-        </div>
-  
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-paper-plane"></i>
-          </span>
-          <input type="text" class="form-control" [(ngModel)]="registerReq.PrimaryUserEmail" name="email" placeholder="Email Address"
-            required="required">
-        </div>
-  
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-phone-square"></i>
-          </span>
-          <input type="text" class="form-control" [(ngModel)]="registerReq.PrimaryUserPhone" name="phone" placeholder="Phone" required="required">
-        </div>
-      </div>
-  
-  
-      <div class="form-group">
-        <!-- <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-lock"></i>
-          </span>
-          <input type="password" class="form-control" [(ngModel)]="registerReq.Password" name="password" placeholder="Password" required="required">
-        </div>
-     
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-lock"></i>
-            <i class="fa fa-check"></i>
-          </span>
-          <input type="password" class="form-control" [(ngModel)]="registerReq.ConfirmPassword" name="confirm_password" placeholder="Confirm Password"
-            required="required">
-        </div> -->
-        <div class="input-group">
-  
-          <fieldset id="type">
-            Customer Type
-            <input type="radio" name="type" value="2" [(ngModel)]="registerReq.UserType" title="Customer" checked="checked"> Vendor Type
-            <input type="radio" name="type" value="3" [(ngModel)]="registerReq.UserType" title="Vendor">
-            <div *ngIf="systemAdmin=='true'">Siteowner/Admin Type
-              <input type="radio" name="type" value="4" [(ngModel)]="registerReq.UserType" title="Vendor"> </div>
-          </fieldset>
-        </div>
-      </div>
-  
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block btn-lg" (click)="submit()">Sign Up</button>
-      </div>
-      <p class="small text-center">By clicking the Sign Up button, you agree to our
-        <br>
-        <a href="#">Terms &amp; Conditions</a>, and
-        <a href="#">Privacy Policy</a>.</p>
-    </form>
-    <div style="color: white" class="text-center" routerLink="/login">Already have an account?
-      <a style="color: white" class="trigger-btn" data-toggle="modal">Login Here</a>.</div>
-  </div>
+<!-- <div id="opti_signupPageID">
+<div class="opti_outer-signup-form">    
+    <div class="opti_vertcal-align-outer-box">
+      
+      <div class="panel-body">
+        <form class="k-form">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <h1>Create Your Account</h1>
+                <h6>It hardly takes 30 seconds</h6>
+              </div>
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="opti_signupbox">
+                  <h4>Company Detail</h4>
+                  <label class="k-form-field">
+                      <input class="k-textbox" type="text" value="" placeholder="Company ID*" />
+                  </label>
+                  
+                  <label class="k-form-field">
+                      <input type="text" class="k-textbox" value="" placeholder="Company Name"/>
+                  </label>
+
+                  <label class="k-form-field">
+                      <input type="text" class="k-textbox" value="" placeholder="Website Address"/>
+                  </label>
+
+                  <h4>Primary User Detail</h4>
+                  <label class="k-form-field">
+                      <input type="text" class="k-textbox" value="" placeholder="Name"/>
+                  </label>
+
+                  <label class="k-form-field">
+                      <input type="email" class="k-textbox" value="" placeholder="Email*"/>
+                  </label>
+
+                  <label class="k-form-field">
+                      <input type="text" class="k-textbox" value="" placeholder="Phone"/>
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="opti_signupbox">
+                  <h4>Requester Detail</h4>
+                  <label class="k-form-field">
+                      <input type="text" class="k-textbox" value="" placeholder="Name*"/>
+                  </label>
+
+                  <label class="k-form-field">
+                      <input type="email" class="k-textbox" value="" placeholder="Email*"/>
+                  </label>
+
+                  <label class="k-form-field">
+                      <input type="text" class="k-textbox" value="" placeholder="Phone*"/>
+                  </label>
+
+                  <label class="k-form-field">
+                      <kendo-dropdownlist
+                      name="role"
+                      [data]="roles"
+                      [textField]="'text'"
+                      [valueField]="'value'"
+                      [(ngModel)]="role">
+                      </kendo-dropdownlist>
+                  </label>
+
+                  <label class="k-form-field">
+                      <input type="checkbox" id="auth-2fa" class="k-checkbox" checked="checked">
+                      <label class="k-checkbox-label" for="auth-2fa">I agree to the <a href="javascript:void('0');"> &nbsp; terms of use </a>&nbsp; and &nbsp;<a href="javascript:void('0');"> privacy policy </a></label>
+                  </label>
+
+                  <label class="k-form-field">
+                      <div class="text-right">
+                        <button type="button" class="k-button k-primary">Sign Up</button>
+                      </div>
+                  </label>
+                </div>
+              </div>
+
+              
+
+            </div>
+          </div>      
+        </form>
+      
+      </div>  
+
+    </div>  
+  </div>  
+</div>          
+    -->
+
+
+
+
+    <div id="opti_signupPageID">
+        <div class="opti_outer-signup-form">    
+            <div class="opti_vertcal-align-outer-box "  >
+              
+              <div class="panel-body opti_position-relative" [perfectScrollbar]="config">
+                <form class="k-form">
+                  <div class="opti_fprm-inner">
+                  
+                          <div class="text-center">
+                            <h5>Create an account</h5>
+                          </div>
+                      
+                          <label class="k-form-field">
+                              <input class="k-textbox" type="text" value="" placeholder="Company ID*" />
+                          </label>
+                          
+                          <label class="k-form-field">
+                              <input type="text" class="k-textbox" value="" placeholder="Company Name" disabled/>
+                          </label>
+        
+                          <label class="k-form-field">
+                              <input type="text" class="k-textbox" value="" placeholder="Website Address" disabled/>
+                          </label>
+        
+                          <label class="k-form-field">
+                              <input type="text" class="k-textbox" value="" placeholder="Primary Contact Name" disabled/>
+                          </label>
+        
+                          <label class="k-form-field">
+                              <input type="email" class="k-textbox" value="" placeholder="Primary Contact Email" disabled/>
+                          </label>
+        
+                          <label class="k-form-field">
+                              <input type="text" class="k-textbox" value="" placeholder="Primary Contact Phone" disabled/>
+                          </label>
+        
+                          <label class="k-form-field">
+                              <input type="text" class="k-textbox" value="" placeholder="Your Name*"/>
+                          </label>
+        
+                          <label class="k-form-field">
+                              <input type="email" class="k-textbox" value="" placeholder="Your Email*"/>
+                          </label>
+        
+                          <label class="k-form-field">
+                              <input type="text" class="k-textbox" value="" placeholder="Your Phone*"/>
+                          </label>
+        
+                          <label class="k-form-field">
+                              <kendo-dropdownlist
+                              name="role"
+                              [data]="roles"
+                              [textField]="'text'"
+                              [valueField]="'value'"
+                              [(ngModel)]="role">
+                              </kendo-dropdownlist>
+                          </label>
+        
+                          <label class="k-form-field">
+                              <input type="checkbox" id="auth-2fa" class="k-checkbox" checked="checked">
+                              <label class="k-checkbox-label opti_agrementtext" for="auth-2fa"> I agree to the <a href="javascript:void('0');">&nbsp; terms of use </a> &nbsp; and &nbsp;<a href="javascript:void('0');"> privacy policy </a></label>
+                          </label>
+        
+                          <label class="k-form-field">
+                              <div class="text-right">
+                                <button type="button" class="k-button k-primary">Sign Up</button>
+                              </div>
+                          </label>
+                        
+        
+                      
+        
+                        </div>       
+                </form>
+              
+              </div>  
+        
+            </div>  
+          </div>  
+        </div>          
+           

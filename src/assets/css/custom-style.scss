@@ -3,20 +3,17 @@
 @import '_layout';
 @import '_responsive';
 
-  
+  // CSS related to signin page
   body.opti_body-login{
-    width: 100%;
-    // background: -webkit-linear-gradient(left, #22d686, #24d3d3, #22d686, #24d3d3);
-    // background: linear-gradient(to right, #5bc0de, #428bca);
+    // width: 100%;
+    // background-image: url('../blue-bg.jpg');
+    // background-size: 600% 100%;
+    // -webkit-animation: HeroBG 20s ease infinite;
+    //         animation: HeroBG 20s ease infinite;
 
-
-    // background:linear-gradient(150deg,#35E2F0 15%,#05d5ff 70%,#a6ffcb 94%);
-
-    background-image: url('../blue-bg.jpg');
-
-    background-size: 600% 100%;
-    -webkit-animation: HeroBG 20s ease infinite;
-            animation: HeroBG 20s ease infinite;
+    background-image: url('/assets/images/signup/shutterstock_598994519.jpg');
+    background-position: center center;
+    background-size: cover;
   }
   
   @-webkit-keyframes HeroBG {
@@ -41,4 +38,20 @@
     100% {
       background-position: 0 0;
     }
+  }
+
+  // CSS related to signup page
+  .opti_body-signup{
+    background-image: url('/assets/images/signup/shutterstock_598994519.jpg');
+    background-position: center center;
+    background-size: cover;
+  }
+  
+
+  // Custom Over css for Kendo
+  .k-form .k-form-field, .k-form .k-form-field:last-child, .k-form-inline .k-form-field, .k-form-inline .k-form-field:last-child {
+      margin-bottom: 8px !important;
+  }
+  .k-textbox, .k-input.k-textbox, .k-textarea, .k-dropdown-wrap > .k-input{
+    font-size: 11px !important;
   }

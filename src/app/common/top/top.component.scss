@@ -94,9 +94,15 @@
         }
         
     }
-    .opti_profile-box-logout img, 
-    .opti_profile-box-help img, 
-    .opti_profile-box-setting img{margin-top: -4px;margin-right: 5px;}
+    .opti_profile-box-logout, 
+    .opti_profile-box-help, 
+    .opti_profile-box-setting{
+        svg-icon{
+            position: relative;
+            top: 5px;
+            margin-right: 10px;
+        }
+    }
 
     .opti_user-profile-drop-down li {
         padding-top: 10px;
