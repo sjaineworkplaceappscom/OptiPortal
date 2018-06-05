@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   baseServerAPIEndpoint:"http://localhost:55098/"
+ 
 };
 
 /*

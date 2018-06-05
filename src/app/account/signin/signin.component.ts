@@ -6,7 +6,7 @@ import { HttpHelper } from '../../helpers/http.helper';
 import { AccountService } from '../../services/account.service';
 import { LoginModel } from '../../models/account/login-model';
 import { ApplicationState } from '../../helpers/ApplicationState';
-import { CommonserviceService } from '../../services/commonservice.service';
+import { Commonservice } from '../../services/commonservice.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ import { CommonserviceService } from '../../services/commonservice.service';
 })
 export class SigninComponent implements OnInit {
   isError: boolean = false;
-  constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: CommonserviceService) { }
+  constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: Commonservice) { }
   userName: string;
   password: string;
   ngOnInit() {

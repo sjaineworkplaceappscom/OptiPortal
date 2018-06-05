@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Subject ,BehaviorSubject} from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment.prod';
+import { opticonstants } from '../constants';
+
 
 @Injectable({
-  providedIn:'root'
+  providedIn: 'root'
 })
-export class CommonserviceService {
+export class Commonservice {
 
   constructor() { }
   // Declaration
@@ -24,11 +27,18 @@ export class CommonserviceService {
   }
 
 
-  private authData1=new BehaviorSubject<any>(null);
-  authCurrentValue=this.authData1.asObservable()
+  private authData1 = new BehaviorSubject<any>(null);
+  authCurrentValue = this.authData1.asObservable();
 
-  public setAuthCurrentValue(data:any){
+  public setAuthCurrentValue(data: any) {
     this.authData1.next(data);
+  }
+
+  private themeData = new BehaviorSubject<any>(opticonstants.defaultThemeColor);
+  themeCurrentData = this.themeData.asObservable();
+
+  public setThemeData(data: any) {
+    this.themeData.next(data);
   }
 
 }

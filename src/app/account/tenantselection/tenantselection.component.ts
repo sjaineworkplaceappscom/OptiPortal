@@ -4,7 +4,7 @@ import { ErrorObject } from '../signin/signin.component';
 
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { CommonserviceService } from '../../services/commonservice.service';
+import { Commonservice } from '../../services/commonservice.service';
 import { AccountService } from '../../services/account.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class TenantselectionComponent implements OnInit {
   userData: any;
   isError: boolean = false;
   authSharedData: any;
-  constructor(private accountService: AccountService, private router: Router, private CommonserviceService: CommonserviceService) { 
+  constructor(private accountService: AccountService, private router: Router, private CommonserviceService: Commonservice) { 
    
   }
 

@@ -5,6 +5,7 @@
 //==============================================================================
 
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Commonservice } from '../../services/commonservice.service';
 
 @Component({
   selector: 'app-right',
@@ -14,7 +15,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class RightComponent implements OnInit {
   // Event emitter variable.
   @Output() messageEvent = new EventEmitter<boolean>();
-  constructor() { }
+  constructor(private commonService: Commonservice) { }
 
   ngOnInit() {
   }
@@ -24,7 +25,7 @@ export class RightComponent implements OnInit {
     this.messageEvent.emit(false);
   }
 
-  onThemeChange(themeColor:any){
-    localStorage.setItem('themeColor',themeColor);    
+  onThemeChange(themeColor: any) {
+    this.commonService.setThemeData(themeColor);
   }
 }

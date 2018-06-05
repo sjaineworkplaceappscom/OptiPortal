@@ -4,6 +4,7 @@
 // Original Date: 10 March 2018
 //==============================================================================
 import { Component, OnInit } from '@angular/core';
+import { Commonservice } from '../../services/commonservice.service';
 // import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({
@@ -13,14 +14,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftComponent implements OnInit {
 
-  constructor() { }
-  iconColor:string = '#FF8382'; 
-  color:any=localStorage.getItem('themeColor');
-  ngOnInit() {
-    // UIHelper.manageThemeCssFile();    
+  constructor(private commonService: Commonservice) { }
+  selectedThemeColor: string = '#FF8382';
+
+  ngOnInit() {    
+    this.commonService.themeCurrentData.subscribe(
+      data => {
+        this.selectedThemeColor = data;
+      }
+    )
 
   }
 
-  ngOnChange(){
+  ngOnChange() {
   }
 }

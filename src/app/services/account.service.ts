@@ -7,7 +7,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHelper } from '../helpers/http.helper';
 import { Router } from '@angular/router';
-import { constants } from '../constants';
+import { opticonstants } from '../constants';
 import { RegisterRequest } from '../models/account/register-req-model';
 import { UpdateCredentialModel } from '../models/account/update-credential-req-model';
 import { UserModel } from '../models/account/user-model';
