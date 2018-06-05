@@ -23,4 +23,8 @@ export class RightComponent implements OnInit {
   onClose() {
     this.messageEvent.emit(false);
   }
+
+  onThemeChange(themeColor:any){
+    localStorage.setItem('themeColor',themeColor);    
+  }
 }

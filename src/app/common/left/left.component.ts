@@ -15,8 +15,12 @@ export class LeftComponent implements OnInit {
 
   constructor() { }
   iconColor:string = '#FF8382'; 
-
+  color:any=localStorage.getItem('themeColor');
   ngOnInit() {
-    // UIHelper.manageThemeCssFile();
+    // UIHelper.manageThemeCssFile();    
+
+  }
+
+  ngOnChange(){
   }
 }
