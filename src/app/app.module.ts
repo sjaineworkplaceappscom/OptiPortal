@@ -38,8 +38,9 @@ import { AngularSvgIconModule } from 'angular-svg-icon'
 
 // It's for dropdown module
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 const routes: Routes = [
@@ -86,7 +87,9 @@ const routes: Routes = [
     HttpClientModule, 
     AngularSvgIconModule, 
     DropDownsModule, 
-    BrowserAnimationsModule
+    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
+    TooltipModule.forRoot()
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

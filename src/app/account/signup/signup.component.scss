@@ -2,9 +2,12 @@
     // background: #f7f4f4;
     border-radius: 5px;
     width: 100%;
-    background-color: rgba(155,169,182,0.6);
+    background-color: rgba(65, 107, 149, 0.6);
     overflow-y: scroll;
     box-shadow: 0px 0px 7px #fff;
+    // height: calc(100% - 20px);
+    height: auto;
+    max-height: 100%;
 }
 
 .opti_outer-signup-form {
@@ -22,6 +25,7 @@
     display: flex;
     height: 100vh;
     align-items: center;
+    padding: 10px 0;
 }
 
 kendo-dropdownlist{
@@ -66,3 +70,37 @@ a:hover{
 .k-form, .k-form-inline{
     padding: 10px !important;
 }
+
+.k-form-field {
+    span{
+        font-size: 12px;
+        color: white;
+        margin-bottom: 0 !important;
+    }
+}
+
+.opti_signup-companyname, .opti_signup-url{
+    float: left;
+    width: 49%;
+}
+.opti_signup-url{
+    float: right;
+}
+
+.opti_signup-primary-name,
+.opti_signup-primary-email,
+.opti_signup-primary-phone{
+    float: left;
+    width: 32%;
+}
+.opti_signup-primary-email{
+    margin: 0 2%;
+}
+
+.opti_signup-primary-label,
+.opti_signup-company-label{
+    font-size: 10px;
+    color: white;
+    margin-bottom: 0 !important;
+}
+    

@@ -94,55 +94,71 @@
 
 
 
-    <div id="opti_signupPageID">
+    <div id="opti_signupPageID" kendoTooltip showOn="none">
         <div class="opti_outer-signup-form">    
             <div class="opti_vertcal-align-outer-box "  >
               
-              <div class="panel-body opti_position-relative" [perfectScrollbar]="config">
+              <div class="panel-body opti_position-relative" [perfectScrollbar]="config">                  
                 <form class="k-form">
                   <div class="opti_fprm-inner">
                   
                           <div class="text-center">
-                            <h5>Create an account</h5>
+                            <h5>Create an Account</h5>
                           </div>
-                      
-                          <label class="k-form-field">
-                              <input class="k-textbox" type="text" value="" placeholder="Company ID*" />
+
+                        
+
+                          <label class="k-form-field opti_position-relative">
+                              <span>Company ID* <span class="float-right" style="color: red">Please enter valid company id</span></span>
+                              <input class="k-textbox" type="text" value="" placeholder="e.g. Cust1032" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. Cust1032'" tooltip="{{'Please Enter Id like Cust10325'}}" placement="right" container="body" />
                           </label>
                           
-                          <label class="k-form-field">
-                              <input type="text" class="k-textbox" value="" placeholder="Company Name" disabled/>
+                          <label class="k-form-field opti_signup-company-label">
+                            <span>Company Details</span>
+                          </label>
+
+                          <label class="k-form-field opti_signup-companyname">
+                              <input type="text" class="k-textbox" value="" placeholder="e.g. OptiPro ERP" disabled/>
+                          </label>
+        
+                          <label class="k-form-field opti_signup-url">
+                              <input type="text" class="k-textbox" value="" placeholder="e.g. https://www.optiproerp.com/" disabled/>
+                          </label>
+                          
+                          <label class="k-form-field opti_signup-primary-label">
+                              <span>Primary Contact Details</span>
+                          </label>
+
+                          <label class="k-form-field opti_signup-primary-name">
+                              <input type="text" class="k-textbox" value="" placeholder="e.g. Kevin Peter" disabled/>
+                          </label>
+        
+                          <label class="k-form-field opti_signup-primary-email">
+                              <input type="email" class="k-textbox" value="" placeholder="e.g. peter@gmail.com" disabled/>
+                          </label>
+        
+                          <label class="k-form-field opti_signup-primary-phone">
+                              <input type="text" class="k-textbox" value="" placeholder="e.g. +01 321 856 5478" disabled/>
                           </label>
         
                           <label class="k-form-field">
-                              <input type="text" class="k-textbox" value="" placeholder="Website Address" disabled/>
+                              <span>Your Name*</span>
+                              <input type="text" class="k-textbox" value="" placeholder="e.g. Kevin" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. Kevin'" />
+                          </label>
+        
+                          <label class="k-form-field opti_position-relative">
+                              <span>Your Email*</span>
+                              <input type="email" class="k-textbox" value="" placeholder="e.g. kevin@gmail.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. kevin@gmail.com'" tooltip="{{'e.g. like test@gmail.com'}}" placement="right" container="body" />
+                              <span style="color: red">Please enter valid email</span>
                           </label>
         
                           <label class="k-form-field">
-                              <input type="text" class="k-textbox" value="" placeholder="Primary Contact Name" disabled/>
+                              <span>Your Phone*</span>
+                              <input type="text" class="k-textbox" value="" placeholder="e.g. +01 321 856 5478" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. +01 321 856 5478'" />
                           </label>
         
                           <label class="k-form-field">
-                              <input type="email" class="k-textbox" value="" placeholder="Primary Contact Email" disabled/>
-                          </label>
-        
-                          <label class="k-form-field">
-                              <input type="text" class="k-textbox" value="" placeholder="Primary Contact Phone" disabled/>
-                          </label>
-        
-                          <label class="k-form-field">
-                              <input type="text" class="k-textbox" value="" placeholder="Your Name*"/>
-                          </label>
-        
-                          <label class="k-form-field">
-                              <input type="email" class="k-textbox" value="" placeholder="Your Email*"/>
-                          </label>
-        
-                          <label class="k-form-field">
-                              <input type="text" class="k-textbox" value="" placeholder="Your Phone*"/>
-                          </label>
-        
-                          <label class="k-form-field">
+                              <!-- <span>Your role</span> -->
                               <kendo-dropdownlist
                               name="role"
                               [data]="roles"
@@ -154,7 +170,7 @@
         
                           <label class="k-form-field">
                               <input type="checkbox" id="auth-2fa" class="k-checkbox" checked="checked">
-                              <label class="k-checkbox-label opti_agrementtext" for="auth-2fa"> I agree to the <a href="javascript:void('0');">&nbsp; terms of use </a> &nbsp; and &nbsp;<a href="javascript:void('0');"> privacy policy </a></label>
+                              <label class="k-checkbox-label opti_agrementtext" for="auth-2fa"> I agree to the &nbsp;<a href="javascript:void('0');"> terms of use </a> &nbsp; and &nbsp;<a href="javascript:void('0');"> privacy policy </a></label>
                           </label>
         
                           <label class="k-form-field">

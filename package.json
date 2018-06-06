@@ -24,6 +24,7 @@
     "@progress/kendo-angular-dropdowns": "^3.0.1",
     "@progress/kendo-angular-l10n": "^1.1.0",
     "@progress/kendo-theme-bootstrap": "^2.13.4",
+    "@progress/kendo-theme-default": "latest",
     "angular-svg-icon": "^6.0.0",
     "bootstrap": "^4.1.1",
     "classlist.js": "^1.1.20150312",
@@ -35,8 +36,7 @@
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.0.0",
     "web-animations-js": "^2.3.1",
-    "zone.js": "^0.8.26",
-    "@progress/kendo-theme-default": "latest"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.3",

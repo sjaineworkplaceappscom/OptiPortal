@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RegisterRequest } from 'src/app/models/account/register-req-model';
 import { AccountService } from 'src/app/services/account.service';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+
 
 
 
@@ -42,5 +43,7 @@ export class SignupComponent implements OnInit {
 ];
 
 public role: { text: string, value: number } = { text: "Please Select Role", value: 1 };
+
+
 
 }

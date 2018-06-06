@@ -2,7 +2,7 @@
   border-radius: 5px;
   width: 100%;
 
-  background-color: rgba(155,169,182,0.6);
+  background-color: rgba(65, 107, 149, 0.6);
   box-shadow: 0px 0px 7px #fff;
 }
 .opti_outer-login-form {
@@ -43,6 +43,14 @@ label > label {
   }
   a:hover{
     text-decoration: underline;
+  }
+}
+
+.k-form-field {
+  span{
+      font-size: 12px;
+      color: white;
+      margin-bottom: 0 !important;
   }
 }
 
