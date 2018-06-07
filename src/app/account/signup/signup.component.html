@@ -109,8 +109,8 @@
                         
 
                           <label class="k-form-field opti_position-relative">
-                              <span>Company ID* <span class="float-right opti_signup-validation-top-side" style="color: red;">Please enter valid company id</span></span>
-                              <input class="k-textbox" type="text" value="" placeholder="e.g. Cust1032" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. Cust1032'" tooltip="{{'Please Enter Id like Cust10325'}}" placement="right" container="body" />
+                              <span>Company ID* <span class="float-right opti_signup-validation-top-side"  *ngIf='invalidCompanyId' style="color: red;">Please enter valid company id</span></span>
+                              <input class="k-textbox" type="text"  name="CompanyId" placeholder="e.g. Cust1032" [(ngModel)]= 'CompanyId' (blur)="getCompaneyDetail()" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. Cust1032'" tooltip="{{'Please Enter Id like Cust10325'}}" placement="right" container="body" />
                           </label>
                           
                           <label class="k-form-field opti_signup-company-label">
@@ -118,7 +118,7 @@
                           </label>
 
                           <label class="k-form-field opti_signup-companyname">
-                              <input type="text" class="k-textbox" value="" placeholder="e.g. OptiPro ERP" disabled/>
+                              <input type="text" name="CompanyName" [(ngModel)]="companyDetail.CompanyName" class="k-textbox" value="" placeholder="e.g. OptiPro ERP" disabled/>
                           </label>
         
                           <label class="k-form-field opti_signup-url">
@@ -130,31 +130,31 @@
                           </label>
 
                           <label class="k-form-field opti_signup-primary-name">
-                              <input type="text" class="k-textbox" value="" placeholder="e.g. Kevin Peter" disabled/>
+                              <input type="text" class="k-textbox"  name="PrimaryContactName" [(ngModel)]="companyDetail.PrimaryContactName" value="" placeholder="e.g. Kevin Peter" disabled/>
                           </label>
         
                           <label class="k-form-field opti_signup-primary-email">
-                              <input type="email" class="k-textbox" value="" placeholder="e.g. peter@gmail.com" disabled/>
+                              <input  name="PrimaryContactEmail" [(ngModel)]="companyDetail.PrimaryContactEmail" type="email" class="k-textbox" value="" placeholder="e.g. peter@gmail.com" disabled/>
                           </label>
         
                           <label class="k-form-field opti_signup-primary-phone">
-                              <input type="text" class="k-textbox" value="" placeholder="e.g. +01 321 856 5478" disabled/>
+                              <input  name="PrimaryContactPhone" [(ngModel)]="companyDetail.PrimaryContactPhone" type="text" class="k-textbox" value="" placeholder="e.g. +01 321 856 5478" disabled/>
                           </label>
         
                           <label class="k-form-field">
                               <span>Your Name*</span>
-                              <input type="text" class="k-textbox" value="" placeholder="e.g. Kevin" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. Kevin'" />
+                              <input  name="RequesterName" [(ngModel)]="registerReq.RequesterName" type="text" class="k-textbox" value="" placeholder="e.g. Kevin" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. Kevin'" />
                           </label>
         
                           <label class="k-form-field opti_position-relative">
                               <span>Your Email*</span>
-                              <input type="email" class="k-textbox" value="" placeholder="e.g. kevin@gmail.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. kevin@gmail.com'" tooltip="{{'e.g. like test@gmail.com'}}" placement="right" container="body" />
+                              <input name="RequestereEmail" [(ngModel)]="registerReq.RequesterEmail" type="email" class="k-textbox" value="" placeholder="e.g. kevin@gmail.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. kevin@gmail.com'" tooltip="{{'e.g. like test@gmail.com'}}" placement="right" container="body" />
                               <span style="color: red">Please enter valid email</span>
                           </label>
         
                           <label class="k-form-field">
                               <span>Your Phone*</span>
-                              <input type="number" class="k-textbox" value="" placeholder="e.g. +01 321 856 5478" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. +01 321 856 5478'" />
+                              <input name="RequesterePhone" [(ngModel)]="registerReq.RequesterPhone" type="number" class="k-textbox" value="" placeholder="e.g. +01 321 856 5478" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. +01 321 856 5478'" />
                           </label>
         
                           <label class="k-form-field">
@@ -180,7 +180,7 @@
         
                           <label class="k-form-field">
                               <div class="text-right">
-                                <button type="button" class="k-button k-primary">Sign Up</button>
+                                <button (click)="submit()" type="button" class="k-button k-primary">Sign Up</button>
                               </div>
                           </label>
                         

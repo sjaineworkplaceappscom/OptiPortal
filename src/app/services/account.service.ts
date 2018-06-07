@@ -132,4 +132,9 @@ export class AccountService {
   public getInvitedUsers() {
     return this.httpHelper.get(this.baseUrl + 'user/list/invited', null);
   }
+
+  public getCustomerByCode(code:string){
+    return this.httpHelper.put(this.baseUrl + 'customer/databyCode',code,null);
+  }
+
 }
