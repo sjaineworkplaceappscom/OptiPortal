@@ -14,6 +14,15 @@
     background-image: url('/assets/images/signin/dummy1.jpg');
     background-position: center center;
     background-size: cover;
+
+    // scrollbar color
+    .ps__thumb-y,
+    .ps__rail-y:hover > .ps__thumb-y, 
+    .ps__rail-y:focus > .ps__thumb-y
+    {
+      background-color: #fff;
+    }
+
   }
   
   @-webkit-keyframes HeroBG {
@@ -45,6 +54,34 @@
     background-image: url('/assets/images/signup/dummy1.jpg');
     background-position: center center;
     background-size: cover;
+
+    // scrollbar color
+    .ps__thumb-y,
+    .ps__rail-y:hover > .ps__thumb-y, 
+    .ps__rail-y:focus > .ps__thumb-y
+    {
+      background-color: #fff;
+    }
+
+    // dropdown
+    .k-dropdown .k-dropdown-wrap{
+        background-color: white ;
+    }
+
+    kendo-popup{
+      kendo-list{
+        ul{
+          li{
+            font-size: 12px !important;
+          }
+          li.k-state-focused{
+            box-shadow: none !important;
+            background-color: #c7c7c7 !important;
+          }
+        }
+      }
+    }
+
   }
   
 
@@ -53,5 +90,5 @@
       margin-bottom: 8px !important;
   }
   .k-textbox, .k-input.k-textbox, .k-textarea, .k-dropdown-wrap > .k-input{
-    font-size: 11px !important;
+    font-size: 12px !important;
   }

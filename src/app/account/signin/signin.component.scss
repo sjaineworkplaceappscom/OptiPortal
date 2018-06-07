@@ -2,8 +2,14 @@
   border-radius: 5px;
   width: 100%;
 
-  background-color: rgba(65, 107, 149, 0.6);
-  box-shadow: 0px 0px 7px #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 13px 0px #000;
+  overflow-y: scroll;
+
+  height: auto;
+  max-height: 100%;
+
+  
 }
 .opti_outer-login-form {
   // margin: 0 auto;
@@ -35,7 +41,7 @@
   }
 }
 
-label > label {
+label .opti_checkbox-container label, label > label {
   color: white;
   font-size: 12px;
   a{

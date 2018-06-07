@@ -109,7 +109,7 @@
                         
 
                           <label class="k-form-field opti_position-relative">
-                              <span>Company ID* <span class="float-right" style="color: red">Please enter valid company id</span></span>
+                              <span>Company ID* <span class="float-right opti_signup-validation-top-side" style="color: red;">Please enter valid company id</span></span>
                               <input class="k-textbox" type="text" value="" placeholder="e.g. Cust1032" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. Cust1032'" tooltip="{{'Please Enter Id like Cust10325'}}" placement="right" container="body" />
                           </label>
                           
@@ -154,7 +154,7 @@
         
                           <label class="k-form-field">
                               <span>Your Phone*</span>
-                              <input type="text" class="k-textbox" value="" placeholder="e.g. +01 321 856 5478" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. +01 321 856 5478'" />
+                              <input type="number" class="k-textbox" value="" placeholder="e.g. +01 321 856 5478" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. +01 321 856 5478'" />
                           </label>
         
                           <label class="k-form-field">
@@ -165,12 +165,17 @@
                               [textField]="'text'"
                               [valueField]="'value'"
                               [(ngModel)]="role">
+                              <!-- <ng-template kendoDropDownListItemTemplate let-dataItem>
+                                <li class="opti_role-template">{{ dataItem.text }}</li> 
+                            </ng-template> -->
                               </kendo-dropdownlist>
                           </label>
         
                           <label class="k-form-field">
+                              <div class="opti_checkbox-container">
                               <input type="checkbox" id="auth-2fa" class="k-checkbox" checked="checked">
                               <label class="k-checkbox-label opti_agrementtext" for="auth-2fa"> I agree to the &nbsp;<a href="javascript:void('0');"> terms of use </a> &nbsp; and &nbsp;<a href="javascript:void('0');"> privacy policy </a></label>
+                              </div>
                           </label>
         
                           <label class="k-form-field">

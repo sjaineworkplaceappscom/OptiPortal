@@ -2,19 +2,15 @@
     // background: #f7f4f4;
     border-radius: 5px;
     width: 100%;
-    background-color: rgba(65, 107, 149, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     overflow-y: scroll;
-    box-shadow: 0px 0px 7px #fff;
+    box-shadow: 0px 0px 13px 0px #000;
     // height: calc(100% - 20px);
     height: auto;
     max-height: 100%;
 }
 
 .opti_outer-signup-form {
-    // margin: 0 auto;
-    // width: 430px;
-    // max-width: 100%;
-
     width: 370px;
     max-width: 100%;
     margin-left: 160px;
@@ -42,13 +38,16 @@ kendo-dropdownlist{
 h5, h6{
     color: #fff;
 }
+
 a{
     color: #fff;
     text-decoration: underline;
 }
+
 a:hover{
     color: #fff;
 }
+
 .opti_agrementtext{
     font-size: 12px;
     a{
@@ -57,8 +56,6 @@ a:hover{
 }
 
 .opti_fprm-inner{
-    // background-color: rgba(255,255,255,1);
-    // overflow-y: scroll;
     padding: 15px;
 }
 
@@ -83,6 +80,7 @@ a:hover{
     float: left;
     width: 49%;
 }
+
 .opti_signup-url{
     float: right;
 }
@@ -93,6 +91,7 @@ a:hover{
     float: left;
     width: 32%;
 }
+
 .opti_signup-primary-email{
     margin: 0 2%;
 }
@@ -103,4 +102,9 @@ a:hover{
     color: white;
     margin-bottom: 0 !important;
 }
-    
+
+// dropdown css
+.opti_role-template{
+    font-size: 12px !important;
+}
+

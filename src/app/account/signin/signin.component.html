@@ -1,8 +1,10 @@
+  <div id="opti_signinID">
   <div class="opti_outer-login-form">    
     <div class="opti_vertcal-align-outer-box">
 
-      <div class="panel-body">
-          <div class="opti_login-brandlogo"><img src="https://www.optiproerp.com/wp-content/uploads/2018/03/logos-1-1.png" alt="brandlogo"></div>
+      <div class="panel-body opti_position-relative" [perfectScrollbar]="config">
+        <!-- <div class="opti_panel-body-inner1"> -->
+        <div class="opti_login-brandlogo"><img src="https://www.optiproerp.com/wp-content/uploads/2018/03/logos-1-1.png" alt="brandlogo"></div>
         <form class="k-form">
                 <label class="k-form-field">
                     <span>Email</span>
@@ -14,21 +16,25 @@
                     <input type="password" class="k-textbox" value="" placeholder="Your password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your password'" />
                 </label>
 
-                <label class="k-form-field">
-                    <input type="checkbox" id="auth-2fa" class="k-checkbox" checked="checked">
+                <label class="k-form-field" >
+                    <div class="opti_checkbox-container">
+                    <input type="checkbox" id="auth-2fa" class="k-checkbox float-left" checked="checked">
                     <label class="k-checkbox-label" for="auth-2fa">Remember Me</label>
+                    </div>
+
                 </label>
             
                 <div class="text-right">
                   <button type="button" class="k-button k-primary">Login</button>
-                </div>
+                </div> 
                 <br/>
                 <label class="k-form-field opti_target-link text-center">
                     <label class="opti_mouse-pointer"><a>Customer Sign Up</a> | <a>Vendor Sign Up</a></label>
                 </label>
         </form>
+        <!-- </div> -->
       </div>  
     </div>  
   </div>  
-          
+</div>          
    
