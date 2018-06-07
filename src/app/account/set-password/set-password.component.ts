@@ -16,6 +16,10 @@ export class SetPasswordComponent implements OnInit {
   constructor(private route: ActivatedRoute, private accountService: AccountService) { }
 
   ngOnInit() {
+
+    const element = document.getElementsByTagName("body")[0];
+    element.classList.add("opti_body-set-password");
+
     this.route.queryParams.subscribe(
       param => {
         //this.userId=param['userId'];
