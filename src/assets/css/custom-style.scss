@@ -3,19 +3,16 @@
 @import '_layout';
 @import '_responsive';
 
-  // CSS related to signin page
-  body.opti_body-login{
-    // width: 100%;
-    // background-image: url('../blue-bg.jpg');
-    // background-size: 600% 100%;
-    // -webkit-animation: HeroBG 20s ease infinite;
-    //         animation: HeroBG 20s ease infinite;
 
+  // set password
+  body.opti_body-set-password,
+  body.opti_body-login,
+  body.opti_body-signup
+  {
     background-image: url('/assets/images/signin/dummy1.jpg');
     background-position: center center;
     background-size: cover;
 
-    // scrollbar color
     .ps__thumb-y,
     .ps__rail-y:hover > .ps__thumb-y, 
     .ps__rail-y:focus > .ps__thumb-y
@@ -23,46 +20,16 @@
       background-color: #fff;
     }
 
-  }
-  
-  @-webkit-keyframes HeroBG {
-    0% {
-      background-position: 0 0;
+    // Custom Over css for Kendo
+    .k-form .k-form-field, .k-form .k-form-field:last-child, .k-form-inline .k-form-field, .k-form-inline .k-form-field:last-child {
+        margin-bottom: 8px !important;
     }
-    50% {
-      background-position: 100% 0;
-    }
-    100% {
-      background-position: 0 0;
-    }
-  }
-  
-  @keyframes HeroBG {
-    0% {
-      background-position: 0 0;
-    }
-    50% {
-      background-position: 100% 0;
-    }
-    100% {
-      background-position: 0 0;
+    .k-textbox, .k-input.k-textbox, .k-textarea, .k-dropdown-wrap > .k-input{
+      font-size: 12px !important;
     }
   }
 
-  // CSS related to signup page
   .opti_body-signup{
-    background-image: url('/assets/images/signup/dummy1.jpg');
-    background-position: center center;
-    background-size: cover;
-
-    // scrollbar color
-    .ps__thumb-y,
-    .ps__rail-y:hover > .ps__thumb-y, 
-    .ps__rail-y:focus > .ps__thumb-y
-    {
-      background-color: #fff;
-    }
-
     // dropdown
     .k-dropdown .k-dropdown-wrap{
         background-color: white ;
@@ -81,14 +48,7 @@
         }
       }
     }
-
   }
   
 
-  // Custom Over css for Kendo
-  .k-form .k-form-field, .k-form .k-form-field:last-child, .k-form-inline .k-form-field, .k-form-inline .k-form-field:last-child {
-      margin-bottom: 8px !important;
-  }
-  .k-textbox, .k-input.k-textbox, .k-textarea, .k-dropdown-wrap > .k-input{
-    font-size: 12px !important;
-  }
+ 
