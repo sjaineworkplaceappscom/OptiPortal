@@ -109,7 +109,7 @@
                         
 
                           <label class="k-form-field opti_position-relative">
-                              <span>Company ID* <span class="float-right opti_signup-validation-top-side"  *ngIf='invalidCompanyId' style="color: red;">Please enter valid company id</span></span>
+                              <span>Company ID* <span class="float-right opti_signup-validation-top-side opti_error-msg"  *ngIf='invalidCompanyId'>Please enter valid company id</span></span>
                               <input class="k-textbox" type="text"  name="CompanyId" placeholder="e.g. Cust1032" [(ngModel)]= 'CompanyId' (blur)="getCompaneyDetail()" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. Cust1032'" tooltip="{{'Please Enter Id like Cust10325'}}" placement="right" container="body" />
                           </label>
                           
@@ -149,7 +149,7 @@
                           <label class="k-form-field opti_position-relative">
                               <span>Your Email*</span>
                               <input name="RequestereEmail" [(ngModel)]="registerReq.RequesterEmail" type="email" class="k-textbox" value="" placeholder="e.g. kevin@gmail.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. kevin@gmail.com'" tooltip="{{'e.g. like test@gmail.com'}}" placement="right" container="body" />
-                              <span style="color: red">Please enter valid email</span>
+                              <span class="opti_error-msg">Please enter valid email</span>
                           </label>
         
                           <label class="k-form-field">
