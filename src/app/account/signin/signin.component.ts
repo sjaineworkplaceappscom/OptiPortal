@@ -30,6 +30,8 @@ export class SigninComponent implements OnInit {
 
   public async login(userName: string, password: string) {
     let userId: string;
+    userName = this.userName;
+    password = this.password;
 
     await this.accountService.getUserDetails(userName).subscribe(
       userData => {
@@ -86,6 +88,11 @@ export class SigninComponent implements OnInit {
       }
     );
   }
+
+  
+navigateToSignUp(){
+  this.router.navigateByUrl('/signup');
+}
 
 }
 

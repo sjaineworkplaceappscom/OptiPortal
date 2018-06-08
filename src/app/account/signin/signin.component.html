@@ -8,12 +8,12 @@
         <form class="k-form">
                 <label class="k-form-field">
                     <span>Email</span>
-                    <input type="email" class="k-textbox" value="" placeholder="e.g. test@gmail.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. test@gmail.com'" />
+                    <input name="email" [(ngModel)]="userName" type="email" class="k-textbox" value="" placeholder="e.g. test@gmail.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. test@gmail.com'" />
                 </label>
                 
                 <label class="k-form-field">
                     <span>Password <span class="opti_mouse-pointer float-right">Forgot your password?</span> </span>
-                    <input type="password" class="k-textbox" value="" placeholder="Your password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your password'" />
+                    <input name="password" [(ngModel)]="password" type="password" class="k-textbox" value="" placeholder="Your password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your password'" />
                 </label>
 
                 <label class="k-form-field" >
@@ -25,11 +25,11 @@
                 </label>
             
                 <div class="text-right">
-                  <button type="button" class="k-button k-primary">Login</button>
+                  <button (click)="login()" type="button" class="k-button k-primary">Login</button>
                 </div> 
                 <br/>
                 <label class="k-form-field opti_target-link text-center">
-                    <label class="opti_mouse-pointer"><a>Customer Sign Up</a> | <a>Vendor Sign Up</a></label>
+                    <label class="opti_mouse-pointer"><a (click)="navigateToSignUp()">Customer Sign Up</a> | <a (click)="navigateToSignUp()">Vendor Sign Up</a></label>
                 </label>
         </form>
         <!-- </div> -->
