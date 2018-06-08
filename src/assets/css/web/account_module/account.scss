@@ -1,29 +1,32 @@
+@import '../../_typography_button_layout';
+
 @import 'partial/_base';
 .k-form-field {
   span{
       font-size: 12px;
-      color: white;
+      color: $white;
       margin-bottom: 0 !important;
   }
 }
 
 h5, h6{
-  color: #fff;
+  color: $white;
 }
 
 a{
-  color: #fff;
+  color: $white;
   text-decoration: underline;
 }
 
 a:hover{
-  color: #fff;
+  color: $white;
 }
 
 .opti_vertcal-align-outer-box{
-  display: flex;
   height: 100vh;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
+  @extend .opti_vertical-align;
 }
 
 .panel-body{
@@ -49,7 +52,7 @@ a:hover{
 }
 
 label .opti_checkbox-container label, label > label {
-  color: white;
+  color: $white;
   font-size: 12px;
   a{
     font-size: 12px;
@@ -61,4 +64,5 @@ label .opti_checkbox-container label, label > label {
 
 .opti_vertcal-align-outer-box{
   padding: 10px 0;
+  width: 100%;
 }

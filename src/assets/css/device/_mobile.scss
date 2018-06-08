@@ -162,18 +162,40 @@
     }   
 }
 
-// CSS Related To signup Page
-.opti_body-signup #opti_signupPageID{
-    // .opti_vertcal-align-outer-box{
-    //     height: 100%;
-    // }
-    .opti_outer-signup-form{
+/////////////////////////////////////
+// SignUp, SignIn, SetPassword
+////////////////////////////////////
+.opti_body-set-password #opti_setPasswordID,
+.opti_body-signup #opti_signupPageID,
+.opti_body-login #opti_signinID
+{
+    .opti_outer-setpassword,
+    .opti_outer-signup-form,
+    .opti_outer-login-form
+    {
         width: 100%;
         margin-left: 0;
         padding: 0 2%;
         
     }
 
+    @media screen and (orientation:landscape) {
+        .opti_outer-setpassword,
+        .opti_outer-signup-form,
+        .opti_outer-login-form
+        {
+            width: 100%;
+            margin-left: 0;
+            padding: 0 12%;
+        }   
+    }
+}
+
+
+/////////////////////////////////////
+// CSS Related To signup Page
+/////////////////////////////////////
+.opti_body-signup #opti_signupPageID{
     .panel-body{
         .opti_signup-companyname, .opti_signup-url {
             float: none;
@@ -189,24 +211,12 @@
             margin: 0;
         }
     }
-
-    @media screen and (orientation:landscape) {
-        .opti_outer-signup-form{
-            width: 100%;
-            margin-left: 0;
-            padding: 0 12%;
-        }   
-    }
 }
 
+/////////////////////////////
 // CSS Related To signin Page
+/////////////////////////////
 .opti_body-login #opti_signinID{
-    .opti_outer-login-form{
-        width: 100%;
-        margin-left: 0;
-        padding: 0 2%;
-    }
-    
     .opti_login-brandlogo img{
         max-width: 81%;
         margin-left: 8%;
@@ -218,12 +228,6 @@
     }
 
     @media screen and (orientation:landscape) {
-        .opti_outer-login-form{
-            width: 100%;
-            margin-left: 0;
-            padding: 0 12%;
-        }   
-
         .opti_login-brandlogo img{
             max-width: 87%;
             margin-left: 4%;
@@ -233,7 +237,14 @@
     }
 }
 
+////////////////////////////////////
+// Css Related To SetPassword page
+////////////////////////////////////
+
+
+////////////////////////////
 // hide tooltip
+////////////////////////////
 bs-tooltip-container{
     display: none !important;
 }

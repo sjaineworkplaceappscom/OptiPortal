@@ -7,6 +7,7 @@
 // @import '_grid';
 
 // Some Basic Variable
+$white : #fff;
 $top-bar-height:65px;
 $list-hover-bg-color: #f2f4f8;
 $list-bg-color: #F8F8F8;
@@ -127,7 +128,6 @@ $font-family-roboto: 'Roboto', sans-serif;
 // Line Seprator
 .opti_seprator{
     height: 1px;
-    // margin: 9px 0;
     overflow: hidden;
     background-color: $list-seprator-color;
     padding: 0;

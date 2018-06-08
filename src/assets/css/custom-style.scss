@@ -1,10 +1,14 @@
-@import '_typography';
-@import '_button';
-@import '_layout';
+@import '_typography_button_layout';
 @import '_responsive';
 
 
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////Start Account CSS///////////////////////
+/////////////////////////////////////////////////////////////////////
+
   // set password
+  // login
+  // signup
   body.opti_body-set-password,
   body.opti_body-login,
   body.opti_body-signup
@@ -20,7 +24,7 @@
       background-color: #fff;
     }
 
-    // Custom Over css for Kendo
+    // Overrite css for kendo 
     .k-form .k-form-field, .k-form .k-form-field:last-child, .k-form-inline .k-form-field, .k-form-inline .k-form-field:last-child {
         margin-bottom: 8px !important;
     }
@@ -29,6 +33,7 @@
     }
   }
 
+  // signup
   .opti_body-signup{
     // dropdown
     .k-dropdown .k-dropdown-wrap{
@@ -49,6 +54,8 @@
       }
     }
   }
-  
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////End Account CSS/////////////////////////
+/////////////////////////////////////////////////////////////////////  
 
  
