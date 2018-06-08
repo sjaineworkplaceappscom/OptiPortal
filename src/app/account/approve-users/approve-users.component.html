@@ -1,0 +1,23 @@
+<div>
+  <div style="text-align: center;">
+    <p >Inactive Users
+      <button (click)="approveUsers()">Approve</button>
+      <button (click)="reinvite()">Reinvite</button>
+    </p>
+  </div>
+  <kendo-grid [kendoGridSelectBy]="'UserId'" [selectable]=true [selectedKeys]="mySelection" [kendoGridBinding]="items" [pageSize]="10"
+    [pageable]="true" [sortable]="true" [filterable]="true" [groupable]="true">
+    <kendo-grid-checkbox-column showSelectAll="true" title="Approve" [width]="30"></kendo-grid-checkbox-column>
+    <kendo-grid-column field="FullName" title="User Name" [width]="40"></kendo-grid-column>
+    <kendo-grid-column field="UserId" hidden=true [width]="40"></kendo-grid-column>
+    <kendo-grid-column field="LoginEmail" title="Email" [width]="40"></kendo-grid-column>
+    <kendo-grid-column field="ParentName" title="Parent" [width]="40"></kendo-grid-column>
+    <kendo-grid-column field="ParentTypeString" title="Parent Type" [width]="40"></kendo-grid-column>
+    <kendo-grid-column field="TenantName" [width]="40" title="Tenant Name"></kendo-grid-column>
+    
+
+  </kendo-grid>
+
+</div>
+
+

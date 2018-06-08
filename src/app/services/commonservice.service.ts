@@ -41,4 +41,11 @@ export class Commonservice {
     this.themeData.next(data);
   }
 
+  private navigatedData=new BehaviorSubject<boolean>(false);
+  currentNavigatedData=this.navigatedData.asObservable();
+
+  public setNavigatedData(navigationLink:boolean){
+    this.navigatedData.next(navigationLink);
+  }
+
 }
