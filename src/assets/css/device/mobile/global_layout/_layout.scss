@@ -13,10 +13,6 @@
         min-width: 50%;
         max-width: 100%;
         height: 100%;
-        // .opti_mobile-leftpanel-padding{
-        //     padding-top: 15px;
-        //     padding-bottom: 15px;
-        // }
     }
 
     .opti_left-navigation {
@@ -125,14 +121,13 @@
             }
         }
     }
-
-  
-        
     // search box end
 }
 
 
-// css for modal
+////////////////////////////////
+// Css Related To Search Modal
+////////////////////////////////
 .modal-body.opti_mobile-search-modal{
     .opti_search-form{
         background-color: #fff;
@@ -152,7 +147,9 @@
     }
 }
 
-// Css Related to Notification
+////////////////////////////////
+// Css Related To Notification
+////////////////////////////////
 .opti_notification-drop-down{
     width: 270px !important;
 }
@@ -162,84 +159,6 @@
     }   
 }
 
-/////////////////////////////////////
-// SignUp, SignIn, SetPassword
-////////////////////////////////////
-.opti_body-set-password #opti_setPasswordID,
-.opti_body-signup #opti_signupPageID,
-.opti_body-login #opti_signinID
-{
-    .opti_outer-setpassword,
-    .opti_outer-signup-form,
-    .opti_outer-login-form
-    {
-        width: 100%;
-        margin-left: 0;
-        padding: 0 2%;
-        
-    }
-
-    @media screen and (orientation:landscape) {
-        .opti_outer-setpassword,
-        .opti_outer-signup-form,
-        .opti_outer-login-form
-        {
-            width: 100%;
-            margin-left: 0;
-            padding: 0 12%;
-        }   
-    }
-}
-
-
-/////////////////////////////////////
-// CSS Related To signup Page
-/////////////////////////////////////
-.opti_body-signup #opti_signupPageID{
-    .panel-body{
-        .opti_signup-companyname, .opti_signup-url {
-            float: none;
-            width: 100%;
-        }
-        .opti_signup-primary-name, 
-        .opti_signup-primary-email, 
-        .opti_signup-primary-phone {
-            float: none;
-            width: 100%;
-        }
-        .opti_signup-primary-email {
-            margin: 0;
-        }
-    }
-}
-
-/////////////////////////////
-// CSS Related To signin Page
-/////////////////////////////
-.opti_body-login #opti_signinID{
-    .opti_login-brandlogo img{
-        max-width: 81%;
-        margin-left: 8%;
-        margin-right: 8%;
-    }
-
-    .opti_vertcal-align-outer-box{
-        padding: 10px 0;
-    }
-
-    @media screen and (orientation:landscape) {
-        .opti_login-brandlogo img{
-            max-width: 87%;
-            margin-left: 4%;
-            margin-right: 4%;
-            width: 100%;
-        }
-    }
-}
-
-////////////////////////////////////
-// Css Related To SetPassword page
-////////////////////////////////////
 
 
 ////////////////////////////
