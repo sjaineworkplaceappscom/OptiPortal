@@ -163,12 +163,12 @@
                           <label class="k-form-field">
                               <span>Your Phone* <span style="color:red"  class="float-right opti_signup-validation-top-side" *ngIf="Phone.errors?.required && Phone.touched">
                                     Please enter phone number!
-                             </span>
+                             </span>    
                               <span style="color:red" *ngIf="Phone.errors?.pattern && Phone.touched" class="float-right opti_signup-validation-top-side">
                                     Phone number is not valid!
                              </span>
                             </span>
-                             <input name="RequesterePhone" maxlength="13" pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$" required #Phone = ngModel [(ngModel)]="registerReq.RequesterPhone" type="text" class="k-textbox" value="phone" placeholder="e.g. +01 321 856 5478" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. +01 321 856 5478'" />
+                             <input name="RequesterePhone" maxlength="15" pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$" required #Phone = ngModel [(ngModel)]="registerReq.RequesterPhone" type="text" class="k-textbox" value="phone" placeholder="e.g. +01 321 856 5478" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. +01 321 856 5478'" />
                           </label>
         
                           <label class="k-form-field">

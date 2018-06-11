@@ -34,18 +34,20 @@ import { HomeComponent } from './home/home.component';
 
 // for svg icon
 // import { HttpClientModule } from '@angular/common/http'; also need this module
-import { AngularSvgIconModule } from 'angular-svg-icon'
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 // It's for dropdown module
-import { DropDownsModule } from '@progress/kendo-angular-dropdowns'
-import { GridModule } from '@progress/kendo-angular-grid'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ApproveUsersComponent } from './account/approve-users/approve-users.component';
+import { ConfirmPasswordEquilValidatorDirectiveDirective } from './confirm-password-equil-validator-directive.directive';
 
 
 const routes: Routes = [
+  
   
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: SigninComponent },
@@ -77,7 +79,8 @@ const routes: Routes = [
     SigninComponent ,
     SignupComponent,
     TenantselectionComponent,
-    ApproveUsersComponent
+    ApproveUsersComponen,
+    ConfirmPasswordEquilValidatorDirectiveDirectivet
   ],
   imports: [
     FormsModule,
