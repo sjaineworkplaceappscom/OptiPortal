@@ -59,19 +59,29 @@ $font-family-roboto: 'Roboto', sans-serif;
 
  // margin
 @mixin margin($top: false, $right: false, $bottom: false,  $left: false) {
-    @if margin-bottom {margin-bottom: $bottom;}
-    @if margin-right   {margin-right: $right;}
-    @if margin-left     {margin-left: $left;}
-    @if margin-top       {margin-top: $top;}
+    @if $bottom {margin-bottom: $bottom;}
+    @if $right   {margin-right: $right;}
+    @if $left     {margin-left: $left;}
+    @if $top       {margin-top: $top;}
  }
 
  // padding
 @mixin padding($top: false, $right: false, $bottom: false,  $left: false) {
-    @if padding-bottom {padding-bottom: $bottom;}
-    @if padding-right   {padding-right: $right;}
-    @if padding-left     {padding-left: $left;}
-    @if padding-top       {padding-top: $top;}
+    @if $bottom {padding-bottom: $bottom;}
+    @if $right   {padding-right: $right;}
+    @if $left     {padding-left: $left;}
+    @if $top       {padding-top: $top;}
  }
+
+ // Truncate
+@mixin password-mg-indicator($width: false, $color: false) {
+    @if $width {width: $width;}
+    @if $color {background-color: $color;}
+    height: 100%;
+    float: left;
+    -webkit-transition: 2s; /* For Safari 3.1 to 6.0 */
+    transition: 2s;
+}
 
 // Background Gradient
 // @param {Color} $startColor [#3C3C3C] - Start Color
@@ -209,4 +219,33 @@ ul.opti_liststyle-one-ul{
 // Css related to form 
 .opti_error-msg{
     color: $error !important;
+}
+
+// password indicator
+.opti_password-indicator-stripped{
+    height: 10px;
+    overflow: hidden;
+    background-color: #c7c7c7;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    margin-top: 8px !important;
+    .opti_weak-pass{
+        @include password-mg-indicator(40%, #d9534f)
+    }
+    .opti_medium-pass{
+        @include password-mg-indicator(60%, #f0ad4e)
+    }
+    .opti_strong-pass{
+        @include password-mg-indicator(100%, #5cb85c)
+    }
+}
+
+// CSS for captcha
+.opti_captcha-box{
+    width: 250px;
+    margin: 0 auto;
+    background: #c7c7c7;
+    border-radius: 5px;
+    text-align: center;
 }

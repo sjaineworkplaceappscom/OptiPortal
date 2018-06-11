@@ -19,6 +19,9 @@ export class SignupComponent implements OnInit {
   isSuperAdmin: boolean = false;
   companyDetail: CompanyDetail = new CompanyDetail();
 
+  randomstring = '';
+  @ViewChild('myCanvas') myCanvas;
+
   // Error Bits
   invalidCompanyId: boolean = false;
 
@@ -26,8 +29,10 @@ export class SignupComponent implements OnInit {
 
   constructor(private accountService: AccountService) { }
 
-  ngOnInit() {
 
+  ngOnInit() {
+    this. getRandomStringForCaptcha();
+    this.customCaptcha(this.randomstring);
     const element = document.getElementsByTagName("body")[0];
     element.classList.add("opti_body-signup");
 
@@ -35,6 +40,29 @@ export class SignupComponent implements OnInit {
 
     var systemAdmin: any = this.userType = localStorage.getItem('SystemAdmin');
 
+  }
+
+  customCaptcha(string){
+    alert(this.randomstring);
+    let c = this.myCanvas.nativeElement;
+    let ctx = c.getContext("2d");
+    ctx.font = "15px Arial";
+    ctx.fillText(string, 15, 22);
+  }
+
+  getRandomStringForCaptcha(){
+      let chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+      let string_length = 4;
+      for (var i=0; i<string_length; i++) {
+        let rnum = Math.floor(Math.random() * chars.length);
+        this.randomstring += chars.substring(rnum,rnum+1);
+      }
+  }
+
+  changeCaptcha(){
+    this.randomstring = '';
+    this.getRandomStringForCaptcha();
+    this.customCaptcha(this.randomstring);
   }
 
   submit() {
