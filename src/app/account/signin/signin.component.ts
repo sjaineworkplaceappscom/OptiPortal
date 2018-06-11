@@ -39,20 +39,20 @@ export class SigninComponent implements OnInit {
         // jsonfy response object.
         let resUserData = JSON.parse(userData);
         if (resUserData != undefined && resUserData.length > 0) {
-          // Multiteenet 
-          if (resUserData.length > 1) {
-            ApplicationState.SharedData = resUserData;
-            let loginModel: LoginModel = new LoginModel();
-            loginModel.AuthData = resUserData;
-            loginModel.Password = password;
+          // // Multiteenet 
+          // if (resUserData.length > 1) {
+          //   ApplicationState.SharedData = resUserData;
+          //   let loginModel: LoginModel = new LoginModel();
+          //   loginModel.AuthData = resUserData;
+          //   loginModel.Password = password;
 
-            // Pass data to tennant selection component.
-            // this.commonService.shareAuthData(loginModel);
-            this.commonService.setAuthCurrentValue(loginModel);
-            this.router.navigateByUrl('/tenantselection');
-          }
-          // single tenanat
-          else {
+          //   // Pass data to tennant selection component.
+          //   // this.commonService.shareAuthData(loginModel);
+          //   this.commonService.setAuthCurrentValue(loginModel);
+          //   this.router.navigateByUrl('/tenantselection');
+          // }
+          // // single tenanat
+          // else {
             let data = resUserData[0];
             userId = data.LoginUserId;
             this.generateLogintoken(userId, password, userName);
@@ -65,7 +65,7 @@ export class SigninComponent implements OnInit {
               systemAdmin = true;
             }
             localStorage.setItem("SystemAdmin", systemAdmin);
-          }
+          //}
         }
       }
     );
