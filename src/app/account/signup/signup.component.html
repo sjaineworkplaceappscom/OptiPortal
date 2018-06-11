@@ -170,6 +170,15 @@
                             </ng-template> -->
                               </kendo-dropdownlist>
                           </label>
+
+                          <label class="k-form-field opti_display-inline-block">
+                                <!-- <div class="opti_captcha-box"> -->
+                                <span class="float-left"><input class="k-textbox" type="text" name="captchatext" required /></span>
+                                <span class="float-left"><canvas #myCanvas id="captchaCanvasID" width="70" height="30">Your browser does not support the HTML5 canvas tag.</canvas></span>
+                                <span class="float-left"><button (click)="changeCaptcha()" class="opti_remove-button-css"><img src="assets/images/common/refresh-button-white.svg" width="20" height="20"/></button></span>
+                                <span class="opti_error-msg">Please fill captcha</span>
+                                <!-- </div> -->
+                          </label>
         
                           <label class="k-form-field">
                               <div class="opti_checkbox-container">

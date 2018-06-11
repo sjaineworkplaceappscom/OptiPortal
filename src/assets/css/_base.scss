@@ -126,6 +126,11 @@ $font-family-roboto: 'Roboto', sans-serif;
     display: inline;
 }
 
+// Display Inline Block
+.opti_display-inline-block{
+    display: inline-block;
+}
+
 // Display Inline Flex
 .opti_display-inline-flex{
     display: inline-flex;
@@ -242,10 +247,7 @@ ul.opti_liststyle-one-ul{
 }
 
 // CSS for captcha
-.opti_captcha-box{
-    width: 250px;
-    margin: 0 auto;
-    background: #c7c7c7;
-    border-radius: 5px;
-    text-align: center;
+.opti_remove-button-css{
+    border: none;
+    background: none;
 }
