@@ -55,3 +55,19 @@ kendo-dropdownlist{
     color: $white;
     margin-bottom: 0 !important;
 }
+
+.opti_display-inline-block {
+    display: inline-block !important;
+}
+
+button.opti_remove-button-css {
+    margin-top: 5px;
+}
+
+#captchaCanvasID{
+    border:1px solid $white;
+    border-radius: 5px;
+    margin-left: 5px;
+    background-image:url('src/assets/images/common/captcha-background.jpg'); 
+    background-repeat: repeat;
+}

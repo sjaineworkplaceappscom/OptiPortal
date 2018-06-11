@@ -126,6 +126,11 @@ $font-family-roboto: 'Roboto', sans-serif;
     display: inline;
 }
 
+// Display Inline Block
+.opti_display-inline-block{
+    display: inline-block;
+}
+
 // Display Inline Flex
 .opti_display-inline-flex{
     display: inline-flex;
@@ -237,15 +242,26 @@ ul.opti_liststyle-one-ul{
         @include password-mg-indicator(60%, #f0ad4e)
     }
     .opti_strong-pass{
+        @include password-mg-indicator(80%, #5cb85c)
+    }
+    .opti_strong-pass-full{
         @include password-mg-indicator(100%, #5cb85c)
     }
 }
 
 // CSS for captcha
-.opti_captcha-box{
-    width: 250px;
-    margin: 0 auto;
-    background: #c7c7c7;
-    border-radius: 5px;
+.opti_remove-button-css{
+    border: none;
+    background: none;
+}
+
+// Loader
+.opti_loader {
+    position: absolute;
+    background: rgba(255,255,255,0.8);
+    width: 100%;
+    height: 100%;
     text-align: center;
+    z-index: 99;
+    @extend .opti_vertical-align;
 }

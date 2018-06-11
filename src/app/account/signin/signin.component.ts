@@ -16,6 +16,7 @@ import { Commonservice } from '../../services/commonservice.service';
 })
 export class SigninComponent implements OnInit {
   isError: boolean = false;
+  invalidCredentialMsg:string="";
   constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: Commonservice) { }
   userName: string;
   password: string;
@@ -38,20 +39,20 @@ export class SigninComponent implements OnInit {
         // jsonfy response object.
         let resUserData = JSON.parse(userData);
         if (resUserData != undefined && resUserData.length > 0) {
-          // Multiteenet 
-          if (resUserData.length > 1) {
-            ApplicationState.SharedData = resUserData;
-            let loginModel: LoginModel = new LoginModel();
-            loginModel.AuthData = resUserData;
-            loginModel.Password = password;
+          // // Multiteenet 
+          // if (resUserData.length > 1) {
+          //   ApplicationState.SharedData = resUserData;
+          //   let loginModel: LoginModel = new LoginModel();
+          //   loginModel.AuthData = resUserData;
+          //   loginModel.Password = password;
 
-            // Pass data to tennant selection component.
-            // this.commonService.shareAuthData(loginModel);
-            this.commonService.setAuthCurrentValue(loginModel);
-            this.router.navigateByUrl('/tenantselection');
-          }
-          // single tenanat
-          else {
+          //   // Pass data to tennant selection component.
+          //   // this.commonService.shareAuthData(loginModel);
+          //   this.commonService.setAuthCurrentValue(loginModel);
+          //   this.router.navigateByUrl('/tenantselection');
+          // }
+          // // single tenanat
+          // else {
             let data = resUserData[0];
             userId = data.LoginUserId;
             this.generateLogintoken(userId, password, userName);
@@ -64,7 +65,7 @@ export class SigninComponent implements OnInit {
               systemAdmin = true;
             }
             localStorage.setItem("SystemAdmin", systemAdmin);
-          }
+          //}
         }
       }
     );
@@ -74,6 +75,7 @@ export class SigninComponent implements OnInit {
 
   // This is aprivate method to generate access token by using userid and pasword.
   private generateLogintoken(userId: string, password: string, email: string): any {
+
     let errobj: ErrorObject = new ErrorObject();
     // Generate access token
     this.accountService.generateToken(userId, password, errobj).then(
@@ -85,6 +87,7 @@ export class SigninComponent implements OnInit {
     ).catch(
       (err: HttpErrorResponse) => {
         this.isError = true;
+       
       }
     );
   }
