@@ -10,6 +10,7 @@ import { UserModel } from 'src/app/models/account/user-model';
   styleUrls: ['./set-password.component.scss']
 })
 export class SetPasswordComponent implements OnInit {
+  showLoader:boolean=false;
   userId: string;
   userLoginEmail: string;
   userModel: UserModel = new UserModel();
@@ -32,10 +33,11 @@ export class SetPasswordComponent implements OnInit {
   }
  
   setPassword() {
-   
+   this.showLoader=true;
     this.userModel.UserName = this.userId;
     this.userModel.Email = this.userLoginEmail;
     this.accountService.setPassword(this.userModel);
+    this.showLoader=false;
   }
 
 

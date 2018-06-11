@@ -12,7 +12,7 @@ import { CompanyDetail } from '../../models/company/companyDetail';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
+  showLoader:boolean=false;
   registerReq: RegisterRequest = new RegisterRequest();
   userType: any = '';
   isSuperAdmin: boolean = false;
@@ -66,10 +66,11 @@ export class SignupComponent implements OnInit {
   }
 
   submit() {
-    //this.registerReq. = this.registerReq.email;
+    this.showLoader=true;
     this.registerReq.RequesterParentCode=this.companyId;
     this.registerReq.RequesterParentType=2;    
     this.accountService.registerUser(this.registerReq);
+    this.showLoader=false;
   }
 
   getCompaneyDetail() {
