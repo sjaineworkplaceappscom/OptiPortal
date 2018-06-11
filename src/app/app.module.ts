@@ -79,8 +79,8 @@ const routes: Routes = [
     SigninComponent ,
     SignupComponent,
     TenantselectionComponent,
-    ApproveUsersComponen,
-    ConfirmPasswordEquilValidatorDirectiveDirectivet
+    ApproveUsersComponent,
+    ConfirmPasswordEquilValidatorDirectiveDirective
   ],
   imports: [
     FormsModule,
