@@ -14,6 +14,7 @@ import { UserModel } from '../models/account/user-model';
 import { HttpHeaders } from '@angular/common/http';
 import { ErrorObject } from '../models/error/error-object';
 import { environment } from '../../environments/environment';
+import { CommonMessages } from '../../common-messages';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,8 @@ export class AccountService {
     let url: string = this.baseUrl + "account/register";
     
     this.httpHelper.post(url, registerRequest, null, true).subscribe(
-      data => {
-        alert('Congratulations, Your registration request is generated successfully, our team will contact you shortly.')
+      data => {        
+        alert(CommonMessages.RegistrationSuccess);
 
         // if (navigateLogin) {
         this.router.navigateByUrl('/login');
