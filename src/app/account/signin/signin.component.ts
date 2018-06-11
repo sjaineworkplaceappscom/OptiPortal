@@ -16,6 +16,7 @@ import { Commonservice } from '../../services/commonservice.service';
 })
 export class SigninComponent implements OnInit {
   isError: boolean = false;
+  invalidCredentialMsg:string="";
   constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: Commonservice) { }
   userName: string;
   password: string;
@@ -74,6 +75,7 @@ export class SigninComponent implements OnInit {
 
   // This is aprivate method to generate access token by using userid and pasword.
   private generateLogintoken(userId: string, password: string, email: string): any {
+
     let errobj: ErrorObject = new ErrorObject();
     // Generate access token
     this.accountService.generateToken(userId, password, errobj).then(
@@ -85,6 +87,7 @@ export class SigninComponent implements OnInit {
     ).catch(
       (err: HttpErrorResponse) => {
         this.isError = true;
+       
       }
     );
   }
