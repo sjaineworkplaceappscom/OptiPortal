@@ -17,7 +17,7 @@
                 
                 <label class="k-form-field">
                     <span>Password <span class="opti_mouse-pointer float-right">Forgot your password?</span> </span>
-                    <input name = "password" required [(ngModel)]="password" #pwd = ngModel type="password" class="k-textbox" value="" placeholder="Your password"  />
+                    <input name = "password" required [(ngModel)]="password" #pwd = ngModel type="password" class="k-textbox" value="" placeholder="Your password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. test@gmail.com'" />
                     <span  *ngIf="pwd.errors && (pwd.dirty || pwd.touched)"   style="color: red;">Password is required.</span>
                     <span  *ngIf="this.isError==true &&  (pwd.dirty || pwd.touched) && (emailId.dirty || emailId.touched)"   style="color: red;">Invalid credentials.</span>
                 </label>
