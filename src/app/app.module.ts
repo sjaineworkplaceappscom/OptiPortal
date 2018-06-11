@@ -38,9 +38,11 @@ import { AngularSvgIconModule } from 'angular-svg-icon'
 
 // It's for dropdown module
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns'
+import { GridModule } from '@progress/kendo-angular-grid'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ApproveUsersComponent } from './account/approve-users/approve-users.component';
 
 
 const routes: Routes = [
@@ -48,7 +50,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: SigninComponent },
   // { path: 'home', component: HomeComponent,canActivate:[AuthGuard] },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent ,canActivate:[AuthGuard]},
+  {path:'approve',component:ApproveUsersComponent},  
   {path:'resetpassword',component:ResetPasswordComponent},
   {path:'changepassword',component:ChangePasswordComponent},
   {path:'setpassword',component:SetPasswordComponent},
@@ -73,7 +76,8 @@ const routes: Routes = [
     SetPasswordComponent,
     SigninComponent ,
     SignupComponent,
-    TenantselectionComponent
+    TenantselectionComponent,
+    ApproveUsersComponent
   ],
   imports: [
     FormsModule,
@@ -89,7 +93,8 @@ const routes: Routes = [
     DropDownsModule, 
     BrowserAnimationsModule, 
     BrowserAnimationsModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    GridModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

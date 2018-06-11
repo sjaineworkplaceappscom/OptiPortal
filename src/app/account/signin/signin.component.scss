@@ -1,33 +1,8 @@
-@import 'src/assets/css/account_module/account.scss';
-.panel-body{
-  border-radius: 5px;
-
-  // width: 100%;
-  // background-color: rgba(0, 0, 0, 0.7);
-  // box-shadow: 0px 0px 13px 0px #000;
-  // overflow-y: scroll;
-  // height: auto;
-  // max-height: 100%;
-}
-
-.opti_outer-login-form {
-  
-  // width: 370px;
-  // max-width: 100%;
-  // margin-left: 160px;
-}
-
-// .opti_vertcal-align-outer-box{
-//   display: flex;
-//   height: 100vh;
-//   align-items: center;
-// }
-
+@import 'src/assets/css/web/account_module/account';
 .opti_login-brandlogo {
   text-align: center;
-  // padding: 25px 0 0 0;
   img{
-    background: white;
+    background: $white;
     border-radius: 5px;
     width: auto;
     max-width: 305px;
@@ -36,30 +11,7 @@
   }
 }
 
-// label .opti_checkbox-container label, label > label {
-//   color: white;
-//   font-size: 12px;
-//   a{
-//     font-size: 12px;
-//   }
-//   a:hover{
-//     text-decoration: underline;
-//   }
-// }
-
-// .k-form-field {
-//   span{
-//       font-size: 12px;
-//       color: white;
-//       margin-bottom: 0 !important;
-//   }
-// }
-
 .opti_target-link{
   position: relative;
   top:12px;
 }
-
-// .k-checkbox-label::before {
-//   border-color: rgba(255, 255, 255, 0.7);
-// }

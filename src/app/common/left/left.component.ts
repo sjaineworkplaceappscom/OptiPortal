@@ -5,6 +5,7 @@
 //==============================================================================
 import { Component, OnInit } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
+import { Router } from '@angular/router';
 // import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({
@@ -14,7 +15,7 @@ import { Commonservice } from '../../services/commonservice.service';
 })
 export class LeftComponent implements OnInit {
 
-  constructor(private commonService: Commonservice) { }
+  constructor(private commonService: Commonservice,private router: Router) { }
   selectedThemeColor: string = '#FF8382';
 
   ngOnInit() {    
@@ -27,5 +28,9 @@ export class LeftComponent implements OnInit {
   }
 
   ngOnChange() {
+  }
+
+  navigate(){
+this.commonService.setNavigatedData(true);
   }
 }

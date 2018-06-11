@@ -5,6 +5,7 @@
 //==============================================================================
 
 import { Component, OnInit } from '@angular/core';
+import { Commonservice } from '../../services/commonservice.service';
 
 @Component({
   selector: 'app-main-content',
@@ -12,10 +13,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-content.component.scss']
 })
 export class MainContentComponent implements OnInit {
-
-  constructor() { }
+  approveUser:boolean;
+  constructor(private commonService:Commonservice) {
+    this.approveUser=false;
+    
+   }
 
   ngOnInit() {
+    this.approveUser=false;
+    this.commonService.currentNavigatedData.subscribe(
+      data=>{
+        this.approveUser=data;
+       
+      }
+    )
   }
 
 }

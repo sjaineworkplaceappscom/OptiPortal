@@ -1,10 +1,16 @@
-@import '_typography';
-@import '_button';
-@import '_layout';
+@import '_typography_button_layout';
 @import '_responsive';
 
 
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////Start Account CSS///////////////////////
+/////////////////////////////////////////////////////////////////////
+
+// can not move this css in specific component and and account css becuase here we are useing css on the basis of body and if we will call  in specific component than it will not work
+
   // set password
+  // login
+  // signup
   body.opti_body-set-password,
   body.opti_body-login,
   body.opti_body-signup
@@ -17,10 +23,10 @@
     .ps__rail-y:hover > .ps__thumb-y, 
     .ps__rail-y:focus > .ps__thumb-y
     {
-      background-color: #fff;
+      background-color: $white;
     }
 
-    // Custom Over css for Kendo
+    // Overrite css for kendo 
     .k-form .k-form-field, .k-form .k-form-field:last-child, .k-form-inline .k-form-field, .k-form-inline .k-form-field:last-child {
         margin-bottom: 8px !important;
     }
@@ -29,10 +35,11 @@
     }
   }
 
+  // signup
   .opti_body-signup{
     // dropdown
     .k-dropdown .k-dropdown-wrap{
-        background-color: white ;
+        background-color: $white ;
     }
 
     kendo-popup{
@@ -48,7 +55,16 @@
         }
       }
     }
+
+
+    label.k-form-field.opti_signup-company-label, label.k-form-field.opti_signup-primary-label  {
+        margin-bottom: 0 !important;
+        clear: both;
+    }
+
   }
-  
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////End Account CSS/////////////////////////
+/////////////////////////////////////////////////////////////////////  
 
  

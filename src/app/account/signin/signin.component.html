@@ -12,7 +12,7 @@
                     <span *ngIf="emailId.errors?.required && (emailId.dirty || emailId.touched)"  style="color: red;">Email is required?</span>
                     <span *ngIf="emailId.errors?.email && emailId.touched" style="color:red" >
                       Invalid emailId!
-               </span>
+                    </span>
                 </label>
                 
                 <label class="k-form-field">
@@ -34,7 +34,7 @@
                 </div> 
                 <br/>
                 <label class="k-form-field opti_target-link text-center">
-                    <label class="opti_mouse-pointer"><a>Customer Sign Up</a> | <a>Vendor Sign Up</a></label>
+                    <label class="opti_mouse-pointer"><a (click)="navigateToSignUp()">Customer Sign Up</a> | <a (click)="navigateToSignUp()">Vendor Sign Up</a></label>
                 </label>
         </form>
         <!-- </div> -->

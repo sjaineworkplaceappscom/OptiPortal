@@ -18,16 +18,20 @@ export class SignupComponent implements OnInit {
   isSuperAdmin: boolean = false;
   companyDetail: CompanyDetail = new CompanyDetail();
   public companyId: string = '';
-  constructor(private accountService: AccountService) {
-    
-   
-   }
-  
-  ngOnChange(){
-    console.log("ng on change");
-  }
+  randomstring = '';
+  @ViewChild('myCanvas') myCanvas;
+
+  // Error Bits
+  invalidCompanyId: boolean = false;
+
+
+
+  constructor(private accountService: AccountService) { }
+
+
   ngOnInit() {
-    console.log("ng on init");
+    this. getRandomStringForCaptcha();
+    this.customCaptcha(this.randomstring);
     const element = document.getElementsByTagName("body")[0];
     element.classList.add("opti_body-signup");
 
@@ -35,6 +39,29 @@ export class SignupComponent implements OnInit {
 
     var systemAdmin: any = this.userType = localStorage.getItem('SystemAdmin');
 
+  }
+
+  customCaptcha(string){
+    alert(this.randomstring);
+    let c = this.myCanvas.nativeElement;
+    let ctx = c.getContext("2d");
+    ctx.font = "15px Arial";
+    ctx.fillText(string, 15, 22);
+  }
+
+  getRandomStringForCaptcha(){
+      let chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+      let string_length = 4;
+      for (var i=0; i<string_length; i++) {
+        let rnum = Math.floor(Math.random() * chars.length);
+        this.randomstring += chars.substring(rnum,rnum+1);
+      }
+  }
+
+  changeCaptcha(){
+    this.randomstring = '';
+    this.getRandomStringForCaptcha();
+    this.customCaptcha(this.randomstring);
   }
 
   submit() {
@@ -78,8 +105,9 @@ export class SignupComponent implements OnInit {
 
   public roles: Array<{ text: string, value: string }> = [
     { text: "Please Select Role", value: '0' },
-    { text: "Customer", value: '41F23977-C709-4B7C-BBEE-16A539211E9C' },
-    { text: "Vendor", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EA' }
+    { text: "Admin", value: '41F23977-C709-4B7C-BBEE-16A539211E9C' },
+    { text: "Manager", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EA' },
+    { text: "User", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EB' }
   ];
 
   public role: { text: string, value: string } = { text: "Please Select Role", value: '0' };

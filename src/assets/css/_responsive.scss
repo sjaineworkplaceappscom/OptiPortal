@@ -1,10 +1,10 @@
 
     @media screen and (max-width: 479px){
-        @import 'device/_mobile';
+        @import 'device/mobile/_mobile';
     }
 
     @media screen and (min-width: 480px) and (max-width: 767px){
-        @import 'device/_mobile';
+        @import 'device/mobile/_mobile';
     }
     @media only screen and (min-width: 768px) and (max-width: 959px) {
     
