@@ -242,6 +242,9 @@ ul.opti_liststyle-one-ul{
         @include password-mg-indicator(60%, #f0ad4e)
     }
     .opti_strong-pass{
+        @include password-mg-indicator(80%, #5cb85c)
+    }
+    .opti_strong-pass-full{
         @include password-mg-indicator(100%, #5cb85c)
     }
 }
