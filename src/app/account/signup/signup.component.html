@@ -99,18 +99,17 @@
             <div class="opti_vertcal-align-outer-box "  >
               
               <div class="panel-body opti_position-relative" [perfectScrollbar]="config">                  
-                <form class="k-form">
+                <form class="k-form" #signUpForm="ngForm">
                   <div class="opti_fprm-inner">
                   
                           <div class="text-center">
                             <h5>Create an Account</h5>
                           </div>
-
-                        
-
+            
                           <label class="k-form-field opti_position-relative">
-                              <span>Company ID* <span class="float-right opti_signup-validation-top-side"  *ngIf='invalidCompanyId' style="color: red;">Please enter valid company id</span></span>
-                              <input class="k-textbox" type="text"  name="CompanyId" placeholder="e.g. Cust1032" [(ngModel)]= 'CompanyId' (blur)="getCompaneyDetail()" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. Cust1032'" tooltip="{{'Please Enter Id like Cust10325'}}" placement="right" container="body" />
+                              <span>Company ID* 
+                                  <span  *ngIf="compId.errors && (compId.dirty || compId.touched)" class="float-right opti_signup-validation-top-side"  style="color: red;">Please enter valid company id !</span></span>
+                              <input class="k-textbox" required [(ngModel)]="companyId" #compId = ngModel type="text"  name="companyId" placeholder="e.g. Cust1032" (blur)="getCompaneyDetail()" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. Cust1032'" tooltip="{{'Please Enter Id like Cust10325'}}" placement="right" container="body" />
                           </label>
                           
                           <label class="k-form-field opti_signup-company-label">
@@ -142,19 +141,34 @@
                           </label>
         
                           <label class="k-form-field">
-                              <span>Your Name*</span>
-                              <input  name="RequesterName" [(ngModel)]="registerReq.RequesterName" type="text" class="k-textbox" value="" placeholder="e.g. Kevin" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. Kevin'" />
+                              <span>Your Name* 
+                                  <span  *ngIf="RequesterName.errors && (RequesterName.dirty || RequesterName.touched)" class="float-right opti_signup-validation-top-side"  style="color: red;">Please enter your full name !</span></span>
+                              <input  name="RequesterName" required #RequesterName = ngModel maxlength="" [(ngModel)]="registerReq.RequesterName" type="text" class="k-textbox" value="" placeholder="e.g. Kevin" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. Kevin'" />
                           </label>
-        
                           <label class="k-form-field opti_position-relative">
-                              <span>Your Email*</span>
-                              <input name="RequestereEmail" [(ngModel)]="registerReq.RequesterEmail" type="email" class="k-textbox" value="" placeholder="e.g. kevin@gmail.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. kevin@gmail.com'" tooltip="{{'e.g. like test@gmail.com'}}" placement="right" container="body" />
-                              <span style="color: red">Please enter valid email</span>
+                            <span>Your Email*
+                                    <span style="color:red" *ngIf="RequesterEmail.errors?.required && RequesterEmail.touched" class="float-right opti_signup-validation-top-side" >
+                                           Please enter emailId!
+                                    </span>
+                                        <span *ngIf="RequesterEmail.errors?.email && RequesterEmail.touched" style="color:red" class="float-right opti_signup-validation-top-side" >
+                                            Invalid emailId!
+                                     </span>
+                                
+                                 </span>
+                            <input name="RequesterEmail" required  email #RequesterEmail= ngModel [(ngModel)]="registerReq.RequesterEmail" type="email" class="k-textbox" value="email" placeholder="e.g. kevin@gmail.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. kevin@gmail.com'" 
+                              tooltip="{{'e.g. like test@gmail.com'}}" placement="right" container="body" />
+                              
                           </label>
-        
+
                           <label class="k-form-field">
-                              <span>Your Phone*</span>
-                              <input name="RequesterePhone" [(ngModel)]="registerReq.RequesterPhone" type="number" class="k-textbox" value="" placeholder="e.g. +01 321 856 5478" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. +01 321 856 5478'" />
+                              <span>Your Phone* <span style="color:red"  class="float-right opti_signup-validation-top-side" *ngIf="Phone.errors?.required && Phone.touched">
+                                    Please enter phone number!
+                             </span>
+                              <span style="color:red" *ngIf="Phone.errors?.pattern && Phone.touched" class="float-right opti_signup-validation-top-side">
+                                    Phone number is not valid!
+                             </span>
+                            </span>
+                             <input name="RequesterePhone" maxlength="13" pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$" required #Phone = ngModel [(ngModel)]="registerReq.RequesterPhone" type="text" class="k-textbox" value="phone" placeholder="e.g. +01 321 856 5478" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. +01 321 856 5478'" />
                           </label>
         
                           <label class="k-form-field">
@@ -180,18 +194,12 @@
         
                           <label class="k-form-field">
                               <div class="text-right">
-                                <button (click)="submit()" type="button" class="k-button k-primary">Sign Up</button>
+                                <button (click)="submit()" [disabled] = "!signUpForm.form.valid" type="button" class="k-button k-primary">Sign Up</button>
                               </div>
                           </label>
-                        
-        
-                      
-        
                         </div>       
                 </form>
-              
-              </div>  
-        
+              </div>       
             </div>  
           </div>  
         </div>          

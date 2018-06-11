@@ -6,7 +6,6 @@ import { CompanyDetail } from '../../models/company/companyDetail';
 
 
 
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -18,16 +17,17 @@ export class SignupComponent implements OnInit {
   userType: any = '';
   isSuperAdmin: boolean = false;
   companyDetail: CompanyDetail = new CompanyDetail();
-
-  // Error Bits
-  invalidCompanyId: boolean = false;
-
-  public CompanyId: string = '';
-
-  constructor(private accountService: AccountService) { }
-
+  public companyId: string = '';
+  constructor(private accountService: AccountService) {
+    
+   
+   }
+  
+  ngOnChange(){
+    console.log("ng on change");
+  }
   ngOnInit() {
-
+    console.log("ng on init");
     const element = document.getElementsByTagName("body")[0];
     element.classList.add("opti_body-signup");
 
@@ -39,31 +39,31 @@ export class SignupComponent implements OnInit {
 
   submit() {
     //this.registerReq. = this.registerReq.email;
-    this.registerReq.RequesterParentCode=this.CompanyId;
+    this.registerReq.RequesterParentCode=this.companyId;
     this.registerReq.RequesterParentType=2;    
     this.accountService.registerUser(this.registerReq);
   }
 
   getCompaneyDetail() {
-    this.invalidCompanyId=false;
+    
     this.companyDetail=new CompanyDetail();
     // Dummy Data.
-    if (this.CompanyId == 'C001') {      
+    if (this.companyId == 'C001') {      
       this.companyDetail.CompanyName = "Samsung";
       this.companyDetail.PrimaryContactEmail = "sjain@eworkplaceapps.com";
       this.companyDetail.PrimaryContactName = "Shashank Jain";
     }
-    else if (this.CompanyId == 'C002') {
+    else if (this.companyId == 'C002') {
       this.companyDetail.CompanyName = "Apple";
       this.companyDetail.PrimaryContactEmail = "rpawar@eworkplaceapps.com";
       this.companyDetail.PrimaryContactName = "Rohit Pawar";
     }
     else {
       
-        this.invalidCompanyId=true;
+        
     }
 
-    // this.accountService.getCustomerByCode(this.CompanyId).subscribe(
+    // this.accountService.getCustomerByCode(this.companyId).subscribe(
     //   req => {
     //     this.companyDetail = req[0];
     //     if(this.companyDetail==null || this.companyDetail==undefined){
@@ -73,6 +73,8 @@ export class SignupComponent implements OnInit {
     // )
 
   }
+
+  
 
   public roles: Array<{ text: string, value: string }> = [
     { text: "Please Select Role", value: '0' },

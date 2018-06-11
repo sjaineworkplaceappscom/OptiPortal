@@ -16,7 +16,7 @@ export class RegisterRequest {
 
     RequesterEmail: string;
     RequesterName: string;
-    RequesterPhone: string;
+    RequesterPhone: string;         
     RequestedRoleId: string;
     RequesterParentCode: string;
     RequesterParentType: number;
