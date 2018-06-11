@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
   }
 
   customCaptcha(string){
-    alert(this.randomstring);
+    
     let c = this.myCanvas.nativeElement;
     let ctx = c.getContext("2d");
     ctx.font = "15px Arial";

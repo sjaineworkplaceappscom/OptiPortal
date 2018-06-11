@@ -9,7 +9,7 @@
                 <label class="k-form-field">
                     <span>Email</span>
                     <input type="email"  email name = "email" required [(ngModel)]="userName" #emailId = ngModel class="k-textbox" value="" placeholder="e.g. test@gmail.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'e.g. test@gmail.com'" />
-                    <span *ngIf="emailId.errors?.required && (emailId.dirty || emailId.touched)"  style="color: red;">Email is required?</span>
+                    <span *ngIf="emailId.errors?.required && (emailId.dirty || emailId.touched)"  style="color: red;">Email is required.</span>
                     <span *ngIf="emailId.errors?.email && emailId.touched" style="color:red" >
                       Invalid emailId!
                     </span>
@@ -18,7 +18,7 @@
                 <label class="k-form-field">
                     <span>Password <span class="opti_mouse-pointer float-right">Forgot your password?</span> </span>
                     <input name = "password"required [(ngModel)]="password" #pwd = ngModel type="password" class="k-textbox" value="" placeholder="Your password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your password'" />
-                    <span  *ngIf="pwd.errors && (pwd.dirty || pwd.touched)"   style="color: red;">Password is required?</span>
+                    <span  *ngIf="pwd.errors && (pwd.dirty || pwd.touched)"   style="color: red;">Password is required.</span>
                 </label>
 
                 <label class="k-form-field" >
