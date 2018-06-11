@@ -29,11 +29,13 @@ export class SetPasswordComponent implements OnInit {
 
       }
     );
-
   }
  
   setPassword() {
+<<<<<<< HEAD
    this.showLoader=true;
+=======
+>>>>>>> e1a56655813604d52b6f7755ad298169047fc32c
     this.userModel.UserName = this.userId;
     this.userModel.Email = this.userLoginEmail;
     this.accountService.setPassword(this.userModel);
