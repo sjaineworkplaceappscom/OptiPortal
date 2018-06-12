@@ -70,6 +70,9 @@ body{
     background-color: #8bcb6e;
   }
   
+  .opti_loader .opti_spinner{
+    border-top-color:#8bcb6e !important;
+  }
   
   
   /*****************************************************************************************/
