@@ -14,17 +14,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./left.component.scss']
 })
 export class LeftComponent implements OnInit {
-
+  systemAdmin:any;
   constructor(private commonService: Commonservice,private router: Router) { }
   selectedThemeColor: string = '#FF8382';
 
   ngOnInit() {    
+    
+    this.systemAdmin=localStorage.getItem('SystemAdmin');
+    alert(this.systemAdmin);
+
     this.commonService.themeCurrentData.subscribe(
       data => {
         this.selectedThemeColor = data;
       }
-    )
+    );
 
+    
   }
 
   ngOnChange() {
