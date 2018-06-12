@@ -28,6 +28,7 @@ export class SigninComponent implements OnInit {
     this.password = '';
 
     const element = document.getElementsByTagName("body")[0];
+    element.className = "";
     element.classList.add("opti_body-login");
 
   }
