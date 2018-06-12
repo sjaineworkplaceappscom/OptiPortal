@@ -24,12 +24,21 @@ export class ApproveUsersComponent implements OnInit {
 
   approveUsers(){      
     this.accountService.inviteUsers(this.mySelection.toString());
+    this.accountService.getInactiveUsers().subscribe(
+      (data: any) => {
+        this.items = JSON.parse(data, null);
+      }
+    );
     
   }
 
   rejectUsers(){      
     this.accountService.rejectUsers(this.mySelection.toString());
-    
+    this.accountService.getInactiveUsers().subscribe(
+      (data: any) => {
+        this.items = JSON.parse(data, null);
+      }
+    );
   }
 
 }

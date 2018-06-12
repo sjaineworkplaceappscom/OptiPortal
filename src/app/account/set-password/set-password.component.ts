@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../../services/account.service';
 import { UserModel } from 'src/app/models/account/user-model';
 
@@ -10,11 +10,11 @@ import { UserModel } from 'src/app/models/account/user-model';
   styleUrls: ['./set-password.component.scss']
 })
 export class SetPasswordComponent implements OnInit {
-  showLoader:boolean=false;
+  showLoader: boolean = false;
   userId: string;
   userLoginEmail: string;
   userModel: UserModel = new UserModel();
-  constructor(private route: ActivatedRoute, private accountService: AccountService) { }
+  constructor(private route: ActivatedRoute, private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
 
@@ -30,71 +30,72 @@ export class SetPasswordComponent implements OnInit {
       }
     );
   }
- 
+
   setPassword() {
-   this.showLoader=true;
+    let this1 = this;
+    this.showLoader = true;
     this.userModel.UserName = this.userId;
     this.userModel.Email = this.userLoginEmail;
-    this.accountService.setPassword(this.userModel);
-    this.showLoader=false;
+    this.accountService.setPassword(this.userModel).subscribe(
+      data => {
+
+        alert('Welcome to optipro Portals, your password set successfully.');
+        this1.showLoader = false;
+        this.router.navigateByUrl('/login');
+      }
+    );
+
   }
 
-  passwordStrengthStatus:number = 0;
-  public checkPasswordStrength(password: string){  
-    
-    var numbers ="[0-9]+";
+  passwordStrengthStatus: number = 0;
+  public checkPasswordStrength(password: string) {
+
+    var numbers = "[0-9]+";
     var passwordScore = 0;
     var specialCharacters = "!£$%^&*_@#~?";
     let numRegx = new RegExp(numbers);
     let lowerChars = new RegExp("[a-z]");
     let upperChars = new RegExp("[A-Z]");
-     // Contains special characters
-    for (var i = 0; i < password.length; i++)
-    {
-        if (specialCharacters.indexOf(password.charAt(i)) > -1)
-        {
-            passwordScore += 20;
-            break;
-        }
+    // Contains special characters
+    for (var i = 0; i < password.length; i++) {
+      if (specialCharacters.indexOf(password.charAt(i)) > -1) {
+        passwordScore += 20;
+        break;
+      }
     }
     // Contains numbers
-    if (numRegx.test(password))passwordScore += 20;
+    if (numRegx.test(password)) passwordScore += 20;
 
     // Contains lower case letter
-    if (lowerChars.test(password))passwordScore += 20;
+    if (lowerChars.test(password)) passwordScore += 20;
 
     // Contains upper case letter
-    if (upperChars.test(password))passwordScore += 20;
+    if (upperChars.test(password)) passwordScore += 20;
 
     if (password.length >= 8) passwordScore += 20;
 
     var strength = "";
-    if (passwordScore >= 100)
-    {
-        strength = "FullStrong";
-        this.passwordStrengthStatus=4;
+    if (passwordScore >= 100) {
+      strength = "FullStrong";
+      this.passwordStrengthStatus = 4;
     }
-    else if (passwordScore >= 80)
-    {
-        strength = "Strong";
-        this.passwordStrengthStatus=3;
+    else if (passwordScore >= 80) {
+      strength = "Strong";
+      this.passwordStrengthStatus = 3;
     }
-    else if (passwordScore >= 60)
-    {
-        strength = "Medium";
-        this.passwordStrengthStatus=2;
+    else if (passwordScore >= 60) {
+      strength = "Medium";
+      this.passwordStrengthStatus = 2;
     }
-    else if (passwordScore >= 40)
-    {
-        strength = "weak";
-        this.passwordStrengthStatus=1;
+    else if (passwordScore >= 40) {
+      strength = "weak";
+      this.passwordStrengthStatus = 1;
     }
-    else
-    {
-      this.passwordStrengthStatus=0;
-        strength = "Very Weak";
+    else {
+      this.passwordStrengthStatus = 0;
+      strength = "Very Weak";
     }
-    console.log("Password:"+strength);
+    console.log("Password:" + strength);
 
   }
 

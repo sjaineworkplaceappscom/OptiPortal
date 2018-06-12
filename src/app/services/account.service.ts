@@ -52,17 +52,10 @@ export class AccountService {
   }
 
   // set user password.
-  public setPassword(userModel: UserModel) {
+  public setPassword(userModel: UserModel):Observable<any> {
     let url: string = this.baseUrl + "account/setpassword";
 
-    this.httpHelper.post(url, userModel, null, true).subscribe(
-      data => {
-        alert('Welcome to optipro Portals, your password set successfully.');
-        this.router.navigateByUrl('/login');
-
-
-      }
-    )
+    return this.httpHelper.post(url, userModel, null, true);
 
   }
 
