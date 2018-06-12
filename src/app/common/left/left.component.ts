@@ -20,8 +20,7 @@ export class LeftComponent implements OnInit {
 
   ngOnInit() {    
     
-    this.systemAdmin=localStorage.getItem('SystemAdmin');
-    alert(this.systemAdmin);
+    this.systemAdmin=localStorage.getItem('SystemAdmin');   
 
     this.commonService.themeCurrentData.subscribe(
       data => {
