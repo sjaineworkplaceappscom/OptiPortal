@@ -224,6 +224,7 @@ ul.opti_liststyle-one-ul{
 // Css related to form 
 .opti_error-msg{
     color: $error !important;
+    font-size: 12px;
 }
 
 // password indicator
@@ -287,3 +288,8 @@ ul.opti_liststyle-one-ul{
         100% { transform: rotate(360deg); }
     }
 }  
+
+// CSS on Input
+input{
+    color: #333 !important;
+}
