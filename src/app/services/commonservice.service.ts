@@ -34,6 +34,7 @@ export class Commonservice {
     this.authData1.next(data);
   }
 
+  // for Seeting color of theme.
   private themeData = new BehaviorSubject<any>(opticonstants.defaultThemeColor);
   themeCurrentData = this.themeData.asObservable();
 
@@ -41,11 +42,20 @@ export class Commonservice {
     this.themeData.next(data);
   }
 
-  private navigatedData=new BehaviorSubject<boolean>(false);
-  currentNavigatedData=this.navigatedData.asObservable();
+  // For opening content from left navigation links.
+  private navigatedData = new BehaviorSubject<boolean>(false);
+  currentNavigatedData = this.navigatedData.asObservable();
 
-  public setNavigatedData(navigationLink:boolean){
+  public setNavigatedData(navigationLink: boolean) {
     this.navigatedData.next(navigationLink);
+  }
+
+  // For signup navigation link
+  private navigatedFromData = new BehaviorSubject<number>(null);
+  currentNavigatedFromValue = this.navigatedFromData.asObservable();
+
+  public setCurrentNavigatedFromData(value: number) {
+    this.navigatedFromData.next(value);
   }
 
 }

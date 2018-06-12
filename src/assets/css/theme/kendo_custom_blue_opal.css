@@ -48,6 +48,12 @@ section#opti_TopBarID {
   background-color: #f0f0f0;
 }
 
+button{
+  background-color: #13688c;
+  color: white;
+  border-color: #13688c;
+}
+
 app-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
 .opti_user-profile-drop-down li.opti_mouse-pointer:hover,
 li.opti_list:hover,
@@ -63,7 +69,9 @@ ul.opti_liststyle-one-ul .opti_liststyle-one-li:hover
   background-color: #13688c;
 }
 
-
+.opti_loader .opti_spinner{
+  border-top-color:#13688c !important;
+}
 
 /*****************************************************************************************/
 /*********************************** END OUR CUSTOM CODE *********************************/

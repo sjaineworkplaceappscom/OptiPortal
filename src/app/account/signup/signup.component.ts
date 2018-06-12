@@ -3,6 +3,10 @@ import { RegisterRequest } from 'src/app/models/account/register-req-model';
 import { AccountService } from 'src/app/services/account.service';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { CompanyDetail } from '../../models/company/companyDetail';
+import { CommonMessages } from 'src/common-messages';
+import {  Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Commonservice } from '../../services/commonservice.service';
 
 
 
@@ -14,22 +18,29 @@ import { CompanyDetail } from '../../models/company/companyDetail';
 export class SignupComponent implements OnInit {
   showLoader:boolean=false;
   registerReq: RegisterRequest = new RegisterRequest();
-  userType: any = '';
+  userType: number;
   isSuperAdmin: boolean = false;
   companyDetail: CompanyDetail = new CompanyDetail();
   public companyId: string = '';
   randomstring = '';
+  
+  public roles: Array<{ text: string, value: string }> = [
+    { text: "Please Select Role", value: '0' },
+    { text: "Admin", value: '41F23977-C709-4B7C-BBEE-16A539211E9C' },
+    { text: "Manager", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EA' },
+    { text: "User", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EB' }
+  ];
+
+
   @ViewChild('myCanvas') myCanvas;
 
   // Error Bits
   invalidCompanyId: boolean = false;
 
-
-
-  constructor(private accountService: AccountService) { }
-
+  constructor(private accountService: AccountService,private router:Router,private commonService:Commonservice,) { }
 
   ngOnInit() {
+
     this. getRandomStringForCaptcha();
     this.customCaptcha(this.randomstring);
     const element = document.getElementsByTagName("body")[0];
@@ -37,8 +48,13 @@ export class SignupComponent implements OnInit {
 
     this.registerReq = new RegisterRequest();
 
-    var systemAdmin: any = this.userType = localStorage.getItem('SystemAdmin');
-
+    //var systemAdmin: any=localStorage.getItem('SystemAdmin');
+    this.commonService.currentNavigatedFromValue.subscribe(
+      data=> {
+        this.userType=data;
+      }
+    )
+    
   }
 
   customCaptcha(string){
@@ -65,17 +81,32 @@ export class SignupComponent implements OnInit {
     this.customCaptcha(this.randomstring);
   }
 
+  // Click on Login button.
   submit() {
-    this.showLoader=true;
+    
     this.registerReq.RequesterParentCode=this.companyId;
-    this.registerReq.RequesterParentType=2;    
-    this.accountService.registerUser(this.registerReq);
-    this.showLoader=false;
+    this.registerReq.RequesterParentType=this.userType;    
+    this.showLoader=true;
+    this.accountService.registerUser(this.registerReq).subscribe(
+      data => {        
+        this.showLoader=false;
+        alert(CommonMessages.RegistrationSuccess);      
+        this.router.navigateByUrl('/login');
+      },
+      (err:HttpErrorResponse)=>{
+        alert('Something went wrong. please check console log for more detail.');
+        this.showLoader=false;
+        console.log(err);
+      }
+    );
+   
   }
 
+  // On blur of compane id
   getCompaneyDetail() {
     
     this.companyDetail=new CompanyDetail();
+
     // Dummy Data.
     if (this.companyId == 'C001') {      
       this.companyDetail.CompanyName = "Samsung";
@@ -87,8 +118,7 @@ export class SignupComponent implements OnInit {
       this.companyDetail.PrimaryContactEmail = "rpawar@eworkplaceapps.com";
       this.companyDetail.PrimaryContactName = "Rohit Pawar";
     }
-    else {
-      
+    else {      
         
     }
 
@@ -102,18 +132,5 @@ export class SignupComponent implements OnInit {
     // )
 
   }
-
   
-
-  public roles: Array<{ text: string, value: string }> = [
-    { text: "Please Select Role", value: '0' },
-    { text: "Admin", value: '41F23977-C709-4B7C-BBEE-16A539211E9C' },
-    { text: "Manager", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EA' },
-    { text: "User", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EB' }
-  ];
-
-  public role: { text: string, value: string } = { text: "Please Select Role", value: '0' };
-
-
-
 }

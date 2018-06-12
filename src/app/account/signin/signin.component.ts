@@ -15,14 +15,14 @@ import { Commonservice } from '../../services/commonservice.service';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-  showLoader:boolean=false;
+  showLoader: boolean = false;
   isError: boolean = false;
-  invalidCredentialMsg:string="";
+  invalidCredentialMsg: string = "";
   userName: string;
   password: string;
 
   constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: Commonservice) { }
-  
+
   ngOnInit() {
     this.userName = '';
     this.password = '';
@@ -36,7 +36,7 @@ export class SigninComponent implements OnInit {
     let userId: string;
     userName = this.userName;
     password = this.password;
-    
+
     await this.accountService.getUserDetails(userName).subscribe(
       userData => {
         // jsonfy response object.
@@ -56,19 +56,19 @@ export class SigninComponent implements OnInit {
           // }
           // // single tenanat
           // else {
-            let data = resUserData[0];
-          
-            userId = data.LoginUserId;
-            this.generateLogintoken(userId, password, userName);
+          let data = resUserData[0];
 
-            localStorage.setItem('LoginUserDetail', userData);
+          userId = data.LoginUserId;
+          this.generateLogintoken(userId, password, userName);
 
-            var systemAdmin: any = false;
+          localStorage.setItem('LoginUserDetail', userData);
 
-            if (data != null && data.LoginUserType == 4) {
-              systemAdmin = true;
-            }
-            localStorage.setItem("SystemAdmin", systemAdmin);
+          var systemAdmin: any = false;
+
+          if (data != null && data.LoginUserType == 4) {
+            systemAdmin = true;
+          }
+          localStorage.setItem("SystemAdmin", systemAdmin);
           //}
         }
       }
@@ -81,13 +81,13 @@ export class SigninComponent implements OnInit {
   private generateLogintoken(userId: string, password: string, email: string): any {
 
     let errobj: ErrorObject = new ErrorObject();
-    let this1=this;
-    this.showLoader=true;
+    let this1 = this;
+    this.showLoader = true;
     // Generate access token
     this.accountService.generateToken(userId, password, errobj).then(
       data => {
         //show loader false.
-        this1.showLoader=false;
+        this1.showLoader = false;
         localStorage.setItem('AccessToken', data.access_token);
 
         this.router.navigateByUrl('/home');
@@ -95,23 +95,28 @@ export class SigninComponent implements OnInit {
     ).catch(
       (err: HttpErrorResponse) => {
         this.isError = true;
-        this1.showLoader=false;
+        this1.showLoader = false;
       }
     );
   }
 
-  
-navigateToSignUp(){
-  this.router.navigateByUrl('/signup');
-}
+
+  navigateToSignUp(value: number) {
+    // Click on Customer sign up
+    if (value == 1) {
+      this.commonService.setCurrentNavigatedFromData(2);
+    }
+    // Click on vendor sign up
+    if (value == 2) {
+      this.commonService.setCurrentNavigatedFromData(3);
+    }
+    this.router.navigateByUrl('/signup');
+  }
 
 }
-
-
 
 export class ErrorObject {
   constructor() {
-
   }
   isError: boolean;
   error: any;

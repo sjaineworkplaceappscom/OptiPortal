@@ -15,6 +15,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { ErrorObject } from '../models/error/error-object';
 import { environment } from '../../environments/environment';
 import { CommonMessages } from '../../common-messages';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,19 +27,10 @@ export class AccountService {
   constructor(private httpHelper: HttpHelper, private router: Router) { }
 
   // Register user.
-  public registerUser(registerRequest: RegisterRequest) {
+  public registerUser(registerRequest: RegisterRequest):Observable<any> {
     let url: string = this.baseUrl + "account/register";
     
-    this.httpHelper.post(url, registerRequest, null, true).subscribe(
-      data => {        
-        alert(CommonMessages.RegistrationSuccess);
-
-        // if (navigateLogin) {
-        this.router.navigateByUrl('/login');
-        //}
-
-      }
-    )
+   return this.httpHelper.post(url, registerRequest, null, true);   
 
   }
 
