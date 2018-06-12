@@ -69,6 +69,9 @@ body{
     background-color: #13688c;
   }
   
+  .opti_loader .opti_spinner{
+    border-top-color:#3dbfe6 !important;
+  }
   
   
   /*****************************************************************************************/
