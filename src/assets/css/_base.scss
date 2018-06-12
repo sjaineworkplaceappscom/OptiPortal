@@ -8,7 +8,7 @@
 
 // Some Basic Variable
 $white : #fff;
-$error : red;
+$error : #D47474;
 $top-bar-height:65px;
 $list-hover-bg-color: #f2f4f8;
 $list-bg-color: #F8F8F8;
@@ -229,7 +229,7 @@ ul.opti_liststyle-one-ul{
 
 // password indicator
 .opti_password-indicator-stripped{
-    height: 10px;
+    height: 4px;
     overflow: hidden;
     background-color: #c7c7c7;
     border-radius: 5px;
