@@ -110,13 +110,13 @@
 
                         <label class="k-form-field opti_display-inline-block">
                             <!-- <div class="opti_captcha-box"> -->
-                            <span class="float-left">
+                            <span class="float-left opti_captcha-text">
                                 <input required class="k-textbox" #Captcha=ngModel [(ngModel)]="capchaText" type="text" name="captchatext" required />
                             </span>
-                            <span class="float-left">
+                            <span class="float-left opti_captcha-canvas">
                                 <canvas #myCanvas id="captchaCanvasID" width="70" height="30">Your browser does not support the HTML5 canvas tag.</canvas>
                             </span>
-                            <span class="float-left">
+                            <span class="float-left opti_captcha-refresh">
                                 <button (click)="changeCaptcha()" class="opti_remove-button-css">
                                     <img src="assets/images/common/refresh-button-white.svg" width="20" height="20" />
                                 </button>

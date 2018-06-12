@@ -5,6 +5,40 @@
 
     @media screen and (min-width: 480px) and (max-width: 767px){
         @import 'device/mobile/_mobile';
+        
+            /////////////////////////////////////
+            // SignUp, SignIn, SetPassword
+            ////////////////////////////////////
+            .opti_body-set-password #opti_setPasswordID,
+            .opti_body-signup #opti_signupPageID,
+            .opti_body-login #opti_signinID
+            {
+                @media screen and (orientation:landscape) {
+                    .opti_outer-setpassword,
+                    .opti_outer-signup-form,
+                    .opti_outer-login-form
+                    {
+                        width: 100%;
+                        margin-left: 0;
+                        padding: 0 12%;
+                    }   
+                }
+            }
+
+            /////////////////////////////
+            // CSS Related To signin Page
+            /////////////////////////////
+            .opti_body-login #opti_signinID{
+                @media screen and (orientation:landscape) {
+                    .opti_login-brandlogo img{
+                        max-width: 87%;
+                        margin-left: 4%;
+                        margin-right: 4%;
+                        width: 100%;
+                    }
+                }
+            }
+        
     }
     @media only screen and (min-width: 768px) and (max-width: 959px) {
     
