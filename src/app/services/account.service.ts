@@ -118,6 +118,20 @@ export class AccountService {
 
   }
 
+  // Invite users 
+  public rejectUsers(userEmails: string) {
+    let error: boolean = false;
+    let data: string = userEmails
+
+    return this.httpHelper.put<Array<any>>(this.baseUrl + 'user/reject', data, null).subscribe(
+      data => {
+        alert('User(s) Rejected successfully.');
+      }
+    );
+
+
+  }
+
   public getInactiveUsers() {
     return this.httpHelper.get(this.baseUrl + 'user/list/inactive', null);
   }

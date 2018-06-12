@@ -22,9 +22,13 @@ export class ApproveUsersComponent implements OnInit {
 
   }
 
-  approveUsers(){
-      
+  approveUsers(){      
     this.accountService.inviteUsers(this.mySelection.toString());
+    
+  }
+
+  rejectUsers(){      
+    this.accountService.rejectUsers(this.mySelection.toString());
     
   }
 

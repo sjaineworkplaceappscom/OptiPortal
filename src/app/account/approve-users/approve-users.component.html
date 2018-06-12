@@ -2,7 +2,7 @@
   <div style="text-align: center;">
     <p >Inactive Users
       <button (click)="approveUsers()">Approve</button>
-      <button (click)="reinvite()">Reinvite</button>
+      <button (click)="rejectUsers()">Reject</button>
     </p>
   </div>
   <kendo-grid [kendoGridSelectBy]="'UserId'" [selectable]=true [selectedKeys]="mySelection" [kendoGridBinding]="items" [pageSize]="10"
