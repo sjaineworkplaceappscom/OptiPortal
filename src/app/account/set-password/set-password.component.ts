@@ -39,5 +39,59 @@ export class SetPasswordComponent implements OnInit {
     this.showLoader=false;
   }
 
+  passwordStrengthStatus:number = 0;
+  public checkPasswordStrength(password: string){  
+    
+    var numbers ="[0-9]+";
+    var passwordScore = 0;
+    var specialCharacters = "!£$%^&*_@#~?";
+    let numRegx = new RegExp(numbers);
+    let lowerChars = new RegExp("[a-z]");
+    let upperChars = new RegExp("[A-Z]");
+     // Contains special characters
+    for (var i = 0; i < password.length; i++)
+    {
+        if (specialCharacters.indexOf(password.charAt(i)) > -1)
+        {
+            passwordScore += 20;
+            break;
+        }
+    }
+    // Contains numbers
+    if (numRegx.test(password))passwordScore += 20;
+
+    // Contains lower case letter
+    if (lowerChars.test(password))passwordScore += 20;
+
+    // Contains upper case letter
+    if (upperChars.test(password))passwordScore += 20;
+
+    if (password.length >= 8) passwordScore += 20;
+
+    var strength = "";
+    if (passwordScore >= 100)
+    {
+        strength = "Strong";
+        this.passwordStrengthStatus=3;
+    }
+    else if (passwordScore >= 80)
+    {
+        strength = "Medium";
+        this.passwordStrengthStatus=3;
+    }
+    else if (passwordScore >= 60)
+    {
+        strength = "Weak";
+        this.passwordStrengthStatus=1;
+    }
+    else
+    {
+      this.passwordStrengthStatus=0;
+        strength = "Very Weak";
+    }
+    console.log("Password:"+strength);
+
+  }
+
 
 }
