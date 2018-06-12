@@ -71,17 +71,22 @@ export class SetPasswordComponent implements OnInit {
     var strength = "";
     if (passwordScore >= 100)
     {
-        strength = "Strong";
-        this.passwordStrengthStatus=3;
+        strength = "FullStrong";
+        this.passwordStrengthStatus=4;
     }
     else if (passwordScore >= 80)
     {
-        strength = "Medium";
+        strength = "Strong";
         this.passwordStrengthStatus=3;
     }
     else if (passwordScore >= 60)
     {
-        strength = "Weak";
+        strength = "Medium";
+        this.passwordStrengthStatus=2;
+    }
+    else if (passwordScore >= 40)
+    {
+        strength = "weak";
         this.passwordStrengthStatus=1;
     }
     else
