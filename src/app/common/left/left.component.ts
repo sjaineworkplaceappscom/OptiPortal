@@ -31,6 +31,6 @@ export class LeftComponent implements OnInit {
   }
 
   navigate(){
-this.commonService.setNavigatedData(true);
+    this.commonService.setNavigatedData(true);
   }
 }
