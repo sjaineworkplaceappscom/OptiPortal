@@ -35,7 +35,12 @@ export class SignupComponent implements OnInit {
     { text: "User", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EB' }
   ];
 
+<<<<<<< HEAD
   public selectedItem: { text: string, value: string } = this.roles[0];
+=======
+  public role: Array<{ text: string, value: string }> = [
+    { text: "Please Select Role", value: '0' }]
+>>>>>>> 9a797d494ee2208fe6079cade00f7553daf11336
 
 
   @ViewChild('myCanvas') myCanvas;

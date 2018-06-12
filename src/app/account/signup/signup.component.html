@@ -123,9 +123,10 @@
                                     <img src="assets/images/common/refresh-button-white.svg" width="20" height="20" />
                                 </button>
                             </span>
-                                                <!-- </div> -->
+                            <span class="opti_error-msg" *ngIf="invalidCapcha==true||(Captcha.errors && (Captcha.dirty || Captcha.touched))">Pleas enter valid captcha.</span>
+
+                            <!-- </div> -->
                         </label>
-                        <span class="opti_error-msg" *ngIf="invalidCapcha==true||(Captcha.errors && (Captcha.dirty || Captcha.touched))">Pleas enter valid captcha.</span>
 
                         <label class="k-form-field">
                             <div class="opti_checkbox-container">
