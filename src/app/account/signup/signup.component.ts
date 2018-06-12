@@ -128,12 +128,12 @@ export class SignupComponent implements OnInit {
     this.companyDetail=new CompanyDetail();
 
     // Dummy Data.
-    if (this.companyId == 'C001') {      
+    if (this.companyId.toUpperCase() == 'C001') {      
       this.companyDetail.CompanyName = "Samsung";
       this.companyDetail.PrimaryContactEmail = "sjain@eworkplaceapps.com";
       this.companyDetail.PrimaryContactName = "Shashank Jain";
     }
-    else if (this.companyId == 'C002') {
+    else if (this.companyId.toUpperCase() == 'C002') {
       this.companyDetail.CompanyName = "Apple";
       this.companyDetail.PrimaryContactEmail = "rpawar@eworkplaceapps.com";
       this.companyDetail.PrimaryContactName = "Rohit Pawar";
