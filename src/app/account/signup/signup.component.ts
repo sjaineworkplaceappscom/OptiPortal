@@ -16,6 +16,8 @@ import { Commonservice } from '../../services/commonservice.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  invalidRole:boolean=false;
+  invalidCapcha:boolean=false;
   showLoader:boolean=false;
   registerReq: RegisterRequest = new RegisterRequest();
   userType: number;
@@ -23,13 +25,17 @@ export class SignupComponent implements OnInit {
   companyDetail: CompanyDetail = new CompanyDetail();
   public companyId: string = '';
   randomstring = '';
-  
+  turmsOfUse:any = null;
+  capchaText:string;
+
   public roles: Array<{ text: string, value: string }> = [
     { text: "Please Select Role", value: '0' },
     { text: "Admin", value: '41F23977-C709-4B7C-BBEE-16A539211E9C' },
     { text: "Manager", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EA' },
     { text: "User", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EB' }
   ];
+
+  public selectedItem: { text: string, value: string } = this.roles[0];
 
 
   @ViewChild('myCanvas') myCanvas;
@@ -83,7 +89,20 @@ export class SignupComponent implements OnInit {
 
   // Click on Login button.
   submit() {
-    
+
+    if(this.capchaText!=this.randomstring){
+        this.invalidCapcha=true;
+        return;
+     }
+     
+    if(this.selectedItem.value==this.roles[0].value){
+      this.invalidRole = true;   
+      return;         
+    }
+    else{
+      this.invalidRole=false;
+    }
+
     this.registerReq.RequesterParentCode=this.companyId;
     this.registerReq.RequesterParentType=this.userType;    
     this.showLoader=true;
