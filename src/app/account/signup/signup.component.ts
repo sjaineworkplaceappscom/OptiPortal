@@ -48,7 +48,9 @@ export class SignupComponent implements OnInit {
 
     this. getRandomStringForCaptcha();
     this.customCaptcha(this.randomstring);
+
     const element = document.getElementsByTagName("body")[0];
+    element.className = "";
     element.classList.add("opti_body-signup");
 
     this.registerReq = new RegisterRequest();

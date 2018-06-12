@@ -20,6 +20,10 @@ export class MainContentComponent implements OnInit {
    }
 
   ngOnInit() {
+
+    const element = document.getElementsByTagName("body")[0];
+    element.className = "";
+
     this.approveUser=false;
     this.commonService.currentNavigatedData.subscribe(
       data=>{
