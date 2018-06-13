@@ -114,6 +114,10 @@ export class SigninComponent implements OnInit {
     this.router.navigateByUrl('/signup');
   }
 
+  navigateToResetPassword(){
+    this.router.navigateByUrl('/resetpassword');
+  }
+
 }
 
 export class ErrorObject {

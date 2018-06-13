@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
-
-  constructor() { }
+  email:string;
+  constructor(private accountService:AccountService) { }
 
   ngOnInit() {
     const element = document.getElementsByTagName("body")[0];
@@ -15,6 +16,16 @@ export class ResetPasswordComponent implements OnInit {
     element.classList.add("opti_body-reset-password");
   }
 
-  resetPassword(){}
+  resetPassword(){
+    this.accountService.sendResetPasswordLink(this.email).subscribe(
+      data=> {
+         if(data==true)       {
+           alert('We have sent reset password link to your email address ('+this.email+'), please check.');
+         }
+      }
+    )
+
+  
+  }
 
 }

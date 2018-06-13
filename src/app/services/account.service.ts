@@ -137,4 +137,8 @@ export class AccountService {
     return this.httpHelper.put(this.baseUrl + 'customer/databyCode',code,null);
   }
 
+  public sendResetPasswordLink(email:string){
+    return this.httpHelper.put(this.baseUrl + 'user/sendresetpasswordlink',email,null);
+  }
+
 }

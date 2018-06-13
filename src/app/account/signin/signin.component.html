@@ -27,7 +27,7 @@
                         <span  *ngIf="this.isError==true &&  (pwd.dirty || pwd.touched) && (emailId.dirty || emailId.touched) && !pwd.errors?.required" class="float-right opti_error-msg">Invalid credentials.</span>
                     </span>
                     <input name = "password" required [(ngModel)]="password" #pwd = ngModel type="password" class="k-textbox" value="" placeholder="Your password" />
-                    <span class="opti_mouse-pointer float-right opti_form-label">Forgot your password?</span>
+                    <span class="opti_mouse-pointer float-right opti_form-label" (click)="navigateToResetPassword()">Forgot your password?</span>
                 </label>
 
                 <label class="k-form-field" >
