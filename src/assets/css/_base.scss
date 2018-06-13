@@ -293,3 +293,10 @@ ul.opti_liststyle-one-ul{
 input{
     color: #333 !important;
 }
+
+// css for white label
+.opti_form-label{
+    font-size: 12px;
+    color: $white;
+    margin-bottom: 0 !important;
+}
