@@ -122,11 +122,14 @@ export class SignupComponent implements OnInit {
    
   }
 
+  changeValue(){
+    this.invalidCapcha = false;
+    console.log("change boolean: "+this.invalidCapcha);
+  }
   // On blur of compane id
   getCompaneyDetail() {
     
     this.companyDetail=new CompanyDetail();
-
     // Dummy Data.
     if (this.companyId.toUpperCase() == 'C001') {      
       this.companyDetail.CompanyName = "Samsung";
