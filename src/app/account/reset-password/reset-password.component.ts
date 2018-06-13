@@ -10,6 +10,9 @@ export class ResetPasswordComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const element = document.getElementsByTagName("body")[0];
+    element.className = "";
+    element.classList.add("opti_body-reset-password");
   }
 
   resetPassword(){}

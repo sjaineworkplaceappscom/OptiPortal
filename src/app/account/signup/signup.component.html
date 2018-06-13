@@ -19,7 +19,7 @@
                         </div>
 
                         <label class="k-form-field opti_position-relative">
-                            <span>Company ID*
+                            <span class="opti_form-label">Company ID *
                                 <span *ngIf="compId.errors && (compId.dirty || compId.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter valid company id.</span>
                             </span>
                             <input class="k-textbox" required [(ngModel)]="companyId" #compId=ngModel type="text" name="companyId" placeholder="e.g. Cust1032"
@@ -28,7 +28,7 @@
                         </label>
 
                         <label class="k-form-field opti_signup-company-label">
-                            <span>Company Details</span>
+                            <span class="opti_form-label">Company Details</span>
                         </label>
 
                         <label class="k-form-field opti_signup-companyname">
@@ -41,7 +41,7 @@
                         </label>
 
                         <label class="k-form-field opti_signup-primary-label">
-                            <span>Primary Contact Details</span>
+                            <span class="opti_form-label">Primary Contact Details</span>
                         </label>
 
                         <label class="k-form-field opti_signup-primary-name">
@@ -60,14 +60,14 @@
                         </label>
 
                         <label class="k-form-field">
-                            <span>Your Name*
+                            <span class="opti_form-label">Your Name *
                                 <span *ngIf="RequesterName.errors && (RequesterName.dirty || RequesterName.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your full name.</span>
                             </span>
                             <input name="RequesterName" required #RequesterName=ngModel maxlength="" [(ngModel)]="registerReq.RequesterName" type="text"
                                 class="k-textbox" value="" placeholder="e.g. Kevin" />
                         </label>
                         <label class="k-form-field opti_position-relative">
-                            <span>Your Email*
+                            <span class="opti_form-label">Your Email *
                                 <span *ngIf="RequesterEmail.errors?.required && RequesterEmail.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
                                     Please enter emailId.
                                 </span>
@@ -83,7 +83,7 @@
                         </label>
 
                         <label class="k-form-field">
-                            <span>Your Phone*
+                            <span class="opti_form-label">Your Phone *
                                 <span class="float-right opti_signup-validation-top-side opti_error-msg" *ngIf="Phone.errors?.required && Phone.touched">
                                     Please enter phone number.
                                 </span>

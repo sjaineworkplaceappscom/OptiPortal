@@ -1,13 +1,15 @@
 /////////////////////////////////////
-// SignUp, SignIn, SetPassword
+// SignUp, SignIn, SetPassword, Reset Password
 ////////////////////////////////////
 .opti_body-set-password #opti_setPasswordID,
 .opti_body-signup #opti_signupPageID,
-.opti_body-login #opti_signinID
+.opti_body-login #opti_signinID,
+.opti_body-reset-password #opti_resetPasswordID
 {
     .opti_outer-setpassword,
     .opti_outer-signup-form,
-    .opti_outer-login-form
+    .opti_outer-login-form,
+    .opti_outer-resetpassword
     {
         width: 100%;
         margin-left: 0;

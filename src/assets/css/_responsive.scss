@@ -11,12 +11,14 @@
             ////////////////////////////////////
             .opti_body-set-password #opti_setPasswordID,
             .opti_body-signup #opti_signupPageID,
-            .opti_body-login #opti_signinID
+            .opti_body-login #opti_signinID,
+            .opti_body-reset-password #opti_resetPasswordID
             {
                 @media screen and (orientation:landscape) {
                     .opti_outer-setpassword,
                     .opti_outer-signup-form,
-                    .opti_outer-login-form
+                    .opti_outer-login-form,
+                    .opti_outer-resetpassword
                     {
                         width: 100%;
                         margin-left: 0;
