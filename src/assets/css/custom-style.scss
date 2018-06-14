@@ -36,34 +36,7 @@
     }
   }
 
-  // signup
-  .opti_body-signup{
-    // dropdown
-    .k-dropdown .k-dropdown-wrap{
-        background-color: $white ;
-    }
-
-    kendo-popup{
-      kendo-list{
-        ul{
-          li{
-            font-size: 12px !important;
-          }
-          li.k-state-focused{
-            box-shadow: none !important;
-            background-color: #c7c7c7 !important;
-          }
-        }
-      }
-    }
-
-
-    label.k-form-field.opti_signup-company-label, label.k-form-field.opti_signup-primary-label  {
-        margin-bottom: 0 !important;
-        clear: both;
-    }
-
-  }
+  
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////End Account CSS/////////////////////////
 /////////////////////////////////////////////////////////////////////  
@@ -73,4 +46,23 @@
 // CSS on Input
 input[type="text"], input[type="email"], input[type="password"]{
   color: #333 !important;
+}
+
+// css on dropdown
+.k-dropdown .k-dropdown-wrap{
+  background-color: $white !important;
+}
+
+kendo-popup{
+  kendo-list{
+    ul{
+      li{
+        font-size: 12px !important;
+      }
+      li.k-state-focused{
+        box-shadow: none !important;
+        background-color: #c7c7c7 !important;
+      }
+    }
+  }
 }

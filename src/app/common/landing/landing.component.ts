@@ -12,6 +12,9 @@ export class LandingComponent implements OnInit {
   constructor(private router: Router, private commonService: Commonservice) { }
 
   ngOnInit() {
+    const element = document.getElementsByTagName("body")[0];
+    element.className = "";
+    element.classList.add("opti_body-landingpage");
   }
 
   navigateToSignUp(value: number) {

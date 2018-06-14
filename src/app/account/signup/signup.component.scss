@@ -71,3 +71,11 @@ kendo-dropdownlist{
     background-image:url('src/assets/images/common/captcha-background.jpg'); 
     background-repeat: repeat;
 }
+
+
+#opti_signupPageID{
+    label.k-form-field.opti_signup-company-label, label.k-form-field.opti_signup-primary-label  {
+        margin-bottom: 0 !important;
+        clear: both;
+    }
+}
