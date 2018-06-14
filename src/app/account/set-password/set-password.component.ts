@@ -13,6 +13,7 @@ export class SetPasswordComponent implements OnInit {
   showLoader: boolean = false;
   userId: string;
   userLoginEmail: string;
+  resetPassword: boolean;
   userModel: UserModel = new UserModel();
   constructor(private route: ActivatedRoute, private accountService: AccountService, private router: Router) { }
 
@@ -27,7 +28,7 @@ export class SetPasswordComponent implements OnInit {
         //this.userId=param['userId'];
         this.userLoginEmail = param['userLoginEmail'];
         this.userId = param['userId'];
-
+        this.resetPassword = param['resetPassword'];
       }
     );
   }
@@ -37,6 +38,19 @@ export class SetPasswordComponent implements OnInit {
     this.showLoader = true;
     this.userModel.UserName = this.userId;
     this.userModel.Email = this.userLoginEmail;
+
+
+    // if (this.resetPassword.valueOf() === true) {
+    //   debugger
+    //   this.accountService.resetPassword(this.userId, this.userModel.Password).subscribe(
+    //     data=>{         
+    //       alert('Welcome to optipro Portals, your password set successfully.');
+    //       this1.showLoader = false;
+    //       this.router.navigateByUrl('/login');
+    //     }
+    //   )
+    // }
+    // else {
     this.accountService.setPassword(this.userModel).subscribe(
       data => {
 
@@ -45,60 +59,61 @@ export class SetPasswordComponent implements OnInit {
         this.router.navigateByUrl('/login');
       }
     );
+  // }
 
-  }
+}
 
-  passwordStrengthStatus: number = 0;
+passwordStrengthStatus: number = 0;
   public checkPasswordStrength(password: string) {
 
-    var numbers = "[0-9]+";
-    var passwordScore = 0;
-    var specialCharacters = "!£$%^&*_@#~?";
-    let numRegx = new RegExp(numbers);
-    let lowerChars = new RegExp("[a-z]");
-    let upperChars = new RegExp("[A-Z]");
-    // Contains special characters
-    for (var i = 0; i < password.length; i++) {
-      if (specialCharacters.indexOf(password.charAt(i)) > -1) {
-        passwordScore += 20;
-        break;
-      }
+  var numbers = "[0-9]+";
+  var passwordScore = 0;
+  var specialCharacters = "!£$%^&*_@#~?";
+  let numRegx = new RegExp(numbers);
+  let lowerChars = new RegExp("[a-z]");
+  let upperChars = new RegExp("[A-Z]");
+  // Contains special characters
+  for (var i = 0; i < password.length; i++) {
+    if (specialCharacters.indexOf(password.charAt(i)) > -1) {
+      passwordScore += 20;
+      break;
     }
-    // Contains numbers
-    if (numRegx.test(password)) passwordScore += 20;
-
-    // Contains lower case letter
-    if (lowerChars.test(password)) passwordScore += 20;
-
-    // Contains upper case letter
-    if (upperChars.test(password)) passwordScore += 20;
-
-    if (password.length >= 8) passwordScore += 20;
-
-    var strength = "";
-    if (passwordScore >= 100) {
-      strength = "FullStrong";
-      this.passwordStrengthStatus = 4;
-    }
-    else if (passwordScore >= 80) {
-      strength = "Strong";
-      this.passwordStrengthStatus = 3;
-    }
-    else if (passwordScore >= 60) {
-      strength = "Medium";
-      this.passwordStrengthStatus = 2;
-    }
-    else if (passwordScore >= 40) {
-      strength = "weak";
-      this.passwordStrengthStatus = 1;
-    }
-    else {
-      this.passwordStrengthStatus = 0;
-      strength = "Very Weak";
-    }
-    console.log("Password:" + strength);
-
   }
+  // Contains numbers
+  if (numRegx.test(password)) passwordScore += 20;
+
+  // Contains lower case letter
+  if (lowerChars.test(password)) passwordScore += 20;
+
+  // Contains upper case letter
+  if (upperChars.test(password)) passwordScore += 20;
+
+  if (password.length >= 8) passwordScore += 20;
+
+  var strength = "";
+  if (passwordScore >= 100) {
+    strength = "FullStrong";
+    this.passwordStrengthStatus = 4;
+  }
+  else if (passwordScore >= 80) {
+    strength = "Strong";
+    this.passwordStrengthStatus = 3;
+  }
+  else if (passwordScore >= 60) {
+    strength = "Medium";
+    this.passwordStrengthStatus = 2;
+  }
+  else if (passwordScore >= 40) {
+    strength = "weak";
+    this.passwordStrengthStatus = 1;
+  }
+  else {
+    this.passwordStrengthStatus = 0;
+    strength = "Very Weak";
+  }
+  console.log("Password:" + strength);
+
+}
 
 
 }

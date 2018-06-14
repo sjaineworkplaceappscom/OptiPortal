@@ -35,19 +35,13 @@ export class AccountService {
   }
 
   // reset user password.
-  public resetPassword(userName: string, newPassword: string) {
+  public resetPassword(userName: string, newPassword: string):Observable<any> {
     let url: string = this.baseUrl + "account/resetpassword";
     let updateCredential: UpdateCredentialModel = new UpdateCredentialModel();
     updateCredential.userName = userName;
     updateCredential.newPassword = newPassword;
 
-    this.httpHelper.post(url, updateCredential, null, true).subscribe(
-      data => {
-        alert('We have sent you reset password link on your registered email id');
-
-        this.router.navigateByUrl('/login');
-      }
-    )
+   return this.httpHelper.post(url, updateCredential, null, true);
 
   }
 
@@ -98,30 +92,21 @@ export class AccountService {
   }
 
   // Invite users 
-  public inviteUsers(userEmails: string) {
+  public inviteUsers(userEmails: string):Observable<any> {
     let error: boolean = false;
     let data: string = userEmails
 
-    return this.httpHelper.put<Array<any>>(this.baseUrl + 'user/invite', data, null).subscribe(
-      data => {
-        alert('User(s) Approved successfully.');
-      }
-    );
+    return this.httpHelper.put<Array<any>>(this.baseUrl + 'user/invite', data, null);
 
 
   }
 
   // Invite users 
-  public rejectUsers(userEmails: string) {
+  public rejectUsers(userEmails: string):Observable<any> {
     let error: boolean = false;
     let data: string = userEmails
 
-    return this.httpHelper.put<Array<any>>(this.baseUrl + 'user/reject', data, null).subscribe(
-      data => {
-        alert('User(s) Rejected successfully.');
-      }
-    );
-
+    return this.httpHelper.put<Array<any>>(this.baseUrl + 'user/reject', data, null)
 
   }
 
