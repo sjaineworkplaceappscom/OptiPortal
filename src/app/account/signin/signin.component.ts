@@ -38,6 +38,9 @@ export class SigninComponent implements OnInit {
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
     element.classList.add("opti_body-login");
+    element.classList.add("opti_account-module");
+
+    
 
   }
 

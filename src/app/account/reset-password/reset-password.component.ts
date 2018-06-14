@@ -14,6 +14,7 @@ export class ResetPasswordComponent implements OnInit {
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
     element.classList.add("opti_body-reset-password");
+    element.classList.add("opti_account-module");
   }
 
   resetPassword(){

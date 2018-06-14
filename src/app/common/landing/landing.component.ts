@@ -15,6 +15,7 @@ export class LandingComponent implements OnInit {
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
     element.classList.add("opti_body-landingpage");
+    element.classList.add("opti_account-module");
   }
 
   navigateToSignUp(value: number) {

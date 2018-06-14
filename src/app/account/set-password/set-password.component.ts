@@ -22,6 +22,7 @@ export class SetPasswordComponent implements OnInit {
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
     element.classList.add("opti_body-set-password");
+    element.classList.add("opti_account-module");
 
     this.route.queryParams.subscribe(
       param => {
