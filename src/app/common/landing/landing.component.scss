@@ -1,0 +1,28 @@
+@import 'src/assets/css/web/account_module/account';
+
+#opti_landingpageID{
+    background: url('/../../assets/images/account/account-process.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.panel-body{
+    box-shadow: none;
+    border-radius: 0;
+    background-color: transparent;
+    
+}
+
+.opti_vertcal-align-outer-box {
+    height: 65px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.opti_landing-link{
+    padding-top: 9px;
+    button{
+        text-decoration: underline;
+    }
+}

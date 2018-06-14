@@ -44,6 +44,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ApproveUsersComponent } from './account/approve-users/approve-users.component';
 import { ConfirmPasswordEquilValidatorDirectiveDirective } from './directives/confirm-password-equil-validator-directive.directive';
+import { LandingComponent } from './common/landing/landing.component';
 
 
 
@@ -52,12 +53,13 @@ const routes: Routes = [
   
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: SigninComponent },  
-  { path: 'home', component: HomeComponent ,canActivate:[AuthGuard]},
+  { path: 'home', component: HomeComponent, canActivate:[AuthGuard] },
   {path:'approve',component:ApproveUsersComponent},  
   {path:'resetpassword',component:ResetPasswordComponent},
   {path:'changepassword',component:ChangePasswordComponent},
   {path:'setpassword',component:SetPasswordComponent},
   {path:'tenantselection',component:TenantselectionComponent},
+  {path:'landing',component:LandingComponent},
   { path: '', redirectTo: 'login',pathMatch: 'full' },
   {path: '**', component: SigninComponent}
  ];
@@ -78,7 +80,8 @@ const routes: Routes = [
     SignupComponent,
     TenantselectionComponent,
     ApproveUsersComponent,
-    ConfirmPasswordEquilValidatorDirectiveDirective
+    ConfirmPasswordEquilValidatorDirectiveDirective,
+    LandingComponent
   ],
   imports: [
     FormsModule,

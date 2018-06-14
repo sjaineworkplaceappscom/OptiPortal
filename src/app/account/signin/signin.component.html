@@ -1,4 +1,11 @@
   <div id="opti_signinID">
+
+  <div class="opti_login-brandlogo">
+    <div class="opti_vertical-align">
+      <img src="assets/images/logo/large-logo.png" alt="brandlogo">
+    </div>
+  </div>
+
   <div class="opti_outer-login-form">    
     <div class="opti_vertcal-align-outer-box">
 
@@ -11,7 +18,7 @@
         <!-- loader end -->
 
         <!-- <div class="opti_panel-body-inner1"> -->
-        <div class="opti_login-brandlogo"><img src="https://www.optiproerp.com/wp-content/uploads/2018/03/logos-1-1.png" alt="brandlogo"></div>
+        <!-- <div class="opti_login-brandlogo"><img src="https://www.optiproerp.com/wp-content/uploads/2018/03/logos-1-1.png" alt="brandlogo"></div> -->
         <form class="k-form" #signInForm="ngForm">
                 <label class="k-form-field">
                     <span class="opti_form-label">Email * 
@@ -30,6 +37,28 @@
                     <span class="opti_mouse-pointer float-right opti_form-label" (click)="navigateToResetPassword()">Forgot your password?</span>
                 </label>
 
+                <label class="k-form-field opti_display-inline-flex opti_signin-captcha">
+                    <!-- <div class="opti_captcha-box"> -->
+                    <span class="float-left opti_captcha-text">
+                        <input required class="k-textbox" #Captcha=ngModel [(ngModel)]="capchaText" (input)="this.invalidCapcha = false" type="text" name="captchatext" required />
+                    </span>
+                    <span class="float-left opti_captcha-canvas">
+                        <canvas #myCanvas id="captchaCanvasID" width="70" height="30">Your browser does not support the HTML5 canvas tag.</canvas>
+                    </span>
+                    <span class="float-left opti_captcha-refresh">
+                        <button (click)="changeCaptcha()" class="opti_remove-button-css">
+                            <img src="assets/images/common/refresh-button-white.svg" width="20" height="20" />
+                        </button>
+                    </span>
+                     
+                    <!-- <div class="opti_error-msg opti_display-inline-block">
+                        <span class="opti_error-msg"  *ngIf="invalidCapcha==true"  >Please enter valid captcha.</span>
+                        <span class="opti_error-msg" *ngIf="Captcha.errors && (Captcha.dirty || Captcha.touched)">Captcha is required.</span>
+                    </div> -->
+
+                    <!-- </div> -->
+                </label>
+
                 <label class="k-form-field" >
                     <div class="opti_checkbox-container">
                     <input type="checkbox" id="auth-2fa" class="k-checkbox float-left" checked="checked">
@@ -37,14 +66,16 @@
                     </div>
 
                 </label>
+
+                
             
                 <div class="text-right">
                   <button type="button" class="k-button k-primary" (click)="login()" [disabled] = "!signInForm.form.valid">Login</button>
                 </div> 
-                <br/>
-                <label class="k-form-field opti_target-link text-center">
+                <!-- <br/> -->
+                <!-- <label class="k-form-field opti_target-link text-center">
                     <label class="opti_mouse-pointer"><a (click)="navigateToSignUp(1)">Customer Sign Up</a> | <a (click)="navigateToSignUp(2)">Vendor Sign Up</a></label>
-                </label>
+                </label> -->
         </form>
         <!-- </div> -->
       </div>  

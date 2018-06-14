@@ -56,11 +56,11 @@
 // CSS Related To signin Page
 /////////////////////////////
 .opti_body-login #opti_signinID{
-    .opti_login-brandlogo img{
-        max-width: 81%;
-        margin-left: 8%;
-        margin-right: 8%;
-    }
+    // .opti_login-brandlogo img{
+    //     max-width: 81%;
+    //     margin-left: 8%;
+    //     margin-right: 8%;
+    // }
 
     .opti_vertcal-align-outer-box{
         padding: 10px 0;
@@ -74,8 +74,27 @@
     //         width: 100%;
     //     }
     // }
+
+    .opti_login-brandlogo{
+        position: relative;
+        width: 100%;
+        text-align: center;
+        // margin: 40px 0;
+    }
 }
 
 ////////////////////////////////////
-// Css Related To SetPassword page
+// Css Related To landing page
 ////////////////////////////////////
+
+#opti_landingpageID{
+    .opti_vertcal-align-outer-box{
+        height: 96px;
+        text-align: center;
+        .panel-body{
+            .float-left, .float-right{
+                float: none !important;
+            }
+        }
+    }
+}

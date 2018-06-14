@@ -16,7 +16,7 @@
   body.opti_body-signup,
   body.opti_body-reset-password
   {
-    background-image: url('/assets/images/signin/dummy1.jpg');
+    background-image: url('/assets/images/account/account-process.jpg');
     background-position: center center;
     background-size: cover;
 
@@ -71,6 +71,6 @@
  
 
 // CSS on Input
-input{
+input[type="text"], input[type="email"], input[type="password"]{
   color: #333 !important;
 }
