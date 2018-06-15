@@ -1,5 +1,7 @@
-@import '_typography_button_layout';
+@import '_typography-button-layout';
 @import '_responsive';
+@import '_custom-kendo';
+@import '_common';
 
 
 /////////////////////////////////////////////////////////////////////
@@ -23,59 +25,8 @@
     {
       background-color: $white;
     }
-
-    // Overrite css for kendo 
-    .k-form .k-form-field, .k-form .k-form-field:last-child, .k-form-inline .k-form-field, .k-form-inline .k-form-field:last-child {
-        margin-bottom: 8px !important;
-    }
-    .k-textbox, .k-input.k-textbox, .k-textarea, .k-dropdown-wrap > .k-input{
-      font-size: 12px !important;
-    }
   }
-
-  
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////End Account CSS/////////////////////////
 /////////////////////////////////////////////////////////////////////  
 
-
-/////////////////////////////////////////////////////////////////////
-/////////////////////////////Overrite kendo css//////////////////////
-/////////////////////////////////////////////////////////////////////  
-body{
-  // CSS on Input
-  input[type="text"], input[type="email"], input[type="password"]{
-    color: #333 !important;
-  }
-
-  // css on dropdown
-  .k-dropdown .k-dropdown-wrap{
-    background-color: $white !important;
-  }
-
-  kendo-popup{
-    kendo-list{
-      ul{
-        li{
-          font-size: 12px !important;
-        }
-        li.k-state-focused{
-          box-shadow: none !important;
-          background-color: #c7c7c7 !important;
-        }
-      }
-    }
-  }
-
-  // css on form
-  .k-form, .k-form-inline {
-    padding: 25px;
-  }
-
-  // remove red error from input field on first time load 
-  .ng-untouched.ng-invalid{
-    border-color: transparent;
-  }
-}
-
-  

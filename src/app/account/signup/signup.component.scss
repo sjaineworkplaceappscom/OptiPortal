@@ -1,9 +1,5 @@
 @import 'src/assets/css/web/account_module/account';
 
-kendo-dropdownlist{
-    width: 100%;
-}
-
 .opti_signupbox{
     padding: 15px;
     background-color: $white;
@@ -68,7 +64,7 @@ kendo-dropdownlist{
     border:1px solid $white;
     border-radius: 5px;
     margin-left: 5px;
-    background-image:url('/src/assets/images/common/captcha-background.jpg'); 
+    background-image:url('src/assets/images/common/captcha-background.jpg'); 
     background-repeat: repeat;
 }
 

@@ -1,0 +1,76 @@
+body{
+    // CSS on Input
+    input[type="text"], input[type="email"], input[type="password"]{
+      color: #333 !important;
+    }
+  
+    // css on dropdown
+    .k-dropdown .k-dropdown-wrap{
+      background-color: $white !important;
+    }
+  
+    kendo-popup{
+      kendo-list{
+        ul{
+          li{
+            font-size: 12px !important;
+          }
+          li.k-state-focused{
+            box-shadow: none !important;
+            background-color: #c7c7c7 !important;
+          }
+        }
+      }
+    }
+  
+    kendo-dropdownlist{
+        width: 100% !important;
+    }
+  
+    // css on form
+    .k-form, .k-form-inline {
+      padding: 20px;
+    }
+  
+    // remove red error from input field on first time load 
+    .ng-untouched.ng-invalid{
+      border-color: transparent;
+    }
+  
+    // bottom space of label 
+    .k-form .k-form-field, .k-form .k-form-field:last-child, .k-form-inline .k-form-field, .k-form-inline .k-form-field:last-child {
+      margin-bottom: 8px !important;
+    }
+  
+    // font size of input
+    .k-textbox, .k-input.k-textbox, .k-textarea, .k-dropdown-wrap > .k-input{
+      font-size: 12px ;
+    }
+  
+    // form label
+    .k-radio-label, .k-checkbox-label{
+      font-size: 12px;
+      margin-bottom: 0 !important;
+    }
+  
+    // button
+    button.k-button{
+      border-radius: 5px ;
+      box-shadow: none;
+      border: 1px solid;
+      cursor: pointer ;
+      padding: 5px 10px ;
+      font-size: 12px ;
+      border: none;
+      &:focus {
+          outline: none;
+      }
+    }
+  
+    button.k-button:first-child{
+      margin: 0 5px 0 0;
+    }
+    button.k-button:last-child{
+        margin: 0 0 0 5px;    
+    }
+  }
