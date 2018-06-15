@@ -71,6 +71,11 @@ body{
   .k-form, .k-form-inline {
     padding: 25px;
   }
+
+  // remove red error from input field on first time load 
+  .ng-untouched.ng-invalid{
+    border-color: transparent;
+  }
 }
 
   
