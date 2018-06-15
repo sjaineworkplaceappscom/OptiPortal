@@ -11,10 +11,7 @@
   // set password
   // login
   // signup
-  body.opti_body-set-password,
-  body.opti_body-login,
-  body.opti_body-signup,
-  body.opti_body-reset-password
+  body.opti_account-module
   {
     background-image: url('/assets/images/account/account-process.jpg');
     background-position: center center;
@@ -41,28 +38,39 @@
 /////////////////////////////End Account CSS/////////////////////////
 /////////////////////////////////////////////////////////////////////  
 
- 
 
-// CSS on Input
-input[type="text"], input[type="email"], input[type="password"]{
-  color: #333 !important;
-}
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////Overrite kendo css//////////////////////
+/////////////////////////////////////////////////////////////////////  
+body{
+  // CSS on Input
+  input[type="text"], input[type="email"], input[type="password"]{
+    color: #333 !important;
+  }
 
-// css on dropdown
-.k-dropdown .k-dropdown-wrap{
-  background-color: $white !important;
-}
+  // css on dropdown
+  .k-dropdown .k-dropdown-wrap{
+    background-color: $white !important;
+  }
 
-kendo-popup{
-  kendo-list{
-    ul{
-      li{
-        font-size: 12px !important;
-      }
-      li.k-state-focused{
-        box-shadow: none !important;
-        background-color: #c7c7c7 !important;
+  kendo-popup{
+    kendo-list{
+      ul{
+        li{
+          font-size: 12px !important;
+        }
+        li.k-state-focused{
+          box-shadow: none !important;
+          background-color: #c7c7c7 !important;
+        }
       }
     }
   }
+
+  // css on form
+  .k-form, .k-form-inline {
+    padding: 25px;
+  }
 }
+
+  

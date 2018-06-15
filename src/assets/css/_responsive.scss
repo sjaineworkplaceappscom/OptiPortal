@@ -6,19 +6,13 @@
     @media screen and (min-width: 480px) and (max-width: 767px){
         @import 'device/mobile/_mobile';
         
-            /////////////////////////////////////
-            // SignUp, SignIn, SetPassword
-            ////////////////////////////////////
-            .opti_body-set-password #opti_setPasswordID,
-            .opti_body-signup #opti_signupPageID,
-            .opti_body-login #opti_signinID,
-            .opti_body-reset-password #opti_resetPasswordID
+            //////////////////////////////////////////////
+            // SignUp, SignIn, SetPassword, resetpassword
+            //////////////////////////////////////////////
+            .opti_account-module .opti_account-submodule-wrapper
             {
                 @media screen and (orientation:landscape) {
-                    .opti_outer-setpassword,
-                    .opti_outer-signup-form,
-                    .opti_outer-login-form,
-                    .opti_outer-resetpassword
+                    .opti_account-submodule-container
                     {
                         width: 100%;
                         margin-left: 0;

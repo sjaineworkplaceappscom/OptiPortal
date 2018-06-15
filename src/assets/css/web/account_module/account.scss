@@ -1,19 +1,5 @@
 @import '../../_typography_button_layout';
 
-// .k-form-field {
-//   span{
-//       font-size: 12px;
-//       color: red;
-//       margin-bottom: 0 !important;
-//   }
-// }
-
-// .opti_login-brandlogo {
-//   position: fixed;
-//   left: 25px;
-//   top: 25px;
-// }
-
 h5, h6{
   color: $white;
 }
@@ -29,8 +15,6 @@ a:hover{
 
 .opti_vertcal-align-outer-box{
   height: 100vh;
-  // display: flex;
-  // align-items: center;
   @extend .opti_vertical-align;
 }
 
@@ -44,10 +28,7 @@ a:hover{
   border-radius: 5px;
 }
 
-.opti_outer-setpassword, 
-.opti_outer-login-form,
-.opti_outer-signup-form,
-.opti_outer-resetpassword{
+.opti_account-submodule-container{
   width: 370px;
   max-width: 100%;
   margin-left: 160px;
