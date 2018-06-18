@@ -1,76 +1,78 @@
 <section id="opti_MainContentID" [perfectScrollbar]="config" class="opti_position-relative">
   <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
-        <app-approve-users *ngIf="approveUser==true"></app-approve-users>
-
-            <!-- <div class="row example-wrapper">
-                <div class="col-xs-12 col-sm-6 offset-sm-3 example-col">
-                    <div class="card">
-                        <div class="card-block">
-                            <form class="k-form">
-                                <fieldset>
-                                    <legend>User Details</legend>
-              
-                                    <label class="k-form-field">
-                                        <span>First Name</span>
-                                        <input class="k-textbox" placeholder="Your Name" />
-                                    </label>
-                                    <label class="k-form-field">
-                                        <span>Last Name</span>
-                                        <input class="k-textbox" value="Batista" placeholder="Your Last Name" />
-                                    </label>
-                                    <div class="k-form-field">
-                                        <span>Gender</span>
-              
-                                        <input type="radio" name="gender" id="female" class="k-radio">
-                                        <label class="k-radio-label" for="female">Female</label>
-              
-                                        <input type="radio" name="gender" id="male" class="k-radio" checked="checked">
-                                        <label class="k-radio-label" for="male">Male</label>
-                                    </div>
-                                    <label class="k-form-field">
-                                        <span>Email <span class="k-required">*</span></span>
-                                        <input type="email" class="k-textbox" value="bernardo.batista@progress.com" placeholder="Your Email" />
-                                    </label>
-                                    <label class="k-form-field">
-                                        <span>Company<span class="k-field-info">optional</span></span>
-                                        <input class="k-textbox" placeholder="Your Company" />
-                                    </label>
-                                </fieldset>
-              
-                                <fieldset>
-                                    <legend>Credentials</legend>
-                                    <label class="k-form-field">
-                                        <span>Username</span>
-                                        <input class="k-textbox" value="bbatista" placeholder="Your username" />
-                                    </label>
-                                    <label class="k-form-field">
-                                        <span>Password</span>
-                                        <input type="password" class="k-textbox" value="123456" placeholder="Your password"/>
-                                    </label>
-                                    <label class="k-form-field">
-                                        <input type="checkbox" id="auth-2fa" class="k-checkbox" checked="checked">
-                                        <label class="k-checkbox-label" for="auth-2fa">Enable two-factor authentication</label>
-                                    </label>
-                                </fieldset>
-              
-                                <div class="text-right">
-                                  <button type="button" class="k-button">Cancel</button>
-                                  <button type="button" class="k-button k-primary">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-              </div> -->
-
-<!-- 
+        <div class="col-md-7">
+             <app-approve-users *ngIf="approveUser==true"></app-approve-users>
             <p>123 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> -->
-            
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
         </div>
+
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-block">
+                    <form class="k-form">
+                        <label class="k-form-field">
+                            <span class="opti_form-label">First Name</span>
+                            <input class="k-textbox" placeholder="Your Name" />
+                        </label>
+
+                        <label class="k-form-field">
+                            <span class="opti_form-label">Last Name</span>
+                            <input class="k-textbox" value="Batista" placeholder="Your Last Name" />
+                        </label>
+
+                        <div class="k-form-field">
+                            <span class="opti_form-label">Gender</span>
+
+                            <input type="radio" name="gender" id="female" class="k-radio">
+                            <label class="k-radio-label" for="female">Female</label>
+
+                            <input type="radio" name="gender" id="male" class="k-radio" checked="checked">
+                            <label class="k-radio-label" for="male">Male</label>
+                        </div>
+
+                        <label class="k-form-field">
+                            <span class="opti_form-label">Email <span class="k-required">*</span></span>
+                            <input type="email" class="k-textbox" value="bernardo.batista@progress.com" placeholder="Your Email" />
+                        </label>
+
+                        <label class="k-form-field">
+                            <kendo-dropdownlist name="role" [data]="roles" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedItem">
+                            </kendo-dropdownlist>
+                        </label>
+
+                        <label class="k-form-field">
+                            <span class="opti_form-label">Company<span class="k-field-info">optional</span></span>
+                            <input class="k-textbox" placeholder="Your Company" />
+                        </label>
+                    
+
+
+                        <label class="k-form-field">
+                            <span class="opti_form-label">Username</span>
+                            <input class="k-textbox" value="bbatista" placeholder="Your username" />
+                        </label>
+                        <label class="k-form-field">
+                            <span class="opti_form-label">Password</span>
+                            <input type="password" class="k-textbox" value="123456" placeholder="Your password"/>
+                        </label>
+                        <label class="k-form-field">
+                            <input type="checkbox" id="auth-2fa" class="k-checkbox" checked="checked">
+                            <label class="k-checkbox-label" for="auth-2fa">Enable two-factor authentication</label>
+                        </label>
+    
+    
+                        <div class="text-right">
+                            <button type="button" class="k-button">Cancel</button>
+                            <button type="button" class="k-button">Save as draft</button>
+                            <button type="button" class="k-button k-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
     </div>
   </div>
 </section>

@@ -1,5 +1,7 @@
-@import '_typography_button_layout';
+@import '_typography-button-layout';
 @import '_responsive';
+@import '_custom-kendo';
+@import '_common';
 
 
 /////////////////////////////////////////////////////////////////////
@@ -11,12 +13,9 @@
   // set password
   // login
   // signup
-  body.opti_body-set-password,
-  body.opti_body-login,
-  body.opti_body-signup,
-  body.opti_body-reset-password
+  body.opti_account-module
   {
-    background-image: url('/assets/images/signin/dummy1.jpg');
+    background-image: url('/assets/images/account/account-process.jpg');
     background-position: center center;
     background-size: cover;
 
@@ -26,46 +25,8 @@
     {
       background-color: $white;
     }
-
-    // Overrite css for kendo 
-    .k-form .k-form-field, .k-form .k-form-field:last-child, .k-form-inline .k-form-field, .k-form-inline .k-form-field:last-child {
-        margin-bottom: 8px !important;
-    }
-    .k-textbox, .k-input.k-textbox, .k-textarea, .k-dropdown-wrap > .k-input{
-      font-size: 12px !important;
-    }
-  }
-
-  // signup
-  .opti_body-signup{
-    // dropdown
-    .k-dropdown .k-dropdown-wrap{
-        background-color: $white ;
-    }
-
-    kendo-popup{
-      kendo-list{
-        ul{
-          li{
-            font-size: 12px !important;
-          }
-          li.k-state-focused{
-            box-shadow: none !important;
-            background-color: #c7c7c7 !important;
-          }
-        }
-      }
-    }
-
-
-    label.k-form-field.opti_signup-company-label, label.k-form-field.opti_signup-primary-label  {
-        margin-bottom: 0 !important;
-        clear: both;
-    }
-
   }
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////End Account CSS/////////////////////////
 /////////////////////////////////////////////////////////////////////  
 
- 

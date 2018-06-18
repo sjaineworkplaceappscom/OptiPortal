@@ -13,6 +13,7 @@ export class SetPasswordComponent implements OnInit {
   showLoader: boolean = false;
   userId: string;
   userLoginEmail: string;
+  resetPassword: string;
   userModel: UserModel = new UserModel();
   constructor(private route: ActivatedRoute, private accountService: AccountService, private router: Router) { }
 
@@ -21,13 +22,14 @@ export class SetPasswordComponent implements OnInit {
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
     element.classList.add("opti_body-set-password");
+    element.classList.add("opti_account-module");
 
     this.route.queryParams.subscribe(
       param => {
         //this.userId=param['userId'];
         this.userLoginEmail = param['userLoginEmail'];
         this.userId = param['userId'];
-
+        this.resetPassword = param['resetPassword'];
       }
     );
   }
@@ -37,15 +39,40 @@ export class SetPasswordComponent implements OnInit {
     this.showLoader = true;
     this.userModel.UserName = this.userId;
     this.userModel.Email = this.userLoginEmail;
-    this.accountService.setPassword(this.userModel).subscribe(
-      data => {
 
-        alert('Welcome to optipro Portals, your password set successfully.');
-        this1.showLoader = false;
-        this.router.navigateByUrl('/login');
-      }
-    );
+    if (this.resetPassword == 'True') {
+      debugger
+      this.accountService.resetPassword(this.userId, this.userModel.Password).subscribe(
+        data => {
+          alert('Your password set successfully.');
+          this1.showLoader = false;
+          this.router.navigateByUrl('/login');
+        },
+        err => {
+          this.showLoader = false;
+          alert('Something went wrong please retry.')
+          console.log(err);
 
+        }
+
+      );
+    }
+    else {
+      this.accountService.setPassword(this.userModel).subscribe(
+        data => {
+
+          alert('Welcome to optipro Portals, your password set successfully.');
+          this1.showLoader = false;
+          this.router.navigateByUrl('/login');
+        },
+        err => {
+          this.showLoader = false;
+          alert('Something went wrong please retry.')
+          console.log(err);
+
+        }
+      );
+    }
   }
 
   passwordStrengthStatus: number = 0;

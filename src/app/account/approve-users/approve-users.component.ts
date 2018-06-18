@@ -11,29 +11,36 @@ export class ApproveUsersComponent implements OnInit {
   private approveList:any;
   public mySelection: number[] = [];
   constructor(private accountService: AccountService) {
-    this.accountService.getInactiveUsers().subscribe(
-      (data: any) => {
-        this.items = JSON.parse(data, null);
-      }
-    );
+    
   }
 
   ngOnInit() {
-
+    this.getInactiveUsersData();
   }
 
   approveUsers(){      
-    this.accountService.inviteUsers(this.mySelection.toString());
-    this.accountService.getInactiveUsers().subscribe(
-      (data: any) => {
-        this.items = JSON.parse(data, null);
+    this.accountService.inviteUsers(this.mySelection.toString()).subscribe(
+      data => {
+        alert('User(s) Approved successfully.');
+        this.getInactiveUsersData();
       }
     );
+   
     
   }
 
   rejectUsers(){      
-    this.accountService.rejectUsers(this.mySelection.toString());
+    this.accountService.rejectUsers(this.mySelection.toString()).subscribe(
+      data => {
+        alert('User(s) Rejected successfully.');
+        this.getInactiveUsersData();
+      }
+    );
+
+    
+  }
+
+  getInactiveUsersData(){
     this.accountService.getInactiveUsers().subscribe(
       (data: any) => {
         this.items = JSON.parse(data, null);

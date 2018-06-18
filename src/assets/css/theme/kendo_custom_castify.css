@@ -7909,7 +7909,7 @@ div.k-grid-footer {
   .k-textarea.k-state-focused,
   .k-input.k-textbox:focus,
   .k-input.k-textbox.k-state-focused {
-    border-color: white;
+    border-color: #ff8382;
     box-shadow: none; }
   .k-input:invalid, .k-input.k-state-invalid, .k-input.ng-invalid.ng-touched, .k-input.ng-invalid.ng-dirty,
   .k-textbox:invalid,

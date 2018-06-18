@@ -1,17 +1,48 @@
 @import 'src/assets/css/web/account_module/account';
-.opti_login-brandlogo {
-  text-align: center;
-  img{
-    background: $white;
-    border-radius: 5px;
-    width: auto;
-    max-width: 305px;
-    margin-top: 2rem;
-    padding: 10px;
-  }
-}
+// .opti_login-brandlogo {
+//   text-align: center;
+//   img{
+//     background: $white;
+//     border-radius: 5px;
+//     width: auto;
+//     max-width: 305px;
+//     margin-top: 2rem;
+//     padding: 10px;
+//   }
+// }
 
 .opti_target-link{
   position: relative;
   top:12px;
+}
+
+.opti_vertcal-align-outer-box {
+  height: calc(100vh - 65px);
+}
+
+.opti_login-brandlogo {
+  height: 65px;
+  background: rgba(0, 0, 0, 0.7);
+  .opti_vertical-align{
+    height: 100%;
+  }
+}
+
+#captchaCanvasID{
+  border:1px solid $white;
+  border-radius: 5px;
+  margin-left: 5px;
+  background-image:url('src/assets/images/common/captcha-background.jpg'); 
+  background-repeat: repeat;
+}
+
+.opti_display-inline-flex {
+  display: inline-flex !important;
+}
+.opti_signin-captcha{
+  margin-top: 10px;
+}
+
+.opti_captcha-refresh button {
+  margin-top: 2px;
 }

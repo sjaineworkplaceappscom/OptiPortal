@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 import { Router } from '@angular/router';
@@ -20,16 +20,27 @@ export class SigninComponent implements OnInit {
   invalidCredentialMsg: string = "";
   userName: string;
   password: string;
+  randomstring = '';
 
   constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: Commonservice) { }
 
+  @ViewChild('myCanvas') myCanvas;
+
   ngOnInit() {
+
+    this. getRandomStringForCaptcha();
+    this.customCaptcha(this.randomstring);
+
     this.userName = '';
     this.password = '';
+    
 
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
     element.classList.add("opti_body-login");
+    element.classList.add("opti_account-module");
+
+    
 
   }
 
@@ -112,6 +123,35 @@ export class SigninComponent implements OnInit {
       this.commonService.setCurrentNavigatedFromData(3);
     }
     this.router.navigateByUrl('/signup');
+  }
+
+  navigateToResetPassword(){
+    this.router.navigateByUrl('/resetpassword');
+  }
+
+
+  customCaptcha(string){
+    let c = this.myCanvas.nativeElement;
+    let ctx = c.getContext("2d");
+    ctx.font = "15px Arial";
+    ctx.clearRect(0, 0, 252, 144);
+    ctx.fillStyle = "black";
+    ctx.fillText(string, 15, 21);
+  }
+
+  getRandomStringForCaptcha(){
+      let chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+      let string_length = 4;
+      for (var i=0; i<string_length; i++) {
+        let rnum = Math.floor(Math.random() * chars.length);
+        this.randomstring += chars.substring(rnum,rnum+1);
+      }
+  }
+
+  changeCaptcha(){
+    this.randomstring = '';
+    this.getRandomStringForCaptcha();
+    this.customCaptcha(this.randomstring);
   }
 
 }

@@ -1,0 +1,178 @@
+body{
+
+    // css for form label
+    .opti_form-label{
+      font-size: 12px;
+      margin-bottom: 0 !important;
+    }
+  
+    // Loader
+    .opti_loader {
+      position: absolute;
+      background: rgba(255,255,255,0.8);
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      z-index: 99;
+  
+        @extend .opti_vertical-align;
+        .opti_spinner {
+            border: 3px solid #c7c7c7;
+            border-radius: 50%;
+            border-top: 3px solid;
+            border-top-color: #3498db;
+            width: 25px;
+            height: 25px;
+            -webkit-animation: spinloader 0.5s linear infinite; /* Safari */
+            animation: spinloader 0.5s linear infinite;
+            margin: 0 auto;
+        }
+        
+        /* Safari */
+        @-webkit-keyframes spinloader {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        
+        @keyframes spinloader {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    }
+    
+    // password indicator
+    .opti_password-indicator-stripped{
+      height: 4px;
+      overflow: hidden;
+      background-color: #c7c7c7;
+      border-radius: 5px;
+      -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+      margin-top: 8px !important;
+      .opti_weak-pass{
+          @include password-mg-indicator(40%, #d9534f)
+      }
+      .opti_medium-pass{
+          @include password-mg-indicator(60%, #f0ad4e)
+      }
+      .opti_strong-pass{
+          @include password-mg-indicator(80%, #5cb85c)
+      }
+      .opti_strong-pass-full{
+          @include password-mg-indicator(100%, #5cb85c)
+      }
+    }
+  
+    // Remove button css
+    button.opti_remove-button-css{
+      border: none;
+      background: none;
+    }
+  
+    // Error css
+    .opti_error-msg{
+      color: $error !important;
+      font-size: 12px;
+    }
+  
+    // List style 1 using in left panel
+    ul.opti_liststyle-one-ul{
+      .opti_liststyle-one-li{
+          display: flex;
+          padding: 10px 15px;
+          border-bottom: 1px solid rgba(120, 130, 140, 0.13);
+          cursor: pointer;
+          .opti_liststyle-one-image {
+              width: 30px;
+              float: left;
+          }
+          .opti_liststyle-one-text {
+              float: left;
+              width: calc(100% - 30px);
+              padding-left: 10px;
+              h5, p{
+                  margin-bottom: 0;
+              }
+              p.opti_date {
+                  font-size: 12px;
+              }
+          }
+          img{
+              border-radius: 50%;
+          }
+      }
+    }
+  
+    //Default Styling For List
+    ul{
+      padding: 0;
+      margin: 0;
+      li.opti_list{
+          padding: 10px 15px;
+          border-bottom: 1px solid rgba(120, 130, 140, 0.13);
+          cursor: pointer;
+      }
+    }
+  
+    ul{
+      li{
+          list-style: none;
+      }
+    }
+  
+    // Content Padding
+    .opt_content-padding{
+      padding-top: 15px;
+      padding-bottom:15px;
+    }
+  
+    // Default Top Bar Height
+    .opt_top-bar-height{
+      height: $top-bar-height;
+    }
+  
+    // Icon spacing
+    .opti_icon-spacing{
+      padding: 0 10px;
+    }
+    .opti_icon-spacing:first-child{
+      padding: 0 10px 0 0;
+    }
+    .opti_icon-spacing:last-child{
+      padding: 0 0 0 10px;
+    }
+  
+    // Position Relative
+    .opti_position-relative{
+      position: relative;
+    }
+  
+    // Display Inline
+    .opti_display-inline{
+      display: inline;
+    }
+  
+    // Display Inline Block
+    .opti_display-inline-block{
+      display: inline-block;
+    }
+  
+    // Display Inline Flex
+    .opti_display-inline-flex{
+      display: inline-flex;
+    }
+  
+    // Anchor Pointer
+    .opti_mouse-pointer{
+      cursor: pointer;
+    }
+  
+    // prevent to increase size of scrollbar
+    .ps__rail-y{
+      width: 6px !important;
+      .ps__thumb-y{
+        width: 6px !important;
+      }
+    }
+  
+  }

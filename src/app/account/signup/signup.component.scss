@@ -1,9 +1,5 @@
 @import 'src/assets/css/web/account_module/account';
 
-kendo-dropdownlist{
-    width: 100%;
-}
-
 .opti_signupbox{
     padding: 15px;
     background-color: $white;
@@ -20,13 +16,13 @@ kendo-dropdownlist{
     }
 }
 
-.opti_fprm-inner{
-    padding: 15px;
-}
+// .opti_fprm-inner{
+//     padding: 15px;
+// }
 
-.k-form, .k-form-inline{
-    padding: 10px !important;
-}
+// .k-form, .k-form-inline{
+//     padding: 10px !important;
+// }
 
 .opti_signup-companyname, 
 .opti_signup-url{
@@ -60,8 +56,8 @@ kendo-dropdownlist{
     display: inline-block !important;
 }
 
-button.opti_remove-button-css {
-    margin-top: 5px;
+.opti_captcha-refresh button {
+    margin-top: 2px;
 }
 
 #captchaCanvasID{
@@ -70,4 +66,12 @@ button.opti_remove-button-css {
     margin-left: 5px;
     background-image:url('src/assets/images/common/captcha-background.jpg'); 
     background-repeat: repeat;
+}
+
+
+#opti_signupPageID{
+    label.k-form-field.opti_signup-company-label, label.k-form-field.opti_signup-primary-label  {
+        margin-bottom: 0 !important;
+        clear: both;
+    }
 }
