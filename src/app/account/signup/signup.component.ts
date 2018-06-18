@@ -7,7 +7,7 @@ import { CommonMessages } from 'src/common-messages';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Commonservice } from '../../services/commonservice.service';
-import { UserType } from '../../enums/enums';
+
 
 
 
@@ -26,9 +26,9 @@ export class SignupComponent implements OnInit {
   companyDetail: CompanyDetail = new CompanyDetail();
   public companyId: string = '';
   randomstring = '';
-  turmsOfUse: any = null;
-  capchaText: string;
-
+  turmsOfUse:any = null;
+  capchaText:string;
+  emailRegex: string = "/^(([^[]()[\]\\.,;:\s@\"]+(\.[^[]()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/";
   public roles: Array<{ text: string, value: string }> = [
     { text: "Please Select Role", value: '0' },
     { text: "Admin", value: '41F23977-C709-4B7C-BBEE-16A539211E9C' },
