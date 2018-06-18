@@ -119,7 +119,7 @@ export class AccountService {
   }
 
   public getCustomerByCode(code:string){
-    return this.httpHelper.put(this.baseUrl + 'customer/databyCode',code,null);
+    return this.httpHelper.get(this.baseUrl + 'customer/'+code,null,true);
   }
 
   public sendResetPasswordLink(email:string){

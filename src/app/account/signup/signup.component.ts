@@ -4,9 +4,10 @@ import { AccountService } from 'src/app/services/account.service';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { CompanyDetail } from '../../models/company/companyDetail';
 import { CommonMessages } from 'src/common-messages';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Commonservice } from '../../services/commonservice.service';
+import { UserType } from '../../enums/enums';
 
 
 
@@ -16,17 +17,17 @@ import { Commonservice } from '../../services/commonservice.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  invalidRole:boolean=false;
-  invalidCapcha:boolean=false;
-  showLoader:boolean=false;
+  invalidRole: boolean = false;
+  invalidCapcha: boolean = false;
+  showLoader: boolean = false;
   registerReq: RegisterRequest = new RegisterRequest();
   userType: number;
   isSuperAdmin: boolean = false;
   companyDetail: CompanyDetail = new CompanyDetail();
   public companyId: string = '';
   randomstring = '';
-  turmsOfUse:any = null;
-  capchaText:string;
+  turmsOfUse: any = null;
+  capchaText: string;
 
   public roles: Array<{ text: string, value: string }> = [
     { text: "Please Select Role", value: '0' },
@@ -42,11 +43,11 @@ export class SignupComponent implements OnInit {
   // Error Bits
   invalidCompanyId: boolean = false;
 
-  constructor(private accountService: AccountService,private router:Router,private commonService:Commonservice,) { }
+  constructor(private accountService: AccountService, private router: Router, private commonService: Commonservice, ) { }
 
   ngOnInit() {
 
-    this. getRandomStringForCaptcha();
+    this.getRandomStringForCaptcha();
     this.customCaptcha(this.randomstring);
 
     const element = document.getElementsByTagName("body")[0];
@@ -58,14 +59,14 @@ export class SignupComponent implements OnInit {
 
     //var systemAdmin: any=localStorage.getItem('SystemAdmin');
     this.commonService.currentNavigatedFromValue.subscribe(
-      data=> {
-        this.userType=data;
+      data => {
+        this.userType = data;
       }
     )
-    
+
   }
 
-  customCaptcha(string){
+  customCaptcha(string) {
     let c = this.myCanvas.nativeElement;
     let ctx = c.getContext("2d");
     ctx.font = "15px Arial";
@@ -74,16 +75,16 @@ export class SignupComponent implements OnInit {
     ctx.fillText(string, 15, 21);
   }
 
-  getRandomStringForCaptcha(){
-      let chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-      let string_length = 4;
-      for (var i=0; i<string_length; i++) {
-        let rnum = Math.floor(Math.random() * chars.length);
-        this.randomstring += chars.substring(rnum,rnum+1);
-      }
+  getRandomStringForCaptcha() {
+    let chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+    let string_length = 4;
+    for (var i = 0; i < string_length; i++) {
+      let rnum = Math.floor(Math.random() * chars.length);
+      this.randomstring += chars.substring(rnum, rnum + 1);
+    }
   }
 
-  changeCaptcha(){
+  changeCaptcha() {
     this.randomstring = '';
     this.getRandomStringForCaptcha();
     this.customCaptcha(this.randomstring);
@@ -92,69 +93,88 @@ export class SignupComponent implements OnInit {
   // Click on Login button.
   submit() {
 
-    if(this.capchaText!=this.randomstring){
-        this.invalidCapcha=true;
-        return;
-     }
-     
-    if(this.selectedItem.value==this.roles[0].value){
-      this.invalidRole = true;   
-      return;         
-    }
-    else{
-      this.invalidRole=false;
+    if (this.capchaText != this.randomstring) {
+      this.invalidCapcha = true;
+      return;
     }
 
-    this.registerReq.RequesterParentCode=this.companyId;
-    this.registerReq.RequesterParentType=this.userType;    
-    this.showLoader=true;
+    if (this.selectedItem.value == this.roles[0].value) {
+      this.invalidRole = true;
+      return;
+    }
+    else {
+      this.invalidRole = false;
+    }
+
+    this.registerReq.RequesterParentCode = this.companyId;
+    this.registerReq.RequesterParentType = this.userType;
+    this.showLoader = true;
     this.accountService.registerUser(this.registerReq).subscribe(
-      data => {        
-        this.showLoader=false;
-        alert(CommonMessages.RegistrationSuccess);      
+      data => {
+        this.showLoader = false;
+        alert(CommonMessages.RegistrationSuccess);
         this.router.navigateByUrl('/login');
       },
-      (err:HttpErrorResponse)=>{
+      (err: HttpErrorResponse) => {
         alert('Something went wrong. please check console log for more detail.');
-        this.showLoader=false;
+        this.showLoader = false;
         console.log(err);
       }
     );
-   
+
   }
 
-  changeValue(){
+  changeValue() {
     this.invalidCapcha = false;
-    console.log("change boolean: "+this.invalidCapcha);
+    console.log("change boolean: " + this.invalidCapcha);
   }
+
   // On blur of compane id
   getCompaneyDetail() {
-    
-    this.companyDetail=new CompanyDetail();
-    // Dummy Data.
-    if (this.companyId.toUpperCase() == 'C001') {      
-      this.companyDetail.CompanyName = "Samsung";
-      this.companyDetail.PrimaryContactEmail = "sjain@eworkplaceapps.com";
-      this.companyDetail.PrimaryContactName = "Shashank Jain";
-    }
-    else if (this.companyId.toUpperCase() == 'C002') {
-      this.companyDetail.CompanyName = "Apple";
-      this.companyDetail.PrimaryContactEmail = "rpawar@eworkplaceapps.com";
-      this.companyDetail.PrimaryContactName = "Rohit Pawar";
-    }
-    else {      
-        
-    }
 
-    // this.accountService.getCustomerByCode(this.companyId).subscribe(
-    //   req => {
-    //     this.companyDetail = req[0];
-    //     if(this.companyDetail==null || this.companyDetail==undefined){
-    //       this.invalidCompanyId=true;
-    //     }
-    //   }
-    // )
+    this.companyDetail = new CompanyDetail();
+   
+    if (this.userType == 2) {
+      this.showLoader = true;
+      this.accountService.getCustomerByCode(this.companyId).subscribe(
+        (req: any) => {
+          req = JSON.parse(req, null);
+          this.showLoader = false;
+          this.companyDetail = req[0];
+          if (this.companyDetail == null || this.companyDetail == undefined) {
+            this.invalidCompanyId = true;
+          }
+        }
+        ,
+        (err: HttpErrorResponse) => {
+          alert('Something went wrong. please check console log for more detail.');
+          this.showLoader = false;
+          this.invalidCompanyId = false;
+          console.log(err);
+        }
+      );
 
+    }
+    else if(this.userType==3){
+      this.showLoader = true;
+      this.accountService.getCustomerByCode(this.companyId).subscribe(
+        (req: any) => {
+          req = JSON.parse(req, null);
+          this.showLoader = false;
+          this.companyDetail = req[0];
+          if (this.companyDetail == null || this.companyDetail == undefined) {
+            this.invalidCompanyId = true;
+          }
+        }
+        ,
+        (err: HttpErrorResponse) => {
+          alert('Something went wrong. please check console log for more detail.');
+          this.showLoader = false;
+          this.invalidCompanyId = false;
+          console.log(err);
+        }
+      );
+    }
   }
-  
+
 }
