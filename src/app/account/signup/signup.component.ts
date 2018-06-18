@@ -157,7 +157,7 @@ export class SignupComponent implements OnInit {
     }
     else if(this.userType==3){
       this.showLoader = true;
-      this.accountService.getCustomerByCode(this.companyId).subscribe(
+      this.accountService.getVendorByCode(this.companyId).subscribe(
         (req: any) => {
           req = JSON.parse(req, null);
           this.showLoader = false;

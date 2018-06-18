@@ -122,6 +122,11 @@ export class AccountService {
     return this.httpHelper.get(this.baseUrl + 'customer/'+code,null,true);
   }
 
+  public getVendorByCode(code:string){
+    return this.httpHelper.get(this.baseUrl + 'vendor/'+code,null,true);
+  }
+
+
   public sendResetPasswordLink(email:string){
     return this.httpHelper.put(this.baseUrl + 'user/sendresetpasswordlink',email,null);
   }
