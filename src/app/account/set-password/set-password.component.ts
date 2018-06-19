@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../../services/account.service';
 import { UserModel } from 'src/app/models/account/user-model';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class SetPasswordComponent implements OnInit {
   userLoginEmail: string;
   resetPassword: string;
   userModel: UserModel = new UserModel();
+  passwordStrengthStatus: number = 0;
   constructor(private route: ActivatedRoute, private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
@@ -75,7 +77,7 @@ export class SetPasswordComponent implements OnInit {
     }
   }
 
-  passwordStrengthStatus: number = 0;
+ 
   public checkPasswordStrength(password: string) {
 
     var numbers = "[0-9]+";
@@ -123,9 +125,8 @@ export class SetPasswordComponent implements OnInit {
       this.passwordStrengthStatus = 0;
       strength = "Very Weak";
     }
-    console.log("Password:" + strength);
+   
 
   }
-
 
 }
