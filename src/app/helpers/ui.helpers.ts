@@ -103,5 +103,10 @@ export  class UIHelper{
         evt.currentTarget.className += " active";
     }
 
+    public static getWidthOfTab(){
+        let countTab = document.getElementById("opti_TabID").childElementCount;
+        //alert(countTab);
+    }
+
 
 }

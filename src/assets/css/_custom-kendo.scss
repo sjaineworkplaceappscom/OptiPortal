@@ -76,6 +76,7 @@ body{
 
     // css for grid
     kendo-grid{
+      // height: 100%;
       .k-grid-header .k-header > .k-link {
           padding: 3px;
           font-size: 12px;
@@ -97,6 +98,19 @@ body{
 
     .k-grid td{
       padding: 3px;
+    }
+
+    // make header text bold
+    .k-grid-header{
+      thead{
+        tr{
+          th{
+            a.k-link{
+              font-weight: bold;
+            }
+          }
+        }
+      }
     }
 
     // tab css

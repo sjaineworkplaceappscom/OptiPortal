@@ -1,88 +1,52 @@
-<section id="opti_MainContentID" class="opti_position-relative">
+<section id="opti_MainContentID" [perfectScrollbar]="config" class="opti_position-relative">
 <!-- <section id="opti_MainContentID" [perfectScrollbar]="config" class="opti_position-relative"> -->
-  <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
+  <!-- <div class="container-fluid" style="height: 100%;">
+    <div class="row" style="height: 100%;">
+        <div class="" style="height: 100%;"> -->
+            <!-- [style]="{'background-color': '#888','color': '#fff'}" -->
             <kendo-grid
-            [height]="410"
-            [perfectScrollbar]="config"
-            [data]="gridData"
-            [pageSize]="state.take"
-            [skip]="state.skip"
-            [sort]="state.sort"
-            [sortable]="true"
+            [kendoGridBinding]="gridData"
+            [resizable]="true"
+            [pageSize]="50"
             [pageable]="true"
+            [sortable]="true"
             [filterable]="false"
-            (dataStateChange)="dataStateChange($event)"
-            (click)="openRightSection(true)"
-            >
-                <ng-template kendoGridToolbarTemplate [position]="position">
-                    <button  class="k-button">Custom action</button>
-                </ng-template>
-
-                <kendo-grid-column field="ProductID" title="ID" width="40" [filterable]="false">
-                </kendo-grid-column>
-
-                <kendo-grid-column field="ProductName" width="120" title="Product Name" >
-                </kendo-grid-column>
-
-                <kendo-grid-column field="FirstOrderedOn" title="First Ordered On" width="120" filter="date" format="{0:d}">
-                </kendo-grid-column>
-
-                <kendo-grid-column field="UnitPrice" title="Unit Price" width="100" filter="numeric" format="{0:c}">
-                </kendo-grid-column>
-
-                <kendo-grid-column field="Discontinued" width="120" filter="boolean">
-                <ng-template kendoGridCellTemplate let-dataItem>
-                <input type="checkbox" [checked]="dataItem.Discontinued" />
-                </ng-template>
-                </kendo-grid-column>
+            [groupable]="true"
+            [height]=gridHeight
+            (click)="openRightSection(true)">
+            <kendo-grid-column field="CompanyName" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="ContactName" [width]="120"></kendo-grid-column>
+            <kendo-grid-column field="City" [width]="100"></kendo-grid-column>
+            <kendo-grid-column field="ContactTitle" [width]="130"></kendo-grid-column>
             </kendo-grid>
-        </div>
+        <!-- </div>
     </div>
-  </div>
+  </div> -->
   
 </section>
 
 <!-- start right fix section start here -->
 
     <div class="opti_right-fix-section"  [ngStyle]="{'display':isFixedRightSection == true ? 'block' : 'none' }">
-        <span style="position: fixed;right: 22px;cursor: pointer;z-index: 99;" (click)="closeRightSection(false)"> Close </span>
+        <svg-icon src="assets/images/common/back-opposite.svg" (click)="closeRightSection(false)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }" class="float-right"></svg-icon>
         <!-- tab start -->
-        <div class="opti_tab">
-            <button class="opti_tablinks active" (click)="openTab(event, 'home')">Home</button>
-            <button class="opti_tablinks" (click)="openTab(event, 'items')">Items</button>
-            <button class="opti_tablinks" (click)="openTab(event, 'attachement')">Attachements</button>
-            <button class="opti_tablinks" (click)="openTab(event, 'notes')">Notes</button>
+        <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="config">
+        <div class="opti_tab" id="opti_TabID">
+            <button class="opti_tablinks active" (click)="openTab($event, 'home')">Home</button>
+            <button class="opti_tablinks" (click)="openTab($event, 'items')">Items</button>
+            <button class="opti_tablinks" (click)="openTab($event, 'attachement')">Attachements</button>
+            <button class="opti_tablinks" (click)="openTab($event, 'notes')">Notes</button>
+            <button class="opti_tablinks" (click)="openTab($event, 'notes1')">Notes1</button>
+            <button class="opti_tablinks" (click)="openTab($event, 'notes2')">Notes2</button>
+            <button class="opti_tablinks" (click)="openTab($event, 'notes3')">Notes3</button>
+            <button class="opti_tablinks" (click)="openTab($event, 'notes4')">Notes4</button>
+            <button class="opti_tablinks" (click)="openTab($event, 'notes5')">Notes5</button>
+            <button class="opti_tablinks" (click)="openTab($event, 'notes6')">Notes6</button>
         </div>
-        
-        <div id="home" class="opti_tabcontent" style="display:block">
-            <kendo-grid
-            [height]="410"
-            [perfectScrollbar]="config"
-            [data]="gridData"
-            [pageSize]="state.take"
-            [skip]="state.skip"
-            [sort]="state.sort"
-            [sortable]="true"
-            [pageable]="true"
-            [filterable]="false"
-            (dataStateChange)="dataStateChange($event)"
-            >
-                <kendo-grid-column field="ProductID" title="ID" width="40" [filterable]="false">
-                </kendo-grid-column>
-                <kendo-grid-column field="ProductName" width="120" title="Product Name">
-                </kendo-grid-column>
-                <kendo-grid-column field="FirstOrderedOn" title="First Ordered On" width="120" filter="date" format="{0:d}">
-                </kendo-grid-column>
-                <kendo-grid-column field="UnitPrice" title="Unit Price" width="100" filter="numeric" format="{0:c}">
-                </kendo-grid-column>
-                <kendo-grid-column field="Discontinued" width="120" filter="boolean">
-                <ng-template kendoGridCellTemplate let-dataItem>
-                <input type="checkbox" [checked]="dataItem.Discontinued" />
-                </ng-template>
-                </kendo-grid-column>
-            </kendo-grid>
+        </div>
+
+        <div id="home" class="opti_tabcontent" style="display: block;">
+            this is home section
         </div>
         
         <div id="items" class="opti_tabcontent">
@@ -189,6 +153,42 @@
         </div>
 
         <div id="notes" class="opti_tabcontent">
+            <p>
+                Football is a family of team sports that involve, to varying degrees, kicking a ball with the foot to score a goal. Unqualified, the word football is understood to refer to whichever form of football is the most popular in the regional context in which the word appears.
+            </p>
+        </div>
+
+        <div id="notes1" class="opti_tabcontent">
+            <p>
+                Football is a family of team sports that involve, to varying degrees, kicking a ball with the foot to score a goal. Unqualified, the word football is understood to refer to whichever form of football is the most popular in the regional context in which the word appears.
+            </p>
+        </div>
+
+        <div id="notes2" class="opti_tabcontent">
+            <p>
+                Football is a family of team sports that involve, to varying degrees, kicking a ball with the foot to score a goal. Unqualified, the word football is understood to refer to whichever form of football is the most popular in the regional context in which the word appears.
+            </p>
+        </div>
+
+        <div id="notes3" class="opti_tabcontent">
+            <p>
+                Football is a family of team sports that involve, to varying degrees, kicking a ball with the foot to score a goal. Unqualified, the word football is understood to refer to whichever form of football is the most popular in the regional context in which the word appears.
+            </p>
+        </div>
+
+        <div id="notes4" class="opti_tabcontent">
+            <p>
+                Football is a family of team sports that involve, to varying degrees, kicking a ball with the foot to score a goal. Unqualified, the word football is understood to refer to whichever form of football is the most popular in the regional context in which the word appears.
+            </p>
+        </div>
+
+        <div id="notes5" class="opti_tabcontent">
+            <p>
+                Football is a family of team sports that involve, to varying degrees, kicking a ball with the foot to score a goal. Unqualified, the word football is understood to refer to whichever form of football is the most popular in the regional context in which the word appears.
+            </p>
+        </div>
+
+        <div id="notes6" class="opti_tabcontent">
             <p>
                 Football is a family of team sports that involve, to varying degrees, kicking a ball with the foot to score a goal. Unqualified, the word football is understood to refer to whichever form of football is the most popular in the regional context in which the word appears.
             </p>

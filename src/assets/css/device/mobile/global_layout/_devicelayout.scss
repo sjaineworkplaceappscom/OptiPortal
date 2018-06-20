@@ -30,7 +30,7 @@
         height: calc(100% - 65px);
         overflow-y: scroll;
     }
-
+ 
     // top panel
     #opti_TopBarID {
         min-height: $top-bar-height;
@@ -122,6 +122,11 @@
         }
     }
     // search box end
+
+    //Opti right section 
+    .opti_right-fix-section{
+        width: 100%;
+    }
 }
 
 
