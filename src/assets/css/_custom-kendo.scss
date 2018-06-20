@@ -73,4 +73,45 @@ body{
     button.k-button:last-child{
         margin: 0 0 0 5px;    
     }
+
+    // css for grid
+    kendo-grid{
+      .k-grid-header .k-header > .k-link {
+          padding: 3px;
+          font-size: 12px;
+      }
+      .k-grid-table{
+        font-size: 12px;
+      }
+      
+      .k-pager-wrap .k-link, .k-pager-wrap .k-state-selected {
+        padding: 0;
+      }
+      .k-pager-wrap .k-pager-info {
+        font-size: 12px;
+      }
+      .k-grid-pager {
+        padding: 0;
+      }
+    }
+
+    .k-grid td{
+      padding: 3px;
+    }
+
+    // tab css
+    // .k-tabstrip-items{
+    //   width: 90%;
+    //   overflow-x: auto;
+    //   li{
+    //     span{
+    //       font-size: 12px;
+    //       padding-top: 2px !important;
+    //       padding-bottom: 2px !important;
+    //     }
+    //   }
+    // }
+
+    
+
   }

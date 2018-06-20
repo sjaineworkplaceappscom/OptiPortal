@@ -48,13 +48,26 @@
     // CSS Related To Main Content Section
         #opti_MainContentID {
             height: calc(100% - 65px); // top bar height 65px
-            overflow-y: scroll;
+            overflow-y: auto;
         }
 
     // Css Related To top panel
         section#opti_TopBarID {
             min-height: $top-bar-height;
         }
+
+    //Opti right section 
+    .opti_right-fix-section {
+        position: fixed;
+        right: 0;
+        background: #c7c7c7;
+        width: 60%;
+        height: calc(100% - 65px);
+        top: 65px;
+        max-width: 100%;
+        border-left: 1px solid #c7c7c7;
+        z-index: 99;
+    }    
 }
 
 ////////////////////////////////////////////////////////////////

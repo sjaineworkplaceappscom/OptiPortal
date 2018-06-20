@@ -40,11 +40,14 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ApproveUsersComponent } from './account/approve-users/approve-users.component';
 import { ConfirmPasswordEquilValidatorDirectiveDirective } from './directives/confirm-password-equil-validator-directive.directive';
-import { LandingComponent } from './common/landing/landing.component';
+import { LandingComponent } from './common/landing/landing.component'
+import { LayoutModule } from '@progress/kendo-angular-layout';
+;
 
 
 
@@ -53,7 +56,7 @@ const routes: Routes = [
   
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: SigninComponent },  
-  { path: 'home', component: HomeComponent, canActivate:[AuthGuard] },
+  { path: 'home', component: HomeComponent},
   {path:'approve',component:ApproveUsersComponent},  
   {path:'resetpassword',component:ResetPasswordComponent},
   {path:'changepassword',component:ChangePasswordComponent},
@@ -98,7 +101,9 @@ const routes: Routes = [
     BrowserAnimationsModule, 
     BrowserAnimationsModule,
     TooltipModule.forRoot(),
-    GridModule
+    GridModule,
+    LayoutModule,
+    TabsModule.forRoot()
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

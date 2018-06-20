@@ -1,13 +1,128 @@
-<section id="opti_MainContentID" [perfectScrollbar]="config" class="opti_position-relative">
+<section id="opti_MainContentID" class="opti_position-relative">
+<!-- <section id="opti_MainContentID" [perfectScrollbar]="config" class="opti_position-relative"> -->
   <div class="container-fluid">
     <div class="row">
-        <div class="col-md-7">
-             <app-approve-users *ngIf="approveUser==true"></app-approve-users>
-            <p>123 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        </div>
+        <div class="col-md-12">
+            <kendo-grid
+            [height]="410"
+            [perfectScrollbar]="config"
+            [data]="gridData"
+            [pageSize]="state.take"
+            [skip]="state.skip"
+            [sort]="state.sort"
+            [sortable]="true"
+            [pageable]="true"
+            [filterable]="false"
+            (dataStateChange)="dataStateChange($event)"
+            (click)="openRightSection(true)"
+            >
+                <ng-template kendoGridToolbarTemplate [position]="position">
+                    <button  class="k-button">Custom action</button>
+                </ng-template>
 
-        <div class="col-md-5">
+                <kendo-grid-column field="ProductID" title="ID" width="40" [filterable]="false">
+                </kendo-grid-column>
+
+                <kendo-grid-column field="ProductName" width="120" title="Product Name" >
+                </kendo-grid-column>
+
+                <kendo-grid-column field="FirstOrderedOn" title="First Ordered On" width="120" filter="date" format="{0:d}">
+                </kendo-grid-column>
+
+                <kendo-grid-column field="UnitPrice" title="Unit Price" width="100" filter="numeric" format="{0:c}">
+                </kendo-grid-column>
+
+                <kendo-grid-column field="Discontinued" width="120" filter="boolean">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                <input type="checkbox" [checked]="dataItem.Discontinued" />
+                </ng-template>
+                </kendo-grid-column>
+            </kendo-grid>
+        </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- start right fix section start here -->
+
+    <div class="opti_right-fix-section"  [ngStyle]="{'display':isFixedRightSection == true ? 'block' : 'none' }">
+        <span style="position: fixed;right: 22px;cursor: pointer;z-index: 99;" (click)="closeRightSection(false)"> Close </span>
+        <!-- tab start -->
+        <div class="opti_tab">
+            <button class="opti_tablinks active" (click)="openTab(event, 'home')">Home</button>
+            <button class="opti_tablinks" (click)="openTab(event, 'items')">Items</button>
+            <button class="opti_tablinks" (click)="openTab(event, 'attachement')">Attachements</button>
+            <button class="opti_tablinks" (click)="openTab(event, 'notes')">Notes</button>
+        </div>
+        
+        <div id="home" class="opti_tabcontent" style="display:block">
+            <kendo-grid
+            [height]="410"
+            [perfectScrollbar]="config"
+            [data]="gridData"
+            [pageSize]="state.take"
+            [skip]="state.skip"
+            [sort]="state.sort"
+            [sortable]="true"
+            [pageable]="true"
+            [filterable]="false"
+            (dataStateChange)="dataStateChange($event)"
+            >
+                <kendo-grid-column field="ProductID" title="ID" width="40" [filterable]="false">
+                </kendo-grid-column>
+                <kendo-grid-column field="ProductName" width="120" title="Product Name">
+                </kendo-grid-column>
+                <kendo-grid-column field="FirstOrderedOn" title="First Ordered On" width="120" filter="date" format="{0:d}">
+                </kendo-grid-column>
+                <kendo-grid-column field="UnitPrice" title="Unit Price" width="100" filter="numeric" format="{0:c}">
+                </kendo-grid-column>
+                <kendo-grid-column field="Discontinued" width="120" filter="boolean">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                <input type="checkbox" [checked]="dataItem.Discontinued" />
+                </ng-template>
+                </kendo-grid-column>
+            </kendo-grid>
+        </div>
+        
+        <div id="items" class="opti_tabcontent">
+            <div class="card">
+                <div class="card-block">
+                    <form class="k-form">
+                        <label class="k-form-field">
+                            <span class="opti_form-label">Sr. No.</span>
+                            <input class="k-textbox" placeholder="Sr. No." />
+                        </label>
+
+                        <label class="k-form-field">
+                            <span class="opti_form-label">Item Name</span>
+                            <input class="k-textbox" value="" placeholder="Item Name" />
+                        </label>
+
+                        <label class="k-form-field">
+                            <span class="opti_form-label">Item Code</span>
+                            <input class="k-textbox" value="" placeholder="Item Code" />
+                        </label>
+
+                        <label class="k-form-field">
+                                <span class="opti_form-label">Item Quantity</span>
+                            <input type="text" class="k-textbox" value="" placeholder="Item Quantity" />
+                        </label>
+
+                        <label class="k-form-field">
+                            <span class="opti_form-label">Item Unit</span>
+                            <input type="text" class="k-textbox" value="" placeholder="Item Unit" />
+                        </label>
+    
+                        <div class="text-right">
+                            <button type="button" class="k-button k-primary">Add Item</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div id="attachement" class="opti_tabcontent">
             <div class="card">
                 <div class="card-block">
                     <form class="k-form">
@@ -46,21 +161,22 @@
                             <input class="k-textbox" placeholder="Your Company" />
                         </label>
                     
-
-
-                        <label class="k-form-field">
+                        
+                        <!-- <label class="k-form-field">
                             <span class="opti_form-label">Username</span>
                             <input class="k-textbox" value="bbatista" placeholder="Your username" />
                         </label>
+
                         <label class="k-form-field">
                             <span class="opti_form-label">Password</span>
                             <input type="password" class="k-textbox" value="123456" placeholder="Your password"/>
                         </label>
+
                         <label class="k-form-field">
                             <input type="checkbox" id="auth-2fa" class="k-checkbox" checked="checked">
                             <label class="k-checkbox-label" for="auth-2fa">Enable two-factor authentication</label>
                         </label>
-    
+        -->
     
                         <div class="text-right">
                             <button type="button" class="k-button">Cancel</button>
@@ -72,7 +188,11 @@
             </div>
         </div>
 
-
+        <div id="notes" class="opti_tabcontent">
+            <p>
+                Football is a family of team sports that involve, to varying degrees, kicking a ball with the foot to score a goal. Unqualified, the word football is understood to refer to whichever form of football is the most popular in the regional context in which the word appears.
+            </p>
+        </div>
+        <!-- tab end -->
     </div>
-  </div>
-</section>
+
