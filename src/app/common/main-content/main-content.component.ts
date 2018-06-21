@@ -14,6 +14,8 @@ import {
   DataStateChangeEvent
 } from '@progress/kendo-angular-grid';
 import { UIHelper } from 'src/app/helpers/ui.helpers';
+import { opticonstants } from '../../constants';
+
 
 //declare var $: any;
 
@@ -26,40 +28,45 @@ export class MainContentComponent implements OnInit {
   approveUser:boolean;
   isMobile:boolean;
   isFixedRightSection:boolean;  
-  selectedThemeColor: string = '#5bc0de';
+  selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
 
   constructor(private commonService:Commonservice) {
     this.approveUser=false;
     
    }
 
-
+    // tab function
     openTab(evt, tabName){
         UIHelper.customOpenTab(evt, tabName);
     } 
 
     public position:string = 'top';
 
-  gridHeight:number;   
+    gridHeight:number;   
   
   @HostListener('window:resize', ['$event'])
     onResize(event) {
         // apply grid height
         //this.gridHeight = document.getElementById('opti_MainContentID').offsetHeight;
-        this.gridHeight = window.outerHeight;
+        this.gridHeight = window.innerHeight-85;
     }
 
   ngOnInit() {
-
-    // apply grid height
-    //this.gridHeight = document.getElementById('opti_MainContentID').offsetHeight;
-    this.gridHeight = window.outerHeight;
     
+    // apply width on opti_TabID
+        UIHelper.getWidthOfOuterTab();
+    
+    // apply grid height
+        //this.gridHeight = document.getElementById('opti_MainContentID').offsetHeight;
+        this.gridHeight = window.innerHeight-85;
+        //alert(this.gridHeight)
+    
+    // check mobile device
+        this.isMobile =UIHelper.isMobile();
 
-    this.isMobile =UIHelper.isMobile();
-
-    const element = document.getElementsByTagName("body")[0];
-    element.className = "";
+    // remove all class from Body
+        const element = document.getElementsByTagName("body")[0];
+        element.className = "";
 
     this.approveUser=false;
     this.commonService.currentNavigatedData.subscribe(

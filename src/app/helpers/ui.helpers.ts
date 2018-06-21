@@ -103,9 +103,16 @@ export  class UIHelper{
         evt.currentTarget.className += " active";
     }
 
-    public static getWidthOfTab(){
-        let countTab = document.getElementById("opti_TabID").childElementCount;
-        //alert(countTab);
+    // get width of opti_TabID 
+    public static getWidthOfOuterTab(){
+        let i;
+        let a;
+        let tabWidth : number = 0;
+        let tablinks = document.getElementsByClassName("opti_tablinks") as HTMLCollectionOf<HTMLElement>;
+        for (i = 0; i < tablinks.length; i++) {
+            tabWidth = tabWidth + tablinks[i].offsetWidth;
+        }
+        document.getElementById("opti_TabID").style.width  = tabWidth+5+'px';
     }
 
 

@@ -183,63 +183,64 @@ body{
     }
 
     //our custom tab
-    .opti_tab-outer{
-        width: calc(100% - 30px);
-        .opti_tab {
-            overflow: hidden;
-            border: 1px solid #ccc;
-            // width: 1505px;
+        .opti_tab-outer{
+            width: calc(100% - 30px);
+            .opti_tab {
+                overflow: hidden;
+                border: 1px solid #ccc;
+                // width: 1505px;
 
-            /* Style the buttons inside the tab */
-            button {
-                // background-color: inherit;
-                // float: left;
-                // border: none;
-                // outline: none;
-                // cursor: pointer;
-                // padding: 14px 16px;
-                // transition: 0.3s;
-                // font-size: 17px;
-                // width: 150px;
-                
-                background-color: #ccc;
+                /* Style the buttons inside the tab */
+                button {
+                    // background-color: inherit;
+                    // float: left;
+                    // border: none;
+                    // outline: none;
+                    // cursor: pointer;
+                    // padding: 14px 16px;
+                    // transition: 0.3s;
+                    // font-size: 17px;
+                    // width: 150px;
+                    
+                    background-color: #ccc;
 
-                // margin-left: 0;
-                // margin-right: 0;
-                // height: 35px;
-                // border-radius: 4px;
-                border: 1px solid #fff;
-                // -webkit-transform: perspective(100px) rotateX(30deg);
-                // -moz-transform: perspective(100px) rotateX(30deg);
-                margin-left: 0px;
-                margin-right: 0px;
+                    // margin-left: 0;
+                    // margin-right: 0;
+                    // height: 35px;
+                    // border-radius: 4px;
+                    border: 1px solid #fff;
+                    // -webkit-transform: perspective(100px) rotateX(30deg);
+                    // -moz-transform: perspective(100px) rotateX(30deg);
+                    margin-left: 0px;
+                    margin-right: 0px;
 
-                &:first-child{
-                    margin-left:0;  
+                    &:first-child{
+                        margin-left:0;  
+                    }
+                    &:last-child{
+                        margin-right:0;
+                    }
                 }
-                &:last-child{
-                    margin-right:0;
+
+                /* Change background color of buttons on hover */
+                button:hover {
+                    background-color: #3dbfe6;
+                }
+
+                /* Create an active/current tablink class */
+                button.active {
+                    background-color: #3dbfe6;
                 }
             }
 
-            /* Change background color of buttons on hover */
-            button:hover {
-                background-color: #3dbfe6;
-            }
-
-            /* Create an active/current tablink class */
-            button.active {
-                background-color: #3dbfe6;
-            }
-        }
-
-    }   
+        }   
     
-    /* Style the tab content */
-    .opti_tabcontent {
-        display: none;
-        padding: 6px 12px;
-        border: 1px solid #ccc;
-        border-top: none;
-    }
+        /* Style the tab content */
+        .opti_tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+            height: calc(100% - 50px);
+        }
   }
