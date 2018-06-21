@@ -11,6 +11,7 @@ import { Commonservice } from '../../services/commonservice.service';
 import { BsModalService } from 'ngx-bootstrap/modal'; // Bootstrap Modal
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service'; // Bootstrap Modal
 import { Router } from '@angular/router';
+import { opticonstants } from '../../constants';
 
 @Component({
   selector: 'app-top',
@@ -21,7 +22,7 @@ export class TopComponent implements OnInit {
   modalRef: BsModalRef;
   openThemeSetting: boolean = false;
   constructor(private modalService: BsModalService,private router: Router, private commonService: Commonservice) { }
-  selectedThemeColor: string = '#5bc0de';
+  selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
   
   ngOnInit() {
     UIHelper.manageThemeCssFile();

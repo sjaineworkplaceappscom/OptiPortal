@@ -106,26 +106,19 @@ body{
         tr{
           th{
             a.k-link{
-              font-weight: bold;
+              font-weight: 500;
             }
           }
         }
       }
     }
 
-    // tab css
-    // .k-tabstrip-items{
-    //   width: 90%;
-    //   overflow-x: auto;
-    //   li{
-    //     span{
-    //       font-size: 12px;
-    //       padding-top: 2px !important;
-    //       padding-bottom: 2px !important;
-    //     }
-    //   }
-    // }
+    // top section of grid
+    .k-indicator-container {
+      font-size: 14px;
+    }
 
+  
     
 
   }

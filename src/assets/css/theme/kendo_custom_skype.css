@@ -72,11 +72,24 @@ body{
   .opti_loader .opti_spinner{
     border-top-color:#3dbfe6 !important;
   }
+
+  /* css for grid */
+  .k-grid-header thead tr th a.k-link,
+  .k-indicator-container{
+    color: #428bca;
+  }
+
+  body .k-grid tbody tr:hover {
+    color: white;
+    background-color: #428bca;
+  }
   
   
   /*****************************************************************************************/
   /*********************************** END OUR CUSTOM CODE *********************************/
   /*****************************************************************************************/
+  
+  
   .k-button[disabled],
 [disabled] .k-button {
   outline: none;
@@ -108,7 +121,7 @@ body{
 .k-spreadsheet-column-header, .editorToolbarWindow.k-header.k-window-content, .k-treemap .k-treemap-title, .k-calendar .k-header, .k-calendar .k-content thead, .k-calendar .k-calendar-view thead, .k-scheduler-toolbar,
 .k-scheduler-footer, .k-block > .k-header,
 .k-panel > .k-header {
-  color: #333333;
+  color: #428bca;
   background-color: #ffffff;
   border-color: #e8e8e8; }
 
@@ -118,7 +131,7 @@ body{
 .k-calendar .k-nav-fast:hover,
 .k-calendar .k-nav-fast.k-state-hover, .k-panelbar > .k-item > .k-link:hover,
 .k-panelbar > .k-item > .k-link.k-state-hover {
-  color: #333333;
+  color: #428bca;
   background-color: #f7f7f7;
   border-color: #e8e8e8; }
 
@@ -184,7 +197,7 @@ body{
   border-color: #1aa1c9; }
 
 .k-grid-toolbar, .k-toolbar, .k-editor .k-editor-toolbar, .k-gantt-toolbar {
-  color: #333333;
+  color: #428bca;
   background-color: #ffffff;
   border-color: #e8e8e8; }
 
@@ -4989,7 +5002,7 @@ div.k-grid-footer {
 
 .k-grouping-header {
   border-color: #e8e8e8;
-  color: #333333;
+  color: #428bca;
   background-color: #ffffff; }
 
 .k-grouping-header .k-group-indicator {
@@ -4997,7 +5010,7 @@ div.k-grid-footer {
 
 .k-grid-header {
   border-color: #e8e8e8;
-  color: #333333;
+  color: #428bca;
   background-color: #ffffff; }
   .k-grid-header .k-i-sort-asc-sm,
   .k-grid-header .k-i-sort-desc-sm,
@@ -5017,21 +5030,21 @@ div.k-grid-footer {
 
 .k-grid-footer {
   border-color: #e8e8e8;
-  color: #333333;
+  color: #428bca;
   background-color: #ffffff; }
   .k-grid-footer .k-grid-footer-locked {
     border-color: inherit; }
 
 .k-grid-pager {
   border-color: #e8e8e8;
-  color: #333333;
+  color: #428bca;
   background-color: #ffffff;
   padding: 0.375rem; }
 
 .k-grouping-row,
 .k-group-cell {
   border-color: #e8e8e8;
-  color: #333333;
+  color: #428bca;
   background-color: #ffffff; }
 
 .k-column-list-wrapper {
@@ -7506,7 +7519,7 @@ div.k-grid-footer {
     z-index: 12;
     opacity: 0.65;
     font-size: 0.75rem;
-    color: #333333; }
+    color: #428bca; }
   .k-time-list-wrapper.k-state-focused .k-title {
     color: #000;
     opacity: 1; }
@@ -8013,7 +8026,7 @@ fieldset {
   padding: 0; }
 
 fieldset legend {
-  color: #333333;
+  color: #428bca;
   font-size: 1.5rem; }
 
 .k-maskedtextbox .k-state-invalid + .k-i-warning {
@@ -10083,7 +10096,7 @@ html .k-upload {
     .k-calendar .k-footer .k-nav-today:hover {
       color: #1898be; }
   .k-calendar .k-content thead {
-    color: #333333;
+    color: #428bca;
     background-color: transparent; }
   .k-calendar .k-header {
     border-bottom-color: rgba(33, 37, 41, 0.125);
@@ -10173,7 +10186,7 @@ html .k-upload {
 
 .k-calendar-monthview .k-content th {
   font-size: 0.75rem;
-  color: #333333; }
+  color: #428bca; }
 
 .k-gantt {
   position: relative;
@@ -11719,15 +11732,15 @@ html .k-upload {
   .k-edge13 .k-menu:not(.k-context-menu) {
     background-clip: border-box; }
   .k-menu:not(.k-context-menu) > .k-item {
-    color: rgba(51, 51, 51, 0.5); }
+    color: rgba(66, 139, 202, 0.5); }
     .k-menu:not(.k-context-menu) > .k-item:hover, .k-menu:not(.k-context-menu) > .k-item.k-state-hover {
-      color: rgba(51, 51, 51, 0.7); }
+      color: rgba(66, 139, 202, 0.7); }
     .k-menu:not(.k-context-menu) > .k-item > .k-state-active {
-      color: rgba(51, 51, 51, 0.9); }
+      color: rgba(66, 139, 202, 0.9); }
     .k-menu:not(.k-context-menu) > .k-item.k-state-selected {
       color: #000000; }
     .k-menu:not(.k-context-menu) > .k-item:focus, .k-menu:not(.k-context-menu) > .k-item.k-state-focused {
-      box-shadow: inset 0 0 0 3px rgba(51, 51, 51, 0.15);
+      box-shadow: inset 0 0 0 3px rgba(66, 139, 202, 0.15);
       outline: 0; }
 
 .k-menu-group .k-item > .k-state-active,
@@ -11738,16 +11751,16 @@ html .k-upload {
 .k-menu-group .k-item:focus, .k-menu-group .k-item.k-state-focused,
 .k-menu.k-context-menu .k-item:focus,
 .k-menu.k-context-menu .k-item.k-state-focused {
-  box-shadow: inset 0 0 0 3px rgba(51, 51, 51, 0.15);
+  box-shadow: inset 0 0 0 3px rgba(66, 139, 202, 0.15);
   outline: 0; }
 
 .k-menu-scroll-button {
   border-color: #e8e8e8;
-  color: rgba(51, 51, 51, 0.5);
+  color: rgba(66, 139, 202, 0.5);
   background: #ffffff; }
   .k-menu-scroll-button:hover {
     border-color: #e8e8e8;
-    color: rgba(51, 51, 51, 0.7);
+    color: rgba(66, 139, 202, 0.7);
     background: #ffffff; }
     .k-menu-scroll-button:hover::before {
       opacity: 0; }
@@ -11817,7 +11830,7 @@ html .k-upload {
 
 .k-panelbar > .k-item > .k-link {
   border-color: #e8e8e8;
-  color: #333333;
+  color: #428bca;
   background-color: #ffffff; }
 
 .k-panelbar > .k-item > .k-link.k-state-focused {

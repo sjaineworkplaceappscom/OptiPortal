@@ -35,7 +35,7 @@ export class Commonservice {
   }
 
   // for Seeting color of theme.
-  private themeData = new BehaviorSubject<any>(opticonstants.defaultThemeColor);
+  private themeData = new BehaviorSubject<any>(opticonstants.DEFAULTTHEMECOLOR);
   themeCurrentData = this.themeData.asObservable();
 
   public setThemeData(data: any) {

@@ -6,6 +6,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { Router } from '@angular/router';
+import { opticonstants } from '../../constants';
 // import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({
@@ -16,7 +17,7 @@ import { Router } from '@angular/router';
 export class LeftComponent implements OnInit {
   systemAdmin:string;
   constructor(private commonService: Commonservice,private router: Router) { }
-  selectedThemeColor: string = '#FF8382';
+  selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
 
   ngOnInit() {    
     
