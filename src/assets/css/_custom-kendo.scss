@@ -78,8 +78,12 @@ body{
     kendo-grid{
       // height: 100%;
       border-radius: 5px;
-      box-shadow: 0px 0px 3px #428bca;
+      box-shadow: 0px 1px 15px #428bca;
       border: none;
+      .k-grid-header{
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
       .k-grid-header .k-header > .k-link {
           padding: 5px;
           font-size: 12px;
