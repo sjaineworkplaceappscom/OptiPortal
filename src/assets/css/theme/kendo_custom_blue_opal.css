@@ -73,6 +73,26 @@ ul.opti_liststyle-one-ul .opti_liststyle-one-li:hover
   border-top-color:#13688c !important;
 }
 
+/* css for grid */
+.k-grid-header thead tr th a.k-link,
+.k-indicator-container{
+  color: #13688c;
+}
+
+body .k-grid tbody tr:hover {
+  color: white;
+  background-color: #13688c;
+}
+
+body kendo-grid{
+  box-shadow: 0px 1px 15px #13688c;
+}
+
+/* left section */
+.opti_left-nav-ul{
+box-shadow: 0px 1px 15px #13688c;
+}
+
 /*****************************************************************************************/
 /*********************************** END OUR CUSTOM CODE *********************************/
 /*****************************************************************************************/

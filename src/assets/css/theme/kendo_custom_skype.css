@@ -83,7 +83,15 @@ body{
     color: white;
     background-color: #428bca;
   }
+
+  body kendo-grid{
+    box-shadow: 0px 1px 15px #428bca;
+  }
   
+  /* left section */
+  .opti_left-nav-ul{
+    box-shadow: 0px 1px 15px #428bca;
+  }
   
   /*****************************************************************************************/
   /*********************************** END OUR CUSTOM CODE *********************************/

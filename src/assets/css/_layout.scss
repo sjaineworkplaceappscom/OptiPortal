@@ -12,8 +12,8 @@
 
     // Css Related To Left Panel
         #opti_LeftPanelID{
-            min-width: 250px;
-            max-width: 250px;
+            min-width: 260px;
+            max-width: 260px;
             // transition: all 0.3s;
         }
 
@@ -39,7 +39,7 @@
         }
 
         #opti_RightPanelID{ // width after open sidebar
-            width: calc(100% - 250px);
+            width: calc(100% - 260px);
         }
 
         #opti_RightPanelID{
