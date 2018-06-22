@@ -38,7 +38,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 
 // It's for dropdown module
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-import { GridModule } from '@progress/kendo-angular-grid';
+import { GridModule, PDFModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
@@ -46,7 +46,9 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ApproveUsersComponent } from './account/approve-users/approve-users.component';
 import { ConfirmPasswordEquilValidatorDirectiveDirective } from './directives/confirm-password-equil-validator-directive.directive';
 import { LandingComponent } from './common/landing/landing.component'
-import { LayoutModule } from '@progress/kendo-angular-layout';
+import { LayoutModule } from '@progress/kendo-angular-layout'
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+;
 ;
 
 
@@ -103,7 +105,9 @@ const routes: Routes = [
     TooltipModule.forRoot(),
     GridModule,
     LayoutModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    PDFExportModule,
+    PDFModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

@@ -11,14 +11,47 @@
             [pageSize]="50"
             [pageable]="true"
             [sortable]="true"
-            [filterable]="false"
+            [filterable]="true"
             [groupable]="false"
             [height]=gridHeight
-            (click)="openRightSection(true)">
+            >
+
+            <!-- (click)="openRightSection(true)" -->
+
+            <!-- pdf button start -->
+            <ng-template kendoGridToolbarTemplate>
+                <button kendoGridPDFCommand icon="file-pdf">Export to PDF</button>
+            </ng-template>
+            <!-- pdf button end -->
+
             <kendo-grid-column field="CompanyName" [width]="140"></kendo-grid-column>
-            <kendo-grid-column field="ContactName" [width]="120"></kendo-grid-column>
-            <kendo-grid-column field="City" [width]="100"></kendo-grid-column>
-            <kendo-grid-column field="ContactTitle" [width]="130"></kendo-grid-column>
+            <kendo-grid-column field="ContactName" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="CompanyName" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="City" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="ContactName" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="City" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="ContactTitle" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="ContactName" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="City" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="ContactTitle" [width]="140"></kendo-grid-column>
+            
+            <!-- pdf template start -->
+            <kendo-grid-pdf fileName="Products.pdf" [allPages]="true" paperSize="A4" [repeatHeaders]="true" [landscape]="true">
+                <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
+                <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+                    <div class="page-template">
+                    <div class="header">
+                        <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>
+                        Multi-page grid with automatic page breaking
+                    </div>
+                    <div class="footer">
+                        Page {{ pageNum }} of {{ totalPages }}
+                    </div>
+                    </div>
+                </ng-template>
+            </kendo-grid-pdf>
+            <!-- pdf template end -->
+
             </kendo-grid>
             </div>
         <!-- </div>

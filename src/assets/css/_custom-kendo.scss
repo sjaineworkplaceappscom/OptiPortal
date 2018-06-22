@@ -76,7 +76,10 @@ body{
 
     // css for grid
     kendo-grid{
-      // height: 100%;
+      .k-grid-toolbar{
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
       border-radius: 5px;
       border: none;
       .k-grid-header{
@@ -129,6 +132,19 @@ body{
     .k-indicator-container {
       font-size: 14px;
     }
+
+    // filter of grid
+    kendo-grid-filter-cell-operators{
+      kendo-dropdownlist.k-dropdown-operator{
+        width: 32px !important;
+        .k-select {
+          height: 30px;
+          width: 100%;
+        }
+      }
+      
+    }
+    
 
   
     
