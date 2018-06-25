@@ -1,6 +1,6 @@
  
  <!-- left panel start -->
- <section id="opti_LeftPanelID" class=""> 
+ <section id="opti_LeftPanelID" class="opti_position-relative"> 
      
     <div class="container-fluid">
         <div class="row">
@@ -31,6 +31,10 @@
         <ul class="opti_left-nav-ul" *ngIf="systemAdmin=='true'">
                 <li><a href="javascript:void('0');"  (click)=navigate()> <svg-icon src="assets/images/left-panel/Customer-Contacts.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Approve Users</span></a></li>
         </ul>
+    </section>
+
+    <section id="opti_LeftPanelFooterLogo">
+        <img src="assets/images/logo/poweredbylogo.svg" alt="powered logo">
     </section>
     
 

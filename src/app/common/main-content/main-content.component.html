@@ -11,18 +11,32 @@
             [pageSize]="50"
             [pageable]="true"
             [sortable]="true"
-            [filterable]="true"
+            [filterable]=isColumnFilter
             [groupable]="false"
+            [columnMenu]="{ columnChooser: false }"
             [height]=gridHeight
             >
 
             <!-- (click)="openRightSection(true)" -->
 
-            <!-- pdf button start -->
+            <!-- grid template start -->
             <ng-template kendoGridToolbarTemplate>
-                <button kendoGridPDFCommand icon="file-pdf">Export to PDF</button>
+                <!-- show hide column start show hide -->
+                <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
+
+                <!-- checkbox -->
+                <form class="k-form opti_show-hide-grid-column-filter float-left">
+                    <div class="k-form-field">
+                        <input type="checkbox" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" checked />
+                        <label class="k-checkbox-label" for="opti_ColumnFilterID">Filter</label>
+                    </div>
+                </form>
+
+                <!-- pdf button start -->
+                <button kendoGridPDFCommand icon="file-pdf" class="float-right">Export to PDF</button>
             </ng-template>
-            <!-- pdf button end -->
+            <!-- grid template end -->
+            
 
             <kendo-grid-column field="CompanyName" [width]="140"></kendo-grid-column>
             <kendo-grid-column field="ContactName" [width]="140"></kendo-grid-column>

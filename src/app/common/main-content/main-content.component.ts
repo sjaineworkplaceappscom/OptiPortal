@@ -27,12 +27,12 @@ import { opticonstants } from '../../constants';
 export class MainContentComponent implements OnInit {
   approveUser:boolean;
   isMobile:boolean;
+  isColumnFilter:boolean = true;
   isFixedRightSection:boolean;  
   selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
 
-  constructor(private commonService:Commonservice) {
+   constructor(private commonService:Commonservice) {
     this.approveUser=false;
-    
    }
 
     // tab function

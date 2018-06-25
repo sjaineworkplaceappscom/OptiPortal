@@ -144,7 +144,18 @@ body{
       }
       
     }
+
+    // handpointer for checkbox of grid
+    .k-grid .k-checkbox-label{
+      cursor: pointer;
+    }
     
+    // column filter 3 dots
+    .k-grid-header .k-grid-filter {
+        padding: 0;
+        width: auto;
+        height: auto;
+    }
 
   
     
