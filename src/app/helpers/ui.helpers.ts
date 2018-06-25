@@ -11,7 +11,6 @@ export  class UIHelper{
     // start sidebar and right panel manage
     // this function will call only for desktop and ipad
     public static  manageNavigationPanel():void{
-        ;    
         document.getElementById('sidebarCollapse').onclick = function() {
         if(UIHelper.isMobile()==false){ 
             document.getElementById('opti_LeftPanelID').classList.toggle('opti_sidebar-minimize');  
@@ -23,7 +22,7 @@ export  class UIHelper{
         };  
     }
 
-
+    // check is it mobile or not
     public static isMobile():boolean{
         let isMobile:boolean;
         let getDeviceWidth = window.outerWidth;
@@ -34,6 +33,17 @@ export  class UIHelper{
         isMobile = false; 
         }
         return isMobile;
+    }
+
+    // get main content height for mobile and desktop
+    public static getMainContentHeight(){
+        let mainContenntHeight:number;
+        if(UIHelper.isMobile()==false){ 
+            mainContenntHeight = window.innerHeight-85;
+        }else{
+            mainContenntHeight = window.innerHeight-85
+        }
+        return mainContenntHeight;
     }
 
 

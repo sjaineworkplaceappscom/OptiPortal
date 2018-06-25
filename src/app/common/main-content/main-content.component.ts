@@ -47,8 +47,7 @@ export class MainContentComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
     onResize(event) {
         // apply grid height
-        //this.gridHeight = document.getElementById('opti_MainContentID').offsetHeight;
-        this.gridHeight = window.innerHeight-85;
+        this.gridHeight = UIHelper.getMainContentHeight();
     }
 
   ngOnInit() {
@@ -57,10 +56,8 @@ export class MainContentComponent implements OnInit {
         UIHelper.getWidthOfOuterTab();
     
     // apply grid height
-        //this.gridHeight = document.getElementById('opti_MainContentID').offsetHeight;
-        this.gridHeight = window.innerHeight-85;
-        //alert(this.gridHeight)
-    
+        this.gridHeight = UIHelper.getMainContentHeight();
+        
     // check mobile device
         this.isMobile =UIHelper.isMobile();
 
@@ -68,13 +65,13 @@ export class MainContentComponent implements OnInit {
         const element = document.getElementsByTagName("body")[0];
         element.className = "";
 
-    this.approveUser=false;
-    this.commonService.currentNavigatedData.subscribe(
-      data=>{
-        this.approveUser=data;
-       
-      }
-    )
+        this.approveUser=false;
+        this.commonService.currentNavigatedData.subscribe(
+        data=>{
+            this.approveUser=data;
+        
+        }
+        )
   }
 
   public roles: Array<{ text: string, value: string }> = [
