@@ -169,6 +169,22 @@ body{
       }
     }
 
+    // kendo global font size
+    .opti_form-label,
+    kendo-grid .k-grid-table,
+    .k-dateinput-wrap .k-input{
+      font-size: 12px;
+    }
+
+    // textarea
+    .k-textarea{
+      width: 100%;
+    }
+
+    // datepicker
+    kendo-datepicker.k-widget.k-datepicker.k-header {
+      width: 100%;
+  }
   
     
 

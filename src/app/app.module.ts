@@ -47,7 +47,9 @@ import { ApproveUsersComponent } from './account/approve-users/approve-users.com
 import { ConfirmPasswordEquilValidatorDirectiveDirective } from './directives/confirm-password-equil-validator-directive.directive';
 import { LandingComponent } from './common/landing/landing.component'
 import { LayoutModule } from '@progress/kendo-angular-layout'
-import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export'
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+;
 ;
 ;
 
@@ -107,7 +109,8 @@ const routes: Routes = [
     LayoutModule,
     TabsModule.forRoot(),
     PDFExportModule,
-    PDFModule
+    PDFModule,
+    DateInputsModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

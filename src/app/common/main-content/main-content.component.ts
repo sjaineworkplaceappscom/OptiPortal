@@ -1119,5 +1119,26 @@ closeRightSection(status){
 
 // add top section
 
+// status section
+public status: Array<{ text: string, value: string }> = [
+{ text: "Draft ", value: '0' },
+{ text: "New ", value: '1' },
+{ text: "Revised", value: '2' },
+{ text: "Approved ", value: '3' },
+{ text: "Partial Approved ", value: '4' },
+{ text: "Rejected ", value: '5' },
+{ text: "Canceled  ", value: '6' },
+{ text: "Closed   ", value: '7' }
+];
+public selectedStatusItem: { text: string, value: string } = this.status[2];
+
+//cretaed date
+public valueCreatedDate: Date = new Date(2000, 2, 10);
+
+//created By
+public valueCreatedBy: Date = new Date(2000, 2, 10);
+
+// valid untill
+public valueValidUntill: Date = new Date(2000, 2, 10);
 
 }
