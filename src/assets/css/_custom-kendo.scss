@@ -157,6 +157,18 @@ body{
         height: auto;
     }
 
+    .k-grid-header .k-grid-filter:focus {
+        box-shadow: none;
+    }
+
+    // column chooser
+    kendo-grid-column-chooser{
+      button.k-button.k-bare{
+        box-shadow: 0 0 0 3px !important;
+        margin-left: 0 !important;
+      }
+    }
+
   
     
 

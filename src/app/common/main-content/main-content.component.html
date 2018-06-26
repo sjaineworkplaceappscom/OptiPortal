@@ -15,6 +15,7 @@
             [groupable]="false"
             [columnMenu]="{ columnChooser: false }"
             [height]=gridHeight
+            (click)="openRightSection(true)"
             >
 
             <!-- (click)="openRightSection(true)" -->
@@ -24,16 +25,19 @@
                 <!-- show hide column start show hide -->
                 <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
 
-                <!-- checkbox -->
-                <form class="k-form opti_show-hide-grid-column-filter float-left">
-                    <div class="k-form-field">
-                        <input type="checkbox" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" checked />
-                        <label class="k-checkbox-label" for="opti_ColumnFilterID">Filter</label>
-                    </div>
-                </form>
+                <div class="float-right">
+                    <!-- checkbox -->
+                    <form class="k-form opti_show-hide-grid-column-filter float-left">
+                        <div class="k-form-field">
+                            <input type="checkbox" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
+                            <label class="k-checkbox-label" for="opti_ColumnFilterID">Filter</label>
+                        </div>
+                    </form>
 
-                <!-- pdf button start -->
-                <button kendoGridPDFCommand icon="file-pdf" class="float-right">Export to PDF</button>
+                    <!-- pdf button start -->
+                    <button kendoGridPDFCommand icon="file-pdf" class="float-right opti_grid-toolbar-pdfbutton">Export to PDF</button>
+                </div>    
+
             </ng-template>
             <!-- grid template end -->
             

@@ -27,7 +27,7 @@ import { opticonstants } from '../../constants';
 export class MainContentComponent implements OnInit {
   approveUser:boolean;
   isMobile:boolean;
-  isColumnFilter:boolean = true;
+  isColumnFilter:boolean = false;
   isFixedRightSection:boolean;  
   selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
 

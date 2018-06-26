@@ -243,4 +243,18 @@ body{
             border-top: none;
             height: calc(100% - 50px);
         }
-  }
+
+        // grid toolabr
+        kendo-grid-toolbar.k-header.k-grid-toolbar {
+            .k-form.opti_show-hide-grid-column-filter{
+                padding: 7px 0 0 20px;
+                .k-form-field{
+                    margin-bottom: 0 !important;
+                }
+            }
+            
+            .opti_grid-toolbar-pdfbutton{
+                margin-top: 2px !important;
+            }
+        }
+}
