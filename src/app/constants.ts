@@ -1,6 +1,6 @@
 
 export const opticonstants = {
-    DEFAULTTHEMECOLOR:'#428bca',
+    DEFAULTTHEMECOLOR:'#1fa2ff',
     OPALTHEMECOLOR:'#13688c',
     URBANTHEMECOLOR:'#ff804d',
     SKYPETHEMECOLOR:'#428bca',
