@@ -184,8 +184,13 @@ body{
     // datepicker
     kendo-datepicker.k-widget.k-datepicker.k-header {
       width: 100%;
-  }
-  
-    
+    }
 
+    //file upload
+    .opti_right-fix-section{
+      ul.k-upload-files{
+        max-height: 180px;
+        overflow-y: auto;
+      }
+    }
   }

@@ -4,7 +4,7 @@
 // Original Date: 10 March 2018
 //==============================================================================
 
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, TemplateRef, ViewChild } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 
 import { process, State } from '@progress/kendo-data-query';
@@ -28,8 +28,17 @@ export class MainContentComponent implements OnInit {
   approveUser:boolean;
   isMobile:boolean;
   isColumnFilter:boolean = false;
+  isColumnFilterItemsGrid:boolean = false;
   isFixedRightSection:boolean;  
   selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
+  
+
+  @ViewChild('AddItemFormSection') AddItemFormSection;
+  @ViewChild('showItemButtonSection') showItemButtonSection;
+  @ViewChild('gridSectionItem') gridSectionItem;
+
+
+
 
    constructor(private commonService:Commonservice) {
     this.approveUser=false;
@@ -1103,42 +1112,113 @@ customers = [{
     'Phone': '(26) 642-7012',
     'Fax': '(26) 642-7012'
 }];
-  
-
-
 public gridData: any[] = this.customers;
 
-// show and hide right content section
-openRightSection(status){
-    this.isFixedRightSection = status;
-}
 
-closeRightSection(status){
-    this.isFixedRightSection = status;
-}
+    // itmes json start
+    PurchaseEnquiryItemList = [
+       {
+        'PurchaseInquiryItemlId' : '1',   
+        'ItemDescription' : "top board item id123",        
+        'CustomerItemIdOrDescription' : "top board item id123",
+        'Quantitiy' : 5,
+        'Unit' : "number",
+        'Requester' : "Ankur Sharma",
+        'RequestDate' : "20/06/2018",
+        'RequiredDate' : "28/06/2018",
+        'ShipToLocation' : "Indore"
+       },
+       {
+        'PurchaseInquiryItemlId' : '2',   
+        'ItemDescription' : "top board item id123",        
+        'CustomerItemIdOrDescription' : "top board item id123",
+        'Quantitiy' : 5,
+        'Unit' : "number",
+        'Requester' : "Ankur Sharma",
+        'RequestDate' : "20/06/2018",
+        'RequiredDate' : "28/06/2018",
+        'ShipToLocation' : "Indore"
+       },
+       {
+        'PurchaseInquiryItemlId' : '3',   
+        'ItemDescription' : "top board item id123",        
+        'CustomerItemIdOrDescription' : "top board item id123",
+        'Quantitiy' : 5,
+        'Unit' : "number",
+        'Requester' : "Ankur Sharma",
+        'RequestDate' : "20/06/2018",
+        'RequiredDate' : "28/06/2018",
+        'ShipToLocation' : "Indore"
+       },
+       {
+        'PurchaseInquiryItemlId' : '4',   
+        'ItemDescription' : "top board item id123",        
+        'CustomerItemIdOrDescription' : "top board item id123",
+        'Quantitiy' : 5,
+        'Unit' : "number",
+        'Requester' : "Ankur Sharma",
+        'RequestDate' : "20/06/2018",
+        'RequiredDate' : "28/06/2018",
+        'ShipToLocation' : "Indore"
+       }
+    ];
+    public gridItemsData: any[] = this.PurchaseEnquiryItemList;
 
-// add top section
+    showItemSection(){
+        this.gridSectionItem.nativeElement.style.display = 'none';
+        this.AddItemFormSection.nativeElement.style.display = 'block';
+    }
 
-// status section
-public status: Array<{ text: string, value: string }> = [
-{ text: "Draft ", value: '0' },
-{ text: "New ", value: '1' },
-{ text: "Revised", value: '2' },
-{ text: "Approved ", value: '3' },
-{ text: "Partial Approved ", value: '4' },
-{ text: "Rejected ", value: '5' },
-{ text: "Canceled  ", value: '6' },
-{ text: "Closed   ", value: '7' }
-];
-public selectedStatusItem: { text: string, value: string } = this.status[2];
+    addItemt(){
+        this.gridSectionItem.nativeElement.style.display = 'block';
+        this.AddItemFormSection.nativeElement.style.display = 'none';
+    }
+    // items json end
 
-//cretaed date
-public valueCreatedDate: Date = new Date(2000, 2, 10);
+    // show and hide right content section
+    openRightSection(status){
+        this.isFixedRightSection = status;
+    }
 
-//created By
-public valueCreatedBy: Date = new Date(2000, 2, 10);
+    closeRightSection(status){
+        this.isFixedRightSection = status;
+    }
 
-// valid untill
-public valueValidUntill: Date = new Date(2000, 2, 10);
+    // add top section
+
+    // status section
+    public status: Array<{ text: string, value: string }> = [
+    { text: "Draft ", value: '0' },
+    { text: "New ", value: '1' },
+    { text: "Revised", value: '2' },
+    { text: "Approved ", value: '3' },
+    { text: "Partial Approved ", value: '4' },
+    { text: "Rejected ", value: '5' },
+    { text: "Canceled  ", value: '6' },
+    { text: "Closed   ", value: '7' }
+    ];
+    public selectedStatusItem: { text: string, value: string } = this.status[2];
+
+    //cretaed date
+    public valueCreatedDate: Date = new Date(2000, 2, 10);
+
+    //created By
+    public valueCreatedBy: Date = new Date(2000, 2, 10);
+
+    // valid untill
+    public valueValidUntill: Date = new Date(2000, 2, 10);
+
+    // file upload
+    uploadAttachementMasterSaveUrl = 'saveMasterAttachementUrl'; // should represent an actual API endpoint
+    uploadAttachementMasterRemoveUrl = 'removeMasterAttachementUrl'; // should represent an actual API endpoint
+
+    uploadNotesMasterSaveUrl = 'saveMasterNotesUrl'; // should represent an actual API endpoint
+    uploadNotesMasterRemoveUrl = 'removeMasterNotesUrl'; // should represent an actual API endpoint
+
+    uploadAttachementItemSaveUrl = 'saveMasterAttachementUrl'; // should represent an actual API endpoint
+    uploadAttachementItemRemoveUrl = 'removeMasterAttachementUrl'; // should represent an actual API endpoint
+
+    uploadNotesItemSaveUrl = 'saveItemNotesUrl'; // should represent an actual API endpoint
+    uploadNotesItemRemoveUrl = 'removeItemNotesUrl'; // should represent an actual API endpoint
 
 }

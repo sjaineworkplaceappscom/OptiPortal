@@ -64,13 +64,32 @@
     .opti_right-fix-section {
         position: fixed;
         right: 0;
-        background: #c7c7c7;
+        background: $white;
         width: 60%;
         height: calc(100% - 65px);
         top: 65px;
         max-width: 100%;
         border-left: 1px solid #c7c7c7;
         z-index: 99;
+
+        // tab section under right section
+        .opti_tab {
+            border: none;
+            button{
+                border-radius: 0;
+            }
+        }
+
+        .opti_tabcontent{
+            padding: 10px;
+            height: calc(100% - 30px);
+        }
+
+        .opti_close-icon-right-section{
+            display: inline-flex !important;
+            height: 30px;
+            cursor: pointer;
+        }
     }    
 }
 

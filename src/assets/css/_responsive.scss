@@ -21,6 +21,22 @@
                 }
             }
 
+            //left panel
+            #opti_LeftPanelFooterLogo{
+                max-height: 100px;
+                img{
+                    width: 200px !important;
+                }
+            }
+
+            #opti_WrapperID .opti_left-navigation{
+                max-height: calc(100% - 125px);
+            }
+
+            .k-column-list{
+                max-height: 130px !important;
+            }
+
             /////////////////////////////
             // CSS Related To signin Page
             /////////////////////////////
