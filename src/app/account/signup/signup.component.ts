@@ -7,6 +7,10 @@ import { CommonMessages } from 'src/common-messages';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Commonservice } from '../../services/commonservice.service';
+import { PurchaseInquiryItemModel } from '../../models/purchaserequest/purchase-inquiry-item';
+import { NotesModel } from '../../models/purchaserequest/notes';
+import { PurchaseInquiryModel } from '../../models/purchaserequest/purchase-inquiry';
+import { Jsonp } from '@angular/http';
 
 
 
@@ -43,7 +47,9 @@ export class SignupComponent implements OnInit {
   // Error Bits
   invalidCompanyId: boolean = false;
 
-  constructor(private accountService: AccountService, private router: Router, private commonService: Commonservice, ) { }
+  constructor(private accountService: AccountService, private router: Router, private commonService: Commonservice, ) { 
+    this.generatePurchaseRequestData();
+  }
 
   ngOnInit() {
 
@@ -72,9 +78,9 @@ export class SignupComponent implements OnInit {
     ctx.font = "15px Arial";
     ctx.clearRect(0, 0, 252, 144);
     ctx.fillStyle = "black";
+
     ctx.fillText(string, 15, 21);
   }
-
   getRandomStringForCaptcha() {
     let chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
     let string_length = 4;
@@ -175,6 +181,56 @@ export class SignupComponent implements OnInit {
         }
       );
     }
+  }
+
+  //this method is for testing purpose.
+  public generatePurchaseRequestData(): void{
+
+   let purchaseInquiryModel: PurchaseInquiryModel = new PurchaseInquiryModel();
+    // Purchase Item 1--- 
+   let purchaseInquiryItemModel:PurchaseInquiryItemModel = new PurchaseInquiryItemModel();
+   purchaseInquiryItemModel.Comments = "This item is for lab use purpose";
+   purchaseInquiryItemModel.CustomerItemIdOrDescription = "top board item id123";
+   purchaseInquiryItemModel.ItemDescription = "8gb Ram, core-i5 processor, 512gb HD machine";
+   purchaseInquiryItemModel.PurchaseInquiryItemlId = 340;
+   purchaseInquiryItemModel.Quantitiy = 5;
+   purchaseInquiryItemModel.RequestDate = "20/06/2018";
+   purchaseInquiryItemModel.Requester = "Ankur Sharma";
+   purchaseInquiryItemModel.RequiredDate = "28/06/2018";
+   purchaseInquiryItemModel.ShipToLocation = "Indore";
+   purchaseInquiryItemModel.Unit = "number";
+   //notes reference with this item 
+   let note1Model:NotesModel = new NotesModel();
+   note1Model.NoteDescription = "Use for future reference for same item";
+   note1Model.NoteId = "452";
+   let note2Model:NotesModel = new NotesModel();
+   note2Model.NoteDescription = "Use for future reference for same item";
+   note2Model.NoteId = "452";
+   purchaseInquiryItemModel.notesList = [note1Model,note2Model];
+   
+   purchaseInquiryModel.Buyer = "Shashank Jain";
+   purchaseInquiryModel.CreatedDate = "20/06/2018";
+   purchaseInquiryModel.CustomerId = 241;
+   purchaseInquiryModel.CustomerName = "Basecamp startups";
+   purchaseInquiryModel.InquiryId = 258;
+   purchaseInquiryModel.InquiryStatus = "New";
+   purchaseInquiryModel.ModifiedBy = "Shashank jain";
+   purchaseInquiryModel.ModifiedDate = "20/06/2018";
+   purchaseInquiryModel.PurchaseEnquiryItemList = [purchaseInquiryItemModel];
+   purchaseInquiryModel.ReferenceId = "4018";
+   purchaseInquiryModel.ValidUntil = "01/07/2018";
+   
+   let reqnote1Model:NotesModel = new NotesModel();
+   reqnote1Model.NoteDescription = "Use for future reference for same item";
+   reqnote1Model.NoteId = "452";
+   let reqnote2Model:NotesModel = new NotesModel();
+   reqnote2Model.NoteDescription = "Use for future reference for same item";
+   reqnote2Model.NoteId = "452";
+   purchaseInquiryModel.NotesList = [reqnote1Model,reqnote2Model];
+
+   //convert model to json
+   let jsonString: string = JSON.stringify(purchaseInquiryModel);
+   console.log("Json response:"+jsonString);
   }
 
 }
