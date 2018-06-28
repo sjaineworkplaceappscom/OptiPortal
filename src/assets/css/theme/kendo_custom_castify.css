@@ -93,6 +93,14 @@ body{
   .opti_left-navigation{
   box-shadow: 0px 1px 15px #ff8382;
   }
+
+  /* tab header */
+  .opti_tab-outer .opti_tab button:hover {
+    background-color: #ff8382;
+  }
+  .opti_tab-outer .opti_tab button.active {
+    background-color: #ff8382;
+  }
   
   
   /*****************************************************************************************/

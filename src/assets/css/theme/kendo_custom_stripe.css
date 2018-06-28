@@ -92,6 +92,14 @@ body{
     box-shadow: 0px 1px 15px #1fa2ff;
   }
 
+  /* tab header */
+  .opti_tab-outer .opti_tab button:hover {
+    background-color: #1fa2ff;
+  }
+  .opti_tab-outer .opti_tab button.active {
+    background-color: #1fa2ff;
+  }
+
 
   /*****************************************************************************************/
   /*********************************** END OUR CUSTOM CODE *********************************/

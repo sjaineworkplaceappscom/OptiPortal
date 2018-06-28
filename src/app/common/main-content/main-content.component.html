@@ -10,7 +10,6 @@
         [groupable]="false"
         [columnMenu]="{ columnChooser: false }"
         [height]=gridHeight
-        (click)="openRightSection(true)"
         >
 
             <!-- (click)="openRightSection(true)" -->
@@ -19,6 +18,9 @@
             <ng-template kendoGridToolbarTemplate>
                 <!-- show hide column start show hide -->
                 <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
+
+                <button type="button" (click)="openRightSection(true)" style="margin-left: 20px;margin-top: 2px;">Add new Request</button>
+
                 <div class="float-right">
                     <!-- checkbox -->
                     <form class="k-form opti_show-hide-grid-column-filter float-left">
@@ -67,16 +69,18 @@
         <svg-icon src="assets/images/common/back-opposite.svg" (click)="closeRightSection(false)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }" class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon>
         <!-- tab start -->
         <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="config">
-        <div class="opti_tab" id="opti_TabID">
-            <button class="opti_tablinks active" (click)="openTab($event, 'home')">Home</button>
-            <button class="opti_tablinks" (click)="openTab($event, 'items')">Items</button>
-        </div>
+            <div class="opti_tab" id="opti_TabID">
+                <button class="opti_tablinks active" (click)="openTab($event, 'home')">Home</button>
+                <button class="opti_tablinks" (click)="openTab($event, 'items')">Items</button>
+                <button class="opti_tablinks" (click)="openTab($event, 'attachement')">Attachements</button>
+                <button class="opti_tablinks" (click)="openTab($event, 'notes')">Notes</button>
+            </div>
         </div>
 
         <div id="home" class="opti_tabcontent opti_position-relative" style="display: block;" [perfectScrollbar]="config">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-block">
                                 <form class="k-form">
@@ -130,19 +134,6 @@
                             </div>
                         </div>
                     </div>    
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <h5>Upload Attachement</h5>
-                        <kendo-upload
-                            [saveUrl]="uploadAttachementMasterSaveUrl"
-                            [removeUrl]="uploadAttachementMasterRemoveUrl">
-                        </kendo-upload>
-                        <br/>
-                        <h5>Upload Notes</h5>
-                        <kendo-upload
-                            [saveUrl]="uploadNotesMasterSaveUrl"
-                            [removeUrl]="uploadNotesMasterRemoveUrl">
-                        </kendo-upload>
-                    </div>
                 </div>
             </div>
 
@@ -214,17 +205,18 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
-                                <h5>Upload Attachement</h5>
-                                <kendo-upload
-                                    [saveUrl]="uploadAttachementItemSaveUrl"
-                                    [removeUrl]="uploadAttachementItemRemoveUrl">
-                                </kendo-upload>
-                                <br/>
-                                <h5>Upload Notes</h5>
-                                <kendo-upload
-                                    [saveUrl]="uploadNotesItemSaveUrl"
-                                    [removeUrl]="uploadNotesItemRemoveUrl">
-                                </kendo-upload>
+                            <div (click)="closeItemForm()" style="position: absolute;right: 0px;top: -16px;cursor: pointer;"> <svg-icon src="assets/images/common/back-opposite.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }" class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon> </div>
+                            <h5>Upload Attachement</h5>
+                            <kendo-upload
+                                [saveUrl]="uploadAttachementItemSaveUrl"
+                                [removeUrl]="uploadAttachementItemRemoveUrl">
+                            </kendo-upload>
+                            <br/>
+                            <h5>Upload Notes</h5>
+                            <kendo-upload
+                                [saveUrl]="uploadNotesItemSaveUrl"
+                                [removeUrl]="uploadNotesItemRemoveUrl">
+                            </kendo-upload>
                         </div>
                     </div>    
                 </div>    
@@ -233,76 +225,115 @@
 
             <!-- grid start -->
             <div #gridSectionItem>
-                <kendo-grid
-                [kendoGridBinding]="gridItemsData"
-                [resizable]="true"
-                [pageSize]="50"
-                [pageable]="true"
-                [sortable]="true"
-                [filterable]=isColumnFilterItemsGrid
-                [groupable]="false"
-                [columnMenu]="{ columnChooser: false }"
-                [height]=gridHeight-41
-                >
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <kendo-grid
+                            [kendoGridBinding]="gridItemsData"
+                            [resizable]="true"
+                            [pageSize]="50"
+                            [pageable]="true"
+                            [sortable]="true"
+                            [filterable]=isColumnFilterItemsGrid
+                            [groupable]="false"
+                            [columnMenu]="{ columnChooser: false }"
+                            [height]=gridHeight-41
+                            >
 
-                    <!-- (click)="openRightSection(true)" -->
+                                <!-- (click)="openRightSection(true)" -->
 
-                    <!-- grid template start -->
-                    <ng-template kendoGridToolbarTemplate>
-                        <!-- show hide column start show hide -->
-                        <kendo-grid-column-chooser class="float-left opti_items-grid"></kendo-grid-column-chooser>
+                                <!-- grid template start -->
+                                <ng-template kendoGridToolbarTemplate>
+                                    <!-- show hide column start show hide -->
+                                    <kendo-grid-column-chooser class="float-left opti_items-grid"></kendo-grid-column-chooser>
 
-                        <!-- add iten button -->
-                        <button #showItemButtonSection type="button" (click)="showItemSection()">Add new Item</button>
+                                    <!-- add iten button -->
+                                    <button #showItemButtonSection type="button" (click)="showItemSection()">Add new Item</button>
 
-                        <div class="float-right">
-                            <!-- checkbox -->
-                            <form class="k-form opti_show-hide-grid-column-filter float-left">
-                                <div class="k-form-field">
-                                    <input type="checkbox" id="opti_ColumnFilterItemID" [(ngModel)]="isColumnFilterItemsGrid" class="k-checkbox" name="columnfilter" />
-                                    <label class="k-checkbox-label" for="opti_ColumnFilterItemID">Filter</label>
-                                </div>
-                            </form>
+                                    <div class="float-right">
+                                        <!-- checkbox -->
+                                        <form class="k-form opti_show-hide-grid-column-filter float-left">
+                                            <div class="k-form-field">
+                                                <input type="checkbox" id="opti_ColumnFilterItemID" [(ngModel)]="isColumnFilterItemsGrid" class="k-checkbox" name="columnfilter" />
+                                                <label class="k-checkbox-label" for="opti_ColumnFilterItemID">Filter</label>
+                                            </div>
+                                        </form>
 
-                            <!-- pdf button start -->
-                            <button kendoGridPDFCommand icon="file-pdf" class="float-right opti_grid-toolbar-pdfbutton">Export to PDF</button>
-                        </div>    
-                    </ng-template>
-                    <!-- grid template end -->
+                                        <!-- pdf button start -->
+                                        <button kendoGridPDFCommand icon="file-pdf" class="float-right opti_grid-toolbar-pdfbutton">Export to PDF</button>
+                                    </div>    
+                                </ng-template>
+                                <!-- grid template end -->
 
-                    <!-- grid column start -->
-                    <kendo-grid-column field="PurchaseInquiryItemlId" [width]="120" title="ItemlId"></kendo-grid-column>
-                    <kendo-grid-column field="ItemDescription" [width]="140"></kendo-grid-column>
-                    <kendo-grid-column field="CustomerItemIdOrDescription" [width]="200"></kendo-grid-column>
-                    <kendo-grid-column field="Quantitiy" [width]="140"></kendo-grid-column>
-                    <kendo-grid-column field="Unit" [width]="140"></kendo-grid-column>
-                    <kendo-grid-column field="Requester" [width]="140"></kendo-grid-column>
-                    <kendo-grid-column field="RequestDate" [width]="140"></kendo-grid-column>
-                    <kendo-grid-column field="RequiredDate" [width]="140"></kendo-grid-column>
-                    <kendo-grid-column field="ShipToLocation" [width]="140"></kendo-grid-column>
-                    <!-- grid column end -->
-                
-                    <!-- pdf template start -->
-                    <kendo-grid-pdf fileName="items.pdf" [allPages]="true" paperSize="A4" [repeatHeaders]="true" [landscape]="true">
-                        <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
-                        <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
-                            <div class="page-template">
-                            <div class="header">
-                                <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>
-                                Multi-page grid with automatic page breaking
-                            </div>
-                            <div class="footer">
-                                Page {{ pageNum }} of {{ totalPages }}
-                            </div>
-                            </div>
-                        </ng-template>
-                    </kendo-grid-pdf>
-                    <!-- pdf template end -->
+                                <!-- grid column start -->
+                                <kendo-grid-column field="PurchaseInquiryItemlId" [width]="120" title="ItemlId"></kendo-grid-column>
+                                <kendo-grid-column field="ItemDescription" [width]="140"></kendo-grid-column>
+                                <kendo-grid-column field="CustomerItemIdOrDescription" [width]="200"></kendo-grid-column>
+                                <kendo-grid-column field="Quantitiy" [width]="140"></kendo-grid-column>
+                                <kendo-grid-column field="Unit" [width]="140"></kendo-grid-column>
+                                <kendo-grid-column field="Requester" [width]="140"></kendo-grid-column>
+                                <kendo-grid-column field="RequestDate" [width]="140"></kendo-grid-column>
+                                <kendo-grid-column field="RequiredDate" [width]="140"></kendo-grid-column>
+                                <kendo-grid-column field="ShipToLocation" [width]="140"></kendo-grid-column>
+                                <!-- grid column end -->
+                            
+                                <!-- pdf template start -->
+                                <kendo-grid-pdf fileName="items.pdf" [allPages]="true" paperSize="A4" [repeatHeaders]="true" [landscape]="true">
+                                    <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
+                                    <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+                                        <div class="page-template">
+                                        <div class="header">
+                                            <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>
+                                            Multi-page grid with automatic page breaking
+                                        </div>
+                                        <div class="footer">
+                                            Page {{ pageNum }} of {{ totalPages }}
+                                        </div>
+                                        </div>
+                                    </ng-template>
+                                </kendo-grid-pdf>
+                                <!-- pdf template end -->
 
-                </kendo-grid>
+                            </kendo-grid>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- grid end -->
 
+        </div>
+
+        <div id="attachement" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="config">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Upload Attachement</h5>
+                        <kendo-upload
+                            [saveUrl]="uploadAttachementMasterSaveUrl"
+                            [removeUrl]="uploadAttachementMasterRemoveUrl">
+                        </kendo-upload>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="notes" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="config">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="opti_notes-list">
+                            <li>
+                                <span class="opti_notes-list-id">#1 </span> <span class="opti_notes-list-action">Created</span> by <span class="opti_notes-list-by">Rishabh Jain</span> on <span class="opti_notes-list-date">28 Jun 2018 12:17 pm</span>
+                                <div class="opti_notes-list-msg">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
+                            </li>
+                            <li>
+                                <span class="opti_notes-list-id">#1 </span> <span class="opti_notes-list-action">Created</span> by <span class="opti_notes-list-by">Rishabh Jain</span> on <span class="opti_notes-list-date">28 Jun 2018 12:17 pm</span>
+                                <div class="opti_notes-list-msg">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- tab end -->

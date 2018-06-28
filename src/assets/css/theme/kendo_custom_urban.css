@@ -32,7 +32,7 @@ body{
   }
   
   section#opti_TopBarID {
-    background-color: #13688c;
+    background: #13688c;
   }
   
   /* mobile sidebar panel color */
@@ -91,6 +91,14 @@ body{
   /* left section */
   .opti_left-navigation{
   box-shadow: 0px 1px 15px #ff804d;
+  }
+
+  /* tab header */
+  .opti_tab-outer .opti_tab button:hover {
+    background-color: #ff804d;
+  }
+  .opti_tab-outer .opti_tab button.active {
+    background-color: #ff804d;
   }
   
   /*****************************************************************************************/

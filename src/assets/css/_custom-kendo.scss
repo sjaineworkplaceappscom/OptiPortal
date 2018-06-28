@@ -186,11 +186,21 @@ body{
       width: 100%;
     }
 
-    //file upload
-    .opti_right-fix-section{
+    // request upload
+    #attachement{
       ul.k-upload-files{
-        max-height: 180px;
-        overflow-y: auto;
+          max-height: calc(100vh - 205px) !important;
+          overflow-y: auto;
       }
     }
+
+    // text color for input
+    .k-dateinput-wrap .k-input, 
+    .k-dropdown-wrap .k-input, 
+    .k-picker-wrap .k-input, 
+    .k-multiselect-wrap .k-input, 
+    .k-numeric-wrap .k-input {
+      color: $light-black;
+    }
+
   }

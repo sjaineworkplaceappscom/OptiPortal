@@ -1173,6 +1173,11 @@ public gridData: any[] = this.customers;
         this.gridSectionItem.nativeElement.style.display = 'block';
         this.AddItemFormSection.nativeElement.style.display = 'none';
     }
+
+    closeItemForm(){
+        this.gridSectionItem.nativeElement.style.display = 'block';
+        this.AddItemFormSection.nativeElement.style.display = 'none';
+    }
     // items json end
 
     // show and hide right content section

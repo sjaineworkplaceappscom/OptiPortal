@@ -1,3 +1,19 @@
 .opti_items-grid{
     margin-right: 20px;
 }
+
+
+// opti note list
+.opti_notes-list{
+    li{
+        margin-bottom: 10px;
+        .opti_notes-list-msg {
+            border: 1px solid #c7c7c7;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        span{
+            font-weight: 500;
+        }
+    }
+}
