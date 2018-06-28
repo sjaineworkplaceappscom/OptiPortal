@@ -31,11 +31,18 @@ export class MainContentComponent implements OnInit {
   isColumnFilterItemsGrid:boolean = false;
   isFixedRightSection:boolean;  
   selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
+
+  noteTextForEdit = '';
+  addnotestring = '';
   
 
   @ViewChild('AddItemFormSection') AddItemFormSection;
   @ViewChild('showItemButtonSection') showItemButtonSection;
   @ViewChild('gridSectionItem') gridSectionItem;
+
+  @ViewChild('notesgrid') notesgrid;
+  @ViewChild('noteform') noteform;
+  @ViewChild('editnoteform') editnoteform;
 
 
 
@@ -1225,5 +1232,70 @@ public gridData: any[] = this.customers;
 
     uploadNotesItemSaveUrl = 'saveItemNotesUrl'; // should represent an actual API endpoint
     uploadNotesItemRemoveUrl = 'removeItemNotesUrl'; // should represent an actual API endpoint
+
+    // Notes tab
+    notesItemList = [
+        {
+            'NoteId' : '1',   
+            'CreatedBy' : "Prashant1",        
+            'Action' : "Created",
+            'Quantitiy' : 5,
+            'Date' : new Date(2000, 2, 10),
+            'Notes' : "Hello hi how are you"
+        },
+        {
+            'NoteId' : '2',   
+            'CreatedBy' : "Prashant2",        
+            'Action' : "Created",
+            'Quantitiy' : 5,
+            'Date' : new Date(2000, 2, 10),
+            'Notes' : "I'm gud and you?"
+        },
+        {
+            'NoteId' : '3',   
+            'CreatedBy' : "Prashant3",        
+            'Action' : "Created",
+            'Quantitiy' : 5,
+            'Date' : new Date(2000, 2, 10),
+            'Notes' : "I'm also fine"
+        },
+        {
+            'NoteId' : '5',   
+            'CreatedBy' : "Prashant4",        
+            'Action' : "Created",
+            'Quantitiy' : 5,
+            'Date' : new Date(2000, 2, 10),
+            'Notes' : "that's great"
+        }
+     ];
+     public noteItemsData: any[] = this.notesItemList;
+
+     addNewComment(){
+        this.notesgrid.nativeElement.style.display = 'none';
+        this.noteform.nativeElement.style.display = 'block';
+     }
+
+     submitNote(e, addnotestring){
+        console.log(e); 
+        console.log(addnotestring);
+        this.notesgrid.nativeElement.style.display = 'block';
+        this.noteform.nativeElement.style.display = 'none';
+     }
+
+     
+     editNotes(e, note){
+        console.log(e);
+        console.log(note); 
+        this.notesgrid.nativeElement.style.display = 'none';
+        this.editnoteform.nativeElement.style.display = 'block';
+        this.noteTextForEdit = note;
+     }
+
+     updateNote(e){
+        this.notesgrid.nativeElement.style.display = 'block';
+        this.editnoteform.nativeElement.style.display = 'none';
+     }
+
+     //editNotes
 
 }

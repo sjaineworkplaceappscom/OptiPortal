@@ -321,16 +321,79 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <ul class="opti_notes-list">
-                            <li>
-                                <span class="opti_notes-list-id">#1 </span> <span class="opti_notes-list-action">Created</span> by <span class="opti_notes-list-by">Rishabh Jain</span> on <span class="opti_notes-list-date">28 Jun 2018 12:17 pm</span>
-                                <div class="opti_notes-list-msg">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
-                            </li>
-                            <li>
-                                <span class="opti_notes-list-id">#1 </span> <span class="opti_notes-list-action">Created</span> by <span class="opti_notes-list-by">Rishabh Jain</span> on <span class="opti_notes-list-date">28 Jun 2018 12:17 pm</span>
-                                <div class="opti_notes-list-msg">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
-                            </li>
-                        </ul>
+
+                    
+                        
+                        <!-- start notes grid -->
+                        <div #notesgrid id="opti_NotesGridID">
+                            <kendo-grid 
+                            [data]="noteItemsData"
+                            [resizable]="true"
+                            [pageSize]="50"
+                            [pageable]="true"
+                            [sortable]="true"
+                            [filterable]="true"
+                            [groupable]="false"
+                            [height]=gridHeight-41
+                            >
+
+                                <!-- grid toolbar start -->
+                                <ng-template kendoGridToolbarTemplate>
+                                    <button (click)="addNewComment()">Add new Notes</button>          
+                                </ng-template>
+                                <!-- grid toolbar end -->
+
+                                <kendo-grid-column media="(min-width: 320px)" title="Notes">
+                                    <ng-template kendoGridCellTemplate let-dataItem>
+                                        <dl>
+                                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} <span class="float-right opti_note-action-button-sec"> <svg-icon src="assets/images/common/edit.svg" (click)="editNotes($event, dataItem.Notes)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon> <svg-icon src="assets/images/common/trash.svg" (click)="deleteNotes()" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon></span></dd>
+                                            <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
+                                        </dl>
+                                    </ng-template>
+                                </kendo-grid-column>
+                            </kendo-grid>
+                        </div>
+                        <!-- end notes grid -->
+
+                        <!-- Add Notes Form  -->
+                        <div class="card" #noteform style="display: none;">
+                            <div class="card-block">
+                                <form class="k-form">
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Add Note</span>
+                                        <textarea class="k-textarea" name="addnotestring" [(ngModel)]="addnotestring">Please enter your note</textarea>
+                                    </label>
+                
+                                    <div class="text-right">
+                                        <button type="button" class="k-button k-primary" (click)="submitNote($event, addnotestring)">Add Item</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- end Notes Form  -->
+
+                        <!-- start edit form -->
+                        <div class="card" #editnoteform style="display: none;">
+                            <div class="card-block">
+                                <form class="k-form">
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Update Note</span>
+                                        <textarea class="k-textarea">{{noteTextForEdit}}</textarea>
+                                    </label>
+                
+                                    <div class="text-right">
+                                        <button type="button" class="k-button k-primary" (click)="updateNote($event)">Update Item</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- end edit form -->
+
+
+                        
+
+
+
                     </div>
                 </div>
             </div>
