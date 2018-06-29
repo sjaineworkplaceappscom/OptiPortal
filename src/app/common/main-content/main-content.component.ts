@@ -1275,14 +1275,25 @@ export class MainContentComponent implements OnInit {
         this.noteform.nativeElement.style.display = 'block';
     }
 
+    deleteNote({sender,rowIndex,dataItem}){            
+        
+        this.noteItemsData.splice(rowIndex,1);
+        localStorage.setItem("setDynamicNotes", JSON.stringify(this.noteItemsData));       
+    }
 
+    editNote({sender,rowIndex,dataItem}){        
+    }
 
     submitNote(e) {
         this.notesgrid.nativeElement.style.display = 'block';
         this.noteform.nativeElement.style.display = 'none';
         
         let dynamicNotesString = localStorage.getItem("setDynamicNotes");
-        let dynamicNotes:any=JSON.parse(dynamicNotesString);      
+        let dynamicNotes:any[]=JSON.parse(dynamicNotesString);      
+
+        if(dynamicNotes==undefined  || dynamicNotes.length<=0){
+            dynamicNotes=[];
+        }
 
         dynamicNotes.push({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: new Date(), CreatedBy: 'prashant' });
         localStorage.setItem("setDynamicNotes", JSON.stringify(dynamicNotes));
@@ -1291,9 +1302,6 @@ export class MainContentComponent implements OnInit {
         //console.log(dynamicNotes);
     }
 
-    deleteNotes(e){
-        console.log(e);
-    }
 
 
 
@@ -1309,6 +1317,8 @@ export class MainContentComponent implements OnInit {
     updateNote(e) {
         this.notesgrid.nativeElement.style.display = 'block';
         this.editnoteform.nativeElement.style.display = 'none';
+
+        
     }
 
     public noteStatus: Array<{ text: string, value: string }> = [

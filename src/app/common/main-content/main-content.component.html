@@ -335,6 +335,8 @@
                             [filterable]="true"
                             [groupable]="false"
                             [height]=gridHeight-41
+                            (remove)="deleteNote($event)"
+                            (edit)="editNote($event)"
                             >
 
                                 <!-- grid toolbar start -->
@@ -346,7 +348,13 @@
                                 <kendo-grid-column media="(min-width: 320px)" title="Notes">
                                     <ng-template kendoGridCellTemplate let-dataItem>
                                         <dl>
-                                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} <span class="float-right opti_note-action-button-sec"> <svg-icon src="assets/images/common/edit.svg" (click)="editNotes($event, dataItem.Notes)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon> <svg-icon src="assets/images/common/trash.svg" (click)="deleteNotes($event)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon></span></dd>
+                                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} 
+                                                <span class="float-right opti_note-action-button-sec"> 
+                                                    <svg-icon kendoGridEditCommand  src="assets/images/common/edit.svg" (click)="editNotes($event, dataItem.Notes)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon> 
+                                                    <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon>
+                                                    
+                                                </span></dd>
+
                                             <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
                                         </dl>
                                     </ng-template>
