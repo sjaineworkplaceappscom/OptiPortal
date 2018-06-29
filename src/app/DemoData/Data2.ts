@@ -1,208 +1,208 @@
 export const data2 = [  
     {  
        "Inquiry":0,
-       "Customer":"Cust001",
-       "Name":"Shashank jain0",
+       "Customer":"Samsung",
+       "Name":"Ankur Sharma",
        "Status":"Approved",
-       "CreatedDate":"28/06/20180",
-       "BuyerCreatedBy":"Ankur Sharma0",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref000"
     }
  ,  
     {  
        "Inquiry":1,
-       "Customer":"Cust001",
-       "Name":"Shashank jain1",
+       "Customer":"Samsung",
+       "Name":"Ankur Verma",
        "Status":"Approved",
-       "CreatedDate":"28/06/20181",
-       "BuyerCreatedBy":"Ankur Sharma1",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Ankur Verma",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref001"
     }
  ,  
     {  
        "Inquiry":2,
-       "Customer":"Cust001",
-       "Name":"Shashank jain2",
+       "Customer":"Samsung",
+       "Name":"Arun Sharma",
        "Status":"Approved",
-       "CreatedDate":"28/06/20182",
-       "BuyerCreatedBy":"Ankur Sharma2",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Arun Sharma",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref002"
     }
  ,  
     {  
        "Inquiry":3,
-       "Customer":"Cust001",
-       "Name":"Shashank jain3",
+       "Customer":"Samsung",
+       "Name":"Amit Sharma",
        "Status":"Approved",
-       "CreatedDate":"28/06/20183",
-       "BuyerCreatedBy":"Ankur Sharma3",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Amit Sharma",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref003"
     }
  ,  
     {  
        "Inquiry":4,
-       "Customer":"Cust001",
-       "Name":"Shashank jain4",
+       "Customer":"Samsung",
+       "Name":"Ankur Jain",
        "Status":"Approved",
-       "CreatedDate":"28/06/20184",
-       "BuyerCreatedBy":"Ankur Sharma4",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Ankur Jain",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref004"
     }
  ,  
     {  
        "Inquiry":5,
-       "Customer":"Cust001",
-       "Name":"Shashank jain5",
+       "Customer":"Samsung",
+       "Name":"Aniket Rajput",
        "Status":"Approved",
-       "CreatedDate":"28/06/20185",
-       "BuyerCreatedBy":"Ankur Sharma5",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Aniket Rajput",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref005"
     }
  ,  
     {  
        "Inquiry":6,
-       "Customer":"Cust001",
-       "Name":"Shashank jain6",
+       "Customer":"Samsung",
+       "Name":"Ankur Sharma",
        "Status":"Approved",
-       "CreatedDate":"28/06/20186",
-       "BuyerCreatedBy":"Ankur Sharma6",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref006"
     }
  ,  
     {  
        "Inquiry":7,
-       "Customer":"Cust001",
-       "Name":"Shashank jain7",
+       "Customer":"Samsung",
+       "Name":"Anand Kumar",
        "Status":"Approved",
-       "CreatedDate":"28/06/20187",
-       "BuyerCreatedBy":"Ankur Sharma7",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Anand Kumar",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref007"
     }
  ,  
     {  
        "Inquiry":8,
-       "Customer":"Cust001",
-       "Name":"Shashank jain8",
+       "Customer":"Samsung",
+       "Name":"Ankit Gupta",
        "Status":"Approved",
-       "CreatedDate":"28/06/20188",
-       "BuyerCreatedBy":"Ankur Sharma8",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"ANkit Gupta",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref008"
     }
  ,  
     {  
        "Inquiry":9,
-       "Customer":"Cust001",
-       "Name":"Shashank jain9",
+       "Customer":"Samsung",
+       "Name":"TaranVeer Singh",
        "Status":"Approved",
-       "CreatedDate":"28/06/20189",
-       "BuyerCreatedBy":"Ankur Sharma9",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"TaranVeer Singh",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref009"
     }
  ,  
     {  
        "Inquiry":10,
-       "Customer":"Cust001",
-       "Name":"Shashank jain10",
+       "Customer":"Samsung",
+       "Name":"Prashant Jain",
        "Status":"Approved",
-       "CreatedDate":"28/06/201810",
-       "BuyerCreatedBy":"Ankur Sharma10",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Prashant Jain",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0010"
     }
  ,  
     {  
        "Inquiry":11,
-       "Customer":"Cust001",
-       "Name":"Shashank jain11",
+       "Customer":"Samsung",
+       "Name":"Shashank Jain",
        "Status":"Approved",
-       "CreatedDate":"28/06/201811",
-       "BuyerCreatedBy":"Ankur Sharma11",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Shashank Jain",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0011"
     }
  ,  
     {  
        "Inquiry":12,
-       "Customer":"Cust001",
-       "Name":"Shashank jain12",
+       "Customer":"Samsung",
+       "Name":"Ishant Sharma",
        "Status":"Approved",
-       "CreatedDate":"28/06/201812",
-       "BuyerCreatedBy":"Ankur Sharma12",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Ishant Sharma",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0012"
     }
  ,  
     {  
        "Inquiry":13,
-       "Customer":"Cust001",
-       "Name":"Shashank jain13",
+       "Customer":"Samsung",
+       "Name":"Ishwar Sharma",
        "Status":"Approved",
-       "CreatedDate":"28/06/201813",
-       "BuyerCreatedBy":"Ankur Sharma13",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Ishwar Sharma",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0013"
     }
  ,  
     {  
        "Inquiry":14,
-       "Customer":"Cust001",
-       "Name":"Shashank jain14",
+       "Customer":"Samsung",
+       "Name":"Ankit Kumar",
        "Status":"Approved",
-       "CreatedDate":"28/06/201814",
-       "BuyerCreatedBy":"Ankur Sharma14",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"ANkit Kumar",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0014"
     }
  ,  
     {  
        "Inquiry":15,
-       "Customer":"Cust001",
-       "Name":"Shashank jain15",
+       "Customer":"Samsung",
+       "Name":"Prakher Sharma",
        "Status":"Approved",
-       "CreatedDate":"28/06/201815",
-       "BuyerCreatedBy":"Ankur Sharma15",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Prakher Sharma",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0015"
     }
  ,  
     {  
        "Inquiry":16,
-       "Customer":"Cust001",
-       "Name":"Shashank jain16",
+       "Customer":"Samsung",
+       "Name":"Punit Sharma",
        "Status":"Approved",
-       "CreatedDate":"28/06/201816",
-       "BuyerCreatedBy":"Ankur Sharma16",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Punit Sharma",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0016"
     }
  ,  
     {  
        "Inquiry":17,
-       "Customer":"Cust001",
-       "Name":"Shashank jain17",
+       "Customer":"Samsung",
+       "Name":"Ankur Vyas",
        "Status":"Approved",
-       "CreatedDate":"28/06/201817",
-       "BuyerCreatedBy":"Ankur Sharma17",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Ankur Vyas",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0017"
     }
  ,  
     {  
        "Inquiry":18,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain18",
        "Status":"Approved",
-       "CreatedDate":"28/06/201818",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma18",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0018"
@@ -210,10 +210,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":19,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain19",
        "Status":"Approved",
-       "CreatedDate":"28/06/201819",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma19",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0019"
@@ -221,10 +221,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":20,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain20",
        "Status":"Approved",
-       "CreatedDate":"28/06/201820",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma20",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0020"
@@ -232,10 +232,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":21,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain21",
        "Status":"Approved",
-       "CreatedDate":"28/06/201821",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma21",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0021"
@@ -243,10 +243,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":22,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain22",
        "Status":"Approved",
-       "CreatedDate":"28/06/201822",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma22",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0022"
@@ -254,10 +254,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":23,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain23",
        "Status":"Approved",
-       "CreatedDate":"28/06/201823",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma23",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0023"
@@ -265,10 +265,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":24,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain24",
        "Status":"Approved",
-       "CreatedDate":"28/06/201824",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma24",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0024"
@@ -276,10 +276,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":25,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain25",
        "Status":"Approved",
-       "CreatedDate":"28/06/201825",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma25",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0025"
@@ -287,10 +287,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":26,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain26",
        "Status":"Approved",
-       "CreatedDate":"28/06/201826",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma26",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0026"
@@ -298,10 +298,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":27,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain27",
        "Status":"Approved",
-       "CreatedDate":"28/06/201827",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma27",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0027"
@@ -309,10 +309,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":28,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain28",
        "Status":"Approved",
-       "CreatedDate":"28/06/201828",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma28",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0028"
@@ -320,10 +320,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":29,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain29",
        "Status":"Approved",
-       "CreatedDate":"28/06/201829",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma29",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0029"
@@ -331,10 +331,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":30,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain30",
        "Status":"Approved",
-       "CreatedDate":"28/06/201830",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma30",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0030"
@@ -342,10 +342,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":31,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain31",
        "Status":"Approved",
-       "CreatedDate":"28/06/201831",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma31",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0031"
@@ -353,10 +353,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":32,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain32",
        "Status":"Approved",
-       "CreatedDate":"28/06/201832",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma32",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0032"
@@ -364,10 +364,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":33,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain33",
        "Status":"Approved",
-       "CreatedDate":"28/06/201833",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma33",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0033"
@@ -375,10 +375,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":34,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain34",
        "Status":"Approved",
-       "CreatedDate":"28/06/201834",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma34",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0034"
@@ -386,10 +386,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":35,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain35",
        "Status":"Approved",
-       "CreatedDate":"28/06/201835",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma35",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0035"
@@ -397,10 +397,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":36,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain36",
        "Status":"Approved",
-       "CreatedDate":"28/06/201836",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma36",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0036"
@@ -408,10 +408,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":37,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain37",
        "Status":"Approved",
-       "CreatedDate":"28/06/201837",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma37",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0037"
@@ -419,7 +419,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":38,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain38",
        "Status":"Approved",
        "CreatedDate":"28/06/201838",
@@ -430,10 +430,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":39,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain39",
        "Status":"Approved",
-       "CreatedDate":"28/06/201839",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma39",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0039"
@@ -441,10 +441,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":40,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain40",
        "Status":"Approved",
-       "CreatedDate":"28/06/201840",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma40",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0040"
@@ -452,10 +452,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":41,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain41",
        "Status":"Approved",
-       "CreatedDate":"28/06/201841",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma41",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0041"
@@ -463,10 +463,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":42,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain42",
        "Status":"Approved",
-       "CreatedDate":"28/06/201842",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma42",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0042"
@@ -474,10 +474,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":43,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain43",
        "Status":"Approved",
-       "CreatedDate":"28/06/201843",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma43",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0043"
@@ -485,10 +485,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":44,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain44",
        "Status":"Approved",
-       "CreatedDate":"28/06/201844",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma44",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0044"
@@ -496,10 +496,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":45,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain45",
        "Status":"Approved",
-       "CreatedDate":"28/06/201845",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma45",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0045"
@@ -507,10 +507,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":46,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain46",
        "Status":"Approved",
-       "CreatedDate":"28/06/201846",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma46",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0046"
@@ -518,10 +518,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":47,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain47",
        "Status":"Approved",
-       "CreatedDate":"28/06/201847",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma47",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0047"
@@ -529,10 +529,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":48,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain48",
        "Status":"Approved",
-       "CreatedDate":"28/06/201848",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma48",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0048"
@@ -540,10 +540,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":49,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain49",
        "Status":"Approved",
-       "CreatedDate":"28/06/201849",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma49",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0049"
@@ -551,10 +551,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":50,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain50",
        "Status":"Approved",
-       "CreatedDate":"28/06/201850",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma50",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0050"
@@ -562,10 +562,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":51,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain51",
        "Status":"Approved",
-       "CreatedDate":"28/06/201851",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma51",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0051"
@@ -573,10 +573,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":52,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain52",
        "Status":"Approved",
-       "CreatedDate":"28/06/201852",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma52",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0052"
@@ -584,10 +584,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":53,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain53",
        "Status":"Approved",
-       "CreatedDate":"28/06/201853",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma53",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0053"
@@ -595,10 +595,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":54,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain54",
        "Status":"Approved",
-       "CreatedDate":"28/06/201854",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma54",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0054"
@@ -606,10 +606,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":55,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain55",
        "Status":"Approved",
-       "CreatedDate":"28/06/201855",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma55",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0055"
@@ -617,10 +617,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":56,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain56",
        "Status":"Approved",
-       "CreatedDate":"28/06/201856",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma56",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0056"
@@ -628,10 +628,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":57,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain57",
        "Status":"Approved",
-       "CreatedDate":"28/06/201857",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma57",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0057"
@@ -639,10 +639,10 @@ export const data2 = [
  ,  
     {  
        "Inquiry":58,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain58",
        "Status":"Approved",
-       "CreatedDate":"28/06/201858",
+       "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma58",
        "ValidUntil":"10/07/2018",
        "Reference":"Ref0058"
@@ -650,7 +650,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":59,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain59",
        "Status":"Approved",
        "CreatedDate":"28/06/201859",
@@ -661,7 +661,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":60,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain60",
        "Status":"Approved",
        "CreatedDate":"28/06/201860",
@@ -672,7 +672,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":61,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain61",
        "Status":"Approved",
        "CreatedDate":"28/06/201861",
@@ -683,7 +683,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":62,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain62",
        "Status":"Approved",
        "CreatedDate":"28/06/201862",
@@ -694,7 +694,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":63,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain63",
        "Status":"Approved",
        "CreatedDate":"28/06/201863",
@@ -705,7 +705,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":64,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain64",
        "Status":"Approved",
        "CreatedDate":"28/06/201864",
@@ -716,7 +716,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":65,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain65",
        "Status":"Approved",
        "CreatedDate":"28/06/201865",
@@ -727,7 +727,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":66,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain66",
        "Status":"Approved",
        "CreatedDate":"28/06/201866",
@@ -738,7 +738,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":67,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain67",
        "Status":"Approved",
        "CreatedDate":"28/06/201867",
@@ -749,7 +749,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":68,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain68",
        "Status":"Approved",
        "CreatedDate":"28/06/201868",
@@ -760,7 +760,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":69,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain69",
        "Status":"Approved",
        "CreatedDate":"28/06/201869",
@@ -771,7 +771,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":70,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain70",
        "Status":"Approved",
        "CreatedDate":"28/06/201870",
@@ -782,7 +782,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":71,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain71",
        "Status":"Approved",
        "CreatedDate":"28/06/201871",
@@ -793,7 +793,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":72,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain72",
        "Status":"Approved",
        "CreatedDate":"28/06/201872",
@@ -804,7 +804,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":73,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain73",
        "Status":"Approved",
        "CreatedDate":"28/06/201873",
@@ -815,7 +815,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":74,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain74",
        "Status":"Approved",
        "CreatedDate":"28/06/201874",
@@ -826,7 +826,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":75,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain75",
        "Status":"Approved",
        "CreatedDate":"28/06/201875",
@@ -837,7 +837,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":76,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain76",
        "Status":"Approved",
        "CreatedDate":"28/06/201876",
@@ -848,7 +848,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":77,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain77",
        "Status":"Approved",
        "CreatedDate":"28/06/201877",
@@ -859,7 +859,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":78,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain78",
        "Status":"Approved",
        "CreatedDate":"28/06/201878",
@@ -870,7 +870,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":79,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain79",
        "Status":"Approved",
        "CreatedDate":"28/06/201879",
@@ -881,7 +881,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":80,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain80",
        "Status":"Approved",
        "CreatedDate":"28/06/201880",
@@ -892,7 +892,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":81,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain81",
        "Status":"Approved",
        "CreatedDate":"28/06/201881",
@@ -903,7 +903,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":82,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain82",
        "Status":"Approved",
        "CreatedDate":"28/06/201882",
@@ -914,7 +914,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":83,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain83",
        "Status":"Approved",
        "CreatedDate":"28/06/201883",
@@ -925,7 +925,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":84,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain84",
        "Status":"Approved",
        "CreatedDate":"28/06/201884",
@@ -936,7 +936,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":85,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain85",
        "Status":"Approved",
        "CreatedDate":"28/06/201885",
@@ -947,7 +947,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":86,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain86",
        "Status":"Approved",
        "CreatedDate":"28/06/201886",
@@ -958,7 +958,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":87,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain87",
        "Status":"Approved",
        "CreatedDate":"28/06/201887",
@@ -969,7 +969,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":88,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain88",
        "Status":"Approved",
        "CreatedDate":"28/06/201888",
@@ -980,7 +980,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":89,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain89",
        "Status":"Approved",
        "CreatedDate":"28/06/201889",
@@ -991,7 +991,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":90,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain90",
        "Status":"Approved",
        "CreatedDate":"28/06/201890",
@@ -1002,7 +1002,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":91,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain91",
        "Status":"Approved",
        "CreatedDate":"28/06/201891",
@@ -1013,7 +1013,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":92,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain92",
        "Status":"Approved",
        "CreatedDate":"28/06/201892",
@@ -1024,7 +1024,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":93,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain93",
        "Status":"Approved",
        "CreatedDate":"28/06/201893",
@@ -1035,7 +1035,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":94,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain94",
        "Status":"Approved",
        "CreatedDate":"28/06/201894",
@@ -1046,7 +1046,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":95,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain95",
        "Status":"Approved",
        "CreatedDate":"28/06/201895",
@@ -1057,7 +1057,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":96,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain96",
        "Status":"Approved",
        "CreatedDate":"28/06/201896",
@@ -1068,7 +1068,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":97,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain97",
        "Status":"Approved",
        "CreatedDate":"28/06/201897",
@@ -1079,7 +1079,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":98,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain98",
        "Status":"Approved",
        "CreatedDate":"28/06/201898",
@@ -1090,7 +1090,7 @@ export const data2 = [
  ,  
     {  
        "Inquiry":99,
-       "Customer":"Cust001",
+       "Customer":"Samsung",
        "Name":"Shashank jain99",
        "Status":"Approved",
        "CreatedDate":"28/06/201899",
