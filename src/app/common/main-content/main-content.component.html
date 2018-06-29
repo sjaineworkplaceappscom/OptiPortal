@@ -19,7 +19,10 @@
                 <!-- show hide column start show hide -->
                 <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
 
-                <button type="button" (click)="openRightSection(true)" style="margin-left: 20px;margin-top: 2px;">Add new Request</button>
+                <!-- <button type="button" (click)="openRightSection(true)" style="margin-left: 20px;margin-top: 2px;"> -->
+                    <!-- Add new Request -->
+                    <svg-icon src="assets/images/common/add.svg" (click)="openRightSection(true)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_vertical-align" style="height: 30px;margin-left: 20px;cursor: pointer;display: inline-flex;"></svg-icon>
+                <!-- </button> -->
 
                 <div class="float-right">
                     <!-- checkbox -->
@@ -30,17 +33,21 @@
                         </div>
                     </form>
                     <!-- pdf button start -->
-                    <button kendoGridPDFCommand icon="file-pdf" class="float-right opti_grid-toolbar-pdfbutton">Export to PDF</button>
+                    <button kendoGridPDFCommand icon="file-pdf" class="float-right opti_grid-toolbar-pdfbutton">
+                        <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="" style=""></svg-icon>
+                    </button>
                 </div>    
             </ng-template>
 
             <!-- grid template end -->
-            <kendo-grid-column field="Id" [width]="100"></kendo-grid-column>
-            <kendo-grid-column field="CompanyName" [width]="140"></kendo-grid-column>
-            <kendo-grid-column field="ContactName" [width]="140"></kendo-grid-column>
-            <kendo-grid-column field="Address" [width]="140"></kendo-grid-column>
-            <kendo-grid-column field="City" [width]="140"></kendo-grid-column>
-            <kendo-grid-column field="ContactTitle" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="Inquiry" [width]="100"></kendo-grid-column>
+            <kendo-grid-column field="Customer" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="Name" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="Status" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="CreatedDate" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="BuyerCreatedBy" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="ValidUntil" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="Reference" [width]="140"></kendo-grid-column>
         
             <!-- pdf template start -->
             <kendo-grid-pdf fileName="Products.pdf" [allPages]="true" paperSize="A4" [repeatHeaders]="true" [landscape]="true">
@@ -69,12 +76,12 @@
         <svg-icon src="assets/images/common/back-opposite.svg" (click)="closeRightSection(false)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }" class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon>
         <!-- tab start -->
         <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="config">
-            <div class="opti_tab" id="opti_TabID">
-                <button class="opti_tablinks active" (click)="openTab($event, 'home')">Home</button>
-                <button class="opti_tablinks" (click)="openTab($event, 'items')">Items</button>
-                <button class="opti_tablinks" (click)="openTab($event, 'attachement')">Attachements</button>
-                <button class="opti_tablinks" (click)="openTab($event, 'notes')">Notes</button>
-            </div>
+            <ul class="opti_tab tabs clearfix" id="opti_TabID">
+                <li class="opti_tablinks active" (click)="openTab($event, 'home')"><a href="javascript:void('0');" >Home</a></li>
+                <li class="opti_tablinks" (click)="openTab($event, 'items')"><a href="javascript:void('0');" >Items</a></li>
+                <li class="opti_tablinks" (click)="openTab($event, 'attachement')"><a href="javascript:void('0');" >Attachements</a></li>
+                <li class="opti_tablinks" (click)="openTab($event, 'notes')"><a href="javascript:void('0');" >Notes</a></li>
+            </ul>
         </div>
 
         <div id="home" class="opti_tabcontent opti_position-relative" style="display: block;" [perfectScrollbar]="config">
@@ -85,7 +92,7 @@
                             <div class="card-block">
                                 <form class="k-form">
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Inquiry</span>
+                                        <span class="opti_form-label">Inquiry#</span>
                                         <input type="text" class="k-textbox" value="" placeholder="Inquiry" disabled />
                                     </label>
 
@@ -248,7 +255,8 @@
                                     <kendo-grid-column-chooser class="float-left opti_items-grid"></kendo-grid-column-chooser>
 
                                     <!-- add iten button -->
-                                    <button #showItemButtonSection type="button" (click)="showItemSection()">Add new Item</button>
+                                    <!-- <button #showItemButtonSection type="button" (click)="showItemSection()">Add new Item</button> -->
+                                    <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="showItemSection()" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
 
                                     <div class="float-right">
                                         <!-- checkbox -->
@@ -260,7 +268,10 @@
                                         </form>
 
                                         <!-- pdf button start -->
-                                        <button kendoGridPDFCommand icon="file-pdf" class="float-right opti_grid-toolbar-pdfbutton">Export to PDF</button>
+                                        <button kendoGridPDFCommand icon="file-pdf" class="float-right opti_grid-toolbar-pdfbutton">
+                                            <!-- Export to PDF -->
+                                            <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="" style=""></svg-icon>
+                                        </button>
                                     </div>    
                                 </ng-template>
                                 <!-- grid template end -->
@@ -339,7 +350,8 @@
 
                                 <!-- grid toolbar start -->
                                 <ng-template kendoGridToolbarTemplate>
-                                    <button (click)="addNewComment()">Add new Notes</button>          
+                                    <!-- <button (click)="addNewComment()">Add new Notes</button>   -->
+                                    <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="addNewComment()" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>        
                                 </ng-template>
                                 <!-- grid toolbar end -->
 
@@ -388,7 +400,7 @@
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Note Status</span>
+                                        <span class="opti_form-label">Note Type</span>
                                         <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
                                         </kendo-dropdownlist>
                                     </label>

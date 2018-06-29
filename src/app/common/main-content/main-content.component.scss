@@ -3,27 +3,26 @@
 }
 
 
-// opti note list
-// .opti_notes-list{
-//     li{
-//         margin-bottom: 20px;
-//         .opti_notes-list-msg {
-//             border: 1px solid #c7c7c7;
-//             padding: 5px;
-//             border-radius: 5px;
-//         }
-//         span{
-//             font-weight: 500;
-//         }
-
-//         .opti_note-action-button-sec{
-//             position: relative;
-//             top: -5px;
-//         }
-//     }
-// }
+// right section for tab
 .opti_note-msg{
     border: 1px solid #c7c7c7;
     padding: 5px;
     border-radius: 5px;
+}
+.opti_tabcontent{
+    kendo-grid {
+        box-shadow:none;
+    }
+}
+
+// pdf button
+.opti_grid-toolbar-pdfbutton {
+    background: transparent !important;
+    .k-i-file-pdf {
+        display: none;
+    }
+}
+
+.opti_grid-toolbar-pdfbutton.k-button:focus{
+    box-shadow: none;
 }

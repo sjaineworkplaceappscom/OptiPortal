@@ -93,12 +93,11 @@ body kendo-grid{
 box-shadow: 0px 1px 15px #26c6da;
 }
 
-.opti_tab-outer .opti_tab button:hover {
-  background-color: #26c6da;
-}
-.opti_tab-outer .opti_tab button.active {
-  background-color: #26c6da;
-}
+ /* tab header */
+ .opti_tab-outer ul.tabs > li:hover,
+ .opti_tab-outer ul.tabs > li.active {
+   background-color: #26c6da;
+ }
 
 /*****************************************************************************************/
 /*********************************** END OUR CUSTOM CODE *********************************/

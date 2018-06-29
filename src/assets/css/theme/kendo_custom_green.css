@@ -95,10 +95,8 @@ body{
   }
 
   /* tab header */
-  .opti_tab-outer .opti_tab button:hover {
-    background-color: #8bcb6e;
-  }
-  .opti_tab-outer .opti_tab button.active {
+  .opti_tab-outer ul.tabs > li:hover,
+  .opti_tab-outer ul.tabs > li.active {
     background-color: #8bcb6e;
   }
   
