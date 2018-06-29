@@ -346,7 +346,7 @@
                                 <kendo-grid-column media="(min-width: 320px)" title="Notes">
                                     <ng-template kendoGridCellTemplate let-dataItem>
                                         <dl>
-                                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} <span class="float-right opti_note-action-button-sec"> <svg-icon src="assets/images/common/edit.svg" (click)="editNotes($event, dataItem.Notes)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon> <svg-icon src="assets/images/common/trash.svg" (click)="deleteNotes()" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon></span></dd>
+                                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} <span class="float-right opti_note-action-button-sec"> <svg-icon src="assets/images/common/edit.svg" (click)="editNotes($event, dataItem.Notes)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon> <svg-icon src="assets/images/common/trash.svg" (click)="deleteNotes($event)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon></span></dd>
                                             <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
                                         </dl>
                                     </ng-template>
@@ -363,9 +363,15 @@
                                         <span class="opti_form-label">Add Note</span>
                                         <textarea class="k-textarea" name="addnotestring" [(ngModel)]="addnotestring">Please enter your note</textarea>
                                     </label>
+
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Note Status</span>
+                                        <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                                        </kendo-dropdownlist>
+                                    </label>
                 
                                     <div class="text-right">
-                                        <button type="button" class="k-button k-primary" (click)="submitNote($event, addnotestring)">Add Item</button>
+                                        <button type="button" class="k-button k-primary" (click)="submitNote($event)">Add Item</button>
                                     </div>
                                 </form>
                             </div>
@@ -379,6 +385,12 @@
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Update Note</span>
                                         <textarea class="k-textarea">{{noteTextForEdit}}</textarea>
+                                    </label>
+
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Note Status</span>
+                                        <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                                        </kendo-dropdownlist>
                                     </label>
                 
                                     <div class="text-right">
