@@ -346,6 +346,8 @@
                             [filterable]="true"
                             [groupable]="false"
                             [height]=gridHeight-41
+                            (remove)="deleteNote($event)"
+                            (edit)="editNote($event)"
                             >
 
                                 <!-- grid toolbar start -->
@@ -358,7 +360,13 @@
                                 <kendo-grid-column media="(min-width: 320px)" title="Notes">
                                     <ng-template kendoGridCellTemplate let-dataItem>
                                         <dl>
-                                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} <span class="float-right opti_note-action-button-sec"> <svg-icon src="assets/images/common/edit.svg" (click)="editNotes($event, dataItem.Notes)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon> <svg-icon src="assets/images/common/trash.svg" (click)="deleteNotes($event)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon></span></dd>
+                                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} 
+                                                <span class="float-right opti_note-action-button-sec"> 
+                                                    <svg-icon kendoGridEditCommand  src="assets/images/common/edit.svg" (click)="editNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon> 
+                                                    <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon>
+                                                    
+                                                </span></dd>
+
                                             <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
                                         </dl>
                                     </ng-template>
@@ -396,17 +404,22 @@
                                 <form class="k-form">
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Update Note</span>
-                                        <textarea class="k-textarea">{{noteTextForEdit}}</textarea>
+                                        <textarea id="notes" class="k-textarea" #updatednotevalue>{{selectedNote.Notes}}</textarea>
                                     </label>
 
                                     <label class="k-form-field">
+<<<<<<< HEAD
                                         <span class="opti_form-label">Note Type</span>
                                         <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+=======
+                                        <span class="opti_form-label">Note Status</span>
+                                        <kendo-dropdownlist  name="role" [data]="noteStatus" [textField]="'text'" [value]="selectedNoteStatusItem" [valueField]="'value'" >
+>>>>>>> 672ea1eaeab2c8422059fc33704f4b69932a6dd4
                                         </kendo-dropdownlist>
                                     </label>
                 
                                     <div class="text-right">
-                                        <button type="button" class="k-button k-primary" (click)="updateNote($event)">Update Item</button>
+                                        <button type="button" class="k-button k-primary" (click)="updateNote($event,updatednotevalue)">Update Item</button>
                                     </div>
                                 </form>
                             </div>
