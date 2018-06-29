@@ -294,4 +294,12 @@ body{
                 margin-top: 2px !important;
             }
         }
+
+        // svg icon with k-button
+        svg-icon.k-button {
+            padding: 0;
+            margin: 0;
+            background: transparent !important;
+            border: none;
+        }
 }
