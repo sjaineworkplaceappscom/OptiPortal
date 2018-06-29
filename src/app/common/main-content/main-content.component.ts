@@ -35,6 +35,7 @@ export class MainContentComponent implements OnInit {
     noteTextForEdit = '';
     addnotestring = '';
     noteItemsData: any[];
+    selectedNote:any={};
 
 
     @ViewChild('AddItemFormSection') AddItemFormSection;
@@ -44,8 +45,6 @@ export class MainContentComponent implements OnInit {
     @ViewChild('notesgrid') notesgrid;
     @ViewChild('noteform') noteform;
     @ViewChild('editnoteform') editnoteform;
-
-
 
 
     constructor(private commonService: Commonservice) {
@@ -1275,8 +1274,7 @@ export class MainContentComponent implements OnInit {
         this.noteform.nativeElement.style.display = 'block';
     }
 
-    deleteNote({sender,rowIndex,dataItem}){            
-        
+    deleteNote({sender,rowIndex,dataItem}){           
         this.noteItemsData.splice(rowIndex,1);
         localStorage.setItem("setDynamicNotes", JSON.stringify(this.noteItemsData));       
     }
@@ -1302,28 +1300,29 @@ export class MainContentComponent implements OnInit {
         //console.log(dynamicNotes);
     }
 
-
-
-
-
-    editNotes(e, note) {
+    editNotes(e, note:any) {
         console.log(e);
         console.log(note);
         this.notesgrid.nativeElement.style.display = 'none';
         this.editnoteform.nativeElement.style.display = 'block';
-        this.noteTextForEdit = note;
+        this.selectedNote=note;                
     }
 
-    updateNote(e) {
+    updateNote(e,note:any) {
         this.notesgrid.nativeElement.style.display = 'block';
         this.editnoteform.nativeElement.style.display = 'none';
-
+        
+       let index=this.noteItemsData.indexOf(this.selectedNote);
+       if(index>-1){
+           this.noteItemsData[index].Notes=note.value;
+       }
         
     }
 
     public noteStatus: Array<{ text: string, value: string }> = [
         { text: "General ", value: '0' },
-        { text: "Private", value: '1' },
+        { text: "Rejected", value: '1' },
+        { text: "Parcial accepted", value: '2' },
     ];
     public selectedNoteStatusItem: { text: string, value: string } = this.noteStatus[0];
 
