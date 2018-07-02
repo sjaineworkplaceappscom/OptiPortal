@@ -25,8 +25,15 @@ export  class UIHelper{
     // check is it mobile or not
     public static isMobile():boolean{
         let isMobile:boolean;
-        let getDeviceWidth = window.outerWidth;
-        let getDeviceHeight = window.outerHeight;
+        // let getDeviceWidth = window.outerWidth;
+        // let getDeviceHeight = window.outerHeight;
+
+        let getDeviceWidth = screen.width;
+        let getDeviceHeight = screen.height;
+        
+        //alert(getDeviceWidth);
+        // alert(getDeviceHeight);
+
         if(getDeviceWidth <= 767){
         isMobile = true; 
         }else{

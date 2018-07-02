@@ -51,7 +51,7 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export'
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs'
 import { UploadModule } from '@progress/kendo-angular-upload'
 import { InputsModule } from '@progress/kendo-angular-inputs';
-;
+
 
 
 const routes: Routes = [

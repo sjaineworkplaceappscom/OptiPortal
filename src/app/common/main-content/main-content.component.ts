@@ -48,6 +48,7 @@ export class MainContentComponent implements OnInit {
     @ViewChild('notesgrid') notesgrid;
     @ViewChild('noteform') noteform;
     @ViewChild('editnoteform') editnoteform;
+    
 
     @ViewChild('notesitemgrid') notesitemgrid;
     @ViewChild('noteitemform') noteitemform;
@@ -73,6 +74,15 @@ export class MainContentComponent implements OnInit {
     onResize(event) {
         // apply grid height
         this.gridHeight = UIHelper.getMainContentHeight();
+
+        // apply width on opti_TabID
+        UIHelper.getWidthOfOuterTab();
+
+        // apply grid height
+        this.gridHeight = UIHelper.getMainContentHeight();
+ 
+        // check mobile device
+        this.isMobile = UIHelper.isMobile();
     }
 
     ngOnInit() {
@@ -299,6 +309,9 @@ export class MainContentComponent implements OnInit {
         dynamicNotes.push({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: new Date(), CreatedBy: 'prashant' });
         localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
         this.noteRequetData = dynamicNotes;
+
+        this.addnotestring='';
+        
     }
 
     submitItemsNote(e) {
@@ -315,6 +328,8 @@ export class MainContentComponent implements OnInit {
         dynamicItemsNotes.push({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: new Date(), CreatedBy: 'prashant' });
         localStorage.setItem("setItemsDynamicNotes", JSON.stringify(dynamicItemsNotes));
         this.noteItemsData = dynamicItemsNotes;
+
+        this.addnotestring='';
     }
 
     addNewItemNotes() {
@@ -327,24 +342,24 @@ export class MainContentComponent implements OnInit {
         localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteItemsData));       
     }
 
-    // editItemsNotes(e, note) {
-    //     console.log(e);
-    //     console.log(note);
-    //     this.notesitemgrid.nativeElement.style.display = 'none';
-    //     this.edititemnoteform.nativeElement.style.display = 'block';
-    //     this.selectedItemNote=note;                
-    // }
+    editItemsNotes(e, note) {
+        console.log(e);
+        console.log(note);
+        this.notesitemgrid.nativeElement.style.display = 'none';
+        this.edititemnoteform.nativeElement.style.display = 'block';
+        this.selectedItemNote=note;                
+    }
 
-    // updateItemNote(e,note:any) {
-    //     this.notesitemgrid.nativeElement.style.display = 'block';
-    //     this.edititemnoteform.nativeElement.style.display = 'none';
+    updateItemNote(e,note:any) {
+        this.notesitemgrid.nativeElement.style.display = 'block';
+        this.edititemnoteform.nativeElement.style.display = 'none';
         
-    //    let index=this.noteRequetData.indexOf(this.selectedItemNote);
-    //    if(index>-1){
-    //        this.noteItemsData[index].Notes=note.value;
-    //    }
+       let index=this.noteRequetData.indexOf(this.selectedItemNote);
+       if(index>-1){
+           this.noteItemsData[index].Notes=note.value;
+       }
         
-    // }
+    }
 
     
 
@@ -363,13 +378,13 @@ export class MainContentComponent implements OnInit {
 
     
 
-    updateNote(e,note:any) {
+    updateNote(e) {
         this.notesgrid.nativeElement.style.display = 'block';
         this.editnoteform.nativeElement.style.display = 'none';
         
        let index=this.noteRequetData.indexOf(this.selectedNote);
        if(index>-1){
-           this.noteRequetData[index].Notes=note.value;
+           this.noteRequetData[index].Notes=this.selectedNote.Notes;
        }
         
     }

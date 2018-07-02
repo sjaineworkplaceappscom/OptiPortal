@@ -1,4 +1,7 @@
-<section id="opti_MainContentID" [perfectScrollbar]="config" class="opti_position-relative">
+<section id="opti_MainContentID" class="opti_position-relative" style="overflow-x: hidden !important;">
+
+    <!-- [perfectScrollbar]="config" -->
+
     <div style="padding: 10px;">
         <kendo-grid
         [kendoGridBinding]="gridData"
@@ -138,8 +141,8 @@
             <div #AddItemFormSection id="opti_AddItemFormSectionID" style="display: none;">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <div class="card" >
+                        <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
+                            <div class="card" style="margin-bottom: 25px;">
                                 <div class="card-block">
                                     <form class="k-form">
                                         <label class="k-form-field">
@@ -197,7 +200,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
                             <div (click)="closeItemForm()" style="position: absolute;right: 0px;top: -16px;cursor: pointer;"> <svg-icon src="assets/images/common/back-opposite.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }" class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon> </div>
                             <h5>Upload Attachement</h5>
                             <kendo-upload
@@ -268,7 +271,7 @@
                             <!-- end item note form -->
 
                             <!-- start edit item note form -->
-                                <!-- <div class="card" #edititemnoteform style="display: none;">
+                                <div class="card" #edititemnoteform style="display: none;">
                                     <div class="card-block">
                                         <form class="k-form">
                                             <label class="k-form-field">
@@ -287,7 +290,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                </div> -->
+                                </div>
                             <!-- end add item form -->
 
                         </div>
@@ -428,7 +431,7 @@
                         <!-- Add Notes Form  -->
                         <div class="card" #noteform style="display: none;">
                             <div class="card-block">
-                                <form class="k-form">
+                                <form #requestnoteform class="k-form">
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Add Note</span>
                                         <textarea class="k-textarea" name="addnotestring" [(ngModel)]="addnotestring">Please enter your note</textarea>
@@ -441,7 +444,7 @@
                                     </label>
                 
                                     <div class="text-right">
-                                        <button type="button" class="k-button k-primary" (click)="submitNote($event)">Add Item</button>
+                                        <button type="button" class="k-button k-primary" (click)="submitNote($event);">Add Item</button>
                                     </div>
                                 </form>
                             </div>
@@ -454,7 +457,8 @@
                                 <form class="k-form">
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Update Note</span>
-                                        <textarea id="notes" class="k-textarea" #updateNote>{{selectedNote.Notes}}</textarea>
+                                        <!-- <textarea id="notes" name="note" class="k-textarea" #noteValue >{{selectedNote.Notes}}</textarea> -->
+                                        <textarea id="notes" name="note" class="k-textarea" [(ngModel)]="selectedNote.Notes"></textarea>
                                     </label>
 
                                     <label class="k-form-field">
@@ -464,7 +468,7 @@
                                     </label>
                 
                                     <div class="text-right">
-                                        <button type="button" class="k-button k-primary" (click)="updateNote($event,updatednotevalue)">Update Item</button>
+                                        <button type="button" class="k-button k-primary" (click)="updateNote($event)">Update Item</button>
                                     </div>
                                 </form>
                             </div>
