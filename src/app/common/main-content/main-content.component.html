@@ -19,23 +19,22 @@
                 <!-- show hide column start show hide -->
                 <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
 
-                <!-- <button type="button" (click)="openRightSection(true)" style="margin-left: 20px;margin-top: 2px;"> -->
-                    <!-- Add new Request -->
-                    <svg-icon src="assets/images/common/add.svg" (click)="openRightSection(true)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_vertical-align" style="height: 30px;margin-left: 20px;cursor: pointer;display: inline-flex;"></svg-icon>
-                <!-- </button> -->
+                <!-- checkbox -->
+                <form class="k-form opti_show-hide-grid-column-filter float-left">
+                    <div class="k-form-field">
+                        <input type="checkbox" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
+                        <label class="k-checkbox-label" for="opti_ColumnFilterID">Filter</label>
+                    </div>
+                </form>
+                    
+                <!-- export -->
+                <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
+                    <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':20, 'height.px':20}" ></svg-icon>
+                </button>
+
 
                 <div class="float-right">
-                    <!-- checkbox -->
-                    <form class="k-form opti_show-hide-grid-column-filter float-left">
-                        <div class="k-form-field">
-                            <input type="checkbox" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
-                            <label class="k-checkbox-label" for="opti_ColumnFilterID">Filter</label>
-                        </div>
-                    </form>
-                    <!-- pdf button start -->
-                    <button kendoGridPDFCommand icon="file-pdf" class="float-right opti_grid-toolbar-pdfbutton">
-                        <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="" style=""></svg-icon>
-                    </button>
+                    <svg-icon src="assets/images/common/add.svg" (click)="openRightSection(true)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_vertical-align" style="height: 30px;margin-left: 20px;cursor: pointer;display: inline-flex;"></svg-icon>
                 </div>    
             </ng-template>
 
@@ -49,22 +48,9 @@
             <kendo-grid-column field="ValidUntil" [width]="140"></kendo-grid-column>
             <kendo-grid-column field="Reference" [width]="140"></kendo-grid-column>
         
-            <!-- pdf template start -->
-            <kendo-grid-pdf fileName="Products.pdf" [allPages]="true" paperSize="A4" [repeatHeaders]="true" [landscape]="true">
-                <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
-                <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
-                    <div class="page-template">
-                    <div class="header">
-                        <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>
-                        Multi-page grid with automatic page breaking
-                    </div>
-                    <div class="footer">
-                        Page {{ pageNum }} of {{ totalPages }}
-                    </div>
-                    </div>
-                </ng-template>
-            </kendo-grid-pdf>
-            <!-- pdf template end -->
+            <!-- xlsx template start -->
+                <kendo-grid-excel fileName="Requests.xlsx"></kendo-grid-excel>
+            <!-- xlsx template end -->
 
         </kendo-grid>
     </div>
@@ -267,10 +253,9 @@
                                             </div>
                                         </form>
 
-                                        <!-- pdf button start -->
-                                        <button kendoGridPDFCommand icon="file-pdf" class="float-right opti_grid-toolbar-pdfbutton">
-                                            <!-- Export to PDF -->
-                                            <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="" style=""></svg-icon>
+                                        <!-- xlsx button start -->
+                                        <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
+                                            <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':20, 'height.px':20}" ></svg-icon>
                                         </button>
                                     </div>    
                                 </ng-template>
@@ -288,22 +273,9 @@
                                 <kendo-grid-column field="ShipToLocation" [width]="140"></kendo-grid-column>
                                 <!-- grid column end -->
                             
-                                <!-- pdf template start -->
-                                <kendo-grid-pdf fileName="items.pdf" [allPages]="true" paperSize="A4" [repeatHeaders]="true" [landscape]="true">
-                                    <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
-                                    <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
-                                        <div class="page-template">
-                                        <div class="header">
-                                            <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>
-                                            Multi-page grid with automatic page breaking
-                                        </div>
-                                        <div class="footer">
-                                            Page {{ pageNum }} of {{ totalPages }}
-                                        </div>
-                                        </div>
-                                    </ng-template>
-                                </kendo-grid-pdf>
-                                <!-- pdf template end -->
+                                <!-- xlsx template start -->
+                                    <kendo-grid-excel fileName="Items.xlsx"></kendo-grid-excel>
+                                <!-- xlsx template end -->
 
                             </kendo-grid>
                         </div>
@@ -357,7 +329,7 @@
                                 </ng-template>
                                 <!-- grid toolbar end -->
 
-                                <kendo-grid-column media="(min-width: 320px)" title="Notes">
+                                <kendo-grid-column media="(min-width: 320px)" title="">
                                     <ng-template kendoGridCellTemplate let-dataItem>
                                         <dl>
                                             <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} 

@@ -38,7 +38,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 
 // It's for dropdown module
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-import { GridModule, PDFModule } from '@progress/kendo-angular-grid';
+import { GridModule, ExcelModule  } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
@@ -49,7 +49,9 @@ import { LandingComponent } from './common/landing/landing.component'
 import { LayoutModule } from '@progress/kendo-angular-layout'
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export'
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs'
-import { UploadModule } from '@progress/kendo-angular-upload';
+import { UploadModule } from '@progress/kendo-angular-upload'
+import { InputsModule } from '@progress/kendo-angular-inputs';
+;
 
 
 const routes: Routes = [
@@ -106,9 +108,10 @@ const routes: Routes = [
     LayoutModule,
     TabsModule.forRoot(),
     PDFExportModule,
-    PDFModule,
+    ExcelModule,
     DateInputsModule,
-    UploadModule
+    UploadModule,
+    InputsModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

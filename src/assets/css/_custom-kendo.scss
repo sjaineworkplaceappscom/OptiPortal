@@ -164,8 +164,18 @@ body{
     // column chooser
     kendo-grid-column-chooser{
       button.k-button.k-bare{
-        box-shadow: 0 0 0 3px !important;
+        // box-shadow: 0 0 0 3px !important;
         margin-left: 0 !important;
+        width: auto;
+        max-height: 32px;
+        padding: 0;
+        color: $light-black !important;
+      }
+      // button.k-button.k-bare{
+      //   color: $light-black;
+      // }
+      .k-button:hover::before{
+        opacity: 0;
       }
     }
 
@@ -201,6 +211,11 @@ body{
     .k-multiselect-wrap .k-input, 
     .k-numeric-wrap .k-input {
       color: $light-black;
+    }
+
+    // field border color on focus
+    .k-input:focus, .k-input.k-state-focused, .k-textbox:focus, .k-textbox.k-state-focused, .k-textarea:focus, .k-textarea.k-state-focused, .k-input.k-textbox:focus, .k-input.k-textbox.k-state-focused {
+      border-color: rgba(33, 37, 41, 0.15);
     }
 
   }

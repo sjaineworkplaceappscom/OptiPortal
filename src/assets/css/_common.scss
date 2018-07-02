@@ -287,11 +287,22 @@ body{
                 padding: 7px 0 0 20px;
                 .k-form-field{
                     margin-bottom: 0 !important;
+                    .k-checkbox-label{
+                        margin-right: 15px;
+                    }
                 }
             }
             
-            .opti_grid-toolbar-pdfbutton{
+            .opti_grid-toolbar-excelbutton{
+                background: transparent !important;
                 margin-top: 2px !important;
+                .k-i-file-excel {
+                    display: none;
+                }
+            }
+
+            .opti_grid-toolbar-excelbutton.k-button:focus{
+                box-shadow: none;
             }
         }
 
