@@ -206,10 +206,90 @@
                             </kendo-upload>
                             <br/>
                             <h5>Upload Notes</h5>
-                            <kendo-upload
-                                [saveUrl]="uploadNotesItemSaveUrl"
-                                [removeUrl]="uploadNotesItemRemoveUrl">
-                            </kendo-upload>
+                            <!-- item notes start -->
+                                <div #notesitemgrid id="opti_ItemNotesGridID">
+                                    <kendo-grid 
+                                    [data]="noteItemsData"
+                                    [resizable]="true"
+                                    [pageSize]="50"
+                                    [pageable]="true"
+                                    [sortable]="true"
+                                    [filterable]="true"
+                                    [groupable]="false"
+                                    [height]=gridHeight-170
+                                    (remove)="deleteItemsNote($event)"
+                                    >
+                                        <!-- grid toolbar start -->
+                                        <ng-template kendoGridToolbarTemplate>
+                                            <!-- <button (click)="addNewComment()">Add new Notes</button>   -->
+                                            <svg-icon src="assets/images/common/add.svg" (click)="addNewItemNotes()" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>        
+                                        </ng-template>
+                                        <!-- grid toolbar end -->
+
+                                        <kendo-grid-column media="(min-width: 320px)" title="">
+                                            <ng-template kendoGridCellTemplate let-dataItem>
+                                                <dl>
+                                                    <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} 
+                                                        <span class="float-right opti_note-action-button-sec"> 
+                                                            <svg-icon kendoGridEditCommand  src="assets/images/common/edit.svg" (click)="editItemsNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon> 
+                                                            <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon>
+                                                            
+                                                        </span></dd>
+
+                                                    <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
+                                                </dl>
+                                            </ng-template>
+                                        </kendo-grid-column>
+                                    </kendo-grid>
+                                </div>
+                            <!-- item notes end -->
+
+                            <!-- Add item note form -->
+                            <div class="card" #noteitemform style="display: none;">
+                                <div class="card-block">
+                                    <form class="k-form">
+                                        <label class="k-form-field">
+                                            <span class="opti_form-label">Add Note</span>
+                                            <textarea class="k-textarea" name="addnotestring" [(ngModel)]="addnotestring">Please enter your note</textarea>
+                                        </label>
+
+                                        <label class="k-form-field">
+                                            <span class="opti_form-label">Note Status</span>
+                                            <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                                            </kendo-dropdownlist>
+                                        </label>
+                    
+                                        <div class="text-right">
+                                            <button type="button" class="k-button k-primary" (click)="submitItemsNote($event)">Add Note</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- end item note form -->
+
+                            <!-- start edit item note form -->
+                                <!-- <div class="card" #edititemnoteform style="display: none;">
+                                    <div class="card-block">
+                                        <form class="k-form">
+                                            <label class="k-form-field">
+                                                <span class="opti_form-label">Update Note</span>
+                                                <textarea id="itemnotes" class="k-textarea">{{selectedItemNote.Notes}}</textarea>
+                                            </label>
+
+                                            <label class="k-form-field">
+                                                <span class="opti_form-label">Note Type</span>
+                                                <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                                                </kendo-dropdownlist>
+                                            </label>
+                        
+                                            <div class="text-right">
+                                                <button type="button" class="k-button k-primary" (click)="updateItemNote($event,updatednotevalue)">Update Item</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div> -->
+                            <!-- end add item form -->
+
                         </div>
                     </div>    
                 </div>    
@@ -304,13 +384,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-
-                    
                         
                         <!-- start notes grid -->
                         <div #notesgrid id="opti_NotesGridID">
                             <kendo-grid 
-                            [data]="noteItemsData"
+                            [data]="noteRequetData"
                             [resizable]="true"
                             [pageSize]="50"
                             [pageable]="true"
@@ -376,7 +454,7 @@
                                 <form class="k-form">
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Update Note</span>
-                                        <textarea id="notes" class="k-textarea" #updatednotevalue>{{selectedNote.Notes}}</textarea>
+                                        <textarea id="notes" class="k-textarea" #updateNote>{{selectedNote.Notes}}</textarea>
                                     </label>
 
                                     <label class="k-form-field">
@@ -392,11 +470,6 @@
                             </div>
                         </div>
                         <!-- end edit form -->
-
-
-                        
-
-
 
                     </div>
                 </div>

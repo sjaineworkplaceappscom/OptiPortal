@@ -36,7 +36,9 @@ export class MainContentComponent implements OnInit {
     noteTextForEdit = '';
     addnotestring = '';
     noteItemsData: any[];
+    noteRequetData: any[];
     selectedNote:any={};
+    selectedItemNote:any={};
 
 
     @ViewChild('AddItemFormSection') AddItemFormSection;
@@ -46,6 +48,12 @@ export class MainContentComponent implements OnInit {
     @ViewChild('notesgrid') notesgrid;
     @ViewChild('noteform') noteform;
     @ViewChild('editnoteform') editnoteform;
+
+    @ViewChild('notesitemgrid') notesitemgrid;
+    @ViewChild('noteitemform') noteitemform;
+    @ViewChild('edititemnoteform') edititemnoteform;
+    
+    
 
 
     constructor(private commonService: Commonservice) {
@@ -68,7 +76,10 @@ export class MainContentComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.noteItemsData = JSON.parse(localStorage.getItem("setDynamicNotes"));
+        this.noteRequetData = JSON.parse(localStorage.getItem("setRequestDynamicNotes"));
+        this.noteItemsData = JSON.parse(localStorage.getItem("setItemsDynamicNotes"));
+
+        
         // apply width on opti_TabID
         UIHelper.getWidthOfOuterTab();
 
@@ -255,7 +266,7 @@ export class MainContentComponent implements OnInit {
     //         'Notes' : "that's great"
     //     }
     //  ];
-    //public noteItemsData: any[] = this.notesItemList;
+    //public noteRequetData: any[] = this.notesItemList;
 
     addNewComment() {
         this.notesgrid.nativeElement.style.display = 'none';
@@ -263,9 +274,13 @@ export class MainContentComponent implements OnInit {
     }
 
     deleteNote({sender,rowIndex,dataItem}){           
-        this.noteItemsData.splice(rowIndex,1);
-        localStorage.setItem("setDynamicNotes", JSON.stringify(this.noteItemsData));       
+        this.noteRequetData.splice(rowIndex,1);
+        localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteRequetData));       
     }
+
+    
+
+    
 
     editNote({sender,rowIndex,dataItem}){        
     }
@@ -274,7 +289,7 @@ export class MainContentComponent implements OnInit {
         this.notesgrid.nativeElement.style.display = 'block';
         this.noteform.nativeElement.style.display = 'none';
         
-        let dynamicNotesString = localStorage.getItem("setDynamicNotes");
+        let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
         let dynamicNotes:any[]=JSON.parse(dynamicNotesString);      
 
         if(dynamicNotes==undefined  || dynamicNotes.length<=0){
@@ -282,11 +297,56 @@ export class MainContentComponent implements OnInit {
         }
 
         dynamicNotes.push({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: new Date(), CreatedBy: 'prashant' });
-        localStorage.setItem("setDynamicNotes", JSON.stringify(dynamicNotes));
-        this.noteItemsData = dynamicNotes;
-
-        //console.log(dynamicNotes);
+        localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
+        this.noteRequetData = dynamicNotes;
     }
+
+    submitItemsNote(e) {
+        this.notesitemgrid.nativeElement.style.display = 'block';
+        this.noteitemform.nativeElement.style.display = 'none';
+        
+        let dynamicItemsNotesString = localStorage.getItem("setItemsDynamicNotes");
+        let dynamicItemsNotes:any[]=JSON.parse(dynamicItemsNotesString);      
+
+        if(dynamicItemsNotes==undefined  || dynamicItemsNotes.length<=0){
+            dynamicItemsNotes=[];
+        }
+
+        dynamicItemsNotes.push({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: new Date(), CreatedBy: 'prashant' });
+        localStorage.setItem("setItemsDynamicNotes", JSON.stringify(dynamicItemsNotes));
+        this.noteItemsData = dynamicItemsNotes;
+    }
+
+    addNewItemNotes() {
+        this.notesitemgrid.nativeElement.style.display = 'none';
+        this.noteitemform.nativeElement.style.display = 'block';
+    }
+
+    deleteItemsNote({sender,rowIndex,dataItem}){           
+        this.noteItemsData.splice(rowIndex,1);
+        localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteItemsData));       
+    }
+
+    // editItemsNotes(e, note) {
+    //     console.log(e);
+    //     console.log(note);
+    //     this.notesitemgrid.nativeElement.style.display = 'none';
+    //     this.edititemnoteform.nativeElement.style.display = 'block';
+    //     this.selectedItemNote=note;                
+    // }
+
+    // updateItemNote(e,note:any) {
+    //     this.notesitemgrid.nativeElement.style.display = 'block';
+    //     this.edititemnoteform.nativeElement.style.display = 'none';
+        
+    //    let index=this.noteRequetData.indexOf(this.selectedItemNote);
+    //    if(index>-1){
+    //        this.noteItemsData[index].Notes=note.value;
+    //    }
+        
+    // }
+
+    
 
 
 
@@ -299,13 +359,17 @@ export class MainContentComponent implements OnInit {
         this.selectedNote=note;                
     }
 
+    
+
+    
+
     updateNote(e,note:any) {
         this.notesgrid.nativeElement.style.display = 'block';
         this.editnoteform.nativeElement.style.display = 'none';
         
-       let index=this.noteItemsData.indexOf(this.selectedNote);
+       let index=this.noteRequetData.indexOf(this.selectedNote);
        if(index>-1){
-           this.noteItemsData[index].Notes=note.value;
+           this.noteRequetData[index].Notes=note.value;
        }
         
     }
