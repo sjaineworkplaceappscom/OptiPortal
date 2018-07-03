@@ -129,7 +129,7 @@ export  class UIHelper{
         for (i = 0; i < tablinks.length; i++) {
             tabWidth = tabWidth + tablinks[i].offsetWidth;
         }
-        document.getElementById("opti_TabID").style.width  = tabWidth+10+'px';
+        document.getElementById("opti_TabID").style.width  = tabWidth-74+'px';
     }
 
 

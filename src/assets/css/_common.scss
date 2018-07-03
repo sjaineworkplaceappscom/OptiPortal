@@ -1,5 +1,18 @@
 body{
 
+    // 
+    .opti_margin-zero{
+        margin: 0;
+    }
+
+    .opti_padding-zero{
+        padding: 0;
+    }
+
+    .opti_border-none{
+        border: none;
+    }
+
     // css for form label
     .opti_form-label{
       font-size: 12px;
@@ -184,7 +197,7 @@ body{
 
     //our custom tab
         .opti_tab-outer{
-            width: calc(100% - 30px);
+            width: calc(100% - 35px);
 
             // new design tab start
                 ul.tabs{
@@ -214,6 +227,7 @@ body{
                 ul.tabs > li:last-child:after{
                     border-color : transparent transparent transparent transparent;
                 }
+                ul.tabs > li:first-child{margin-left: -5px;}
                 ul.tabs > li{
                     float : left;
                     margin : 5px -10px 0;
@@ -321,5 +335,12 @@ body{
         }
         tr:hover .opti_note-action-button-sec svg-icon svg {
             fill: $white !important;
+        }
+
+        // item tab 
+        .opti_items-upload .k-upload-files {
+            min-height: 130px;
+            overflow-y: auto;
+            height: 130px;
         }
 }

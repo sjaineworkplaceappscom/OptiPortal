@@ -5,7 +5,7 @@
     <div style="padding: 10px;">
         <kendo-grid
         [kendoGridBinding]="gridData"
-        [resizable]="true"
+        [resizable]="false"
         [pageSize]="50"
         [pageable]="true"
         [sortable]="true"
@@ -44,7 +44,7 @@
             <!-- grid template end -->
             <kendo-grid-column field="Inquiry" title="Id" [width]="100"></kendo-grid-column>
             <kendo-grid-column field="Customer" title="Customer Id" [width]="140"></kendo-grid-column>
-            <kendo-grid-column field="Name" [width]="140"></kendo-grid-column>
+            <kendo-grid-column field="Name" [width]="140" title="Customer Name"></kendo-grid-column>
             <kendo-grid-column field="Status" [width]="140"></kendo-grid-column>
             <kendo-grid-column field="CreatedDate" title="Created Date" [width]="140"></kendo-grid-column>
             <kendo-grid-column field="BuyerCreatedBy" title="Created By" [width]="140"></kendo-grid-column>
@@ -141,10 +141,10 @@
             <div #AddItemFormSection id="opti_AddItemFormSectionID" style="display: none;">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
-                            <div class="card" style="margin-bottom: 25px;">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                            <div class="card opti_border-none" style="margin-bottom: 25px;">
                                 <div class="card-block">
-                                    <form class="k-form">
+                                    <form class="k-form opti_padding-zero">
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Item Id</span>
                                             <input class="k-textbox" placeholder="Item Id" />
@@ -190,61 +190,55 @@
                                             <textarea class="k-textarea">Location</textarea>
                                         </label>
                     
-                                        <div class="text-right">
-                                            <button type="button" class="k-button k-primary" (click)="addItemt()">Save</button>
-                                            <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
-                                            <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button>
-                                            <button type="button" class="k-button">Cancel</button>
-                                        </div>
+                                        
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
-                            <div (click)="closeItemForm()" style="position: absolute;right: 0px;top: -16px;cursor: pointer;"> <svg-icon src="assets/images/common/back-opposite.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }" class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon> </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
                             <h5>Upload Attachement</h5>
-                            <kendo-upload
+                            <kendo-upload class="opti_items-upload"
                                 [saveUrl]="uploadAttachementItemSaveUrl"
                                 [removeUrl]="uploadAttachementItemRemoveUrl">
                             </kendo-upload>
                             <br/>
                             <h5>Notes</h5>
                             <!-- item notes start -->
-                                <div #notesitemgrid id="opti_ItemNotesGridID">
-                                    <kendo-grid 
-                                    [data]="noteItemsData"
-                                    [resizable]="true"
-                                    [pageSize]="50"
-                                    [pageable]="true"
-                                    [sortable]="true"
-                                    [filterable]="true"
-                                    [groupable]="false"
-                                    [height]=gridHeight-170
-                                    (remove)="deleteItemsNote($event)"
-                                    >
-                                        <!-- grid toolbar start -->
-                                        <ng-template kendoGridToolbarTemplate>
-                                            <!-- <button (click)="addNewComment()">Add new Notes</button>   -->
-                                            <svg-icon src="assets/images/common/add.svg" (click)="addNewItemNotes()" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>        
+                            <div #notesitemgrid id="opti_ItemNotesGridID">
+                                <kendo-grid 
+                                [data]="noteItemsData"
+                                [resizable]="false"
+                                [pageSize]="50"
+                                [pageable]="true"
+                                [sortable]="true"
+                                [filterable]="true"
+                                [groupable]="false"
+                                [height]=268
+                                (remove)="deleteItemsNote($event)"
+                                >
+                                    <!-- grid toolbar start -->
+                                    <ng-template kendoGridToolbarTemplate>
+                                        <!-- <button (click)="addNewComment()">Add new Notes</button>   -->
+                                        <svg-icon src="assets/images/common/add.svg" (click)="addNewItemNotes()" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>        
+                                    </ng-template>
+                                    <!-- grid toolbar end -->
+
+                                    <kendo-grid-column media="(min-width: 320px)" title="">
+                                        <ng-template kendoGridCellTemplate let-dataItem>
+                                            <dl>
+                                                <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} 
+                                                    <span class="float-right opti_note-action-button-sec"> 
+                                                        <svg-icon kendoGridEditCommand  src="assets/images/common/edit.svg" (click)="editItemsNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}" class="opti_mouse-pointer"></svg-icon> 
+                                                        <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}" class="opti_mouse-pointer"></svg-icon>
+                                                        
+                                                    </span></dd>
+
+                                                <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
+                                            </dl>
                                         </ng-template>
-                                        <!-- grid toolbar end -->
-
-                                        <kendo-grid-column media="(min-width: 320px)" title="">
-                                            <ng-template kendoGridCellTemplate let-dataItem>
-                                                <dl>
-                                                    <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} 
-                                                        <span class="float-right opti_note-action-button-sec"> 
-                                                            <svg-icon kendoGridEditCommand  src="assets/images/common/edit.svg" (click)="editItemsNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon> 
-                                                            <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_mouse-pointer"></svg-icon>
-                                                            
-                                                        </span></dd>
-
-                                                    <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
-                                                </dl>
-                                            </ng-template>
-                                        </kendo-grid-column>
-                                    </kendo-grid>
-                                </div>
+                                    </kendo-grid-column>
+                                </kendo-grid>
+                            </div>
                             <!-- item notes end -->
 
                             <!-- Add item note form -->
@@ -263,7 +257,8 @@
                                         </label>
                     
                                         <div class="text-right">
-                                            <button type="button" class="k-button k-primary" (click)="submitItemsNote($event)">Add Note</button>
+                                            <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'add')">Add Note</button>
+                                            <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'close')">Close</button>
                                         </div>
                                     </form>
                                 </div>
@@ -271,27 +266,35 @@
                             <!-- end item note form -->
 
                             <!-- start edit item note form -->
-                                <div class="card" #edititemnoteform style="display: none;">
-                                    <div class="card-block">
-                                        <form class="k-form">
-                                            <label class="k-form-field">
-                                                <span class="opti_form-label">Update Note</span>
-                                                <textarea id="itemnotes" class="k-textarea">{{selectedItemNote.Notes}}</textarea>
-                                            </label>
+                            <div class="card" #edititemnoteform style="display: none;">
+                                <div class="card-block">
+                                    <form class="k-form">
+                                        <label class="k-form-field">
+                                            <span class="opti_form-label">Update Note</span>
+                                            <textarea id="itemnotes" class="k-textarea">{{selectedItemNote.Notes}}</textarea>
+                                        </label>
 
-                                            <label class="k-form-field">
-                                                <span class="opti_form-label">Note Type</span>
-                                                <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
-                                                </kendo-dropdownlist>
-                                            </label>
-                        
-                                            <div class="text-right">
-                                                <button type="button" class="k-button k-primary" (click)="updateItemNote($event,updatednotevalue)">Update Item</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                        <label class="k-form-field">
+                                            <span class="opti_form-label">Note Type</span>
+                                            <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                                            </kendo-dropdownlist>
+                                        </label>
+                    
+                                        <div class="text-right">
+                                            <button type="button" class="k-button k-primary" (click)="updateItemNote($event,updatednotevalue)">Update Item</button>
+                                        </div>
+                                    </form>
                                 </div>
+                            </div>
                             <!-- end add item form -->
+
+                            <br/>
+                            <div class="text-right">
+                                <button type="button" class="k-button k-primary" (click)="addItemt()">Save</button>
+                                <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
+                                <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button>
+                                <button type="button" class="k-button" (click)="closeItemForm()">Cancel</button>
+                            </div>
 
                         </div>
                     </div>    
@@ -306,7 +309,7 @@
                         <div class="col-md-12">
                             <kendo-grid
                             [kendoGridBinding]="gridItemsData"
-                            [resizable]="true"
+                            [resizable]="false"
                             [pageSize]="50"
                             [pageable]="true"
                             [sortable]="true"
@@ -391,7 +394,7 @@
                         <div #notesgrid id="opti_NotesGridID">
                             <kendo-grid 
                             [data]="noteRequetData"
-                            [resizable]="true"
+                            [resizable]="false"
                             [pageSize]="50"
                             [pageable]="true"
                             [sortable]="true"
@@ -400,6 +403,7 @@
                             [height]=gridHeight-41
                             (remove)="deleteNote($event)"
                             (edit)="editNote($event)"
+                            [sort]="sort"
                             >
 
                                 <!-- grid toolbar start -->
@@ -409,7 +413,7 @@
                                 </ng-template>
                                 <!-- grid toolbar end -->
 
-                                <kendo-grid-column media="(min-width: 320px)" title="">
+                                <kendo-grid-column class="opti_notes-column" media="(min-width: 320px)">
                                     <ng-template kendoGridCellTemplate let-dataItem>
                                         <dl>
                                             <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} 
@@ -443,7 +447,8 @@
                                     </label>
                 
                                     <div class="text-right">
-                                        <button type="button" class="k-button k-primary" (click)="submitNote($event);">Add Item</button>
+                                        <button type="button" class="k-button k-primary" (click)="submitNote($event,'add');">Add Item</button>
+                                        <button type="button" class="k-button k-primary" (click)="submitNote($event,'close');">Close</button>
                                     </div>
                                 </form>
                             </div>

@@ -63,6 +63,7 @@ export class MainContentComponent implements OnInit {
     constructor(private commonService: Commonservice) {
         this.approveUser = false;
     }
+    
 
     // tab function
     openTab(evt, tabName) {
@@ -259,40 +260,50 @@ export class MainContentComponent implements OnInit {
     editNote({sender,rowIndex,dataItem}){        
     }
 
-    submitNote(e) {
-        this.notesgrid.nativeElement.style.display = 'block';
-        this.noteform.nativeElement.style.display = 'none';
-        
-        let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
-        let dynamicNotes:any[]=JSON.parse(dynamicNotesString);      
+    submitNote(e, action) {
+        if(action == 'add'){
+            this.notesgrid.nativeElement.style.display = 'block';
+            this.noteform.nativeElement.style.display = 'none';
+            
+            let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
+            let dynamicNotes:any[]=JSON.parse(dynamicNotesString);      
 
-        if(dynamicNotes==undefined  || dynamicNotes.length<=0){
-            dynamicNotes=[];
+            if(dynamicNotes==undefined  || dynamicNotes.length<=0){
+                dynamicNotes=[];
+            }
+            let date = new Date();
+            let CompleteDate = date.getFullYear() +'/'+ date.getMonth() +'/'+ date.getDate();
+            dynamicNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
+            localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
+            this.noteRequetData = dynamicNotes;
+        }else{
+            this.notesgrid.nativeElement.style.display = 'block';
+            this.noteform.nativeElement.style.display = 'none';
         }
-
-        dynamicNotes.push({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: new Date(), CreatedBy: 'prashant' });
-        localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
-        this.noteRequetData = dynamicNotes;
-
         this.addnotestring='';
-        
     }
 
-    submitItemsNote(e) {
-        this.notesitemgrid.nativeElement.style.display = 'block';
-        this.noteitemform.nativeElement.style.display = 'none';
-        
-        let dynamicItemsNotesString = localStorage.getItem("setItemsDynamicNotes");
-        let dynamicItemsNotes:any[]=JSON.parse(dynamicItemsNotesString);      
+    submitItemsNote(e, action) {
+        if(action == 'add'){
+            this.notesitemgrid.nativeElement.style.display = 'block';
+            this.noteitemform.nativeElement.style.display = 'none';
+            
+            let dynamicItemsNotesString = localStorage.getItem("setItemsDynamicNotes");
+            let dynamicItemsNotes:any[]=JSON.parse(dynamicItemsNotesString);      
 
-        if(dynamicItemsNotes==undefined  || dynamicItemsNotes.length<=0){
-            dynamicItemsNotes=[];
+            if(dynamicItemsNotes==undefined  || dynamicItemsNotes.length<=0){
+                dynamicItemsNotes=[];
+            }
+
+            let date = new Date();
+            let CompleteDate = date.getFullYear() +'/'+ date.getMonth() +'/'+ date.getDate();
+            dynamicItemsNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
+            localStorage.setItem("setItemsDynamicNotes", JSON.stringify(dynamicItemsNotes));
+            this.noteItemsData = dynamicItemsNotes;
+        }else{
+            this.notesitemgrid.nativeElement.style.display = 'block';
+            this.noteitemform.nativeElement.style.display = 'none';
         }
-
-        dynamicItemsNotes.push({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: new Date(), CreatedBy: 'prashant' });
-        localStorage.setItem("setItemsDynamicNotes", JSON.stringify(dynamicItemsNotes));
-        this.noteItemsData = dynamicItemsNotes;
-
         this.addnotestring='';
     }
 
