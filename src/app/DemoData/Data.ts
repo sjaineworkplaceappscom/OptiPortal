@@ -164,7 +164,7 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore13"
+       "ShipToLocation":"Indore"
     }
  ,  
     {  
@@ -680,7 +680,7 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore56"
+       "ShipToLocation":"Indore"
     }
  ,  
     {  
@@ -716,7 +716,7 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"08/06/2018",
        "RequiredDate":"21/06/2018",
-       "ShipToLocation":"Indore59"
+       "ShipToLocation":"Indore"
     }
  ,  
     {  
@@ -1652,7 +1652,7 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore37"
+       "ShipToLocation":"Indore"
     }
  ,  
     {  
