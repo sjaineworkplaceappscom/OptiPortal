@@ -139,7 +139,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ishant Sharma",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0012"
+       "Reference":"ORD999"
     }
  ,  
     {  
@@ -150,7 +150,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ishwar Sharma",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0013"
+       "Reference":"ORD147"
     }
  ,  
     {  
@@ -161,7 +161,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"ANkit Kumar",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0014"
+       "Reference":"ORD800"
     }
  ,  
     {  
@@ -172,7 +172,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Prakher Sharma",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0015"
+       "Reference":"ORD978"
     }
  ,  
     {  
@@ -183,7 +183,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Punit Sharma",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0016"
+       "Reference":"ORD784"
     }
  ,  
     {  
@@ -194,7 +194,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Vyas",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0017"
+       "Reference":"ORD985"
     }
  ,  
     {  
@@ -205,7 +205,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma18",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0018"
+       "Reference":"ORD252"
     }
  ,  
     {  
@@ -216,7 +216,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma19",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0019"
+       "Reference":"ORD124"
     }
  ,  
     {  
@@ -227,7 +227,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma20",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0020"
+       "Reference":"ORD965"
     }
  ,  
     {  
@@ -238,7 +238,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma21",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0021"
+       "Reference":"ORD524"
     }
  ,  
     {  
@@ -249,7 +249,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma22",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0022"
+       "Reference":"ORD452"
     }
  ,  
     {  
@@ -260,7 +260,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma23",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0023"
+       "Reference":"ORD698"
     }
  ,  
     {  
@@ -271,7 +271,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma24",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0024"
+       "Reference":"ORD025"
     }
  ,  
     {  
@@ -282,7 +282,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma25",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0025"
+       "Reference":"ORD256"
     }
  ,  
     {  
@@ -557,7 +557,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma50",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0050"
+       "Reference":"QTN011"
     }
  ,  
     {  
@@ -568,7 +568,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma51",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0051"
+       "Reference":"QTN111"
     }
  ,  
     {  
@@ -579,7 +579,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma52",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0052"
+       "Reference":"QTN771"
     }
  ,  
     {  
@@ -590,7 +590,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma53",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0053"
+       "Reference":"QTN471"
     }
  ,  
     {  
@@ -601,7 +601,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma54",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0054"
+       "Reference":"QTN456"
     }
  ,  
     {  
@@ -612,7 +612,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma55",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0055"
+       "Reference":"QTN653"
     }
  ,  
     {  
@@ -623,7 +623,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma56",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0056"
+       "Reference":"QTN556"
     }
  ,  
     {  
@@ -634,7 +634,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma57",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0057"
+       "Reference":"QTN125"
     }
  ,  
     {  
@@ -645,7 +645,7 @@ export const data2 = [
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma58",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0058"
+       "Reference":"QTN770"
     }
  ,  
     {  
@@ -656,7 +656,7 @@ export const data2 = [
        "CreatedDate":"28/06/201859",
        "BuyerCreatedBy":"Ankur Sharma59",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0059"
+       "Reference":"QTN298"
     }
  ,  
     {  
@@ -667,7 +667,7 @@ export const data2 = [
        "CreatedDate":"28/06/201860",
        "BuyerCreatedBy":"Ankur Sharma60",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0060"
+       "Reference":"QTN963"
     }
  ,  
     {  
@@ -678,7 +678,7 @@ export const data2 = [
        "CreatedDate":"28/06/201861",
        "BuyerCreatedBy":"Ankur Sharma61",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0061"
+       "Reference":"QTN041"
     }
  ,  
     {  
