@@ -1,129 +1,129 @@
 export const data2 = [  
     {  
-       "Inquiry":0,
-       "Customer":"Samsung",
-       "Name":"Ankur Sharma",
+       "Inquiry":1,
+       "Customer":"Cust001",
+       "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
+       "CreatedDate":"02/07/2018",
        "BuyerCreatedBy":"Ankur Sharma",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref000"
-    }
- ,  
-    {  
-       "Inquiry":1,
-       "Customer":"Samsung",
-       "Name":"Ankur Verma",
-       "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Verma",
-       "ValidUntil":"10/07/2018",
-       "Reference":"Ref001"
+       "Reference":"ENQ653"
     }
  ,  
     {  
        "Inquiry":2,
-       "Customer":"Samsung",
-       "Name":"Arun Sharma",
-       "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Arun Sharma",
+       "Customer":"Cust002",
+       "Name":"Apple",
+       "Status":"New",
+       "CreatedDate":"21/06/2018",
+       "BuyerCreatedBy":"Ankur Verma",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref002"
+       "Reference":"ENQ154"
     }
  ,  
     {  
        "Inquiry":3,
-       "Customer":"Samsung",
-       "Name":"Amit Sharma",
-       "Status":"Approved",
+       "Customer":"Cust003",
+       "Name":"Nokia",
+       "Status":"New",
        "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Amit Sharma",
-       "ValidUntil":"10/07/2018",
-       "Reference":"Ref003"
+       "BuyerCreatedBy":"Arun Sharma",
+       "ValidUntil":"15/07/2018",
+       "Reference":"QTN002"
     }
  ,  
     {  
        "Inquiry":4,
-       "Customer":"Samsung",
-       "Name":"Ankur Jain",
-       "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Jain",
-       "ValidUntil":"10/07/2018",
-       "Reference":"Ref004"
+       "Customer":"Cust004",
+       "Name":"LG",
+       "Status":"Revised",
+       "CreatedDate":"12/05/2018",
+       "BuyerCreatedBy":"Amit Sharma",
+       "ValidUntil":"18/05/2018",
+       "Reference":"QTN003"
     }
  ,  
     {  
        "Inquiry":5,
-       "Customer":"Samsung",
-       "Name":"Aniket Rajput",
-       "Status":"Approved",
+       "Customer":"Cust005",
+       "Name":"Redmi",
+       "Status":"Canceled",
        "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Aniket Rajput",
-       "ValidUntil":"10/07/2018",
-       "Reference":"Ref005"
+       "BuyerCreatedBy":"Ankur Jain",
+       "ValidUntil":"06/07/2018",
+       "Reference":"QTN078"
     }
  ,  
     {  
        "Inquiry":6,
-       "Customer":"Samsung",
-       "Name":"Ankur Sharma",
-       "Status":"Approved",
+       "Customer":"Cust006",
+       "Name":"Huwai",
+       "Status":"Closed",
        "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma",
-       "ValidUntil":"10/07/2018",
-       "Reference":"Ref006"
+       "BuyerCreatedBy":"Aniket Rajput",
+       "ValidUntil":"25/07/2018",
+       "Reference":"ORD958"
     }
  ,  
     {  
        "Inquiry":7,
-       "Customer":"Samsung",
-       "Name":"Anand Kumar",
+       "Customer":"Cust007",
+       "Name":"Asus",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Anand Kumar",
-       "ValidUntil":"10/07/2018",
-       "Reference":"Ref007"
+       "CreatedDate":"24/06/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"30/06/2018",
+       "Reference":"ORD777"
     }
  ,  
     {  
        "Inquiry":8,
-       "Customer":"Samsung",
-       "Name":"Ankit Gupta",
+       "Customer":"Cust008",
+       "Name":"	BenQ",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"ANkit Gupta",
+       "BuyerCreatedBy":"Anand Kumar",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref008"
+       "Reference":"ORD857"
     }
  ,  
     {  
        "Inquiry":9,
-       "Customer":"Samsung",
-       "Name":"TaranVeer Singh",
+       "Customer":"Cust009",
+       "Name":"HTC",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"TaranVeer Singh",
-       "ValidUntil":"10/07/2018",
-       "Reference":"Ref009"
+       "BuyerCreatedBy":"ANkit Gupta",
+       "ValidUntil":"12/09/2018",
+       "Reference":"QTN071"
     }
  ,  
     {  
        "Inquiry":10,
-       "Customer":"Samsung",
-       "Name":"Prashant Jain",
+       "Customer":"Cust010",
+       "Name":"Philips",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Prashant Jain",
+       "BuyerCreatedBy":"TaranVeer Singh",
        "ValidUntil":"10/07/2018",
-       "Reference":"Ref0010"
+       "Reference":"QTN011"
     }
  ,  
     {  
        "Inquiry":11,
-       "Customer":"Samsung",
-       "Name":"Shashank Jain",
+       "Customer":"Cust011",
+       "Name":"iball",
+       "Status":"Approved",
+       "CreatedDate":"28/06/2018",
+       "BuyerCreatedBy":"Prashant Jain",
+       "ValidUntil":"10/07/2018",
+       "Reference":"QTN986"
+    }
+ ,  
+    {  
+       "Inquiry":12,
+       "Customer":"Cust012",
+       "Name":"Intex Technologies",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Shashank Jain",
@@ -132,9 +132,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":12,
-       "Customer":"Samsung",
-       "Name":"Ishant Sharma",
+       "Inquiry":13,
+       "Customer":"Cust013",
+       "Name":"Karbonn Mobiles",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ishant Sharma",
@@ -143,9 +143,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":13,
-       "Customer":"Samsung",
-       "Name":"Ishwar Sharma",
+       "Inquiry":14,
+       "Customer":"Cust014",
+       "Name":"Lava International",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ishwar Sharma",
@@ -154,9 +154,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":14,
-       "Customer":"Samsung",
-       "Name":"Ankit Kumar",
+       "Inquiry":15,
+       "Customer":"Cust015",
+       "Name":"LYF",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"ANkit Kumar",
@@ -165,9 +165,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":15,
-       "Customer":"Samsung",
-       "Name":"Prakher Sharma",
+       "Inquiry":16,
+       "Customer":"Cust016",
+       "Name":"Micromax Informatics",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Prakher Sharma",
@@ -176,9 +176,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":16,
-       "Customer":"Samsung",
-       "Name":"Punit Sharma",
+       "Inquiry":17,
+       "Customer":"Cust017",
+       "Name":"	Onida Electronics",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Punit Sharma",
@@ -187,9 +187,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":17,
-       "Customer":"Samsung",
-       "Name":"Ankur Vyas",
+       "Inquiry":18,
+       "Customer":"Cust001",
+       "Name":"Samsung",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Vyas",
@@ -198,9 +198,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":18,
-       "Customer":"Samsung",
-       "Name":"Shashank jain18",
+       "Inquiry":19,
+       "Customer":"Cust002",
+       "Name":"Apple",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma18",
@@ -209,9 +209,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":19,
-       "Customer":"Samsung",
-       "Name":"Shashank jain19",
+       "Inquiry":20,
+       "Customer":"Cust002",
+       "Name":"Apple",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma19",
@@ -220,9 +220,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":20,
-       "Customer":"Samsung",
-       "Name":"Shashank jain20",
+       "Inquiry":21,
+       "Customer":"Cust002",
+       "Name":"Apple",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma20",
@@ -231,9 +231,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":21,
-       "Customer":"Samsung",
-       "Name":"Shashank jain21",
+       "Inquiry":22,
+       "Customer":"Cust002",
+       "Name":"Samsung",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma21",
@@ -242,9 +242,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":22,
-       "Customer":"Samsung",
-       "Name":"Shashank jain22",
+       "Inquiry":23,
+       "Customer":"Cust003",
+       "Name":"Nokia",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma22",
@@ -253,9 +253,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":23,
-       "Customer":"Samsung",
-       "Name":"Shashank jain23",
+       "Inquiry":24,
+       "Customer":"Cust003",
+       "Name":"Nokia",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma23",
@@ -264,9 +264,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":24,
-       "Customer":"Samsung",
-       "Name":"Shashank jain24",
+       "Inquiry":25,
+       "Customer":"Cust003",
+       "Name":"Nokia",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma24",
@@ -275,9 +275,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":25,
-       "Customer":"Samsung",
-       "Name":"Shashank jain25",
+       "Inquiry":26,
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma25",
@@ -286,9 +286,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":26,
-       "Customer":"Samsung",
-       "Name":"Shashank jain26",
+       "Inquiry":27,
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma26",
@@ -297,9 +297,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":27,
-       "Customer":"Samsung",
-       "Name":"Shashank jain27",
+       "Inquiry":28,
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma27",
@@ -308,9 +308,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":28,
-       "Customer":"Samsung",
-       "Name":"Shashank jain28",
+       "Inquiry":29,
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma28",
@@ -319,9 +319,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":29,
-       "Customer":"Samsung",
-       "Name":"Shashank jain29",
+       "Inquiry":30,
+       "Customer":"Cust012",
+       "Name":"Intex Technology",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma29",
@@ -330,9 +330,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":30,
-       "Customer":"Samsung",
-       "Name":"Shashank jain30",
+       "Inquiry":31,
+       "Customer":"Cust012",
+       "Name":"Intex Technology",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma30",
@@ -341,9 +341,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":31,
-       "Customer":"Samsung",
-       "Name":"Shashank jain31",
+       "Inquiry":32,
+       "Customer":"Cust012",
+       "Name":"Intex Technology",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma31",
@@ -352,9 +352,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":32,
-       "Customer":"Samsung",
-       "Name":"Shashank jain32",
+       "Inquiry":33,
+       "Customer":"Cust012",
+       "Name":"Intex Technology",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma32",
@@ -363,9 +363,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":33,
-       "Customer":"Samsung",
-       "Name":"Shashank jain33",
+       "Inquiry":34,
+       "Customer":"Cust012",
+       "Name":"Intex Technology",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma33",
@@ -374,9 +374,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":34,
-       "Customer":"Samsung",
-       "Name":"Shashank jain34",
+       "Inquiry":35,
+       "Customer":"Cust012",
+       "Name":"Intex Technology",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma34",
@@ -385,9 +385,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":35,
-       "Customer":"Samsung",
-       "Name":"Shashank jain35",
+       "Inquiry":36,
+       "Customer":"Cust017",
+       "Name":"	Onida Electronics",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma35",
@@ -396,9 +396,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":36,
-       "Customer":"Samsung",
-       "Name":"Shashank jain36",
+       "Inquiry":37,
+       "Customer":"Cust017",
+       "Name":"	Onida Electronics",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma36",
@@ -407,9 +407,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":37,
-       "Customer":"Samsung",
-       "Name":"Shashank jain37",
+       "Inquiry":38,
+       "Customer":"Cust017",
+       "Name":"	Onida Electronics",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma37",
@@ -418,9 +418,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":38,
-       "Customer":"Samsung",
-       "Name":"Shashank jain38",
+       "Inquiry":39,
+       "Customer":"Cust017",
+       "Name":"	Onida Electronics",
        "Status":"Approved",
        "CreatedDate":"28/06/201838",
        "BuyerCreatedBy":"Ankur Sharma38",
@@ -429,9 +429,9 @@ export const data2 = [
     }
  ,  
     {  
-       "Inquiry":39,
-       "Customer":"Samsung",
-       "Name":"Shashank jain39",
+       "Inquiry":40,
+       "Customer":"Cust017",
+       "Name":"	Onida Electronics",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma39",
@@ -441,8 +441,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":40,
-       "Customer":"Samsung",
-       "Name":"Shashank jain40",
+       "Customer":"Cust017",
+       "Name":"	Onida Electronics",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma40",
@@ -452,9 +452,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":41,
-       "Customer":"Samsung",
-       "Name":"Shashank jain41",
-       "Status":"Approved",
+       "Customer":"Cust006",
+       "Name":"Huwai",
+       "Status":"Closed",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma41",
        "ValidUntil":"10/07/2018",
@@ -463,9 +463,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":42,
-       "Customer":"Samsung",
-       "Name":"Shashank jain42",
-       "Status":"Approved",
+       "Customer":"Cust006",
+       "Name":"Huwai",
+       "Status":"Closed",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma42",
        "ValidUntil":"10/07/2018",
@@ -474,9 +474,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":43,
-       "Customer":"Samsung",
-       "Name":"Shashank jain43",
-       "Status":"Approved",
+       "Customer":"Cust006",
+       "Name":"Huwai",
+       "Status":"Canceled",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma43",
        "ValidUntil":"10/07/2018",
@@ -485,9 +485,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":44,
-       "Customer":"Samsung",
-       "Name":"Shashank jain44",
-       "Status":"Approved",
+       "Customer":"Cust006",
+       "Name":"Huwai",
+       "Status":"Canceled",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma44",
        "ValidUntil":"10/07/2018",
@@ -496,8 +496,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":45,
-       "Customer":"Samsung",
-       "Name":"Shashank jain45",
+       "Customer":"Cust006",
+       "Name":"Huwai",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma45",
@@ -507,8 +507,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":46,
-       "Customer":"Samsung",
-       "Name":"Shashank jain46",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma46",
@@ -518,8 +518,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":47,
-       "Customer":"Samsung",
-       "Name":"Shashank jain47",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma47",
@@ -529,8 +529,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":48,
-       "Customer":"Samsung",
-       "Name":"Shashank jain48",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma48",
@@ -540,8 +540,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":49,
-       "Customer":"Samsung",
-       "Name":"Shashank jain49",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma49",
@@ -551,8 +551,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":50,
-       "Customer":"Samsung",
-       "Name":"Shashank jain50",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma50",
@@ -562,8 +562,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":51,
-       "Customer":"Samsung",
-       "Name":"Shashank jain51",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma51",
@@ -573,8 +573,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":52,
-       "Customer":"Samsung",
-       "Name":"Shashank jain52",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma52",
@@ -584,8 +584,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":53,
-       "Customer":"Samsung",
-       "Name":"Shashank jain53",
+       "Customer":"Cust001",
+       "Name":"Samsung",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma53",
@@ -595,8 +595,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":54,
-       "Customer":"Samsung",
-       "Name":"Shashank jain54",
+       "Customer":"Cust001",
+       "Name":"Samsung",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma54",
@@ -606,8 +606,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":55,
-       "Customer":"Samsung",
-       "Name":"Shashank jain55",
+       "Customer":"Cust001",
+       "Name":"Samsung",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma55",
@@ -617,8 +617,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":56,
-       "Customer":"Samsung",
-       "Name":"Shashank jain56",
+       "Customer":"Cust001",
+       "Name":"Samsung",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma56",
@@ -628,8 +628,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":57,
-       "Customer":"Samsung",
-       "Name":"Shashank jain57",
+       "Customer":"Cust001",
+       "Name":"Samsung",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma57",
@@ -639,8 +639,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":58,
-       "Customer":"Samsung",
-       "Name":"Shashank jain58",
+       "Customer":"Cust001",
+       "Name":"Samsung",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Ankur Sharma58",
@@ -650,8 +650,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":59,
-       "Customer":"Samsung",
-       "Name":"Shashank jain59",
+       "Customer":"Cust001",
+       "Name":"Samsung",
        "Status":"Approved",
        "CreatedDate":"28/06/201859",
        "BuyerCreatedBy":"Ankur Sharma59",
@@ -661,8 +661,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":60,
-       "Customer":"Samsung",
-       "Name":"Shashank jain60",
+       "Customer":"Cust001",
+       "Name":"Samsung",
        "Status":"Approved",
        "CreatedDate":"28/06/201860",
        "BuyerCreatedBy":"Ankur Sharma60",
@@ -672,8 +672,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":61,
-       "Customer":"Samsung",
-       "Name":"Shashank jain61",
+       "Customer":"Cust001",
+       "Name":"Samsung",
        "Status":"Approved",
        "CreatedDate":"28/06/201861",
        "BuyerCreatedBy":"Ankur Sharma61",
@@ -683,8 +683,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":62,
-       "Customer":"Samsung",
-       "Name":"Shashank jain62",
+       "Customer":"Cust001",
+       "Name":"Samsung",
        "Status":"Approved",
        "CreatedDate":"28/06/201862",
        "BuyerCreatedBy":"Ankur Sharma62",
@@ -694,8 +694,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":63,
-       "Customer":"Samsung",
-       "Name":"Shashank jain63",
+       "Customer":"Cust002",
+       "Name":"Apple",
        "Status":"Approved",
        "CreatedDate":"28/06/201863",
        "BuyerCreatedBy":"Ankur Sharma63",
@@ -705,8 +705,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":64,
-       "Customer":"Samsung",
-       "Name":"Shashank jain64",
+       "Customer":"Cust002",
+       "Name":"Apple",
        "Status":"Approved",
        "CreatedDate":"28/06/201864",
        "BuyerCreatedBy":"Ankur Sharma64",
@@ -716,8 +716,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":65,
-       "Customer":"Samsung",
-       "Name":"Shashank jain65",
+       "Customer":"Cust002",
+       "Name":"Apple",
        "Status":"Approved",
        "CreatedDate":"28/06/201865",
        "BuyerCreatedBy":"Ankur Sharma65",
@@ -727,8 +727,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":66,
-       "Customer":"Samsung",
-       "Name":"Shashank jain66",
+       "Customer":"Cust002",
+       "Name":"Apple",
        "Status":"Approved",
        "CreatedDate":"28/06/201866",
        "BuyerCreatedBy":"Ankur Sharma66",
@@ -738,8 +738,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":67,
-       "Customer":"Samsung",
-       "Name":"Shashank jain67",
+       "Customer":"Cust002",
+       "Name":"Apple",
        "Status":"Approved",
        "CreatedDate":"28/06/201867",
        "BuyerCreatedBy":"Ankur Sharma67",
@@ -749,8 +749,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":68,
-       "Customer":"Samsung",
-       "Name":"Shashank jain68",
+       "Customer":"Cust002",
+       "Name":"Apple",
        "Status":"Approved",
        "CreatedDate":"28/06/201868",
        "BuyerCreatedBy":"Ankur Sharma68",
@@ -760,8 +760,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":69,
-       "Customer":"Samsung",
-       "Name":"Shashank jain69",
+       "Customer":"Cust002",
+       "Name":"Apple",
        "Status":"Approved",
        "CreatedDate":"28/06/201869",
        "BuyerCreatedBy":"Ankur Sharma69",
@@ -771,8 +771,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":70,
-       "Customer":"Samsung",
-       "Name":"Shashank jain70",
+       "Customer":"Cust002",
+       "Name":"Apple",
        "Status":"Approved",
        "CreatedDate":"28/06/201870",
        "BuyerCreatedBy":"Ankur Sharma70",
@@ -782,8 +782,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":71,
-       "Customer":"Samsung",
-       "Name":"Shashank jain71",
+       "Customer":"Cust002",
+       "Name":"Apple",
        "Status":"Approved",
        "CreatedDate":"28/06/201871",
        "BuyerCreatedBy":"Ankur Sharma71",
@@ -793,8 +793,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":72,
-       "Customer":"Samsung",
-       "Name":"Shashank jain72",
+       "Customer":"Cust003",
+       "Name":"Nokia",
        "Status":"Approved",
        "CreatedDate":"28/06/201872",
        "BuyerCreatedBy":"Ankur Sharma72",
@@ -804,8 +804,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":73,
-       "Customer":"Samsung",
-       "Name":"Shashank jain73",
+       "Customer":"Cust003",
+       "Name":"Nokia",
        "Status":"Approved",
        "CreatedDate":"28/06/201873",
        "BuyerCreatedBy":"Ankur Sharma73",
@@ -815,8 +815,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":74,
-       "Customer":"Samsung",
-       "Name":"Shashank jain74",
+       "Customer":"Cust003",
+       "Name":"Nokia",
        "Status":"Approved",
        "CreatedDate":"28/06/201874",
        "BuyerCreatedBy":"Ankur Sharma74",
@@ -826,8 +826,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":75,
-       "Customer":"Samsung",
-       "Name":"Shashank jain75",
+       "Customer":"Cust003",
+       "Name":"Nokia",
        "Status":"Approved",
        "CreatedDate":"28/06/201875",
        "BuyerCreatedBy":"Ankur Sharma75",
@@ -837,8 +837,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":76,
-       "Customer":"Samsung",
-       "Name":"Shashank jain76",
+       "Customer":"Cust003",
+       "Name":"Nokia",
        "Status":"Approved",
        "CreatedDate":"28/06/201876",
        "BuyerCreatedBy":"Ankur Sharma76",
@@ -848,8 +848,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":77,
-       "Customer":"Samsung",
-       "Name":"Shashank jain77",
+       "Customer":"Cust003",
+       "Name":"Nokia",
        "Status":"Approved",
        "CreatedDate":"28/06/201877",
        "BuyerCreatedBy":"Ankur Sharma77",
@@ -859,8 +859,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":78,
-       "Customer":"Samsung",
-       "Name":"Shashank jain78",
+       "Customer":"Cust003",
+       "Name":"Nokia",
        "Status":"Approved",
        "CreatedDate":"28/06/201878",
        "BuyerCreatedBy":"Ankur Sharma78",
@@ -870,8 +870,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":79,
-       "Customer":"Samsung",
-       "Name":"Shashank jain79",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/201879",
        "BuyerCreatedBy":"Ankur Sharma79",
@@ -881,8 +881,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":80,
-       "Customer":"Samsung",
-       "Name":"Shashank jain80",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/201880",
        "BuyerCreatedBy":"Ankur Sharma80",
@@ -892,8 +892,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":81,
-       "Customer":"Samsung",
-       "Name":"Shashank jain81",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/201881",
        "BuyerCreatedBy":"Ankur Sharma81",
@@ -903,8 +903,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":82,
-       "Customer":"Samsung",
-       "Name":"Shashank jain82",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/201882",
        "BuyerCreatedBy":"Ankur Sharma82",
@@ -914,8 +914,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":83,
-       "Customer":"Samsung",
-       "Name":"Shashank jain83",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/201883",
        "BuyerCreatedBy":"Ankur Sharma83",
@@ -925,8 +925,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":84,
-       "Customer":"Samsung",
-       "Name":"Shashank jain84",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/201884",
        "BuyerCreatedBy":"Ankur Sharma84",
@@ -936,8 +936,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":85,
-       "Customer":"Samsung",
-       "Name":"Shashank jain85",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/201885",
        "BuyerCreatedBy":"Ankur Sharma85",
@@ -947,8 +947,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":86,
-       "Customer":"Samsung",
-       "Name":"Shashank jain86",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/201886",
        "BuyerCreatedBy":"Ankur Sharma86",
@@ -958,8 +958,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":87,
-       "Customer":"Samsung",
-       "Name":"Shashank jain87",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/201887",
        "BuyerCreatedBy":"Ankur Sharma87",
@@ -969,8 +969,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":88,
-       "Customer":"Samsung",
-       "Name":"Shashank jain88",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/201888",
        "BuyerCreatedBy":"Ankur Sharma88",
@@ -980,8 +980,8 @@ export const data2 = [
  ,  
     {  
        "Inquiry":89,
-       "Customer":"Samsung",
-       "Name":"Shashank jain89",
+       "Customer":"Cust004",
+       "Name":"LG",
        "Status":"Approved",
        "CreatedDate":"28/06/201889",
        "BuyerCreatedBy":"Ankur Sharma89",
@@ -991,9 +991,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":90,
-       "Customer":"Samsung",
-       "Name":"Shashank jain90",
-       "Status":"Approved",
+       "Customer":"Cust004",
+       "Name":"LG",
+       "Status":"Closed",
        "CreatedDate":"28/06/201890",
        "BuyerCreatedBy":"Ankur Sharma90",
        "ValidUntil":"10/07/2018",
@@ -1002,9 +1002,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":91,
-       "Customer":"Samsung",
-       "Name":"Shashank jain91",
-       "Status":"Approved",
+       "Customer":"Cust004",
+       "Name":"LG",
+       "Status":"Closed",
        "CreatedDate":"28/06/201891",
        "BuyerCreatedBy":"Ankur Sharma91",
        "ValidUntil":"10/07/2018",
@@ -1013,9 +1013,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":92,
-       "Customer":"Samsung",
-       "Name":"Shashank jain92",
-       "Status":"Approved",
+       "Customer":"Cust004",
+       "Name":"LG",
+       "Status":"Closed",
        "CreatedDate":"28/06/201892",
        "BuyerCreatedBy":"Ankur Sharma92",
        "ValidUntil":"10/07/2018",
@@ -1024,9 +1024,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":93,
-       "Customer":"Samsung",
-       "Name":"Shashank jain93",
-       "Status":"Approved",
+       "Customer":"Cust004",
+       "Name":"LG",
+       "Status":"Closed",
        "CreatedDate":"28/06/201893",
        "BuyerCreatedBy":"Ankur Sharma93",
        "ValidUntil":"10/07/2018",
@@ -1035,9 +1035,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":94,
-       "Customer":"Samsung",
-       "Name":"Shashank jain94",
-       "Status":"Approved",
+       "Customer":"Cust001",
+       "Name":"Samsung",
+       "Status":"Closed",
        "CreatedDate":"28/06/201894",
        "BuyerCreatedBy":"Ankur Sharma94",
        "ValidUntil":"10/07/2018",
@@ -1046,9 +1046,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":95,
-       "Customer":"Samsung",
-       "Name":"Shashank jain95",
-       "Status":"Approved",
+       "Customer":"Cust001",
+       "Name":"Samsung",
+       "Status":"Cancled",
        "CreatedDate":"28/06/201895",
        "BuyerCreatedBy":"Ankur Sharma95",
        "ValidUntil":"10/07/2018",
@@ -1057,9 +1057,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":96,
-       "Customer":"Samsung",
-       "Name":"Shashank jain96",
-       "Status":"Approved",
+       "Customer":"Cust001",
+       "Name":"Samsung",
+       "Status":"New",
        "CreatedDate":"28/06/201896",
        "BuyerCreatedBy":"Ankur Sharma96",
        "ValidUntil":"10/07/2018",
@@ -1068,9 +1068,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":97,
-       "Customer":"Samsung",
-       "Name":"Shashank jain97",
-       "Status":"Approved",
+       "Customer":"Cust001",
+       "Name":"Samsung",
+       "Status":"New",
        "CreatedDate":"28/06/201897",
        "BuyerCreatedBy":"Ankur Sharma97",
        "ValidUntil":"10/07/2018",
@@ -1079,9 +1079,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":98,
-       "Customer":"Samsung",
-       "Name":"Shashank jain98",
-       "Status":"Approved",
+       "Customer":"Cust001",
+       "Name":"Samsung",
+       "Status":"New",
        "CreatedDate":"28/06/201898",
        "BuyerCreatedBy":"Ankur Sharma98",
        "ValidUntil":"10/07/2018",
@@ -1090,9 +1090,9 @@ export const data2 = [
  ,  
     {  
        "Inquiry":99,
-       "Customer":"Samsung",
-       "Name":"Shashank jain99",
-       "Status":"Approved",
+       "Customer":"Cust001",
+       "Name":"Samsung",
+       "Status":"New",
        "CreatedDate":"28/06/201899",
        "BuyerCreatedBy":"Ankur Sharma99",
        "ValidUntil":"10/07/2018",
