@@ -313,4 +313,13 @@ body{
             background: transparent !important;
             border: none;
         }
+
+        // note section start
+        .opti_note-msg{
+            font-weight: 500;
+            font-size: 15px;
+        }
+        tr:hover .opti_note-action-button-sec svg-icon svg {
+            fill: $white !important;
+        }
 }

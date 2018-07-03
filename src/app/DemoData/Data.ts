@@ -1,4 +1,4 @@
-export const itemList = [  
+export const data = [  
     {  
        "PurchaseInquiryItemlId":1,
        "ItemDescription":"Keyboard",

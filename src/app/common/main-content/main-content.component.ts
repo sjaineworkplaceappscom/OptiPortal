@@ -7,6 +7,9 @@
 import { Component, OnInit, HostListener, TemplateRef, ViewChild } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { data2 } from '../../DemoData/Data2';
+import { data } from '../../DemoData/Data';
+
+
 
 import { process, State } from '@progress/kendo-data-query';
 import {
@@ -86,6 +89,13 @@ export class MainContentComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        this.commonService.themeCurrentData.subscribe(
+            data => {
+                this.selectedThemeColor = data;
+            }
+        );
+
         this.noteRequetData = JSON.parse(localStorage.getItem("setRequestDynamicNotes"));
         this.noteItemsData = JSON.parse(localStorage.getItem("setItemsDynamicNotes"));
 
@@ -131,53 +141,7 @@ export class MainContentComponent implements OnInit {
 
 
     // itmes json start
-    PurchaseEnquiryItemList = [
-        {
-            'PurchaseInquiryItemlId': '1',
-            'ItemDescription': "top board item id123",
-            'CustomerItemIdOrDescription': "top board item id123",
-            'Quantitiy': 5,
-            'Unit': "number",
-            'Requester': "Ankur Sharma",
-            'RequestDate': "20/06/2018",
-            'RequiredDate': "28/06/2018",
-            'ShipToLocation': "Indore"
-        },
-        {
-            'PurchaseInquiryItemlId': '2',
-            'ItemDescription': "top board item id123",
-            'CustomerItemIdOrDescription': "top board item id123",
-            'Quantitiy': 5,
-            'Unit': "number",
-            'Requester': "Ankur Sharma",
-            'RequestDate': "20/06/2018",
-            'RequiredDate': "28/06/2018",
-            'ShipToLocation': "Indore"
-        },
-        {
-            'PurchaseInquiryItemlId': '3',
-            'ItemDescription': "top board item id123",
-            'CustomerItemIdOrDescription': "top board item id123",
-            'Quantitiy': 5,
-            'Unit': "number",
-            'Requester': "Ankur Sharma",
-            'RequestDate': "20/06/2018",
-            'RequiredDate': "28/06/2018",
-            'ShipToLocation': "Indore"
-        },
-        {
-            'PurchaseInquiryItemlId': '4',
-            'ItemDescription': "top board item id123",
-            'CustomerItemIdOrDescription': "top board item id123",
-            'Quantitiy': 5,
-            'Unit': "number",
-            'Requester': "Ankur Sharma",
-            'RequestDate': "20/06/2018",
-            'RequiredDate': "28/06/2018",
-            'ShipToLocation': "Indore"
-        }
-    ];
-    public gridItemsData: any[] = this.PurchaseEnquiryItemList;
+    public gridItemsData: any[] = data;
 
     showItemSection() {
         this.gridSectionItem.nativeElement.style.display = 'none';
