@@ -352,7 +352,7 @@ export const data = [
        "ItemDescription":"RAM 8GB",
        "CustomerItemIdOrDescription":"ITMR08 DDR5 8 GB RAM",
        "Quantitiy":29,
-       "Unit":"number29",
+       "Unit":"number",
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
