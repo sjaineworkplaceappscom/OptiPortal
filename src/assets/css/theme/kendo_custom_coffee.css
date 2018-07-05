@@ -1,102 +1,90 @@
 /*****************************************************************************************/
 /*********************************** OUR CUSTOM CODE *************************************/
 /*****************************************************************************************/
-body{
-    color: #555;
+:root {
+  --kendo-primary-color: #595959;
+  --kendo-light-primary-hover-color: rgba(89, 89, 89, 0.2);
+  --kendo-secondry-color: #f0e9d9; 
+  --kendo-white-color: #fff;
+  --kendo-off-white-color: #f0f0f0;
+}
+
+/*****************************************************/
+/* static color start */
+/*****************************************************/
+  body{
+  color: #555;
   }
+  
   p, span, strong, div{
-    color: #232323;
+  color: #232323;
   }
-  a{
-    color: #595959;
-  }
-  a:hover{
-    color: #f0e9d9;
-  }
-  h1, h2, h3, h4, h5, h6{
-    color: #595959;
-  }
-  
-  
-  /* css for layout */
-  #opti_LeftPanelID{
-    background-color: #fff;
-  }
-  #opti_ThemeSettingID{
-    background-color: #fff;
-  }
-  
-  #opti_RightPanelID{
-    background-color: #f0f0f0;
-    
-  }
-  
+
   section#opti_TopBarID {
-    /* background-color: #1e88e5; */
     background: linear-gradient(84deg, #F2ECE0 -6%, #3E3E3E 16%, #A99465 84%);
   }
-  
-  /* mobile sidebar panel color */
+
   .opti_menusidebar-mobile-open app-left {
-    background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.5);
   }
-  
-  .opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
-    background: transparent;
-  }
-  
-  .opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
-    background-color: #f0f0f0;
-  }
-  button{
-    background-color: #595959;
-    color: white;
-    border-color: #595959;
-  }
-  
+/*****************************************************/
+/* static color end */
+/*****************************************************/
+
   app-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
   .opti_user-profile-drop-down li.opti_mouse-pointer:hover,
   li.opti_list:hover,
   ul.opti_liststyle-one-ul .opti_liststyle-one-li:hover
   {
-    background-color: #B7B3AB;
+      background-color: var(--kendo-light-primary-hover-color);
   }
-  
+
+  #opti_LeftPanelID,
+  #opti_ThemeSettingID{
+      background-color: var(--kendo-white-color);
+  }
+
+  #opti_RightPanelID,
+  .opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
+      background-color: var(--kendo-off-white-color);
+  }
+
+  .opti_tab-outer ul.tabs > li:hover,
+  .opti_tab-outer ul.tabs > li.active,
+  body .k-grid tbody tr:hover,
   .ps__thumb-y,
   .ps__rail-y:hover > .ps__thumb-y, 
-  .ps__rail-y:focus > .ps__thumb-y
-  {
-    background-color: #595959;
+  .ps__rail-y:focus > .ps__thumb-y,
+  button {
+      background-color: var(--kendo-primary-color);
   }
 
   .opti_loader .opti_spinner{
-    border-top-color:#595959 !important;
+      border-top-color:var(--kendo-primary-color) !important;
   }
 
-  /* css for grid */
+  button{
+      border-color: var(--kendo-primary-color);
+  }
+
   .k-grid-header thead tr th a.k-link,
-  .k-indicator-container{
-    color: #595959;
+  .k-indicator-container,
+  a, h1, h2, h3, h4, h5, h6{
+      color: var(--kendo-primary-color);
   }
 
-  body .k-grid tbody tr:hover {
-    color: white;
-    background-color: #595959;
+  a:hover{
+      color: var(--kendo-secondry-color);
   }
 
-  body kendo-grid{
-    box-shadow: 0px 1px 15px #595959;
+  body .k-grid tbody tr:hover,
+  button {
+      color: var(--kendo-white-color);
   }
 
-  /* left section */
+  body kendo-grid,
   .opti_left-navigation{
-  box-shadow: 0px 1px 15px #595959;
-  }
-
-  /* tab header */
-  .opti_tab-outer ul.tabs > li:hover,
-  .opti_tab-outer ul.tabs > li.active {
-    background-color: #595959;
+      box-shadow: 0px 1px 15px var(--kendo-primary-color);
   }
   
   /*****************************************************************************************/

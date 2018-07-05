@@ -1,108 +1,92 @@
 /*****************************************************************************************/
 /*********************************** OUR CUSTOM CODE *************************************/
 /*****************************************************************************************/
-body{
-    color: #555;
-  }
-  p, span, strong, div{
-    color: #232323;
-  }
-  a{
-    color: #ff8382;
-  }
-  a:hover{
-    color: #ff9e76;
-  }
-  h1, h2, h3, h4, h5, h6{
-    color: #ff8382;
-  }
-  
-  
-  /* css for layout */
-  #opti_LeftPanelID{
-    background-color:#fff;
-  }
-  #opti_ThemeSettingID{
-    background-color: #fff;
-  }
-  
-  #opti_RightPanelID{
-    background-color: #f0f0f0;
-    
-  }
-  
-  section#opti_TopBarID {
-    /* background-color: #13688c; */
-    background: linear-gradient(141deg, #FF8382 9%, #FF9E76 25%, #FFBE6A 65%);
-  }
-  
-  /* mobile sidebar panel color */
-  .opti_menusidebar-mobile-open app-left {
-    background: rgba(0,0,0,0.5);
-  }
-  
-  .opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
-    background: transparent;
-  }
-  
-  .opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
-    background-color: #f0f0f0;
-  }
-  
-  button{
-    background-color: #ff8382;
-    color: white;
-    border-color: #ff8382;
+  :root {
+    --kendo-primary-color: #ff8382;
+    --kendo-light-primary-hover-color: rgba(255, 131, 130, 0.2);
+    --kendo-secondry-color: #ff9e76; 
+    --kendo-white-color: #fff;
+    --kendo-off-white-color: #f0f0f0;
   }
 
+  /*****************************************************/
+  /* static color start */
+  /*****************************************************/
+    body{
+    color: #555;
+    }
+    
+    p, span, strong, div{
+    color: #232323;
+    }
+
+    section#opti_TopBarID {
+      background: linear-gradient(141deg, #FF8382 9%, #FF9E76 25%, #FFBE6A 65%);
+    }
+
+    .opti_menusidebar-mobile-open app-left {
+        background: rgba(0,0,0,0.5);
+    }
+  /*****************************************************/
+  /* static color end */
+  /*****************************************************/
+  
   app-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
   .opti_user-profile-drop-down li.opti_mouse-pointer:hover,
   li.opti_list:hover,
   ul.opti_liststyle-one-ul .opti_liststyle-one-li:hover
   {
-    background-color: #fbe1e1;
+      background-color: var(--kendo-light-primary-hover-color);
   }
-  
+
+  #opti_LeftPanelID,
+  #opti_ThemeSettingID{
+      background-color: var(--kendo-white-color);
+  }
+
+  #opti_RightPanelID,
+  .opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
+      background-color: var(--kendo-off-white-color);
+  }
+
+  .opti_tab-outer ul.tabs > li:hover,
+  .opti_tab-outer ul.tabs > li.active,
+  body .k-grid tbody tr:hover,
   .ps__thumb-y,
   .ps__rail-y:hover > .ps__thumb-y, 
-  .ps__rail-y:focus > .ps__thumb-y
-  {
-    background-color: #ff8382;
+  .ps__rail-y:focus > .ps__thumb-y,
+  button {
+      background-color: var(--kendo-primary-color);
   }
-  
+
   .opti_loader .opti_spinner{
-    border-top-color:#ff8382 !important;
+      border-top-color:var(--kendo-primary-color) !important;
   }
 
-  /* css for grid */
+  button{
+      border-color: var(--kendo-primary-color);
+  }
+
   .k-grid-header thead tr th a.k-link,
-  .k-indicator-container{
-    color: #ff8382;
+  .k-indicator-container,
+  a, h1, h2, h3, h4, h5, h6{
+      color: var(--kendo-primary-color);
   }
 
-  body .k-grid tbody tr:hover {
-    color: white;
-    background-color: #ff8382;
+  a:hover{
+      color: var(--kendo-secondry-color);
   }
 
-  body kendo-grid{
-    box-shadow: 0px 1px 15px #ff8382;
+  body .k-grid tbody tr:hover,
+  button {
+      color: var(--kendo-white-color);
   }
 
-  /* left section */
+  body kendo-grid,
   .opti_left-navigation{
-  box-shadow: 0px 1px 15px #ff8382;
+      box-shadow: 0px 1px 15px var(--kendo-primary-color);
   }
-
-  /* tab header */
-  .opti_tab-outer ul.tabs > li:hover,
-  .opti_tab-outer ul.tabs > li.active {
-    background-color: #ff8382;
-  }
-  
  
-  
-  
   /*****************************************************************************************/
   /*********************************** END OUR CUSTOM CODE *********************************/
   /*****************************************************************************************/

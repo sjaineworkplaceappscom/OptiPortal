@@ -17,7 +17,7 @@ export class RightComponent implements OnInit {
   // Event emitter variable.
   @Output() messageEvent = new EventEmitter<boolean>();
   constructor(private commonService: Commonservice) { }
-
+  
   
   opalColor = opticonstants.OPALTHEMECOLOR;
   urbanColor = opticonstants.URBANTHEMECOLOR;
@@ -27,6 +27,14 @@ export class RightComponent implements OnInit {
   coffeeColor = opticonstants.COFFEE;
   newtrendColor = opticonstants.NEWTREND2018;
   castfyColor = opticonstants.CASTFY;
+  sunriseColor = opticonstants.SUNRISE;
+  maldiveColor = opticonstants.MALDIVE;
+  boraboraColor = opticonstants.BORABORA;
+  bluelagooColor = opticonstants.BLUELAGOO;
+
+  
+
+  
 
 
   ngOnInit() {

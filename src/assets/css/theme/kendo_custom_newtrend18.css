@@ -1,103 +1,91 @@
 /*****************************************************************************************/
 /*********************************** OUR CUSTOM CODE *************************************/
 /*****************************************************************************************/
-body{
-    color: #555;
+:root {
+  --kendo-primary-color: #329ac2;
+  --kendo-light-primary-hover-color: rgba(50, 154, 194, 0.2);
+  --kendo-secondry-color: #9cb3b9; 
+  --kendo-white-color: #fff;
+  --kendo-off-white-color: #f0f0f0;
+}
+
+/*****************************************************/
+/* static color start */
+/*****************************************************/
+  body{
+  color: #555;
   }
+  
   p, span, strong, div{
-    color: #232323;
+  color: #232323;
   }
-  a{
-    color: #329ac2;
-  }
-  a:hover{
-    color: #9cb3b9;
-  }
-  h1, h2, h3, h4, h5, h6{
-    color: #329ac2;
-  }
-  
-  
-  /* css for layout */
-  #opti_LeftPanelID{
-    background-color: #fff;
-  }
-  #opti_ThemeSettingID{
-    background-color: #fff;
-  }
-  
-  #opti_RightPanelID{
-    background-color: #f0f0f0;
-    
-  }
-  
+
   section#opti_TopBarID {
-    /* background-color: #1e88e5; */
     background: linear-gradient(177deg, #329AC2 2%, #5492B2 10%, #8CA3B1 44%, #AFC5C4 91%, #B5CCCB 130%);
   }
-  
-  /* mobile sidebar panel color */
+
   .opti_menusidebar-mobile-open app-left {
-    background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.5);
   }
+/*****************************************************/
+/* static color end */
+/*****************************************************/
   
-  .opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
-    background: transparent;
-  }
-  
-  .opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
-    background-color: #f0f0f0;
-  }
-  button{
-    background-color: #329ac2;
-    color: white;
-    border-color: #329ac2;
-  }
-  
-  app-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
-  .opti_user-profile-drop-down li.opti_mouse-pointer:hover,
-  li.opti_list:hover,
-  ul.opti_liststyle-one-ul .opti_liststyle-one-li:hover
-  {
-    background-color: #e5f5fa;
-  }
-  
-  .ps__thumb-y,
-  .ps__rail-y:hover > .ps__thumb-y, 
-  .ps__rail-y:focus > .ps__thumb-y
-  {
-    background-color: #4f8ba3;
-  }
+app-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
+.opti_user-profile-drop-down li.opti_mouse-pointer:hover,
+li.opti_list:hover,
+ul.opti_liststyle-one-ul .opti_liststyle-one-li:hover
+{
+    background-color: var(--kendo-light-primary-hover-color);
+}
 
-  .opti_loader .opti_spinner{
-    border-top-color:#329ac2 !important;
-  }
+#opti_LeftPanelID,
+#opti_ThemeSettingID{
+    background-color: var(--kendo-white-color);
+}
 
-  /* css for grid */
-  .k-grid-header thead tr th a.k-link,
-  .k-indicator-container{
-    color: #329ac2;
-  }
+#opti_RightPanelID,
+.opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
+    background-color: var(--kendo-off-white-color);
+}
 
-  body .k-grid tbody tr:hover {
-    color: white;
-    background-color: #329ac2;
-  }
+.opti_tab-outer ul.tabs > li:hover,
+.opti_tab-outer ul.tabs > li.active,
+body .k-grid tbody tr:hover,
+.ps__thumb-y,
+.ps__rail-y:hover > .ps__thumb-y, 
+.ps__rail-y:focus > .ps__thumb-y,
+button {
+    background-color: var(--kendo-primary-color);
+}
 
-  body kendo-grid{
-    box-shadow: 0px 1px 15px #329ac2;
-  }
+.opti_loader .opti_spinner{
+    border-top-color:var(--kendo-primary-color) !important;
+}
 
-  /* left section */
-  .opti_left-navigation{
-  box-shadow: 0px 1px 15px #329ac2;
-  }
+button{
+    border-color: var(--kendo-primary-color);
+}
 
-  /* tab header */
-  .opti_tab-outer ul.tabs > li:hover,
-  .opti_tab-outer ul.tabs > li.active {
-    background-color: #329ac2;
-  }
+.k-grid-header thead tr th a.k-link,
+.k-indicator-container,
+a, h1, h2, h3, h4, h5, h6{
+    color: var(--kendo-primary-color);
+}
+
+a:hover{
+    color: var(--kendo-secondry-color);
+}
+
+body .k-grid tbody tr:hover,
+button {
+    color: var(--kendo-white-color);
+}
+
+body kendo-grid,
+.opti_left-navigation{
+    box-shadow: 0px 1px 15px var(--kendo-primary-color);
+}
 
   /*****************************************************************************************/
   /*********************************** END OUR CUSTOM CODE *********************************/

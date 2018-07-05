@@ -101,6 +101,22 @@ export  class UIHelper{
                 $('footer').find('link.opti__theme-css-file').remove();
                 $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_castify.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
+            $('#sunrise').click(function (){
+                $('footer').find('link.opti__theme-css-file').remove();
+                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_sunrise.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+            });
+            $('#maldive').click(function (){
+                $('footer').find('link.opti__theme-css-file').remove();
+                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_maldive.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+            });
+            $('#borabora').click(function (){
+                $('footer').find('link.opti__theme-css-file').remove();
+                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_borabora.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+            });
+            $('#bluelagoo').click(function (){
+                $('footer').find('link.opti__theme-css-file').remove();
+                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_bluelagoo.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+            });
             
         });
     }
