@@ -66,8 +66,8 @@ const routes: Routes = [
   {path:'setpassword',component:SetPasswordComponent},
   {path:'tenantselection',component:TenantselectionComponent,canActivate:[AuthGuard]},
   {path:'landing',component:LandingComponent},
-  { path: '', redirectTo: 'login',pathMatch: 'full' },
-  {path: '**', component: SigninComponent}
+  { path: '', redirectTo: 'landing',pathMatch: 'full' },
+  {path: '**', component: LandingComponent}
  ];
 @NgModule({
   declarations: [
