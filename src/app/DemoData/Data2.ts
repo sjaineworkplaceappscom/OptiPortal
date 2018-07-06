@@ -1,3 +1,4 @@
+//this list for purchase Inquiry 
 export const data2 = [  
     {  
        "Inquiry":1,
@@ -79,7 +80,7 @@ export const data2 = [
     {  
        "Inquiry":8,
        "Customer":"Cust008",
-       "Name":"	BenQ",
+       "Name":"BenQ",
        "Status":"Approved",
        "CreatedDate":"28/06/2018",
        "BuyerCreatedBy":"Anand Kumar",

@@ -13,6 +13,9 @@
         [groupable]="false"
         [columnMenu]="{ columnChooser: false }"
         [height]=gridHeight
+        [selectable] = "true"
+        (selectionChange)="gridDataSelectionChange(gridItem, $event, true)"
+        #gridItem
         >
 
             <!-- (click)="openRightSection(true)" -->
@@ -82,43 +85,44 @@
                                 <form class="k-form">
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Inquiry#</span>
-                                        <input type="text" class="k-textbox" value="" placeholder="Inquiry" disabled />
+                                        <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInquiryForUpdate.Inquiry" value="" placeholder="Inquiry" disabled />
                                     </label>
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Customer</span>
-                                        <input type="text" class="k-textbox" value="" placeholder="Customer" />
+                                        <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.Customer" placeholder="Customer" />
                                     </label>
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Name</span>
-                                        <input type="text" class="k-textbox" value="" placeholder="Name" />
+                                        <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.Name" placeholder="Name" />
                                     </label>
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Status</span>
-                                        <kendo-dropdownlist name="role" [data]="status" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedStatusItem">
+                                        <kendo-dropdownlist name="status" [data]="status" [(ngModel)]="selectedStatusItem"   [textField]="'text'" [valueField]="'value'">
                                         </kendo-dropdownlist>
                                     </label>
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Created Date</span>
-                                        <kendo-datepicker [(value)]="valueCreatedDate"> </kendo-datepicker>
+                                        <kendo-datepicker  name="createdDate" [(value)] = "valueCreatedDate" > </kendo-datepicker>
                                     </label>
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Buyer/Created By</span>
-                                        <kendo-datepicker [(value)]="valueCreatedBy"> </kendo-datepicker>
+                                        <input type="text" name="createdBy" class="k-textbox" value=""  [(ngModel)]="purchaseInquiryForUpdate.BuyerCreatedBy" 
+                                         placeholder="Buyer/Created By" />
                                     </label>
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Valid Until</span>
-                                        <kendo-datepicker [(value)]="valueValidUntill"> </kendo-datepicker>
+                                        <kendo-datepicker name="validUntil" [(value)]="valueValidUntill" > </kendo-datepicker>
                                     </label>
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Reference</span>
-                                        <input type="text" class="k-textbox" value="" placeholder="Reference" />
+                                        <input type="text" name="reference" class="k-textbox" value="" placeholder="Reference"  [(ngModel)]="purchaseInquiryForUpdate.Reference" />
                                     </label>
 
                                     <div class="text-right">
@@ -147,32 +151,32 @@
                                     <form class="k-form opti_padding-zero">
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Item Id</span>
-                                            <input class="k-textbox" placeholder="Item Id" />
+                                            <input class="k-textbox" name="itemId" [(ngModel)]="purchaseItemsModelForUpdate.PurchaseInquiryItemlId" placeholder="Item Id" />
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Description</span>
-                                            <input type="text" class="k-textbox" value="" placeholder="Description" />
+                                            <input type="text" name="description" class="k-textbox" value="" [(ngModel)]="purchaseItemsModelForUpdate.ItemDescription" placeholder="Description" />
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Customer Item Id / description</span>
-                                            <input type="text" class="k-textbox" value="" placeholder="Customer Item Id / description" />
+                                            <input type="text" class="k-textbox" name="custId_description" [(ngModel)]="purchaseItemsModelForUpdate.CustomerItemIdOrDescription" value="" placeholder="Customer Item Id / description" />
                                         </label>
 
                                         <label class="k-form-field">
-                                            <span class="opti_form-label">Item Quantity</span>
-                                            <input type="text" class="k-textbox" value="" placeholder="Item Quantity" />
+                                            <span class="opti_form-lab  el">Item Quantity</span>
+                                            <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModelForUpdate.Quantitiy" value="" placeholder="Item Quantity" />
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Item Unit</span>
-                                            <input type="number" class="k-textbox" value="" placeholder="Item Unit" />
+                                            <input type="text" class="k-textbox" name="Unit" [(ngModel)]="purchaseItemsModelForUpdate.Unit" value="" placeholder="Item Unit" />
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Requester</span>
-                                            <input type="text" class="k-textbox" value="" placeholder="Requester" />
+                                            <input type="text" class="k-textbox"  name="requester" [(ngModel)]="purchaseItemsModelForUpdate.Requester" value="" placeholder="Requester" />
                                         </label>
 
                                         <label class="k-form-field">
@@ -187,7 +191,7 @@
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Ship To location</span>
-                                            <textarea class="k-textarea">Location</textarea>
+                                            <textarea class="k-textarea"  name="unit" [(ngModel)]="purchaseItemsModelForUpdate.ShipToLocation">Location</textarea>
                                         </label>
                     
                                         
@@ -317,6 +321,9 @@
                             [groupable]="false"
                             [columnMenu]="{ columnChooser: false }"
                             [height]=gridHeight-41
+                            [selectable] = "true"
+                            (selectionChange)="gridItemsDataSelectionChange(gridItemsValues, $event, true)"
+                            #gridItemsValues
                             >
 
                                 <!-- (click)="openRightSection(true)" -->

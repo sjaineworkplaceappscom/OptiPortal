@@ -19,7 +19,9 @@ import {
 } from '@progress/kendo-angular-grid';
 import { UIHelper } from 'src/app/helpers/ui.helpers';
 import { opticonstants } from '../../constants';
-
+import { stringify } from '@angular/core/src/util';
+import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
+import {TempPurchaseInquiryItemModel} from '../../tempmodels/temppurchase-inquiry-item';
 
 //declare var $: any;
 
@@ -145,6 +147,8 @@ export class MainContentComponent implements OnInit {
     public gridItemsData: any[] = data;
 
     showItemSection() {
+        this.purchaseItemsModelForUpdate = new TempPurchaseInquiryItemModel();
+        console.log("item plus click");
         this.gridSectionItem.nativeElement.style.display = 'none';
         this.AddItemFormSection.nativeElement.style.display = 'block';
     }
@@ -162,6 +166,8 @@ export class MainContentComponent implements OnInit {
 
     // show and hide right content section
     openRightSection(status) {
+        this.purchaseInquiryForUpdate = new TempPurchaseInquiryModel();
+        console.log('called open right section');
         this.isFixedRightSection = status;
     }
 
@@ -336,18 +342,56 @@ export class MainContentComponent implements OnInit {
         
     }
 
+    purchaseInquiryForUpdate:TempPurchaseInquiryModel = new  TempPurchaseInquiryModel();
+   /**
+    * Method will open the edit item window for selected grid item.
+    * @param gridItem 
+    * @param selection 
+    * @param status 
+    */
+   public gridDataSelectionChange(gridItem, selection,status) {
+        //update ui properties.
+        this.isFixedRightSection = status;    
+        //fatch and parse row value.
+        let selectedItem = gridItem.data.data[selection.index];
+        const selectedData = selection.selectedRows[0].dataItem;
+        //  console.log("data: selectedData::"+  JSON.stringify(selectedData));
+        //  console.log("data: selectedItem::"+    JSON.stringify(selectedItem));
+        this.purchaseInquiryForUpdate = JSON.parse(JSON.stringify(selectedData));
+        //console.log("data: From model::"+    JSON.stringify(this.purchaseInquiryForUpdate));
+    }
+
+    purchaseItemsModelForUpdate:TempPurchaseInquiryItemModel =new TempPurchaseInquiryItemModel();
+    /**
+     * Method will open the edit item window for selected grid item.
+     * @param gridItemsData 
+     * @param selection 
+     * @param status 
+     */
+    public gridItemsDataSelectionChange(gridItemsData, selection,status) {
+        
+        //update ui properties.
+        this.gridSectionItem.nativeElement.style.display = 'none';
+        this.AddItemFormSection.nativeElement.style.display = 'block';
+
+        //fatch and parse row value.
+        let selectedItem = gridItemsData.data.data[selection.index];
+        const selectedData = selection.selectedRows[0].dataItem;
+        this.isFixedRightSection = status;
+        // console.log("data: selectedData::"+  JSON.stringify(selectedData));
+        // console.log("data: selectedItem::"+    JSON.stringify(selectedItem));
+        this.purchaseItemsModelForUpdate = JSON.parse(JSON.stringify(selectedData));
+       
+        
+    }
     
-
-
-
-
-    editNotes(e, note) {
+   editNotes(e, note) {
         console.log(e);
         console.log(note);
         this.notesgrid.nativeElement.style.display = 'none';
         this.editnoteform.nativeElement.style.display = 'block';
         this.selectedNote=note;                
-    }
+   }
 
     
 

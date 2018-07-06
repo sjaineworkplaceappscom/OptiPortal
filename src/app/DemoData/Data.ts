@@ -1,3 +1,4 @@
+//this list for purchase Inquiry Item.
 export const data = [  
     {  
        "PurchaseInquiryItemlId":1,
