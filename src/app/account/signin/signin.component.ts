@@ -21,6 +21,7 @@ export class SigninComponent implements OnInit {
   userName: string;
   password: string;
   randomstring = '';
+  userNotExist:boolean=false;
 
   constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: Commonservice) { }
 
@@ -48,12 +49,15 @@ export class SigninComponent implements OnInit {
     let userId: string;
     userName = this.userName;
     password = this.password;
+    this.userNotExist=false;
+    this.isError=false;
 
     await this.accountService.getUserDetails(userName).subscribe(
       userData => {
         // jsonfy response object.
         let resUserData = JSON.parse(userData);
         if (resUserData != undefined && resUserData.length > 0) {
+          this.userNotExist=false;
           // // Multiteenet 
           // if (resUserData.length > 1) {
           //   ApplicationState.SharedData = resUserData;
@@ -83,6 +87,9 @@ export class SigninComponent implements OnInit {
           localStorage.setItem("SystemAdmin", systemAdmin);
           //}
         }
+        else{
+          this.userNotExist=true;
+        }
       }
     );
 
@@ -97,7 +104,8 @@ export class SigninComponent implements OnInit {
     this.showLoader = true;
     // Generate access token
     this.accountService.generateToken(userId, password, errobj).then(
-      data => {
+      data => {        
+        
         //show loader false.
         this1.showLoader = false;
         localStorage.setItem('AccessToken', data.access_token);
@@ -106,6 +114,7 @@ export class SigninComponent implements OnInit {
       }
     ).catch(
       (err: HttpErrorResponse) => {
+        
         this.isError = true;
         this1.showLoader = false;
       }

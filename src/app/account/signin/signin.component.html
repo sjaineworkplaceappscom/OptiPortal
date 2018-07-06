@@ -32,6 +32,7 @@
                     <span class="opti_form-label">Password *
                         <span  *ngIf="pwd.errors && (pwd.dirty || pwd.touched)"   class="float-right opti_error-msg">Password is required.</span>
                         <span  *ngIf="this.isError==true &&  (pwd.dirty || pwd.touched) && (emailId.dirty || emailId.touched) && !pwd.errors?.required" class="float-right opti_error-msg">Invalid credentials.</span>
+                        <span  *ngIf="this.userNotExist==true &&  (pwd.dirty || pwd.touched) && (emailId.dirty || emailId.touched) && !pwd.errors?.required" class="float-right opti_error-msg">User does not exists.</span>
                     </span>
                     <input name = "password" required [(ngModel)]="password" #pwd = ngModel type="password" class="k-textbox" value="" placeholder="Your password" />
                     <span class="opti_mouse-pointer float-right opti_form-label" (click)="navigateToResetPassword()">Forgot your password?</span>
