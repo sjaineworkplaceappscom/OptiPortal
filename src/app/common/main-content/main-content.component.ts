@@ -44,6 +44,7 @@ export class MainContentComponent implements OnInit {
     noteRequetData: any[];
     selectedNote:any={};
     selectedItemNote:any={};
+    systemAdmin:string;
 
 
     @ViewChild('AddItemFormSection') AddItemFormSection;
@@ -98,7 +99,7 @@ export class MainContentComponent implements OnInit {
                 this.selectedThemeColor = data;
             }
         );
-
+        this.systemAdmin=localStorage.getItem('SystemAdmin');  
         this.noteRequetData = JSON.parse(localStorage.getItem("setRequestDynamicNotes"));
         this.noteItemsData = JSON.parse(localStorage.getItem("setItemsDynamicNotes"));
 

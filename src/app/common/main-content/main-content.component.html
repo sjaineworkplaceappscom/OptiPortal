@@ -1,7 +1,12 @@
 <section id="opti_MainContentID" class="opti_position-relative" style="overflow-x: hidden !important;">
 
     <!-- [perfectScrollbar]="config" -->
-
+    <!-- For Admin  -->
+    <div style="padding: 10px;">
+        <app-approve-users *ngIf="systemAdmin=='true'"></app-approve-users>
+    </div>
+	
+	   <div *ngIf="systemAdmin!='true'">
     <div style="padding: 10px;">
         <kendo-grid
         [kendoGridBinding]="gridData"
@@ -59,6 +64,7 @@
             <!-- xlsx template end -->
 
         </kendo-grid>
+    </div>
     </div>
 </section>
 
