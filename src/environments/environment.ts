@@ -7,7 +7,9 @@ export const environment = {
   // For debugging direct to visual studio
   // baseServerAPIEndpoint:"http://localhost:55098/"
   // For Deployed uri
-  baseServerAPIEndpoint:"http://localhost:8080/"
+  // baseServerAPIEndpoint:"http://localhost:8080/"
+  baseServerAPIEndpoint: "http://139.144.10.218:80/"
+
  
 };
 

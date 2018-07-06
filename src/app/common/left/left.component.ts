@@ -38,6 +38,7 @@ export class LeftComponent implements OnInit {
   }
 
   navigate(){
+    //this.router.navigateByUrl('/approve');
     this.commonService.setNavigatedData(true);
   }
 }

@@ -15,7 +15,7 @@ export class ApproveUsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getInactiveUsersData();
+    this.getInactiveUsersData();    
   }
 
   approveUsers(){      
