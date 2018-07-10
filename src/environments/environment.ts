@@ -9,7 +9,7 @@ export const environment = {
   // For Deployed uri
   // baseServerAPIEndpoint:"http://localhost:8080/"
   //baseServerAPIEndpoint: "http://139.144.10.218/service/"
-  baseServerAPIEndpoint: "http://172.16.6.139:8000/"
+  baseServerAPIEndpoint: "http://139.144.10.218:8000/"
 
  
 };
