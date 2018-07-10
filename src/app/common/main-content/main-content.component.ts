@@ -134,11 +134,13 @@ export class MainContentComponent implements OnInit {
     public gridItemsData: any[] = data;
 
     addItemt() {
+        console.log("add item");
         this.gridSectionItem.nativeElement.style.display = 'block';
         this.AddItemFormSection.nativeElement.style.display = 'none';
     }
 
     closeItemForm() {
+        console.log("add item form");
         this.gridSectionItem.nativeElement.style.display = 'block';
         this.AddItemFormSection.nativeElement.style.display = 'none';
     }
@@ -309,7 +311,6 @@ export class MainContentComponent implements OnInit {
     openRightSection(status) {
         //this.purchaseInquiryForUpdate = new TempPurchaseInquiryModel();
         this.resetValuesForAddInquiry();
-        console.log('called open right section');
         this.isFixedRightSection = status;
     }
 
@@ -337,7 +338,7 @@ export class MainContentComponent implements OnInit {
     }
     
     /**
-     * this method will reset the model and date object for add form.
+     * This method will reset the model and date object for add form.
      */
     resetValuesForAddInquiry(){
         this.purchaseInquiryForUpdate = new TempPurchaseInquiryModel();
@@ -354,6 +355,8 @@ export class MainContentComponent implements OnInit {
         //Setting ui property for hiding and showing the right side form.
         this.gridSectionItem.nativeElement.style.display = 'none';
         this.AddItemFormSection.nativeElement.style.display = 'block';
+        console.log("show item section");
+        this.resetAddItem();
     }
 
     purchaseItemsModelForUpdate:TempPurchaseInquiryItemModel =new TempPurchaseInquiryItemModel();
