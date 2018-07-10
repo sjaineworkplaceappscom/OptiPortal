@@ -59,7 +59,8 @@ const routes: Routes = [
   
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: SigninComponent },  
-  { path: 'home', component: HomeComponent,canActivate:[AuthGuard]},
+  // { path: 'home', component: HomeComponent,canActivate:[AuthGuard]},
+  { path: 'home', component: HomeComponent},
   {path:'approve',component:ApproveUsersComponent,canActivate:[AuthGuard]},  
   {path:'resetpassword',component:ResetPasswordComponent},
   {path:'changepassword',component:ChangePasswordComponent},
