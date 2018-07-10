@@ -1049,7 +1049,7 @@ export const data2 = [
        "Inquiry":95,
        "Customer":"Cust001",
        "Name":"Samsung",
-       "Status":"Cancled",
+       "Status":"Canceled",
        "CreatedDate":"11/15/2018",
        "BuyerCreatedBy":"Ankur Sharma",
        "ValidUntil":"10/17/2018",
