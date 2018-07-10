@@ -49,6 +49,8 @@ export class SigninComponent implements OnInit {
     let userId: string;
     userName = this.userName;
     password = this.password;
+    
+    //reset validation message variables.
     this.userNotExist=false;
     this.isError=false;
 

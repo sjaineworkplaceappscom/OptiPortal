@@ -19,7 +19,7 @@
         [columnMenu]="{ columnChooser: false }"
         [height]=gridHeight
         [selectable] = "true"
-        (selectionChange)="gridDataSelectionChange(gridItem, $event, true)"
+        (selectionChange)="onInquiryGridDataSelection(gridItem, $event, true)"
         #gridItem
         >
 
@@ -112,7 +112,7 @@
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Created Date</span>
-                                        <kendo-datepicker  name="createdDate" [(value)] = "valueCreatedDate" > </kendo-datepicker>
+                                        <kendo-datepicker  name="createdDate" [format]="'dd/MM/yyyy '" [(ngModel)] = "createdDateForUpdate" > </kendo-datepicker>
                                     </label>
 
                                     <label class="k-form-field">
@@ -123,7 +123,7 @@
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Valid Until</span>
-                                        <kendo-datepicker name="validUntil" [(value)]="valueValidUntill" > </kendo-datepicker>
+                                        <kendo-datepicker name="validUntil" [format]="'dd/MM/yyyy '"  [(ngModel)] = "validUntilForUpdate"  > </kendo-datepicker>
                                     </label>
 
                                     <label class="k-form-field">
@@ -187,12 +187,12 @@
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Request Date</span>
-                                            <kendo-datepicker [(value)]="valueRequestDate"> </kendo-datepicker>
+                                            <kendo-datepicker [(ngModel)]="purchaseItemsModelForUpdate.RequestDate"> </kendo-datepicker>
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Required Date</span>
-                                            <kendo-datepicker [(value)]="valueRequiredDate"> </kendo-datepicker>
+                                            <kendo-datepicker [(ngModel)]="purchaseItemsModelForUpdate.RequiredDate"> </kendo-datepicker>
                                         </label>
 
                                         <label class="k-form-field">
@@ -328,7 +328,7 @@
                             [columnMenu]="{ columnChooser: false }"
                             [height]=gridHeight-41
                             [selectable] = "true"
-                            (selectionChange)="gridItemsDataSelectionChange(gridItemsValues, $event, true)"
+                            (selectionChange)="onItemGridDataSelection(gridItemsValues, $event, true)"
                             #gridItemsValues
                             >
 
