@@ -7,44 +7,6 @@
     </div>
 	
 	   <div *ngIf="systemAdmin!='true'">
-<<<<<<< HEAD
-    <div style="padding: 10px;">
-        <kendo-grid
-        [kendoGridBinding]="gridData"
-        [resizable]="false"
-        [pageSize]="50"
-        [pageable]="true"
-        [sortable]="true"
-        [filterable]=isColumnFilter
-        [groupable]="false"
-        [columnMenu]="{ columnChooser: false }"
-        [height]=gridHeight
-        [selectable] = "true"
-        (selectionChange)="onInquiryGridDataSelection(gridItem, $event, true)"
-        #gridItem
-        >
-
-            <!-- (click)="openRightSection(true)" -->
-
-            <!-- grid template start -->
-            <ng-template kendoGridToolbarTemplate>
-                <!-- show hide column start show hide -->
-                <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
-
-                <!-- checkbox -->
-                <form class="k-form opti_show-hide-grid-column-filter float-left">
-                    <div class="k-form-field">
-                        <input type="checkbox" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
-                        <label class="k-checkbox-label" for="opti_ColumnFilterID">Enable Filter</label>
-                    </div>
-                </form>
-                    
-                <!-- export -->
-                <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
-                    <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}" ></svg-icon>
-                </button>
-
-=======
         <div style="padding: 10px;">
             <kendo-grid
             [kendoGridBinding]="gridData"
@@ -57,7 +19,7 @@
             [columnMenu]="{ columnChooser: false }"
             [height]=gridHeight
             [selectable] = "true"
-            (selectionChange)="gridDataSelectionChange(gridItem, $event, true)"
+            (selectionChange)="onInquiryGridDataSelection(gridItem, $event, true)"
             #gridItem
             >
 
@@ -80,7 +42,6 @@
                     <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
                         <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}" ></svg-icon>
                     </button>
->>>>>>> 7d4757a6977bbd7838c310982fd1fa11bc067419
 
 
                     <div class="float-right">
@@ -151,9 +112,10 @@
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Created Date</span>
-                                        <kendo-datepicker  name="createdDate" [format]="'dd/MM/yyyy '" [(ngModel)] = "createdDateForUpdate" > </kendo-datepicker>
+                                        <kendo-datepicker  name="createdDate" [format]="'dd/MM/yyyy'" [(ngModel)] = "createdDateForUpdate" > </kendo-datepicker>
                                     </label>
 
+                                    
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Buyer/Created By</span>
                                         <input type="text" name="createdBy" class="k-textbox" value=""  [(ngModel)]="purchaseInquiryForUpdate.BuyerCreatedBy" 
@@ -162,7 +124,7 @@
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Valid Until</span>
-                                        <kendo-datepicker name="validUntil" [format]="'dd/MM/yyyy '"  [(ngModel)] = "validUntilForUpdate"  > </kendo-datepicker>
+                                        <kendo-datepicker name="validUntil" [format]="'dd/MM/yyyy'"  [(ngModel)] = "validUntilForUpdate"  > </kendo-datepicker>
                                     </label>
 
                                     <label class="k-form-field">
@@ -226,12 +188,12 @@
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Request Date</span>
-                                            <kendo-datepicker [(ngModel)]="purchaseItemsModelForUpdate.RequestDate"> </kendo-datepicker>
+                                            <kendo-datepicker name = "requestDate" [(ngModel)]="requestDate"> </kendo-datepicker>
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Required Date</span>
-                                            <kendo-datepicker [(ngModel)]="purchaseItemsModelForUpdate.RequiredDate"> </kendo-datepicker>
+                                            <kendo-datepicker name = "requiredDate" [(ngModel)]="requiredDate"> </kendo-datepicker>
                                         </label>
 
                                         <label class="k-form-field">
