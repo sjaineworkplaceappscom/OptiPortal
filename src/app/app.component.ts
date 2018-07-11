@@ -19,6 +19,7 @@ export class AppComponent {
   constructor(){ }
   
   ngOnInit(){    
+    UIHelper.deviceClass();
   }
   
 
