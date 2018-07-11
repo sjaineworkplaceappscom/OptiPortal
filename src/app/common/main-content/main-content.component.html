@@ -3,25 +3,14 @@
     <!-- [perfectScrollbar]="config" -->
     <!-- For Admin  -->
     <div style="padding: 10px;" *ngIf="systemAdmin=='true'">
-        <app-approve-users ></app-approve-users>
+        <app-approve-users></app-approve-users>
     </div>
-	
-	   <div *ngIf="systemAdmin!='true'">
+
+    <div *ngIf="systemAdmin!='true'">
         <div style="padding: 10px;">
-            <kendo-grid
-            [kendoGridBinding]="gridData"
-            [resizable]="false"
-            [pageSize]="50"
-            [pageable]="true"
-            [sortable]="true"
-            [filterable]=isColumnFilter
-            [groupable]=isColumnGroup
-            [columnMenu]="{ columnChooser: false }"
-            [height]=gridHeight
-            [selectable] = "true"
-            (selectionChange)="onInquiryGridDataSelection(gridItem, $event, true)"
-            #gridItem
-            >
+            <kendo-grid [kendoGridBinding]="gridData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]=isColumnFilter
+                [groupable]=isColumnGroup [columnMenu]="{ columnChooser: false }" [height]=gridHeight [selectable]="true" (selectionChange)="onInquiryGridDataSelection(gridItem, $event, true)"
+                #gridItem>
 
                 <!-- (click)="openRightSection(true)" -->
 
@@ -42,16 +31,17 @@
                             <label class="k-checkbox-label" for="opti_ColumnGroupID">Enable Grouping</label>
                         </div>
                     </form>
-                        
+
                     <!-- export -->
                     <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
-                        <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}" ></svg-icon>
+                        <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
                     </button>
 
 
                     <div class="float-right">
-                        <svg-icon src="assets/images/common/add.svg" (click)="openRightSection(true)" [svgStyle]="{ 'width.px':16, 'height.px':16}" class="opti_vertical-align" style="height: 30px;margin-left: 20px;cursor: pointer;display: inline-flex;"></svg-icon>
-                    </div>    
+                        <svg-icon src="assets/images/common/add.svg" (click)="openRightSection(true)" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                            class="opti_vertical-align" style="height: 30px;margin-left: 20px;cursor: pointer;display: inline-flex;"></svg-icon>
+                    </div>
                 </ng-template>
 
                 <!-- grid template end -->
@@ -63,9 +53,9 @@
                 <kendo-grid-column field="BuyerCreatedBy" title="Created By" [width]="140"></kendo-grid-column>
                 <kendo-grid-column field="ValidUntil" title="Valid Until" [width]="140"></kendo-grid-column>
                 <kendo-grid-column field="Reference" [width]="140"></kendo-grid-column>
-            
+
                 <!-- xlsx template start -->
-                    <kendo-grid-excel fileName="Requests.xlsx"></kendo-grid-excel>
+                <kendo-grid-excel fileName="Requests.xlsx"></kendo-grid-excel>
                 <!-- xlsx template end -->
 
             </kendo-grid>
@@ -75,372 +65,191 @@
 
 <!-- start right fix section start here -->
 
-    <div class="opti_right-fix-section"  [ngStyle]="{'display':isFixedRightSection == true ? 'block' : 'none' }">
-        <svg-icon src="assets/images/common/back-opposite.svg" (click)="closeRightSection(false)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }" class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon>
-        <!-- tab start -->
-        <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="config">
-            <ul class="opti_tab tabs clearfix" id="opti_TabID">
-                <li class="opti_tablinks active" (click)="openTab($event, 'home')"><a href="javascript:void('0');" >Home</a></li>
-                <li class="opti_tablinks" (click)="openTab($event, 'items')"><a href="javascript:void('0');" >Items</a></li>
-                <li class="opti_tablinks" (click)="openTab($event, 'attachement')"><a href="javascript:void('0');" >Attachements</a></li>
-                <li class="opti_tablinks" (click)="openTab($event, 'notes')"><a href="javascript:void('0');" >Notes</a></li>
-            </ul>
+<div class="opti_right-fix-section" [ngStyle]="{'display':isFixedRightSection == true ? 'block' : 'none' }">
+    <svg-icon src="assets/images/common/back-opposite.svg" (click)="closeRightSection(false)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"
+        class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon>
+    <!-- tab start -->
+    <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="config">
+        <ul class="opti_tab tabs clearfix" id="opti_TabID">
+            <li class="opti_tablinks active" (click)="openTab($event, 'home')">
+                <a href="javascript:void('0');">Home</a>
+            </li>
+            <li class="opti_tablinks" (click)="openTab($event, 'items')">
+                <a href="javascript:void('0');">Items</a>
+            </li>
+            <li class="opti_tablinks" (click)="openTab($event, 'attachement')">
+                <a href="javascript:void('0');">Attachements</a>
+            </li>
+            <li class="opti_tablinks" (click)="openTab($event, 'notes')">
+                <a href="javascript:void('0');">Notes</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="home" class="opti_tabcontent opti_position-relative" style="display: block;" [perfectScrollbar]="config">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-block">
+                            <form class="k-form">
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Inquiry#</span>
+                                    <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInquiryForUpdate.Inquiry" value="" placeholder="Inquiry"
+                                        disabled />
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Customer</span>
+                                    <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.Customer" placeholder="Customer"
+                                    />
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Name</span>
+                                    <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.Name" placeholder="Name"
+                                    />
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Status</span>
+                                    <kendo-dropdownlist name="status" [data]="status" [(ngModel)]="selectedStatusItem" [textField]="'text'" [valueField]="'value'">
+                                    </kendo-dropdownlist>
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Created Date</span>
+                                    <kendo-datepicker name="createdDate" [format]="'dd/MM/yyyy'" [(ngModel)]="createdDateForUpdate"> </kendo-datepicker>
+                                </label>
+
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Buyer/Created By</span>
+                                    <input type="text" name="createdBy" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.BuyerCreatedBy" placeholder="Buyer/Created By"
+                                    />
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Valid Until</span>
+                                    <kendo-datepicker name="validUntil" [format]="'dd/MM/yyyy'" [(ngModel)]="validUntilForUpdate"> </kendo-datepicker>
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Reference</span>
+                                    <input type="text" name="reference" class="k-textbox" value="" placeholder="Reference" [(ngModel)]="purchaseInquiryForUpdate.Reference"
+                                    />
+                                </label>
+
+                                <div class="text-right">
+                                    <button type="button" class="k-button k-primary">Submit</button>
+                                    <button type="button" class="k-button">Save as draft</button>
+                                    <button type="button" class="k-button">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div id="home" class="opti_tabcontent opti_position-relative" style="display: block;" [perfectScrollbar]="config">
+    </div>
+
+    <div id="items" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="config">
+
+        <!-- add items form section -->
+        <div #AddItemFormSection id="opti_AddItemFormSectionID" style="display: none;">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                        <div class="card opti_border-none" style="margin-bottom: 25px;">
                             <div class="card-block">
-                                <form class="k-form">
+                                <form class="k-form opti_padding-zero">
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Inquiry#</span>
-                                        <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInquiryForUpdate.Inquiry" value="" placeholder="Inquiry" disabled />
+                                        <span class="opti_form-label">Item Id</span>
+                                        <input class="k-textbox" name="itemId" [(ngModel)]="purchaseItemsModelForUpdate.PurchaseInquiryItemlId" placeholder="Item Id"
+                                        />
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Customer</span>
-                                        <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.Customer" placeholder="Customer" />
+                                        <span class="opti_form-label">Description</span>
+                                        <input type="text" name="description" class="k-textbox" value="" [(ngModel)]="purchaseItemsModelForUpdate.ItemDescription"
+                                            placeholder="Description" />
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Name</span>
-                                        <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.Name" placeholder="Name" />
+                                        <span class="opti_form-label">Customer Item Id / description</span>
+                                        <input type="text" class="k-textbox" name="custId_description" [(ngModel)]="purchaseItemsModelForUpdate.CustomerItemIdOrDescription"
+                                            value="" placeholder="Customer Item Id / description" />
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Status</span>
-                                        <kendo-dropdownlist name="status" [data]="status" [(ngModel)]="selectedStatusItem"   [textField]="'text'" [valueField]="'value'">
-                                        </kendo-dropdownlist>
+                                        <span class="opti_form-label">Item Quantity</span>
+                                        <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModelForUpdate.Quantitiy" value="" placeholder="Item Quantity"
+                                        />
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Created Date</span>
-                                        <kendo-datepicker  name="createdDate" [format]="'dd/MM/yyyy'" [(ngModel)] = "createdDateForUpdate" > </kendo-datepicker>
-                                    </label>
-
-                                    
-                                    <label class="k-form-field">
-                                        <span class="opti_form-label">Buyer/Created By</span>
-                                        <input type="text" name="createdBy" class="k-textbox" value=""  [(ngModel)]="purchaseInquiryForUpdate.BuyerCreatedBy" 
-                                         placeholder="Buyer/Created By" />
+                                        <span class="opti_form-label">Item Unit</span>
+                                        <input type="text" class="k-textbox" name="Unit" [(ngModel)]="purchaseItemsModelForUpdate.Unit" value="" placeholder="Item Unit"
+                                        />
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Valid Until</span>
-                                        <kendo-datepicker name="validUntil" [format]="'dd/MM/yyyy'"  [(ngModel)] = "validUntilForUpdate"  > </kendo-datepicker>
+                                        <span class="opti_form-label">Requester</span>
+                                        <input type="text" class="k-textbox" name="requester" [(ngModel)]="purchaseItemsModelForUpdate.Requester" value="" placeholder="Requester"
+                                        />
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Reference</span>
-                                        <input type="text" name="reference" class="k-textbox" value="" placeholder="Reference"  [(ngModel)]="purchaseInquiryForUpdate.Reference" />
+                                        <span class="opti_form-label">Request Date</span>
+                                        <kendo-datepicker name="requestDate" [(ngModel)]="requestDate"> </kendo-datepicker>
                                     </label>
 
-                                    <div class="text-right">
-                                        <button type="button" class="k-button k-primary">Submit</button>
-                                        <button type="button" class="k-button">Save as draft</button>
-                                        <button type="button" class="k-button">Cancel</button>
-                                    </div>
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Required Date</span>
+                                        <kendo-datepicker name="requiredDate" [(ngModel)]="requiredDate"> </kendo-datepicker>
+                                    </label>
+
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Ship To location</span>
+                                        <textarea class="k-textarea" name="unit" [(ngModel)]="purchaseItemsModelForUpdate.ShipToLocation">Location</textarea>
+                                    </label>
+
+
                                 </form>
                             </div>
                         </div>
-                    </div>    
-                </div>
-            </div>
-
-        </div>
-        
-        <div id="items" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="config">
-
-            <!-- add items form section -->
-            <div #AddItemFormSection id="opti_AddItemFormSectionID" style="display: none;">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-                            <div class="card opti_border-none" style="margin-bottom: 25px;">
-                                <div class="card-block">
-                                    <form class="k-form opti_padding-zero">
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Item Id</span>
-                                            <input class="k-textbox" name="itemId" [(ngModel)]="purchaseItemsModelForUpdate.PurchaseInquiryItemlId" placeholder="Item Id" />
-                                        </label>
-
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Description</span>
-                                            <input type="text" name="description" class="k-textbox" value="" [(ngModel)]="purchaseItemsModelForUpdate.ItemDescription" placeholder="Description" />
-                                        </label>
-
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Customer Item Id / description</span>
-                                            <input type="text" class="k-textbox" name="custId_description" [(ngModel)]="purchaseItemsModelForUpdate.CustomerItemIdOrDescription" value="" placeholder="Customer Item Id / description" />
-                                        </label>
-
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Item Quantity</span>
-                                            <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModelForUpdate.Quantitiy" value="" placeholder="Item Quantity" />
-                                        </label>
-
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Item Unit</span>
-                                            <input type="text" class="k-textbox" name="Unit" [(ngModel)]="purchaseItemsModelForUpdate.Unit" value="" placeholder="Item Unit" />
-                                        </label>
-
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Requester</span>
-                                            <input type="text" class="k-textbox"  name="requester" [(ngModel)]="purchaseItemsModelForUpdate.Requester" value="" placeholder="Requester" />
-                                        </label>
-
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Request Date</span>
-                                            <kendo-datepicker name = "requestDate" [(ngModel)]="requestDate"> </kendo-datepicker>
-                                        </label>
-
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Required Date</span>
-                                            <kendo-datepicker name = "requiredDate" [(ngModel)]="requiredDate"> </kendo-datepicker>
-                                        </label>
-
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Ship To location</span>
-                                            <textarea class="k-textarea"  name="unit" [(ngModel)]="purchaseItemsModelForUpdate.ShipToLocation">Location</textarea>
-                                        </label>
-                    
-                                        
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-                            <h5>Upload Attachement</h5>
-                            <kendo-upload class="opti_items-upload"
-                                [saveUrl]="uploadAttachementItemSaveUrl"
-                                [removeUrl]="uploadAttachementItemRemoveUrl">
-                            </kendo-upload>
-                            <br/>
-                            <h5>Notes</h5>
-                            <!-- item notes start -->
-                            <div #notesitemgrid id="opti_ItemNotesGridID">
-                                <kendo-grid 
-                                [data]="noteItemsData"
-                                [resizable]="false"
-                                [pageSize]="50"
-                                [pageable]="true"
-                                [sortable]="true"
-                                [filterable]="true"
-                                [groupable]="false"
-                                [height]=268
-                                (remove)="deleteItemsNote($event)"
-                                >
-                                    <!-- grid toolbar start -->
-                                    <ng-template kendoGridToolbarTemplate>
-                                        <!-- <button (click)="addNewComment()">Add new Notes</button>   -->
-                                        <svg-icon src="assets/images/common/add.svg" (click)="addNewItemNotes()" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>        
-                                    </ng-template>
-                                    <!-- grid toolbar end -->
-
-                                    <kendo-grid-column media="(min-width: 320px)" title="">
-                                        <ng-template kendoGridCellTemplate let-dataItem>
-                                            <dl>
-                                                <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} 
-                                                    <span class="float-right opti_note-action-button-sec"> 
-                                                        <svg-icon kendoGridEditCommand  src="assets/images/common/edit.svg" (click)="editItemsNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}" class="opti_mouse-pointer"></svg-icon> 
-                                                        <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}" class="opti_mouse-pointer"></svg-icon>
-                                                        
-                                                    </span></dd>
-
-                                                <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
-                                            </dl>
-                                        </ng-template>
-                                    </kendo-grid-column>
-                                </kendo-grid>
-                            </div>
-                            <!-- item notes end -->
-
-                            <!-- Add item note form -->
-                            <div class="card" #noteitemform style="display: none;">
-                                <div class="card-block">
-                                    <form class="k-form">
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Add Note</span>
-                                            <textarea class="k-textarea" name="addnotestring" [(ngModel)]="addnotestring">Please enter your note</textarea>
-                                        </label>
-
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Note Status</span>
-                                            <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
-                                            </kendo-dropdownlist>
-                                        </label>
-                    
-                                        <div class="text-right">
-                                            <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'add')">Add Note</button>
-                                            <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'close')">Close</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- end item note form -->
-
-                            <!-- start edit item note form -->
-                            <div class="card" #edititemnoteform style="display: none;">
-                                <div class="card-block">
-                                    <form class="k-form">
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Update Note</span>
-                                            <textarea id="itemnotes" class="k-textarea">{{selectedItemNote.Notes}}</textarea>
-                                        </label>
-
-                                        <label class="k-form-field">
-                                            <span class="opti_form-label">Note Type</span>
-                                            <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
-                                            </kendo-dropdownlist>
-                                        </label>
-                    
-                                        <div class="text-right">
-                                            <button type="button" class="k-button k-primary" (click)="updateItemNote($event,updatednotevalue)">Update Item</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- end add item form -->
-
-                            <br/>
-                            <div class="text-right">
-                                <button type="button" class="k-button k-primary" (click)="addItemt()">Save</button>
-                                <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
-                                <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button>
-                                <button type="button" class="k-button" (click)="closeItemForm()">Cancel</button>
-                            </div>
-
-                        </div>
-                    </div>    
-                </div>    
-            </div>
-            <!-- end item form section -->
-
-            <!-- grid start -->
-            <div #gridSectionItem>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <kendo-grid
-                            [kendoGridBinding]="gridItemsData"
-                            [resizable]="false"
-                            [pageSize]="50"
-                            [pageable]="true"
-                            [sortable]="true"
-                            [filterable]=isColumnFilterItemsGrid
-                            [groupable]="false"
-                            [columnMenu]="{ columnChooser: false }"
-                            [height]=gridHeight-41
-                            [selectable] = "true"
-                            (selectionChange)="onItemGridDataSelection(gridItemsValues, $event, true)"
-                            #gridItemsValues
-                            >
-
-                                <!-- (click)="openRightSection(true)" -->
-
-                                <!-- grid template start -->
-                                <ng-template kendoGridToolbarTemplate>
-                                    <!-- show hide column start show hide -->
-                                    <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
-
-                                    <!-- checkbox -->
-                                    <form class="k-form opti_show-hide-grid-column-filter float-left">
-                                        <div class="k-form-field">
-                                            <input type="checkbox" id="opti_ColumnFilterItemID" [(ngModel)]="isColumnFilterItemsGrid" class="k-checkbox" name="columnfilter" />
-                                            <label class="k-checkbox-label" for="opti_ColumnFilterItemID">Enable Filter</label>
-                                        </div>
-                                    </form>
-
-                                    <!-- xlsx button start -->
-                                    <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
-                                        <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}" ></svg-icon>
-                                    </button>
-
-                                    <!-- add items -->
-                                    <div class="float-right">
-                                        <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="showItemSection()" [svgStyle]="{ 'width.px':16, 'height.px':16}" class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>    
-                                    </div>    
-                                </ng-template>
-                                <!-- grid template end -->
-
-                                <!-- grid column start -->
-                                <kendo-grid-column field="PurchaseInquiryItemlId" [width]="120" title="Id"></kendo-grid-column>
-                                <kendo-grid-column field="ItemDescription" title="Description" [width]="140"></kendo-grid-column>
-                                <kendo-grid-column field="CustomerItemIdOrDescription" title="Item Details" [width]="200"></kendo-grid-column>
-                                <kendo-grid-column field="Quantitiy" [width]="140"></kendo-grid-column>
-                                <kendo-grid-column field="Unit" [width]="140"></kendo-grid-column>
-                                <kendo-grid-column field="Requester" [width]="140"></kendo-grid-column>
-                                <kendo-grid-column field="RequestDate" title="Request Date" [width]="140"></kendo-grid-column>
-                                <kendo-grid-column field="RequiredDate" title="Required Date" [width]="140"></kendo-grid-column>
-                                <kendo-grid-column field="ShipToLocation" title="ShipTo Location" [width]="140"></kendo-grid-column>
-                                <!-- grid column end -->
-                            
-                                <!-- xlsx template start -->
-                                    <kendo-grid-excel fileName="Items.xlsx"></kendo-grid-excel>
-                                <!-- xlsx template end -->
-
-                            </kendo-grid>
-                        </div>
                     </div>
-                </div>
-            </div>
-            <!-- grid end -->
-
-        </div>
-
-        <div id="attachement" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="config">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h5>Upload Attachement</h5> 
-                        <kendo-upload
-                            [saveUrl]="uploadAttachementMasterSaveUrl"
-                            [removeUrl]="uploadAttachementMasterRemoveUrl">
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                        <h5>Upload Attachement</h5>
+                        <kendo-upload class="opti_items-upload" [saveUrl]="uploadAttachementItemSaveUrl" [removeUrl]="uploadAttachementItemRemoveUrl">
                         </kendo-upload>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="notes" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="config">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        
-                        <!-- start notes grid -->
-                        <div #notesgrid id="opti_NotesGridID">
-                            <kendo-grid 
-                            [data]="noteRequetData"
-                            [resizable]="false"
-                            [pageSize]="50"
-                            [pageable]="true"
-                            [sortable]="true"
-                            [filterable]="true"
-                            [groupable]="false"
-                            [height]=gridHeight-41
-                            (remove)="deleteNote($event)"
-                            (edit)="editNote($event)"
-                            [sort]="sort"
-                            >
-
+                        <br/>
+                        <h5>Notes</h5>
+                        <!-- item notes start -->
+                        <div #notesitemgrid id="opti_ItemNotesGridID">
+                            <kendo-grid [data]="noteItemsData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
+                                [groupable]="false" [height]=268 (remove)="deleteItemsNote($event)">
                                 <!-- grid toolbar start -->
                                 <ng-template kendoGridToolbarTemplate>
                                     <!-- <button (click)="addNewComment()">Add new Notes</button>   -->
-                                    <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="addNewComment()" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>        
+                                    <svg-icon src="assets/images/common/add.svg" (click)="addNewItemNotes()" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_vertical-align"
+                                        style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
                                 </ng-template>
                                 <!-- grid toolbar end -->
 
-                                <kendo-grid-column class="opti_notes-column" media="(min-width: 320px)">
+                                <kendo-grid-column media="(min-width: 320px)" title="">
                                     <ng-template kendoGridCellTemplate let-dataItem>
                                         <dl>
-                                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} for Item001
-                                                <span class="float-right opti_note-action-button-sec"> 
-                                                    <svg-icon kendoGridEditCommand  src="assets/images/common/edit.svg" (click)="editNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}" class="opti_mouse-pointer"></svg-icon> 
-                                                    <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}" class="opti_mouse-pointer"></svg-icon>
-                                                    
-                                                </span></dd>
+                                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }}
+                                                <span class="float-right opti_note-action-button-sec">
+                                                    <svg-icon kendoGridEditCommand src="assets/images/common/edit.svg" (click)="editItemsNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
+                                                        class="opti_mouse-pointer"></svg-icon>
+                                                    <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
+                                                        class="opti_mouse-pointer"></svg-icon>
+
+                                                </span>
+                                            </dd>
 
                                             <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
                                         </dl>
@@ -448,12 +257,12 @@
                                 </kendo-grid-column>
                             </kendo-grid>
                         </div>
-                        <!-- end notes grid -->
+                        <!-- item notes end -->
 
-                        <!-- Add Notes Form  -->
-                        <div class="card" #noteform style="display: none;">
+                        <!-- Add item note form -->
+                        <div class="card" #noteitemform style="display: none;">
                             <div class="card-block">
-                                <form #requestnoteform class="k-form">
+                                <form class="k-form">
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Add Note</span>
                                         <textarea class="k-textarea" name="addnotestring" [(ngModel)]="addnotestring">Please enter your note</textarea>
@@ -464,24 +273,23 @@
                                         <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
                                         </kendo-dropdownlist>
                                     </label>
-                
+
                                     <div class="text-right">
-                                        <button type="button" class="k-button k-primary" (click)="submitNote($event,'add');">Add Item</button>
-                                        <button type="button" class="k-button k-primary" (click)="submitNote($event,'close');">Close</button>
+                                        <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'add')">Add Note</button>
+                                        <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'close')">Close</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <!-- end Notes Form  -->
+                        <!-- end item note form -->
 
-                        <!-- start edit form -->
-                        <div class="card" #editnoteform style="display: none;">
+                        <!-- start edit item note form -->
+                        <div class="card" #edititemnoteform style="display: none;">
                             <div class="card-block">
                                 <form class="k-form">
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Update Note</span>
-                                        <!-- <textarea id="notes" name="note" class="k-textarea" #noteValue >{{selectedNote.Notes}}</textarea> -->
-                                        <textarea id="notes" name="note" class="k-textarea" [(ngModel)]="selectedNote.Notes"></textarea>
+                                        <textarea id="itemnotes" class="k-textarea">{{selectedItemNote.Notes}}</textarea>
                                     </label>
 
                                     <label class="k-form-field">
@@ -489,20 +297,202 @@
                                         <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
                                         </kendo-dropdownlist>
                                     </label>
-                
+
                                     <div class="text-right">
-                                        <button type="button" class="k-button k-primary" (click)="updateNote($event)">Update Item</button>
+                                        <button type="button" class="k-button k-primary" (click)="updateItemNote($event,updatednotevalue)">Update Item</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <!-- end edit form -->
+                        <!-- end add item form -->
+
+                        <br/>
+                        <div class="text-right">
+                            <button type="button" class="k-button k-primary" (click)="addItemt()">Save</button>
+                            <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
+                            <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button>
+                            <button type="button" class="k-button" (click)="closeItemForm()">Cancel</button>
+                        </div>
 
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- tab end -->
+        <!-- end item form section -->
+
+        <!-- grid start -->
+        <div #gridSectionItem>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <kendo-grid [kendoGridBinding]="gridItemsData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]=isColumnFilterItemsGrid
+                            [groupable]="false" [columnMenu]="{ columnChooser: false }" [height]=gridHeight-41 [selectable]="true"
+                            (selectionChange)="onItemGridDataSelection(gridItemsValues, $event, true)" #gridItemsValues>
+
+                            <!-- (click)="openRightSection(true)" -->
+
+                            <!-- grid template start -->
+                            <ng-template kendoGridToolbarTemplate>
+                                <!-- show hide column start show hide -->
+                                <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
+
+                                <!-- checkbox -->
+                                <form class="k-form opti_show-hide-grid-column-filter float-left">
+                                    <div class="k-form-field">
+                                        <input type="checkbox" id="opti_ColumnFilterItemID" [(ngModel)]="isColumnFilterItemsGrid" class="k-checkbox" name="columnfilter"
+                                        />
+                                        <label class="k-checkbox-label" for="opti_ColumnFilterItemID">Enable Filter</label>
+                                    </div>
+                                </form>
+
+                                <!-- xlsx button start -->
+                                <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
+                                    <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+                                </button>
+
+                                <!-- add items -->
+                                <div class="float-right">
+                                    <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="showItemSection()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                                        class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
+                                </div>
+                            </ng-template>
+                            <!-- grid template end -->
+
+                            <!-- grid column start -->
+                            <kendo-grid-column field="PurchaseInquiryItemlId" [width]="120" title="Id"></kendo-grid-column>
+                            <kendo-grid-column field="ItemDescription" title="Description" [width]="140"></kendo-grid-column>
+                            <kendo-grid-column field="CustomerItemIdOrDescription" title="Item Details" [width]="200"></kendo-grid-column>
+                            <kendo-grid-column field="Quantitiy" [width]="140"></kendo-grid-column>
+                            <kendo-grid-column field="Unit" [width]="140"></kendo-grid-column>
+                            <kendo-grid-column field="Requester" [width]="140"></kendo-grid-column>
+                            <kendo-grid-column field="RequestDate" title="Request Date" [width]="140"></kendo-grid-column>
+                            <kendo-grid-column field="RequiredDate" title="Required Date" [width]="140"></kendo-grid-column>
+                            <kendo-grid-column field="ShipToLocation" title="ShipTo Location" [width]="140"></kendo-grid-column>
+                            <!-- grid column end -->
+
+                            <!-- xlsx template start -->
+                            <kendo-grid-excel fileName="Items.xlsx"></kendo-grid-excel>
+                            <!-- xlsx template end -->
+
+                        </kendo-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- grid end -->
+
     </div>
 
+    <div id="attachement" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="config">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Upload Attachement</h5>
+                    <kendo-upload [saveUrl]="uploadAttachementMasterSaveUrl" [removeUrl]="uploadAttachementMasterRemoveUrl">
+                    </kendo-upload>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notes" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="config">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- start notes grid -->
+                    <div #notesgrid id="opti_NotesGridID">
+                        <kendo-grid [data]="noteRequetData| customFilter: notesSearchValue" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
+                            [groupable]="false" [height]=gridHeight-41 (remove)="deleteNote($event)" (edit)="editNote($event)"
+                            [sort]="sort">
+
+                            <!-- grid toolbar start -->
+                            <ng-template kendoGridToolbarTemplate>
+                                <!-- <button (click)="addNewComment()">Add new Notes</button>   -->
+                                <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="addNewComment()" [svgStyle]="{ 'width.px':20, 'height.px':20}"
+                                    class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
+                                <form class="k-form">
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Search</span>
+                                        <input type="text" class="k-textbox" name="searchNotes" [(ngModel)]="notesSearchValue" />
+                                    </label>
+                                </form>
+                            </ng-template>
+                            <!-- grid toolbar end -->
+
+                            <kendo-grid-column class="opti_notes-column" media="(min-width: 320px)">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    <dl>
+                                        <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} for Item001
+                                            <span class="float-right opti_note-action-button-sec">
+                                                <svg-icon kendoGridEditCommand src="assets/images/common/edit.svg" (click)="editNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
+                                                    class="opti_mouse-pointer"></svg-icon>
+                                                <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
+                                                    class="opti_mouse-pointer"></svg-icon>
+
+                                            </span>
+                                        </dd>
+
+                                        <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
+                                    </dl>
+                                </ng-template>
+                            </kendo-grid-column>
+                        </kendo-grid>
+                    </div>
+                    <!-- end notes grid -->
+
+                    <!-- Add Notes Form  -->
+                    <div class="card" #noteform style="display: none;">
+                        <div class="card-block">
+                            <form #requestnoteform class="k-form">
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Add Note</span>
+                                    <textarea class="k-textarea" name="addnotestring" [(ngModel)]="addnotestring">Please enter your note</textarea>
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Note Status</span>
+                                    <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                                    </kendo-dropdownlist>
+                                </label>
+
+                                <div class="text-right">
+                                    <button type="button" class="k-button k-primary" (click)="submitNote($event,'add');">Add Item</button>
+                                    <button type="button" class="k-button k-primary" (click)="submitNote($event,'close');">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- end Notes Form  -->
+
+                    <!-- start edit form -->
+                    <div class="card" #editnoteform style="display: none;">
+                        <div class="card-block">
+                            <form class="k-form">
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Update Note</span>
+                                    <!-- <textarea id="notes" name="note" class="k-textarea" #noteValue >{{selectedNote.Notes}}</textarea> -->
+                                    <textarea id="notes" name="note" class="k-textarea" [(ngModel)]="selectedNote.Notes"></textarea>
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Note Type</span>
+                                    <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                                    </kendo-dropdownlist>
+                                </label>
+
+                                <div class="text-right">
+                                    <button type="button" class="k-button k-primary" (click)="updateNote($event)">Update Item</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- end edit form -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- tab end -->
+</div>
