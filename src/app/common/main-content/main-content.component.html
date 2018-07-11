@@ -15,7 +15,7 @@
             [pageable]="true"
             [sortable]="true"
             [filterable]=isColumnFilter
-            [groupable]="false"
+            [groupable]=isColumnGroup
             [columnMenu]="{ columnChooser: false }"
             [height]=gridHeight
             [selectable] = "true"
@@ -32,9 +32,14 @@
 
                     <!-- checkbox -->
                     <form class="k-form opti_show-hide-grid-column-filter float-left">
-                        <div class="k-form-field">
+                        <div class="k-form-field float-left">
                             <input type="checkbox" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
                             <label class="k-checkbox-label" for="opti_ColumnFilterID">Enable Filter</label>
+                        </div>
+
+                        <div class="k-form-field float-left">
+                            <input type="checkbox" id="opti_ColumnGroupID" [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
+                            <label class="k-checkbox-label" for="opti_ColumnGroupID">Enable Grouping</label>
                         </div>
                     </form>
                         
@@ -171,7 +176,7 @@
                                         </label>
 
                                         <label class="k-form-field">
-                                            <span class="opti_form-lab  el">Item Quantity</span>
+                                            <span class="opti_form-label">Item Quantity</span>
                                             <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModelForUpdate.Quantitiy" value="" placeholder="Item Quantity" />
                                         </label>
 
@@ -388,7 +393,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <h5>Upload Attachement</h5>
+                        <h5>Upload Attachement</h5> 
                         <kendo-upload
                             [saveUrl]="uploadAttachementMasterSaveUrl"
                             [removeUrl]="uploadAttachementMasterRemoveUrl">
@@ -429,7 +434,7 @@
                                 <kendo-grid-column class="opti_notes-column" media="(min-width: 320px)">
                                     <ng-template kendoGridCellTemplate let-dataItem>
                                         <dl>
-                                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} 
+                                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} for Item001
                                                 <span class="float-right opti_note-action-button-sec"> 
                                                     <svg-icon kendoGridEditCommand  src="assets/images/common/edit.svg" (click)="editNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}" class="opti_mouse-pointer"></svg-icon> 
                                                     <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}" class="opti_mouse-pointer"></svg-icon>

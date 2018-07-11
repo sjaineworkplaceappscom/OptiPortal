@@ -16,17 +16,17 @@
   top:12px;
 }
 
-.opti_vertcal-align-outer-box {
-  height: calc(100vh - 65px);
-}
+// .opti_vertcal-align-outer-box {
+//   height: calc(100vh - 65px);
+// }
 
-.opti_login-brandlogo {
-  height: 65px;
-  background: rgba(0, 0, 0, 0.7);
-  .opti_vertical-align{
-    height: 100%;
-  }
-}
+// .opti_login-brandlogo {
+//   height: 65px;
+//   background: rgba(0, 0, 0, 0.7);
+//   .opti_vertical-align{
+//     height: 100%;
+//   }
+// }
 
 #captchaCanvasID{
   border:1px solid $white;
@@ -53,3 +53,27 @@
   margin-bottom: 0 !important;
   margin-left: 5px !important;
 }
+
+// temporara
+// .opti_logo-outer-login{
+//   padding: 0 10px;
+//   background: $white;
+//   display: none;
+// }
+
+// .opti_login-brandlogo{
+//   display: none;
+// }
+
+// .opti_form-label, .k-checkbox-label{
+//   color: $light-black !important;
+
+// }
+.ng-untouched.ng-invalid{
+  border-color: rgba(33, 37, 41, 0.15);
+}
+
+// .opti_account-submodule-container {
+//   margin: 0 auto;
+//   margin-left: auto;
+// }

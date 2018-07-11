@@ -34,7 +34,7 @@ body{
   
     // remove red error from input field on first time load 
     .ng-untouched.ng-invalid{
-      border-color: transparent;
+      border-color: rgba(33, 37, 41, 0.15);
     }
   
     // bottom space of label 
@@ -112,7 +112,7 @@ body{
     }
 
     .k-grid td{
-      padding: 5px;
+      padding: 3px;
     }
 
     // make header text bold

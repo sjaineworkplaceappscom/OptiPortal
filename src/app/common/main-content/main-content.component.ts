@@ -34,6 +34,7 @@ export class MainContentComponent implements OnInit {
     approveUser: boolean;
     isMobile: boolean;
     isColumnFilter: boolean = false;
+    isColumnGroup: boolean = false;
     isColumnFilterItemsGrid: boolean = false;
     isFixedRightSection: boolean;
     selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
@@ -412,7 +413,7 @@ export class MainContentComponent implements OnInit {
     public noteStatus: Array<{ text: string, value: string }> = [
         { text: "General ", value: '0' },
         { text: "Rejected", value: '1' },
-        { text: "Parcial accepted", value: '2' },
+        { text: "Partial accepted", value: '2' },
     ];
     public selectedNoteStatusItem: { text: string, value: string } = this.noteStatus[0];
 

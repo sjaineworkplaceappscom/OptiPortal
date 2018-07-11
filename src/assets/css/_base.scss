@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
 // imports for all mixins + global project variables
 // @import '_typography';
 // @import '_button';
@@ -24,10 +26,10 @@ $dark-black:#333;
 }
 
 // font size
-// $font-family-lato: 'Lato', sans-serif;
-$font-family-roboto: 'Roboto', sans-serif;
+$font-family-lato: 'Lato', sans-serif;
+//$font-family-roboto: 'Roboto', sans-serif;
 @mixin font($size: false, $weight: false,  $lh: false) {
-    font-family: $font-family-roboto; 
+    font-family: $font-family-lato; 
     @if $size { font-size: $size; }
     @if $weight { font-weight: $weight; }
     @if $lh { line-height: $lh; }
