@@ -56,9 +56,9 @@
                 <kendo-grid-column field="Customer" title="Customer Id" [width]="140"></kendo-grid-column>
                 <kendo-grid-column field="Name" [width]="140" title="Customer Name"></kendo-grid-column>
                 <kendo-grid-column field="Status" [width]="140"></kendo-grid-column>
-                <kendo-grid-column field="CreatedDate" title="Created Date" [width]="140"  filter="date" format="{0:d}"></kendo-grid-column>
+                <kendo-grid-column field="CreatedDate" title="Created Date" [width]="200"  filter="date" format="{0:d}"></kendo-grid-column>
                 <kendo-grid-column field="BuyerCreatedBy" title="Created By" [width]="140"></kendo-grid-column>
-                <kendo-grid-column field="ValidUntil" title="Valid Until" [width]="140"  filter="date"></kendo-grid-column>
+                <kendo-grid-column field="ValidUntil" title="Valid Until" [width]="200"  filter="date" format="{0:d}"></kendo-grid-column>
                 <kendo-grid-column field="Reference" [width]="140"></kendo-grid-column>
 
                 <!-- xlsx template start -->
@@ -366,14 +366,14 @@
                             <!-- grid template end -->
 
                             <!-- grid column start -->
-                            <kendo-grid-column field="PurchaseInquiryItemlId" [width]="120" title="Id"></kendo-grid-column>
+                            <kendo-grid-column field="PurchaseInquiryItemlId" [width]="160" title="Id" filter="numeric" ></kendo-grid-column>
                             <kendo-grid-column field="ItemDescription" title="Description" [width]="140"></kendo-grid-column>
                             <kendo-grid-column field="CustomerItemIdOrDescription" title="Item Details" [width]="200"></kendo-grid-column>
-                            <kendo-grid-column field="Quantitiy" [width]="140"></kendo-grid-column>
-                            <kendo-grid-column field="Unit" [width]="140"></kendo-grid-column>
+                            <kendo-grid-column field="Quantitiy" [width]="160" filter="numeric"></kendo-grid-column>
+                            <kendo-grid-column field="Unit" [width]="140" filter="numeric"></kendo-grid-column>
                             <kendo-grid-column field="Requester" [width]="140"></kendo-grid-column>
-                            <kendo-grid-column field="RequestDate" title="Request Date" [width]="140"></kendo-grid-column>
-                            <kendo-grid-column field="RequiredDate" title="Required Date" [width]="140"></kendo-grid-column>
+                            <kendo-grid-column field="RequestDate" title="Request Date" [width]="140" filter="date"></kendo-grid-column>
+                            <kendo-grid-column field="RequiredDate" title="Required Date" [width]="140" filter="date"></kendo-grid-column>
                             <kendo-grid-column field="ShipToLocation" title="ShipTo Location" [width]="140"></kendo-grid-column>
                             <!-- grid column end -->
 
