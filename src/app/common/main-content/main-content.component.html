@@ -8,7 +8,7 @@
 
     <div *ngIf="systemAdmin!='true'">
         <div style="padding: 10px;">
-            <kendo-grid [kendoGridBinding]="gridData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]=isColumnFilter
+            <kendo-grid [kendoGridBinding]="gridData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
                 [groupable]=isColumnGroup [columnMenu]="{ columnChooser: false }" [height]=gridHeight [selectable]="true" (selectionChange)="onInquiryGridDataSelection(gridItem, $event, true)"
                 #gridItem>
 
@@ -45,13 +45,13 @@
                 </ng-template>
 
                 <!-- grid template end -->
-                <kendo-grid-column field="Inquiry" title="Id" [width]="100"></kendo-grid-column>
+                <kendo-grid-column field="Inquiry" title="Id" [width]="160" filter="numeric"></kendo-grid-column>
                 <kendo-grid-column field="Customer" title="Customer Id" [width]="140"></kendo-grid-column>
                 <kendo-grid-column field="Name" [width]="140" title="Customer Name"></kendo-grid-column>
                 <kendo-grid-column field="Status" [width]="140"></kendo-grid-column>
-                <kendo-grid-column field="CreatedDate" title="Created Date" [width]="140"></kendo-grid-column>
+                <kendo-grid-column field="CreatedDate" title="Created Date" [width]="140"  filter="date" format="{0:d}"></kendo-grid-column>
                 <kendo-grid-column field="BuyerCreatedBy" title="Created By" [width]="140"></kendo-grid-column>
-                <kendo-grid-column field="ValidUntil" title="Valid Until" [width]="140"></kendo-grid-column>
+                <kendo-grid-column field="ValidUntil" title="Valid Until" [width]="140"  filter="date"></kendo-grid-column>
                 <kendo-grid-column field="Reference" [width]="140"></kendo-grid-column>
 
                 <!-- xlsx template start -->
