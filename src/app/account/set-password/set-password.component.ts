@@ -41,9 +41,8 @@ export class SetPasswordComponent implements OnInit {
     this.showLoader = true;
     this.userModel.UserName = this.userId;
     this.userModel.Email = this.userLoginEmail;
-
+    
     if (this.resetPassword == 'True') {
-      debugger
       this.accountService.resetPassword(this.userId, this.userModel.Password).subscribe(
         data => {
           alert('Your password set successfully.');

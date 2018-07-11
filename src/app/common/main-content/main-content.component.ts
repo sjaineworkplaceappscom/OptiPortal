@@ -9,8 +9,6 @@ import { Commonservice } from '../../services/commonservice.service';
 import { data2 } from '../../DemoData/Data2';
 import { data } from '../../DemoData/Data';
 
-
-
 import { process, State } from '@progress/kendo-data-query';
 import {
     GridComponent,
@@ -22,6 +20,9 @@ import { opticonstants } from '../../constants';
 import { stringify } from '@angular/core/src/util';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import {TempPurchaseInquiryItemModel} from '../../tempmodels/temppurchase-inquiry-item';
+import { IntlService } from '@progress/kendo-angular-intl';
+import { PurchaseInquiryItemModel } from '../../models/purchaserequest/purchase-inquiry-item';
+import { PurchaseInquiryModel } from '../../models/purchaserequest/purchase-inquiry';
 
 //declare var $: any;
 
@@ -64,11 +65,10 @@ export class MainContentComponent implements OnInit {
     
 
 
-    constructor(private commonService: Commonservice) {
+    constructor(private commonService: Commonservice,private intl: IntlService) {
         this.approveUser = false;
     }
     
-
     // tab function
     openTab(evt, tabName) {
         UIHelper.customOpenTab(evt, tabName);
@@ -82,19 +82,15 @@ export class MainContentComponent implements OnInit {
     onResize(event) {
         // apply grid height
         this.gridHeight = UIHelper.getMainContentHeight();
-
         // apply width on opti_TabID
         UIHelper.getWidthOfOuterTab();
-
         // apply grid height
         this.gridHeight = UIHelper.getMainContentHeight();
- 
         // check mobile device
         this.isMobile = UIHelper.isMobile();
     }
 
     ngOnInit() {
-
         this.commonService.themeCurrentData.subscribe(
             data => {
                 this.selectedThemeColor = data;
@@ -103,21 +99,15 @@ export class MainContentComponent implements OnInit {
         this.systemAdmin=localStorage.getItem('SystemAdmin');  
         this.noteRequetData = JSON.parse(localStorage.getItem("setRequestDynamicNotes"));
         this.noteItemsData = JSON.parse(localStorage.getItem("setItemsDynamicNotes"));
-
-        
         // apply width on opti_TabID
         UIHelper.getWidthOfOuterTab();
-
         // apply grid height
         this.gridHeight = UIHelper.getMainContentHeight();
-
         // check mobile device
         this.isMobile = UIHelper.isMobile();
-
         // remove all class from Body
         const element = document.getElementsByTagName("body")[0];
         element.className = "";
-
         this.approveUser = false;
         this.commonService.currentNavigatedData.subscribe(
             data => {
@@ -139,21 +129,10 @@ export class MainContentComponent implements OnInit {
         alert('hi ho');
     }
 
-    
-    //public gridData: any[] = this.customers;
-
     public gridData: any[] = data2;
-
 
     // itmes json start
     public gridItemsData: any[] = data;
-
-    showItemSection() {
-        this.purchaseItemsModelForUpdate = new TempPurchaseInquiryItemModel();
-        console.log("item plus click");
-        this.gridSectionItem.nativeElement.style.display = 'none';
-        this.AddItemFormSection.nativeElement.style.display = 'block';
-    }
 
     addItemt() {
         this.gridSectionItem.nativeElement.style.display = 'block';
@@ -164,20 +143,10 @@ export class MainContentComponent implements OnInit {
         this.gridSectionItem.nativeElement.style.display = 'block';
         this.AddItemFormSection.nativeElement.style.display = 'none';
     }
-    // items json end
-
-    // show and hide right content section
-    openRightSection(status) {
-        this.purchaseInquiryForUpdate = new TempPurchaseInquiryModel();
-        console.log('called open right section');
-        this.isFixedRightSection = status;
-    }
-
+  
     closeRightSection(status) {
         this.isFixedRightSection = status;
     }
-
-    // add top section
 
     // status section
     public status: Array<{ text: string, value: string }> = [
@@ -191,16 +160,16 @@ export class MainContentComponent implements OnInit {
         { text: "Closed   ", value: '7' }
     ];
     public selectedStatusItem: { text: string, value: string } = this.status[2];
-
+    // dateForTest: Date = new Date(this.purchaseInquiryForUpdate.ValidUntil);
+    public handleChange(value: Date) {
+        // Update the JSON birthDate string date
+        //this.dateForTest = this.intl.formatDate(value, 'yyyy-MM-dd');
+        //this.output = JSON.stringify(this.model);
+    }
     //cretaed date
     public valueCreatedDate: Date = new Date(2000, 2, 10);
-
-    //created By
-    public valueCreatedBy: Date = new Date(2000, 2, 10);
-
-    // valid untill
+    // valid until
     public valueValidUntill: Date = new Date(2000, 2, 10);
-
     // file upload
     uploadAttachementMasterSaveUrl = 'saveMasterAttachementUrl'; // should represent an actual API endpoint
     uploadAttachementMasterRemoveUrl = 'removeMasterAttachementUrl'; // should represent an actual API endpoint
@@ -261,10 +230,6 @@ export class MainContentComponent implements OnInit {
         localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteRequetData));       
     }
 
-    
-
-    
-
     editNote({sender,rowIndex,dataItem}){        
     }
 
@@ -272,10 +237,8 @@ export class MainContentComponent implements OnInit {
         if(action == 'add'){
             this.notesgrid.nativeElement.style.display = 'block';
             this.noteform.nativeElement.style.display = 'none';
-            
             let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
             let dynamicNotes:any[]=JSON.parse(dynamicNotesString);      
-
             if(dynamicNotes==undefined  || dynamicNotes.length<=0){
                 dynamicNotes=[];
             }
@@ -336,22 +299,30 @@ export class MainContentComponent implements OnInit {
     updateItemNote(e,note:any) {
         this.notesitemgrid.nativeElement.style.display = 'block';
         this.edititemnoteform.nativeElement.style.display = 'none';
-        
-       let index=this.noteRequetData.indexOf(this.selectedItemNote);
-       if(index>-1){
-           this.noteItemsData[index].Notes=note.value;
-       }
+        let index=this.noteRequetData.indexOf(this.selectedItemNote);
+        if(index>-1){
+            this.noteItemsData[index].Notes=note.value;
+        }
         
     }
 
+    // show and hide right content section
+    openRightSection(status) {
+        //this.purchaseInquiryForUpdate = new TempPurchaseInquiryModel();
+        this.resetValuesForAddInquiry();
+        this.isFixedRightSection = status;
+    }
+
     purchaseInquiryForUpdate:TempPurchaseInquiryModel = new  TempPurchaseInquiryModel();
+    validUntilForUpdate:Date;
+    createdDateForUpdate:Date;
    /**
     * Method will open the edit item window for selected grid item.
     * @param gridItem 
     * @param selection 
     * @param status 
     */
-   public gridDataSelectionChange(gridItem, selection,status) {
+   public onInquiryGridDataSelection(gridItem, selection,status) {
         //update ui properties.
         this.isFixedRightSection = status;    
         //fatch and parse row value.
@@ -360,17 +331,43 @@ export class MainContentComponent implements OnInit {
         //  console.log("data: selectedData::"+  JSON.stringify(selectedData));
         //  console.log("data: selectedItem::"+    JSON.stringify(selectedItem));
         this.purchaseInquiryForUpdate = JSON.parse(JSON.stringify(selectedData));
-        //console.log("data: From model::"+    JSON.stringify(this.purchaseInquiryForUpdate));
+        this.validUntilForUpdate = new  Date(this.purchaseInquiryForUpdate.ValidUntil);
+        this.createdDateForUpdate = new  Date(this.purchaseInquiryForUpdate.CreatedDate);
+    
+    }
+    
+    /**
+     * This method will reset the model and date object for add form.
+     */
+    resetValuesForAddInquiry(){
+        this.purchaseInquiryForUpdate = new TempPurchaseInquiryModel();
+        this.validUntilForUpdate = new  Date();
+        this.createdDateForUpdate = new  Date();
+    }
+    
+    /**
+     * this method shows a side form on add click.
+     */
+    showItemSection() {
+        //reseting the model which is bind with this view at edit time also
+        this.purchaseItemsModelForUpdate = new TempPurchaseInquiryItemModel();
+        //Setting ui property for hiding and showing the right side form.
+        this.gridSectionItem.nativeElement.style.display = 'none';
+        this.AddItemFormSection.nativeElement.style.display = 'block';
+        //console.log("show item section");
+        this.resetAddItem();
     }
 
     purchaseItemsModelForUpdate:TempPurchaseInquiryItemModel =new TempPurchaseInquiryItemModel();
+    requestDate:Date;
+    requiredDate:Date;
     /**
      * Method will open the edit item window for selected grid item.
      * @param gridItemsData 
      * @param selection 
      * @param status 
      */
-    public gridItemsDataSelectionChange(gridItemsData, selection,status) {
+    public onItemGridDataSelection(gridItemsData, selection,status) {
         
         //update ui properties.
         this.gridSectionItem.nativeElement.style.display = 'none';
@@ -383,8 +380,16 @@ export class MainContentComponent implements OnInit {
         // console.log("data: selectedData::"+  JSON.stringify(selectedData));
         // console.log("data: selectedItem::"+    JSON.stringify(selectedItem));
         this.purchaseItemsModelForUpdate = JSON.parse(JSON.stringify(selectedData));
-       
-        
+        this.requestDate = new  Date(this.purchaseItemsModelForUpdate.RequestDate);
+        this.requiredDate = new  Date(this.purchaseItemsModelForUpdate.RequiredDate);
+    }
+    /**
+     * this method will reset the model and date object for add form.
+     */
+    resetAddItem(){
+        this.purchaseItemsModelForUpdate = new TempPurchaseInquiryItemModel();
+        this.requestDate = new  Date();
+        this.requiredDate = new  Date();
     }
     
    editNotes(e, note) {

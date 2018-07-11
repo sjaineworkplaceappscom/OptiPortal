@@ -16,8 +16,8 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"New",
-       "CreatedDate":"21/06/2018",
-       "BuyerCreatedBy":"Ankur Verma",
+       "CreatedDate":"02/07/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
        "ValidUntil":"10/07/2018",
        "Reference":"ENQ154"
     }
@@ -27,9 +27,9 @@ export const data2 = [
        "Customer":"Cust003",
        "Name":"Nokia",
        "Status":"New",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Arun Sharma",
-       "ValidUntil":"15/07/2018",
+       "CreatedDate":"02/07/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/07/2018",
        "Reference":"QTN002"
     }
  ,  
@@ -38,9 +38,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Revised",
-       "CreatedDate":"12/05/2018",
-       "BuyerCreatedBy":"Amit Sharma",
-       "ValidUntil":"18/05/2018",
+       "CreatedDate":"02/07/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/07/2018",
        "Reference":"QTN003"
     }
  ,  
@@ -49,9 +49,9 @@ export const data2 = [
        "Customer":"Cust005",
        "Name":"Redmi",
        "Status":"Canceled",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Jain",
-       "ValidUntil":"06/07/2018",
+       "CreatedDate":"02/07/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/07/2018",
        "Reference":"QTN078"
     }
  ,  
@@ -60,9 +60,9 @@ export const data2 = [
        "Customer":"Cust006",
        "Name":"Huwai",
        "Status":"Closed",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Aniket Rajput",
-       "ValidUntil":"25/07/2018",
+       "CreatedDate":"02/07/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/07/2018",
        "Reference":"ORD958"
     }
  ,  
@@ -71,9 +71,9 @@ export const data2 = [
        "Customer":"Cust007",
        "Name":"Asus",
        "Status":"Approved",
-       "CreatedDate":"24/06/2018",
+       "CreatedDate":"02/07/2018",
        "BuyerCreatedBy":"Ankur Sharma",
-       "ValidUntil":"30/06/2018",
+       "ValidUntil":"10/07/2018",
        "Reference":"ORD777"
     }
  ,  
@@ -82,8 +82,8 @@ export const data2 = [
        "Customer":"Cust008",
        "Name":"BenQ",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Anand Kumar",
+       "CreatedDate":"02/07/2018",
+       "BuyerCreatedBy":"Andnd kumar",
        "ValidUntil":"10/07/2018",
        "Reference":"ORD857"
     }
@@ -93,9 +93,9 @@ export const data2 = [
        "Customer":"Cust009",
        "Name":"HTC",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"ANkit Gupta",
-       "ValidUntil":"12/09/2018",
+       "CreatedDate":"02/07/2018",
+       "BuyerCreatedBy":"Suresh rao",
+       "ValidUntil":"10/07/2018",
        "Reference":"QTN071"
     }
  ,  
@@ -104,8 +104,8 @@ export const data2 = [
        "Customer":"Cust010",
        "Name":"Philips",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"TaranVeer Singh",
+       "CreatedDate":"02/07/2018",
+       "BuyerCreatedBy":"Suresh rao",
        "ValidUntil":"10/07/2018",
        "Reference":"QTN011"
     }
@@ -115,7 +115,7 @@ export const data2 = [
        "Customer":"Cust011",
        "Name":"iball",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
+       "CreatedDate":"02/07/2018",
        "BuyerCreatedBy":"Prashant Jain",
        "ValidUntil":"10/07/2018",
        "Reference":"QTN986"
@@ -126,9 +126,9 @@ export const data2 = [
        "Customer":"Cust012",
        "Name":"Intex Technologies",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
+       "CreatedDate":"07/11/2018",
        "BuyerCreatedBy":"Shashank Jain",
-       "ValidUntil":"10/07/2018",
+       "ValidUntil":"03/04/2018",
        "Reference":"Ref0011"
     }
  ,  
@@ -137,9 +137,9 @@ export const data2 = [
        "Customer":"Cust013",
        "Name":"Karbonn Mobiles",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ishant Sharma",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Prashant Jain",
+       "ValidUntil":"10/27/2018",
        "Reference":"ORD999"
     }
  ,  
@@ -148,9 +148,9 @@ export const data2 = [
        "Customer":"Cust014",
        "Name":"Lava International",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ishwar Sharma",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"08/23/2018",
+       "BuyerCreatedBy":"Prashant Jain",
+       "ValidUntil":"10/27/2018",
        "Reference":"ORD147"
     }
  ,  
@@ -159,9 +159,9 @@ export const data2 = [
        "Customer":"Cust015",
        "Name":"LYF",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"ANkit Kumar",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankit Jain",
+       "ValidUntil":"10/27/2018",
        "Reference":"ORD800"
     }
  ,  
@@ -170,9 +170,9 @@ export const data2 = [
        "Customer":"Cust016",
        "Name":"Micromax Informatics",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Prakher Sharma",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"ORD978"
     }
  ,  
@@ -181,9 +181,9 @@ export const data2 = [
        "Customer":"Cust017",
        "Name":"	Onida Electronics",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Punit Sharma",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"ORD784"
     }
  ,  
@@ -192,9 +192,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Vyas",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"ORD985"
     }
  ,  
@@ -203,9 +203,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma18",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"07/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"09/27/2018",
        "Reference":"ORD252"
     }
  ,  
@@ -214,9 +214,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma19",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/21/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/19/2018",
        "Reference":"ORD124"
     }
  ,  
@@ -225,9 +225,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma20",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"ORD965"
     }
  ,  
@@ -236,9 +236,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma21",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"ORD524"
     }
  ,  
@@ -247,9 +247,9 @@ export const data2 = [
        "Customer":"Cust003",
        "Name":"Nokia",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma22",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"ORD452"
     }
  ,  
@@ -258,9 +258,9 @@ export const data2 = [
        "Customer":"Cust003",
        "Name":"Nokia",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma23",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"ORD698"
     }
  ,  
@@ -269,9 +269,9 @@ export const data2 = [
        "Customer":"Cust003",
        "Name":"Nokia",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma24",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"ORD025"
     }
  ,  
@@ -280,9 +280,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma25",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"ORD256"
     }
  ,  
@@ -291,9 +291,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma26",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0026"
     }
  ,  
@@ -302,9 +302,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma27",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0027"
     }
  ,  
@@ -313,9 +313,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma28",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0028"
     }
  ,  
@@ -324,9 +324,9 @@ export const data2 = [
        "Customer":"Cust012",
        "Name":"Intex Technology",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma29",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0029"
     }
  ,  
@@ -335,9 +335,9 @@ export const data2 = [
        "Customer":"Cust012",
        "Name":"Intex Technology",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma30",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0030"
     }
  ,  
@@ -346,9 +346,9 @@ export const data2 = [
        "Customer":"Cust012",
        "Name":"Intex Technology",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma31",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0031"
     }
  ,  
@@ -357,9 +357,9 @@ export const data2 = [
        "Customer":"Cust012",
        "Name":"Intex Technology",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma32",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0032"
     }
  ,  
@@ -368,9 +368,9 @@ export const data2 = [
        "Customer":"Cust012",
        "Name":"Intex Technology",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma33",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0033"
     }
  ,  
@@ -379,9 +379,9 @@ export const data2 = [
        "Customer":"Cust012",
        "Name":"Intex Technology",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma34",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0034"
     }
  ,  
@@ -390,9 +390,9 @@ export const data2 = [
        "Customer":"Cust017",
        "Name":"	Onida Electronics",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma35",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0035"
     }
  ,  
@@ -401,9 +401,9 @@ export const data2 = [
        "Customer":"Cust017",
        "Name":"	Onida Electronics",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma36",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0036"
     }
  ,  
@@ -412,9 +412,9 @@ export const data2 = [
        "Customer":"Cust017",
        "Name":"	Onida Electronics",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma37",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0037"
     }
  ,  
@@ -423,9 +423,9 @@ export const data2 = [
        "Customer":"Cust017",
        "Name":"	Onida Electronics",
        "Status":"Approved",
-       "CreatedDate":"28/06/201838",
-       "BuyerCreatedBy":"Ankur Sharma38",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0038"
     }
  ,  
@@ -434,9 +434,9 @@ export const data2 = [
        "Customer":"Cust017",
        "Name":"	Onida Electronics",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma39",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0039"
     }
  ,  
@@ -445,9 +445,9 @@ export const data2 = [
        "Customer":"Cust017",
        "Name":"	Onida Electronics",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma40",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0040"
     }
  ,  
@@ -456,9 +456,9 @@ export const data2 = [
        "Customer":"Cust006",
        "Name":"Huwai",
        "Status":"Closed",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma41",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0041"
     }
  ,  
@@ -467,9 +467,9 @@ export const data2 = [
        "Customer":"Cust006",
        "Name":"Huwai",
        "Status":"Closed",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma42",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0042"
     }
  ,  
@@ -478,9 +478,9 @@ export const data2 = [
        "Customer":"Cust006",
        "Name":"Huwai",
        "Status":"Canceled",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma43",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0043"
     }
  ,  
@@ -489,9 +489,9 @@ export const data2 = [
        "Customer":"Cust006",
        "Name":"Huwai",
        "Status":"Canceled",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma44",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0044"
     }
  ,  
@@ -500,9 +500,9 @@ export const data2 = [
        "Customer":"Cust006",
        "Name":"Huwai",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma45",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/23/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/27/2018",
        "Reference":"Ref0045"
     }
  ,  
@@ -511,9 +511,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma46",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0046"
     }
  ,  
@@ -522,9 +522,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma47",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0047"
     }
  ,  
@@ -533,9 +533,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma48",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0048"
     }
  ,  
@@ -544,9 +544,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma49",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0049"
     }
  ,  
@@ -555,9 +555,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma50",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"QTN011"
     }
  ,  
@@ -566,9 +566,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma51",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"10/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"08/11/2018",
        "Reference":"QTN111"
     }
  ,  
@@ -577,9 +577,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma52",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/10/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/10/2018",
        "Reference":"QTN771"
     }
  ,  
@@ -588,9 +588,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma53",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"QTN471"
     }
  ,  
@@ -599,9 +599,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma54",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"QTN456"
     }
  ,  
@@ -610,9 +610,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma55",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"QTN653"
     }
  ,  
@@ -621,9 +621,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma56",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"QTN556"
     }
  ,  
@@ -632,9 +632,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma57",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"QTN125"
     }
  ,  
@@ -643,9 +643,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/2018",
-       "BuyerCreatedBy":"Ankur Sharma58",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"QTN770"
     }
  ,  
@@ -654,9 +654,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/201859",
-       "BuyerCreatedBy":"Ankur Sharma59",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"QTN298"
     }
  ,  
@@ -665,9 +665,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/201860",
-       "BuyerCreatedBy":"Ankur Sharma60",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"QTN963"
     }
  ,  
@@ -676,9 +676,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/201861",
-       "BuyerCreatedBy":"Ankur Sharma61",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"QTN041"
     }
  ,  
@@ -687,9 +687,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"Approved",
-       "CreatedDate":"28/06/201862",
-       "BuyerCreatedBy":"Ankur Sharma62",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0062"
     }
  ,  
@@ -698,9 +698,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"Approved",
-       "CreatedDate":"28/06/201863",
-       "BuyerCreatedBy":"Ankur Sharma63",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0063"
     }
  ,  
@@ -709,9 +709,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"Approved",
-       "CreatedDate":"28/06/201864",
-       "BuyerCreatedBy":"Ankur Sharma64",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0064"
     }
  ,  
@@ -720,9 +720,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"Approved",
-       "CreatedDate":"28/06/201865",
-       "BuyerCreatedBy":"Ankur Sharma65",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0065"
     }
  ,  
@@ -731,9 +731,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"Approved",
-       "CreatedDate":"28/06/201866",
-       "BuyerCreatedBy":"Ankur Sharma66",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0066"
     }
  ,  
@@ -742,9 +742,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"Approved",
-       "CreatedDate":"28/06/201867",
-       "BuyerCreatedBy":"Ankur Sharma67",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0067"
     }
  ,  
@@ -753,9 +753,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"Approved",
-       "CreatedDate":"28/06/201868",
-       "BuyerCreatedBy":"Ankur Sharma68",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0068"
     }
  ,  
@@ -764,9 +764,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"Approved",
-       "CreatedDate":"28/06/201869",
-       "BuyerCreatedBy":"Ankur Sharma69",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0069"
     }
  ,  
@@ -775,9 +775,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"Approved",
-       "CreatedDate":"28/06/201870",
-       "BuyerCreatedBy":"Ankur Sharma70",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0070"
     }
  ,  
@@ -786,9 +786,9 @@ export const data2 = [
        "Customer":"Cust002",
        "Name":"Apple",
        "Status":"Approved",
-       "CreatedDate":"28/06/201871",
-       "BuyerCreatedBy":"Ankur Sharma71",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0071"
     }
  ,  
@@ -797,9 +797,9 @@ export const data2 = [
        "Customer":"Cust003",
        "Name":"Nokia",
        "Status":"Approved",
-       "CreatedDate":"28/06/201872",
-       "BuyerCreatedBy":"Ankur Sharma72",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0072"
     }
  ,  
@@ -808,9 +808,9 @@ export const data2 = [
        "Customer":"Cust003",
        "Name":"Nokia",
        "Status":"Approved",
-       "CreatedDate":"28/06/201873",
-       "BuyerCreatedBy":"Ankur Sharma73",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0073"
     }
  ,  
@@ -819,9 +819,9 @@ export const data2 = [
        "Customer":"Cust003",
        "Name":"Nokia",
        "Status":"Approved",
-       "CreatedDate":"28/06/201874",
-       "BuyerCreatedBy":"Ankur Sharma74",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0074"
     }
  ,  
@@ -830,9 +830,9 @@ export const data2 = [
        "Customer":"Cust003",
        "Name":"Nokia",
        "Status":"Approved",
-       "CreatedDate":"28/06/201875",
-       "BuyerCreatedBy":"Ankur Sharma75",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0075"
     }
  ,  
@@ -841,9 +841,9 @@ export const data2 = [
        "Customer":"Cust003",
        "Name":"Nokia",
        "Status":"Approved",
-       "CreatedDate":"28/06/201876",
-       "BuyerCreatedBy":"Ankur Sharma76",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0076"
     }
  ,  
@@ -852,9 +852,9 @@ export const data2 = [
        "Customer":"Cust003",
        "Name":"Nokia",
        "Status":"Approved",
-       "CreatedDate":"28/06/201877",
-       "BuyerCreatedBy":"Ankur Sharma77",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0077"
     }
  ,  
@@ -863,9 +863,9 @@ export const data2 = [
        "Customer":"Cust003",
        "Name":"Nokia",
        "Status":"Approved",
-       "CreatedDate":"28/06/201878",
-       "BuyerCreatedBy":"Ankur Sharma78",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0078"
     }
  ,  
@@ -874,9 +874,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/201879",
-       "BuyerCreatedBy":"Ankur Sharma79",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0079"
     }
  ,  
@@ -885,9 +885,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/201880",
-       "BuyerCreatedBy":"Ankur Sharma80",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0080"
     }
  ,  
@@ -896,9 +896,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/201881",
-       "BuyerCreatedBy":"Ankur Sharma81",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0081"
     }
  ,  
@@ -907,9 +907,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/201882",
-       "BuyerCreatedBy":"Ankur Sharma82",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0082"
     }
  ,  
@@ -918,9 +918,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/201883",
-       "BuyerCreatedBy":"Ankur Sharma83",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0083"
     }
  ,  
@@ -929,9 +929,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/201884",
-       "BuyerCreatedBy":"Ankur Sharma84",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0084"
     }
  ,  
@@ -940,9 +940,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/201885",
-       "BuyerCreatedBy":"Ankur Sharma85",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0085"
     }
  ,  
@@ -951,9 +951,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/201886",
-       "BuyerCreatedBy":"Ankur Sharma86",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0086"
     }
  ,  
@@ -962,9 +962,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/201887",
-       "BuyerCreatedBy":"Ankur Sharma87",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0087"
     }
  ,  
@@ -973,9 +973,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/201888",
-       "BuyerCreatedBy":"Ankur Sharma88",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0088"
     }
  ,  
@@ -984,9 +984,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Approved",
-       "CreatedDate":"28/06/201889",
-       "BuyerCreatedBy":"Ankur Sharma89",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0089"
     }
  ,  
@@ -995,9 +995,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Closed",
-       "CreatedDate":"28/06/201890",
-       "BuyerCreatedBy":"Ankur Sharma90",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0090"
     }
  ,  
@@ -1006,9 +1006,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Closed",
-       "CreatedDate":"28/06/201891",
-       "BuyerCreatedBy":"Ankur Sharma91",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0091"
     }
  ,  
@@ -1017,9 +1017,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Closed",
-       "CreatedDate":"28/06/201892",
-       "BuyerCreatedBy":"Ankur Sharma92",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0092"
     }
  ,  
@@ -1028,9 +1028,9 @@ export const data2 = [
        "Customer":"Cust004",
        "Name":"LG",
        "Status":"Closed",
-       "CreatedDate":"28/06/201893",
-       "BuyerCreatedBy":"Ankur Sharma93",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0093"
     }
  ,  
@@ -1039,9 +1039,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"Closed",
-       "CreatedDate":"28/06/201894",
-       "BuyerCreatedBy":"Ankur Sharma94",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0094"
     }
  ,  
@@ -1049,10 +1049,10 @@ export const data2 = [
        "Inquiry":95,
        "Customer":"Cust001",
        "Name":"Samsung",
-       "Status":"Cancled",
-       "CreatedDate":"28/06/201895",
-       "BuyerCreatedBy":"Ankur Sharma95",
-       "ValidUntil":"10/07/2018",
+       "Status":"Canceled",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0095"
     }
  ,  
@@ -1061,9 +1061,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"New",
-       "CreatedDate":"28/06/201896",
-       "BuyerCreatedBy":"Ankur Sharma96",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0096"
     }
  ,  
@@ -1072,9 +1072,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"New",
-       "CreatedDate":"28/06/201897",
-       "BuyerCreatedBy":"Ankur Sharma97",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0097"
     }
  ,  
@@ -1083,9 +1083,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"New",
-       "CreatedDate":"28/06/201898",
-       "BuyerCreatedBy":"Ankur Sharma98",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0098"
     }
  ,  
@@ -1094,9 +1094,9 @@ export const data2 = [
        "Customer":"Cust001",
        "Name":"Samsung",
        "Status":"New",
-       "CreatedDate":"28/06/201899",
-       "BuyerCreatedBy":"Ankur Sharma99",
-       "ValidUntil":"10/07/2018",
+       "CreatedDate":"11/15/2018",
+       "BuyerCreatedBy":"Ankur Sharma",
+       "ValidUntil":"10/17/2018",
        "Reference":"Ref0099"
     }
  ]

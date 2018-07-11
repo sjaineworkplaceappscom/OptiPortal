@@ -12,4 +12,4 @@ export class TempPurchaseInquiryItemModel{
     ShipToLocation: string; 
 
     
-}
+} 
