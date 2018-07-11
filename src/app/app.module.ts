@@ -52,6 +52,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs'
 import { UploadModule } from '@progress/kendo-angular-upload'
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { CustomFilterPipe } from './custom-filter.pipe';
+import { CustomPipeItemPipe } from './custom-pipe-item.pipe';
 
 
 
@@ -90,7 +91,8 @@ const routes: Routes = [
     ApproveUsersComponent,
     ConfirmPasswordEquilValidatorDirectiveDirective,
     LandingComponent,
-    CustomFilterPipe
+    CustomFilterPipe,
+    CustomPipeItemPipe
   ],
   imports: [
     FormsModule,
