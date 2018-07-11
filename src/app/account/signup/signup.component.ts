@@ -48,7 +48,7 @@ export class SignupComponent implements OnInit {
   invalidCompanyId: boolean = false;
 
   constructor(private accountService: AccountService, private router: Router, private commonService: Commonservice, ) { 
-    this.generatePurchaseRequestData();
+    
   }
 
   ngOnInit() {

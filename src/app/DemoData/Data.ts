@@ -9,7 +9,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":1
     }
  ,  
     {  
@@ -21,7 +22,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":1
     }
  ,  
     {  
@@ -33,7 +35,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":1
     }
  ,  
     {  
@@ -45,7 +48,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Ujjain"
+       "ShipToLocation":"Ujjain",
+       "InquiryId":1
     }
  ,  
  {  
@@ -57,7 +61,8 @@ export const data = [
     "Requester":"Ankur Sharma",
     "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-    "ShipToLocation":"Indore"
+    "ShipToLocation":"Indore",
+    "InquiryId":1
  }
 ,  
  {  
@@ -69,7 +74,8 @@ export const data = [
     "Requester":"Ankur Sharma",
     "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-    "ShipToLocation":"Indore"
+    "ShipToLocation":"Indore",
+    "InquiryId":1
  }
 ,  
  {  
@@ -81,7 +87,8 @@ export const data = [
     "Requester":"Ankur Sharma",
     "RequestDate":"11/09/2018",
     "RequiredDate":"12/27/2018",
-    "ShipToLocation":"Indore"
+    "ShipToLocation":"Indore",
+    "InquiryId":2
  }
 ,  
  {  
@@ -93,7 +100,8 @@ export const data = [
     "Requester":"Ankur Sharma",
     "RequestDate":"11/09/2018",
     "RequiredDate":"12/27/2018",
-    "ShipToLocation":"Ujjain"
+    "ShipToLocation":"Ujjain",
+    "InquiryId":2
  }
  ,  
     {  
@@ -105,7 +113,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":2
     }
  ,  
     {  
@@ -117,7 +126,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Pune"
+       "ShipToLocation":"Pune",
+       "InquiryId":2
     }
  ,  
     {  
@@ -129,7 +139,8 @@ export const data = [
        "Requester":"Prashant Shrivastav",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Irvine ca"
+       "ShipToLocation":"Irvine ca",
+       "InquiryId":2
     }
  ,  
     {  
@@ -141,7 +152,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":2
     }
  ,  
     {  
@@ -153,7 +165,8 @@ export const data = [
        "Requester":"Aryan Vyas",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Ujjain"
+       "ShipToLocation":"Ujjain",
+       "InquiryId":3
     }
  ,  
     {  
@@ -165,7 +178,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":3
     }
  ,  
     {  
@@ -177,7 +191,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":3
     }
  ,  
     {  
@@ -189,7 +204,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":3
     }
  ,  
     {  
@@ -201,7 +217,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":3
     }
  ,  
     {  
@@ -213,7 +230,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":3
     }
  ,  
     {  
@@ -225,7 +243,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":3
     }
  ,  
     {  
@@ -237,7 +256,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":3
     }
  ,  
     {  
@@ -249,7 +269,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Ujjain"
+       "ShipToLocation":"Ujjain",
+       "InquiryId":3
     }
  ,  
     {  
@@ -261,7 +282,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":3
     }
  ,  
     {  
@@ -273,7 +295,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":4
     }
  ,  
     {  
@@ -285,7 +308,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":4
     }
  ,  
     {  
@@ -297,7 +321,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":4
     }
  ,  
     {  
@@ -309,7 +334,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"11/09/2018",
        "RequiredDate":"12/27/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":4
     }
  ,  
     {  
@@ -321,7 +347,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":4
     }
  ,  
     {  
@@ -333,7 +360,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":4
     }
  ,  
     {  
@@ -345,7 +373,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":4
     }
  ,  
     {  
@@ -357,7 +386,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":4
     }
  ,  
     {  
@@ -369,7 +399,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":4
     }
  ,  
     {  
@@ -381,7 +412,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":4
     }
  ,  
     {  
@@ -393,7 +425,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":4
     }
  ,  
     {  
@@ -405,7 +438,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":5
     }
  ,  
     {  
@@ -417,7 +451,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":5
     }
  ,  
     {  
@@ -429,7 +464,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":5
     }
  ,  
     {  
@@ -441,7 +477,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":5
     }
  ,  
     {  
@@ -453,7 +490,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":5
     }
  ,  
     {  
@@ -465,7 +503,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":5
     }
  ,  
     {  
@@ -477,7 +516,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":6
     }
  ,  
     {  
@@ -489,7 +529,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":6
     }
  ,  
     {  
@@ -501,7 +542,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":6
     }
  ,  
     {  
@@ -513,7 +555,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":6
     }
  ,  
     {  
@@ -525,7 +568,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":6
     }
  ,  
     {  
@@ -537,7 +581,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":6
     }
  ,  
     {  
@@ -549,7 +594,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":6
     }
  ,  
     {  
@@ -561,7 +607,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":6
     }
  ,  
     {  
@@ -573,7 +620,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Ujjain"
+       "ShipToLocation":"Ujjain",
+       "InquiryId":6
     }
  ,  
     {  
@@ -585,7 +633,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Pune"
+       "ShipToLocation":"Pune",
+       "InquiryId":6
     }
  ,  
     {  
@@ -597,7 +646,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":6
     }
  ,  
     {  
@@ -609,7 +659,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -621,7 +672,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -633,7 +685,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -645,7 +698,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -657,7 +711,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -669,7 +724,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -681,7 +737,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -693,7 +750,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -705,7 +763,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -717,7 +776,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -729,7 +789,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -741,7 +802,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -753,7 +815,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -765,7 +828,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":7
     }
  ,  
     {  
@@ -777,7 +841,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":8
     }
  ,  
     {  
@@ -789,7 +854,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":8
     }
  ,  
     {  
@@ -801,7 +867,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":8
     }
  ,  
     {  
@@ -813,7 +880,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":8
     }
  ,  
     {  
@@ -825,7 +893,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":8
     }
  ,  
     {  
@@ -837,7 +906,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":8
     }
  ,  
     {  
@@ -849,7 +919,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":8
     }
  ,  
     {  
@@ -861,7 +932,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":8
     }
  ,  
     {  
@@ -873,7 +945,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":8
     }
  ,  
     {  
@@ -885,7 +958,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":8
     }
  ,  
     {  
@@ -897,7 +971,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":8
     }
  ,  
     {  
@@ -909,7 +984,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":9
     }
  ,  
     {  
@@ -921,7 +997,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":9
     }
  ,  
     {  
@@ -933,7 +1010,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":9
     }
  ,  
     {  
@@ -945,7 +1023,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":9
     }
  ,  
     {  
@@ -957,7 +1036,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":9
     }
  ,  
     {  
@@ -969,7 +1049,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":9
     }
  ,  
     {  
@@ -981,7 +1062,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":9
     }
  ,  
     {  
@@ -993,7 +1075,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":9
     }
  ,  
     {  
@@ -1005,7 +1088,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":9
     }
  ,  
     {  
@@ -1017,7 +1101,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":9
     }
  ,  
     {  
@@ -1029,7 +1114,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":10
     }
  ,  
     {  
@@ -1041,7 +1127,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":10
     }
  ,  
     {  
@@ -1053,7 +1140,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":10
     }
  ,  
     {  
@@ -1065,7 +1153,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":10
     }
  ,  
     {  
@@ -1077,7 +1166,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":10
     }
  ,  
     {  
@@ -1089,7 +1179,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":10
     }
  ,  
     {  
@@ -1101,7 +1192,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":11
     }
  ,  
     {  
@@ -1113,7 +1205,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":11
     }
  ,  
     {  
@@ -1125,7 +1218,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":11
     }
  ,  
     {  
@@ -1137,7 +1231,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":11
     }
  ,  
     {  
@@ -1149,7 +1244,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":11
     }
  ,  
     {  
@@ -1161,7 +1257,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":11
     }
  ,  
     {  
@@ -1173,7 +1270,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":12
     }
  ,  
     {  
@@ -1185,7 +1283,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":12
     }
  ,  
     {  
@@ -1197,7 +1296,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":12
     }
  ,  
     {  
@@ -1209,7 +1309,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":12
     }
  ,  
     {  
@@ -1221,7 +1322,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":12
     }
  ,  
     {  
@@ -1233,7 +1335,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":12
     }
  ,  
     {  
@@ -1245,7 +1348,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":12
     }
  ,  
     {  
@@ -1257,7 +1361,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":13
     }
  ,  
     {  
@@ -1269,7 +1374,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":13
     }
  ,  
     {  
@@ -1281,7 +1387,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":13
     }
  ,  
     {  
@@ -1293,7 +1400,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":13
     }
  ,  
     {  
@@ -1305,7 +1413,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":13
     }
  ,  
     {  
@@ -1317,7 +1426,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":13
     }
  ,  
     {  
@@ -1329,7 +1439,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1341,7 +1452,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1353,7 +1465,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1365,7 +1478,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1377,7 +1491,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1389,7 +1504,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1401,7 +1517,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1413,7 +1530,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1425,7 +1543,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1437,7 +1556,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1449,7 +1569,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1461,7 +1582,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1473,7 +1595,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1485,7 +1608,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1497,7 +1621,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1509,7 +1634,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1521,7 +1647,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1533,7 +1660,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1545,7 +1673,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1557,7 +1686,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1569,7 +1699,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1581,7 +1712,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":14
     }
  ,  
     {  
@@ -1593,7 +1725,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":15
     }
  ,  
     {  
@@ -1605,7 +1738,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":15
     }
  ,  
     {  
@@ -1617,7 +1751,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":15
     }
  ,  
     {  
@@ -1629,7 +1764,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":15
     }
  ,  
     {  
@@ -1641,7 +1777,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":15
     }
  ,  
     {  
@@ -1653,7 +1790,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":15
     }
  ,  
     {  
@@ -1665,7 +1803,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1677,7 +1816,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1689,7 +1829,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1701,7 +1842,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1713,7 +1855,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1725,7 +1868,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1737,7 +1881,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1749,7 +1894,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1761,7 +1907,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1773,7 +1920,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1785,7 +1933,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1797,7 +1946,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1809,7 +1959,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1821,7 +1972,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1833,7 +1985,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":16
     }
  ,  
     {  
@@ -1845,7 +1998,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -1857,7 +2011,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -1869,7 +2024,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -1881,7 +2037,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -1893,7 +2050,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -1905,7 +2063,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -1917,7 +2076,8 @@ export const data = [
        "Requester":"Ankur Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -1929,7 +2089,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -1941,7 +2102,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -1953,7 +2115,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -1965,7 +2128,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -1977,7 +2141,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -1989,7 +2154,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -2001,7 +2167,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -2013,7 +2180,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -2025,7 +2193,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -2037,7 +2206,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -2049,7 +2219,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":17
     }
  ,  
     {  
@@ -2061,7 +2232,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2073,7 +2245,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2085,7 +2258,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2097,7 +2271,8 @@ export const data = [
        "Requester":"Shashank Jain",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Banglore"
+       "ShipToLocation":"Banglore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2109,7 +2284,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2121,7 +2297,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2133,7 +2310,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2145,7 +2323,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2157,7 +2336,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2169,7 +2349,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2181,7 +2362,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2193,7 +2375,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"07/21/2017",
        "RequiredDate":"07/27/2017",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2205,7 +2388,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2217,7 +2401,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2229,7 +2414,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2241,7 +2427,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2253,7 +2440,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2265,7 +2453,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2277,7 +2466,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":18
     }
  ,  
     {  
@@ -2289,7 +2479,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":19
     }
  ,  
     {  
@@ -2301,7 +2492,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":19
     }
  ,  
     {  
@@ -2313,7 +2505,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":19
     }
  ,  
     {  
@@ -2325,7 +2518,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":19
     }
  ,  
     {  
@@ -2337,7 +2531,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":19
     }
  ,  
     {  
@@ -2349,7 +2544,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":19
     }
  ,  
     {  
@@ -2361,7 +2557,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":19
     }
  ,  
     {  
@@ -2373,7 +2570,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":19
     }
  ,  
     {  
@@ -2385,7 +2583,8 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":19
     }
  ,  
     {  
@@ -2397,6 +2596,7 @@ export const data = [
        "Requester":"Ankur Sharma",
        "RequestDate":"20/06/2018",
        "RequiredDate":"28/06/2018",
-       "ShipToLocation":"Indore"
+       "ShipToLocation":"Indore",
+       "InquiryId":19
     }
  ]

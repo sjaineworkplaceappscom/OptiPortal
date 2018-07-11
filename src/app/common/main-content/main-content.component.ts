@@ -23,6 +23,7 @@ import {TempPurchaseInquiryItemModel} from '../../tempmodels/temppurchase-inquir
 import { IntlService } from '@progress/kendo-angular-intl';
 import { PurchaseInquiryItemModel } from '../../models/purchaserequest/purchase-inquiry-item';
 import { PurchaseInquiryModel } from '../../models/purchaserequest/purchase-inquiry';
+import { attachment } from '../../DemoData/Attachment';
 
 //declare var $: any;
 
@@ -67,6 +68,7 @@ export class MainContentComponent implements OnInit {
 
     constructor(private commonService: Commonservice,private intl: IntlService) {
         this.approveUser = false;
+        
     }
     
     // tab function
@@ -133,6 +135,7 @@ export class MainContentComponent implements OnInit {
 
     // itmes json start
     public gridItemsData: any[] = data;
+    public gridAttachmentData: any[] = attachment;
 
     addItemt() {
         this.gridSectionItem.nativeElement.style.display = 'block';
@@ -308,6 +311,8 @@ export class MainContentComponent implements OnInit {
 
     // show and hide right content section
     openRightSection(status) {
+        //initialize all data first (for dummy data only)
+        this.gridItemsData = [];
         //this.purchaseInquiryForUpdate = new TempPurchaseInquiryModel();
         this.resetValuesForAddInquiry();
         this.isFixedRightSection = status;
@@ -316,6 +321,7 @@ export class MainContentComponent implements OnInit {
     purchaseInquiryForUpdate:TempPurchaseInquiryModel = new  TempPurchaseInquiryModel();
     validUntilForUpdate:Date;
     createdDateForUpdate:Date;
+    selectedInquiryId:number = 0;
    /**
     * Method will open the edit item window for selected grid item.
     * @param gridItem 
@@ -323,6 +329,8 @@ export class MainContentComponent implements OnInit {
     * @param status 
     */
    public onInquiryGridDataSelection(gridItem, selection,status) {
+        //initialize all data first (for dummy data only)
+        this.gridItemsData = data;
         //update ui properties.
         this.isFixedRightSection = status;    
         //fatch and parse row value.
@@ -333,7 +341,15 @@ export class MainContentComponent implements OnInit {
         this.purchaseInquiryForUpdate = JSON.parse(JSON.stringify(selectedData));
         this.validUntilForUpdate = new  Date(this.purchaseInquiryForUpdate.ValidUntil);
         this.createdDateForUpdate = new  Date(this.purchaseInquiryForUpdate.CreatedDate);
+        this.selectedInquiryId = this.purchaseInquiryForUpdate.Inquiry;
+        this.setItemDataForInquiry(this.selectedInquiryId);
     
+    }
+    public setItemDataForInquiry(selectedInquiryId:number): void{
+        var itemsRecords = this.gridItemsData.filter(p => p.InquiryId == selectedInquiryId);
+        console.log("Filtered Data:"+ JSON.stringify(itemsRecords));
+        this.gridItemsData = itemsRecords;
+        console.log("GridItems Data:"+ JSON.stringify(this.gridItemsData.length));
     }
     
     /**
@@ -368,7 +384,7 @@ export class MainContentComponent implements OnInit {
      * @param status 
      */
     public onItemGridDataSelection(gridItemsData, selection,status) {
-        
+         console.log("grid data selection change");
         //update ui properties.
         this.gridSectionItem.nativeElement.style.display = 'none';
         this.AddItemFormSection.nativeElement.style.display = 'block';
