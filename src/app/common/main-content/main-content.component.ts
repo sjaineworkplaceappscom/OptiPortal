@@ -37,6 +37,7 @@ export class MainContentComponent implements OnInit {
     isColumnFilter: boolean = false;
     isColumnGroup: boolean = false;
     isColumnFilterItemsGrid: boolean = false;
+    isColumnFilterAttachementsGrid: boolean = false;
     isFixedRightSection: boolean;
     selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
 
