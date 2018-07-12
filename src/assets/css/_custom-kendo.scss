@@ -34,7 +34,7 @@ body{
   
     // remove red error from input field on first time load 
     .ng-untouched.ng-invalid{
-      border-color: rgba(33, 37, 41, 0.15);
+      border-color: $input-border-color;
     }
   
     // bottom space of label 
@@ -215,7 +215,7 @@ body{
 
     // field border color on focus
     .k-input:focus, .k-input.k-state-focused, .k-textbox:focus, .k-textbox.k-state-focused, .k-textarea:focus, .k-textarea.k-state-focused, .k-input.k-textbox:focus, .k-input.k-textbox.k-state-focused {
-      border-color: rgba(33, 37, 41, 0.15);
+      border-color: $input-border-color;
     }
 
     // 3 dots

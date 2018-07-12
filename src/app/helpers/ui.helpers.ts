@@ -22,6 +22,13 @@ export  class UIHelper{
         };  
     }
 
+    // Apply class on the basis of device
+    public static deviceClass(){
+        let isDevice:string;
+        let getDeviceWidth = screen.width;
+        //alert(getDeviceWidth);
+    }
+
     // check is it mobile or not
     public static isMobile():boolean{
         let isMobile:boolean;

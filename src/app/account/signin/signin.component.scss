@@ -70,10 +70,14 @@
 
 // }
 .ng-untouched.ng-invalid{
-  border-color: rgba(33, 37, 41, 0.15);
+  border-color: $input-border-color;
 }
 
 // .opti_account-submodule-container {
 //   margin: 0 auto;
 //   margin-left: auto;
 // }
+
+.opti_signin-logo{
+  padding: 20px 20px 0 20px;
+}

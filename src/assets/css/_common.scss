@@ -347,4 +347,27 @@ body{
             overflow-y: auto;
             height: 130px;
         }
+
+    // Common Search
+    .opti_common-search-form {
+        .k-form-field.opti_common-search-label{
+            float: left;
+            margin: 0 !important;
+            margin-bottom: 0 !important;
+            border: 1px solid $input-border-color;
+            border-radius: 5px;
+            padding-right: 10px;
+            input{
+                width: 150px;
+                float: left;
+                border: none;
+            }
+            span{
+                float: left;
+                height: 32px;
+                margin: 0 !important;
+            }
+        }
+    }
+        
 }

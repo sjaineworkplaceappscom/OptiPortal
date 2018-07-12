@@ -19,11 +19,14 @@ import { UIHelper } from 'src/app/helpers/ui.helpers';
 import { opticonstants } from '../../constants';
 import { stringify } from '@angular/core/src/util';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
-import {TempPurchaseInquiryItemModel} from '../../tempmodels/temppurchase-inquiry-item';
+import { TempPurchaseInquiryItemModel } from '../../tempmodels/temppurchase-inquiry-item';
 import { IntlService } from '@progress/kendo-angular-intl';
 import { PurchaseInquiryItemModel } from '../../models/purchaserequest/purchase-inquiry-item';
 import { PurchaseInquiryModel } from '../../models/purchaserequest/purchase-inquiry';
 import { attachment } from '../../DemoData/Attachment';
+import { SelectEvent } from '@progress/kendo-angular-layout';
+
+import { FileInfo } from '@progress/kendo-angular-upload';
 
 //declare var $: any;
 
@@ -38,6 +41,7 @@ export class MainContentComponent implements OnInit {
     isColumnFilter: boolean = false;
     isColumnGroup: boolean = false;
     isColumnFilterItemsGrid: boolean = false;
+    isColumnFilterAttachementsGrid: boolean = false;
     isFixedRightSection: boolean;
     selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
 
@@ -45,9 +49,11 @@ export class MainContentComponent implements OnInit {
     addnotestring = '';
     noteItemsData: any[];
     noteRequetData: any[];
-    selectedNote:any={};
-    selectedItemNote:any={};
-    systemAdmin:string;
+    selectedNote: any = {};
+    selectedItemNote: any = {};
+    systemAdmin: string;
+    myFiles: Array<FileInfo> = [];
+   
 
 
     @ViewChild('AddItemFormSection') AddItemFormSection;
@@ -57,20 +63,20 @@ export class MainContentComponent implements OnInit {
     @ViewChild('notesgrid') notesgrid;
     @ViewChild('noteform') noteform;
     @ViewChild('editnoteform') editnoteform;
-    
+
 
     @ViewChild('notesitemgrid') notesitemgrid;
     @ViewChild('noteitemform') noteitemform;
     @ViewChild('edititemnoteform') edititemnoteform;
-    
-    
 
 
-    constructor(private commonService: Commonservice,private intl: IntlService) {
+
+
+    constructor(private commonService: Commonservice, private intl: IntlService) {
         this.approveUser = false;
-        
+
     }
-    
+
     // tab function
     openTab(evt, tabName) {
         UIHelper.customOpenTab(evt, tabName);
@@ -98,9 +104,12 @@ export class MainContentComponent implements OnInit {
                 this.selectedThemeColor = data;
             }
         );
-        this.systemAdmin=localStorage.getItem('SystemAdmin');  
+        this.systemAdmin = localStorage.getItem('SystemAdmin');
         this.noteRequetData = JSON.parse(localStorage.getItem("setRequestDynamicNotes"));
         this.noteItemsData = JSON.parse(localStorage.getItem("setItemsDynamicNotes"));
+        this.gridAttachmentData=JSON.parse(localStorage.getItem("AttachmentData"));
+       // localStorage.setItem("AttachmentData",JSON.stringify(this.gridAttachmentData));
+        
         // apply width on opti_TabID
         UIHelper.getWidthOfOuterTab();
         // apply grid height
@@ -146,7 +155,7 @@ export class MainContentComponent implements OnInit {
         this.gridSectionItem.nativeElement.style.display = 'block';
         this.AddItemFormSection.nativeElement.style.display = 'none';
     }
-  
+
     closeRightSection(status) {
         this.isFixedRightSection = status;
     }
@@ -228,57 +237,57 @@ export class MainContentComponent implements OnInit {
         this.noteform.nativeElement.style.display = 'block';
     }
 
-    deleteNote({sender,rowIndex,dataItem}){           
-        this.noteRequetData.splice(rowIndex,1);
-        localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteRequetData));       
+    deleteNote({ sender, rowIndex, dataItem }) {
+        this.noteRequetData.splice(rowIndex, 1);
+        localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteRequetData));
     }
 
-    editNote({sender,rowIndex,dataItem}){        
+    editNote({ sender, rowIndex, dataItem }) {
     }
 
     submitNote(e, action) {
-        if(action == 'add'){
+        if (action == 'add') {
             this.notesgrid.nativeElement.style.display = 'block';
             this.noteform.nativeElement.style.display = 'none';
             let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
-            let dynamicNotes:any[]=JSON.parse(dynamicNotesString);      
-            if(dynamicNotes==undefined  || dynamicNotes.length<=0){
-                dynamicNotes=[];
+            let dynamicNotes: any[] = JSON.parse(dynamicNotesString);
+            if (dynamicNotes == undefined || dynamicNotes.length <= 0) {
+                dynamicNotes = [];
             }
             let date = new Date();
-            let CompleteDate = date.getFullYear() +'/'+ date.getMonth() +'/'+ date.getDate();
+            let CompleteDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
             dynamicNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
             localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
             this.noteRequetData = dynamicNotes;
-        }else{
+        } else {
             this.notesgrid.nativeElement.style.display = 'block';
             this.noteform.nativeElement.style.display = 'none';
         }
-        this.addnotestring='';
+        this.addnotestring = '';
     }
 
     submitItemsNote(e, action) {
-        if(action == 'add'){
+        if (action == 'add') {
             this.notesitemgrid.nativeElement.style.display = 'block';
             this.noteitemform.nativeElement.style.display = 'none';
-            
-            let dynamicItemsNotesString = localStorage.getItem("setItemsDynamicNotes");
-            let dynamicItemsNotes:any[]=JSON.parse(dynamicItemsNotesString);      
 
-            if(dynamicItemsNotes==undefined  || dynamicItemsNotes.length<=0){
-                dynamicItemsNotes=[];
+            let dynamicItemsNotesString = localStorage.getItem("setItemsDynamicNotes");
+            let dynamicItemsNotes: any[] = JSON.parse(dynamicItemsNotesString);
+
+            if (dynamicItemsNotes == undefined || dynamicItemsNotes.length <= 0) {
+                dynamicItemsNotes = [];
             }
 
             let date = new Date();
-            let CompleteDate = date.getFullYear() +'/'+ date.getMonth() +'/'+ date.getDate();
+            let CompleteDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
             dynamicItemsNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
             localStorage.setItem("setItemsDynamicNotes", JSON.stringify(dynamicItemsNotes));
             this.noteItemsData = dynamicItemsNotes;
-        }else{
+        } else {
             this.notesitemgrid.nativeElement.style.display = 'block';
             this.noteitemform.nativeElement.style.display = 'none';
         }
-        this.addnotestring='';
+        this.addnotestring = '';
     }
 
     addNewItemNotes() {
@@ -286,9 +295,9 @@ export class MainContentComponent implements OnInit {
         this.noteitemform.nativeElement.style.display = 'block';
     }
 
-    deleteItemsNote({sender,rowIndex,dataItem}){           
-        this.noteItemsData.splice(rowIndex,1);
-        localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteItemsData));       
+    deleteItemsNote({ sender, rowIndex, dataItem }) {
+        this.noteItemsData.splice(rowIndex, 1);
+        localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteItemsData));
     }
 
     editItemsNotes(e, note) {
@@ -296,95 +305,102 @@ export class MainContentComponent implements OnInit {
         console.log(note);
         this.notesitemgrid.nativeElement.style.display = 'none';
         this.edititemnoteform.nativeElement.style.display = 'block';
-        this.selectedItemNote=note;                
+        this.selectedItemNote = note;
     }
 
-    updateItemNote(e,note:any) {
+    updateItemNote(e, note: any) {
         this.notesitemgrid.nativeElement.style.display = 'block';
         this.edititemnoteform.nativeElement.style.display = 'none';
-        let index=this.noteRequetData.indexOf(this.selectedItemNote);
-        if(index>-1){
-            this.noteItemsData[index].Notes=note.value;
+        let index = this.noteRequetData.indexOf(this.selectedItemNote);
+        if (index > -1) {
+            this.noteItemsData[index].Notes = note.value;
         }
-        
+
     }
 
     // show and hide right content section
     openRightSection(status) {
         //initialize all data first (for dummy data only)
+        console.log("open right section");
         this.gridItemsData = [];
         //this.purchaseInquiryForUpdate = new TempPurchaseInquiryModel();
+        //clearing both inquiry and item.
         this.resetValuesForAddInquiry();
+        this.resetAddItem();
+
         this.isFixedRightSection = status;
     }
 
-    purchaseInquiryForUpdate:TempPurchaseInquiryModel = new  TempPurchaseInquiryModel();
-    validUntilForUpdate:Date;
-    createdDateForUpdate:Date;
-    selectedInquiryId:number = 0;
-   /**
-    * Method will open the edit item window for selected grid item.
-    * @param gridItem 
-    * @param selection 
-    * @param status 
-    */
-   public onInquiryGridDataSelection(gridItem, selection,status) {
+    purchaseInquiryForUpdate: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
+    validUntilForUpdate: Date;
+    createdDateForUpdate: Date;
+    selectedInquiryId: number = 0;
+    /**
+     * Method will open the edit item window for selected grid item.
+     * @param gridItem 
+     * @param selection 
+     * @param status 
+     */
+    public onInquiryGridDataSelection(gridItem, selection, status) {
         //initialize all data first (for dummy data only)
         this.gridItemsData = data;
         //update ui properties.
-        this.isFixedRightSection = status;    
+        this.isFixedRightSection = status;
         //fatch and parse row value.
         let selectedItem = gridItem.data.data[selection.index];
         const selectedData = selection.selectedRows[0].dataItem;
         //  console.log("data: selectedData::"+  JSON.stringify(selectedData));
         //  console.log("data: selectedItem::"+    JSON.stringify(selectedItem));
         this.purchaseInquiryForUpdate = JSON.parse(JSON.stringify(selectedData));
-        this.validUntilForUpdate = new  Date(this.purchaseInquiryForUpdate.ValidUntil);
-        this.createdDateForUpdate = new  Date(this.purchaseInquiryForUpdate.CreatedDate);
+        this.validUntilForUpdate = new Date(this.purchaseInquiryForUpdate.ValidUntil);
+        this.createdDateForUpdate = new Date(this.purchaseInquiryForUpdate.CreatedDate);
         this.selectedInquiryId = this.purchaseInquiryForUpdate.Inquiry;
         this.setItemDataForInquiry(this.selectedInquiryId);
-    
+
     }
-    public setItemDataForInquiry(selectedInquiryId:number): void{
+    public setItemDataForInquiry(selectedInquiryId: number): void {
         var itemsRecords = this.gridItemsData.filter(p => p.InquiryId == selectedInquiryId);
-        console.log("Filtered Data:"+ JSON.stringify(itemsRecords));
+        //console.log("Filtered Data:" + JSON.stringify(itemsRecords));
         this.gridItemsData = itemsRecords;
-        console.log("GridItems Data:"+ JSON.stringify(this.gridItemsData.length));
+        console.log("GridItems Data:" + JSON.stringify(this.gridItemsData.length));
     }
-    
+
     /**
      * This method will reset the model and date object for add form.
      */
-    resetValuesForAddInquiry(){
+    resetValuesForAddInquiry() {
         this.purchaseInquiryForUpdate = new TempPurchaseInquiryModel();
-        this.validUntilForUpdate = new  Date();
-        this.createdDateForUpdate = new  Date();
+        this.validUntilForUpdate = new Date();
+        this.createdDateForUpdate = new Date();
+        this.selectedInquiryId = 0;
+        
     }
-    
+
     /**
      * this method shows a side form on add click.
      */
     showItemSection() {
         //reseting the model which is bind with this view at edit time also
-        this.purchaseItemsModelForUpdate = new TempPurchaseInquiryItemModel();
+        this.resetAddItem();
         //Setting ui property for hiding and showing the right side form.
         this.gridSectionItem.nativeElement.style.display = 'none';
         this.AddItemFormSection.nativeElement.style.display = 'block';
         //console.log("show item section");
-        this.resetAddItem();
+      
     }
 
-    purchaseItemsModelForUpdate:TempPurchaseInquiryItemModel =new TempPurchaseInquiryItemModel();
-    requestDate:Date;
-    requiredDate:Date;
+    purchaseItemsModelForUpdate: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
+    requestDate: Date;
+    requiredDate: Date;
+    selectedItemId: number = 0;
     /**
      * Method will open the edit item window for selected grid item.
      * @param gridItemsData 
      * @param selection 
      * @param status 
      */
-    public onItemGridDataSelection(gridItemsData, selection,status) {
-         console.log("grid data selection change");
+    public onItemGridDataSelection(gridItemsData, selection, status) {
+        console.log("grid data selection change");
         //update ui properties.
         this.gridSectionItem.nativeElement.style.display = 'none';
         this.AddItemFormSection.nativeElement.style.display = 'block';
@@ -396,39 +412,58 @@ export class MainContentComponent implements OnInit {
         // console.log("data: selectedData::"+  JSON.stringify(selectedData));
         // console.log("data: selectedItem::"+    JSON.stringify(selectedItem));
         this.purchaseItemsModelForUpdate = JSON.parse(JSON.stringify(selectedData));
-        this.requestDate = new  Date(this.purchaseItemsModelForUpdate.RequestDate);
-        this.requiredDate = new  Date(this.purchaseItemsModelForUpdate.RequiredDate);
+        this.requestDate = new Date(this.purchaseItemsModelForUpdate.RequestDate);
+        this.requiredDate = new Date(this.purchaseItemsModelForUpdate.RequiredDate);
+          this.selectedItemId = this.purchaseItemsModelForUpdate.PurchaseInquiryItemlId;
     }
+
+    selectEventHandler(e: any) {
+        e.files.forEach((file) =>
+            this.gridAttachmentData.push(
+                {
+                    "AttachmentId": this.gridAttachmentData.length+1,
+                    "FileName": file.name,
+                    "FilePath": "C:/Files/" + file.name,
+                    "ParentId": 1,
+                    "GrandParentId": 2 
+                }
+            )        
+        ); 
+        localStorage.setItem("AttachmentData",JSON.stringify(this.gridAttachmentData)); 
+        var itemsRecords = this.gridAttachmentData.filter(p =>p.GrandParentId == this.selectedInquiryId || p.ParentId == this.selectedItemId 
+            );
+            console.log("ITemsRecords:"+JSON.stringify(itemsRecords));
+            console.log("AttachementData:"+JSON.stringify(this.gridAttachmentData));
+    }
+
     /**
      * this method will reset the model and date object for add form.
      */
-    resetAddItem(){
+    resetAddItem() {
         this.purchaseItemsModelForUpdate = new TempPurchaseInquiryItemModel();
-        this.requestDate = new  Date();
-        this.requiredDate = new  Date();
+        this.requestDate = new Date();
+        this.requiredDate = new Date();
+        this.selectedItemId = 0;
+        
     }
-    
-   editNotes(e, note) {
+
+    editNotes(e, note) {
         console.log(e);
         console.log(note);
         this.notesgrid.nativeElement.style.display = 'none';
         this.editnoteform.nativeElement.style.display = 'block';
-        this.selectedNote=note;                
-   }
-
-    
-
-    
+        this.selectedNote = note;
+    }
 
     updateNote(e) {
         this.notesgrid.nativeElement.style.display = 'block';
         this.editnoteform.nativeElement.style.display = 'none';
-        
-       let index=this.noteRequetData.indexOf(this.selectedNote);
-       if(index>-1){
-           this.noteRequetData[index].Notes=this.selectedNote.Notes;
-       }
-        
+
+        let index = this.noteRequetData.indexOf(this.selectedNote);
+        if (index > -1) {
+            this.noteRequetData[index].Notes = this.selectedNote.Notes;
+        }
+
     }
 
     public noteStatus: Array<{ text: string, value: string }> = [

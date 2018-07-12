@@ -1,16 +1,64 @@
-<div id="opti_landingpageID">
-  <div class="opti_outer-landing">
-      <div class="opti_vertcal-align-outer-box">
-          <div class="panel-body opti_position-relative"  [perfectScrollbar]="config">
-              <div class="float-left">
-                <img src="assets/images/logo/large-logo.png" />
+<div id="opti_landingpageID" class="opti_account-submodule-wrapper">
+
+    <!-- <div class="float-left opti_account-banner-section">
+    </div>
+
+    <div class="float-right opti_account-form-section">
+      <div class="opti_outer-landing">
+          <div class="opti_vertcal-align-outer-box">
+              <div class="panel-body opti_position-relative"  [perfectScrollbar]="config">
+                  <div class="">
+                    <img src="assets/images/logo/large-logo.png" />
+                  </div>
+                  <div class="opti_landing-link">
+                    <button (click)="navigateToSignUp(1)" class="">Customer Sign Up</button> 
+                    <button (click)="navigateToSignUp(2)" class="">Vendor Sign Up</button>
+                    <button (click)="navigateToSignIn()" class=""> Login</button>
+                  </div>  
               </div>
-              <div class="float-right opti_landing-link">
-                <button (click)="navigateToSignUp(1)" class="opti_remove-button-css">Customer Sign Up</button> 
-                <button (click)="navigateToSignUp(2)" class="opti_remove-button-css">Vendor Sign Up</button>
-                <button (click)="navigateToSignIn()" class="opti_remove-button-css"> Login</button>
-              </div>  
+          </div>    
+      </div>
+    </div> -->
+
+
+
+
+
+
+      <div class="float-left opti_account-banner-section">
+      </div>
+  
+      <div class="float-right opti_account-form-section">
+          <div class="opti_outer-landing opti_account-submodule-container">
+            <div class="opti_vertcal-align-outer-box">
+                <div class="panel-body opti_position-relative" [perfectScrollbar]="config">
+                    
+                    <img src="assets/images/logo/large-logo.png" alt="brandlogo" class="opti_account-logo">
+
+                    <div class="opti_landing-link">
+                      <button (click)="navigateToSignIn()" class=""> Login</button>
+                      <button (click)="navigateToSignUp(1)" class="">Customer Sign Up</button> 
+                      <button (click)="navigateToSignUp(2)" class="">Vendor Sign Up</button>
+                    </div>
+                  
+                </div>
+            </div>    
           </div>
-      </div>    
-  </div>
+      </div>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
