@@ -34,7 +34,8 @@
   app-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
   .opti_user-profile-drop-down li.opti_mouse-pointer:hover,
   li.opti_list:hover,
-  ul.opti_liststyle-one-ul .opti_liststyle-one-li:hover
+  ul.opti_liststyle-one-ul .opti_liststyle-one-li:hover,
+  app-left #opti_LeftPanelID .opti_left-nav-ul li.active
   {
       background-color: var(--kendo-light-primary-hover-color);
   }
@@ -69,7 +70,8 @@
 
   .k-grid-header thead tr th a.k-link,
   .k-indicator-container,
-  a, h1, h2, h3, h4, h5, h6{
+  a, h1, h2, h3, h4, h5, h6,
+  .k-grid-header .k-header{
       color: var(--kendo-primary-color);
   }
 
