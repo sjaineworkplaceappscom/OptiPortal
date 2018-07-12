@@ -87,9 +87,15 @@ body{
         border-top-right-radius: 5px;
       }
       .k-grid-header .k-header > .k-link {
-          padding: 5px;
+          // padding: 5px;
           font-size: 12px;
       }
+
+      .k-grid-header th.k-header {
+        padding: 5px;
+        font-size: 12px;
+      }
+
       .k-grid-table{
         font-size: 12px;
       }

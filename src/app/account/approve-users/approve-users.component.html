@@ -1,12 +1,21 @@
-<div>
+<!-- <div>
   <div style="text-align: center;">
-    <p >Inactive Users
+    <p >User Requests Pending for Approval
       <button (click)="approveUsers()">Approve</button>
       <button (click)="rejectUsers()">Reject</button>
     </p>
   </div>
-  <kendo-grid [kendoGridSelectBy]="'UserId'" [selectable]=true [selectedKeys]="mySelection" [kendoGridBinding]="items" [pageSize]="10"
-    [pageable]="true" [sortable]="true" [filterable]="true" [groupable]="true">
+  <kendo-grid 
+  [kendoGridSelectBy]="'UserId'" 
+  [selectable]=true 
+  [selectedKeys]="mySelection" 
+  [kendoGridBinding]="items" 
+  [pageSize]="10"
+  [pageable]="true" 
+  [sortable]="true" 
+  [filterable]="true" 
+  [groupable]="true">
+
     <kendo-grid-checkbox-column showSelectAll="true" title="Approve" [width]="30"></kendo-grid-checkbox-column>
     <kendo-grid-column field="FullName" title="User Name" [width]="40"></kendo-grid-column>
     <kendo-grid-column field="UserId" hidden=true [width]="40"></kendo-grid-column>
@@ -18,6 +27,106 @@
 
   </kendo-grid>
 
-</div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<kendo-grid 
+[kendoGridSelectBy]="'UserId'" 
+[selectedKeys]="mySelection"
+[kendoGridBinding]="items | customPipeItem:searchRequest" 
+[resizable]="false" 
+[pageSize]="50" 
+[pageable]="true" 
+[sortable]="true"  
+[filterable]=isColumnApprovedUserFilter
+[groupable]=isColumnApprovedUserGroup 
+[columnMenu]="{ columnChooser: false }" 
+[height]=gridHeight 
+[selectable]="true" 
+>
+
+                <!-- (click)="openRightSection(true)" -->
+
+                <!-- grid template start -->
+                <ng-template kendoGridToolbarTemplate>
+                    <!-- show hide column start show hide -->
+                    <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
+
+                    <!-- checkbox -->
+                    <form class="k-form opti_show-hide-grid-column-filter float-left">
+                        <div class="k-form-field float-left">
+                            <input type="checkbox" id="opti_ColumnApprovedUserFilterID" [(ngModel)]="isColumnApprovedUserFilter" class="k-checkbox" name="columnfilter" />
+                            <label class="k-checkbox-label" for="opti_ColumnApprovedUserFilterID">Enable Filter</label>
+                        </div>
+
+                        <!-- <div class="k-form-field float-left">
+                            <input type="checkbox" id="opti_ColumnApprovedUserGroupID" [(ngModel)]="isColumnApprovedUserGroup" class="k-checkbox" name="columnGroup" />
+                            <label class="k-checkbox-label" for="opti_ColumnApprovedUserGroupID">Enable Grouping</label>
+                        </div> -->
+                        
+                    </form>
+
+                    <!-- export -->
+                    <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
+                        <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+                    </button>
+
+
+                    <div class="float-right">
+                        <!-- <svg-icon src="assets/images/common/add.svg" (click)="openRightSection(true)" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                            class="opti_vertical-align float-left opti_icon-spacing" style="height: 30px;margin-left: 20px;cursor: pointer;display: inline-flex;"></svg-icon> -->
+
+                        <div class="opti_approved-user-msg">                            
+                            <!-- <span style="font-size: 12px;">User Requests Pending for Approval </span> -->
+                            <button (click)="approveUsers()">Approve</button>
+                            <button (click)="rejectUsers()">Reject</button>
+                        </div>
+
+                        <!-- <form class="k-form opti_common-search-form float-left opti_padding-zero">
+                            <label class="k-form-field opti_common-search-label">
+                                <input type="text" class="k-textbox" name="searchRequest" [(ngModel)]="searchRequest" />
+                                <span class="opti_vertical-align opti_mouse-pointer"><img src="assets/images/common/search.svg" class="" alt="Search" width="15" /></span>
+                            </label>
+                        </form> -->
+                    </div>
+                </ng-template>
+
+                <!-- grid template end -->
+                <kendo-grid-checkbox-column title="Select" [width]="30"></kendo-grid-checkbox-column>
+                <kendo-grid-column field="FullName" title="User Name" [width]="40"></kendo-grid-column>
+                <kendo-grid-column field="UserId" hidden=true [width]="40"></kendo-grid-column>
+                <kendo-grid-column field="LoginEmail" title="Email" [width]="40"></kendo-grid-column>
+                <kendo-grid-column field="ParentName" title="Parent" [width]="40"></kendo-grid-column>
+                <kendo-grid-column field="ParentTypeString" title="Parent Type" [width]="40"></kendo-grid-column>
+                <kendo-grid-column field="TenantName" [width]="40" title="Tenant Name"></kendo-grid-column>
+
+                <!-- xlsx template start -->
+                <kendo-grid-excel fileName="ApprovedUser.xlsx"></kendo-grid-excel>
+                <!-- xlsx template end -->
+
+            </kendo-grid>
 
 

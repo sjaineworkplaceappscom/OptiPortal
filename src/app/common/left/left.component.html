@@ -17,7 +17,7 @@
     <section class="opti_left-navigation opti_position-relative" [perfectScrollbar]="config">
             <ul  class="opti_left-nav-ul" *ngIf="systemAdmin!='true'">   
                 <li><a href="javascript:void('0');"> <svg-icon src="assets/images/left-panel/dashboard.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Dashboard</span></a></li>
-                <li><a href="javascript:void('0');"> <svg-icon src="assets/images/left-panel/Purchase-Inquiries.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Purchase Inquiries</span></a></li>
+                <li class="active"><a href="javascript:void('0');"> <svg-icon src="assets/images/left-panel/Purchase-Inquiries.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Purchase Inquiries</span></a></li>
                 <li><a href="javascript:void('0');"> <svg-icon src="assets/images/left-panel/Sales-Quotations.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Sales Quotations</span></a></li>
                 <li><a href="javascript:void('0');"> <svg-icon src="assets/images/left-panel/Customer-Purchase-Order.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Customer Purchase Order</span></a></li>
                 <li><a href="javascript:void('0');"> <svg-icon src="assets/images/left-panel/Sales-Order.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Sales Order</span></a></li>
@@ -28,7 +28,7 @@
                 <li><a href="javascript:void('0');"> <svg-icon src="assets/images/left-panel/Customer-Contacts.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Customer Contacts</span></a></li>
             </ul>
             <ul class="opti_left-nav-ul" *ngIf="systemAdmin=='true'">
-                    <li><a href="javascript:void('0');"  (click)=navigate()> <svg-icon src="assets/images/left-panel/Customer-Contacts.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Approve Users</span></a></li>
+                    <li class="active"><a href="javascript:void('0');"  (click)=navigate()> <svg-icon src="assets/images/left-panel/Customer-Contacts.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Pending Requests</span></a></li>
             </ul>
     </section>
 
