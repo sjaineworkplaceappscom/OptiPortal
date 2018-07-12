@@ -53,8 +53,8 @@
 
                 <!-- grid template end -->
                 <kendo-grid-column field="Inquiry" title="Id" [width]="160" ></kendo-grid-column>
-                <kendo-grid-column field="Customer" title="Customer Id" [width]="140"></kendo-grid-column>
-                <kendo-grid-column field="Name" [width]="140" title="Customer Name"></kendo-grid-column>
+                <kendo-grid-column field="Customer" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
+                <kendo-grid-column field="Name" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column>
                 <kendo-grid-column field="Status" [width]="140"></kendo-grid-column>
                 <kendo-grid-column field="CreatedDate" title="Created Date" [width]="200"  filter="date" format="{0:d}"></kendo-grid-column>
                 <kendo-grid-column field="BuyerCreatedBy" title="Created By" [width]="140"></kendo-grid-column>

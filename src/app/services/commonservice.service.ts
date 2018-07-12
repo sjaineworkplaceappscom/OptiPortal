@@ -51,7 +51,7 @@ export class Commonservice {
   }
 
   // For signup navigation link
-  private navigatedFromData = new BehaviorSubject<number>(null);
+  private navigatedFromData = new BehaviorSubject<number>(2);
   currentNavigatedFromValue = this.navigatedFromData.asObservable();
 
   public setCurrentNavigatedFromData(value: number) {
