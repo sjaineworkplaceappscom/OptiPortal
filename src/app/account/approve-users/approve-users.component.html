@@ -82,10 +82,10 @@
                             <label class="k-checkbox-label" for="opti_ColumnApprovedUserFilterID">Enable Filter</label>
                         </div>
 
-                        <!-- <div class="k-form-field float-left">
+                        <div class="k-form-field float-left">
                             <input type="checkbox" id="opti_ColumnApprovedUserGroupID" [(ngModel)]="isColumnApprovedUserGroup" class="k-checkbox" name="columnGroup" />
                             <label class="k-checkbox-label" for="opti_ColumnApprovedUserGroupID">Enable Grouping</label>
-                        </div> -->
+                        </div>
                         
                     </form>
 
@@ -95,7 +95,7 @@
                     </button>
 
 
-                    <div class="float-right">
+                    <div class="float-right opti_right-top-sec-grid-approve opti_right-top-sec-grid">
                         <!-- <svg-icon src="assets/images/common/add.svg" (click)="openRightSection(true)" [svgStyle]="{ 'width.px':16, 'height.px':16}"
                             class="opti_vertical-align float-left opti_icon-spacing" style="height: 30px;margin-left: 20px;cursor: pointer;display: inline-flex;"></svg-icon> -->
 
@@ -115,13 +115,13 @@
                 </ng-template>
 
                 <!-- grid template end -->
-                <kendo-grid-checkbox-column title="Select" [width]="30"></kendo-grid-checkbox-column>
-                <kendo-grid-column field="FullName" title="User Name" [width]="40"></kendo-grid-column>
-                <kendo-grid-column field="UserId" hidden=true [width]="40"></kendo-grid-column>
-                <kendo-grid-column field="LoginEmail" title="Email" [width]="40"></kendo-grid-column>
-                <kendo-grid-column field="ParentName" title="Parent" [width]="40"></kendo-grid-column>
-                <kendo-grid-column field="ParentTypeString" title="Parent Type" [width]="40"></kendo-grid-column>
-                <kendo-grid-column field="TenantName" [width]="40" title="Tenant Name"></kendo-grid-column>
+                <kendo-grid-checkbox-column title="Select" [width]="50"></kendo-grid-checkbox-column>
+                <kendo-grid-column field="FullName" title="User Name" [width]="80"></kendo-grid-column>
+                <kendo-grid-column field="UserId" hidden=true [width]="80"></kendo-grid-column>
+                <kendo-grid-column field="LoginEmail" title="Email" [width]="80"></kendo-grid-column>
+                <kendo-grid-column field="ParentName" title="Parent" [width]="80"></kendo-grid-column>
+                <kendo-grid-column field="ParentTypeString" title="Parent Type" [width]="80"></kendo-grid-column>
+                <kendo-grid-column field="TenantName" [width]="40" title="Tenant Name" [width]="140"></kendo-grid-column>
 
                 <!-- xlsx template start -->
                 <kendo-grid-excel fileName="ApprovedUser.xlsx"></kendo-grid-excel>

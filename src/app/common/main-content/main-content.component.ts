@@ -62,6 +62,8 @@ export class MainContentComponent implements OnInit {
     @ViewChild('notesitemgrid') notesitemgrid;
     @ViewChild('noteitemform') noteitemform;
     @ViewChild('edititemnoteform') edititemnoteform;
+
+    @ViewChild('optiTab') optiTab;
     
     
 

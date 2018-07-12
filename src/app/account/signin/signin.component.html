@@ -13,15 +13,17 @@
     <div class="opti_outer-login-form opti_account-submodule-container">    
         <div class="opti_vertcal-align-outer-box">
         <div class="panel-body opti_position-relative" [perfectScrollbar]="config">
-            <div class="opti_fullwidth text-center opti_signin-logo">
-                <img src="assets/images/logo/large-logo.png" alt="brandlogo" class="opti_account-logo">
-            </div>    
+
             <!-- loader start -->
             <div class="opti_loader" *ngIf="showLoader==true">
                 <div class="opti_spinner"></div>
             </div>
             <!-- loader end -->
 
+            <div class="opti_fullwidth text-center opti_signin-logo">
+                <img src="assets/images/logo/large-logo.png" alt="brandlogo" class="opti_account-logo">
+            </div>    
+            
             <!-- <div class="opti_panel-body-inner1"> -->
             <!-- <div class="opti_login-brandlogo"><img src="https://www.optiproerp.com/wp-content/uploads/2018/03/logos-1-1.png" alt="brandlogo"></div> -->
             <form class="k-form" #signInForm="ngForm">
