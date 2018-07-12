@@ -137,9 +137,7 @@ export class SignupComponent implements OnInit {
 
   // On blur of compane id
   getCompaneyDetail() {
-
     this.companyDetail = new CompanyDetail();
-   
     if (this.userType == 2) {
       this.showLoader = true;
       this.accountService.getCustomerByCode(this.companyId).subscribe(
