@@ -38,9 +38,9 @@
                     </button>
 
 
-                    <div class="float-right">
+                    <div class="float-right opti_right-top-sec-grid-purchase opti_right-top-sec-grid">
                         <svg-icon src="assets/images/common/add.svg" (click)="openRightSection(true)" [svgStyle]="{ 'width.px':16, 'height.px':16}"
-                            class="opti_vertical-align float-left opti_icon-spacing opti_add-request" style="height: 30px;margin-left: 20px;cursor: pointer;display: inline-flex;"></svg-icon>
+                            class="opti_vertical-align float-left opti_icon-spacing opti_add-request"></svg-icon>
 
                         <form class="k-form opti_common-search-form float-left opti_padding-zero">
                             <label class="k-form-field opti_common-search-label">
@@ -77,7 +77,7 @@
         class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon>
     <!-- tab start -->
     <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="config">
-        <ul class="opti_tab tabs clearfix" id="opti_TabID">
+        <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
             <li class="opti_tablinks active" (click)="openTab($event, 'home')">
                 <a href="javascript:void('0');">Home</a>
             </li>

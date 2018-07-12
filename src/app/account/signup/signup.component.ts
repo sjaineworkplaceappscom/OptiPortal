@@ -47,13 +47,8 @@ export class SignupComponent implements OnInit {
   // Error Bits
   invalidCompanyId: boolean = false;
 
-<<<<<<< HEAD
-  constructor(private accountService: AccountService, private router: Router, private commonService: Commonservice, ) { 
-    
-=======
   constructor(private accountService: AccountService, private router: Router, private commonService: Commonservice, ) {
-    this.generatePurchaseRequestData();
->>>>>>> 88d1776426b0bd9b99701a137e75c0e02619f5ef
+    //this.generatePurchaseRequestData();
   }
 
   ngOnInit() {
@@ -151,16 +146,12 @@ export class SignupComponent implements OnInit {
 
   // On blur of compane id
   getCompaneyDetail() {
-<<<<<<< HEAD
-    this.companyDetail = new CompanyDetail();
-=======
     if (this.companyId == null || this.companyId == '') {
       return null;
     }
 
     this.companyDetail = new CompanyDetail();
 
->>>>>>> 88d1776426b0bd9b99701a137e75c0e02619f5ef
     if (this.userType == 2) {
       this.showLoader = true;
       this.accountService.getCustomerByCode(this.companyId).subscribe(
@@ -251,7 +242,7 @@ export class SignupComponent implements OnInit {
 
     //convert model to json
     let jsonString: string = JSON.stringify(purchaseInquiryModel);
-    console.log("Json response:" + jsonString);
+    //console.log("Json response:" + jsonString);
   }
 
 }

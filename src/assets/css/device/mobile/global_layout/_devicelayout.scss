@@ -183,10 +183,12 @@ bs-tooltip-container{
 }
 
 
-
-.opti_common-search-form{
-    display: none;
-}
-.opti_add-request{
-    margin-left: 0 !important;
+////////////////////////////
+// Grid ection
+////////////////////////////
+.opti_right-top-sec-grid, .opti_right-top-sec-grid{
+    float: left !important;
+    .opti_add-request{
+        margin-left: 0 !important;
+    }
 }
