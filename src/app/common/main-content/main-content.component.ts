@@ -53,6 +53,8 @@ export class MainContentComponent implements OnInit {
     selectedItemNote: any = {};
     systemAdmin: string;
     myFiles: Array<FileInfo> = [];
+
+    notesSearchValue:any;
    
 
 
@@ -315,12 +317,12 @@ export class MainContentComponent implements OnInit {
         this.selectedItemNote = note;
     }
 
-    updateItemNote(e, note: any) {
+    updateItemNote(e, updatednotevalue: any) {
         this.notesitemgrid.nativeElement.style.display = 'block';
         this.edititemnoteform.nativeElement.style.display = 'none';
         let index = this.noteRequetData.indexOf(this.selectedItemNote);
         if (index > -1) {
-            this.noteItemsData[index].Notes = note.value;
+            this.noteItemsData[index].Notes = updatednotevalue.value;
         }
 
     }
@@ -501,7 +503,7 @@ export class MainContentComponent implements OnInit {
     //editNotes
 
     addItemtagain(){
-        
+
     }
 
 }

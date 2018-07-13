@@ -3,5 +3,6 @@
 export class CompanyDetail{
     CompanyName:string="";
     PrimaryContactName:string="";
-    PrimaryContactEmail:string="";    
+    PrimaryContactEmail:string="";   
+    PrimaryContactPhone:number; 
 }
