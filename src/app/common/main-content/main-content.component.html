@@ -404,12 +404,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <h5>Upload Attachement</h5>
-                    <kendo-upload [saveUrl]="uploadAttachementMasterSaveUrl" [removeUrl]="uploadAttachementMasterRemoveUrl">
+                    <kendo-upload  (select)="selectEventHandler($event)">
                     </kendo-upload>
 
                     <!-- start attachement grid -->
                         <kendo-grid 
-                        [kendoGridBinding]="gridItemsData" 
+                        [data]="gridAttachmentData" 
                         [resizable]="false" 
                         [pageSize]="50" 
                         [pageable]="true" 
@@ -419,7 +419,8 @@
                         [columnMenu]="{ columnChooser: false }" 
                         [height]=gridHeight-41-80 
                         [selectable]="true"
-                        (selectionChange)="onItemGridDataSelection(gridItemsValues, $event, true)" #gridAttachementsValues>
+                        name="gridAttachmentData"
+                       #gridAttachementsValues>
 
                             <!-- grid template start -->
                             <ng-template kendoGridToolbarTemplate>
@@ -445,10 +446,10 @@
                             <!-- grid template end -->
 
                             <!-- grid column start -->
-                            <kendo-grid-column field="PurchaseInquiryItemlId" [width]="160" title=""></kendo-grid-column>
-                            <kendo-grid-column field="ItemDescription" title="Name" [width]="140"></kendo-grid-column>
-                            <kendo-grid-column field="CustomerItemIdOrDescription" title="Size" [width]="200"></kendo-grid-column>
-                            <kendo-grid-column field="Quantitiy" [width]="160" title="Reference"></kendo-grid-column>
+                            <kendo-grid-column field="AttachmentId"  title="AttachmentID"[width]="160" title=""></kendo-grid-column>
+                            <kendo-grid-column field="FileName" title="Name" [width]="140"></kendo-grid-column>
+                            <kendo-grid-column field="Size" title="Size" [width]="200"></kendo-grid-column>
+                            <kendo-grid-column field="FilePath" [width]="160" title="Reference"></kendo-grid-column>
                             <!-- grid column end -->
 
                             <!-- xlsx template start -->

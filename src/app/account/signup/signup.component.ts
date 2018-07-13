@@ -48,7 +48,7 @@ export class SignupComponent implements OnInit {
   invalidCompanyId: boolean = false;
 
   constructor(private accountService: AccountService, private router: Router, private commonService: Commonservice, ) {
-    this.generatePurchaseRequestData();
+    //this.generatePurchaseRequestData();
   }
 
   ngOnInit() {
@@ -161,6 +161,7 @@ export class SignupComponent implements OnInit {
           this.companyDetail = req[0];
           if (this.companyDetail == null || this.companyDetail == undefined) {
             this.invalidCompanyId = true;
+            this.companyDetail = new CompanyDetail();
           }
         }
         ,
@@ -242,7 +243,7 @@ export class SignupComponent implements OnInit {
 
     //convert model to json
     let jsonString: string = JSON.stringify(purchaseInquiryModel);
-    console.log("Json response:" + jsonString);
+    //console.log("Json response:" + jsonString);
   }
 
 }
