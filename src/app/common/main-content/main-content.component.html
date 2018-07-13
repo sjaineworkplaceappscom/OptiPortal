@@ -76,7 +76,7 @@
     <svg-icon src="assets/images/common/back-opposite.svg" (click)="closeRightSection(false)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"
         class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon>
     <!-- tab start -->
-    <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="config">
+    <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="">
         <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
             <li class="opti_tablinks active" (click)="openTab($event, 'home')">
                 <a href="javascript:void('0');">Home</a>
@@ -93,7 +93,7 @@
         </ul>
     </div>
 
-    <div id="home" class="opti_tabcontent opti_position-relative" style="display: block;" [perfectScrollbar]="config">
+    <div id="home" class="opti_tabcontent opti_position-relative" style="display: block;" [perfectScrollbar]="">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -161,7 +161,7 @@
 
     </div>
 
-    <div id="items" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="config">
+    <div id="items" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
 
         <!-- add items form section -->
         <div #AddItemFormSection id="opti_AddItemFormSectionID" style="display: none;">
@@ -399,7 +399,7 @@
 
     </div>
 
-    <div id="attachement" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="config">
+    <div id="attachement" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -464,7 +464,7 @@
         </div>
     </div>
 
-    <div id="notes" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="config">
+    <div id="notes" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">

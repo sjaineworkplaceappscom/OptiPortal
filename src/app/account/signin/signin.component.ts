@@ -22,6 +22,8 @@ export class SigninComponent implements OnInit {
   password: string;
   randomstring = '';
   userNotExist:boolean=false;
+  capchaText;
+  invalidCapcha:boolean=false;
 
   constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: Commonservice) { }
 
@@ -45,16 +47,14 @@ export class SigninComponent implements OnInit {
 
   }
 
-  public async login(userName: string, password: string) {
+  public async login() {
     let userId: string;
-    userName = this.userName;
-    password = this.password;
     
     //reset validation message variables.
     this.userNotExist=false;
     this.isError=false;
 
-    await this.accountService.getUserDetails(userName).subscribe(
+    await this.accountService.getUserDetails(this.userName).subscribe(
       userData => {
         // jsonfy response object.
         let resUserData = JSON.parse(userData);
@@ -77,7 +77,7 @@ export class SigninComponent implements OnInit {
           let data = resUserData[0];
 
           userId = data.LoginUserId;
-          this.generateLogintoken(userId, password, userName);
+          this.generateLogintoken(userId, this.password, this.userName);
 
           localStorage.setItem('LoginUserDetail', userData);
 

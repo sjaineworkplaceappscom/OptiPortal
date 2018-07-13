@@ -427,4 +427,8 @@ export class MainContentComponent implements OnInit {
 
     //editNotes
 
+    addItemtagain(){
+        
+    }
+
 }

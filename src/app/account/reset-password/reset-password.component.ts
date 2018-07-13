@@ -8,6 +8,7 @@ import { AccountService } from '../../services/account.service';
 })
 export class ResetPasswordComponent implements OnInit {
   email:string;
+  showLoader:boolean=false;
   constructor(private accountService:AccountService) { }
 
   ngOnInit() {
