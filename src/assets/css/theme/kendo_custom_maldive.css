@@ -85,7 +85,8 @@ button {
 }
 
 body kendo-grid,
-.opti_left-navigation{
+.opti_left-navigation,
+.opti_right-fix-section{
     box-shadow: 0px 1px 15px var(--kendo-primary-color);
 }
 
