@@ -69,8 +69,11 @@
         height: calc(100% - 65px);
         top: 65px;
         max-width: 100%;
-        border-left: 2px solid #c7c7c7;
+        // border-left: 2px solid #c7c7c7;
         z-index: 99;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        
 
         // tab section under right section
         .opti_tab {
