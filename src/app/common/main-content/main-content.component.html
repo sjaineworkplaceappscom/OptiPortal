@@ -72,13 +72,13 @@
 
 <!-- start right fix section start here -->
 
-<div class="opti_right-fix-section" [ngStyle]="{'display':isFixedRightSection == true ? 'block' : 'none' }">
+<div #optirightfixedsection class="opti_right-fix-section" [ngStyle]="{'display':isFixedRightSection == true ? 'block' : 'none' }">
     <svg-icon src="assets/images/common/back-opposite.svg" (click)="closeRightSection(false)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"
         class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon>
     <!-- tab start -->
     <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="">
         <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
-            <li class="opti_tablinks active" (click)="openTab($event, 'home')">
+            <li class="opti_tablinks" (click)="openTab($event, 'home')">
                 <a href="javascript:void('0');">Home</a>
             </li>
             <li class="opti_tablinks" (click)="openTab($event, 'items')">

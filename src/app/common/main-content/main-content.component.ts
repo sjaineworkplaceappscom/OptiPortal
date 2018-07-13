@@ -55,6 +55,8 @@ export class MainContentComponent implements OnInit {
     myFiles: Array<FileInfo> = [];
 
     notesSearchValue:any;
+
+    isRequestDetail:boolean = false;
    
 
 
@@ -72,6 +74,10 @@ export class MainContentComponent implements OnInit {
     @ViewChild('edititemnoteform') edititemnoteform;
 
     @ViewChild('optiTab') optiTab;
+
+    @ViewChild('optirightfixedsection') optirightfixedsection;
+
+    
     
     
 
@@ -162,9 +168,7 @@ export class MainContentComponent implements OnInit {
         this.AddItemFormSection.nativeElement.style.display = 'none';
     }
 
-    closeRightSection(status) {
-        this.isFixedRightSection = status;
-    }
+  
 
     // status section
     public status: Array<{ text: string, value: string }> = [
@@ -326,6 +330,12 @@ export class MainContentComponent implements OnInit {
 
     // show and hide right content section
     openRightSection(status) {
+        // active home tab section        
+            let abc = this.optirightfixedsection.nativeElement.children;
+            this.optirightfixedsection.nativeElement.children[2].style.display='block'; //content section
+
+            this.optiTab.nativeElement.children[0].classList.add('active'); // tab section
+
         //initialize all data first (for dummy data only)
         console.log("open right section");
         this.gridItemsData = [];
@@ -341,13 +351,31 @@ export class MainContentComponent implements OnInit {
     validUntilForUpdate: Date;
     createdDateForUpdate: Date;
     selectedInquiryId: number = 0;
+
     /**
      * Method will open the edit item window for selected grid item.
      * @param gridItem 
      * @param selection 
      * @param status 
      */
+
+    
     public onInquiryGridDataSelection(gridItem, selection, status) {
+        
+        // if isRequestDetail is false means initially home tab will heighlight if is it true so that case nothing will change 
+        if(this.isRequestDetail == false){
+            // Remove active class from all tab
+                let getList = this.optiTab.nativeElement.children;
+                for (let i = 0; i < getList.length; i++) { 
+                    this.optiTab.nativeElement.children[i].classList.remove('active');
+                }
+
+            // Active home tab and home content
+                this.optirightfixedsection.nativeElement.children[2].style.display='block';
+                this.optiTab.nativeElement.children[0].classList.add('active');
+                this.isRequestDetail = status;
+        }
+        
         //initialize all data first (for dummy data only)
         this.gridItemsData = data;
         //update ui properties.
@@ -364,6 +392,34 @@ export class MainContentComponent implements OnInit {
         this.setItemDataForInquiry(this.selectedInquiryId);
 
     }
+
+    closeRightSection(status) {
+        
+        
+            // this.optirightfixedsection.nativeElement.children[2].style.display='none';
+            // this.optirightfixedsection.nativeElement.children[3].style.display='none';
+            // this.optirightfixedsection.nativeElement.children[4].style.display='none';
+            // this.optirightfixedsection.nativeElement.children[5].style.display='none';
+
+            // hide all tab content
+            for (let i = 2; i <= 5; i++) { 
+                this.optirightfixedsection.nativeElement.children[i].style.display='none';
+            }
+
+            // now if right section will open than home tab will heighlite
+            this.isRequestDetail = false; 
+
+            // Disable all tab
+            let getList = this.optiTab.nativeElement.children;
+            for (let i = 0; i < getList.length; i++) { 
+                this.optiTab.nativeElement.children[i].classList.remove('active');
+            }
+
+
+        this.isFixedRightSection = status;
+    }
+
+
     public setItemDataForInquiry(selectedInquiryId: number): void {
         var itemsRecords = this.gridItemsData.filter(p => p.InquiryId == selectedInquiryId);
         //console.log("Filtered Data:" + JSON.stringify(itemsRecords));
