@@ -4,9 +4,8 @@
 // Original Date: 10 Apr 2018
 //==============================================================================
 
-import { HttpInterceptorHandler, HttpInterceptor } from "@angular/common/http/src/interceptor";
 import { Injectable } from "@angular/core";
-import { HttpRequest, HttpHandler, HttpEvent, HttpHeaders } from "@angular/common/http";
+import { HttpRequest, HttpHandler, HttpEvent, HttpHeaders, HttpInterceptor } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 
 @Injectable()
