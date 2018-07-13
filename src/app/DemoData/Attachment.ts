@@ -4,7 +4,8 @@ export const attachment = [
        "FileName":"Requirement.doc",
        "FilePath":"It785 (wireless keyboard)",
        "ParentId":1,
-       "GrandParentId":2
+       "GrandParentId":2,
+       "Size":"143KB"
     }
  ,  
     {  
@@ -13,6 +14,7 @@ export const attachment = [
         "FilePath":"c/doc/attachement/",
         "ParentId":2,
         "GrandParentId":1,
+        "Size":"143KB"
     }
   ,
     {  
@@ -20,7 +22,8 @@ export const attachment = [
         "FileName":"Requirement.doc",
         "FilePath":"It785 (wireless keyboard)",
         "ParentId":5,
-        "GrandParentId":2
+        "GrandParentId":2,
+        "Size":"143KB"
      }
   ,  
      {  
@@ -29,6 +32,7 @@ export const attachment = [
          "FilePath":"c/doc/attachement/",
          "ParentId":1,
          "GrandParentId":1,
+        "Size":"143KB"
      }
      ,
      {  
@@ -36,7 +40,8 @@ export const attachment = [
         "FileName":"Requirement.doc",
         "FilePath":"It785 (wireless keyboard)",
         "ParentId":5,
-        "GrandParentId":2
+        "GrandParentId":2,
+        "Size":"143KB"
      }
   ,  
      {  
@@ -45,6 +50,7 @@ export const attachment = [
          "FilePath":"c/doc/attachement/",
          "ParentId":1,
          "GrandParentId":1,
+         "Size":"729KB"
      }
      ,
      {  
@@ -52,7 +58,8 @@ export const attachment = [
         "FileName":"meeting.PPT",
         "FilePath":"It785 (wireless keyboard)",
         "ParentId":5,
-        "GrandParentId":2
+        "GrandParentId":2,
+        "Size":"512KB"
      }
   ,  
      {  
@@ -61,6 +68,7 @@ export const attachment = [
          "FilePath":"c/doc/attachement/",
          "ParentId":1,
          "GrandParentId":1,
+         "Size":"974KB"
      }
      ,  
      {  
@@ -69,5 +77,6 @@ export const attachment = [
          "FilePath":"c/doc/attachement/",
          "ParentId":1,
          "GrandParentId":1,
+         "Size":"246KB"
      }
 ]

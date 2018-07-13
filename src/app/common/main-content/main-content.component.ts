@@ -421,18 +421,31 @@ export class MainContentComponent implements OnInit {
           this.selectedItemId = this.purchaseItemsModelForUpdate.PurchaseInquiryItemlId;
     }
 
+    setAllAttachementData(){
+        var attachementRecords = this.gridAttachmentData.filter(p =>p.GrandParentId == this.selectedInquiryId);
+        this.gridAttachmentData = attachementRecords;
+    }
+    setItemAttachementData(){
+        var itemAttachementRecords = this.gridAttachmentData.filter(p =>p.GrandParentId == this.selectedItemId);
+        this.gridAttachmentData = itemAttachementRecords;
+    }
+
     selectEventHandler(e: any) {
+        //this.gridAttachmentData = [];
         e.files.forEach((file) =>
+        
             this.gridAttachmentData.push(
                 {
                     "AttachmentId": this.gridAttachmentData.length+1,
                     "FileName": file.name,
                     "FilePath": "C:/Files/" + file.name,
                     "ParentId": 1,
-                    "GrandParentId": 2 
+                    "GrandParentId": 2 ,
+                    "Size":"729KB"
                 }
             )        
         ); 
+        
         localStorage.setItem("AttachmentData",JSON.stringify(this.gridAttachmentData)); 
         var itemsRecords = this.gridAttachmentData.filter(p =>p.GrandParentId == this.selectedInquiryId || p.ParentId == this.selectedItemId 
             );
