@@ -78,7 +78,6 @@ export class MainContentComponent implements OnInit {
 
     constructor(private commonService: Commonservice, private intl: IntlService) {
         this.approveUser = false;
-
     }
 
     // tab function
@@ -111,8 +110,12 @@ export class MainContentComponent implements OnInit {
         this.systemAdmin = localStorage.getItem('SystemAdmin');
         this.noteRequetData = JSON.parse(localStorage.getItem("setRequestDynamicNotes"));
         this.noteItemsData = JSON.parse(localStorage.getItem("setItemsDynamicNotes"));
-        this.gridAttachmentData=JSON.parse(localStorage.getItem("AttachmentData"));
-       // localStorage.setItem("AttachmentData",JSON.stringify(this.gridAttachmentData));
+        if(localStorage.getItem("AttachmentData")!=null)//{
+            this.gridAttachmentData=JSON.parse(localStorage.getItem("AttachmentData"));
+        
+        
+        //console.log("Grid Data onInit:"+JSON.stringify(this.gridAttachmentData));
+          // localStorage.setItem("AttachmentData",JSON.stringify(this.gridAttachmentData));
         
         // apply width on opti_TabID
         UIHelper.getWidthOfOuterTab();
@@ -360,13 +363,14 @@ export class MainContentComponent implements OnInit {
         this.createdDateForUpdate = new Date(this.purchaseInquiryForUpdate.CreatedDate);
         this.selectedInquiryId = this.purchaseInquiryForUpdate.Inquiry;
         this.setItemDataForInquiry(this.selectedInquiryId);
+        this.setInquiryAttachementData(this.selectedInquiryId);
 
     }
     public setItemDataForInquiry(selectedInquiryId: number): void {
         var itemsRecords = this.gridItemsData.filter(p => p.InquiryId == selectedInquiryId);
         //console.log("Filtered Data:" + JSON.stringify(itemsRecords));
         this.gridItemsData = itemsRecords;
-        console.log("GridItems Data:" + JSON.stringify(this.gridItemsData.length));
+        //console.log("GridItems Data:" + JSON.stringify(this.gridItemsData.length));
     }
 
     /**
@@ -377,6 +381,7 @@ export class MainContentComponent implements OnInit {
         this.validUntilForUpdate = new Date();
         this.createdDateForUpdate = new Date();
         this.selectedInquiryId = 0;
+        this.gridAttachmentData = [];
         
     }
 
@@ -421,12 +426,16 @@ export class MainContentComponent implements OnInit {
           this.selectedItemId = this.purchaseItemsModelForUpdate.PurchaseInquiryItemlId;
     }
 
-    setAllAttachementData(){
-        var attachementRecords = this.gridAttachmentData.filter(p =>p.GrandParentId == this.selectedInquiryId);
+    setInquiryAttachementData(selectedInquiryId: number){
+      
+        this.gridAttachmentData=JSON.parse(localStorage.getItem("AttachmentData"));
+       // console.log("Attachement Grid size b4 filter:"+JSON.stringify(this.gridAttachmentData));
+        var attachementRecords = this.gridAttachmentData.filter(p =>p.GrandParentId == selectedInquiryId);
         this.gridAttachmentData = attachementRecords;
+       // console.log("Attachement Grid size after filter:"+JSON.stringify(this.gridAttachmentData));
     }
     setItemAttachementData(){
-        var itemAttachementRecords = this.gridAttachmentData.filter(p =>p.GrandParentId == this.selectedItemId);
+        var itemAttachementRecords = this.gridAttachmentData.filter(p =>p.ParentId == this.selectedItemId);
         this.gridAttachmentData = itemAttachementRecords;
     }
 
@@ -439,16 +448,15 @@ export class MainContentComponent implements OnInit {
                     "AttachmentId": this.gridAttachmentData.length+1,
                     "FileName": file.name,
                     "FilePath": "C:/Files/" + file.name,
-                    "ParentId": 1,
-                    "GrandParentId": 2 ,
+                    "ParentId": this.selectedItemId,
+                    "GrandParentId": this.selectedInquiryId ,
                     "Size":"729KB"
                 }
             )        
         ); 
         
         localStorage.setItem("AttachmentData",JSON.stringify(this.gridAttachmentData)); 
-        var itemsRecords = this.gridAttachmentData.filter(p =>p.GrandParentId == this.selectedInquiryId || p.ParentId == this.selectedItemId 
-            );
+        var itemsRecords = this.gridAttachmentData.filter(p =>p.GrandParentId == this.selectedInquiryId || p.ParentId == this.selectedItemId);
             console.log("ITemsRecords:"+JSON.stringify(itemsRecords));
             console.log("AttachementData:"+JSON.stringify(this.gridAttachmentData));
     }
