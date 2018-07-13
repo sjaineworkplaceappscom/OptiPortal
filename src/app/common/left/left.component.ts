@@ -19,6 +19,9 @@ export class LeftComponent implements OnInit {
   constructor(private commonService: Commonservice,private router: Router) { }
   selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
 
+  //Already selected list in left panel
+  selectedItem:string='item2';
+
   ngOnInit() {    
     
     this.systemAdmin=localStorage.getItem('SystemAdmin');   
@@ -41,4 +44,11 @@ export class LeftComponent implements OnInit {
     //this.router.navigateByUrl('/approve');
     this.commonService.setNavigatedData(true);
   }
+
+  
+  listClick(event, newValue) {
+      console.log(newValue);
+      this.selectedItem = newValue; 
+  }
+
 }
