@@ -296,7 +296,7 @@
                                 <form class="k-form">
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Update Note</span>
-                                        <textarea id="itemnotes" class="k-textarea">{{selectedItemNote.Notes}}</textarea>
+                                        <textarea id="itemnotes" #updatednotevalue class="k-textarea">{{selectedItemNote.Notes}}</textarea>
                                     </label>
 
                                     <label class="k-form-field">
@@ -408,7 +408,7 @@
                     </kendo-upload>
 
                     <!-- start attachement grid -->
-                        <kendo-grid 
+                        <kendo-grid  
                         [data]="gridAttachmentData" 
                         [resizable]="false" 
                         [pageSize]="50" 
@@ -473,9 +473,7 @@
                     <!-- start notes grid -->
                     <div #notesgrid id="opti_NotesGridID">
                         <kendo-grid [data]="noteRequetData| customFilter: notesSearchValue" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
-                            [groupable]="false" [height]=gridHeight-41 (remove)="deleteNote($event)" (edit)="editNote($event)"
-                            [sort]="sort">
-
+                            [groupable]="false" [height]=gridHeight-41 (remove)="deleteNote($event)" (edit)="editNote($event)" >
                             <!-- grid toolbar start -->
                             <ng-template kendoGridToolbarTemplate>
                                 <!-- <button (click)="addNewComment()">Add new Notes</button>   -->

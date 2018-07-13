@@ -9,7 +9,7 @@ import { UIHelper } from 'src/app/helpers/ui.helpers';
 })
 export class ApproveUsersComponent implements OnInit {
   isMobile: boolean;
-  private items: Array<any>;
+   items: Array<any>;
   private approveList:any;
   public mySelection: number[] = [];
   gridHeight: number;
