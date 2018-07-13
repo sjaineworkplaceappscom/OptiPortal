@@ -17,12 +17,13 @@ import { Commonservice } from '../../services/commonservice.service';
 export class SigninComponent implements OnInit {
   showLoader: boolean = false;
   isError: boolean = false;
+  
   invalidCredentialMsg: string = "";
   userName: string;
   password: string;
   randomstring = '';
   userNotExist:boolean=false;
-  capchaText;
+  capchaText: string;
   invalidCapcha:boolean=false;
 
   constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: Commonservice) { }
@@ -47,12 +48,22 @@ export class SigninComponent implements OnInit {
 
   }
 
+  changeValue() {
+    this.invalidCapcha = false;
+    console.log("change boolean: " + this.invalidCapcha);
+  }
+  
   public async login() {
     let userId: string;
     
     //reset validation message variables.
     this.userNotExist=false;
     this.isError=false;
+
+    if (this.capchaText != this.randomstring) {
+      this.invalidCapcha = true;
+      return;
+    }
 
     await this.accountService.getUserDetails(this.userName).subscribe(
       userData => {
