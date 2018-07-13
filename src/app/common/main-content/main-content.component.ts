@@ -53,6 +53,8 @@ export class MainContentComponent implements OnInit {
     selectedItemNote: any = {};
     systemAdmin: string;
     myFiles: Array<FileInfo> = [];
+
+    notesSearchValue:any;
    
 
 
@@ -493,7 +495,7 @@ export class MainContentComponent implements OnInit {
     //editNotes
 
     addItemtagain(){
-        
+
     }
 
 }
