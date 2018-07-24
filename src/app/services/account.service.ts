@@ -76,10 +76,10 @@ export class AccountService {
   // Login/Generat euser token.
   public async generateToken(userName: string, password: string, errobj: ErrorObject): Promise<any> {
     let error: boolean = false;
-    let data: string = "username=" + userName + "&password=" + password + "&grant_type=password";
-    let reqHeaders = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-
-    return await this.httpHelper.post<any>(this.baseUrl + 'token', data, reqHeaders, false).toPromise();
+    //let data: string = "username=" + userName + "&password=" + password + "&grant_type=password";
+    //let reqHeaders = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    let data:any={UserId:userName,Password:password};
+    return await this.httpHelper.post<any>(this.baseUrl + 'token', data,null).toPromise();
 
   }
 

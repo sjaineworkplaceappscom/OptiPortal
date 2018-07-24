@@ -121,7 +121,7 @@ export class SigninComponent implements OnInit {
         
         //show loader false.
         this1.showLoader = false;
-        localStorage.setItem('AccessToken', data.access_token);
+        localStorage.setItem('AccessToken', data.token);
 
         this.router.navigateByUrl('/home');
       }
