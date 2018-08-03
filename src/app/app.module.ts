@@ -52,7 +52,8 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs'
 import { UploadModule } from '@progress/kendo-angular-upload'
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { CustomFilterPipe } from './custom-filter.pipe';
-import { CustomPipeItemPipe } from './custom-pipe-item.pipe';
+import { PurchaseInquiryListComponent } from './purchase-inquiry-list/purchase-inquiry-list.component'
+import { CustomPipeItemPipe } from 'src/app/custom-pipe-item.pipe'
 
 
 
@@ -92,7 +93,8 @@ const routes: Routes = [
     ConfirmPasswordEquilValidatorDirectiveDirective,
     LandingComponent,
     CustomFilterPipe,
-    CustomPipeItemPipe
+    CustomPipeItemPipe,
+    PurchaseInquiryListComponent
   ],
   imports: [
     FormsModule,
@@ -122,6 +124,7 @@ const routes: Routes = [
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true,
+    
   }],
   bootstrap: [AppComponent]
 })

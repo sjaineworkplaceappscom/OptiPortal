@@ -60,7 +60,6 @@ export class MainContentComponent implements OnInit {
     isRequestDetail:boolean = false;
    
 
-
     @ViewChild('AddItemFormSection') AddItemFormSection;
     @ViewChild('showItemButtonSection') showItemButtonSection;
     @ViewChild('gridSectionItem') gridSectionItem;
@@ -77,14 +76,6 @@ export class MainContentComponent implements OnInit {
     @ViewChild('optiTab') optiTab;
 
     @ViewChild('optirightfixedsection') optirightfixedsection;
-
-    
-    
-    
-
-
-
-
     constructor(private commonService: Commonservice, private intl: IntlService) {
         this.approveUser = false;
     }
@@ -117,6 +108,7 @@ export class MainContentComponent implements OnInit {
             }
         );
         this.systemAdmin = localStorage.getItem('SystemAdmin');
+        //initialize notes
         this.noteRequetData = JSON.parse(localStorage.getItem("setRequestDynamicNotes"));
         this.noteItemsData = JSON.parse(localStorage.getItem("setItemsDynamicNotes"));
         if(localStorage.getItem("AttachmentData")!=null)//{
@@ -142,38 +134,38 @@ export class MainContentComponent implements OnInit {
             }
         )
     }
-
+    
+    //for roles dropdown.
     public roles: Array<{ text: string, value: string }> = [
         { text: "Please Select Role", value: '0' },
         { text: "Admin", value: '41F23977-C709-4B7C-BBEE-16A539211E9C' },
         { text: "Manager", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EA' },
         { text: "User", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EB' }
     ];
-
+    //for selected role item.
     public selectedItem: { text: string, value: string } = this.roles[0];
 
-    open() {
-        alert('hi ho');
-    }
 
+    //for inquiry grid Data
     public gridData: any[] = data2;
 
-    // itmes json start
+    //for item grid Data
     public gridItemsData: any[] = data;
+    //for attachment grid Data
     public gridAttachmentData: any[] = attachment;
+
 
     addItemt() {
         this.gridSectionItem.nativeElement.style.display = 'block';
         this.AddItemFormSection.nativeElement.style.display = 'none';
     }
 
+    //close the item form.
     closeItemForm() {
         this.gridSectionItem.nativeElement.style.display = 'block';
         this.AddItemFormSection.nativeElement.style.display = 'none';
     }
-
-  
-
+1
     // status section
     public status: Array<{ text: string, value: string }> = [
         { text: "Draft ", value: '0' },
@@ -185,6 +177,7 @@ export class MainContentComponent implements OnInit {
         { text: "Canceled  ", value: '6' },
         { text: "Closed   ", value: '7' }
     ];
+    // for selected status.
     public selectedStatusItem: { text: string, value: string } = this.status[2];
     // dateForTest: Date = new Date(this.purchaseInquiryForUpdate.ValidUntil);
     public handleChange(value: Date) {
@@ -192,9 +185,10 @@ export class MainContentComponent implements OnInit {
         //this.dateForTest = this.intl.formatDate(value, 'yyyy-MM-dd');
         //this.output = JSON.stringify(this.model);
     }
-    //cretaed date
+    
+    // initialize cretaed date
     public valueCreatedDate: Date = new Date(2000, 2, 10);
-    // valid until
+    // initialize valid until
     public valueValidUntill: Date = new Date(2000, 2, 10);
     // file upload
     uploadAttachementMasterSaveUrl = 'saveMasterAttachementUrl'; // should represent an actual API endpoint
@@ -246,11 +240,13 @@ export class MainContentComponent implements OnInit {
     //  ];
     //public noteRequetData: any[] = this.notesItemList;
 
+    //visible add new comment layout
     addNewComment() {
         this.notesgrid.nativeElement.style.display = 'none';
         this.noteform.nativeElement.style.display = 'block';
     }
 
+    //delete note from local storage.
     deleteNote({ sender, rowIndex, dataItem }) {
         this.noteRequetData.splice(rowIndex, 1);
         localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteRequetData));
@@ -258,7 +254,8 @@ export class MainContentComponent implements OnInit {
 
     editNote({ sender, rowIndex, dataItem }) {
     }
-
+    
+    //add note.
     submitNote(e, action) {
         if (action == 'add') {
             this.notesgrid.nativeElement.style.display = 'block';
@@ -279,7 +276,8 @@ export class MainContentComponent implements OnInit {
         }
         this.addnotestring = '';
     }
-
+    
+    //add notes to local storage for item.
     submitItemsNote(e, action) {
         if (action == 'add') {
             this.notesitemgrid.nativeElement.style.display = 'block';
@@ -362,8 +360,6 @@ export class MainContentComponent implements OnInit {
      * @param selection 
      * @param status 
      */
-
-    
     public onInquiryGridDataSelection(gridItem, selection, status) {
         
         // if isRequestDetail is false means initially home tab will heighlight if is it true so that case nothing will change 
@@ -399,8 +395,6 @@ export class MainContentComponent implements OnInit {
     }
 
     closeRightSection(status) {
-        
-        
             // this.optirightfixedsection.nativeElement.children[2].style.display='none';
             // this.optirightfixedsection.nativeElement.children[3].style.display='none';
             // this.optirightfixedsection.nativeElement.children[4].style.display='none';
@@ -424,7 +418,10 @@ export class MainContentComponent implements OnInit {
         this.isFixedRightSection = status;
     }
 
-
+    /**
+     * set item data for selected inquiry.
+     * @param selectedInquiryId 
+     */
     public setItemDataForInquiry(selectedInquiryId: number): void {
         var itemsRecords = this.gridItemsData.filter(p => p.InquiryId == selectedInquiryId);
         //console.log("Filtered Data:" + JSON.stringify(itemsRecords));
@@ -445,7 +442,7 @@ export class MainContentComponent implements OnInit {
     }
 
     /**
-     * this method shows a side form on add click.
+     * This method shows a side form on add click.
      */
     showItemSection() {
         //reseting the model which is bind with this view at edit time also
@@ -454,7 +451,6 @@ export class MainContentComponent implements OnInit {
         this.gridSectionItem.nativeElement.style.display = 'none';
         this.AddItemFormSection.nativeElement.style.display = 'block';
         //console.log("show item section");
-      
     }
 
     purchaseItemsModelForUpdate: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
@@ -484,7 +480,11 @@ export class MainContentComponent implements OnInit {
         this.requiredDate = new Date(this.purchaseItemsModelForUpdate.RequiredDate);
           this.selectedItemId = this.purchaseItemsModelForUpdate.PurchaseInquiryItemlId;
     }
-
+    
+    /**
+     * set attachement data for selected inquiry.
+     * @param selectedInquiryId 
+     */
     setInquiryAttachementData(selectedInquiryId: number){
       
         this.gridAttachmentData=JSON.parse(localStorage.getItem("AttachmentData"));
@@ -493,17 +493,24 @@ export class MainContentComponent implements OnInit {
         this.gridAttachmentData = attachementRecords;
        // console.log("Attachement Grid size after filter:"+JSON.stringify(this.gridAttachmentData));
     }
+
+    /**
+     * set attachement data for items.
+     */
     setItemAttachementData(){
         var itemAttachementRecords = this.gridAttachmentData.filter(p =>p.ParentId == this.selectedItemId);
         this.gridAttachmentData = itemAttachementRecords;
     }
 
+    /**
+     * add/upload attachment.
+     * @param e 
+     */
     selectEventHandler(e: any) {
-        //this.gridAttachmentData = [];
         e.files.forEach((file) =>
-        
             this.gridAttachmentData.push(
                 {
+                    //Assigned temporary id for attachmentId.
                     "AttachmentId": this.gridAttachmentData.length+1,
                     "FileName": file.name,
                     "FilePath": "C:/Files/" + file.name,
@@ -513,7 +520,7 @@ export class MainContentComponent implements OnInit {
                 }
             )        
         ); 
-        
+        //set updated grid to local storage.
         localStorage.setItem("AttachmentData",JSON.stringify(this.gridAttachmentData)); 
         var itemsRecords = this.gridAttachmentData.filter(p =>p.GrandParentId == this.selectedInquiryId || p.ParentId == this.selectedItemId);
             console.log("ITemsRecords:"+JSON.stringify(itemsRecords));
@@ -528,7 +535,6 @@ export class MainContentComponent implements OnInit {
         this.requestDate = new Date();
         this.requiredDate = new Date();
         this.selectedItemId = 0;
-        
     }
 
     editNotes(e, note) {
@@ -542,7 +548,6 @@ export class MainContentComponent implements OnInit {
     updateNote(e) {
         this.notesgrid.nativeElement.style.display = 'block';
         this.editnoteform.nativeElement.style.display = 'none';
-
         let index = this.noteRequetData.indexOf(this.selectedNote);
         if (index > -1) {
             this.noteRequetData[index].Notes = this.selectedNote.Notes;
@@ -557,10 +562,7 @@ export class MainContentComponent implements OnInit {
     ];
     public selectedNoteStatusItem: { text: string, value: string } = this.noteStatus[0];
 
-    //editNotes
-
     addItemtagain(){
-
     }
 
 }
