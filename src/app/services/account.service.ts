@@ -16,13 +16,14 @@ import { ErrorObject } from '../models/error/error-object';
 import { environment } from '../../environments/environment';
 import { CommonMessages } from '../../common-messages';
 import { Observable } from 'rxjs';
+import { Configuration } from '../../assets/configuration';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  baseUrl = environment.baseServerAPIEndpoint;
+  baseUrl = Configuration.baseServerAPIEndpoint;
 
   constructor(private httpHelper: HttpHelper, private router: Router) { }
 
