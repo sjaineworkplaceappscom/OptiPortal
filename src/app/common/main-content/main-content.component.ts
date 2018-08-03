@@ -25,7 +25,7 @@ import { PurchaseInquiryItemModel } from '../../models/purchaserequest/purchase-
 import { PurchaseInquiryModel } from '../../models/purchaserequest/purchase-inquiry';
 import { attachment } from '../../DemoData/Attachment';
 import { SelectEvent } from '@progress/kendo-angular-layout';
-
+import { PurchaseEnquiryService } from '../../services/purchase-enquiry.service';
 import { FileInfo } from '@progress/kendo-angular-upload';
 
 //declare var $: any;
@@ -76,7 +76,7 @@ export class MainContentComponent implements OnInit {
     @ViewChild('optiTab') optiTab;
 
     @ViewChild('optirightfixedsection') optirightfixedsection;
-    constructor(private commonService: Commonservice, private intl: IntlService) {
+    constructor(private commonService: Commonservice, private intl: IntlService, private purchaseEnquiryService: PurchaseEnquiryService) {
         this.approveUser = false;
     }
 
@@ -113,7 +113,12 @@ export class MainContentComponent implements OnInit {
         this.noteItemsData = JSON.parse(localStorage.getItem("setItemsDynamicNotes"));
         if(localStorage.getItem("AttachmentData")!=null)//{
             this.gridAttachmentData=JSON.parse(localStorage.getItem("AttachmentData"));
-        
+            
+        this.purchaseEnquiryService.getEnquiryList().subscribe(
+            inquiryData=>{
+                 this.gridData = inquiryData;
+            }
+        );
         
         //console.log("Grid Data onInit:"+JSON.stringify(this.gridAttachmentData));
           // localStorage.setItem("AttachmentData",JSON.stringify(this.gridAttachmentData));
