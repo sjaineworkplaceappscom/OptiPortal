@@ -27,6 +27,8 @@ import { attachment } from '../../DemoData/Attachment';
 import { SelectEvent } from '@progress/kendo-angular-layout';
 import { PurchaseEnquiryService } from '../../services/purchase-enquiry.service';
 import { FileInfo } from '@progress/kendo-angular-upload';
+import { debug } from 'util';
+import { invokeQuery } from '../../../../node_modules/@angular/animations/browser/src/render/shared';
 
 //declare var $: any;
 
@@ -58,7 +60,8 @@ export class MainContentComponent implements OnInit {
     notesSearchValue:any;
 
     isRequestDetail:boolean = false;
-   
+    
+    showLoader:boolean=false;
 
     @ViewChild('AddItemFormSection') AddItemFormSection;
     @ViewChild('showItemButtonSection') showItemButtonSection;
@@ -78,6 +81,7 @@ export class MainContentComponent implements OnInit {
     @ViewChild('optirightfixedsection') optirightfixedsection;
     constructor(private commonService: Commonservice, private intl: IntlService, private purchaseEnquiryService: PurchaseEnquiryService) {
         this.approveUser = false;
+        
     }
 
     // tab function
@@ -100,13 +104,27 @@ export class MainContentComponent implements OnInit {
         // check mobile device
         this.isMobile = UIHelper.isMobile();
     }
-
+ //for inquiry grid Data
+ public gridData: any[]=[];
     ngOnInit() {
+      
+
         this.commonService.themeCurrentData.subscribe(
             data => {
                 this.selectedThemeColor = data;
             }
         );
+
+        this.purchaseEnquiryService.getEnquiryList().subscribe(
+            inquiryData=>{                
+                    this.showLoader=true;  
+                 //this.gridData = inquiryData;
+                 this.gridData=JSON.parse(inquiryData);
+                 console.log("grid Data:"+JSON.stringify(inquiryData));
+                console.log("grid Data:"+JSON.stringify(this.gridData));
+                this.showLoader=false;
+            })
+        ;
         this.systemAdmin = localStorage.getItem('SystemAdmin');
         //initialize notes
         this.noteRequetData = JSON.parse(localStorage.getItem("setRequestDynamicNotes"));
@@ -114,11 +132,7 @@ export class MainContentComponent implements OnInit {
         if(localStorage.getItem("AttachmentData")!=null)//{
             this.gridAttachmentData=JSON.parse(localStorage.getItem("AttachmentData"));
             
-        this.purchaseEnquiryService.getEnquiryList().subscribe(
-            inquiryData=>{
-                 this.gridData = inquiryData;
-            }
-        );
+      
         
         //console.log("Grid Data onInit:"+JSON.stringify(this.gridAttachmentData));
           // localStorage.setItem("AttachmentData",JSON.stringify(this.gridAttachmentData));
@@ -151,8 +165,7 @@ export class MainContentComponent implements OnInit {
     public selectedItem: { text: string, value: string } = this.roles[0];
 
 
-    //for inquiry grid Data
-    public gridData: any[] = data2;
+   
 
     //for item grid Data
     public gridItemsData: any[] = data;
@@ -391,9 +404,9 @@ export class MainContentComponent implements OnInit {
         //  console.log("data: selectedData::"+  JSON.stringify(selectedData));
         //  console.log("data: selectedItem::"+    JSON.stringify(selectedItem));
         this.purchaseInquiryForUpdate = JSON.parse(JSON.stringify(selectedData));
-        this.validUntilForUpdate = new Date(this.purchaseInquiryForUpdate.ValidUntil);
+        this.validUntilForUpdate = new Date(this.purchaseInquiryForUpdate.ValidTillDate);
         this.createdDateForUpdate = new Date(this.purchaseInquiryForUpdate.CreatedDate);
-        this.selectedInquiryId = this.purchaseInquiryForUpdate.Inquiry;
+        this.selectedInquiryId = this.purchaseInquiryForUpdate.InquiryNumber;
         this.setItemDataForInquiry(this.selectedInquiryId);
         this.setInquiryAttachementData(this.selectedInquiryId);
 

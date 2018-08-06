@@ -1,14 +1,15 @@
 
 export class TempPurchaseInquiryModel{    
-    Inquiry:number;
-    Customer:number;
-    Name:string;
+    InquiryNumber:number;
+    CustomerCode:number;
+    CustomerName:string;
     Status:string;
-    ValidUntil:string;
-    Reference: string;
-    CreatedDate:string;
-    BuyerCreatedBy:string;//CreatedBy:string;
+    ValidTillDate:Date;
+    ReferenceNumber: number;
+    CreatedDate:Date;
+    Buyer:string;//CreatedBy:string;
     ModifiedDate:string;
     ModifiedBy:string;
+
 
 }
