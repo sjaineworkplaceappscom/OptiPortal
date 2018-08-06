@@ -8,9 +8,10 @@
 
     <div *ngIf="systemAdmin!='true'">
         <div style="padding: 10px;">
-            <kendo-grid [kendoGridBinding]="gridData | customPipeItem:searchRequest" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
+            <kendo-grid [loading]="showLoader" [kendoGridBinding]="gridData | customPipeItem:searchRequest" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
                 [groupable]=isColumnGroup [columnMenu]="{ columnChooser: false }" [height]=gridHeight [selectable]="true" (selectionChange)="onInquiryGridDataSelection(gridItem, $event, true)"
                 #gridItem>
+                
 
                 <!-- (click)="openRightSection(true)" -->
 
@@ -52,14 +53,14 @@
                 </ng-template>
 
                 <!-- grid template end -->
-                <kendo-grid-column field="Inquiry" title="Id" [width]="160" ></kendo-grid-column>
-                <kendo-grid-column field="Customer" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
-                <kendo-grid-column field="Name" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column>
+                <kendo-grid-column field="InquiryNumber" title="Id" [width]="160" ></kendo-grid-column>
+                <kendo-grid-column field="CustomerCode" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
+                <kendo-grid-column field="CustomerName" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column>
                 <kendo-grid-column field="Status" [width]="140"></kendo-grid-column>
                 <kendo-grid-column field="CreatedDate" title="Created Date" [width]="200"  filter="date" format="{0:d}"></kendo-grid-column>
-                <kendo-grid-column field="BuyerCreatedBy" title="Created By" [width]="140"></kendo-grid-column>
-                <kendo-grid-column field="ValidUntil" title="Valid Until" [width]="200"  filter="date" format="{0:d}"></kendo-grid-column>
-                <kendo-grid-column field="Reference" [width]="140"></kendo-grid-column>
+                <kendo-grid-column field="Buyer" title="Created By" [width]="140"></kendo-grid-column>
+                <kendo-grid-column field="ValidTillDate" title="Valid Until" [width]="200" filter="date" format="{0:d}"></kendo-grid-column>
+                <kendo-grid-column field="ReferenceNumber" [width]="140"></kendo-grid-column>
 
                 <!-- xlsx template start -->
                 <kendo-grid-excel fileName="Requests.xlsx"></kendo-grid-excel>
@@ -102,19 +103,19 @@
                             <form class="k-form">
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Inquiry#</span>
-                                    <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInquiryForUpdate.Inquiry" value="" placeholder="Inquiry"
+                                    <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInquiryForUpdate.InquiryNumber" value="" placeholder="Inquiry"
                                         disabled />
                                 </label>
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Customer</span>
-                                    <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.Customer" placeholder="Customer"
+                                    <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.CustomerCode" placeholder="Customer"
                                     />
                                 </label>
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Name</span>
-                                    <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.Name" placeholder="Name"
+                                    <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.CustomerName" placeholder="Name"
                                     />
                                 </label>
 
@@ -132,7 +133,7 @@
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Buyer/Created By</span>
-                                    <input type="text" name="createdBy" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.BuyerCreatedBy" placeholder="Buyer/Created By"
+                                    <input type="text" name="createdBy" class="k-textbox" value="" [(ngModel)]="purchaseInquiryForUpdate.Buyer" placeholder="Buyer/Created By"
                                     />
                                 </label>
 
@@ -143,7 +144,7 @@
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Reference</span>
-                                    <input type="text" name="reference" class="k-textbox" value="" placeholder="Reference" [(ngModel)]="purchaseInquiryForUpdate.Reference"
+                                    <input disabled type="text" name="reference" class="k-textbox" value="" placeholder="Reference" [(ngModel)]="purchaseInquiryForUpdate.ReferenceNumber"
                                     />
                                 </label>
 

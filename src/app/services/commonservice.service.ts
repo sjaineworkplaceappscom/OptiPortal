@@ -9,7 +9,7 @@ import { opticonstants } from '../constants';
 })
 export class Commonservice {
 
-  constructor() { }
+  constructor() { } 
   // Declaration
   private commonData = new Subject<any>();
   commonData$ = this.commonData.asObservable();

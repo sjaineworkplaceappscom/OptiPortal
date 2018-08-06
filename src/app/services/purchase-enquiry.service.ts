@@ -28,15 +28,15 @@ export class PurchaseEnquiryService {
   /**
    * AddPurchaseInquiry
    */
-  public AddPurchaseInquiry(request: TempPurchaseInquiryModel):Observable<any> {
-    var data: any = {
-      "customerId": request.Customer,
-      "customerName": request.Name,
-      "status": request.Status,
-      "buyer": request.BuyerCreatedBy,
-      "validUntil": request.ValidUntil,
-      "refrence": request.Reference
-    }
-    return this.httpHelper.post(this.baseUrl + "purchaseinquiry/add",data,null);
-  }
+  // public AddPurchaseInquiry(request: TempPurchaseInquiryModel):Observable<any> {
+  //   // var data: any = {
+  //   //   "customerId": request.Customer,
+  //   //   "customerName": request.Name,
+  //   //   "status": request.Status,
+  //   //   "buyer": request.BuyerCreatedBy,
+  //   //   "validUntil": request.ValidUntil,
+  //   //   "refrence": request.Reference
+  //   // }
+  //   //return this.httpHelper.post(this.baseUrl + "purchaseinquiry/add",data,null);
+  // }
 }
