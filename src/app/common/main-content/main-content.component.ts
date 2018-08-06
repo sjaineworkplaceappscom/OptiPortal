@@ -579,7 +579,7 @@ export class MainContentComponent implements OnInit {
      * AddPurchaseInquiry
        inquiry: TempPurchaseInquiryModel     
        */
-    public AddPurchaseInquiry() {debugger;
+    public AddPurchaseInquiry() {
         console.log(this.date);
         this.purchaseInquiryForUpdate.ValidTillDate = this.date;
         this.purchaseEnquiryService.AddPurchaseInquiry(this.purchaseInquiryForUpdate).subscribe(data => 
