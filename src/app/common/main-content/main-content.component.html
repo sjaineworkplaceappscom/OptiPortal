@@ -120,7 +120,7 @@
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Status</span>
-                                    <kendo-dropdownlist name="status" [data]="status" [(ngModel)]="selectedStatusItem" [textField]="'text'" [valueField]="'value'">
+                                    <kendo-dropdownlist name="status" [data]="status" [(ngModel)]="purchaseInquiryForUpdate.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'">
                                     </kendo-dropdownlist>
                                 </label>
 
@@ -138,7 +138,7 @@
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Valid Until</span>
-                                    <kendo-datepicker name="validUntil" [format]="'dd/MM/yyyy'" [(ngModel)]="validUntilForUpdate"> </kendo-datepicker>
+                                    <kendo-datepicker name="validUntil" [format]="'MM/dd/yyyy'" [(value)]="purchaseInquiryForUpdate.ValidUntil" > </kendo-datepicker>
                                 </label>
 
                                 <label class="k-form-field">
@@ -148,7 +148,7 @@
                                 </label>
 
                                 <div class="text-right">
-                                    <button type="button" class="k-button k-primary">Submit</button>
+                                    <button type="button" class="k-button k-primary" (click)="AddPurchaseInquiry()">Submit</button>
                                     <button type="button" class="k-button">Save as draft</button>
                                     <button type="button" class="k-button">Cancel</button>
                                 </div>

@@ -569,5 +569,15 @@ export class MainContentComponent implements OnInit {
 
     addItemtagain(){
     }
-
+ 
+    /**
+     * AddPurchaseInquiry
+       inquiry: TempPurchaseInquiryModel     
+       */
+    public AddPurchaseInquiry() {
+        // console.log(this.purchaseInquiryForUpdate);
+        this.purchaseEnquiryService.AddPurchaseInquiry(this.purchaseInquiryForUpdate).subscribe(data => 
+            console.log(JSON.stringify(data))
+        );
+    }
 }
