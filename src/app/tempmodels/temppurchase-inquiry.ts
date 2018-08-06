@@ -1,7 +1,7 @@
 
 export class TempPurchaseInquiryModel{    
     InquiryNumber:number;
-    CustomerCode:number;
+    CustomerCode:string;
     CustomerName:string;
     Status:string;
     ValidTillDate:Date;

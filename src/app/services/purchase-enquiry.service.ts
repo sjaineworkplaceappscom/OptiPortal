@@ -4,12 +4,13 @@ import { HttpHelper } from '../helpers/http.helper';
 import { Observable } from '../../../node_modules/rxjs/Observable';
 import { RequestOptions } from '../../../node_modules/@angular/http';
 import { TempPurchaseInquiryModel } from '../tempmodels/temppurchase-inquiry';
+import { Configuration } from '../../assets/configuration';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PurchaseEnquiryService {
-  baseUrl = environment.baseServerAPIEndpoint;
+  baseUrl = Configuration.baseServerAPIEndpoint;
   
   constructor(private httpHelper:HttpHelper) { 
 
@@ -28,15 +29,15 @@ export class PurchaseEnquiryService {
   /**
    * AddPurchaseInquiry
    */
-  // public AddPurchaseInquiry(request: TempPurchaseInquiryModel):Observable<any> {
-  //   // var data: any = {
-  //   //   "customerId": request.Customer,
-  //   //   "customerName": request.Name,
-  //   //   "status": request.Status,
-  //   //   "buyer": request.BuyerCreatedBy,
-  //   //   "validUntil": request.ValidUntil,
-  //   //   "refrence": request.Reference
-  //   // }
-  //   //return this.httpHelper.post(this.baseUrl + "purchaseinquiry/add",data,null);
-  // }
+  public AddPurchaseInquiry(request: TempPurchaseInquiryModel):Observable<any> {
+    var data: any = {
+      "CustomerId": request.CustomerCode,
+      "CustomerName": request.CustomerName,
+      "Status": request.Status,
+      "Buyer": request.Buyer,
+      "ValidUntil": request.ValidTillDate,
+      "Refrence": request.ReferenceNumber
+    }
+    return this.httpHelper.post(this.baseUrl + "purchaseinquiry/add",data,null);
+  }
 }

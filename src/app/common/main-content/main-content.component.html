@@ -139,12 +139,12 @@
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Valid Until</span>
-                                    <kendo-datepicker name="validUntil" [format]="'MM/dd/yyyy'" [(value)]="purchaseInquiryForUpdate.ValidUntil" > </kendo-datepicker>
+                                    <kendo-datepicker name="validUntil" [format]="'MM/dd/yyyy'" [(value)]="date" > </kendo-datepicker>
                                 </label>
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Reference</span>
-                                    <input disabled type="text" name="reference" class="k-textbox" value="" placeholder="Reference" [(ngModel)]="purchaseInquiryForUpdate.ReferenceNumber"
+                                    <input type="text" name="reference" class="k-textbox" value="" placeholder="Reference" [(ngModel)]="purchaseInquiryForUpdate.ReferenceNumber"
                                     />
                                 </label>
 

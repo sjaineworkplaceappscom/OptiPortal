@@ -62,6 +62,7 @@ export class MainContentComponent implements OnInit {
     isRequestDetail:boolean = false;
     
     showLoader:boolean=false;
+    date: Date;
 
     @ViewChild('AddItemFormSection') AddItemFormSection;
     @ViewChild('showItemButtonSection') showItemButtonSection;
@@ -115,16 +116,7 @@ export class MainContentComponent implements OnInit {
             }
         );
 
-        this.purchaseEnquiryService.getEnquiryList().subscribe(
-            inquiryData=>{                
-                    this.showLoader=true;  
-                 //this.gridData = inquiryData;
-                 this.gridData=JSON.parse(inquiryData);
-                 console.log("grid Data:"+JSON.stringify(inquiryData));
-                console.log("grid Data:"+JSON.stringify(this.gridData));
-                this.showLoader=false;
-            })
-        ;
+        this.getEnquiryList();
         this.systemAdmin = localStorage.getItem('SystemAdmin');
         //initialize notes
         this.noteRequetData = JSON.parse(localStorage.getItem("setRequestDynamicNotes"));
@@ -587,10 +579,22 @@ export class MainContentComponent implements OnInit {
      * AddPurchaseInquiry
        inquiry: TempPurchaseInquiryModel     
        */
-    public AddPurchaseInquiry() {
-        // console.log(this.purchaseInquiryForUpdate);
+    public AddPurchaseInquiry() {debugger;
+        console.log(this.date);
+        this.purchaseInquiryForUpdate.ValidTillDate = this.date;
         this.purchaseEnquiryService.AddPurchaseInquiry(this.purchaseInquiryForUpdate).subscribe(data => 
-            console.log(JSON.stringify(data))
+            console.log(JSON.stringify(data)),
+          
+            
         );
+        this.getEnquiryList();
+    }
+    public getEnquiryList(){
+        this.purchaseEnquiryService.getEnquiryList().subscribe(
+            inquiryData=>{                
+                    this.showLoader=true;  
+                this.gridData=JSON.parse(inquiryData);
+                this.showLoader=false;
+            });
     }
 }
