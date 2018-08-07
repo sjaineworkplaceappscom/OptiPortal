@@ -476,7 +476,7 @@ export class MainContentComponent implements OnInit {
     purchaseItemsModelForUpdate: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
     requestDate: Date;
     requiredDate: Date;
-    selectedItemId: number = 0;
+    selectedItemId: string = '';
     /**
      * Method will open the edit item window for selected grid item.
      * @param gridItemsData 
@@ -498,7 +498,7 @@ export class MainContentComponent implements OnInit {
         this.purchaseItemsModelForUpdate = JSON.parse(JSON.stringify(selectedData));
         this.requestDate = new Date(this.purchaseItemsModelForUpdate.RequestDate);
         this.requiredDate = new Date(this.purchaseItemsModelForUpdate.RequiredDate);
-          this.selectedItemId = this.purchaseItemsModelForUpdate.PurchaseInquiryItemlId;
+          this.selectedItemId = this.purchaseItemsModelForUpdate.PurchaseInquiryItemId;
     }
     
     /**
@@ -554,7 +554,7 @@ export class MainContentComponent implements OnInit {
         this.purchaseItemsModelForUpdate = new TempPurchaseInquiryItemModel();
         this.requestDate = new Date();
         this.requiredDate = new Date();
-        this.selectedItemId = 0;
+        this.selectedItemId = '';
     }
 
     editNotes(e, note) {
@@ -612,7 +612,7 @@ export class MainContentComponent implements OnInit {
             });
     }
 
-    
+
     /**
      * Method to get list of inquries from server.
      */
