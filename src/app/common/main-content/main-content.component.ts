@@ -581,7 +581,7 @@ export class MainContentComponent implements OnInit {
     public selectedNoteStatusItem: { text: string, value: string } = this.noteStatus[0];
     addItemtagain(){
     }
-    
+
  
     /**
      * AddPurchaseInquiry
@@ -606,6 +606,18 @@ export class MainContentComponent implements OnInit {
             inquiryData=>{                
                     this.showLoader=true;  
                 this.gridData=JSON.parse(inquiryData);
+                this.showLoader=false;
+            });
+    }
+
+    /**
+     * Method to get list of enquries from server.
+     */
+    public getEnquiryItemList(){
+        this.showLoader=true;  
+        this.purchaseEnquiryService.getInquiryItemList().subscribe(
+            inquiryItemData=>{                
+                this.gridItemsData = JSON.parse(inquiryItemData);
                 this.showLoader=false;
             });
     }
