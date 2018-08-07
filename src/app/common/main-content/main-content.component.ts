@@ -581,6 +581,7 @@ export class MainContentComponent implements OnInit {
     public selectedNoteStatusItem: { text: string, value: string } = this.noteStatus[0];
     addItemtagain(){
     }
+    
  
     /**
      * AddPurchaseInquiry
