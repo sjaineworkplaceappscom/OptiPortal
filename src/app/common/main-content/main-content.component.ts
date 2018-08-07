@@ -612,6 +612,7 @@ export class MainContentComponent implements OnInit {
             });
     }
 
+    
     /**
      * Method to get list of inquries from server.
      */
@@ -623,6 +624,7 @@ export class MainContentComponent implements OnInit {
                 console.log("grid item data",+this.gridItemsData );
                 this.showLoader=false;
             });
+
     }
 
 
