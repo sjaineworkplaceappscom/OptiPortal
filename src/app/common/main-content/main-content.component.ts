@@ -25,7 +25,7 @@ import { PurchaseInquiryItemModel } from '../../models/purchaserequest/purchase-
 import { PurchaseInquiryModel } from '../../models/purchaserequest/purchase-inquiry';
 import { attachment } from '../../DemoData/Attachment';
 import { SelectEvent } from '@progress/kendo-angular-layout';
-import { PurchaseEnquiryService } from '../../services/purchase-enquiry.service';
+import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { FileInfo } from '@progress/kendo-angular-upload';
 import { debug } from 'util';
 import { invokeQuery } from '../../../../node_modules/@angular/animations/browser/src/render/shared';
@@ -80,7 +80,7 @@ export class MainContentComponent implements OnInit {
     @ViewChild('optiTab') optiTab;
 
     @ViewChild('optirightfixedsection') optirightfixedsection;
-    constructor(private commonService: Commonservice, private intl: IntlService, private purchaseEnquiryService: PurchaseEnquiryService) {
+    constructor(private commonService: Commonservice, private intl: IntlService, private purchaseInquiryService: PurchaseInquiryService) {
         this.approveUser = false;
         
     }
@@ -116,7 +116,7 @@ export class MainContentComponent implements OnInit {
             }
         );
 
-        this.getEnquiryList();
+        this.getInquiryList();
         this.systemAdmin = localStorage.getItem('SystemAdmin');
         //initialize notes
         this.noteRequetData = JSON.parse(localStorage.getItem("setRequestDynamicNotes"));
@@ -144,6 +144,8 @@ export class MainContentComponent implements OnInit {
                 this.approveUser = data;
             }
         )
+
+        this.getInquiryItemList();
     }
     
     //for roles dropdown.
@@ -160,7 +162,7 @@ export class MainContentComponent implements OnInit {
    
 
     //for item grid Data
-    public gridItemsData: any[] = data;
+    public gridItemsData: any[] = []; //data;
     //for attachment grid Data
     public gridAttachmentData: any[] = attachment;
 
@@ -482,7 +484,7 @@ export class MainContentComponent implements OnInit {
      * @param status 
      */
     public onItemGridDataSelection(gridItemsData, selection, status) {
-        console.log("grid data selection change");
+        //console.log("grid data selection change");
         //update ui properties.
         this.gridSectionItem.nativeElement.style.display = 'none';
         this.AddItemFormSection.nativeElement.style.display = 'block';
@@ -541,8 +543,8 @@ export class MainContentComponent implements OnInit {
         //set updated grid to local storage.
         localStorage.setItem("AttachmentData",JSON.stringify(this.gridAttachmentData)); 
         var itemsRecords = this.gridAttachmentData.filter(p =>p.GrandParentId == this.selectedInquiryId || p.ParentId == this.selectedItemId);
-            console.log("ITemsRecords:"+JSON.stringify(itemsRecords));
-            console.log("AttachementData:"+JSON.stringify(this.gridAttachmentData));
+          //  console.log("ITemsRecords:"+JSON.stringify(itemsRecords));
+           // console.log("AttachementData:"+JSON.stringify(this.gridAttachmentData));
     }
 
     /**
@@ -590,19 +592,19 @@ export class MainContentComponent implements OnInit {
     public AddPurchaseInquiry() {debugger;
         console.log(this.date);
         this.purchaseInquiryForUpdate.ValidTillDate = this.date;
-        this.purchaseEnquiryService.AddPurchaseInquiry(this.purchaseInquiryForUpdate).subscribe(data => 
+        this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInquiryForUpdate).subscribe(data => 
             console.log(JSON.stringify(data)),
           
             
         );
-        this.getEnquiryList();
+        this.getInquiryList();
     }
 
     /**
-     * Method to get list of enquries from server.
+     * Method to get list of inquries from server.
      */
-    public getEnquiryList(){
-        this.purchaseEnquiryService.getEnquiryList().subscribe(
+    public getInquiryList(){
+        this.purchaseInquiryService.getInquiryList().subscribe(
             inquiryData=>{                
                     this.showLoader=true;  
                 this.gridData=JSON.parse(inquiryData);
@@ -611,13 +613,14 @@ export class MainContentComponent implements OnInit {
     }
 
     /**
-     * Method to get list of enquries from server.
+     * Method to get list of inquries from server.
      */
-    public getEnquiryItemList(){
+    public getInquiryItemList(){
         this.showLoader=true;  
-        this.purchaseEnquiryService.getInquiryItemList().subscribe(
+        this.purchaseInquiryService.getInquiryItemList().subscribe(
             inquiryItemData=>{                
                 this.gridItemsData = JSON.parse(inquiryItemData);
+                console.log("grid item data",+this.gridItemsData );
                 this.showLoader=false;
             });
     }

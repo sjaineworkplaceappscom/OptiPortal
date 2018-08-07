@@ -180,19 +180,19 @@
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Description</span>
-                                        <input type="text" name="description" class="k-textbox" value="" [(ngModel)]="purchaseItemsModelForUpdate.ItemDescription"
+                                        <input type="text" name="description" class="k-textbox" value="" [(ngModel)]="purchaseItemsModelForUpdate.Description"
                                             placeholder="Description" />
                                     </label>
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Customer Item Id / description</span>
-                                        <input type="text" class="k-textbox" name="custId_description" [(ngModel)]="purchaseItemsModelForUpdate.CustomerItemIdOrDescription"
+                                        <input type="text" class="k-textbox" name="custId_description" [(ngModel)]="purchaseItemsModelForUpdate.CustomerItemCode"
                                             value="" placeholder="Customer Item Id / description" />
                                     </label>
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Item Quantity</span>
-                                        <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModelForUpdate.Quantitiy" value="" placeholder="Item Quantity"
+                                        <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModelForUpdate.Quantity" value="" placeholder="Item Quantity"
                                         />
                                     </label>
 
@@ -210,12 +210,12 @@
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Request Date</span>
-                                        <kendo-datepicker name="requestDate" [(ngModel)]="requestDate"> </kendo-datepicker>
+                                        <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModelForUpdate.RequestDate"> </kendo-datepicker>
                                     </label>
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Required Date</span>
-                                        <kendo-datepicker name="requiredDate" [(ngModel)]="requiredDate"> </kendo-datepicker>
+                                        <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModelForUpdate.RequiredDate"> </kendo-datepicker>
                                     </label>
 
                                     <label class="k-form-field">
@@ -431,10 +431,10 @@
                             <!-- grid template end -->
 
                             <!-- grid column start -->
-                            <kendo-grid-column field="PurchaseInquiryItemlId" [width]="160" title="Id" filter="numeric" ></kendo-grid-column>
-                            <kendo-grid-column field="ItemDescription" title="Description" [width]="140"></kendo-grid-column>
-                            <kendo-grid-column field="CustomerItemIdOrDescription" title="Item Details" [width]="200"></kendo-grid-column>
-                            <kendo-grid-column field="Quantitiy" [width]="160" filter="numeric"></kendo-grid-column>
+                            <kendo-grid-column field="PurchaseInquiryItemId" [width]="160" title="Id" filter="numeric" ></kendo-grid-column>
+                            <kendo-grid-column field="Description" title="Description" [width]="140"></kendo-grid-column>
+                            <kendo-grid-column field="CustomerItemCode" title="Item Details" [width]="200"></kendo-grid-column>
+                            <kendo-grid-column field="Quantity" [width]="160" filter="numeric"></kendo-grid-column>
                             <kendo-grid-column field="Unit" [width]="140" filter="numeric"></kendo-grid-column>
                             <kendo-grid-column field="Requester" [width]="140"></kendo-grid-column>
                             <kendo-grid-column field="RequestDate" title="Request Date" [width]="140" filter="date"></kendo-grid-column>

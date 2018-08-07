@@ -10,7 +10,7 @@ import { TempPurchaseInquiryItemModel } from '../tempmodels/temppurchase-inquiry
 @Injectable({
   providedIn: 'root'
 })
-export class PurchaseEnquiryService {
+export class PurchaseInquiryService {
   baseUrl = Configuration.baseServerAPIEndpoint;
   
   constructor(private httpHelper:HttpHelper) { 
@@ -20,7 +20,7 @@ export class PurchaseEnquiryService {
   /**
    * get List of users
    */
-  public getEnquiryList():Observable<any> {    
+  public getInquiryList():Observable<any> {    
     let url: string = this.baseUrl + "purchaseinquiry/list";
   //let reqOption: RequestOptions = new RequestOptions({ method: RequestMethod.Get, headers: headers });
    return this.httpHelper.get(url,null);   
@@ -57,9 +57,9 @@ export class PurchaseEnquiryService {
  public AddPurchaseInquiryItem(request: TempPurchaseInquiryItemModel) {
   var data: any = {
   "PurchaseInquiryId": "0F79F0A0-6027-4D26-8507-85F9D609F487",
-  "CustomerItemIdOrDescription": request.CustomerItemIdOrDescription,
-  "ItemDescription": request.ItemDescription,
-  "Quantitiy": request.Quantitiy,
+  "CustomerItemIdOrDescription": request.CustomerItemCode,
+  "ItemDescription": request.Description,
+  "Quantitiy": request.Quantity,
   "Unit": request.Unit,
   "Requester": request.Requester,
   "RequestDate": request.RequestDate,
