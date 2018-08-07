@@ -250,22 +250,29 @@ export class MainContentComponent implements OnInit {
     //  ];
     //public noteRequetData: any[] = this.notesItemList;
 
-    //visible add new comment layout
+    /**
+     * visible add new comment layout.
+     */
     addNewComment() {
         this.notesgrid.nativeElement.style.display = 'none';
         this.noteform.nativeElement.style.display = 'block';
     }
-
-    //delete note from local storage.
+    
+    /**
+     * delete note from local storage. 
+     */
     deleteNote({ sender, rowIndex, dataItem }) {
         this.noteRequetData.splice(rowIndex, 1);
         localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteRequetData));
     }
-
     editNote({ sender, rowIndex, dataItem }) {
     }
     
-    //add note.
+    /**
+     * add note. 
+     * @param e 
+     * @param action 
+     */
     submitNote(e, action) {
         if (action == 'add') {
             this.notesgrid.nativeElement.style.display = 'block';
@@ -287,7 +294,9 @@ export class MainContentComponent implements OnInit {
         this.addnotestring = '';
     }
     
-    //add notes to local storage for item.
+    /**
+     *add notes to local storage for item. 
+     */
     submitItemsNote(e, action) {
         if (action == 'add') {
             this.notesitemgrid.nativeElement.style.display = 'block';
@@ -424,7 +433,6 @@ export class MainContentComponent implements OnInit {
                 this.optiTab.nativeElement.children[i].classList.remove('active');
             }
 
-
         this.isFixedRightSection = status;
     }
 
@@ -513,7 +521,7 @@ export class MainContentComponent implements OnInit {
     }
 
     /**
-     * add/upload attachment.
+     * add/upload attachment for Items and Inquiry.
      * @param e 
      */
     selectEventHandler(e: any) {
@@ -571,14 +579,13 @@ export class MainContentComponent implements OnInit {
         { text: "Partial accepted", value: '2' },
     ];
     public selectedNoteStatusItem: { text: string, value: string } = this.noteStatus[0];
-
     addItemtagain(){
     }
  
     /**
      * AddPurchaseInquiry
-       inquiry: TempPurchaseInquiryModel     
-       */
+     * inquiry: TempPurchaseInquiryModel     
+     */
     public AddPurchaseInquiry() {debugger;
         console.log(this.date);
         this.purchaseInquiryForUpdate.ValidTillDate = this.date;
@@ -589,6 +596,10 @@ export class MainContentComponent implements OnInit {
         );
         this.getEnquiryList();
     }
+
+    /**
+     * Method to get list of enquries from server.
+     */
     public getEnquiryList(){
         this.purchaseEnquiryService.getEnquiryList().subscribe(
             inquiryData=>{                
@@ -597,4 +608,6 @@ export class MainContentComponent implements OnInit {
                 this.showLoader=false;
             });
     }
+
+
 }
