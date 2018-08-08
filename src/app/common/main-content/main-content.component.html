@@ -460,13 +460,19 @@
             <div class="row">
                 <div class="col-md-12">
                     
-                    <!-- <ng-container *ngIf="true"> -->
+                    <!-- form section -->
+                    <ng-container *ngIf="TabAddAttachementFormStatus==true">
                         <h5>Upload Attachement</h5>
                         <kendo-upload  (select)="selectEventHandler($event)">
                         </kendo-upload>
-                    <!-- </ng-container> -->
+                        <div class="text-right">
+                            <button type="button" class="k-button k-primary" (click)="submitAttachements($event);" style="margin-top: 8px;">Save</button>
+                        </div>
+                    </ng-container>
 
+                    
                     <!-- start attachement grid -->
+                    <ng-container *ngIf="TabAttachementGridStatus==true">
                         <kendo-grid  
                         [data]="gridAttachmentData" 
                         [resizable]="false" 
@@ -476,7 +482,7 @@
                         [filterable]=isColumnFilterAttachementsGrid
                         [groupable]="false" 
                         [columnMenu]="{ columnChooser: false }" 
-                        [height]=gridHeight-41-80 
+                        [height]=gridHeight-41 
                         [selectable]="true"
                         name="gridAttachmentData"
                        #AttachementsTab>
@@ -522,6 +528,7 @@
                             <!-- xlsx template end -->
 
                         </kendo-grid>
+                    </ng-container>    
                     <!-- end attachement grid -->
 
                     
