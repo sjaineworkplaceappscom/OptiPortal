@@ -41,16 +41,11 @@ import { LayoutModule } from '@progress/kendo-angular-layout'
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export'
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs'
 import { UploadModule } from '@progress/kendo-angular-upload'
+
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { CustomFilterPipe } from './custom-filter.pipe';
 
 import { CustomPipeItemPipe } from 'src/app/custom-pipe-item.pipe';
-
-import { PurchaseInquiryListComponent } from './purchase-inquiry-list/purchase-inquiry-list.component';
-import { PurchaseInquiryComponent } from './purchaseinquiry/purchase-inquiry/purchase-inquiry.component';
-import { PurchaseInquiryAddComponent } from './purchaseinquiry/purchase-inquiry-add/purchase-inquiry-add.component';
-import { PurchaseInquiryItemsComponent } from './purchaseinquiry/purchase-inquiry-items/purchase-inquiry-items.component';
-import { PurchaseInquiryItemsAddComponent } from './purchaseinquiry/purchase-inquiry-items-add/purchase-inquiry-items-add.component';
 import { CommonModule } from '../../node_modules/@angular/common';
 
 
@@ -78,11 +73,8 @@ const routes: Routes = [
     LandingComponent,
     CustomFilterPipe,
     CustomPipeItemPipe,
-    PurchaseInquiryListComponent,
-    PurchaseInquiryComponent,
-    PurchaseInquiryAddComponent,
-    PurchaseInquiryItemsComponent,
-    PurchaseInquiryItemsAddComponent
+    
+    
   ],
   imports: [
     CommonModule, 
