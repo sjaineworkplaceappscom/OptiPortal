@@ -66,6 +66,18 @@ export class MainContentComponent implements OnInit {
     
     isFromInquryGrid:boolean = false;
 
+    /**
+     * Attachement tab variable
+     */
+    TabAddAttachementFormStatus:boolean = false;
+    TabAttachementGridStatus:boolean = true; 
+
+    /**
+     * Note tab variable
+     */
+    // TabAddNotesFormStatus:boolean = false;
+    // TabNotesGridStatus:boolean = true; 
+
     @ViewChild('AddItemFormSection') AddItemFormSection;
     @ViewChild('showItemButtonSection') showItemButtonSection;
     @ViewChild('gridSectionItem') gridSectionItem;
@@ -437,6 +449,12 @@ export class MainContentComponent implements OnInit {
                 this.optiTab.nativeElement.children[i].classList.remove('active');
             }
 
+            /**
+             * Attachement tab section
+             */
+            this.TabAddAttachementFormStatus = false;
+            this.TabAttachementGridStatus = true; 
+
         this.isFixedRightSection = status;
     }
 
@@ -644,5 +662,18 @@ export class MainContentComponent implements OnInit {
            data => 
            console.log(data)
        );
+    }
+
+    /**
+     * Attachement Tab
+     */
+   
+    public showTabAddAttachementForm(){
+        this.TabAttachementGridStatus = false;
+        this.TabAddAttachementFormStatus = true;
+    }
+    public submitAttachements(event){
+        this.TabAttachementGridStatus = true;
+        this.TabAddAttachementFormStatus = false;
     }
 }
