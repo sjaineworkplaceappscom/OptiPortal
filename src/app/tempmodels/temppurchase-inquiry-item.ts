@@ -1,6 +1,6 @@
 
 export class TempPurchaseInquiryItemModel{    
- 
+    
     PurchaseInquiryItemId:string;
     ItemID:string; //customer item id or description
     Description:string;
