@@ -21,7 +21,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; // Bootstrap Dropdown
 import { ModalModule } from 'ngx-bootstrap/modal'; // Bootstrap modal
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'; // perfect scroll bar
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 // for svg icon
@@ -49,26 +49,35 @@ import { CustomPipeItemPipe } from 'src/app/custom-pipe-item.pipe';
 import { CommonModule } from '../../node_modules/@angular/common';
 
 
-//// for new Routing for Lazy load
-// const routes: Routes = [
-//   { path: '', redirectTo: 'landing',pathMatch: 'full' },
-//   {path:'landing',component:LandingComponent},  
-//   { path: 'account', loadChildren: "./account/account.module#AccountModule" },
-//   { path: 'home', loadChildren: "./portal-home/portal-home.module#PortalHomeModule" },
-//   {path: '**', component: LandingComponent}
-//  ];
-
- const routes: Routes = [
-  { path: '', redirectTo: 'landing',pathMatch: 'full' },
-  {path:'landing',component:LandingComponent}, 
+// for new Routing for Lazy load
+const routes: Routes = [
+  { path: '', component:LandingComponent},
+  {path:'landing',component:LandingComponent},  
   { path: 'account', loadChildren: "./account/account.module#AccountModule" },
-  { path: 'home', component: HomeComponent},
-  {path:'approve',component:ApproveUsersComponent,canActivate:[AuthGuard]}, 
+  { path: 'home', loadChildren: "./portal-home/portal-home.module#PortalHomeModule" },
   {path: '**', component: LandingComponent}
-  ];
+ ];
+
+//  const routes: Routes = [
+//   { path: '', redirectTo: 'landing',pathMatch: 'full' },
+//   {path:'landing',component:LandingComponent}, 
+//   { path: 'account', loadChildren: "./account/account.module#AccountModule" },
+//   { path: 'home', component: HomeComponent},
+//   {path:'approve',component:ApproveUsersComponent,canActivate:[AuthGuard]}, 
+//   {path: '**', component: LandingComponent}
+//   ];
+
 @NgModule({
   declarations: [
+    
     AppComponent,
+    LandingComponent,
+
+    // Custom Pipes
+    CustomFilterPipe,
+    CustomPipeItemPipe,
+
+    //Home Components(Need to be delete)
     LeftComponent,    
     TopComponent,
     MainContentComponent,
@@ -77,11 +86,9 @@ import { CommonModule } from '../../node_modules/@angular/common';
 
     // Account   
     ApproveUsersComponent,
+
+    // Directive
     ConfirmPasswordEquilValidatorDirectiveDirective,
-    LandingComponent,
-    CustomFilterPipe,
-    CustomPipeItemPipe,
-    
     
   ],
   imports: [
@@ -93,7 +100,7 @@ import { CommonModule } from '../../node_modules/@angular/common';
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     PerfectScrollbarModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes,{preloadingStrategy: PreloadAllModules}),
     HttpClientModule, 
     AngularSvgIconModule, 
     DropDownsModule, 
