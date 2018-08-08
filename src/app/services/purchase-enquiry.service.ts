@@ -66,6 +66,6 @@ export class PurchaseInquiryService {
   "RequiredDate": request.RequiredDate,
   "ShipToLocation": request.ShipToLocation
   }
-  return this.httpHelper.post(this.baseUrl + 'purchaseinquiryitem/add',request,null);
+  return this.httpHelper.post(this.baseUrl + 'purchaseinquiryitem/add',data,null);
   }
 }

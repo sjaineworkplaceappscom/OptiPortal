@@ -626,7 +626,7 @@ export class MainContentComponent implements OnInit {
         this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
             inquiryItemData=>{        
                 this.gridItemsData = JSON.parse(inquiryItemData);
-                console.log("grid item data"+this.gridItemsData );
+                console.log("grid item data" + JSON.stringify(this.gridItemsData) );
                 this.showLoader=false;
             },
             error => {
@@ -636,5 +636,13 @@ export class MainContentComponent implements OnInit {
 
     }
 
-
+    /**
+     * AddPurchaseInquiryItem
+     */
+    public AddPurchaseInquiryItem() {debugger;
+       this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModelForUpdate).subscribe(
+           data => 
+           console.log(data)
+       );
+    }
 }
