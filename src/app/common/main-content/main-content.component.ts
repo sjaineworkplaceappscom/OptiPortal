@@ -63,6 +63,8 @@ export class MainContentComponent implements OnInit {
     
     showLoader:boolean=false;
     date: Date;
+    
+    isFromInquryGrid:boolean = false;
 
     @ViewChild('AddItemFormSection') AddItemFormSection;
     @ViewChild('showItemButtonSection') showItemButtonSection;
@@ -378,8 +380,9 @@ export class MainContentComponent implements OnInit {
      * @param status 
      */
     public onInquiryGridDataSelection(gridItem, selection, status) {
-        debugger;
-        console.log("inquiry item click");
+        // this flag will tell that user come from inquiry list.
+        this.isFromInquryGrid = true;
+        
         // if isRequestDetail is false means initially home tab will heighlight if is it true so that case nothing will change 
         if(this.isRequestDetail == false){
                 // Remove active class from all tab
@@ -412,8 +415,6 @@ export class MainContentComponent implements OnInit {
         //this.setInquiryAttachementData(this.selectedInquiryId);
         //fatch the item list on inquiry item click.
         this.getInquiryItemList(this.selectedInquiryId);
-
-
     }
 
     closeRightSection(status) {
@@ -594,7 +595,7 @@ export class MainContentComponent implements OnInit {
         console.log(this.date);
         this.purchaseInquiryForUpdate.ValidTillDate = this.date;
         this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInquiryForUpdate).subscribe(data => 
-            console.log(JSON.stringify(data)),
+        console.log(JSON.stringify(data)),
           
             
         );
@@ -607,7 +608,7 @@ export class MainContentComponent implements OnInit {
     public getInquiryList(){
         this.purchaseInquiryService.getInquiryList().subscribe(
             inquiryData=>{     
-                    this.showLoader=true;  
+                this.showLoader=true;  
                 this.gridData=JSON.parse(inquiryData);
                // console.log("grid inquiry data"+JSON.stringify(this.gridData ));
                 this.showLoader=false;
@@ -624,7 +625,6 @@ export class MainContentComponent implements OnInit {
         this.showLoader=true;  
         this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
             inquiryItemData=>{        
-                debugger;        
                 this.gridItemsData = JSON.parse(inquiryItemData);
                 console.log("grid item data" + JSON.stringify(this.gridItemsData) );
                 this.showLoader=false;
