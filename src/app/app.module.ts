@@ -49,15 +49,23 @@ import { CustomPipeItemPipe } from 'src/app/custom-pipe-item.pipe';
 import { CommonModule } from '../../node_modules/@angular/common';
 
 
+//// for new Routing for Lazy load
+// const routes: Routes = [
+//   { path: '', redirectTo: 'landing',pathMatch: 'full' },
+//   {path:'landing',component:LandingComponent},  
+//   { path: 'account', loadChildren: "./account/account.module#AccountModule" },
+//   { path: 'home', loadChildren: "./portal-home/portal-home.module#PortalHomeModule" },
+//   {path: '**', component: LandingComponent}
+//  ];
 
-const routes: Routes = [
+ const routes: Routes = [
   { path: '', redirectTo: 'landing',pathMatch: 'full' },
-  {path:'landing',component:LandingComponent},  
+  {path:'landing',component:LandingComponent}, 
   { path: 'account', loadChildren: "./account/account.module#AccountModule" },
   { path: 'home', component: HomeComponent},
   {path:'approve',component:ApproveUsersComponent,canActivate:[AuthGuard]}, 
   {path: '**', component: LandingComponent}
- ];
+  ];
 @NgModule({
   declarations: [
     AppComponent,
