@@ -1,6 +1,7 @@
 
 export class TempPurchaseInquiryModel{    
-    InquiryNumber:number;
+    PurchaseInquiryId:string;
+    InquiryNumber:string;
     CustomerCode:string;
     CustomerName:string;
     Status:string;

@@ -144,11 +144,11 @@ export class SigninComponent implements OnInit {
     if (value == 2) {
       this.commonService.setCurrentNavigatedFromData(3);
     }
-    this.router.navigateByUrl('/signup');
+    this.router.navigateByUrl('account/signup');
   }
 
   navigateToResetPassword(){
-    this.router.navigateByUrl('/resetpassword');
+    this.router.navigateByUrl('account/resetpassword');
   }
 
 

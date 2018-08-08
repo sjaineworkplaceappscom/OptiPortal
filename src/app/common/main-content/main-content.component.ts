@@ -108,14 +108,11 @@ export class MainContentComponent implements OnInit {
  //for inquiry grid Data
  public gridData: any[]=[];
     ngOnInit() {
-      
-
         this.commonService.themeCurrentData.subscribe(
             data => {
                 this.selectedThemeColor = data;
             }
         );
-
         this.getInquiryList();
         this.systemAdmin = localStorage.getItem('SystemAdmin');
         //initialize notes
@@ -145,7 +142,6 @@ export class MainContentComponent implements OnInit {
             }
         )
 
-        this.getInquiryItemList();
     }
     
     //for roles dropdown.
@@ -373,7 +369,7 @@ export class MainContentComponent implements OnInit {
     purchaseInquiryForUpdate: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
     validUntilForUpdate: Date;
     createdDateForUpdate: Date;
-    selectedInquiryId: number = 0;
+    selectedInquiryId: string = '';
 
     /**
      * Method will open the edit item window for selected grid item.
@@ -382,16 +378,17 @@ export class MainContentComponent implements OnInit {
      * @param status 
      */
     public onInquiryGridDataSelection(gridItem, selection, status) {
-        
+        debugger;
+        console.log("inquiry item click");
         // if isRequestDetail is false means initially home tab will heighlight if is it true so that case nothing will change 
         if(this.isRequestDetail == false){
-            // Remove active class from all tab
+                // Remove active class from all tab
                 let getList = this.optiTab.nativeElement.children;
                 for (let i = 0; i < getList.length; i++) { 
                     this.optiTab.nativeElement.children[i].classList.remove('active');
                 }
 
-            // Active home tab and home content
+                // Active home tab and home content
                 this.optirightfixedsection.nativeElement.children[2].style.display='block';
                 this.optiTab.nativeElement.children[0].classList.add('active');
                 this.isRequestDetail = status;
@@ -406,12 +403,16 @@ export class MainContentComponent implements OnInit {
         const selectedData = selection.selectedRows[0].dataItem;
         //  console.log("data: selectedData::"+  JSON.stringify(selectedData));
         //  console.log("data: selectedItem::"+    JSON.stringify(selectedItem));
-        this.purchaseInquiryForUpdate = JSON.parse(JSON.stringify(selectedData));
+        this.purchaseInquiryForUpdate = selectedData;
         this.validUntilForUpdate = new Date(this.purchaseInquiryForUpdate.ValidTillDate);
         this.createdDateForUpdate = new Date(this.purchaseInquiryForUpdate.CreatedDate);
-        this.selectedInquiryId = this.purchaseInquiryForUpdate.InquiryNumber;
+        this.selectedInquiryId = this.purchaseInquiryForUpdate.PurchaseInquiryId;
         this.setItemDataForInquiry(this.selectedInquiryId);
-        this.setInquiryAttachementData(this.selectedInquiryId);
+        // we will fatch the data of attachment on tab click so no need to fatch here.
+        //this.setInquiryAttachementData(this.selectedInquiryId);
+        //fatch the item list on inquiry item click.
+        this.getInquiryItemList(this.selectedInquiryId);
+
 
     }
 
@@ -442,7 +443,7 @@ export class MainContentComponent implements OnInit {
      * set item data for selected inquiry.
      * @param selectedInquiryId 
      */
-    public setItemDataForInquiry(selectedInquiryId: number): void {
+    public setItemDataForInquiry(selectedInquiryId: string): void {
         var itemsRecords = this.gridItemsData.filter(p => p.InquiryId == selectedInquiryId);
         //console.log("Filtered Data:" + JSON.stringify(itemsRecords));
         this.gridItemsData = itemsRecords;
@@ -456,7 +457,7 @@ export class MainContentComponent implements OnInit {
         this.purchaseInquiryForUpdate = new TempPurchaseInquiryModel();
         this.validUntilForUpdate = new Date();
         this.createdDateForUpdate = new Date();
-        this.selectedInquiryId = 0;
+        this.selectedInquiryId = '';
         this.gridAttachmentData = [];
         
     }
@@ -505,7 +506,7 @@ export class MainContentComponent implements OnInit {
      * set attachement data for selected inquiry.
      * @param selectedInquiryId 
      */
-    setInquiryAttachementData(selectedInquiryId: number){
+    setInquiryAttachementData(selectedInquiryId: string){
       
         this.gridAttachmentData=JSON.parse(localStorage.getItem("AttachmentData"));
        // console.log("Attachement Grid size b4 filter:"+JSON.stringify(this.gridAttachmentData));
@@ -589,7 +590,7 @@ export class MainContentComponent implements OnInit {
      * AddPurchaseInquiry
      * inquiry: TempPurchaseInquiryModel     
      */
-    public AddPurchaseInquiry() {debugger;
+    public AddPurchaseInquiry() {
         console.log(this.date);
         this.purchaseInquiryForUpdate.ValidTillDate = this.date;
         this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInquiryForUpdate).subscribe(data => 
@@ -605,9 +606,10 @@ export class MainContentComponent implements OnInit {
      */
     public getInquiryList(){
         this.purchaseInquiryService.getInquiryList().subscribe(
-            inquiryData=>{                
+            inquiryData=>{     
                     this.showLoader=true;  
                 this.gridData=JSON.parse(inquiryData);
+               // console.log("grid inquiry data"+JSON.stringify(this.gridData ));
                 this.showLoader=false;
             });
     }
@@ -616,16 +618,31 @@ export class MainContentComponent implements OnInit {
     /**
      * Method to get list of inquries from server.
      */
-    public getInquiryItemList(){
+    public getInquiryItemList(inquiryId: string ){
+        console.log("in getInquiryItemList");
+        
         this.showLoader=true;  
-        this.purchaseInquiryService.getInquiryItemList().subscribe(
-            inquiryItemData=>{                
+        this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
+            inquiryItemData=>{        
+                debugger;        
                 this.gridItemsData = JSON.parse(inquiryItemData);
-                console.log("grid item data",+this.gridItemsData );
+                console.log("grid item data" + JSON.stringify(this.gridItemsData) );
                 this.showLoader=false;
+            },
+            error => {
+                this.showLoader = false;
+                // handle error.
             });
 
     }
 
-
+    /**
+     * AddPurchaseInquiryItem
+     */
+    public AddPurchaseInquiryItem() {debugger;
+       this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModelForUpdate).subscribe(
+           data => 
+           console.log(data)
+       );
+    }
 }

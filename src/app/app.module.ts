@@ -4,7 +4,7 @@
 // Original Date: 10 March 2018
 //==============================================================================
 
-import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -19,21 +19,12 @@ import { RightComponent } from './common/right/right.component';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; // Bootstrap Dropdown
 import { ModalModule } from 'ngx-bootstrap/modal'; // Bootstrap modal
-
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'; // perfect scroll bar
-import { SignupComponent } from 'src/app/account/signup/signup.component';
-import { SigninComponent } from 'src/app/account/signin/signin.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { ResetPasswordComponent } from 'src/app/account/reset-password/reset-password.component';
-import { ChangePasswordComponent } from 'src/app/account/change-password/change-password.component';
-import { SetPasswordComponent } from 'src/app/account/set-password/set-password.component';
-import { TenantselectionComponent } from 'src/app/account/tenantselection/tenantselection.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-
 // for svg icon
-// import { HttpClientModule } from '@angular/common/http'; also need this module
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 // It's for dropdown module
@@ -52,30 +43,24 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs'
 import { UploadModule } from '@progress/kendo-angular-upload'
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { CustomFilterPipe } from './custom-filter.pipe';
-import { PurchaseInquiryListComponent } from './purchase-inquiry-list/purchase-inquiry-list.component';
+
 import { CustomPipeItemPipe } from 'src/app/custom-pipe-item.pipe';
-//import { PurchaseInquiryAddComponent } from './purchaseinquiry/purchase-inquiry-add/purchase-inquiry-add.component';
+
+import { PurchaseInquiryListComponent } from './purchase-inquiry-list/purchase-inquiry-list.component';
 import { PurchaseInquiryComponent } from './purchaseinquiry/purchase-inquiry/purchase-inquiry.component';
 import { PurchaseInquiryAddComponent } from './purchaseinquiry/purchase-inquiry-add/purchase-inquiry-add.component';
 import { PurchaseInquiryItemsComponent } from './purchaseinquiry/purchase-inquiry-items/purchase-inquiry-items.component';
 import { PurchaseInquiryItemsAddComponent } from './purchaseinquiry/purchase-inquiry-items-add/purchase-inquiry-items-add.component';
+import { CommonModule } from '../../node_modules/@angular/common';
 
 
 
 const routes: Routes = [
-  
-  
-  { path: 'signup', component: SignupComponent },
-  { path: 'login', component: SigninComponent },  
-  // { path: 'home', component: HomeComponent,canActivate:[AuthGuard]},
-  { path: 'home', component: HomeComponent},
-  {path:'approve',component:ApproveUsersComponent,canActivate:[AuthGuard]},  
-  {path:'resetpassword',component:ResetPasswordComponent},
-  {path:'changepassword',component:ChangePasswordComponent},
-  {path:'setpassword',component:SetPasswordComponent},
-  {path:'tenantselection',component:TenantselectionComponent,canActivate:[AuthGuard]},
-  {path:'landing',component:LandingComponent},
   { path: '', redirectTo: 'landing',pathMatch: 'full' },
+  {path:'landing',component:LandingComponent},  
+  { path: 'account', loadChildren: "./account/account.module#AccountModule" },
+  { path: 'home', component: HomeComponent},
+  {path:'approve',component:ApproveUsersComponent,canActivate:[AuthGuard]}, 
   {path: '**', component: LandingComponent}
  ];
 @NgModule({
@@ -87,13 +72,7 @@ const routes: Routes = [
     RightComponent,
     HomeComponent,
 
-    // Account
-    ChangePasswordComponent,
-    ResetPasswordComponent,
-    SetPasswordComponent,
-    SigninComponent ,
-    SignupComponent,
-    TenantselectionComponent,
+    // Account   
     ApproveUsersComponent,
     ConfirmPasswordEquilValidatorDirectiveDirective,
     LandingComponent,
@@ -106,8 +85,9 @@ const routes: Routes = [
     PurchaseInquiryItemsAddComponent
   ],
   imports: [
+    CommonModule, 
     FormsModule,
-    BrowserModule,
+    
     HttpClientModule,
     ButtonsModule,
     BsDropdownModule.forRoot(),
