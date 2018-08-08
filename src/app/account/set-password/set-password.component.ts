@@ -47,7 +47,7 @@ export class SetPasswordComponent implements OnInit {
         data => {
           alert('Your password set successfully.');
           this1.showLoader = false;
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('account/login');
         },
         err => {
           this.showLoader = false;
@@ -64,7 +64,7 @@ export class SetPasswordComponent implements OnInit {
 
           alert('Welcome to optipro Portals, your password set successfully.');
           this1.showLoader = false;
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('account/login');
         },
         err => {
           this.showLoader = false;

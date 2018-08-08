@@ -27,11 +27,11 @@ export class LandingComponent implements OnInit {
     if (value == 2) {
       this.commonService.setCurrentNavigatedFromData(3);
     }
-    this.router.navigateByUrl('/signup');
+    this.router.navigateByUrl('account/signup');
   }
 
   navigateToSignIn(){
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('account/login');
   }
 
 }
