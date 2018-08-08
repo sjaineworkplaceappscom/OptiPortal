@@ -589,7 +589,7 @@ export class MainContentComponent implements OnInit {
      * AddPurchaseInquiry
      * inquiry: TempPurchaseInquiryModel     
      */
-    public AddPurchaseInquiry() {debugger;
+    public AddPurchaseInquiry() {
         console.log(this.date);
         this.purchaseInquiryForUpdate.ValidTillDate = this.date;
         this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInquiryForUpdate).subscribe(data => 
@@ -621,11 +621,19 @@ export class MainContentComponent implements OnInit {
         this.purchaseInquiryService.getInquiryItemList().subscribe(
             inquiryItemData=>{                
                 this.gridItemsData = JSON.parse(inquiryItemData);
-                console.log("grid item data",+this.gridItemsData );
+                console.log("grid item data" + JSON.stringify(this.gridItemsData) );
                 this.showLoader=false;
             });
 
     }
 
-
+    /**
+     * AddPurchaseInquiryItem
+     */
+    public AddPurchaseInquiryItem() {debugger;
+       this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModelForUpdate).subscribe(
+           data => 
+           console.log(data)
+       );
+    }
 }
