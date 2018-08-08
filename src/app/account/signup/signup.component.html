@@ -114,7 +114,7 @@
                         
                         
 
-                            <label class="k-form-field opti_display-inline-block">
+                            <label class="k-form-field opti_signup-captcha opti_display-inline-block">
                                 <!-- <div class="opti_captcha-box"> -->
                                 <span class="float-left opti_captcha-text">
                                     <input required class="k-textbox" #Captcha=ngModel [(ngModel)]="capchaText" (input)="changeValue()" type="text" name="captchatext" required />
@@ -128,7 +128,7 @@
                                     </div>
                                 </span>
                                 
-                                <div class="opti_error-msg opti_display-inline-block opti_fullwidth">
+                                <div class="opti_error-msg opti_display-inline-block opti_captcha-error opti_fullwidth">
                                     <span class="opti_error-msg"  *ngIf="invalidCapcha==true"  >Please enter valid captcha.</span>
                                     <span class="opti_error-msg" *ngIf="Captcha.errors && (Captcha.dirty || Captcha.touched)">Captcha is required.</span>
                                 </div>
