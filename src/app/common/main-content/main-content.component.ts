@@ -73,10 +73,11 @@ export class MainContentComponent implements OnInit {
     TabAttachementGridStatus:boolean = true; 
 
     /**
-     * Note tab variable
+     * Notes tab variable
      */
-    // TabAddNotesFormStatus:boolean = false;
-    // TabNotesGridStatus:boolean = true; 
+    TabAddNotesFormStatus:boolean = false;
+    TabEditNotesFormStatus:boolean = false;
+    TabNotesGridStatus:boolean = true; 
 
     @ViewChild('AddItemFormSection') AddItemFormSection;
     @ViewChild('showItemButtonSection') showItemButtonSection;
@@ -266,8 +267,10 @@ export class MainContentComponent implements OnInit {
      * visible add new comment layout.
      */
     addNewComment() {
-        this.notesgrid.nativeElement.style.display = 'none';
-        this.noteform.nativeElement.style.display = 'block';
+        // this.notesgrid.nativeElement.style.display = 'none';
+        this.TabNotesGridStatus = false;
+        // this.noteform.nativeElement.style.display = 'block';
+        this.TabAddNotesFormStatus = true;
     }
     
     /**
@@ -287,8 +290,10 @@ export class MainContentComponent implements OnInit {
      */
     submitNote(e, action) {
         if (action == 'add') {
-            this.notesgrid.nativeElement.style.display = 'block';
-            this.noteform.nativeElement.style.display = 'none';
+            // this.notesgrid.nativeElement.style.display = 'block';
+            this.TabNotesGridStatus = true;
+            // this.noteform.nativeElement.style.display = 'none';
+            this.TabAddNotesFormStatus = false;
             let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
             let dynamicNotes: any[] = JSON.parse(dynamicNotesString);
             if (dynamicNotes == undefined || dynamicNotes.length <= 0) {
@@ -300,8 +305,10 @@ export class MainContentComponent implements OnInit {
             localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
             this.noteRequetData = dynamicNotes;
         } else {
-            this.notesgrid.nativeElement.style.display = 'block';
-            this.noteform.nativeElement.style.display = 'none';
+            // this.notesgrid.nativeElement.style.display = 'block';
+            this.TabNotesGridStatus = true;
+            // this.noteform.nativeElement.style.display = 'none';
+            this.TabAddNotesFormStatus = false;
         }
         this.addnotestring = '';
     }
@@ -455,6 +462,13 @@ export class MainContentComponent implements OnInit {
             this.TabAddAttachementFormStatus = false;
             this.TabAttachementGridStatus = true; 
 
+            /**
+             * Notes tab section
+             */
+            this.TabAddNotesFormStatus = false;
+            this.TabEditNotesFormStatus = false;
+            this.TabNotesGridStatus = true; 
+
         this.isFixedRightSection = status;
     }
 
@@ -580,14 +594,18 @@ export class MainContentComponent implements OnInit {
     editNotes(e, note) {
         console.log(e);
         console.log(note);
-        this.notesgrid.nativeElement.style.display = 'none';
-        this.editnoteform.nativeElement.style.display = 'block';
+        // this.notesgrid.nativeElement.style.display = 'none';
+        this.TabNotesGridStatus = false;
+        // this.editnoteform.nativeElement.style.display = 'block';
+        this.TabEditNotesFormStatus = true;
         this.selectedNote = note;
     }
 
     updateNote(e) {
-        this.notesgrid.nativeElement.style.display = 'block';
-        this.editnoteform.nativeElement.style.display = 'none';
+        // this.notesgrid.nativeElement.style.display = 'block';
+        this.TabNotesGridStatus = true;
+        // this.editnoteform.nativeElement.style.display = 'none';
+        this.TabEditNotesFormStatus = false;
         let index = this.noteRequetData.indexOf(this.selectedNote);
         if (index > -1) {
             this.noteRequetData[index].Notes = this.selectedNote.Notes;
