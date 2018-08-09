@@ -21,7 +21,7 @@ export class CustomPipeItemPipe implements PipeTransform {
     return value.filter(items => {
       return items.CustomerCode.toLowerCase().indexOf(args) != -1 ||
         items.CustomerName.toLowerCase().indexOf(args) != -1 ||
-        items.Status.toLowerCase().indexOf(args) != -1 ||
+        items.Status==args ||
         items.Buyer.toLowerCase().indexOf(args) != -1 ||
         items.ReferenceNumber.toLowerCase().indexOf(args) != -1;
 

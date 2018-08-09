@@ -45,8 +45,8 @@ import { UploadModule } from '@progress/kendo-angular-upload'
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { CustomFilterPipe } from './custom-filter.pipe';
 
-import { CustomPipeItemPipe } from 'src/app/custom-pipe-item.pipe';
-import { CommonModule } from '../../node_modules/@angular/common';
+import { CustomPipeItemPipe } from './custom-pipe-item.pipe';
+import { CommonModule } from '@angular/common';
 
 
 // for new Routing for Lazy load
