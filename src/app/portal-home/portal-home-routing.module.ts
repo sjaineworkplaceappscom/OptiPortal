@@ -9,6 +9,7 @@ const routes: Routes = [
     path: '', component: PortalHomeComponent,
     children: [
       { path: 'purchaseinquiry', loadChildren: '../purchase-inquiry/purchase-inquiry.module#PurchaseInquiryModule' },
+      { path: 'shared', loadChildren: '../shared/shared.module#SharedModule' },
       {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard]}
     ]
   }
