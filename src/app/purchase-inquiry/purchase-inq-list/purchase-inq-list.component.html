@@ -1,3 +1,6 @@
 <p>
-  purchase-inq-list works!
+  purchase-inq-list works!  
 </p>
+<!-- <input id="id" name="idname" type="text" [(ngModel)]="requestId"></input> -->
+<button (click)="btnClick()">show</button>
+<app-purchase-inq-item-list *ngIf="showInq==true" [id]="requestId"></app-purchase-inq-item-list>

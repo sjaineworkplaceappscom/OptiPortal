@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpHelper } from '../helpers/http.helper';
-import { Observable } from '../../../node_modules/rxjs/Observable';
-import { RequestOptions } from '../../../node_modules/@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { RequestOptions } from '@angular/http';
 import { TempPurchaseInquiryModel } from '../tempmodels/temppurchase-inquiry';
 import { Configuration } from '../../assets/configuration';
 import { TempPurchaseInquiryItemModel } from '../tempmodels/temppurchase-inquiry-item';

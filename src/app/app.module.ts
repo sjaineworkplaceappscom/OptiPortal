@@ -20,7 +20,7 @@ import { RightComponent } from './common/right/right.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; // Bootstrap Dropdown
 import { ModalModule } from 'ngx-bootstrap/modal'; // Bootstrap modal
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'; // perfect scroll bar
-import { AuthGuard } from 'src/app/guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
@@ -45,11 +45,11 @@ import { UploadModule } from '@progress/kendo-angular-upload'
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { CustomFilterPipe } from './custom-filter.pipe';
 
-import { CustomPipeItemPipe } from 'src/app/custom-pipe-item.pipe';
-import { CommonModule } from '../../node_modules/@angular/common';
+import { CustomPipeItemPipe } from './custom-pipe-item.pipe';
+import { CommonModule } from '@angular/common';
 
 
-//// for new Routing for Lazy load
+// for new Routing for Lazy load
 // const routes: Routes = [
 //   { path: '', redirectTo: 'landing',pathMatch: 'full' },
 //   {path:'landing',component:LandingComponent},  

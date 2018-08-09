@@ -6,7 +6,7 @@
 
 import { Component, OnInit, HostListener, TemplateRef, ViewChild } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
-import { data2 } from '../../DemoData/Data2';
+import { data2 } from '../../demodata/data2';
 import { data } from '../../DemoData/Data';
 
 import { process, State } from '@progress/kendo-data-query';
@@ -15,7 +15,7 @@ import {
     GridDataResult,
     DataStateChangeEvent
 } from '@progress/kendo-angular-grid';
-import { UIHelper } from 'src/app/helpers/ui.helpers';
+import { UIHelper } from '../../helpers/ui.helpers';
 import { opticonstants } from '../../constants';
 import { stringify } from '@angular/core/src/util';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
@@ -28,7 +28,7 @@ import { SelectEvent } from '@progress/kendo-angular-layout';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { FileInfo } from '@progress/kendo-angular-upload';
 import { debug } from 'util';
-import { invokeQuery } from '../../../../node_modules/@angular/animations/browser/src/render/shared';
+import { invokeQuery } from '@angular/animations/browser/src/render/shared';
 
 //declare var $: any;
 
@@ -120,8 +120,8 @@ export class MainContentComponent implements OnInit {
         // check mobile device
         this.isMobile = UIHelper.isMobile();
     }
- //for inquiry grid Data
- public gridData: any[]=[];
+    //for inquiry grid Data
+    public gridData: any[]=[];
     ngOnInit() {
         this.commonService.themeCurrentData.subscribe(
             data => {
@@ -401,7 +401,7 @@ export class MainContentComponent implements OnInit {
     public onInquiryGridDataSelection(gridItem, selection, status) {
         // this flag will tell that user come from inquiry list.
         this.isFromInquryGrid = true;
-        
+  
         // if isRequestDetail is false means initially home tab will heighlight if is it true so that case nothing will change 
         if(this.isRequestDetail == false){
                 // Remove active class from all tab
@@ -423,16 +423,21 @@ export class MainContentComponent implements OnInit {
         //fatch and parse row value.
         let selectedItem = gridItem.data.data[selection.index];
         const selectedData = selection.selectedRows[0].dataItem;
+        debugger;
         //  console.log("data: selectedData::"+  JSON.stringify(selectedData));
         //  console.log("data: selectedItem::"+    JSON.stringify(selectedItem));
         this.purchaseInquiryForUpdate = selectedData;
         this.validUntilForUpdate = new Date(this.purchaseInquiryForUpdate.ValidTillDate);
         this.createdDateForUpdate = new Date(this.purchaseInquiryForUpdate.CreatedDate);
         this.selectedInquiryId = this.purchaseInquiryForUpdate.PurchaseInquiryId;
-        this.setItemDataForInquiry(this.selectedInquiryId);
+        
+        //this method sets hardcoded data of items
+        //this.setItemDataForInquiry(this.selectedInquiryId);
+        
         // we will fatch the data of attachment on tab click so no need to fatch here.
         //this.setInquiryAttachementData(this.selectedInquiryId);
         //fatch the item list on inquiry item click.
+        debugger;
         this.getInquiryItemList(this.selectedInquiryId);
     }
 
@@ -657,7 +662,7 @@ export class MainContentComponent implements OnInit {
      */
     public getInquiryItemList(inquiryId: string ){
         console.log("in getInquiryItemList");
-        
+        debugger;
         this.showLoader=true;  
         this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
             inquiryItemData=>{        

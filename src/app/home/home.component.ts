@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { UIHelper } from 'src/app/helpers/ui.helpers';
+import { UIHelper } from '../helpers/ui.helpers';
 
 @Component({
   selector: 'app-home',
