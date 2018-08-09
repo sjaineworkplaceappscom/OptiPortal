@@ -56,7 +56,7 @@ export class PurchaseInquiryService {
    */
  public AddPurchaseInquiryItem(request: TempPurchaseInquiryItemModel) {
   var data: any = {
-  "PurchaseInquiryId": "0F79F0A0-6027-4D26-8507-85F9D609F487",
+  "PurchaseInquiryId": request.PurchaseInquiryId,
   "CustomerItemIdOrDescription": request.CustomerItemCode,
   "ItemDescription": request.Description,
   "Quantitiy": request.Quantity,

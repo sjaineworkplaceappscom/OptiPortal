@@ -378,7 +378,6 @@ export class MainContentComponent implements OnInit {
      * @param status 
      */
     public onInquiryGridDataSelection(gridItem, selection, status) {
-        debugger;
         console.log("inquiry item click");
         // if isRequestDetail is false means initially home tab will heighlight if is it true so that case nothing will change 
         if(this.isRequestDetail == false){
@@ -623,8 +622,8 @@ export class MainContentComponent implements OnInit {
         
         this.showLoader=true;  
         this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
-            inquiryItemData=>{        
-                debugger;        
+            inquiryItemData=>{          
+                // this.selectedInquiryId = inquiryId;     
                 this.gridItemsData = JSON.parse(inquiryItemData);
                 console.log("grid item data" + JSON.stringify(this.gridItemsData) );
                 this.showLoader=false;
@@ -639,10 +638,12 @@ export class MainContentComponent implements OnInit {
     /**
      * AddPurchaseInquiryItem
      */
-    public AddPurchaseInquiryItem() {debugger;
+    public AddPurchaseInquiryItem() {
+        this.purchaseItemsModelForUpdate.PurchaseInquiryId = this.selectedInquiryId;
        this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModelForUpdate).subscribe(
            data => 
            console.log(data)
        );
+       this.getInquiryItemList(this.selectedInquiryId);
     }
 }
