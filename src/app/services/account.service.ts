@@ -66,7 +66,7 @@ export class AccountService {
       data => {
         alert('We have sent you reset password link on your registered email id');
 
-        this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('account/login');
 
       }
     )

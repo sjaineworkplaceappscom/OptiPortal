@@ -63,6 +63,21 @@ export class MainContentComponent implements OnInit {
     
     showLoader:boolean=false;
     date: Date;
+    
+    isFromInquryGrid:boolean = false;
+
+    /**
+     * Attachement tab variable
+     */
+    TabAddAttachementFormStatus:boolean = false;
+    TabAttachementGridStatus:boolean = true; 
+
+    /**
+     * Notes tab variable
+     */
+    TabAddNotesFormStatus:boolean = false;
+    TabEditNotesFormStatus:boolean = false;
+    TabNotesGridStatus:boolean = true; 
 
     @ViewChild('AddItemFormSection') AddItemFormSection;
     @ViewChild('showItemButtonSection') showItemButtonSection;
@@ -252,8 +267,10 @@ export class MainContentComponent implements OnInit {
      * visible add new comment layout.
      */
     addNewComment() {
-        this.notesgrid.nativeElement.style.display = 'none';
-        this.noteform.nativeElement.style.display = 'block';
+        // this.notesgrid.nativeElement.style.display = 'none';
+        this.TabNotesGridStatus = false;
+        // this.noteform.nativeElement.style.display = 'block';
+        this.TabAddNotesFormStatus = true;
     }
     
     /**
@@ -273,8 +290,10 @@ export class MainContentComponent implements OnInit {
      */
     submitNote(e, action) {
         if (action == 'add') {
-            this.notesgrid.nativeElement.style.display = 'block';
-            this.noteform.nativeElement.style.display = 'none';
+            // this.notesgrid.nativeElement.style.display = 'block';
+            this.TabNotesGridStatus = true;
+            // this.noteform.nativeElement.style.display = 'none';
+            this.TabAddNotesFormStatus = false;
             let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
             let dynamicNotes: any[] = JSON.parse(dynamicNotesString);
             if (dynamicNotes == undefined || dynamicNotes.length <= 0) {
@@ -286,8 +305,10 @@ export class MainContentComponent implements OnInit {
             localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
             this.noteRequetData = dynamicNotes;
         } else {
-            this.notesgrid.nativeElement.style.display = 'block';
-            this.noteform.nativeElement.style.display = 'none';
+            // this.notesgrid.nativeElement.style.display = 'block';
+            this.TabNotesGridStatus = true;
+            // this.noteform.nativeElement.style.display = 'none';
+            this.TabAddNotesFormStatus = false;
         }
         this.addnotestring = '';
     }
@@ -379,6 +400,9 @@ export class MainContentComponent implements OnInit {
      */
     public onInquiryGridDataSelection(gridItem, selection, status) {
         console.log("inquiry item click");
+        // this flag will tell that user come from inquiry list.
+        this.isFromInquryGrid = true;
+        
         // if isRequestDetail is false means initially home tab will heighlight if is it true so that case nothing will change 
         if(this.isRequestDetail == false){
                 // Remove active class from all tab
@@ -411,8 +435,6 @@ export class MainContentComponent implements OnInit {
         //this.setInquiryAttachementData(this.selectedInquiryId);
         //fatch the item list on inquiry item click.
         this.getInquiryItemList(this.selectedInquiryId);
-
-
     }
 
     closeRightSection(status) {
@@ -434,6 +456,19 @@ export class MainContentComponent implements OnInit {
             for (let i = 0; i < getList.length; i++) { 
                 this.optiTab.nativeElement.children[i].classList.remove('active');
             }
+
+            /**
+             * Attachement tab section
+             */
+            this.TabAddAttachementFormStatus = false;
+            this.TabAttachementGridStatus = true; 
+
+            /**
+             * Notes tab section
+             */
+            this.TabAddNotesFormStatus = false;
+            this.TabEditNotesFormStatus = false;
+            this.TabNotesGridStatus = true; 
 
         this.isFixedRightSection = status;
     }
@@ -560,14 +595,18 @@ export class MainContentComponent implements OnInit {
     editNotes(e, note) {
         console.log(e);
         console.log(note);
-        this.notesgrid.nativeElement.style.display = 'none';
-        this.editnoteform.nativeElement.style.display = 'block';
+        // this.notesgrid.nativeElement.style.display = 'none';
+        this.TabNotesGridStatus = false;
+        // this.editnoteform.nativeElement.style.display = 'block';
+        this.TabEditNotesFormStatus = true;
         this.selectedNote = note;
     }
 
     updateNote(e) {
-        this.notesgrid.nativeElement.style.display = 'block';
-        this.editnoteform.nativeElement.style.display = 'none';
+        // this.notesgrid.nativeElement.style.display = 'block';
+        this.TabNotesGridStatus = true;
+        // this.editnoteform.nativeElement.style.display = 'none';
+        this.TabEditNotesFormStatus = false;
         let index = this.noteRequetData.indexOf(this.selectedNote);
         if (index > -1) {
             this.noteRequetData[index].Notes = this.selectedNote.Notes;
@@ -593,7 +632,7 @@ export class MainContentComponent implements OnInit {
         console.log(this.date);
         this.purchaseInquiryForUpdate.ValidTillDate = this.date;
         this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInquiryForUpdate).subscribe(data => 
-            console.log(JSON.stringify(data)),
+        console.log(JSON.stringify(data)),
           
             
         );
@@ -606,7 +645,7 @@ export class MainContentComponent implements OnInit {
     public getInquiryList(){
         this.purchaseInquiryService.getInquiryList().subscribe(
             inquiryData=>{     
-                    this.showLoader=true;  
+                this.showLoader=true;  
                 this.gridData=JSON.parse(inquiryData);
                // console.log("grid inquiry data"+JSON.stringify(this.gridData ));
                 this.showLoader=false;
@@ -622,8 +661,7 @@ export class MainContentComponent implements OnInit {
         
         this.showLoader=true;  
         this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
-            inquiryItemData=>{          
-                // this.selectedInquiryId = inquiryId;     
+            inquiryItemData=>{        
                 this.gridItemsData = JSON.parse(inquiryItemData);
                 console.log("grid item data" + JSON.stringify(this.gridItemsData) );
                 this.showLoader=false;
@@ -645,5 +683,18 @@ export class MainContentComponent implements OnInit {
            console.log(data)
        );
        this.getInquiryItemList(this.selectedInquiryId);
+    }
+
+    /**
+     * Attachement Tab
+     */
+   
+    public showTabAddAttachementForm(){
+        this.TabAttachementGridStatus = false;
+        this.TabAddAttachementFormStatus = true;
+    }
+    public submitAttachements(event){
+        this.TabAttachementGridStatus = true;
+        this.TabAddAttachementFormStatus = false;
     }
 }
