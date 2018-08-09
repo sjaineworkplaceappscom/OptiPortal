@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpHelper } from '../helpers/http.helper';
-import { Observable } from '../../../node_modules/rxjs/Observable';
-import { RequestOptions } from '../../../node_modules/@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { RequestOptions } from '@angular/http';
 import { TempPurchaseInquiryModel } from '../tempmodels/temppurchase-inquiry';
 import { Configuration } from '../../assets/configuration';
 import { TempPurchaseInquiryItemModel } from '../tempmodels/temppurchase-inquiry-item';
@@ -56,7 +56,7 @@ export class PurchaseInquiryService {
    */
  public AddPurchaseInquiryItem(request: TempPurchaseInquiryItemModel) {
   var data: any = {
-  "PurchaseInquiryId": "0F79F0A0-6027-4D26-8507-85F9D609F487",
+  "PurchaseInquiryId": request.PurchaseInquiryId,
   "CustomerItemIdOrDescription": request.CustomerItemCode,
   "ItemDescription": request.Description,
   "Quantitiy": request.Quantity,

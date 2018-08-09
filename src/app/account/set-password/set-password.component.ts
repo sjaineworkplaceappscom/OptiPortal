@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../../services/account.service';
-import { UserModel } from 'src/app/models/account/user-model';
+import { UserModel } from '../../models/account/user-model';
 import { NgForm } from '@angular/forms';
 
 

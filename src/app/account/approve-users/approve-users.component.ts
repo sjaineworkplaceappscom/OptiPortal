@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { AccountService } from '../../services/account.service';
-import { UIHelper } from 'src/app/helpers/ui.helpers';
+import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({
   selector: 'app-approve-users',
