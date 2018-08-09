@@ -91,3 +91,14 @@
     text-align: center;
     width: 100%;
 }
+
+.k-form .k-form-field.opti_signup-captcha,
+.opti_captcha-canvas,
+.opti_captcha-text {
+  margin-bottom: 0 !important;
+}
+
+.opti_captcha-error{
+    position: relative;
+    top: -7px;
+}

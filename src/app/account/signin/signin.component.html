@@ -59,10 +59,12 @@
                             </div>
                         </span>
                    </label>
-                    <div class="opti_error-msg opti_display-inline-block opti_fullwidth">
+                    
+                    <div class="opti_error-msg opti_captcha-error opti_display-inline-block opti_fullwidth">
                         <span class="opti_error-msg"  *ngIf="invalidCapcha==true"  >Please enter valid captcha.</span>
                         <span class="opti_error-msg" *ngIf="Captcha.errors && (Captcha.dirty || Captcha.touched)">Captcha is required.</span>
                     </div>
+
                     <label class="k-form-field" >
                         <div class="opti_checkbox-container">
                         <input type="checkbox" id="auth-2fa" class="k-checkbox float-left" checked="checked">

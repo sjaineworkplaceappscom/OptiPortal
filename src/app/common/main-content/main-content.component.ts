@@ -399,6 +399,7 @@ export class MainContentComponent implements OnInit {
      * @param status 
      */
     public onInquiryGridDataSelection(gridItem, selection, status) {
+        console.log("inquiry item click");
         // this flag will tell that user come from inquiry list.
         this.isFromInquryGrid = true;
   
@@ -680,11 +681,13 @@ export class MainContentComponent implements OnInit {
     /**
      * AddPurchaseInquiryItem
      */
-    public AddPurchaseInquiryItem() {debugger;
+    public AddPurchaseInquiryItem() {
+        this.purchaseItemsModelForUpdate.PurchaseInquiryId = this.selectedInquiryId;
        this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModelForUpdate).subscribe(
            data => 
            console.log(data)
        );
+       this.getInquiryItemList(this.selectedInquiryId);
     }
 
     /**
