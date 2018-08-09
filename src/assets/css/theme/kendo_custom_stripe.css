@@ -13,7 +13,7 @@
 /* static color start */
 /*****************************************************/
   body{
-  color: #555;
+  color: #555; 
   }
   
   p, span, strong, div{
@@ -24,18 +24,18 @@
     background: linear-gradient(177deg, #483DF6 2%, #435EF8 10%, #1BA0F1 44%, #25DDF5 91%, #45D790 130%);
   }
 
-  .opti_menusidebar-mobile-open app-left {
+  .opti_menusidebar-mobile-open app-portal-left {
       background: rgba(0,0,0,0.5);
   }
 /*****************************************************/
 /* static color end */
 /*****************************************************/
 
-app-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
+app-portal-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
 .opti_user-profile-drop-down li.opti_mouse-pointer:hover,
 li.opti_list:hover,
 ul.opti_liststyle-one-ul .opti_liststyle-one-li:hover,
-app-left #opti_LeftPanelID .opti_left-nav-ul li.active
+app-portal-left #opti_LeftPanelID .opti_left-nav-ul li.active
 {
     background-color: var(--kendo-light-primary-hover-color);
 }
@@ -46,7 +46,7 @@ app-left #opti_LeftPanelID .opti_left-nav-ul li.active
 }
 
 #opti_RightPanelID,
-.opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
+.opti_menusidebar-mobile-open app-portal-left #opti_LeftPanelID{
     background-color: var(--kendo-off-white-color);
 }
 

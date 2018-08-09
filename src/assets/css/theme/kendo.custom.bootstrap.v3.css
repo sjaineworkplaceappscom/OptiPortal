@@ -37,15 +37,15 @@ section#opti_TopBarID {
 }
 
 /* mobile sidebar panel color */
-.opti_menusidebar-mobile-open app-left {
+.opti_menusidebar-mobile-open app-portal-left {
   background: rgba(0,0,0,0.5);
 }
 
-.opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
+.opti_menusidebar-mobile-open app-portal-left #opti_LeftPanelID{
   background: transparent;
 }
 
-.opti_menusidebar-mobile-open app-left #opti_LeftPanelID{
+.opti_menusidebar-mobile-open app-portal-left #opti_LeftPanelID{
   background-color: #f0f0f0;
 }
 button{
@@ -54,7 +54,7 @@ button{
   border-color: #26c6da;
 }
 
-app-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
+app-portal-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
 .opti_user-profile-drop-down li.opti_mouse-pointer:hover,
 li.opti_list:hover,
 ul.opti_liststyle-one-ul .opti_liststyle-one-li:hover

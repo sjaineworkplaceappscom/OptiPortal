@@ -9,7 +9,7 @@ import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',component:PurchaseInquiryComponent,
+    path: '',component:PurchaseInqListComponent,
     children: [      
       { path: 'list', component: PurchaseInqListComponent },
       { path: 'piadd', component: PurchaseInqAddComponent },

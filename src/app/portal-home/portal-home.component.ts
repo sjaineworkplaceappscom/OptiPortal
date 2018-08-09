@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
+import { UIHelper } from 'src/app/helpers/ui.helpers';
 
 @Component({
   selector: 'app-portal-home',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortalHomeComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  isMobile:boolean;
+  constructor(){ }
+  
+  ngOnInit(){  
+    // UI operations
+    this.isMobile =UIHelper.isMobile();
+    UIHelper.manageNavigationPanel();
+  }
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(event) { 
+    // UI operations   
+    this.isMobile =UIHelper.isMobile();
+    UIHelper.manageNavigationPanel();
   }
 
 }
