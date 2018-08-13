@@ -22,6 +22,12 @@
             <!-- <app-main-content></app-main-content> -->
             <router-outlet></router-outlet>
           <!-- end content section strat -->
+          
+          <!-- right section start -->
+          <app-portal-right [currentSidebarInfo]="currentSidebarInfo" *ngIf="localRightSectionContainer==true"></app-portal-right>
+          
+          <!-- right section end -->
+
       </section>
     <!-- right panel end -->
 

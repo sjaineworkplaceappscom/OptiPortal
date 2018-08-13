@@ -4,7 +4,7 @@ export class TempPurchaseInquiryModel{
     InquiryNumber:string;
     CustomerCode:string;
     CustomerName:string;
-    Status:string;
+    Status:number;
     ValidTillDate:Date;
     ReferenceNumber: number;
     CreatedDate:Date;

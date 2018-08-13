@@ -1,7 +1,3 @@
-<p>
-  purchase-inq-list works!  
-</p>
-
 <section id="opti_MainContentID" class="opti_position-relative" style="overflow-x: hidden !important;">
     <!-- [perfectScrollbar]="config" -->
   
@@ -9,13 +5,12 @@
     <div style="padding: 10px;" *ngIf="systemAdmin=='true'">
         <!-- <app-approve-users></app-approve-users> -->
     </div>
-
+ 
     <div *ngIf="systemAdmin!='true'">
-        <div style="padding: 10px;">
-            <kendo-grid [loading]="showLoader" [kendoGridBinding]="gridData | customPipeItem:searchRequest" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
-                [groupable]=isColumnGroup [columnMenu]="{ columnChooser: false }" [height]=gridHeight [selectable]="true" (selectionChange)="onInquiryGridDataSelection(gridItem, $event, true)"
+        <div style="padding: 10px;">                
+                <kendo-grid [loading]="showLoader" [kendoGridBinding]="gridData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
+                [groupable]=isColumnGroup [columnMenu]="{ columnChooser: false }" [height]=gridHeight [selectable]="true" (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true)"
                 #gridItem>
-                
 
                 <!-- (click)="openRightSection(true)" -->
 
@@ -44,7 +39,7 @@
 
 
                     <div class="float-right opti_right-top-sec-grid-purchase opti_right-top-sec-grid">
-                        <svg-icon src="assets/images/common/add.svg" (click)="openRightSection(true)" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                        <svg-icon src="assets/images/common/add.svg" (click)="addInqueryOnClickAdd(true)" [svgStyle]="{ 'width.px':16, 'height.px':16}"
                             class="opti_vertical-align float-left opti_icon-spacing opti_add-request"></svg-icon>
 
                         <form class="k-form opti_common-search-form float-left opti_padding-zero">

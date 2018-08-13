@@ -5,6 +5,8 @@
 //==============================================================================
 
 import * as $ from "jquery";
+import { CurrentSidebarInfo } from "../models/sidebar/current-sidebar-info";
+import { Commonservice } from "../services/commonservice.service";
 
 export  class UIHelper{
 
@@ -131,15 +133,15 @@ export  class UIHelper{
     // our custom tab section
     public static customOpenTab(evt, tabName) {
         var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("opti_tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
+        // tabcontent = document.getElementsByClassName("opti_tabcontent");
+        // for (i = 0; i < tabcontent.length; i++) {
+        //     tabcontent[i].style.display = "none";
+        // }
         tablinks = document.getElementsByClassName("opti_tablinks");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
-        document.getElementById(tabName).style.display = "block";
+        //document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
     }
 
@@ -154,6 +156,15 @@ export  class UIHelper{
         }
         document.getElementById("opti_TabID").style.width  = tabWidth-70+'px';
     }
+
+    /**
+     * Open Right section container
+    */
+    // static isRightSectionContainer:boolean = false;
+    // static setRightSectionContainerValue(value:boolean){
+    //     alert(value);
+    //     this.isRightSectionContainer = value;
+    // }
 
 
 }

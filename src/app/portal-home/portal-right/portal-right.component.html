@@ -1,17 +1,15 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="row">
       <div class="col-md-12">
           <h4>
             Setting <span class="float-right"><img src="assets/images/common/close-theme-panel.svg" (click)="onClose();" class="opti_mouse-pointer" alt="Close Right Panel" width="15" height="15" /></span>
           </h4>  
-          <!-- theme change  -->
+          
+
           <div id="opti_changeThemeID" class="opti_position-relative" [perfectScrollbar]="" style="height: calc(100vh - 180px);">
               <button (click)="onThemeChange(opalColor)" id="opal">
                   Opal
               </button>
-              <!-- <button id="bootstrap">
-                  Boot-V3
-              </button> -->
               <br/>
               <br/>
               <button id="urban" (click)="onThemeChange(urbanColor)">
@@ -68,7 +66,26 @@
                   Bluelagoo
               </button>
           </div>
-          <!-- end theme change -->
+          
+
+
       </div>
    </div>
-</div>
+</div> -->
+
+
+
+<div #optirightfixedsection class="opti_right-fix-section" id="opti_optirightfixedsectionID">
+    <svg-icon src="assets/images/common/back-opposite.svg" (click)="closeRightSidebar(false)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }" class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon>    
+
+    <!-- <app-purchase-inq-add></app-purchase-inq-add>
+    <app-purchase-inq-item-add></app-purchase-inq-item-add> -->
+
+    <!-- <app-purchase-inq-detail></app-purchase-inq-detail> -->
+
+    <!-- <app-purchase-inq-add ></app-purchase-inq-add> -->
+    <app-purchase-inquiry *ngIf="currentSidebarInfo.ModuleName==1" [currentSidebarInfo]="currentSidebarInfo"> </app-purchase-inquiry>
+    <app-sales-quotations *ngIf="currentSidebarInfo.ModuleName==2" [currentSidebarInfo]="currentSidebarInfo"> </app-sales-quotations>
+    
+
+</div>        

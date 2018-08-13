@@ -1,3 +1,103 @@
-<p>
-  purchase-inq-add works!
-</p>
+<div #optiRightAddInquiry>    
+    <!-- tab start -->
+    <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="">
+        <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
+            <li class="opti_tablinks" (click)="openTab($event, 'home')">
+                <a href="javascript:void('0');">Home</a>
+            </li>
+            <li class="opti_tablinks" (click)="openTab($event, 'items')">
+                <a href="javascript:void('0');">Items</a>
+            </li>
+            <li class="opti_tablinks" (click)="openTab($event, 'attachement')">
+                <a href="javascript:void('0');">Attachements</a>
+            </li>
+            <li class="opti_tablinks" (click)="openTab($event, 'notes')">
+                <a href="javascript:void('0');">Notes</a>
+            </li>
+        </ul>
+    </div>
+  
+    <div id="home" *ngIf="tabName=='home'" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-block">
+                            <form class="k-form">
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Inquiry#</span>
+                                    <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInqueryAdd.InquiryNumber" value="" placeholder="Inquiry"
+                                        disabled />
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Customer</span>
+                                    <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.CustomerCode" placeholder="Customer"
+                                    />
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Name</span>
+                                    <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.CustomerName" placeholder="Name"
+                                    />
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Status</span>
+                                    <kendo-dropdownlist name="status" [data]="status" [(ngModel)]="purchaseInqueryAdd.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" disabled>
+                                    </kendo-dropdownlist>
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Created Date</span>
+                                    <kendo-datepicker name="createdDate" [format]="'dd/MM/yyyy'" [(ngModel)]="purchaseInqueryAdd.CreatedDate"  disabled> </kendo-datepicker>
+                                </label>
+
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Buyer/Created By</span>
+                                    <input type="text" name="createdBy" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.Buyer" placeholder="Buyer/Created By"
+                                    />
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Valid Until</span>
+                                    <kendo-datepicker name="validUntil" [format]="'MM/dd/yyyy'"  [(ngModel)]="purchaseInqueryAdd.ValidTillDate" required [min]="minValidDate" > </kendo-datepicker>
+                                </label>
+
+                                <label class="k-form-field">
+                                    <span class="opti_form-label">Reference</span>
+                                    <input type="text" name="reference" class="k-textbox" value="" placeholder="Reference" [(ngModel)]="purchaseInqueryAdd.ReferenceNumber"
+                                    disabled />
+                                </label>
+
+                                <div class="text-right">
+                                    <button type="button" class="k-button k-primary" (click)="AddPurchaseInquiry()">Save</button>
+                                    <button type="button" class="k-button">Save as draft</button>
+                                    <button type="button" class="k-button"  (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="items" *ngIf="tabName=='items'" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
+        
+        <app-purchase-inq-item-add></app-purchase-inq-item-add>
+
+    </div>
+
+    <div id="attachement" *ngIf="tabName=='attachement'" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
+        <app-attachment [tabparent]="'attachementTab'"></app-attachment>
+        <!-- Attachements -->
+    </div>
+
+    <div id="notes" *ngIf="tabName=='notes'" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
+        <app-notes [tabparent]="'notesTab'"></app-notes>
+    </div>
+    <!-- tab end -->
+</div>   

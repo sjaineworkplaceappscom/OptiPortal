@@ -1,6 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener, ViewChild, Input } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { opticonstants } from '../../constants';
+import { UIHelper } from '../../helpers/ui.helpers';
+import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
+
+
 
 @Component({
   selector: 'app-portal-right',
@@ -8,7 +12,7 @@ import { opticonstants } from '../../constants';
   styleUrls: ['./portal-right.component.scss']
 })
 export class PortalRightComponent implements OnInit {
-
+  @Input() currentSidebarInfo:CurrentSidebarInfo;
    // Event emitter variable.
    @Output() messageEvent = new EventEmitter<boolean>();
    constructor(private commonService: Commonservice) { }
@@ -30,10 +34,23 @@ export class PortalRightComponent implements OnInit {
    
  
    
+
+  /**
+   * View Child for Tab section of Purchase 
+  */ 
+  //@ViewChild('optirightfixedsection') optirightfixedsection;
+  //@ViewChild('optiTab') optiTab;
+
  
- 
-   ngOnInit() {
-   }
+  
+  ngOnInit() {
+  
+  // Tab Content section Code start  
+    //this.optirightfixedsection.nativeElement.children[2].style.display='block';
+    //this.optiTab.nativeElement.children[0].classList.add('active'); 
+  // Tab Content section Code end
+
+  }
  
    // Function called on cross icon.
    onClose() {
@@ -43,5 +60,15 @@ export class PortalRightComponent implements OnInit {
    onThemeChange(themeColor: any) {
      this.commonService.setThemeData(themeColor);
    }
+
+      /**
+* 
+* @param status close right content section, will pass false
+*/
+closeRightSidebar() {
+  let currentSidebarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
+  currentSidebarInfo.SideBarStatus = false;
+  this.commonService.setCurrentSideBar(currentSidebarInfo);
+}
 
 }

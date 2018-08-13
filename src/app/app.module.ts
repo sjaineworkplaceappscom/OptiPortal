@@ -47,6 +47,8 @@ import { CustomFilterPipe } from './custom-filter.pipe';
 
 import { CustomPipeItemPipe } from './custom-pipe-item.pipe';
 import { CommonModule } from '@angular/common';
+import { PortalHomeModule } from './portal-home/portal-home.module';
+import { PurchaseInquiryModule } from './purchase-inquiry/purchase-inquiry.module';
 
 
 // for new Routing for Lazy load
@@ -66,6 +68,7 @@ const routes: Routes = [
 //   {path:'approve',component:ApproveUsersComponent,canActivate:[AuthGuard]}, 
 //   {path: '**', component: LandingComponent}
 //   ];
+
 
 @NgModule({
   declarations: [
@@ -114,7 +117,11 @@ const routes: Routes = [
     ExcelModule,
     DateInputsModule,
     UploadModule,
-    InputsModule
+    InputsModule,
+
+    PortalHomeModule,
+    PurchaseInquiryModule
+
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

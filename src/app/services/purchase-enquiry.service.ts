@@ -68,4 +68,17 @@ export class PurchaseInquiryService {
   }
   return this.httpHelper.post(this.baseUrl + 'purchaseinquiryitem/add',data,null);
   }
+
+
+  /**
+  * UpdatePurchaseInquiry
+  */
+  public UpdatePurchaseInquiry(updateInquiry: TempPurchaseInquiryModel) {
+  var purchaseInquiryUpdate: any = {
+  "PurchaseInquiryId" : updateInquiry.PurchaseInquiryId,
+  "ValidUntil" : updateInquiry.ValidTillDate,
+  "Status" : updateInquiry.Status
+  } 
+  return this.httpHelper.put(this.baseUrl + 'purchaseinquiry/update',purchaseInquiryUpdate,null);
+  }
 }

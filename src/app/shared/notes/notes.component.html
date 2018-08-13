@@ -1,3 +1,198 @@
-<p>
-  notes works!
-</p>
+<div class="container-fluid" id="opti_purchaseInquiryNotesSection" *ngIf="getTabParent=='notesTab'">
+  <div class="row">
+      <div class="col-md-12">
+          <!-- start notes grid -->
+          <ng-container *ngIf="TabNotesGridStatus == true">
+              <div #notesgrid id="opti_NotesGridID">
+                  <!-- <kendo-grid [data]="noteRequetData| customFilter: notesSearchValue" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
+                      [groupable]="false" [height]=gridHeight-41 (remove)="deleteNote($event)" (edit)="editNote($event)" > -->
+
+                      <kendo-grid [data]="noteRequetData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
+                      [groupable]="false" [height]=gridHeight-56 (remove)="deleteNote($event)" (edit)="editNote($event)" >
+
+                      <!-- grid toolbar start -->
+                      <ng-template kendoGridToolbarTemplate>
+                          <!-- <button (click)="addNewComment()">Add new Notes</button>   -->
+                          <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="addNewComment()" [svgStyle]="{ 'width.px':20, 'height.px':20}"
+                              class="opti_vertical-align float-left opti_icon-spacing" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
+                              
+                          <form class="k-form opti_common-search-form float-left opti_padding-zero">
+                              <label class="k-form-field opti_common-search-label">
+                                  <input type="text" class="k-textbox" name="searchNotes" [(ngModel)]="notesSearchValue" />
+                                  <span class="opti_vertical-align opti_mouse-pointer"><img src="assets/images/common/search.svg" class="" alt="Search" width="15" /></span>
+                              </label>
+                          </form>
+
+                      </ng-template>
+                      <!-- grid toolbar end -->
+
+                      <kendo-grid-column class="opti_notes-column" media="(min-width: 320px)">
+                          <ng-template kendoGridCellTemplate let-dataItem>
+                              <dl>
+                                  <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} for Item001
+                                      <span class="float-right opti_note-action-button-sec">
+                                          <svg-icon kendoGridEditCommand src="assets/images/common/edit.svg" (click)="editNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
+                                              class="opti_mouse-pointer"></svg-icon>
+                                          <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
+                                              class="opti_mouse-pointer"></svg-icon>
+
+                                      </span>
+                                  </dd>
+
+                                  <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
+                              </dl>
+                          </ng-template>
+                      </kendo-grid-column>
+                  </kendo-grid>
+              </div>
+          </ng-container>    
+          <!-- end notes grid -->
+
+          <!-- Add Notes Form  -->
+          <ng-container *ngIf="TabAddNotesFormStatus == true">
+              <div class="card" #noteform>
+                  <div class="card-block">
+                      <form #requestnoteform class="k-form">
+                          <label class="k-form-field">
+                              <span class="opti_form-label">Add Note</span>
+                              <textarea class="k-textarea" name="addnotestring" [(ngModel)]="addnotestring">Please enter your note</textarea>
+                          </label>
+
+                          <label class="k-form-field">
+                              <span class="opti_form-label">Note Status</span>
+                              <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                              </kendo-dropdownlist>
+                          </label>
+
+                          <div class="text-right">
+                              <button type="button" class="k-button k-primary" (click)="submitNote($event,'add');">Add Item</button>
+                              <button type="button" class="k-button k-primary" (click)="submitNote($event,'close');">Close</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </ng-container>    
+          <!-- end Notes Form  -->
+
+          <!-- start edit form -->
+          <ng-container *ngIf="TabEditNotesFormStatus == true">
+              <div class="card" #editnoteform>
+                  <div class="card-block">
+                      <form class="k-form">
+                          <label class="k-form-field">
+                              <span class="opti_form-label">Update Note</span>
+                              <!-- <textarea id="notes" name="note" class="k-textarea" #noteValue >{{selectedNote.Notes}}</textarea> -->
+                              <textarea id="notes" name="note" class="k-textarea" [(ngModel)]="selectedNote.Notes"></textarea>
+                          </label>
+
+                          <label class="k-form-field">
+                              <span class="opti_form-label">Note Type</span>
+                              <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                              </kendo-dropdownlist>
+                          </label>
+
+                          <div class="text-right">
+                              <button type="button" class="k-button k-primary" (click)="updateNote($event)">Update Item</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </ng-container>    
+          <!-- end edit form -->
+
+      </div>
+  </div>
+</div>
+
+
+<ng-container *ngIf="getTabParent=='itemsTab'">
+    <br/>
+    <h5>Notes</h5>
+
+    <!-- item notes start -->
+    <ng-container *ngIf="itemNotesGrid==true">
+        <div id="opti_ItemNotesGridID">
+            <kendo-grid [data]="noteItemsData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
+                [groupable]="false" [height]=268 (remove)="deleteItemsNote($event)">
+                <!-- grid toolbar start -->
+                <ng-template kendoGridToolbarTemplate>
+                    <!-- <button (click)="addNewComment()">Add new Notes</button>   -->
+                    <svg-icon src="assets/images/common/add.svg" (click)="addNewItemNotes()" [svgStyle]="{ 'width.px':20, 'height.px':20}" class="opti_vertical-align"
+                        style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
+                </ng-template>
+                <!-- grid toolbar end -->
+
+                <kendo-grid-column media="(min-width: 320px)" title="">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                        <dl>
+                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }}
+                                <span class="float-right opti_note-action-button-sec">
+                                    <svg-icon kendoGridEditCommand src="assets/images/common/edit.svg" (click)="editItemsNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
+                                        class="opti_mouse-pointer"></svg-icon>
+                                    <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
+                                        class="opti_mouse-pointer"></svg-icon>
+
+                                </span>
+                            </dd>
+
+                            <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
+                        </dl>
+                    </ng-template>
+                </kendo-grid-column>
+            </kendo-grid>
+        </div>
+    </ng-container>
+    <!-- item notes end -->
+
+    <!-- Add item note form -->
+    <ng-container *ngIf="itemAddNotes==true">
+        <div class="card">
+            <div class="card-block">
+                <form class="k-form">
+                    <label class="k-form-field">
+                        <span class="opti_form-label">Add Note</span>
+                        <textarea class="k-textarea" name="addnotestring" [(ngModel)]="addnotestring">Please enter your note</textarea>
+                    </label>
+
+                    <label class="k-form-field">
+                        <span class="opti_form-label">Note Status</span>
+                        <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                        </kendo-dropdownlist>
+                    </label>
+
+                    <div class="text-right">
+                        <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'add')">Add Note</button>
+                        <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'close')">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </ng-container>
+    <!-- end item note form -->
+
+    <!-- start edit item note form -->
+    <ng-container *ngIf="itemEditNotes==true">
+        <div class="card">
+            <div class="card-block">
+                <form class="k-form">
+                    <label class="k-form-field">
+                        <span class="opti_form-label">Update Note</span>
+                        <textarea id="itemnotes" #updatednotevalue class="k-textarea">{{selectedItemNote.Notes}}</textarea>
+                    </label>
+
+                    <label class="k-form-field">
+                        <span class="opti_form-label">Note Type</span>
+                        <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                        </kendo-dropdownlist>
+                    </label>
+
+                    <div class="text-right">
+                        <button type="button" class="k-button k-primary" (click)="updateItemNote($event,updatednotevalue)">Update Item</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </ng-container>    
+    <!-- end add item form -->
+
+</ng-container>

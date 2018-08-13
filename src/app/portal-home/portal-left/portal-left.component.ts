@@ -42,9 +42,10 @@ export class PortalLeftComponent implements OnInit {
   }
 
   
-  listClick(event, newValue) {
+  listClick(event, newValue, module) {
       console.log(newValue);
-      this.selectedItem = newValue; 
+      this.selectedItem = newValue;
+      this.router.navigate(['home/'+module]);
   }
  
 }

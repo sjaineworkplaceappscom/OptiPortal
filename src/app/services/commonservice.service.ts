@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment.prod';
 import { opticonstants } from '../constants';
+import { CurrentSidebarInfo } from '../models/sidebar/current-sidebar-info';
 
 
 @Injectable({
@@ -57,5 +58,24 @@ export class Commonservice {
   public setCurrentNavigatedFromData(value: number) {
     this.navigatedFromData.next(value);
   }
+
+  // sidebar code
+  private isRigntSideBarOpenData=new BehaviorSubject<boolean>(false);
+  currentSideBarOpenStatus=this.isRigntSideBarOpenData.asObservable();
+
+  public setRightSidebarStatus(open:boolean){
+    this.isRigntSideBarOpenData.next(open);
+  }
+
+
+  // SideBar Observer
+  private sidebarSubject =new BehaviorSubject<CurrentSidebarInfo>(null);
+  currentSidebarInfo=this.sidebarSubject.asObservable();
+
+
+  public setCurrentSideBar(currentSidebarInfoValue:CurrentSidebarInfo){
+    this.sidebarSubject.next(currentSidebarInfoValue);
+  }
+
 
 }

@@ -85,7 +85,8 @@
 
         .opti_tabcontent{
             padding: 15px 0;
-            height: calc(100% - 30px);
+            // height: calc(100% - 30px);
+            height:calc(100vh - 105px);
             border-top: 1px solid #c7c7c7;
         }
 

@@ -1,4 +1,4 @@
- export enum UserType{
+export enum UserType {
     /// <summary>
     /// No Type.
     /// </summary>
@@ -19,4 +19,15 @@
     /// Enum to represent SuperAdmin.
     /// </summary>
     SuperAdmin = 4
+}
+
+export  enum ModuleName {
+    Purchase = 1,
+    Sales = 2
+}
+
+export enum ComponentName {
+    AddInquery = 1,
+    UpdateInquery = 2,
+    UpdateSales=3
 }

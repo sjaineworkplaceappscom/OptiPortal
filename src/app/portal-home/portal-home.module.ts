@@ -21,6 +21,15 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PurchaseInqAddComponent } from '../purchase-inquiry/purchase-inq-add/purchase-inq-add.component';
+import { PurchaseInquiryModule } from '../purchase-inquiry/purchase-inquiry.module';
+import { PurchaseInqListComponent } from '../purchase-inquiry/purchase-inq-list/purchase-inq-list.component';
+import { PurchaseInqUpdateComponent } from '../purchase-inquiry/purchase-inq-update/purchase-inq-update.component';
+import { PurchaseInqDetailComponent } from '../purchase-inquiry/purchase-inq-detail/purchase-inq-detail.component';
+import { PurchaseInquiryComponent } from '../purchase-inquiry/purchase-inquiry.component';
+import { PurchaseInqItemListComponent } from '../purchase-inquiry/purchase-inq-item-list/purchase-inq-item-list.component';
+import { SalesQuotationsModule } from '../sales-quotations/sales-quotations.module';
+
 
 @NgModule({
   imports: [
@@ -47,7 +56,15 @@ import { FormsModule } from '@angular/forms';
      // Angular
      HttpClientModule,         
      FormsModule,
+     
+    PurchaseInquiryModule,
+    SalesQuotationsModule
   ],
-  declarations: [PortalHomeComponent, PortalLeftComponent, PortalTopComponent, PortalRightComponent, DashboardComponent]
+  declarations: [
+    PortalHomeComponent, PortalLeftComponent, PortalTopComponent, PortalRightComponent, DashboardComponent
+      // attachment
+    
+  ],
+  providers:[]
 })
 export class PortalHomeModule { }
