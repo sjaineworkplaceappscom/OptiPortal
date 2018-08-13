@@ -1,153 +1,157 @@
 <!-- add items form section -->
-<div #AddItemFormSection id="opti_AddItemFormSectionID" class="opti_position-relative" [perfectScrollbar]="">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-              <div class="card opti_border-none" style="margin-bottom: 25px;">
-                  <div class="card-block">
-                      <form class="k-form opti_padding-zero">
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Item Id</span>
-                              <input class="k-textbox" name="itemId" [(ngModel)]="purchaseItemsModelForUpdate.PurchaseInquiryItemlId" placeholder="Item Id"
-                              />
-                          </label>
+<ng-container *ngIf="addItem==true">
+    <div #AddItemFormSection id="opti_AddItemFormSectionID" class="opti_position-relative" [perfectScrollbar]="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="card opti_border-none" style="margin-bottom: 25px;">
+                    <div class="card-block">
+                        <form class="k-form opti_padding-zero">
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Item Id</span>
+                                <input class="k-textbox" name="itemId" [(ngModel)]="purchaseItemsModelForUpdate.PurchaseInquiryItemlId" placeholder="Item Id"
+                                />
+                            </label>
 
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Description</span>
-                              <input type="text" name="description" class="k-textbox" value="" [(ngModel)]="purchaseItemsModelForUpdate.Description"
-                                  placeholder="Description" />
-                          </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Description</span>
+                                <input type="text" name="description" class="k-textbox" value="" [(ngModel)]="purchaseItemsModelForUpdate.Description"
+                                    placeholder="Description" />
+                            </label>
 
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Customer Item Id / description</span>
-                              <input type="text" class="k-textbox" name="custId_description" [(ngModel)]="purchaseItemsModelForUpdate.CustomerItemCode"
-                                  value="" placeholder="Customer Item Id / description" />
-                          </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Customer Item Id / description</span>
+                                <input type="text" class="k-textbox" name="custId_description" [(ngModel)]="purchaseItemsModelForUpdate.CustomerItemCode"
+                                    value="" placeholder="Customer Item Id / description" />
+                            </label>
 
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Item Quantity</span>
-                              <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModelForUpdate.Quantity" value="" placeholder="Item Quantity"
-                              />
-                          </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Item Quantity</span>
+                                <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModelForUpdate.Quantity" value="" placeholder="Item Quantity"
+                                />
+                            </label>
 
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Item Unit</span>
-                              <input type="text" class="k-textbox" name="Unit" [(ngModel)]="purchaseItemsModelForUpdate.Unit" value="" placeholder="Item Unit"
-                              />
-                          </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Item Unit</span>
+                                <input type="text" class="k-textbox" name="Unit" [(ngModel)]="purchaseItemsModelForUpdate.Unit" value="" placeholder="Item Unit"
+                                />
+                            </label>
 
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Requester</span>
-                              <input type="text" class="k-textbox" name="requester" [(ngModel)]="purchaseItemsModelForUpdate.Requester" value="" placeholder="Requester"
-                              />
-                          </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Requester</span>
+                                <input type="text" class="k-textbox" name="requester" [(ngModel)]="purchaseItemsModelForUpdate.Requester" value="" placeholder="Requester"
+                                />
+                            </label>
 
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Request Date132</span>
-                              <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModelForUpdate.RequestDate"> </kendo-datepicker>
-                          </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Request</span>
+                                <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModelForUpdate.RequestDate"> </kendo-datepicker>
+                            </label>
 
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Required Date123</span>
-                              <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModelForUpdate.RequiredDate"> </kendo-datepicker>
-                          </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Required</span>
+                                <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModelForUpdate.RequiredDate"> </kendo-datepicker>
+                            </label>
 
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Ship To location</span>
-                              <textarea class="k-textarea" name="unit" [(ngModel)]="purchaseItemsModelForUpdate.ShipToLocation">Location</textarea>
-                          </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Ship To location</span>
+                                <textarea class="k-textarea" name="unit" [(ngModel)]="purchaseItemsModelForUpdate.ShipToLocation">Location</textarea>
+                            </label>
 
 
-                      </form>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-              
-              <app-attachment [tabparent]="'itemsTab'"></app-attachment>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                
+                <app-attachment [tabparent]="'itemsTab'"></app-attachment>
 
-              <app-notes [tabparent]="'itemsTab'"></app-notes>
+                <app-notes [tabparent]="'itemsTab'"></app-notes>
 
-              <br/>
-              <div class="text-right">
-                  <button type="button" class="k-button k-primary" (click)="AddPurchaseInquiryItem()">Save</button>
-                  <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
-                  <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button>
-                  <button type="button" class="k-button" (click)="closeItemForm()">Cancel</button>
-              </div>
+                <br/>
+                <div class="text-right">
+                    <button type="button" class="k-button k-primary" (click)="AddPurchaseInquiryItem()">Save</button>
+                    <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
+                    <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button>
+                    <button type="button" class="k-button" (click)="closeItemForm()">Cancel</button>
+                </div>
 
-          </div>
-      </div>
-  </div>
-</div>
+            </div>
+        </div>
+    </div>
+    </div>
+</ng-container>
 <!-- end item form section -->
 
 <!-- grid start -->
-<div #gridSectionItem style="display: none;">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-12">
-              <kendo-grid 
-              [kendoGridBinding]="gridItemsData" 
-              [resizable]="false" 
-              [pageSize]="50" 
-              [pageable]="true" 
-              [sortable]="true" 
-              [filterable]=isColumnFilterItemsGrid
-              [groupable]="false" 
-              [columnMenu]="{ columnChooser: false }" 
-              [height]=gridHeight-41 
-              [selectable]="true"
-              (selectionChange)="onItemGridDataSelection(gridItemsValues, $event, true)" #gridItemsValues>
+<ng-container *ngIf="itemGrid==true">
+    <div #gridSectionItem>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <kendo-grid 
+                [kendoGridBinding]="gridItemsData" 
+                [resizable]="false" 
+                [pageSize]="50" 
+                [pageable]="true" 
+                [sortable]="true" 
+                [filterable]=isColumnFilterItemsGrid
+                [groupable]="false" 
+                [columnMenu]="{ columnChooser: false }" 
+                [height]=gridHeight-56 
+                [selectable]="true"
+                (selectionChange)="onItemGridDataSelection(gridItemsValues, $event, true)" #gridItemsValues>
 
-                  <!-- (click)="openRightSection(true)" -->
+                    <!-- (click)="openRightSection(true)" -->
 
-                  <!-- grid template start -->
-                  <ng-template kendoGridToolbarTemplate>
-                      <!-- show hide column start show hide -->
-                      <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
+                    <!-- grid template start -->
+                    <ng-template kendoGridToolbarTemplate>
+                        <!-- show hide column start show hide -->
+                        <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
 
-                      <!-- checkbox -->
-                      <form class="k-form opti_show-hide-grid-column-filter float-left">
-                          <div class="k-form-field">
-                              <input type="checkbox" id="opti_ColumnFilterItemID" [(ngModel)]="isColumnFilterItemsGrid" class="k-checkbox" name="columnfilter"
-                              />
-                              <label class="k-checkbox-label" for="opti_ColumnFilterItemID">Enable Filter</label>
-                          </div>
-                      </form>
+                        <!-- checkbox -->
+                        <form class="k-form opti_show-hide-grid-column-filter float-left">
+                            <div class="k-form-field">
+                                <input type="checkbox" id="opti_ColumnFilterItemID" [(ngModel)]="isColumnFilterItemsGrid" class="k-checkbox" name="columnfilter"
+                                />
+                                <label class="k-checkbox-label" for="opti_ColumnFilterItemID">Enable Filter</label>
+                            </div>
+                        </form>
 
-                      <!-- xlsx button start -->
-                      <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
-                          <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
-                      </button>
+                        <!-- xlsx button start -->
+                        <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
+                            <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+                        </button>
 
-                      <!-- add items -->
-                      <div class="float-right">
-                          <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="showItemSection()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
-                              class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
-                      </div>
-                  </ng-template>
-                  <!-- grid template end -->
+                        <!-- add items -->
+                        <div class="float-right">
+                            <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="showAddItemSection()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                                class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
+                        </div>
+                    </ng-template>
+                    <!-- grid template end -->
 
-                  <!-- grid column start -->
-                  <kendo-grid-column field="PurchaseInquiryItemId" [width]="160" title="Id" filter="numeric" ></kendo-grid-column>
-                  <kendo-grid-column field="Description" title="Description" [width]="140"></kendo-grid-column>
-                  <kendo-grid-column field="CustomerItemCode" title="Item Details" [width]="200"></kendo-grid-column>
-                  <kendo-grid-column field="Quantity" [width]="160" filter="numeric"></kendo-grid-column>
-                  <kendo-grid-column field="Unit" [width]="140" filter="numeric"></kendo-grid-column>
-                  <kendo-grid-column field="Requester" [width]="140"></kendo-grid-column>
-                  <kendo-grid-column field="RequestDate" title="Request Date" [width]="140" filter="date"></kendo-grid-column>
-                  <kendo-grid-column field="RequiredDate" title="Required Date" [width]="140" filter="date"></kendo-grid-column>
-                  <kendo-grid-column field="ShipToLocation" title="ShipTo Location" [width]="140"></kendo-grid-column>
-                  <!-- grid column end -->
+                    <!-- grid column start -->
+                    <kendo-grid-column field="PurchaseInquiryItemId" [width]="160" title="Id" filter="numeric" ></kendo-grid-column>
+                    <kendo-grid-column field="Description" title="Description" [width]="140"></kendo-grid-column>
+                    <kendo-grid-column field="CustomerItemCode" title="Item Details" [width]="200"></kendo-grid-column>
+                    <kendo-grid-column field="Quantity" [width]="160" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column field="Unit" [width]="140" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column field="Requester" [width]="140"></kendo-grid-column>
+                    <kendo-grid-column field="RequestDate" title="Request Date" [width]="140" filter="date"></kendo-grid-column>
+                    <kendo-grid-column field="RequiredDate" title="Required Date" [width]="140" filter="date"></kendo-grid-column>
+                    <kendo-grid-column field="ShipToLocation" title="ShipTo Location" [width]="140"></kendo-grid-column>
+                    <!-- grid column end -->
 
-                  <!-- xlsx template start -->
-                  <kendo-grid-excel fileName="Items.xlsx"></kendo-grid-excel>
-                  <!-- xlsx template end -->
+                    <!-- xlsx template start -->
+                    <kendo-grid-excel fileName="Items.xlsx"></kendo-grid-excel>
+                    <!-- xlsx template end -->
 
-              </kendo-grid>
-          </div>
-      </div>
-  </div>
-</div>
+                </kendo-grid>
+            </div>
+        </div>
+    </div>
+    </div>
+</ng-container>
 <!-- grid end -->
