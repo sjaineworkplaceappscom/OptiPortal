@@ -5,7 +5,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 @Component({
   selector: 'app-purchase-inq-detail',
   templateUrl: './purchase-inq-detail.component.html',
-  styleUrls: ['./purchase-inq-detail.component.css']
+  styleUrls: ['./purchase-inq-detail.component.scss']
 })
 export class PurchaseInqDetailComponent implements OnInit {
   @Input() currentSidebarInfo:CurrentSidebarInfo;

@@ -8,7 +8,7 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
 @Component({
   selector: 'app-purchase-inq-update',
   templateUrl: './purchase-inq-update.component.html',
-  styleUrls: ['./purchase-inq-update.component.css']
+  styleUrls: ['./purchase-inq-update.component.scss']
 })
 export class PurchaseInqUpdateComponent implements OnInit {
 
