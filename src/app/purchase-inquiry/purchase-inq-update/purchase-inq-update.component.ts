@@ -76,9 +76,11 @@ export class PurchaseInqUpdateComponent implements OnInit {
     // Set sidebar data;
     this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
+        if(currentSidebarData!=null && currentSidebarData!=undefined){
         this.purchaseInquiryDetail = currentSidebarData.RequesterData;
         this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
         this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
+        }
       }
     );
     this.getStatusListForUpdateByCustomer();
