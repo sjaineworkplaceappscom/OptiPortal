@@ -28,7 +28,7 @@ export class PurchaseInqListComponent implements OnInit {
   selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
   gridHeight: number;
   showLoader: boolean = false;
-
+  searchRequest:string='';
   //date: Date;
   public dateFormat: string = Configuration.dateFormat;
 
