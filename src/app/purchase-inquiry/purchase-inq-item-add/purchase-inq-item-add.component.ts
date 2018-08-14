@@ -47,7 +47,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
     /**
       * Check Mobile device
     */
-      this.isMobile = UIHelper.isMobile();
+    this.isMobile = UIHelper.isMobile();
   }
 
   showItemsGrid(){

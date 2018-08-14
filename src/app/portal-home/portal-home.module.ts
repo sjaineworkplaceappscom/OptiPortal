@@ -29,6 +29,7 @@ import { PurchaseInqDetailComponent } from '../purchase-inquiry/purchase-inq-det
 import { PurchaseInquiryComponent } from '../purchase-inquiry/purchase-inquiry.component';
 import { PurchaseInqItemListComponent } from '../purchase-inquiry/purchase-inq-item-list/purchase-inq-item-list.component';
 import { SalesQuotationsModule } from '../sales-quotations/sales-quotations.module';
+import { ThemeManagerComponent } from '../common/theme-manager/theme-manager.component';
 
 
 @NgModule({
@@ -61,7 +62,7 @@ import { SalesQuotationsModule } from '../sales-quotations/sales-quotations.modu
     SalesQuotationsModule
   ],
   declarations: [
-    PortalHomeComponent, PortalLeftComponent, PortalTopComponent, PortalRightComponent, DashboardComponent
+    PortalHomeComponent, PortalLeftComponent, PortalTopComponent, PortalRightComponent, DashboardComponent,ThemeManagerComponent
       // attachment
     
   ],

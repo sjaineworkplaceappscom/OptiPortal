@@ -92,6 +92,8 @@ const routes: Routes = [
 
     // Directive
     ConfirmPasswordEquilValidatorDirectiveDirective,
+
+    
     
   ],
   imports: [
