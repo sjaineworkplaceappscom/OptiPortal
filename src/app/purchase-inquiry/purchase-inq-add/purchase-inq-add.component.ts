@@ -7,7 +7,7 @@ import { Commonservice } from '../../services/commonservice.service';
 @Component({
   selector: 'app-purchase-inq-add',
   templateUrl: './purchase-inq-add.component.html',
-  styleUrls: ['./purchase-inq-add.component.css']
+  styleUrls: ['./purchase-inq-add.component.scss']
 })
 export class PurchaseInqAddComponent implements OnInit {
   @Input() currentSidebarInfo: CurrentSidebarInfo;

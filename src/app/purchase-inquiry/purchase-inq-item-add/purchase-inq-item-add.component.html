@@ -1,6 +1,7 @@
 <!-- add items form section -->
+<ng-container *ngIf="addItem==true">
 <div #AddItemFormSection id="opti_AddItemFormSectionID" class="opti_position-relative" [perfectScrollbar]="">
-  <div class="container-fluid">
+  <div class="container-fluid" >
       <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
               <div class="card opti_border-none" style="margin-bottom: 25px;">
@@ -80,10 +81,12 @@
       </div>
   </div>
 </div>
+</ng-container>
 <!-- end item form section -->
 
 <!-- grid start -->
-<div #gridSectionItem style="display: none;">
+<ng-container *ngIf="itemGrid==true">
+<div #gridSectionItem >
   <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
@@ -96,7 +99,7 @@
               [filterable]=isColumnFilterItemsGrid
               [groupable]="false" 
               [columnMenu]="{ columnChooser: false }" 
-              [height]=gridHeight-41 
+              [height]=gridHeight-56 
               [selectable]="true"
               (selectionChange)="onItemGridDataSelection($event, true)" #gridItemsValues>
 
@@ -123,7 +126,7 @@
 
                       <!-- add items -->
                       <div class="float-right">
-                          <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="showItemSection()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                          <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="showAddItemSection()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
                               class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
                       </div>
                   </ng-template>
@@ -150,4 +153,7 @@
       </div>
   </div>
 </div>
+</ng-container>
+
+
 <!-- grid end -->

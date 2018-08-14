@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { TempPurchaseInquiryItemModel } from '../../tempmodels/temppurchase-inquiry-item';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
+import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({
   selector: 'app-purchase-inq-item-add',
@@ -10,25 +11,75 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
   styleUrls: ['./purchase-inq-item-add.component.scss']
 })
 export class PurchaseInqItemAddComponent implements OnInit {
+
+  /**
+   * global variable
+  */
+  isMobile: boolean;
+  gridHeight: number;
+
+  /**
+   * Item tab Variable
+  */
+  addItem:boolean = false;
+  itemGrid:boolean = true;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    /**
+     * Apply Grid Height
+    */
+    this.gridHeight = UIHelper.getMainContentHeight();
+      
+    /**
+     * Check Mobile device
+    */
+      this.isMobile = UIHelper.isMobile();
+  }
   gridItemsData = [];
   purchseInqItemModel = new TempPurchaseInquiryItemModel();
   showLoader:boolean=false;
   @Input() currentSidebarInfo: CurrentSidebarInfo;
-  
+
   constructor(private purchaseInquiryService: PurchaseInquiryService) { }
 
   ngOnInit() {
-    
+    /**
+     * Apply Grid Height
+    */
+    this.gridHeight = UIHelper.getMainContentHeight();
+        
+    /**
+      * Check Mobile device
+    */
+      this.isMobile = UIHelper.isMobile();
+  }
+
+  showItemsGrid(){
+    this.addItem = false;
+    this.itemGrid = true;
+  }
+
+  showItemForm(){
+    this.addItem = true;
+    this.itemGrid = false;
+  }
+
+  showAddItemSection(){
+    this.showItemForm();
+  }
+
+  AddPurchaseInquiryItem(){
+    this.showItemsGrid();
   }
 
   addItemtagain(){
+    this.showItemsGrid();
   }
 
-    //close the item form.
-    closeItemForm() {
-      
+  closeItemForm(){
+    this.showItemsGrid();
   }
-
 
   //purchaseItemsModelForUpdate: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
   requestDate: Date;
