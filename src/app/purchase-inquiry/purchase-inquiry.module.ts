@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { PurchaseInquiryRoutingModule } from './purchase-inquiry-routing.module';
 import { PurchaseInqListComponent } from './purchase-inq-list/purchase-inq-list.component';

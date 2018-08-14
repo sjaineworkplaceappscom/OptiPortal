@@ -1,32 +1,19 @@
 import { Component, OnInit, HostListener, TemplateRef, ViewChild } from '@angular/core';
 
-
-
-import { process, State } from '@progress/kendo-data-query';
 import {
   GridComponent,
   GridDataResult,
   DataStateChangeEvent
 } from '@progress/kendo-angular-grid';
+
 import { UIHelper } from '../../helpers/ui.helpers';
 import { opticonstants } from '../../constants';
-import { stringify } from '@angular/core/src/util';
-import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
-import { TempPurchaseInquiryItemModel } from '../../tempmodels/temppurchase-inquiry-item';
-
-import { PurchaseInquiryItemModel } from '../../models/purchaserequest/purchase-inquiry-item';
-import { PurchaseInquiryModel } from '../../models/purchaserequest/purchase-inquiry';
-import { attachment } from '../../DemoData/Attachment';
-import { SelectEvent } from '@progress/kendo-angular-layout';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
-import { FileInfo } from '@progress/kendo-angular-upload';
-import { debug } from 'util';
-import { invokeQuery } from '@angular/animations/browser/src/render/shared';
-
 import { Commonservice } from '../../services/commonservice.service';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from '../../enums/enums';
-
+import { DatePipe } from '@angular/common'
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
   selector: 'app-purchase-inq-list',
@@ -42,13 +29,15 @@ export class PurchaseInqListComponent implements OnInit {
   gridHeight: number;
   showLoader: boolean = false;
 
-  date: Date;
+  //date: Date;
+  public dateFormat: string = Configuration.dateFormat;
+
   //for inquiry grid Data
-  public gridData: any[] = [];  
+  public gridData: any[] = [];
 
 
   @ViewChild('optirightfixedsection') optirightfixedsection;
-  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) {
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe) {
   }
 
   // UI Section
@@ -64,10 +53,10 @@ export class PurchaseInqListComponent implements OnInit {
 
   ngOnInit() {
     this.gridHeight = UIHelper.getMainContentHeight();
-    
-    this.commonService.refreshPIListSubscriber.subscribe(data=>{      
-      this.getInquiryList();      
-    } );
+
+    this.commonService.refreshPIListSubscriber.subscribe(data => {
+      this.getInquiryList();
+    });
 
     //call method to get all inquiry data.
     this.getInquiryList();
@@ -81,9 +70,16 @@ export class PurchaseInqListComponent implements OnInit {
     this.showLoader = true;
     this.purchaseInquiryService.getInquiryList().subscribe(
       inquiryData => {
-        
-        this.gridData = JSON.parse(inquiryData);        
-        this.showLoader = false;
+        if (inquiryData != null && inquiryData != undefined) {
+          this.gridData = JSON.parse(inquiryData);
+
+          this.gridData.forEach(element => {
+            element.CreatedDate = new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat));
+            element.ValidTillDate = new Date(this.datepipe.transform(element.ValidTillDate, Configuration.dateFormat));
+          });
+
+          this.showLoader = false;
+        }
       });
   }
 
@@ -110,14 +106,14 @@ export class PurchaseInqListComponent implements OnInit {
   public openInqueryDetailOnSelectInquery(gridItem, selection, status) {
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.UpdateInquery;
-    currentsideBarInfo.ModuleName = ModuleName.Purchase;    
+    currentsideBarInfo.ModuleName = ModuleName.Purchase;
     currentsideBarInfo.SideBarStatus = true;
 
     // Selected Item Data
     let selectedIinquiry = this.gridData[selection.index];
     const selectedData = selection.selectedRows[0].dataItem;
 
-    currentsideBarInfo.RequesterData = selectedData;    
+    currentsideBarInfo.RequesterData = selectedData;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 }

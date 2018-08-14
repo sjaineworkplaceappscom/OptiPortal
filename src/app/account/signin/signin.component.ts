@@ -7,6 +7,8 @@ import { AccountService } from '../../services/account.service';
 import { LoginModel } from '../../models/account/login-model';
 import { ApplicationState } from '../../helpers/ApplicationState';
 import { Commonservice } from '../../services/commonservice.service';
+import { Configuration } from 'src/assets/configuration';
+
 
 
 @Component({
@@ -123,7 +125,7 @@ export class SigninComponent implements OnInit {
         this1.showLoader = false;
         localStorage.setItem('AccessToken', data.token);
 
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl(Configuration.firstHomePage);
       }
     ).catch(
       (err: HttpErrorResponse) => {

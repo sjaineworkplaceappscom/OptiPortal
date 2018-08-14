@@ -46,7 +46,7 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { CustomFilterPipe } from './custom-filter.pipe';
 
 import { CustomPipeItemPipe } from './custom-pipe-item.pipe';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { PortalHomeModule } from './portal-home/portal-home.module';
 import { PurchaseInquiryModule } from './purchase-inquiry/purchase-inquiry.module';
 
@@ -127,8 +127,10 @@ const routes: Routes = [
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true,
-    
-  }],
+  },
+  CustomPipeItemPipe,
+  DatePipe
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
