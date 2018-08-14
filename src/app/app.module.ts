@@ -45,7 +45,7 @@ import { UploadModule } from '@progress/kendo-angular-upload'
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { CustomFilterPipe } from './custom-filter.pipe';
 
-import { CustomPipeItemPipe } from './custom-pipe-item.pipe';
+
 import { CommonModule, DatePipe } from '@angular/common';
 import { PortalHomeModule } from './portal-home/portal-home.module';
 import { PurchaseInquiryModule } from './purchase-inquiry/purchase-inquiry.module';
@@ -78,7 +78,7 @@ const routes: Routes = [
 
     // Custom Pipes
     CustomFilterPipe,
-    CustomPipeItemPipe,
+    
 
     //Home Components(Need to be delete)
     LeftComponent,    
@@ -91,10 +91,7 @@ const routes: Routes = [
     ApproveUsersComponent,
 
     // Directive
-    ConfirmPasswordEquilValidatorDirectiveDirective,
-
-    
-    
+    ConfirmPasswordEquilValidatorDirectiveDirective,        
   ],
   imports: [
     CommonModule, 
@@ -130,7 +127,7 @@ const routes: Routes = [
     useClass: AuthInterceptor,
     multi: true,
   },
-  CustomPipeItemPipe,
+  
   DatePipe
 ],
   bootstrap: [AppComponent]

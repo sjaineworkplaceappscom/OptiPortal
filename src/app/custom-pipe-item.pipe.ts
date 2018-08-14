@@ -19,11 +19,11 @@ export class CustomPipeItemPipe implements PipeTransform {
     }
 
     return value.filter(items => {
-      return items.CustomerCode.toLowerCase().indexOf(args) != -1 ||
-        items.CustomerName.toLowerCase().indexOf(args) != -1 ||
-        items.StatusText==args ||
-        items.CreatedBy.toLowerCase().indexOf(args) != -1 ||
-        items.ReferenceNumber.toLowerCase().indexOf(args) != -1;
+      return (items.CustomerCode!=null && items.CustomerCode.toLowerCase().indexOf(args) != -1 )||
+       (items.CustomerName!=null && items.CustomerName.toLowerCase().indexOf(args) != -1) ||
+        (items.StatusText!=null  && items.StatusText.toLowerCase().indexOf(args) != -1) ||
+        (items.Buyer!=null  && items.Buyer.toLowerCase().indexOf(args) != -1 )||        
+        (items.ReferenceNumber!=null  && items.ReferenceNumber.toLowerCase().indexOf(args) != -1);
     });
   }
 

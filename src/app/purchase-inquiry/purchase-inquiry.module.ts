@@ -24,6 +24,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { PurchaseInqItemAddComponent } from './purchase-inq-item-add/purchase-inq-item-add.component';
 import { SharedModule } from '../shared/shared.module';
+import { CustomPipeItemPipe } from '../custom-pipe-item.pipe';
 // import { CustomFilterPipe } from '../custom-filter.pipe';
 // import { CustomPipeItemPipe } from '../custom-pipe-item.pipe';
 
@@ -61,7 +62,8 @@ import { SharedModule } from '../shared/shared.module';
     PurchaseInqUpdateComponent,
     PurchaseInqDetailComponent,
     PurchaseInquiryComponent, 
-    PurchaseInqItemListComponent, PurchaseInqItemAddComponent
+    PurchaseInqItemListComponent, PurchaseInqItemAddComponent,
+    CustomPipeItemPipe
     //Custom Pipes
     ],
     exports:[
@@ -71,6 +73,6 @@ import { SharedModule } from '../shared/shared.module';
       PurchaseInqDetailComponent,
       PurchaseInquiryComponent, 
       PurchaseInqItemListComponent],
-    providers:[]
+    providers:[CustomPipeItemPipe]
 })
 export class PurchaseInquiryModule { }
