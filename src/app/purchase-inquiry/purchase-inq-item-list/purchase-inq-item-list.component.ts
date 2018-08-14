@@ -9,6 +9,8 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
 export class PurchaseInqItemListComponent implements OnInit {
   showLoader:boolean=false;
   @Input() id:string;
+   //for item grid Data
+   public gridItemsData: any[] = [];
   constructor(private purchaseInquiryService: PurchaseInquiryService) { }
 
   ngOnInit() {
@@ -23,9 +25,10 @@ export class PurchaseInqItemListComponent implements OnInit {
       
       this.showLoader=true;  
       this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
-          inquiryItemData=>{        
-              //this.gridItemsData = JSON.parse(inquiryItemData);
-              //console.log("grid item data" + JSON.stringify(this.gridItemsData) );
+          inquiryItemData=>{  
+            debugger      
+              this.gridItemsData = JSON.parse(inquiryItemData);
+              console.log("grid item data" + JSON.stringify(this.gridItemsData) );
               this.showLoader=false;
           },
           error => {

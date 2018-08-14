@@ -130,7 +130,10 @@ export class PurchaseInqUpdateComponent implements OnInit {
   public UpdatePurchaseInquiry() {
     
     this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
-    data => console.log(data),
+    data => {
+      console.log(data),
+      this.commonService.refreshPIList(null);   
+    },
     error => console.log("Error: ", error),
     () =>this.closeRightSidebar()
     );

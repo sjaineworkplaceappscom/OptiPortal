@@ -4,5 +4,6 @@
 <a routerLink="piupdate">Pi Update</a><br>
 <a routerLink="pidetail">Pi Detail</a><br>
 <router-outlet></router-outlet> -->
-<app-purchase-inq-add *ngIf="currentSidebarInfo.ComponentName==1" [currentSidebarInfo]="currentSidebarInfo"></app-purchase-inq-add>
-<app-purchase-inq-update *ngIf="currentSidebarInfo.ComponentName==2" [currentSidebarInfo]="currentSidebarInfo"></app-purchase-inq-update>
+<app-purchase-inq-add *ngIf="currentSidebarInfo.ComponentName==101" [currentSidebarInfo]="currentSidebarInfo"></app-purchase-inq-add>
+<app-purchase-inq-update *ngIf="currentSidebarInfo.ComponentName==102" [currentSidebarInfo]="currentSidebarInfo"></app-purchase-inq-update>
+<app-purchase-inq-item-add *ngIf="currentSidebarInfo.ComponentName==103" [currentSidebarInfo]="currentSidebarInfo"></app-purchase-inq-item-add>

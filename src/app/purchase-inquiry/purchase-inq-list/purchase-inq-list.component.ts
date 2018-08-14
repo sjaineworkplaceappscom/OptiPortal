@@ -44,8 +44,7 @@ export class PurchaseInqListComponent implements OnInit {
 
   date: Date;
   //for inquiry grid Data
-  public gridData: any[] = [];
-  
+  public gridData: any[] = [];  
 
 
   @ViewChild('optirightfixedsection') optirightfixedsection;
@@ -65,6 +64,10 @@ export class PurchaseInqListComponent implements OnInit {
 
   ngOnInit() {
     this.gridHeight = UIHelper.getMainContentHeight();
+    
+    this.commonService.refreshPIListSubscriber.subscribe(data=>{      
+      this.getInquiryList();      
+    } );
 
     //call method to get all inquiry data.
     this.getInquiryList();
@@ -79,7 +82,7 @@ export class PurchaseInqListComponent implements OnInit {
     this.purchaseInquiryService.getInquiryList().subscribe(
       inquiryData => {
         
-        this.gridData = JSON.parse(inquiryData);
+        this.gridData = JSON.parse(inquiryData);        
         this.showLoader = false;
       });
   }
@@ -94,7 +97,6 @@ export class PurchaseInqListComponent implements OnInit {
     currentsideBarInfo.ComponentName = ComponentName.AddInquery;
     currentsideBarInfo.ModuleName = ModuleName.Purchase;
     currentsideBarInfo.SideBarStatus = true;
- 
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
@@ -111,15 +113,11 @@ export class PurchaseInqListComponent implements OnInit {
     currentsideBarInfo.ModuleName = ModuleName.Purchase;    
     currentsideBarInfo.SideBarStatus = true;
 
-
     // Selected Item Data
     let selectedIinquiry = this.gridData[selection.index];
     const selectedData = selection.selectedRows[0].dataItem;
-    currentsideBarInfo.RequesterData = selectedData;
-    currentsideBarInfo.RequesterData=currentsideBarInfo.RequesterData;
+
+    currentsideBarInfo.RequesterData = selectedData;    
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
-
-
-
 }
