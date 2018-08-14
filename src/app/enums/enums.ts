@@ -27,7 +27,14 @@ export  enum ModuleName {
 }
 
 export enum ComponentName {
-    AddInquery = 1,
-    UpdateInquery = 2,
-    UpdateSales=3
+    // Purchase
+    AddInquery = 101,
+    UpdateInquery = 102,
+    AddInqueryItem=103,
+    
+
+    // Sales
+    UpdateSales=201
+
+    
 }

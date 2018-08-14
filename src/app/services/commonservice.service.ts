@@ -78,4 +78,12 @@ export class Commonservice {
   }
 
 
+  // Refresh List
+  private refreshPIListSub =new BehaviorSubject<any>(null);
+  refreshPIListSubscriber=this.refreshPIListSub.asObservable();
+
+  public refreshPIList(data:any){
+    this.refreshPIListSub.next(data);
+  }
+
 }

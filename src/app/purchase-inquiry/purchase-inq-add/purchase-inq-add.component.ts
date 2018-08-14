@@ -37,22 +37,6 @@ export class PurchaseInqAddComponent implements OnInit {
   // tab function
   openTab(evt, tabName) {
     this.tabName = tabName;
-    /**
-     * Set the status of tab content to show and hide
-    */
-    // if(tabName == 'home'){
-    //   this.isHome = true;
-    //   this.isItems = this.isAttchement = this.isNotes = false;
-    // }else if(tabName == 'items'){
-    //   this.isItems = true;
-    //   this.isHome = this.isAttchement = this.isNotes = false;
-    // }else if(tabName == 'attachement'){
-    //   this.isAttchement = true;
-    //   this.isHome = this.isItems = this.isNotes = false;
-    // }else if(tabName == 'notes'){
-    //   this.isNotes = true;
-    //   this.isHome = this.isItems = this.isAttchement = false;
-    // }
 
     UIHelper.customOpenTab(evt, tabName);
   }
@@ -112,11 +96,21 @@ export class PurchaseInqAddComponent implements OnInit {
 
   public AddPurchaseInquiry() {
     this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
-      data => console.log("record added:"),
-      error => console.log("Error: ", error),
-      // () =>this.getInquiryList()
+      (data:any) => {
+        console.log("record added:")
+        this.commonService.refreshPIList(null);           
+      },
+      error => {
+        alert("Something went wrong");            
+        console.log("Error: ", error)
+      },
+      ()=> {        
+        this.closeRightSidebar();
+      }
+      
     );
-    this.closeRightSidebar();
+
+    
 
   }
 
