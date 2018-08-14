@@ -1,172 +1,207 @@
 import { Component, OnInit, ViewChild, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
+import { NotesModel } from '../../models/purchaserequest/notes';
+import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
+import { SharedComponentService } from '../../services/shared-component.service';
+import { CustomerEntityType } from '../../enums/enums';
 
 @Component({
-  selector: 'app-notes',
-  templateUrl: './notes.component.html',
-  styleUrls: ['./notes.component.scss']
+    selector: 'app-notes',
+    templateUrl: './notes.component.html',
+    styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
- 
-  
-  /**
-   * global variable
-  */
-  isMobile: boolean;
-  gridHeight: number;
 
-  /**
-   * NOTES TAB VARIABLE
-  */
-
-  @Input() tabparent;
-  getTabParent:string;
-
-  TabAddNotesFormStatus:boolean = false;
-  TabEditNotesFormStatus:boolean = false;
-  TabNotesGridStatus:boolean = true; 
-  addnotestring = '';
-  noteRequetData: any[];
-  selectedNote: any = {};
-
-  @ViewChild('notesgrid') notesgrid;
-  @ViewChild('noteform') noteform;
-  @ViewChild('editnoteform') editnoteform;
-
-  /**
-   * ITEMS NOTES VARIABLE
-  */
-
-  noteItemsData: any[];
-  selectedItemNote: any = {};
-  itemNotesGrid:boolean = true;
-  itemAddNotes:boolean = false;
-  itemEditNotes:boolean = false;
-
-  
-
-  constructor() { }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    /**
-     * Apply Grid Height
-    */
-    this.gridHeight = UIHelper.getMainContentHeight();
-      
-    /**
-     * Check Mobile device
-    */
-      this.isMobile = UIHelper.isMobile();
-  }
-
-  ngOnInit() {
-
-    this.getTabParent = this.tabparent;
 
     /**
-     * Apply Grid Height
+     * global variable
     */
-    this.gridHeight = UIHelper.getMainContentHeight();
-      
+    isMobile: boolean;
+    gridHeight: number;
+
     /**
-      * Check Mobile device
+     * NOTES TAB VARIABLE
     */
-    this.isMobile = UIHelper.isMobile();
 
-    
+    @Input() tabparent;
+    getTabParent: string;
 
-  }
+    TabAddNotesFormStatus: boolean = false;
+    TabEditNotesFormStatus: boolean = false;
+    TabNotesGridStatus: boolean = true;
+    addnotestring = '';
+    noteRequetData: any[];
+    selectedNote: any = {};
 
-   /**
-   * visible add new comment layout.
-   */
-  addNewComment() {
-      // this.notesgrid.nativeElement.style.display = 'none';
-      this.TabNotesGridStatus = false;
-      // this.noteform.nativeElement.style.display = 'block';
-      this.TabAddNotesFormStatus = true;
-  }
+    @ViewChild('notesgrid') notesgrid;
+    @ViewChild('noteform') noteform;
+    @ViewChild('editnoteform') editnoteform;
 
-   /**
-   * add note. 
-   * @param e 
-   * @param action 
-   */
-    submitNote(e, action) {
-        if (action == 'add') {
-            // this.notesgrid.nativeElement.style.display = 'block';
-            this.TabNotesGridStatus = true;
-            // this.noteform.nativeElement.style.display = 'none';
-            this.TabAddNotesFormStatus = false;
-            let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
-            let dynamicNotes: any[] = JSON.parse(dynamicNotesString);
-            if (dynamicNotes == undefined || dynamicNotes.length <= 0) {
-                dynamicNotes = [];
-            }
-            let date = new Date();
-            let CompleteDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-            dynamicNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
-            localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
-            this.noteRequetData = dynamicNotes;
-        } else {
-            // this.notesgrid.nativeElement.style.display = 'block';
-            this.TabNotesGridStatus = true;
-            // this.noteform.nativeElement.style.display = 'none';
-            this.TabAddNotesFormStatus = false;
+    /**
+     * ITEMS NOTES VARIABLE
+    */
+
+    noteItemsData: any[];
+    selectedItemNote: any = {};
+    itemNotesGrid: boolean = true;
+    itemAddNotes: boolean = false;
+    itemEditNotes: boolean = false;
+    noteModel: NotesModel;
+    showLoader: boolean = false;
+
+    public noteTypes: Array<{ text: string, value: number }> = [
+        { text: "General ", value: 0 },
+        { text: "Rejected", value: 1 },
+        { text: "Partial accepted", value: 2 }
+    ];
+    public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
+
+    constructor(private sharedComponentService: SharedComponentService) {
+
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event) {
+        /**
+         * Apply Grid Height
+        */
+        this.gridHeight = UIHelper.getMainContentHeight();
+
+        /**
+         * Check Mobile device
+        */
+        this.isMobile = UIHelper.isMobile();
+    }
+
+    ngOnInit() {
+        this.noteModel = new NotesModel();
+        this.getTabParent = this.tabparent;
+        /**
+         * Apply Grid Height
+        */
+        this.gridHeight = UIHelper.getMainContentHeight();
+        /**
+          * Check Mobile device
+        */
+        this.isMobile = UIHelper.isMobile();
+
+
+
+    }
+
+    /**
+    * visible add new comment layout.
+    */
+    openNewNote() {
+
+        this.TabNotesGridStatus = false;
+        this.TabAddNotesFormStatus = true;
+        // set default note type for add note.
+        this.noteModel.NoteType = 0;
+        console.log("Note value:" + this.noteModel.NoteType);
+
+    }
+
+    /**
+    * add note. 
+    * @param e 
+    * @param action 
+    */
+    submitNote(e) {
+debugger;
+        this.TabNotesGridStatus = true;
+        this.TabAddNotesFormStatus = false;
+        let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
+        let dynamicNotes: any[] = JSON.parse(dynamicNotesString);
+        if (dynamicNotes == undefined || dynamicNotes.length <= 0) {
+            dynamicNotes = [];
         }
+        let date = new Date();
+        let CompleteDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+        dynamicNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
+        localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
+        this.noteRequetData = dynamicNotes;
+
+
+        this.noteModel.NoteType = this.selectedNoteItem.value;
+        this.noteModel.GrandParentType = CustomerEntityType.PurchaseInquiry;
+        this.noteModel.ParentType = CustomerEntityType.PurchaseInquiry;
+        //  this.noteModel.GrantParentId = "895AB8E3-FFDE-4F04-ADC9-D8A7B5A091D6";
+        this.noteModel.ParentId = "895AB8E3-FFDE-4F04-ADC9-D8A7B5A091D6";
+        this.noteModel.GrantParentId = "";
+        //this.sharedComponentService.AddNote()
+
+        this.sharedComponentService.AddNote(this.noteModel).subscribe(
+            resp => {
+                console.log("record added:")
+            },
+            error => {
+                debugger;
+                alert("Something went wrong");
+                console.log("Error: ", error)
+            },
+            () => {
+
+            });
         this.addnotestring = '';
     }
 
     editNotes(e, note) {
-      console.log(e);
-      console.log(note);
-      // this.notesgrid.nativeElement.style.display = 'none';
-      this.TabNotesGridStatus = false;
-      // this.editnoteform.nativeElement.style.display = 'block';
-      this.TabEditNotesFormStatus = true;
-      this.selectedNote = note;
-  }
+        console.log(e);
+        console.log(note);
+        // this.notesgrid.nativeElement.style.display = 'none';
+        this.TabNotesGridStatus = false;
+        // this.editnoteform.nativeElement.style.display = 'block';
+        this.TabEditNotesFormStatus = true;
+        this.selectedNote = note;
+    }
 
-  updateNote(e) {
-      // this.notesgrid.nativeElement.style.display = 'block';
-      this.TabNotesGridStatus = true;
-      // this.editnoteform.nativeElement.style.display = 'none';
-      this.TabEditNotesFormStatus = false;
-      let index = this.noteRequetData.indexOf(this.selectedNote);
-      if (index > -1) {
-          this.noteRequetData[index].Notes = this.selectedNote.Notes;
-      }
+    updateNote(e) {
+        // this.notesgrid.nativeElement.style.display = 'block';
+        this.TabNotesGridStatus = true;
+        // this.editnoteform.nativeElement.style.display = 'none';
+        this.TabEditNotesFormStatus = false;
+        let index = this.noteRequetData.indexOf(this.selectedNote);
+        if (index > -1) {
+            this.noteRequetData[index].Notes = this.selectedNote.Notes;
+        }
 
-  }
+    }
 
-  public noteStatus: Array<{ text: string, value: string }> = [
-      { text: "General ", value: '0' },
-      { text: "Rejected", value: '1' },
-      { text: "Partial accepted", value: '2' },
-  ];
-  public selectedNoteStatusItem: { text: string, value: string } = this.noteStatus[0];
 
-  /**
-   * delete note from local storage. 
-   */
-  deleteNote({ sender, rowIndex, dataItem }) {
-    this.noteRequetData.splice(rowIndex, 1);
-    localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteRequetData));
-  }
+
+    /**
+     * delete note from local storage. 
+     */
+    deleteNote({ sender, rowIndex, dataItem }) {
+        this.noteRequetData.splice(rowIndex, 1);
+        localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteRequetData));
+    }
+
+
+    /**
+       * Method to get list of inquries from server.
+       */
+    public getNoteList(id: string, type: number) {
+        this.showLoader = true;
+        // this.sharedComponentService.getNotesList().subscribe(
+        //   notesData => {
+
+        //     this.noteItemsData = JSON.parse(notesData);        
+        //     this.showLoader = false;
+        //   });
+    }
+
 
 
 
     /**
      * THIS SECTION FOR ITEMS NOTES
     */
- 
-     
+
+
     submitItemsNote(e, action) {
         if (action == 'add') {
-            //this.notesitemgrid.nativeElement.style.display = 'block';
-            //this.noteitemform.nativeElement.style.display = 'none';
-
             this.itemNotesGrid = true;
             this.itemAddNotes = false;
 
@@ -179,12 +214,10 @@ export class NotesComponent implements OnInit {
 
             let date = new Date();
             let CompleteDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-            dynamicItemsNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteStatusItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
+            dynamicItemsNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
             localStorage.setItem("setItemsDynamicNotes", JSON.stringify(dynamicItemsNotes));
             this.noteItemsData = dynamicItemsNotes;
         } else {
-            //this.notesitemgrid.nativeElement.style.display = 'block';
-            //this.noteitemform.nativeElement.style.display = 'none';
 
             this.itemNotesGrid = true;
             this.itemAddNotes = false;
@@ -205,8 +238,6 @@ export class NotesComponent implements OnInit {
     editItemsNotes(e, note) {
         console.log(e);
         console.log(note);
-        //this.notesitemgrid.nativeElement.style.display = 'none';
-        //this.edititemnoteform.nativeElement.style.display = 'block';
 
         this.itemNotesGrid = false;
         this.itemEditNotes = true;
@@ -215,12 +246,8 @@ export class NotesComponent implements OnInit {
     }
 
     updateItemNote(e, updatednotevalue: any) {
-        //this.notesitemgrid.nativeElement.style.display = 'block';
-        //this.edititemnoteform.nativeElement.style.display = 'none';
-
         this.itemNotesGrid = true;
         this.itemEditNotes = false;
-
         let index = this.noteRequetData.indexOf(this.selectedItemNote);
         if (index > -1) {
             this.noteItemsData[index].Notes = updatednotevalue.value;

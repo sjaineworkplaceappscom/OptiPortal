@@ -233,6 +233,9 @@ body{
     // id filter
     .k-numeric-wrap{
       height: 32px;
+      input.k-input{
+        height: 100%;
+      }
     }
 
   }

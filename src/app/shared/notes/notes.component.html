@@ -13,7 +13,7 @@
                       <!-- grid toolbar start -->
                       <ng-template kendoGridToolbarTemplate>
                           <!-- <button (click)="addNewComment()">Add new Notes</button>   -->
-                          <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="addNewComment()" [svgStyle]="{ 'width.px':20, 'height.px':20}"
+                          <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="openNewNote()" [svgStyle]="{ 'width.px':20, 'height.px':20}"
                               class="opti_vertical-align float-left opti_icon-spacing" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
                               
                           <form class="k-form opti_common-search-form float-left opti_padding-zero">
@@ -55,18 +55,18 @@
                       <form #requestnoteform class="k-form">
                           <label class="k-form-field">
                               <span class="opti_form-label">Add Note</span>
-                              <textarea class="k-textarea" name="addnotestring" [(ngModel)]="addnotestring">Please enter your note</textarea>
+                              <textarea class="k-textarea" name="addnotestring" [(ngModel)]="noteModel.Notes">Please enter your note</textarea>
                           </label>
 
                           <label class="k-form-field">
-                              <span class="opti_form-label">Note Status</span>
-                              <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                              <span class="opti_form-label">Note Type</span>
+                              <kendo-dropdownlist name="formNoteType" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem">
                               </kendo-dropdownlist>
                           </label>
 
                           <div class="text-right">
-                              <button type="button" class="k-button k-primary" (click)="submitNote($event,'add');">Add Item</button>
-                              <button type="button" class="k-button k-primary" (click)="submitNote($event,'close');">Close</button>
+                              <button type="button" class="k-button k-primary" (click)="submitNote($event);">Add</button>
+                              <button type="button" class="k-button k-primary" (click)="closeNoteWindow($event);">Close</button>
                           </div>
                       </form>
                   </div>
@@ -87,7 +87,7 @@
 
                           <label class="k-form-field">
                               <span class="opti_form-label">Note Type</span>
-                              <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                              <kendo-dropdownlist name="role" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem">
                               </kendo-dropdownlist>
                           </label>
 
@@ -151,17 +151,17 @@
                 <form class="k-form">
                     <label class="k-form-field">
                         <span class="opti_form-label">Add Note</span>
-                        <textarea class="k-textarea" name="addnotestring" [(ngModel)]="addnotestring">Please enter your note</textarea>
+                        <textarea class="k-textarea" name="addnotestring" [(ngModel)]="noteModel.Notes">Please enter your note</textarea>
                     </label>
 
                     <label class="k-form-field">
-                        <span class="opti_form-label">Note Status</span>
-                        <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                        <span class="opti_form-label">Note Type</span>
+                        <kendo-dropdownlist name="role" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="noteModel.NoteType">
                         </kendo-dropdownlist>
                     </label>
 
                     <div class="text-right">
-                        <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'add')">Add Note</button>
+                        <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'add')">Add</button>
                         <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'close')">Close</button>
                     </div>
                 </form>
@@ -182,7 +182,7 @@
 
                     <label class="k-form-field">
                         <span class="opti_form-label">Note Type</span>
-                        <kendo-dropdownlist name="role" [data]="noteStatus" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteStatusItem">
+                        <kendo-dropdownlist name="role" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem">
                         </kendo-dropdownlist>
                     </label>
 
