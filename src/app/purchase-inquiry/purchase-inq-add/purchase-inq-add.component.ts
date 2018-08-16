@@ -18,6 +18,7 @@ export class PurchaseInqAddComponent implements OnInit {
   isAttchement: boolean = false;
   isNotes: boolean = false;
   tabName: string = 'home';
+  tabStatus:boolean = false;
 
   public minValidDate: Date = new Date();
   public purchaseInqueryAdd: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
@@ -35,10 +36,11 @@ export class PurchaseInqAddComponent implements OnInit {
   @ViewChild('optiTab') optiTab;
 
   // tab function
-  openTab(evt, tabName) {
-    this.tabName = tabName;
-
-    UIHelper.customOpenTab(evt, tabName);
+  openTab(evt, tabName, tabStatus) {
+    if(tabStatus == true){
+      this.tabName = tabName;
+      UIHelper.customOpenTab(evt, tabName);
+    }
   }
 
   @HostListener('window:resize', ['$event'])
