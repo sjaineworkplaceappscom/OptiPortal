@@ -14,14 +14,14 @@ import { NotesModel } from '../../models/purchaserequest/notes';
 export class PurchaseInqUpdateComponent implements OnInit {
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
-  constructor(private commonService: Commonservice,private purchaseInquiryService: PurchaseInquiryService) { }
+  constructor(private commonService: Commonservice, private purchaseInquiryService: PurchaseInquiryService) { }
 
   isHome: boolean = true;
   isItems: boolean = false;
   isAttchement: boolean = false;
   isNotes: boolean = false;
   tabName: string = 'home';
-  notesMasterData:NotesModel=new NotesModel();
+  notesMasterData: NotesModel = new NotesModel();
 
   /**
   * This method will reset the model and date object for add form.
@@ -79,15 +79,19 @@ export class PurchaseInqUpdateComponent implements OnInit {
     // Set sidebar data;
     this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        if(currentSidebarData!=null && currentSidebarData!=undefined){
-        this.purchaseInquiryDetail = currentSidebarData.RequesterData;
-        this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
-        this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
-        
-        // Set notes data for inquiry
-        this.notesMasterData.ParentId=this.purchaseInquiryDetail.PurchaseInquiryId;
-        
-        this.commonService.setNotesData(this.notesMasterData); 
+        if (currentSidebarData != null && currentSidebarData != undefined) {
+          this.purchaseInquiryDetail = currentSidebarData.RequesterData;
+          if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
+            this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
+            this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
+            // Set notes data for inquiry
+            this.notesMasterData.ParentId = this.purchaseInquiryDetail.PurchaseInquiryId;
+            
+            // Fire note event 
+            this.commonService.setNotesData(this.notesMasterData);
+          }
+
+
         }
 
       }
@@ -98,8 +102,8 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
   ngOnChange() {
     this.commonService.currentSidebarInfo.subscribe(
-      currentSidebarData => {        
-        this.purchaseInquiryDetail = currentSidebarData.RequesterData;   
+      currentSidebarData => {
+        this.purchaseInquiryDetail = currentSidebarData.RequesterData;
       }
     );
   }
@@ -139,23 +143,23 @@ export class PurchaseInqUpdateComponent implements OnInit {
   * UpdatePurchaseInquiry
   */
   public UpdatePurchaseInquiry() {
-    
-    this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
-    data => {
-      console.log(data),
-      this.commonService.refreshPIList(null);   
-    },
-    error => console.log("Error: ", error),
-    () =>this.closeRightSidebar()
-    );
-    }
 
-     /**
+    this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
+      data => {
+        console.log(data),
+          this.commonService.refreshPIList(null);
+      },
+      error => console.log("Error: ", error),
+      () => this.closeRightSidebar()
+    );
+  }
+
+  /**
 * 
 * @param status close right content section, will pass false
 */
   closeRightSidebar() {
-    let currentSidebarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
+    let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentSidebarInfo.SideBarStatus = false;
     this.commonService.setCurrentSideBar(currentSidebarInfo);
   }
