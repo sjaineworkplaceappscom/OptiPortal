@@ -18,8 +18,15 @@ export class PortalTopComponent implements OnInit {
   openThemeSetting: boolean = false;
   constructor(private modalService: BsModalService,private router: Router, private commonService: Commonservice) { }
   selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
-  
+  loggedInUserName:string = '';
+  customerName:string = '';
+  customerCode:string = '';
   ngOnInit() {
+    let userDetail: string= localStorage.getItem("LoginUserDetail"); 
+    let userData: any[] = JSON.parse(userDetail);
+    this.loggedInUserName = userData[0].LoginUserName;
+    this.customerName = userData[0].CustomerName;
+    this.customerCode = userData[0].CustomerCode;
     UIHelper.manageThemeCssFile();
   }
 
