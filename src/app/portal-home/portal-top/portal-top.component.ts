@@ -28,7 +28,7 @@ export class PortalTopComponent implements OnInit {
     this.loggedInUserName = userData[0].LoginUserName;
     this.customerName = userData[0].ParentName;
     this.customerCode = userData[0].ParentCode;
-    this.LoginUserType = userData[0].LoginUserType;
+    this.LoginUserType = userData[0].LoginUserType; 
     UIHelper.manageThemeCssFile();
   }
 
