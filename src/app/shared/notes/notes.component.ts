@@ -4,6 +4,7 @@ import { NotesModel } from '../../models/purchaserequest/notes';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { CustomerEntityType } from '../../enums/enums';
+import { Commonservice } from '../../services/commonservice.service';
 
 @Component({
     selector: 'app-notes',
@@ -12,6 +13,7 @@ import { CustomerEntityType } from '../../enums/enums';
 })
 export class NotesComponent implements OnInit {
 
+    @Input() NotesMasterData:NotesModel;
 
     /**
      * global variable
@@ -50,13 +52,13 @@ export class NotesComponent implements OnInit {
     showLoader: boolean = false;
 
     public noteTypes: Array<{ text: string, value: number }> = [
-        { text: "General ", value: 0 },
-        { text: "Rejected", value: 1 },
-        { text: "Partial accepted", value: 2 }
+        { text: "General ", value: 1 },
+        { text: "Rejected", value: 2 },
+        { text: "Partial accepted", value: 3 }
     ];
     public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
 
-    constructor(private sharedComponentService: SharedComponentService) {
+    constructor(private sharedComponentService: SharedComponentService,private commonService:Commonservice) {
 
     }
 
@@ -66,40 +68,52 @@ export class NotesComponent implements OnInit {
          * Apply Grid Height
         */
         this.gridHeight = UIHelper.getMainContentHeight();
-
         /**
          * Check Mobile device
         */
         this.isMobile = UIHelper.isMobile();
     }
 
-    ngOnInit() {
+    ngOnChange(){
+        //getting data of item at ngOnChange.
+        this.commonService.currentNotesData.subscribe(
+            data=>{              
+            this.noteModel.ParentId = data.ParentId;            
+            }
+        );
+      
+    }
+
+    ngOnInit() {     
         this.noteModel = new NotesModel();
         this.getTabParent = this.tabparent;
         /**
          * Apply Grid Height
         */
         this.gridHeight = UIHelper.getMainContentHeight();
+
         /**
           * Check Mobile device
         */
         this.isMobile = UIHelper.isMobile();
+        this.commonService.currentNotesData.subscribe(
+            data=>{                
+            this.noteModel.ParentId=data.ParentId;
+            }
+        );
 
-
-
-    }
+        this.getNoteList(this.noteModel.ParentId , CustomerEntityType.PurchaseInquiry);
+        }
 
     /**
     * visible add new comment layout.
     */
     openNewNote() {
-
         this.TabNotesGridStatus = false;
         this.TabAddNotesFormStatus = true;
         // set default note type for add note.
-        this.noteModel.NoteType = 0;
-        console.log("Note value:" + this.noteModel.NoteType);
-
+        //this.noteModel.NoteType = 0;
+        
     }
 
     /**
@@ -108,7 +122,6 @@ export class NotesComponent implements OnInit {
     * @param action 
     */
     submitNote(e) {
-debugger;
         this.TabNotesGridStatus = true;
         this.TabAddNotesFormStatus = false;
         let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
@@ -121,22 +134,21 @@ debugger;
         dynamicNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
         localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
         this.noteRequetData = dynamicNotes;
-
-
+        // Add Notes Data in model. when comes from inquiry
+        //this.noteModel.Notes
+        //this.noteModel.NoteId
         this.noteModel.NoteType = this.selectedNoteItem.value;
         this.noteModel.GrandParentType = CustomerEntityType.PurchaseInquiry;
         this.noteModel.ParentType = CustomerEntityType.PurchaseInquiry;
         //  this.noteModel.GrantParentId = "895AB8E3-FFDE-4F04-ADC9-D8A7B5A091D6";
-        this.noteModel.ParentId = "895AB8E3-FFDE-4F04-ADC9-D8A7B5A091D6";
+      //  this.noteModel.ParentId = "895AB8E3-FFDE-4F04-ADC9-D8A7B5A091D6";
         this.noteModel.GrantParentId = "";
-        //this.sharedComponentService.AddNote()
-
         this.sharedComponentService.AddNote(this.noteModel).subscribe(
             resp => {
                 console.log("record added:")
             },
             error => {
-                debugger;
+                
                 alert("Something went wrong");
                 console.log("Error: ", error)
             },
@@ -165,7 +177,20 @@ debugger;
         if (index > -1) {
             this.noteRequetData[index].Notes = this.selectedNote.Notes;
         }
+    }
 
+      /**
+       * Method to get list of inquries from server.
+       */
+      public getNoteList(id: string, type: number) {
+      
+        this.showLoader = true;
+        this.sharedComponentService.getNotesList(this.noteModel.ParentId,CustomerEntityType.PurchaseInquiry).subscribe(
+          notesData => {
+            console.log("data"+notesData);
+            this.noteItemsData = JSON.parse(notesData);        
+            this.showLoader = false;
+          });
     }
 
 
@@ -179,18 +204,7 @@ debugger;
     }
 
 
-    /**
-       * Method to get list of inquries from server.
-       */
-    public getNoteList(id: string, type: number) {
-        this.showLoader = true;
-        // this.sharedComponentService.getNotesList().subscribe(
-        //   notesData => {
-
-        //     this.noteItemsData = JSON.parse(notesData);        
-        //     this.showLoader = false;
-        //   });
-    }
+  
 
 
 
@@ -212,11 +226,11 @@ debugger;
                 dynamicItemsNotes = [];
             }
 
-            let date = new Date();
-            let CompleteDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-            dynamicItemsNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
-            localStorage.setItem("setItemsDynamicNotes", JSON.stringify(dynamicItemsNotes));
-            this.noteItemsData = dynamicItemsNotes;
+            // let date = new Date();
+            // let CompleteDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+            // dynamicItemsNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
+            // localStorage.setItem("setItemsDynamicNotes", JSON.stringify(dynamicItemsNotes));
+            // this.noteItemsData = dynamicItemsNotes;
         } else {
 
             this.itemNotesGrid = true;
@@ -231,8 +245,8 @@ debugger;
     }
 
     deleteItemsNote({ sender, rowIndex, dataItem }) {
-        this.noteItemsData.splice(rowIndex, 1);
-        localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteItemsData));
+        //this.noteItemsData.splice(rowIndex, 1);
+       // localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteItemsData));
     }
 
     editItemsNotes(e, note) {
@@ -248,11 +262,12 @@ debugger;
     updateItemNote(e, updatednotevalue: any) {
         this.itemNotesGrid = true;
         this.itemEditNotes = false;
-        let index = this.noteRequetData.indexOf(this.selectedItemNote);
-        if (index > -1) {
-            this.noteItemsData[index].Notes = updatednotevalue.value;
-        }
+        // let index = this.noteRequetData.indexOf(this.selectedItemNote);
+        // if (index > -1) {
+        //     this.noteItemsData[index].Notes = updatednotevalue.value;
+        // }
 
     }
 
 }
+

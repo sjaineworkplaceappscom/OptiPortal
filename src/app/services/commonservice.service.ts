@@ -3,6 +3,7 @@ import { Subject, BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment.prod';
 import { opticonstants } from '../constants';
 import { CurrentSidebarInfo } from '../models/sidebar/current-sidebar-info';
+import { NotesModel } from '../models/purchaserequest/notes';
 
 
 @Injectable({
@@ -85,5 +86,13 @@ export class Commonservice {
   public refreshPIList(data:any){
     this.refreshPIListSub.next(data);
   }
+
+   // Refresh List
+   private notesDataSub =new BehaviorSubject<NotesModel>(null);
+   currentNotesData=this.notesDataSub.asObservable();
+ 
+   public setNotesData(data:any){
+     this.notesDataSub.next(data);
+   }
 
 }

@@ -4,6 +4,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { Commonservice } from '../../services/commonservice.service';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
+import { NotesModel } from '../../models/purchaserequest/notes';
 
 @Component({
   selector: 'app-purchase-inq-update',
@@ -20,6 +21,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   isAttchement: boolean = false;
   isNotes: boolean = false;
   tabName: string = 'home';
+  notesMasterData:NotesModel=new NotesModel();
 
   /**
   * This method will reset the model and date object for add form.
@@ -73,12 +75,21 @@ export class PurchaseInqUpdateComponent implements OnInit {
      * Add active class on tab title 
     */
     this.optiTab.nativeElement.children[0].classList.add('active');
+
     // Set sidebar data;
     this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
+        if(currentSidebarData!=null && currentSidebarData!=undefined){
         this.purchaseInquiryDetail = currentSidebarData.RequesterData;
         this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
         this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
+        
+        // Set notes data for inquiry
+        this.notesMasterData.ParentId=this.purchaseInquiryDetail.PurchaseInquiryId;
+        
+        this.commonService.setNotesData(this.notesMasterData); 
+        }
+
       }
     );
     this.getStatusListForUpdateByCustomer();
@@ -87,8 +98,8 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
   ngOnChange() {
     this.commonService.currentSidebarInfo.subscribe(
-      currentSidebarData => {
-        this.purchaseInquiryDetail = currentSidebarData.RequesterData;
+      currentSidebarData => {        
+        this.purchaseInquiryDetail = currentSidebarData.RequesterData;   
       }
     );
   }

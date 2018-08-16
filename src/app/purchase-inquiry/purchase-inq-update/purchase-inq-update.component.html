@@ -97,7 +97,7 @@
     </div>
 
     <div id="notes" *ngIf="tabName=='notes'" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
-        <app-notes [tabparent]="'notesTab'"></app-notes>
+        <app-notes [NotesMasterData]="notesMasterData" [tabparent]="'notesTab'"></app-notes>
     </div>
     <!-- tab end -->
 </div> 

@@ -6,6 +6,7 @@ import { RequestOptions } from '@angular/http';
 import { TempPurchaseInquiryModel } from '../tempmodels/temppurchase-inquiry';
 import { Configuration } from '../../assets/configuration';
 import { TempPurchaseInquiryItemModel } from '../tempmodels/temppurchase-inquiry-item';
+import { NotesModel } from '../models/purchaserequest/notes';
 
 @Injectable({
   providedIn: 'root'
@@ -81,4 +82,9 @@ export class PurchaseInquiryService {
   } 
   return this.httpHelper.put(this.baseUrl + 'purchaseinquiry/update',purchaseInquiryUpdate,null);
   }
+
+
+
+  
+  
 }

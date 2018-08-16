@@ -2,7 +2,7 @@ export class NotesModel{
     // uniquie identify of note
     NoteId:string;
     //note text
-    Notes:string;  //.
+    Notes:string;  
     // type is system generated note or user note
     NoteType : number; //normal: 1,Rejected = 2,PartialApproved = 3 .
     // GrandParentType type of inquiry
