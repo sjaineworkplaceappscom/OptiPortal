@@ -5,6 +5,8 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
 import { SharedComponentService } from '../../services/shared-component.service';
 import { CustomerEntityType } from '../../enums/enums';
 import { Commonservice } from '../../services/commonservice.service';
+import { DatePipe } from '../../../../node_modules/@angular/common';
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
     selector: 'app-notes',
@@ -58,7 +60,7 @@ export class NotesComponent implements OnInit {
     ];
     public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
 
-    constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice) {
+    constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe) {
 
     }
 
@@ -98,7 +100,6 @@ export class NotesComponent implements OnInit {
         this.commonService.currentNotesData.subscribe(
             data => {
                 this.noteModel.ParentId = data.ParentId;
-
                 // Get notes data.
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             }
@@ -151,7 +152,7 @@ export class NotesComponent implements OnInit {
         // this.addnotestring = '';
     }
 
-    editNotes(e, note) {
+    openEditNoteView(e, note) {
         console.log(e);
         console.log(note);
         // this.notesgrid.nativeElement.style.display = 'none';
@@ -160,17 +161,8 @@ export class NotesComponent implements OnInit {
         this.TabEditNotesFormStatus = true;
         this.selectedNote = note;
     }
-
-    updateNote(e) {
-        // this.notesgrid.nativeElement.style.display = 'block';
-        this.TabNotesGridStatus = true;
-        // this.editnoteform.nativeElement.style.display = 'none';
-        this.TabEditNotesFormStatus = false;
-        //  let index = this.noteRequetData.indexOf(this.selectedNote);
-        // if (index > -1) {
-        //     this.noteRequetData[index].Notes = this.selectedNote.Notes;
-        // }
-    }
+   
+   
 
     /**
      * close note add form
@@ -188,7 +180,6 @@ export class NotesComponent implements OnInit {
      * delete note from local storage.
      */
     deleteNote({ sender, rowIndex, dataItem }) {
-        debugger;
         console.log("delete note call:");
         // this.noteRequetData.splice(rowIndex, 1);
         // localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteRequetData));
@@ -196,14 +187,20 @@ export class NotesComponent implements OnInit {
 
 
 
-
-
+    openEditItemNoteView(e, note) {
+        console.log(e);
+        console.log(note);
+        // this.notesgrid.nativeElement.style.display = 'none';
+        this.TabNotesGridStatus = false;
+        // this.editnoteform.nativeElement.style.display = 'block';
+        this.TabEditNotesFormStatus = true;
+        this.selectedNote = note;
+    }
 
 
     /**
      * THIS SECTION FOR ITEMS NOTES
     */
-
 
     submitItemsNote(e, action) {
         if (action == 'add') {
@@ -236,7 +233,6 @@ export class NotesComponent implements OnInit {
     }
 
     deleteItemsNote({ sender, rowIndex, dataItem }) {
-        debugger;
 
         this.noteItemsData.splice(rowIndex, 1);
         //this.noteItemsData.splice(rowIndex, 1);
@@ -284,12 +280,25 @@ export class NotesComponent implements OnInit {
         this.showLoader = true;
         this.sharedComponentService.getNotesList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry).subscribe(
             notesData => {
-                // console.log("Note data from server: " + notesData);
+                this.formatNotesDate(notesData);
+                 console.log("Note data from server: " + notesData);
                 this.noteItemsData = JSON.parse(notesData);
                 this.showLoader = false;
             });
-    }
+    }   
 
+
+    public  formatNotesDate(notesData:any){
+        if (notesData != null && notesData != undefined) {
+            this.noteItemsData = JSON.parse(notesData);
+            this.noteItemsData.forEach(element => {
+              element.CreatedDate = new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
+              element.ModifiedDate = new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
+               console.log("createdDate:"+element.CreatedDate);
+               console.log("createdDate:"+element.ModifiedDate);
+            });
+        }
+    }
     /**
      * Call api to add note.
      * @param NotesModel updated note model which we want to add.
@@ -336,6 +345,27 @@ export class NotesComponent implements OnInit {
             });
         //this.noteItemsData.splice(rowIndex, 1);
         // localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteItemsData));
+    }
+
+    updateNote(e) {
+        
+        this.selectedNote
+        console.log(this.selectedNote);
+        // this.notesgrid.nativeElement.style.display = 'block';
+        this.TabNotesGridStatus = true;
+        // this.editnoteform.nativeElement.style.display = 'none';
+        this.TabEditNotesFormStatus = false;
+        this.sharedComponentService.updateNote(this.selectedNote).subscribe(
+            resp => {
+                console.log("record updated:")
+            },
+            error => {
+                alert("Something went wrong");
+            },
+            () => {
+                this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
+            });
+       
     }
 
 }

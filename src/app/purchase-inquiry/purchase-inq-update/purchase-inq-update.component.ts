@@ -42,14 +42,14 @@ export class PurchaseInqUpdateComponent implements OnInit {
   public loginUserType: number;
   // status section
   public status: Array<{ text: string, value: number }> = [
-    { text: "Draft", value: 0 },
-    { text: "New", value: 1 },
-    { text: "Revised", value: 2 },
-    { text: "Approved", value: 3 },
-    { text: "Partial Approved", value: 4 },
-    { text: "Rejected", value: 5 },
-    { text: "Canceled", value: 6 },
-    { text: "Closed", value: 7 }
+    { text: "Draft", value: 1 },
+    { text: "New", value: 2 },
+    { text: "Revised", value: 3 },
+    { text: "Approved", value: 4 },
+    { text: "Partial Approved", value: 5 },
+    { text: "Rejected", value: 6 },
+    { text: "Canceled", value: 7 },
+    { text: "Closed", value: 8 }
   ];
   @ViewChild('optiRightAddInquiry') optiRightAddInquiry;
   @ViewChild('optiTab') optiTab;
@@ -136,8 +136,8 @@ export class PurchaseInqUpdateComponent implements OnInit {
   */
   public getStatusListForUpdateByCustomer() {
     this.status = [
-      { text: "New", value: 1 },
-      { text: "Canceled", value: 6 }];
+      { text: "New", value: 2 },
+      { text: "Canceled", value: 7 }];
   }
   /**
   * UpdatePurchaseInquiry

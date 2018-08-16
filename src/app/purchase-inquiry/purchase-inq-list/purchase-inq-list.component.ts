@@ -70,6 +70,7 @@ export class PurchaseInqListComponent implements OnInit {
     this.showLoader = true;
     this.purchaseInquiryService.getInquiryList().subscribe(
       inquiryData => {
+        
         if (inquiryData != null && inquiryData != undefined) {
           this.gridData = JSON.parse(inquiryData);
 

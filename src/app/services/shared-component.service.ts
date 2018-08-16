@@ -49,12 +49,14 @@ export class SharedComponentService {
   /**
  * Delete Note of users.
  */
-  public updateNote(note: NotesModel): Observable<any> {
+  public updateNote(note: any): Observable<any> {
     let url: string = this.baseUrl + "note/update";
     var data: any = {
-    "notes": note.Notes,
-    "noteId": note.NoteId,
-    "noteType": note.NoteType}
+      "notes": note.Notes,
+      "noteId": note.NoteId,
+      "noteType": note.NoteType
+    }
+    debugger;
     return this.httpHelper.put(url, data, null);
   }
 }
