@@ -75,12 +75,13 @@ export class NotesComponent implements OnInit {
     }
 
     ngOnChange(){
+        console.log("ng onchange pid code");
         //getting data of item at ngOnChange.
-        this.commonService.currentNotesData.subscribe(
-            data=>{              
-            this.noteModel.ParentId = data.ParentId;            
-            }
-        );
+        // this.commonService.currentNotesData.subscribe(
+        //     data=>{              
+        //     this.noteModel.ParentId = data.ParentId;            
+        //     }
+        // );
       
     }
 
@@ -101,7 +102,8 @@ export class NotesComponent implements OnInit {
             this.noteModel.ParentId=data.ParentId;
             }
         );
-
+        console.log("ng onInit pid code");
+        console.log("parendId:"+this.noteModel.ParentId);
         this.getNoteList(this.noteModel.ParentId , CustomerEntityType.PurchaseInquiry);
         }
 
@@ -124,16 +126,21 @@ export class NotesComponent implements OnInit {
     submitNote(e) {
         this.TabNotesGridStatus = true;
         this.TabAddNotesFormStatus = false;
-        let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
-        let dynamicNotes: any[] = JSON.parse(dynamicNotesString);
-        if (dynamicNotes == undefined || dynamicNotes.length <= 0) {
-            dynamicNotes = [];
-        }
-        let date = new Date();
-        let CompleteDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-        dynamicNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
-        localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
-        this.noteRequetData = dynamicNotes;
+     
+      
+        //related to local storage.
+        // let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
+        // let dynamicNotes: any[] = JSON.parse(dynamicNotesString);
+        // if (dynamicNotes == undefined || dynamicNotes.length <= 0) {
+        //     dynamicNotes = [];
+        // }
+        // let date = new Date();
+        // let CompleteDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+        // dynamicNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
+        // localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
+        // this.noteRequetData = dynamicNotes;
+       
+       
         // Add Notes Data in model. when comes from inquiry
         //this.noteModel.Notes
         //this.noteModel.NoteId
@@ -187,7 +194,7 @@ export class NotesComponent implements OnInit {
         this.showLoader = true;
         this.sharedComponentService.getNotesList(this.noteModel.ParentId,CustomerEntityType.PurchaseInquiry).subscribe(
           notesData => {
-            console.log("data"+notesData);
+            console.log("Note data: "+notesData);
             this.noteItemsData = JSON.parse(notesData);        
             this.showLoader = false;
           });

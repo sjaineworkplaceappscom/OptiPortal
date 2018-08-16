@@ -8,8 +8,12 @@
  
     <div *ngIf="systemAdmin!='true'">
         <div style="padding: 10px;">                
-                <kendo-grid [loading]="showLoader" [kendoGridBinding]="gridData | customPipeItem:searchRequest" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
-                [groupable]=isColumnGroup [columnMenu]="{ columnChooser: false }" [height]=gridHeight [selectable]="true" (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true)"
+                <kendo-grid [loading]="showLoader" 
+                [kendoGridBinding]="gridData | customPipeItem:searchRequest" [resizable]="false" [pageSize]="50" 
+                [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
+                [groupable]=isColumnGroup [columnMenu]="{ columnChooser: false }" 
+                [height]=gridHeight [selectable]="true" 
+                (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true,gridItem)"
                 #gridItem>
 
                 <!-- grid template start -->
@@ -20,12 +24,12 @@
                     <!-- checkbox -->
                     <form class="k-form opti_show-hide-grid-column-filter float-left">
                         <div class="k-form-field float-left">
-                            <input type="checkbox" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
+                            <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
                             <label class="k-checkbox-label" for="opti_ColumnFilterID">Enable Filter</label>
                         </div>
 
                         <div class="k-form-field float-left">
-                            <input type="checkbox" id="opti_ColumnGroupID" [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
+                            <input type="checkbox" id="opti_ColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
                             <label class="k-checkbox-label" for="opti_ColumnGroupID">Enable Grouping</label>
                         </div>
                     </form>

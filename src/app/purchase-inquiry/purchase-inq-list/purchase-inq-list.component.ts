@@ -28,7 +28,7 @@ export class PurchaseInqListComponent implements OnInit {
   selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
   gridHeight: number;
   showLoader: boolean = false;
-  searchRequest:string='';
+  searchRequest: string = '';
   //date: Date;
   public dateFormat: string = Configuration.dateFormat;
 
@@ -103,7 +103,7 @@ export class PurchaseInqListComponent implements OnInit {
    * @param selection 
    * @param status 
    */
-  public openInqueryDetailOnSelectInquery(gridItem, selection, status) {
+  public openInqueryDetailOnSelectInquery(gridItem, selection, status, grid: GridComponent) {
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.UpdateInquery;
     currentsideBarInfo.ModuleName = ModuleName.Purchase;
@@ -115,5 +115,18 @@ export class PurchaseInqListComponent implements OnInit {
 
     currentsideBarInfo.RequesterData = selectedData;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+  }
+
+  onFilterChange(checkBox:any,grid:GridComponent)
+  {
+    if(checkBox.checked==false){
+      this.clearFilter(grid);
+    }
+  }
+
+  clearFilter(grid:GridComponent){      
+   
+    //grid.filter.filters=[];
+      
   }
 }
