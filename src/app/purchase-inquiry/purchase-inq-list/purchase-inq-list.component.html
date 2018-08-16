@@ -13,7 +13,7 @@
                 [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
                 [groupable]=isColumnGroup [columnMenu]="{ columnChooser: false }" 
                 [height]=gridHeight [selectable]="true" 
-                (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true,gridItem)"
+                (selectionChange)="openInqueryDetailOnSelectInquery($event)"
                 #gridItem>
 
                 <!-- grid template start -->

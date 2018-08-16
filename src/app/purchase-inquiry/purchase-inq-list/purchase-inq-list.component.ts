@@ -103,7 +103,8 @@ export class PurchaseInqListComponent implements OnInit {
    * @param selection 
    * @param status 
    */
-  public openInqueryDetailOnSelectInquery(gridItem, selection, status, grid: GridComponent) {
+  public openInqueryDetailOnSelectInquery(selection) {
+
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.UpdateInquery;
     currentsideBarInfo.ModuleName = ModuleName.Purchase;
@@ -115,6 +116,9 @@ export class PurchaseInqListComponent implements OnInit {
 
     currentsideBarInfo.RequesterData = selectedData;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+
+    // Reset Selection.
+    selection.selectedRows=[];    
   }
 
   onFilterChange(checkBox:any,grid:GridComponent)
@@ -127,6 +131,7 @@ export class PurchaseInqListComponent implements OnInit {
   clearFilter(grid:GridComponent){      
    
     //grid.filter.filters=[];
+    //this.gridData=process(this.gridData,null);
       
   }
 }
