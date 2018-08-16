@@ -34,7 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ApproveUsersComponent } from './account/approve-users/approve-users.component';
+
 import { ConfirmPasswordEquilValidatorDirectiveDirective } from './directives/confirm-password-equil-validator-directive.directive';
 import { LandingComponent } from './common/landing/landing.component'
 import { LayoutModule } from '@progress/kendo-angular-layout'
@@ -65,7 +65,7 @@ const routes: Routes = [
 //   {path:'landing',component:LandingComponent}, 
 //   { path: 'account', loadChildren: "./account/account.module#AccountModule" },
 //   { path: 'home', component: HomeComponent},
-//   {path:'approve',component:ApproveUsersComponent,canActivate:[AuthGuard]}, 
+
 //   {path: '**', component: LandingComponent}
 //   ];
 
@@ -86,9 +86,6 @@ const routes: Routes = [
     MainContentComponent,
     RightComponent,
     HomeComponent,
-
-    // Account   
-    ApproveUsersComponent,
 
     // Directive
     ConfirmPasswordEquilValidatorDirectiveDirective,        

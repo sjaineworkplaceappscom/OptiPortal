@@ -34,7 +34,7 @@ export class PurchaseInqListComponent implements OnInit {
 
   //for inquiry grid Data
   public gridData: any[] = [];
-
+  public systemAdmin:any;
 
   @ViewChild('optirightfixedsection') optirightfixedsection;
   constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe) {
@@ -53,7 +53,8 @@ export class PurchaseInqListComponent implements OnInit {
 
   ngOnInit() {
     this.gridHeight = UIHelper.getMainContentHeight();
-
+    this.systemAdmin=localStorage.getItem('SystemAdmin');
+      
     this.commonService.refreshPIListSubscriber.subscribe(data => {
       this.getInquiryList();
     });
