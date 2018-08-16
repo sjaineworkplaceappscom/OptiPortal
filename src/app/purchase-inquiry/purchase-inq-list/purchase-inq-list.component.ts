@@ -82,7 +82,11 @@ export class PurchaseInqListComponent implements OnInit {
 
           this.showLoader = false;
         }
-      });
+      },
+      ()=>{
+            this.showLoader=false;
+      }
+    );
   }
 
   /**
