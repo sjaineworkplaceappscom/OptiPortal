@@ -104,6 +104,23 @@ export class HttpHelper {
 
     }
 
+    delete<T>(url: string, data: any, headers: HttpHeaders, addDefaultHeaders: boolean = true, enableAPILog?: boolean, actionName?: string): Observable<T>{
+        // If reqeust header is null
+        if (headers == null) {
+            headers = new HttpHeaders();
+        }
+
+        if (addDefaultHeaders) {
+            // Add default header 
+            headers = headers
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json');
+            headers = headers.set("Authorization", 'Bearer ' + localStorage.getItem("AccessToken"));
+            data = JSON.stringify(data)
+        }
+        // reqeust method 
+        return  this._http.delete<T>(url);
+    }
 
     // /**
     //  * Executes the post request with given uri parameters and header values.

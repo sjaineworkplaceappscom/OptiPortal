@@ -1,3 +1,4 @@
+<!-- Inquiry note section add and list. -->
 <div class="container-fluid" id="opti_purchaseInquiryNotesSection" *ngIf="getTabParent=='notesTab'">
   <div class="row">
       <div class="col-md-12">
@@ -7,8 +8,8 @@
                   <!-- <kendo-grid [data]="noteRequetData| customFilter: notesSearchValue" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
                       [groupable]="false" [height]=gridHeight-41 (remove)="deleteNote($event)" (edit)="editNote($event)" > -->
 
-                      <kendo-grid [data]="noteRequetData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
-                      [groupable]="false" [height]=gridHeight-56 (remove)="deleteNote($event)" (edit)="editNote($event)" >
+                      <kendo-grid [data]="noteItemsData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
+                      [groupable]="false" [height]=gridHeight-56 (remove)="deleteNotes($event)" (edit)="editNote($event)" >
 
                       <!-- grid toolbar start -->
                       <ng-template kendoGridToolbarTemplate>
@@ -29,7 +30,7 @@
                       <kendo-grid-column class="opti_notes-column" media="(min-width: 320px)">
                           <ng-template kendoGridCellTemplate let-dataItem>
                               <dl>
-                                  <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }} for Item001
+                                  <dd><span style="font-weight:bold;">Created By: </span>  {{ dataItem.CreatedBy }} <span style="font-weight:bold;">On </span> {{ dataItem.CreatedDate }} for Item001
                                       <span class="float-right opti_note-action-button-sec">
                                           <svg-icon kendoGridEditCommand src="assets/images/common/edit.svg" (click)="editNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
                                               class="opti_mouse-pointer"></svg-icon>
@@ -65,8 +66,8 @@
                           </label>
 
                           <div class="text-right">
-                              <button type="button" class="k-button k-primary" (click)="submitNote($event);">Add</button>
-                              <button type="button" class="k-button k-primary" (click)="closeNoteWindow($event);">Close</button>
+                              <button type="button" class="k-button k-primary" (click)="submitNote($event);">Save</button>
+                              <button type="button" class="k-button k-primary" (click)="closeNoteWindow($event);">Cancel</button>
                           </div>
                       </form>
                   </div>
@@ -92,7 +93,8 @@
                           </label>
 
                           <div class="text-right">
-                              <button type="button" class="k-button k-primary" (click)="updateNote($event)">Update Item</button>
+                              <button type="button" class="k-button k-primary" (click)="updateNote($event)">Save</button>
+                              <button type="button" class="k-button k-primary" (click)="updateNote($event)">Cancel</button>
                           </div>
                       </form>
                   </div>
@@ -104,7 +106,7 @@
   </div>
 </div>
 
-
+<!-- Items note section add and list. -->
 <ng-container *ngIf="getTabParent=='itemsTab'">
     <br/>
     <h5>Notes</h5>
@@ -122,10 +124,10 @@
                 </ng-template>
                 <!-- grid toolbar end -->
 
-                <kendo-grid-column media="(min-width: 320px)" title="">
+                <kendo-grid-column media="(min-width: 320px)" title="Notes">
                     <ng-template kendoGridCellTemplate let-dataItem>
                         <dl>
-                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.Date }}
+                            <dd>Created By {{ dataItem.CreatedBy }} On {{ dataItem.CreatedDate }}
                                 <span class="float-right opti_note-action-button-sec">
                                     <svg-icon kendoGridEditCommand src="assets/images/common/edit.svg" (click)="editItemsNotes($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
                                         class="opti_mouse-pointer"></svg-icon>
@@ -161,8 +163,8 @@
                     </label>
 
                     <div class="text-right">
-                        <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'add')">Add</button>
-                        <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'close')">Close</button>
+                        <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'add')">Save</button>
+                        <button type="button" class="k-button k-primary" (click)="submitItemsNote($event, 'close')">Cancel</button>
                     </div>
                 </form>
             </div>
@@ -187,7 +189,8 @@
                     </label>
 
                     <div class="text-right">
-                        <button type="button" class="k-button k-primary" (click)="updateItemNote($event,updatednotevalue)">Update Item</button>
+                        <button type="button" class="k-button k-primary" (click)="updateItemNote($event,updatednotevalue)">Save</button>
+                        <button type="button" class="k-button k-primary" (click)="updateItemNote($event,updatednotevalue)">Cancel</button>
                     </div>
                 </form>
             </div>
