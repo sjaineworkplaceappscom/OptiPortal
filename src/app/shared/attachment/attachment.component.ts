@@ -21,6 +21,7 @@ export class AttachmentComponent implements OnInit {
   getTabParent:string;
   TabAddAttachementFormStatus:boolean = false;
   TabAttachementGridStatus:boolean = true; 
+  showLoader:boolean=false;
 
 
   constructor() { }
@@ -43,12 +44,12 @@ export class AttachmentComponent implements OnInit {
     /**
      * Apply Grid Height
     */
-   this.gridHeight = UIHelper.getMainContentHeight();
+    this.gridHeight = UIHelper.getMainContentHeight();
       
     /**
     * Check Mobile device
     */
-     this.isMobile = UIHelper.isMobile();
+    this.isMobile = UIHelper.isMobile();
 
     this.getTabParent = this.tabparent;
     

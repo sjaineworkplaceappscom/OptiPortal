@@ -13,64 +13,75 @@
               </div>
           </ng-container>
 
+
           
           <!-- start attachement grid -->
           <ng-container *ngIf="TabAttachementGridStatus==true">
-              <kendo-grid  
-              [data]="gridAttachmentData" 
-              [resizable]="false" 
-              [pageSize]="50" 
-              [pageable]="true" 
-              [sortable]="true" 
-              [filterable]=isColumnFilterAttachementsGrid
-              [groupable]="false" 
-              [columnMenu]="{ columnChooser: false }" 
-              [height]=gridHeight-56 
-              [selectable]="true"
-              name="gridAttachmentData"
-          #AttachementsTab>
 
-                  <!-- grid template start -->
-                  <ng-template kendoGridToolbarTemplate>
-                      <!-- show hide column start show hide -->
-                      <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
+            <!-- loader start -->
+            <!-- <div class="opti_loader opti_loader-attchement-tab-grid" *ngIf="showLoader">
+                <div class="opti_spinner"></div>
+            </div> -->
+            <!-- loader end --> 
 
-                      <!-- checkbox -->
-                      <form class="k-form opti_show-hide-grid-column-filter float-left">
-                          <div class="k-form-field">
-                              <input type="checkbox" id="opti_ColumnFilterattachementID" [(ngModel)]="isColumnFilterAttachementsGrid" class="k-checkbox" name="columnfilter"
-                              />
-                              <label class="k-checkbox-label" for="opti_ColumnFilterattachementID">Enable Filter</label>
-                          </div>
-                      </form>
+            <!-- <ng-container *ngIf="showLoader==false"> -->
+                <kendo-grid  
+                [data]="gridAttachmentData" 
+                [resizable]="false" 
+                [pageSize]="50" 
+                [pageable]="true" 
+                [sortable]="true" 
+                [filterable]=isColumnFilterAttachementsGrid
+                [groupable]="false" 
+                [columnMenu]="{ columnChooser: false }" 
+                [height]=gridHeight-56 
+                [selectable]="true"
+                name="gridAttachmentData"
+                #AttachementsTab>
 
-                      <!-- xlsx button start -->
-                      <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
-                          <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
-                      </button>
+                    <!-- grid template start -->
+                    <ng-template kendoGridToolbarTemplate>
+                        <!-- show hide column start show hide -->
+                        <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
 
-                      <!-- add items -->
-                      <div class="float-right">
-                          <svg-icon #showAddAttachementForm src="assets/images/common/add.svg" (click)="showTabAddAttachementForm()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
-                              class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
-                      </div>
+                        <!-- checkbox -->
+                        <form class="k-form opti_show-hide-grid-column-filter float-left">
+                            <div class="k-form-field">
+                                <input type="checkbox" id="opti_ColumnFilterattachementID" [(ngModel)]="isColumnFilterAttachementsGrid" class="k-checkbox" name="columnfilter"
+                                />
+                                <label class="k-checkbox-label" for="opti_ColumnFilterattachementID">Enable Filter</label>
+                            </div>
+                        </form>
 
-                      
-                  </ng-template>
-                  <!-- grid template end -->
+                        <!-- xlsx button start -->
+                        <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
+                            <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+                        </button>
 
-                  <!-- grid column start -->
-                  <kendo-grid-column field="AttachmentId"  title="AttachmentID"[width]="160" title=""></kendo-grid-column>
-                  <kendo-grid-column field="FileName" title="Name" [width]="140"></kendo-grid-column>
-                  <kendo-grid-column field="Size" title="Size" [width]="200"></kendo-grid-column>
-                  <kendo-grid-column field="FilePath" [width]="160" title="Reference"></kendo-grid-column>
-                  <!-- grid column end -->
+                        <!-- add items -->
+                        <div class="float-right">
+                            <svg-icon #showAddAttachementForm src="assets/images/common/add.svg" (click)="showTabAddAttachementForm()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                                class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
+                        </div>
 
-                  <!-- xlsx template start -->
-                  <kendo-grid-excel fileName="attachements.xlsx"></kendo-grid-excel>
-                  <!-- xlsx template end -->
+                        
+                    </ng-template>
+                    <!-- grid template end -->
 
-              </kendo-grid>
+                    <!-- grid column start -->
+                    <kendo-grid-column field="AttachmentId"  title="AttachmentID"[width]="160" title=""></kendo-grid-column>
+                    <kendo-grid-column field="FileName" title="Name" [width]="140"></kendo-grid-column>
+                    <kendo-grid-column field="Size" title="Size" [width]="200"></kendo-grid-column>
+                    <kendo-grid-column field="FilePath" [width]="160" title="Reference"></kendo-grid-column>
+                    <!-- grid column end -->
+
+                    <!-- xlsx template start -->
+                    <kendo-grid-excel fileName="attachements.xlsx"></kendo-grid-excel>
+                    <!-- xlsx template end -->
+
+                </kendo-grid>
+            <!-- </ng-container> -->
+
           </ng-container>    
           <!-- end attachement grid -->
 
