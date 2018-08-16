@@ -75,13 +75,14 @@ export class NotesComponent implements OnInit {
     }
 
     ngOnChange(){
+
         console.log("ng onchange pid code");
         //getting data of item at ngOnChange.
-        // this.commonService.currentNotesData.subscribe(
-        //     data=>{              
-        //     this.noteModel.ParentId = data.ParentId;            
-        //     }
-        // );
+        this.commonService.currentNotesData.subscribe(
+            data=>{              
+            this.noteModel.ParentId = data.ParentId;            
+            }
+        );
       
     }
 
