@@ -113,8 +113,10 @@ export class PurchaseInqAddComponent implements OnInit {
     );
 
   }
+  /**
+   * This will set the data with the draft status.
+   */
   public AddPurchaseInquiryAsDraft(){
-    
      let Draftstatus:any = { text: "Draft", value: 1 };
     this.purchaseInqueryAdd.Status = Draftstatus.value;
     this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
