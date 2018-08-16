@@ -1,13 +1,10 @@
-<section id="opti_MainContentID" class="opti_position-relative" style="overflow-x: hidden !important;">
-    <!-- [perfectScrollbar]="config" -->
-  
     <!-- For Admin  -->
-    <div style="padding: 10px;" *ngIf="systemAdmin=='true'">
+    <div *ngIf="systemAdmin=='true'">
         <!-- <app-approve-users></app-approve-users> -->
     </div>
- 
+    
+    <!-- for normal user -->
     <div *ngIf="systemAdmin!='true'">
-        <div style="padding: 10px;">                
                 <kendo-grid [loading]="showLoader" 
                 [kendoGridBinding]="gridData | customPipeItem:searchRequest" [resizable]="false" [pageSize]="50" 
                 [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
@@ -68,6 +65,5 @@
                 <!-- xlsx template end -->
 
             </kendo-grid>
-        </div>
     </div>
-</section>
+
