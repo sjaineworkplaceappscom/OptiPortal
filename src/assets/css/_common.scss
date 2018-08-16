@@ -293,6 +293,20 @@ body{
                 }
             }
 
+            // for disabled tab
+            ul.tabs {
+                li.opti_tablinks.opti_disable-tab:hover {
+                    background-color: #f2f3dd;
+                    a{
+                        color: $light-black;
+                    }
+                }
+                li.opti_tablinks.opti_disable-tab{
+                    opacity: 0.5;
+                }
+            } 
+            
+
         }   
     
         /* Style the tab content */
