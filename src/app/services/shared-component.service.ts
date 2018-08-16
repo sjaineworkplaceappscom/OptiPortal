@@ -56,7 +56,6 @@ export class SharedComponentService {
       "noteId": note.NoteId,
       "noteType": note.NoteType
     }
-    debugger;
     return this.httpHelper.put(url, data, null);
   }
 }

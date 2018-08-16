@@ -21,12 +21,12 @@ export class PurchaseInqItemListComponent implements OnInit {
      * Method to get list of inquries from server.
      */
     public getInquiryItemList(inquiryId: string ){
-      console.log("in getInquiryItemList");
+      
       
       this.showLoader=true;  
       this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
           inquiryItemData=>{  
-            debugger      
+             
               this.gridItemsData = JSON.parse(inquiryItemData);
               console.log("grid item data" + JSON.stringify(this.gridItemsData) );
               this.showLoader=false;

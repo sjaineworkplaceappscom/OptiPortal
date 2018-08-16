@@ -67,6 +67,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
+   
     /**
      * apply width on opti_TabID
     */
@@ -79,6 +80,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     // Set sidebar data;
     this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
+        console.log("ngoninit subscriber");
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.purchaseInquiryDetail = currentSidebarData.RequesterData;
           if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
@@ -103,6 +105,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   ngOnChange() {
     this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
+        console.log("ngonchange subscriber");
         this.purchaseInquiryDetail = currentSidebarData.RequesterData;
       }
     );
@@ -143,7 +146,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
   * UpdatePurchaseInquiry
   */
   public UpdatePurchaseInquiry() {
-
     this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
       data => {
         console.log(data),
@@ -153,6 +155,31 @@ export class PurchaseInqUpdateComponent implements OnInit {
       () => this.closeRightSidebar()
     );
   }
+
+  /**
+   * This will set the data with the draft status.
+   */
+  public UpdatePurchaseInquiryAsDraft(){
+    let Draftstatus:any = { text: "Draft", value: 1 };
+   this.purchaseInquiryDetail.Status = Draftstatus.value;
+   this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
+     (data:any) => {
+    //   debugger;
+       console.log("record added:")
+       this.commonService.refreshPIList(null);           
+     },
+     error => {
+     //  debugger;
+       alert("Something went wrong");            
+       console.log("Error: ", error)
+     }, 
+     ()=> {        
+       this.closeRightSidebar();
+     }
+     
+   );
+
+ }
 
   /**
 * 
