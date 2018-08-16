@@ -62,7 +62,7 @@ export class PurchaseInqAddComponent implements OnInit {
     this.optiTab.nativeElement.children[0].classList.add('active');
 
     this.setDefaultData();
-
+    
   }
 
 

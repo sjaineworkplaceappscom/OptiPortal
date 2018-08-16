@@ -30,13 +30,12 @@
                                         disabled />
                                 </label>
 
-                                <label class="k-form-field">
+                                <label class="k-form-field" *ngIf="loginUserType==1">
                                     <span class="opti_form-label">Customer Code</span>
-                                <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.CustomerCode" placeholder="Customer code" disabled
-                                    />
+                                    <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.CustomerCode" placeholder="Customer code" disabled />
                                 </label>
 
-                                <label class="k-form-field">
+                                <label class="k-form-field" *ngIf="loginUserType==1">
                                     <span class="opti_form-label">Customer Name</span>
                                     <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.CustomerName" placeholder="Customer name" disabled
                                     />
