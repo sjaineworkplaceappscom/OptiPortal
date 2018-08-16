@@ -294,8 +294,7 @@ export class NotesComponent implements OnInit {
             this.noteItemsData.forEach(element => {
               element.CreatedDate = new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
               element.ModifiedDate = new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
-               console.log("createdDate:"+element.CreatedDate);
-               console.log("createdDate:"+element.ModifiedDate);
+             
             });
         }
     }

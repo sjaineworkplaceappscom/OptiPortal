@@ -114,7 +114,7 @@ export class PurchaseInqAddComponent implements OnInit {
 
   }
   public AddPurchaseInquiryAsDraft(){
-    debugger;
+    
      let Draftstatus:any = { text: "Draft", value: 1 };
     this.purchaseInqueryAdd.Status = Draftstatus.value;
     this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(

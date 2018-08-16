@@ -26,7 +26,7 @@ export class PurchaseInqItemListComponent implements OnInit {
       this.showLoader=true;  
       this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
           inquiryItemData=>{  
-            debugger      
+             
               this.gridItemsData = JSON.parse(inquiryItemData);
               console.log("grid item data" + JSON.stringify(this.gridItemsData) );
               this.showLoader=false;

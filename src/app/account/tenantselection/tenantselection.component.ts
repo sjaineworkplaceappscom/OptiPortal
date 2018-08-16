@@ -24,7 +24,7 @@ export class TenantselectionComponent implements OnInit {
     this.userData = ApplicationState.SharedData;
     this.CommonserviceService.authCurrentValue.subscribe(
       authSharedData => {
-        debugger;
+        
         this.authSharedData = authSharedData;
       }
     );
