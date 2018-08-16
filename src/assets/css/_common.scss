@@ -56,6 +56,11 @@ body{
             100% { transform: rotate(360deg); }
         }
     }
+
+    .opti_loader-module-grid-list{
+        height: calc(100% - 20px);
+        width: calc(100% - 20px);
+    }
     
     // password indicator
     .opti_password-indicator-stripped{
