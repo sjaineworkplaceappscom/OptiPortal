@@ -43,7 +43,7 @@ export class SalesQuotationsListComponent implements OnInit {
 
   constructor(private commonService:Commonservice) { }
 
-  public gridData: any[] = data2;
+  public gridData: any[];
 
   ngOnInit() {
     // apply grid height
@@ -51,6 +51,20 @@ export class SalesQuotationsListComponent implements OnInit {
 
     // check mobile device
     this.isMobile = UIHelper.isMobile();
+
+    
+    this.getSalesQuotationList();
+  }
+
+  /**
+   * Method to get list of inquries from server.
+  */
+  public getSalesQuotationList() {
+    this.showLoader = true;
+    this.gridData = data2;
+    setTimeout(()=>{    
+      this.showLoader = false;
+    }, 1000);
   }
 
   openSales(){

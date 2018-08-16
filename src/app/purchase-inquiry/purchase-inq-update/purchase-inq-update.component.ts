@@ -14,14 +14,14 @@ import { NotesModel } from '../../models/purchaserequest/notes';
 export class PurchaseInqUpdateComponent implements OnInit {
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
-  constructor(private commonService: Commonservice,private purchaseInquiryService: PurchaseInquiryService) { }
+  constructor(private commonService: Commonservice, private purchaseInquiryService: PurchaseInquiryService) { }
 
   isHome: boolean = true;
   isItems: boolean = false;
   isAttchement: boolean = false;
   isNotes: boolean = false;
   tabName: string = 'home';
-  notesMasterData:NotesModel=new NotesModel();
+  notesMasterData: NotesModel = new NotesModel();
 
   /**
   * This method will reset the model and date object for add form.
@@ -42,14 +42,14 @@ export class PurchaseInqUpdateComponent implements OnInit {
   public loginUserType: number;
   // status section
   public status: Array<{ text: string, value: number }> = [
-    { text: "Draft", value: 0 },
-    { text: "New", value: 1 },
-    { text: "Revised", value: 2 },
-    { text: "Approved", value: 3 },
-    { text: "Partial Approved", value: 4 },
-    { text: "Rejected", value: 5 },
-    { text: "Canceled", value: 6 },
-    { text: "Closed", value: 7 }
+    { text: "Draft", value: 1 },
+    { text: "New", value: 2 },
+    { text: "Revised", value: 3 },
+    { text: "Approved", value: 4 },
+    { text: "Partial Approved", value: 5 },
+    { text: "Rejected", value: 6 },
+    { text: "Canceled", value: 7 },
+    { text: "Closed", value: 8 }
   ];
   @ViewChild('optiRightAddInquiry') optiRightAddInquiry;
   @ViewChild('optiTab') optiTab;
@@ -67,6 +67,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
+   
     /**
      * apply width on opti_TabID
     */
@@ -79,15 +80,20 @@ export class PurchaseInqUpdateComponent implements OnInit {
     // Set sidebar data;
     this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        if(currentSidebarData!=null && currentSidebarData!=undefined){
-        this.purchaseInquiryDetail = currentSidebarData.RequesterData;
-        this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
-        this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
-        
-        // Set notes data for inquiry
-        this.notesMasterData.ParentId=this.purchaseInquiryDetail.PurchaseInquiryId;
-        
-        this.commonService.setNotesData(this.notesMasterData); 
+        console.log("ngoninit subscriber");
+        if (currentSidebarData != null && currentSidebarData != undefined) {
+          this.purchaseInquiryDetail = currentSidebarData.RequesterData;
+          if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
+            this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
+            this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
+            // Set notes data for inquiry
+            this.notesMasterData.ParentId = this.purchaseInquiryDetail.PurchaseInquiryId;
+            
+            // Fire note event 
+            this.commonService.setNotesData(this.notesMasterData);
+          }
+
+
         }
 
       }
@@ -98,8 +104,9 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
   ngOnChange() {
     this.commonService.currentSidebarInfo.subscribe(
-      currentSidebarData => {        
-        this.purchaseInquiryDetail = currentSidebarData.RequesterData;   
+      currentSidebarData => {
+        console.log("ngonchange subscriber");
+        this.purchaseInquiryDetail = currentSidebarData.RequesterData;
       }
     );
   }
@@ -132,30 +139,54 @@ export class PurchaseInqUpdateComponent implements OnInit {
   */
   public getStatusListForUpdateByCustomer() {
     this.status = [
-      { text: "New", value: 1 },
-      { text: "Canceled", value: 6 }];
+      { text: "New", value: 2 },
+      { text: "Canceled", value: 7 }];
   }
   /**
   * UpdatePurchaseInquiry
   */
   public UpdatePurchaseInquiry() {
-    
     this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
-    data => {
-      console.log(data),
-      this.commonService.refreshPIList(null);   
-    },
-    error => console.log("Error: ", error),
-    () =>this.closeRightSidebar()
+      data => {
+        console.log(data),
+          this.commonService.refreshPIList(null);
+      },
+      error => console.log("Error: ", error),
+      () => this.closeRightSidebar()
     );
-    }
+  }
 
-     /**
+  /**
+   * This will set the data with the draft status.
+   */
+  public UpdatePurchaseInquiryAsDraft(){
+    let Draftstatus:any = { text: "Draft", value: 1 };
+   this.purchaseInquiryDetail.Status = Draftstatus.value;
+   this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
+     (data:any) => {
+    //   debugger;
+       console.log("record added:")
+       this.commonService.refreshPIList(null);           
+     },
+     error => {
+     //  debugger;
+       alert("Something went wrong");            
+       console.log("Error: ", error)
+     }, 
+     ()=> {        
+       this.closeRightSidebar();
+     }
+     
+   );
+
+ }
+
+  /**
 * 
 * @param status close right content section, will pass false
 */
   closeRightSidebar() {
-    let currentSidebarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
+    let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentSidebarInfo.SideBarStatus = false;
     this.commonService.setCurrentSideBar(currentSidebarInfo);
   }

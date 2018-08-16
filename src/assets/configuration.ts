@@ -8,4 +8,5 @@ export const Configuration={
 
     ,firstHomePage:"/home/purchaseinquiry"
     , dateFormat:'dd MMM yy'
+   
 }

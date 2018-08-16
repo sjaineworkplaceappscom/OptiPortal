@@ -18,6 +18,7 @@ export class PurchaseInqAddComponent implements OnInit {
   isAttchement: boolean = false;
   isNotes: boolean = false;
   tabName: string = 'home';
+  tabStatus:boolean = false;
 
   public minValidDate: Date = new Date();
   public purchaseInqueryAdd: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
@@ -29,16 +30,17 @@ export class PurchaseInqAddComponent implements OnInit {
   public loggedInUserName: string;
   public loginUserType: number;
   // status section
-  public status: Array<{ text: string, value: number }> = [{ text: "New", value: 1 }];
+  public status: Array<{ text: string, value: number }> = [{ text: "New", value: 2 }];
 
   @ViewChild('optiRightAddInquiry') optiRightAddInquiry;
   @ViewChild('optiTab') optiTab;
 
   // tab function
-  openTab(evt, tabName) {
-    this.tabName = tabName;
-
-    UIHelper.customOpenTab(evt, tabName);
+  openTab(evt, tabName, tabStatus) {
+    if(tabStatus == true){
+      this.tabName = tabName;
+      UIHelper.customOpenTab(evt, tabName);
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -80,7 +82,7 @@ export class PurchaseInqAddComponent implements OnInit {
     this.purchaseInqueryAdd.CustomerName = this.customerName;
     this.purchaseInqueryAdd.CustomerCode = this.customerCode;
     this.purchaseInqueryAdd.Buyer = this.loggedInUserName;
-    this.purchaseInqueryAdd.Status = 1;
+    this.purchaseInqueryAdd.Status = 2;
     //this.setFlagsForAdd();  
   }
 
@@ -110,7 +112,29 @@ export class PurchaseInqAddComponent implements OnInit {
       
     );
 
-    
+  }
+  /**
+   * This will set the data with the draft status.
+   */
+  public AddPurchaseInquiryAsDraft(){
+     let Draftstatus:any = { text: "Draft", value: 1 };
+    this.purchaseInqueryAdd.Status = Draftstatus.value;
+    this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
+      (data:any) => {
+     //   debugger;
+        console.log("record added:")
+        this.commonService.refreshPIList(null);           
+      },
+      error => {
+      //  debugger;
+        alert("Something went wrong");            
+        console.log("Error: ", error)
+      },
+      ()=> {        
+        this.closeRightSidebar();
+      }
+      
+    );
 
   }
 

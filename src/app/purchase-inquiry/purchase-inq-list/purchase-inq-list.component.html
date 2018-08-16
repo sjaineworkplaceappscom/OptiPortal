@@ -1,70 +1,78 @@
-    
+<div id="opti_PurchaseInqList">
+    <!-- loader start -->
+    <div class="opti_loader opti_loader-module-grid-list" *ngIf="showLoader">
+        <div class="opti_spinner"></div>
+    </div>
+    <!-- loader end -->
+
+    <ng-container *ngIf="showLoader==false">
         <!-- For Admin  -->
-    <div *ngIf="systemAdmin=='true'">
-        <app-approve-users></app-approve-users>
-    </div>
-    
-    <!-- for normal user -->
-    <div *ngIf="systemAdmin!='true'">
-                <kendo-grid [loading]="showLoader" 
-                [kendoGridBinding]="gridData | customPipeItem:searchRequest" [resizable]="false" [pageSize]="50" 
-                [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
-                [groupable]=isColumnGroup [columnMenu]="{ columnChooser: false }" 
-                [height]=gridHeight [selectable]="true" 
-                (selectionChange)="openInqueryDetailOnSelectInquery($event)"
-                #gridItem>
+        <div *ngIf="systemAdmin=='true'">
+            <app-approve-users></app-approve-users>
+        </div>
+        
+        <!-- for normal user -->
+        <div *ngIf="systemAdmin!='true'">
+                    <kendo-grid  
+                    [kendoGridBinding]="gridData | customPipeItem:searchRequest" [resizable]="false" [pageSize]="50" 
+                    [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
+                    [groupable]=isColumnGroup [columnMenu]="{ columnChooser: false }" 
+                    [height]=gridHeight [selectable]="true" 
+                    (selectionChange)="openInqueryDetailOnSelectInquery($event)"
+                    #gridItem>
 
-                <!-- grid template start -->
-                <ng-template kendoGridToolbarTemplate>
-                    <!-- show hide column start show hide -->
-                    <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
+                    <!-- grid template start -->
+                    <ng-template kendoGridToolbarTemplate>
+                        <!-- show hide column start show hide -->
+                        <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
 
-                    <!-- checkbox -->
-                    <form class="k-form opti_show-hide-grid-column-filter float-left">
-                        <div class="k-form-field float-left">
-                            <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
-                            <label class="k-checkbox-label" for="opti_ColumnFilterID">Enable Filter</label>
-                        </div>
+                        <!-- checkbox -->
+                        <form class="k-form opti_show-hide-grid-column-filter float-left">
+                            <div class="k-form-field float-left">
+                                <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
+                                <label class="k-checkbox-label" for="opti_ColumnFilterID">Enable Filter</label>
+                            </div>
 
-                        <div class="k-form-field float-left">
-                            <input type="checkbox" id="opti_ColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
-                            <label class="k-checkbox-label" for="opti_ColumnGroupID">Enable Grouping</label>
-                        </div>
-                    </form>
-
-                    <!-- export -->
-                    <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
-                        <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
-                    </button>
-
-
-                    <div class="float-right opti_right-top-sec-grid-purchase opti_right-top-sec-grid">
-                        <svg-icon src="assets/images/common/add.svg" (click)="addInqueryOnClickAdd(true)" [svgStyle]="{ 'width.px':16, 'height.px':16}"
-                            class="opti_vertical-align float-left opti_icon-spacing opti_add-request"></svg-icon>
-
-                        <form class="k-form opti_common-search-form float-left opti_padding-zero">
-                            <label class="k-form-field opti_common-search-label">
-                                <input type="text" class="k-textbox" name="searchRequest" [(ngModel)]="searchRequest" />
-                                <span class="opti_vertical-align opti_mouse-pointer"><img src="assets/images/common/search-black.svg" class="" alt="Search" width="15" /></span>
-                            </label>
+                            <div class="k-form-field float-left">
+                                <input type="checkbox" id="opti_ColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
+                                <label class="k-checkbox-label" for="opti_ColumnGroupID">Enable Grouping</label>
+                            </div>
                         </form>
-                    </div>
-                </ng-template>
 
-                <!-- grid template end -->
-                <kendo-grid-column field="InquiryNumber" title="Inquiry#" [width]="160" filter="numeric"></kendo-grid-column>
-                <kendo-grid-column field="CustomerCode" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
-                <kendo-grid-column field="CustomerName" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column>
-                <kendo-grid-column field="StatusText" [width]="140" title="Status" ></kendo-grid-column>
-                <kendo-grid-column field="CreatedDate" title="Created Date" [width]="200"  filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-                <kendo-grid-column field="Buyer" title="Created By" [width]="140"></kendo-grid-column>
-                <kendo-grid-column field="ValidTillDate" title="Valid Until" [width]="200" filter="date"  type=date format="{0:dd MMM yy}"></kendo-grid-column>
-                <kendo-grid-column field="ReferenceNumber" [width]="140" title = "Reference#"></kendo-grid-column>
+                        <!-- export -->
+                        <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
+                            <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+                        </button>
 
-                <!-- xlsx template start -->
-                <kendo-grid-excel fileName="Requests.xlsx"></kendo-grid-excel>
-                <!-- xlsx template end -->
 
-            </kendo-grid>
-    </div>
+                        <div class="float-right opti_right-top-sec-grid-purchase opti_right-top-sec-grid">
+                            <svg-icon src="assets/images/common/add.svg" (click)="addInqueryOnClickAdd(true)" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                                class="opti_vertical-align float-left opti_icon-spacing opti_add-request"></svg-icon>
 
+                            <form class="k-form opti_common-search-form float-left opti_padding-zero">
+                                <label class="k-form-field opti_common-search-label">
+                                    <input type="text" class="k-textbox" name="searchRequest" [(ngModel)]="searchRequest" />
+                                    <span class="opti_vertical-align opti_mouse-pointer"><img src="assets/images/common/search-black.svg" class="" alt="Search" width="15" /></span>
+                                </label>
+                            </form>
+                        </div>
+                    </ng-template>
+
+                    <!-- grid template end -->
+                    <kendo-grid-column field="InquiryNumber" title="Inquiry#" [width]="160" filter="numeric"></kendo-grid-column>
+                    <!-- <kendo-grid-column field="CustomerCode" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
+                    <kendo-grid-column field="CustomerName" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column> -->
+                    <kendo-grid-column field="StatusText" [width]="140" title="Status" ></kendo-grid-column>
+                    <kendo-grid-column field="CreatedDate" title="Created Date" [width]="200"  filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+                    <kendo-grid-column field="Buyer" title="Created By" [width]="140"></kendo-grid-column>
+                    <kendo-grid-column field="ValidTillDate" title="Valid Until" [width]="200" filter="date"  type=date format="{0:dd MMM yy}"></kendo-grid-column>
+                    <kendo-grid-column field="ReferenceNumber" [width]="140" title = "Reference#"></kendo-grid-column>
+
+                    <!-- xlsx template start -->
+                    <kendo-grid-excel fileName="Requests.xlsx"></kendo-grid-excel>
+                    <!-- xlsx template end -->
+
+                </kendo-grid>
+        </div>
+    </ng-container>    
+</div>

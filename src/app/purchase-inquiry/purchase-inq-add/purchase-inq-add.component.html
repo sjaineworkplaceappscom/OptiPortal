@@ -5,13 +5,13 @@
             <li class="opti_tablinks" (click)="openTab($event, 'home')">
                 <a href="javascript:void('0');">Home</a>
             </li>
-            <li class="opti_tablinks" (click)="openTab($event, 'items')">
+            <li class="opti_tablinks" [ngClass]="{'opti_disable-tab':tabStatus === false}" (click)="openTab($event, 'items', tabStatus)">
                 <a href="javascript:void('0');">Items</a>
             </li>
-            <li class="opti_tablinks" (click)="openTab($event, 'attachement')">
+            <li class="opti_tablinks" [ngClass]="{'opti_disable-tab':tabStatus === false}" (click)="openTab($event, 'attachement', tabStatus)">
                 <a href="javascript:void('0');">Attachements</a>
             </li>
-            <li class="opti_tablinks" (click)="openTab($event, 'notes')">
+            <li class="opti_tablinks" [ngClass]="{'opti_disable-tab':tabStatus === false}" (click)="openTab($event, 'notes', tabStatus)">
                 <a href="javascript:void('0');">Notes</a>
             </li>
         </ul>
@@ -73,7 +73,7 @@
 
                                 <div class="text-right">
                                     <button type="button" class="k-button k-primary" (click)="AddPurchaseInquiry()">Save</button>
-                                    <button type="button" class="k-button">Save as draft</button>
+                                    <button type="button" class="k-button"  (click)="AddPurchaseInquiryAsDraft()">Save as draft</button>
                                     <button type="button" class="k-button"  (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
                                 </div>
                             </form>

@@ -56,6 +56,11 @@ body{
             100% { transform: rotate(360deg); }
         }
     }
+
+    .opti_loader-module-grid-list{
+        height: calc(100% - 20px);
+        width: calc(100% - 20px);
+    }
     
     // password indicator
     .opti_password-indicator-stripped{
@@ -287,6 +292,20 @@ body{
                     cursor: pointer;
                 }
             }
+
+            // for disabled tab
+            ul.tabs {
+                li.opti_tablinks.opti_disable-tab:hover {
+                    background-color: #f2f3dd;
+                    a{
+                        color: $light-black;
+                    }
+                }
+                li.opti_tablinks.opti_disable-tab{
+                    opacity: 0.5;
+                }
+            } 
+            
 
         }   
     

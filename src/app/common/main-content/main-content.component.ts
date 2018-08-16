@@ -424,7 +424,7 @@ export class MainContentComponent implements OnInit {
         //fatch and parse row value.
         let selectedItem = gridItem.data.data[selection.index];
         const selectedData = selection.selectedRows[0].dataItem;
-        debugger;
+        
         //  console.log("data: selectedData::"+  JSON.stringify(selectedData));
         //  console.log("data: selectedItem::"+    JSON.stringify(selectedItem));
         this.purchaseInquiryForUpdate = selectedData;
@@ -438,7 +438,7 @@ export class MainContentComponent implements OnInit {
         // we will fatch the data of attachment on tab click so no need to fatch here.
         //this.setInquiryAttachementData(this.selectedInquiryId);
         //fatch the item list on inquiry item click.
-        debugger;
+        
         this.getInquiryItemList(this.selectedInquiryId);
     }
 
@@ -663,7 +663,7 @@ export class MainContentComponent implements OnInit {
      */
     public getInquiryItemList(inquiryId: string ){
         console.log("in getInquiryItemList");
-        debugger;
+        
         this.showLoader=true;  
         this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
             inquiryItemData=>{        
