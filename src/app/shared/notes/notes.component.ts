@@ -78,19 +78,15 @@ export class NotesComponent implements OnInit {
     ngOnInit() {
         // UI Start        
         this.getTabParent = this.tabparent;
-        /**
-         * Apply Grid Height
-        */
+        //Apply Grid Height
         this.gridHeight = UIHelper.getMainContentHeight();
 
-        /**
-        * Check Mobile device
-        */
+        // Check Mobile device
         this.isMobile = UIHelper.isMobile();
         // UI End
 
-        this.noteModel = new NotesModel();
 
+        this.noteModel = new NotesModel();
         // Subscriber for Load data.
         this.commonService.currentNotesData.subscribe(
             (data: NotesModel) => {
