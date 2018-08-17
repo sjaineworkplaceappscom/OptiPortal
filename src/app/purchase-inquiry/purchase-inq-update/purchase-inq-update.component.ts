@@ -5,6 +5,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { Commonservice } from '../../services/commonservice.service';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
+import { CustomerEntityType } from '../../enums/enums';
 
 @Component({
   selector: 'app-purchase-inq-update',
@@ -84,6 +85,8 @@ export class PurchaseInqUpdateComponent implements OnInit {
             this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
             // Set notes data for inquiry
             this.notesMasterData.ParentId = this.purchaseInquiryDetail.PurchaseInquiryId;
+            this.notesMasterData.ParentType=CustomerEntityType.PurchaseInquiry;
+            
             // Fire note event 
             this.commonService.setNotesData(this.notesMasterData);
 

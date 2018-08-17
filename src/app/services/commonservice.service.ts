@@ -91,7 +91,7 @@ export class Commonservice {
    private notesDataSub =new BehaviorSubject<NotesModel>(null);
    currentNotesData=this.notesDataSub.asObservable();
  
-   public setNotesData(data:any){
+   public setNotesData(data:NotesModel){
      this.notesDataSub.next(data);
    }
 

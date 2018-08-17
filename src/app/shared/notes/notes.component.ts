@@ -58,10 +58,10 @@ export class NotesComponent implements OnInit {
         { text: "Rejected", value: 2 },
         { text: "Partial accepted", value: 3 }
     ];
+
     public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
 
     constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe) {
-
     }
 
     @HostListener('window:resize', ['$event'])
@@ -73,11 +73,10 @@ export class NotesComponent implements OnInit {
     }
 
     ngOnChange() {
-       //check if require subscriber data from other component.
     }
 
     ngOnInit() {
-        this.noteModel = new NotesModel();
+        // UI Start        
         this.getTabParent = this.tabparent;
         /**
          * Apply Grid Height
@@ -88,13 +87,21 @@ export class NotesComponent implements OnInit {
         * Check Mobile device
         */
         this.isMobile = UIHelper.isMobile();
+        // UI End
 
+        this.noteModel = new NotesModel();
 
+        // Subscriber for Load data.
         this.commonService.currentNotesData.subscribe(
-            data => {
-                this.noteModel.ParentId = data.ParentId;
+            (data: NotesModel) => {
+                this.noteModel=data;
+
+                // Note parent Id
+                // this.noteModel.ParentId = data.ParentId;
+                // this.noteModel.ParentType=data.ParentType;
+
                 // Get notes data.
-                this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
+                this.getNoteList(this.noteModel.ParentId, data.ParentType);
             }
         );
 
@@ -103,12 +110,18 @@ export class NotesComponent implements OnInit {
     /**
     * visible add new comment layout.
     */
-   public openNewNote() {
-        this.TabNotesGridStatus = false;
-        this.TabAddNotesFormStatus = true;
-        // set default note type for add note.
-        //this.noteModel.NoteType = 0;
+    public openNewNote() {
 
+        this.TabNotesGridStatus = this.TabEditNotesFormStatus = false;
+        this.TabAddNotesFormStatus = true;
+        this.resetModelValues();
+    }
+
+    openEditNoteView(e, note) {
+        this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
+        this.TabEditNotesFormStatus = true;
+        this.selectedNote = note;
+        this.selectedNoteItem={text:this.selectedNote.NoteText,value: this.selectedNote.NoteType};        
     }
 
     /**
@@ -117,168 +130,10 @@ export class NotesComponent implements OnInit {
     * @param action
     */
     submitNote(e) {
+
         // Add Notes Data in model. when comes from inquiry        
         this.noteModel.NoteType = this.selectedNoteItem.value;
-        this.noteModel.GrandParentType = CustomerEntityType.PurchaseInquiry;
-        this.noteModel.ParentType = CustomerEntityType.PurchaseInquiry;
-        
-        this.noteModel.GrantParentId = "";
-        this.addNoteForInquiry(this.noteModel);
-    }
 
-    openEditNoteView(e, note) {           
-        this.TabNotesGridStatus = false;       
-        this.TabEditNotesFormStatus = true;
-        this.selectedNote = note;
-    }
-
-
-
-    /**
-     * close note add form
-     * @param e
-     */
-   public closeAddNoteWindow(e) {
-        this.TabNotesGridStatus = true;
-        this.TabAddNotesFormStatus = false;
-        this.resetModelValues();
-    }
-
-    /**
-     * delete note from local storage.
-     */
-    deleteNote({ sender, rowIndex, dataItem }) {
-        console.log("delete note call:");       
-    }
-
-
-
-    public openEditItemNoteView(e, note) {
-        console.log(e);
-        console.log(note);
-        // this.notesgrid.nativeElement.style.display = 'none';
-        this.TabNotesGridStatus = false;
-        // this.editnoteform.nativeElement.style.display = 'block';
-        this.TabEditNotesFormStatus = true;
-        this.selectedNote = note;
-    }
-
-
-    /**
-     * THIS SECTION FOR ITEMS NOTES
-    */
-
-   public submitItemsNote(e, action) {
-        if (action == 'add') {
-            this.itemNotesGrid = true;
-            this.itemAddNotes = false;
-
-            let dynamicItemsNotesString = localStorage.getItem("setItemsDynamicNotes");
-            let dynamicItemsNotes: any[] = JSON.parse(dynamicItemsNotesString);
-
-            if (dynamicItemsNotes == undefined || dynamicItemsNotes.length <= 0) {
-                dynamicItemsNotes = [];
-            }
-
-            // let date = new Date();
-            // let CompleteDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-            // dynamicItemsNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
-            // localStorage.setItem("setItemsDynamicNotes", JSON.stringify(dynamicItemsNotes));
-            // this.noteItemsData = dynamicItemsNotes;
-        } else {
-
-            this.itemNotesGrid = true;
-            this.itemAddNotes = false;
-        }
-        this.addnotestring = '';
-    }
-
-   public addNewItemNotes() {
-        this.itemNotesGrid = false;
-        this.itemAddNotes = true;
-    }
-
-   public deleteItemsNote({ sender, rowIndex, dataItem }) {
-
-        this.noteItemsData.splice(rowIndex, 1);
-        //this.noteItemsData.splice(rowIndex, 1);
-        // localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteItemsData));
-    }
-
-   public editItemsNotes(e, note) {
-        console.log(e);
-        console.log(note);
-
-        this.itemNotesGrid = false;
-        this.itemEditNotes = true;
-
-        this.selectedItemNote = note;
-    }
-
-   public updateItemNote(e, updatednotevalue: any) {
-        this.itemNotesGrid = true;
-        this.itemEditNotes = false;
-        // let index = this.noteRequetData.indexOf(this.selectedItemNote);
-        // if (index > -1) {
-        //     this.noteItemsData[index].Notes = updatednotevalue.value;
-        // }
-
-    }
-
-    /**
-     * method will close add note form and reset model.
-     */
-   public resetModelValues() {
-        //reset note model and type.
-        this.noteModel.Notes = '';
-        let noteTypeDefault = { text: "General ", value: 1 };
-        this.noteModel.NoteType = noteTypeDefault.value;
-        this.selectedNoteItem = this.noteTypes[0];
-    }
-
-    /**
-     * close add note view.
-     */
-    public closeAddNote() {
-        //close add note component
-        this.TabNotesGridStatus = true;
-        this.TabAddNotesFormStatus = false;
-    }
-
-
-    //All API calling methods
-    /**
-     * Method to get list of inquries from server.
-     */
-    public getNoteList(id: string, type: number) {
-
-        this.showLoader = true;
-        this.sharedComponentService.getNotesList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry).subscribe(
-            notesData => {
-
-                this.formatNotesDate(notesData);
-                console.log("Note data from server: " + notesData);
-                this.noteItemsData = JSON.parse(notesData);
-                this.showLoader = false;
-            });
-    }
-
-
-    public formatNotesDate(notesData: any) {
-        if (notesData != null && notesData != undefined) {
-            this.noteItemsData = JSON.parse(notesData);
-            this.noteItemsData.forEach(element => {
-                element.CreatedDate = new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
-                element.ModifiedDate = new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
-
-            });
-        }
-    }
-    /**
-     * Call api to add note.
-     * @param NotesModel updated note model which we want to add.
-     */
-    public addNoteForInquiry(NotesModel: NotesModel) {
         this.sharedComponentService.AddNote(this.noteModel).subscribe(
             resp => {
                 console.log("record added:")
@@ -292,10 +147,68 @@ export class NotesComponent implements OnInit {
                 this.resetModelValues();
                 this.closeAddNote();
                 // Get notes data.
-                this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
-
-
+                this.getNoteList(this.noteModel.ParentId,this.noteModel.ParentType);
             });
+        
+    }
+
+
+
+    /**
+     * close note add form
+     * @param e
+     */
+    public closeAddNoteWindow(e) {
+        this.TabNotesGridStatus = true;
+        this.TabAddNotesFormStatus = false;
+        this.resetModelValues();
+    }
+
+    /**
+ * method will close add note form and reset model.
+     */
+    public resetModelValues() {
+        //reset note model and type.
+        this.noteModel.Notes = '';
+        let noteTypeDefault = { text: "General ", value: 1 };
+        this.noteModel.NoteType = noteTypeDefault.value;
+        this.selectedNoteItem = noteTypeDefault;
+    }
+
+    /**
+     * close add note view.
+     */
+    public closeAddNote() {
+        //close add note component
+        this.TabNotesGridStatus = true;
+        this.TabAddNotesFormStatus = false;
+    }
+
+    //All API calling methods
+    /**
+     * Method to get list of inquries from server.
+     */
+    private getNoteList(parentId: string, parentType: number) {
+
+        this.showLoader = true;
+        this.sharedComponentService.getNotesList(parentId, parentType).subscribe(
+            notesData => {
+                if (notesData != null && notesData != undefined) {
+                    this.noteItemsData = JSON.parse(notesData);
+                    // To format result dates.
+                    this.formatNotesDate();
+                }
+                this.showLoader = false;
+            });
+    }
+
+    // Format dates.
+    private formatNotesDate() {
+        this.noteItemsData.forEach(element => {
+            element.CreatedDate = new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
+            element.ModifiedDate = new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
+        });
+
     }
 
     /**
@@ -323,22 +236,28 @@ export class NotesComponent implements OnInit {
     }
 
     public updateNote(e) {
-        this.selectedNote
+        //debugger;
         this.TabNotesGridStatus = true;
         this.TabEditNotesFormStatus = false;
+        this.selectedNote;
+        //selected note object : this.selectedNote
+        this.selectedNote.NoteType = this.selectedNoteItem.value;
         this.sharedComponentService.updateNote(this.selectedNote).subscribe(
             resp => {
                 console.log("record updated:")
+                this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },
             error => {
                 alert("Something went wrong");
+                this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },
             () => {
-                this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
+                //reset all values
                 this.resetModelValues();
             });
 
     }
+
     closeUpdateNote(e) {
         // this.notesgrid.nativeElement.style.display = 'block';
         this.TabNotesGridStatus = true;
@@ -347,6 +266,7 @@ export class NotesComponent implements OnInit {
         //reset model after close edit form.
         this.resetModelValues();
     }
+
 
 }
 
