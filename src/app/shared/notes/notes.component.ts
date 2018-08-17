@@ -34,7 +34,6 @@ export class NotesComponent implements OnInit {
     TabEditNotesFormStatus: boolean = false;
     TabNotesGridStatus: boolean = true;
     addnotestring = '';
-    //noteRequetData: any[];
     selectedNote: any = {};
     showLoader: boolean = false;
 
@@ -52,7 +51,7 @@ export class NotesComponent implements OnInit {
     itemAddNotes: boolean = false;
     itemEditNotes: boolean = false;
     noteModel: NotesModel;
-    
+
 
     public noteTypes: Array<{ text: string, value: number }> = [
         { text: "General ", value: 1 },
@@ -67,24 +66,14 @@ export class NotesComponent implements OnInit {
 
     @HostListener('window:resize', ['$event'])
     onResize(event) {
-        /**
-         * Apply Grid Height
-        */
+        //Apply Grid Height
         this.gridHeight = UIHelper.getMainContentHeight();
-        /**
-         * Check Mobile device
-        */
+        // Check Mobile device
         this.isMobile = UIHelper.isMobile();
     }
 
     ngOnChange() {
-        //getting data of item at ngOnChange.
-        // this.commonService.currentNotesData.subscribe(
-        //     data=>{
-        //     this.noteModel.ParentId = data.ParentId;
-        //     console.log("OnChange-parendId:"+this.noteModel.ParentId);
-        //     }
-        // );
+       //check if require subscriber data from other component.
     }
 
     ngOnInit() {
@@ -94,13 +83,13 @@ export class NotesComponent implements OnInit {
          * Apply Grid Height
         */
         this.gridHeight = UIHelper.getMainContentHeight();
-        
+
         /**
         * Check Mobile device
         */
         this.isMobile = UIHelper.isMobile();
 
-        
+
         this.commonService.currentNotesData.subscribe(
             data => {
                 this.noteModel.ParentId = data.ParentId;
@@ -114,7 +103,7 @@ export class NotesComponent implements OnInit {
     /**
     * visible add new comment layout.
     */
-    openNewNote() {
+   public openNewNote() {
         this.TabNotesGridStatus = false;
         this.TabAddNotesFormStatus = true;
         // set default note type for add note.
@@ -142,14 +131,14 @@ export class NotesComponent implements OnInit {
         this.TabEditNotesFormStatus = true;
         this.selectedNote = note;
     }
-   
-   
+
+
 
     /**
      * close note add form
      * @param e
      */
-    closeAddNoteWindow(e) {
+   public closeAddNoteWindow(e) {
         this.TabNotesGridStatus = true;
         this.TabAddNotesFormStatus = false;
         this.resetModelValues();
@@ -164,7 +153,7 @@ export class NotesComponent implements OnInit {
 
 
 
-    openEditItemNoteView(e, note) {
+    public openEditItemNoteView(e, note) {
         console.log(e);
         console.log(note);
         // this.notesgrid.nativeElement.style.display = 'none';
@@ -179,7 +168,7 @@ export class NotesComponent implements OnInit {
      * THIS SECTION FOR ITEMS NOTES
     */
 
-    submitItemsNote(e, action) {
+   public submitItemsNote(e, action) {
         if (action == 'add') {
             this.itemNotesGrid = true;
             this.itemAddNotes = false;
@@ -204,19 +193,19 @@ export class NotesComponent implements OnInit {
         this.addnotestring = '';
     }
 
-    addNewItemNotes() {
+   public addNewItemNotes() {
         this.itemNotesGrid = false;
         this.itemAddNotes = true;
     }
 
-    deleteItemsNote({ sender, rowIndex, dataItem }) {
+   public deleteItemsNote({ sender, rowIndex, dataItem }) {
 
         this.noteItemsData.splice(rowIndex, 1);
         //this.noteItemsData.splice(rowIndex, 1);
         // localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteItemsData));
     }
 
-    editItemsNotes(e, note) {
+   public editItemsNotes(e, note) {
         console.log(e);
         console.log(note);
 
@@ -226,7 +215,7 @@ export class NotesComponent implements OnInit {
         this.selectedItemNote = note;
     }
 
-    updateItemNote(e, updatednotevalue: any) {
+   public updateItemNote(e, updatednotevalue: any) {
         this.itemNotesGrid = true;
         this.itemEditNotes = false;
         // let index = this.noteRequetData.indexOf(this.selectedItemNote);
@@ -239,7 +228,7 @@ export class NotesComponent implements OnInit {
     /**
      * method will close add note form and reset model.
      */
-    resetModelValues() {
+   public resetModelValues() {
         //reset note model and type.
         this.noteModel.Notes = '';
         let noteTypeDefault = { text: "General ", value: 1 };
@@ -250,7 +239,7 @@ export class NotesComponent implements OnInit {
     /**
      * close add note view.
      */
-    closeAddNote(){
+    public closeAddNote() {
         //close add note component
         this.TabNotesGridStatus = true;
         this.TabAddNotesFormStatus = false;
@@ -258,7 +247,6 @@ export class NotesComponent implements OnInit {
 
 
     //All API calling methods
-
     /**
      * Method to get list of inquries from server.
      */
@@ -267,22 +255,22 @@ export class NotesComponent implements OnInit {
         this.showLoader = true;
         this.sharedComponentService.getNotesList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry).subscribe(
             notesData => {
-                
+
                 this.formatNotesDate(notesData);
-                 console.log("Note data from server: " + notesData);
+                console.log("Note data from server: " + notesData);
                 this.noteItemsData = JSON.parse(notesData);
                 this.showLoader = false;
             });
-    }   
+    }
 
 
-    public  formatNotesDate(notesData:any){
+    public formatNotesDate(notesData: any) {
         if (notesData != null && notesData != undefined) {
             this.noteItemsData = JSON.parse(notesData);
             this.noteItemsData.forEach(element => {
-              element.CreatedDate = new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
-              element.ModifiedDate = new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
-             
+                element.CreatedDate = new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
+                element.ModifiedDate = new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
+
             });
         }
     }
@@ -309,7 +297,7 @@ export class NotesComponent implements OnInit {
 
             });
     }
-    
+
     /**
      * method to call delete note api.
      * @param param0 contains  rowIndex and data item.
@@ -318,7 +306,7 @@ export class NotesComponent implements OnInit {
 
         this.sharedComponentService.deleteNote(this.noteItemsData[rowIndex].NoteId).subscribe(
             resp => {
-                
+
                 console.log("record deleted:")
                 this.noteItemsData.splice(rowIndex, 1);
             },
@@ -329,13 +317,12 @@ export class NotesComponent implements OnInit {
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },
             () => {
-              
+
             });
-        
+
     }
 
-    updateNote(e) {
-        
+    public updateNote(e) {
         this.selectedNote
         this.TabNotesGridStatus = true;
         this.TabEditNotesFormStatus = false;
@@ -348,17 +335,17 @@ export class NotesComponent implements OnInit {
             },
             () => {
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
-                
+                this.resetModelValues();
             });
-       
+
     }
     closeUpdateNote(e) {
-        
         // this.notesgrid.nativeElement.style.display = 'block';
         this.TabNotesGridStatus = true;
         // this.editnoteform.nativeElement.style.display = 'none';
         this.TabEditNotesFormStatus = false;
-       
+        //reset model after close edit form.
+        this.resetModelValues();
     }
 
 }

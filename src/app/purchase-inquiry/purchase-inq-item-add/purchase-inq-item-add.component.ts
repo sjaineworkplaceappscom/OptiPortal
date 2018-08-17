@@ -31,9 +31,14 @@ export class PurchaseInqItemAddComponent implements OnInit {
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
   }
+  
+  // store item grid data.
   gridItemsData = [];
-  purchseInqItemModel = new TempPurchaseInquiryItemModel();
+
+  public minValidDate: Date = new Date();
+  purchseInqItemAdd = new TempPurchaseInquiryItemModel();
   showLoader:boolean=false;
+  
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
   constructor(private purchaseInquiryService: PurchaseInquiryService) { }
