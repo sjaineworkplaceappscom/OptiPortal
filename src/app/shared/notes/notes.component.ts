@@ -36,6 +36,7 @@ export class NotesComponent implements OnInit {
     addnotestring = '';
     //noteRequetData: any[];
     selectedNote: any = {};
+    showLoader: boolean = false;
 
     @ViewChild('notesgrid') notesgrid;
     @ViewChild('noteform') noteform;
@@ -51,7 +52,7 @@ export class NotesComponent implements OnInit {
     itemAddNotes: boolean = false;
     itemEditNotes: boolean = false;
     noteModel: NotesModel;
-    showLoader: boolean = false;
+    
 
     public noteTypes: Array<{ text: string, value: number }> = [
         { text: "General ", value: 1 },
@@ -93,10 +94,13 @@ export class NotesComponent implements OnInit {
          * Apply Grid Height
         */
         this.gridHeight = UIHelper.getMainContentHeight();
+        
         /**
         * Check Mobile device
         */
         this.isMobile = UIHelper.isMobile();
+
+        
         this.commonService.currentNotesData.subscribe(
             data => {
                 this.noteModel.ParentId = data.ParentId;
@@ -267,6 +271,8 @@ export class NotesComponent implements OnInit {
         this.TabNotesGridStatus = true;
         this.TabAddNotesFormStatus = false;
         this.noteModel.Notes = '';
+        let noteTypeDefault = { text: "General ", value: 1 };
+        this.noteModel.NoteType = noteTypeDefault.value;
     }
 
 
@@ -364,7 +370,16 @@ export class NotesComponent implements OnInit {
             },
             () => {
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
+                
             });
+       
+    }
+    closeUpdateNote(e) {
+        
+        // this.notesgrid.nativeElement.style.display = 'block';
+        this.TabNotesGridStatus = true;
+        // this.editnoteform.nativeElement.style.display = 'none';
+        this.TabEditNotesFormStatus = false;
        
     }
 

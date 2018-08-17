@@ -8,7 +8,7 @@
     <ng-container *ngIf="showLoader==false">
         <!-- For Admin  -->
         <div *ngIf="systemAdmin=='true'">
-            <!-- <app-approve-users></app-approve-users> -->
+            <app-approve-users></app-approve-users>
         </div>
         
         <!-- for normal user -->
@@ -60,8 +60,8 @@
 
                     <!-- grid template end -->
                     <kendo-grid-column field="InquiryNumber" title="Inquiry#" [width]="160" filter="numeric"></kendo-grid-column>
-                    <kendo-grid-column field="CustomerCode" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
-                    <kendo-grid-column field="CustomerName" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column>
+                    <kendo-grid-column field="CustomerCode" *ngIf="loginUserType==1" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
+                    <kendo-grid-column field="CustomerName" *ngIf="loginUserType==1" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column>
                     <kendo-grid-column field="StatusText" [width]="140" title="Status" ></kendo-grid-column>
                     <kendo-grid-column field="CreatedDate" title="Created Date" [width]="200"  filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
                     <kendo-grid-column field="Buyer" title="Created By" [width]="140"></kendo-grid-column>

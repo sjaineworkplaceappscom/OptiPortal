@@ -7,6 +7,7 @@
               <div class="card opti_border-none" style="margin-bottom: 25px;">
                   <div class="card-block">
                       <form class="k-form opti_padding-zero">
+
                           <label class="k-form-field">
                               <span class="opti_form-label">Item Id</span>
                               <input class="k-textbox" name="itemId" [(ngModel)]="purchseInqItemModel.PurchaseInquiryItemlId" placeholder="Item Id"
@@ -86,10 +87,17 @@
 
 <!-- grid start -->
 <ng-container *ngIf="itemGrid==true">
-<div #gridSectionItem >
+<div #gridSectionItem id="opti_gridSectionItemID">
   <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
+            <!-- loader start -->
+            <!-- <div class="opti_loader opti_loader-item-tab-grid" *ngIf="showLoader">
+                <div class="opti_spinner"></div>
+            </div> -->
+            <!-- loader end --> 
+
+            <!-- <ng-container *ngIf="showLoader==false"> -->
               <kendo-grid 
               [kendoGridBinding]="gridItemsData" 
               [resizable]="false" 
@@ -149,6 +157,7 @@
                   <!-- xlsx template end -->
 
               </kendo-grid>
+            <!-- </ng-container>   -->
           </div>
       </div>
   </div>

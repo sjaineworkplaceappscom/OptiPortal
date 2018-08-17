@@ -25,6 +25,7 @@ import { UploadModule } from '@progress/kendo-angular-upload/dist/es2015/main';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 
 
+
 @NgModule({
   imports: [
     CommonModule,

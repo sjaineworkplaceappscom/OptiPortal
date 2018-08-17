@@ -34,8 +34,8 @@ export class PurchaseInqListComponent implements OnInit {
 
   //for inquiry grid Data
   public gridData: any[] = [];
-
-
+  public systemAdmin:any;
+  public loginUserType: number;
   @ViewChild('optirightfixedsection') optirightfixedsection;
   constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe) {
   }
@@ -52,14 +52,21 @@ export class PurchaseInqListComponent implements OnInit {
   // End UI Section
 
   ngOnInit() {
+    
+    let userDetail: string = localStorage.getItem("LoginUserDetail");
+    let userData: any[] = JSON.parse(userDetail);
+    this.loginUserType = userData[0].LoginUserType;
     this.gridHeight = UIHelper.getMainContentHeight();
-
+    this.systemAdmin=localStorage.getItem('SystemAdmin');
+      
     this.commonService.refreshPIListSubscriber.subscribe(data => {
       this.getInquiryList();
+
     });
 
     //call method to get all inquiry data.
     this.getInquiryList();
+    
   }
 
 
@@ -81,7 +88,11 @@ export class PurchaseInqListComponent implements OnInit {
 
           this.showLoader = false;
         }
-      });
+      },
+      ()=>{
+            this.showLoader=false;
+      }
+    );
   }
 
   /**

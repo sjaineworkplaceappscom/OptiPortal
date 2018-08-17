@@ -9,6 +9,7 @@ import { PurchaseInqDetailComponent } from '../purchase-inquiry/purchase-inq-det
 import { PurchaseInqAddComponent } from '../purchase-inquiry/purchase-inq-add/purchase-inq-add.component';
 import { SalesQuotationsComponent } from '../sales-quotations/sales-quotations.component';
 import { SalesQuotationsListComponent } from '../sales-quotations/sales-quotations-list/sales-quotations-list.component';
+import { ApproveUsersComponent } from '../account/approve-users/approve-users.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'shared', loadChildren: '../shared/shared.module#SharedModule' },
       { path: 'sales', component:SalesQuotationsListComponent },
       {path:'dashboard',component:DashboardComponent},
+      
 
       // { path: 'list', component: PurchaseInqListComponent },
       // { path: 'piadd', component: PurchaseInqAddComponent },

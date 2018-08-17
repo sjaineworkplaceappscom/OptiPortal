@@ -71,7 +71,9 @@ export class SigninComponent implements OnInit {
       userData => {
         // jsonfy response object.
         let resUserData = JSON.parse(userData);
+
         if (resUserData != undefined && resUserData.length > 0) {
+          
           this.userNotExist=false;
           // // Multiteenet 
           // if (resUserData.length > 1) {
@@ -98,6 +100,7 @@ export class SigninComponent implements OnInit {
 
           if (data != null && data.LoginUserType == 4) {
             systemAdmin = true;
+            //this.router.navigateByUrl('/approveusers')
           }
           localStorage.setItem("SystemAdmin", systemAdmin);
           //}

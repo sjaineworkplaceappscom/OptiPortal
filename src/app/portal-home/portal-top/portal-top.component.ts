@@ -21,13 +21,15 @@ export class PortalTopComponent implements OnInit {
   loggedInUserName:string = '';
   customerName:string = '';
   customerCode:string = '';
+  LoginUserType:number;
   ngOnInit() {
     let userDetail: string= localStorage.getItem("LoginUserDetail");
     let isSystemAdmin: string = localStorage.getItem("SystemAdmin"); 
     let userData: any[] = JSON.parse(userDetail);
     this.loggedInUserName = userData[0].LoginUserName;
-    this.customerName = userData[0].CustomerName;
-    this.customerCode = userData[0].CustomerCode;
+    this.customerName = userData[0].ParentName;
+    this.customerCode = userData[0].ParentCode;
+    this.LoginUserType = userData[0].LoginUserType; 
     UIHelper.manageThemeCssFile();
     console.log("user detail:"+userDetail);
     

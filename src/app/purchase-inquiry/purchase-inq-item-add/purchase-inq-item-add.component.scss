@@ -1,1 +1,8 @@
 @import 'src/assets/css/web/purchase-inquiry_module/purchase_inquiry';
+
+#opti_gridSectionItemID{
+    .opti_loader.opti_loader-item-tab-grid{
+        height: calc(100vh - 140px);
+        width: calc(100% - 30px);
+    }
+}

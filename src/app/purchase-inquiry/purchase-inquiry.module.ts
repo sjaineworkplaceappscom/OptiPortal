@@ -25,6 +25,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { PurchaseInqItemAddComponent } from './purchase-inq-item-add/purchase-inq-item-add.component';
 import { SharedModule } from '../shared/shared.module';
 import { CustomPipeItemPipe } from '../custom-pipe-item.pipe';
+import { ApproveUsersComponent } from 'src/app/account/approve-users/approve-users.component';
 // import { CustomFilterPipe } from '../custom-filter.pipe';
 // import { CustomPipeItemPipe } from '../custom-pipe-item.pipe';
 
@@ -62,9 +63,12 @@ import { CustomPipeItemPipe } from '../custom-pipe-item.pipe';
     PurchaseInqUpdateComponent,
     PurchaseInqDetailComponent,
     PurchaseInquiryComponent, 
+    
     PurchaseInqItemListComponent, PurchaseInqItemAddComponent,
-    CustomPipeItemPipe
+    CustomPipeItemPipe,
     //Custom Pipes
+
+    ApproveUsersComponent
     ],
     exports:[
       PurchaseInqListComponent,

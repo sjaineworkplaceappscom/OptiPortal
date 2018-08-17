@@ -7,13 +7,14 @@ import { SetPasswordComponent } from './set-password/set-password.component';
 import { TenantselectionComponent } from './tenantselection/tenantselection.component';
 import { AuthGuard } from '../guards/auth.guard';
 
+
 const routes: Routes = [
   { path: '', component: SigninComponent },
   { path: 'login', component: SigninComponent },
   { path: 'signup', component: SignupComponent },  
   { path: 'resetpassword', component: ResetPasswordComponent },  
   { path: 'setpassword', component: SetPasswordComponent },
-  { path: 'tenantselection', component: TenantselectionComponent, canActivate: [AuthGuard] },
+  { path: 'tenantselection', component: TenantselectionComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

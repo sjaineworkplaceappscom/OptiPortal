@@ -62,7 +62,7 @@ export class PurchaseInqAddComponent implements OnInit {
     this.optiTab.nativeElement.children[0].classList.add('active');
 
     this.setDefaultData();
-
+    
   }
 
 
@@ -72,6 +72,7 @@ export class PurchaseInqAddComponent implements OnInit {
 * This method will reset the model and date object for add form.
 */
   setDefaultData() {
+    console.log("cname,cid"+this.customerName+","+this.customerCode);
     this.getUserDetails();
 
     this.purchaseInqueryAdd = new TempPurchaseInquiryModel();
@@ -89,14 +90,17 @@ export class PurchaseInqAddComponent implements OnInit {
   private getUserDetails() {
     //for getting logged in user info from local storage.
     let userDetail: string = localStorage.getItem("LoginUserDetail");
+    console.log("user detail"+userDetail);
     let userData: any[] = JSON.parse(userDetail);
     this.loggedInUserName = userData[0].LoginUserName;
-    this.customerName = userData[0].CustomerName;
-    this.customerCode = userData[0].CustomerCode;
+    this.customerName = userData[0].ParentName;
+    this.customerCode = userData[0].ParentCode;
     this.loginUserType = userData[0].LoginUserType;
+    console.log("user detail:"+userData[0].LoginUserName+","+userData[0].CustomerCode);
   }
 
   public AddPurchaseInquiry() {
+    debugger
     this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
       (data:any) => {
         console.log("record added:")
@@ -119,6 +123,7 @@ export class PurchaseInqAddComponent implements OnInit {
   public AddPurchaseInquiryAsDraft(){
      let Draftstatus:any = { text: "Draft", value: 1 };
     this.purchaseInqueryAdd.Status = Draftstatus.value;
+    
     this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
       (data:any) => {
      //   debugger;
