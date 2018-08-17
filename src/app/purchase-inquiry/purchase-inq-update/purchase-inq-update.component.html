@@ -18,70 +18,79 @@
     </div>
     
     <div id="home" *ngIf="tabName=='home'" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-block">
-                            <form class="k-form">
-                                <label class="k-form-field">
-                                    <span class="opti_form-label">Inquiry#</span>
-                                    <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInquiryDetail.InquiryNumber" value="" placeholder="Inquiry"
-                                        disabled />
-                                </label>
 
-                                <label class="k-form-field" *ngIf="loginUserType==1">
-                                    <span class="opti_form-label" >Customer Code</span>
-                                    <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInquiryDetail.CustomerCode" placeholder="Customer"
-                                    disabled/>
-                                </label>
+        <!-- loader start -->
+        <!-- <div class="opti_loader opti_loader-home-tab" *ngIf="showLoader">
+            <div class="opti_spinner"></div>
+        </div> -->
+        <!-- loader end -->
 
-                                <label class="k-form-field" *ngIf="loginUserType==1">
-                                    <span class="opti_form-label">Customer Name</span>
-                                    <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInquiryDetail.CustomerName" placeholder="Name"
-                                    disabled/>
-                                </label>
+        <!-- <ng-container *ngIf="showLoader==false"> -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-block">
+                                <form class="k-form">
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Inquiry#</span>
+                                        <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInquiryDetail.InquiryNumber" value="" placeholder="Inquiry"
+                                            disabled />
+                                    </label>
 
-                                <label class="k-form-field">
-                                    <span class="opti_form-label">Status</span>
-                                    <kendo-dropdownlist name="status" [data]="status"  [(ngModel)]="purchaseInquiryDetail.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
-                                    </kendo-dropdownlist>
-                                </label>
+                                    <label class="k-form-field" *ngIf="loginUserType==1">
+                                        <span class="opti_form-label" >Customer Code</span>
+                                        <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInquiryDetail.CustomerCode" placeholder="Customer"
+                                        disabled/>
+                                    </label>
 
-                                <label class="k-form-field">
-                                    <span class="opti_form-label">Created Date</span>
-                                    <kendo-datepicker name="createdDate" [format]="'dd MMM yy'" [(ngModel)]="purchaseInquiryDetail.CreatedDate" disabled> </kendo-datepicker>
-                                </label>
+                                    <label class="k-form-field" *ngIf="loginUserType==1">
+                                        <span class="opti_form-label">Customer Name</span>
+                                        <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInquiryDetail.CustomerName" placeholder="Name"
+                                        disabled/>
+                                    </label>
+
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Status</span>
+                                        <kendo-dropdownlist name="status" [data]="status"  [(ngModel)]="purchaseInquiryDetail.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
+                                        </kendo-dropdownlist>
+                                    </label>
+
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Created Date</span>
+                                        <kendo-datepicker name="createdDate" [format]="'dd MMM yy'" [(ngModel)]="purchaseInquiryDetail.CreatedDate" disabled> </kendo-datepicker>
+                                    </label>
 
 
-                                <label class="k-form-field">
-                                    <span class="opti_form-label">Created By</span>
-                                    <input type="text" name="createdBy"  class="k-textbox" value="" [(ngModel)]="purchaseInquiryDetail.Buyer" placeholder="Buyer/Created By" disabled
-                                    />
-                                </label>
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Created By</span>
+                                        <input type="text" name="createdBy"  class="k-textbox" value="" [(ngModel)]="purchaseInquiryDetail.Buyer" placeholder="Buyer/Created By" disabled
+                                        />
+                                    </label>
 
-                                <label class="k-form-field">
-                                    <span class="opti_form-label">Valid Until</span>
-                                    <kendo-datepicker name="validUntil" [format]="'dd MMM yy'" [(ngModel)]="purchaseInquiryDetail.ValidTillDate" [min]="minValidDate" > </kendo-datepicker>
-                                </label>
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Valid Until</span>
+                                        <kendo-datepicker name="validUntil" [format]="'dd MMM yy'" [(ngModel)]="purchaseInquiryDetail.ValidTillDate" [min]="minValidDate" > </kendo-datepicker>
+                                    </label>
 
-                                <label class="k-form-field">
-                                    <span class="opti_form-label">Reference#</span>
-                                    <input type="text" name="reference" class="k-textbox" value="" placeholder="Reference" [(ngModel)]="purchaseInquiryDetail.ReferenceNumber"
-                                    [disabled] = "!isEnableRefField"  />
-                                </label>
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Reference#</span>
+                                        <input type="text" name="reference" class="k-textbox" value="" placeholder="Reference" [(ngModel)]="purchaseInquiryDetail.ReferenceNumber"
+                                        [disabled] = "!isEnableRefField"  />
+                                    </label>
 
-                                <div class="text-right">
-                                    <button type="button" class="k-button k-primary" [disabled] ="isDisableSave==true" (click)="UpdatePurchaseInquiry()">Save</button>
-                                    <button type="button" class="k-button" [disabled] ="isDisableSaveAsDraft==true" (click)="UpdatePurchaseInquiryAsDraft()"> Save as draft</button>
-                                    <button type="button" class="k-button"  (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
-                                </div>
-                            </form>
+                                    <div class="text-right">
+                                        <button type="button" class="k-button k-primary" [disabled] ="isDisableSave==true" (click)="UpdatePurchaseInquiry()">Save</button>
+                                        <button type="button" class="k-button" [disabled] ="isDisableSaveAsDraft==true" (click)="UpdatePurchaseInquiryAsDraft()"> Save as draft</button>
+                                        <button type="button" class="k-button"  (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        <!-- </ng-container> -->    
 
     </div>
 
