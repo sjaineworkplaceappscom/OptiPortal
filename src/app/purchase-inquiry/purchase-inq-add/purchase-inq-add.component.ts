@@ -4,6 +4,7 @@ import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry'
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { Commonservice } from '../../services/commonservice.service';
+import { ModuleName, ComponentName } from '../../enums/enums';
 @Component({
   selector: 'app-purchase-inq-add',
   templateUrl: './purchase-inq-add.component.html',
@@ -18,7 +19,7 @@ export class PurchaseInqAddComponent implements OnInit {
   isAttchement: boolean = false;
   isNotes: boolean = false;
   tabName: string = 'home';
-  tabStatus:boolean = false;
+  tabStatus: boolean = false;
 
   public minValidDate: Date = new Date();
   public purchaseInqueryAdd: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
@@ -29,15 +30,16 @@ export class PurchaseInqAddComponent implements OnInit {
   public customerCode: string;
   public loggedInUserName: string;
   public loginUserType: number;
+
   // status section
-  public status: Array<{ text: string, value: number }> = [{ text: "New", value: 2 }];
+  public defaultStatus: Array<{ text: string, value: number }> = [{ text: "New", value: 2 }];
 
   @ViewChild('optiRightAddInquiry') optiRightAddInquiry;
   @ViewChild('optiTab') optiTab;
 
   // tab function
   openTab(evt, tabName, tabStatus) {
-    if(tabStatus == true){
+    if (tabStatus == true) {
       this.tabName = tabName;
       UIHelper.customOpenTab(evt, tabName);
     }
@@ -62,7 +64,7 @@ export class PurchaseInqAddComponent implements OnInit {
     this.optiTab.nativeElement.children[0].classList.add('active');
 
     this.setDefaultData();
-    
+
   }
 
 
@@ -71,8 +73,7 @@ export class PurchaseInqAddComponent implements OnInit {
   /**
 * This method will reset the model and date object for add form.
 */
-  setDefaultData() {
-    console.log("cname,cid"+this.customerName+","+this.customerCode);
+  private setDefaultData() {
     this.getUserDetails();
 
     this.purchaseInqueryAdd = new TempPurchaseInquiryModel();
@@ -84,72 +85,87 @@ export class PurchaseInqAddComponent implements OnInit {
     this.purchaseInqueryAdd.CustomerCode = this.customerCode;
     this.purchaseInqueryAdd.Buyer = this.loggedInUserName;
     this.purchaseInqueryAdd.Status = 2;
-    //this.setFlagsForAdd();  
   }
 
   private getUserDetails() {
     //for getting logged in user info from local storage.
     let userDetail: string = localStorage.getItem("LoginUserDetail");
-    console.log("user detail"+userDetail);
+    console.log("user detail" + userDetail);
     let userData: any[] = JSON.parse(userDetail);
     this.loggedInUserName = userData[0].LoginUserName;
     this.customerName = userData[0].ParentName;
     this.customerCode = userData[0].ParentCode;
     this.loginUserType = userData[0].LoginUserType;
-    console.log("user detail:"+userData[0].LoginUserName+","+userData[0].CustomerCode);
+    console.log("user detail:" + userData[0].LoginUserName + "," + userData[0].CustomerCode);
   }
 
-  public AddPurchaseInquiry() {
-    debugger
+  public AddPurchaseInquiry(saveAsDraft: boolean = false) {
+
+    if (saveAsDraft == true) {
+      let Draftstatus: any = { text: "Draft", value: 1 };
+      this.purchaseInqueryAdd.Status = Draftstatus.value;
+    }
+
     this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
-      (data:any) => {
-        console.log("record added:")
-        this.commonService.refreshPIList(null);           
+      (data: any) => {        
+        this.commonService.refreshPIList(null);
+        this.openUpdateSideBar(data);
       },
       error => {
-        alert("Something went wrong");            
+        alert("Something went wrong");
         console.log("Error: ", error)
       },
-      ()=> {        
-        this.closeRightSidebar();
+      () => {
+       // this.closeRightSidebar();
       }
-      
+
     );
 
   }
+
+  // Unused
   /**
    * This will set the data with the draft status.
    */
-  public AddPurchaseInquiryAsDraft(){
-     let Draftstatus:any = { text: "Draft", value: 1 };
-    this.purchaseInqueryAdd.Status = Draftstatus.value;
-    
+  public AddPurchaseInquiryAsDraft() {
+
+
     this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
-      (data:any) => {
-     //   debugger;
+      (data: any) => {
+        
+        //   debugger;
         console.log("record added:")
-        this.commonService.refreshPIList(null);           
+        this.commonService.refreshPIList(null);
       },
       error => {
-      //  debugger;
-        alert("Something went wrong");            
+        //  debugger;
+        alert("Something went wrong");
         console.log("Error: ", error)
       },
-      ()=> {        
+      () => {
         this.closeRightSidebar();
       }
-      
+
     );
 
   }
 
-  /**
+/**
 * 
 * @param status close right content section, will pass false
 */
   closeRightSidebar() {
     let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentSidebarInfo.SideBarStatus = false;
+    this.commonService.setCurrentSideBar(currentSidebarInfo);
+  }
+
+  openUpdateSideBar(data: any){
+    let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentSidebarInfo.SideBarStatus = true,
+    currentSidebarInfo.ModuleName=ModuleName.Purchase;
+    currentSidebarInfo.ComponentName=ComponentName.UpdateInquery;
+    currentSidebarInfo.RequesterData=data
     this.commonService.setCurrentSideBar(currentSidebarInfo);
   }
 
