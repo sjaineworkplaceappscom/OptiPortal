@@ -24,6 +24,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
   addItem:boolean = false;
   itemGrid:boolean = true;
 
+  
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // Apply Grid Height
@@ -36,7 +38,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   gridItemsData = [];
 
   public minValidDate: Date = new Date();
-  purchseInqItemAdd = new TempPurchaseInquiryItemModel();
+  purchaseItemsModel: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
   showLoader:boolean=false;
   
   @Input() currentSidebarInfo: CurrentSidebarInfo;
@@ -53,6 +55,9 @@ export class PurchaseInqItemAddComponent implements OnInit {
       * Check Mobile device
     */
     this.isMobile = UIHelper.isMobile();
+
+    this.selectedInquiryId = 'E4F1A5AB-AEFE-4F34-847F-6252FD0C3403';
+    this.getInquiryItemsData(this.selectedInquiryId);
   }
 
   showItemsGrid(){
@@ -69,9 +74,9 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.showItemForm();
   }
 
-  AddPurchaseInquiryItem(){
-    this.showItemsGrid();
-  }
+  // AddPurchaseInquiryItem(){
+  //   this.showItemsGrid();
+  // }
 
   addItemtagain(){
     this.showItemsGrid();
@@ -85,6 +90,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   requestDate: Date;
   requiredDate: Date;
   selectedItemId: string = '';
+  selectedInquiryId: string = '';
   /**
    * Method will open the edit item window for selected grid item.
    * @param gridItemsData 
@@ -98,10 +104,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
       //const selectedData = selection.selectedRows[0].dataItem;
       const selectedData = this.gridItemsData[0];
       
-      this.purchseInqItemAdd = JSON.parse(JSON.stringify(selectedData));
-      this.requestDate = new Date(this.purchseInqItemAdd.RequestDate);
-      this.requiredDate = new Date(this.purchseInqItemAdd.RequiredDate);
-      this.selectedItemId = this.purchseInqItemAdd.PurchaseInquiryItemId;
+      this.purchaseItemsModel = JSON.parse(JSON.stringify(selectedData));
+      this.requestDate = new Date(this.purchaseItemsModel.RequestDate);
+      this.requiredDate = new Date(this.purchaseItemsModel.RequiredDate);
+      this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
       
   }
 
@@ -127,5 +133,43 @@ export class PurchaseInqItemAddComponent implements OnInit {
           }
 
   }
+
+    /**
+     * When click on save 
+     */
+    public OnSave() {debugger;
+
+      this.AddPurchaseInquiryItem();
+      this.addItem = false;
+      this.itemGrid = true;
+    }
+
+    /**
+     * when click on save and new
+     */
+    public OnSaveAndNew() {
+      this.AddPurchaseInquiryItem();
+      this.addItem = true;
+      this.itemGrid = false;
+    }
+
+     /**
+     * AddPurchaseInquiryItem
+     */
+    public AddPurchaseInquiryItem() {
+      this.purchaseItemsModel.PurchaseInquiryId = 'E4F1A5AB-AEFE-4F34-847F-6252FD0C3403';
+     this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
+         data => {
+           
+           console.log(data)
+         },
+         error => 
+        {
+           this.showLoader=false;
+           alert('Something went wrong');
+           console.log("Error: " + error);
+        }
+     );
+    }
 
 }

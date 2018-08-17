@@ -22,41 +22,41 @@
 
                           <label class="k-form-field">
                               <span class="opti_form-label">Item Details</span>
-                              <input type="text" class="k-textbox" name="custId_description" [(ngModel)]="purchseInqItemModel.CustomerItemCode"
+                              <input type="text" class="k-textbox" name="custId_description" [(ngModel)]="purchaseItemsModel.CustomerItemCode"
                                   value="" placeholder="Customer Item Id / description" />
                           </label>
 
                           <label class="k-form-field">
                               <span class="opti_form-label">Item Quantity</span>
-                              <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchseInqItemModel.Quantity" value="" placeholder="Item Quantity"
+                              <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModel.Quantity" value="" placeholder="Item Quantity"
                               />
                           </label>
 
                           <label class="k-form-field">
                               <span class="opti_form-label">Item Unit</span>
-                              <input type="text" class="k-textbox" name="Unit" [(ngModel)]="purchseInqItemModel.Unit" value="" placeholder="Item Unit"
+                              <input type="text" class="k-textbox" name="Unit" [(ngModel)]="purchaseItemsModel.Unit" value="" placeholder="Item Unit"
                               />
                           </label>
 
                           <label class="k-form-field">
                               <span class="opti_form-label">Requester</span>
-                              <input type="text" class="k-textbox" name="requester" [(ngModel)]="purchseInqItemModel.Requester" value="" placeholder="Requester"
+                              <input type="text" class="k-textbox" name="requester" [(ngModel)]="purchaseItemsModel.Requester" value="" placeholder="Requester"
                               />
                           </label>
 
                           <label class="k-form-field">
                               <span class="opti_form-label">Request Date</span>
-                              <kendo-datepicker name="requestDate" [(ngModel)]="purchseInqItemModel.RequestDate"> </kendo-datepicker>
+                              <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModel.RequestDate"> </kendo-datepicker>
                           </label>
 
                           <label class="k-form-field">
                               <span class="opti_form-label">Required Date</span>
-                              <kendo-datepicker name="requiredDate" [(ngModel)]="purchseInqItemModel.RequiredDate"> </kendo-datepicker>
+                              <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModel.RequiredDate"> </kendo-datepicker>
                           </label>
 
                           <label class="k-form-field">
                               <span class="opti_form-label">Ship To location</span>
-                              <textarea class="k-textarea" name="unit" [(ngModel)]="purchseInqItemModel.ShipToLocation">Location</textarea>
+                              <textarea class="k-textarea" name="unit" [(ngModel)]="purchaseItemsModel.ShipToLocation">Location</textarea>
                           </label>
 
 
@@ -72,7 +72,7 @@
 
               <br/>
               <div class="text-right">
-                  <button type="button" class="k-button k-primary" (click)="AddPurchaseInquiryItem()">Save</button>
+                  <button type="button" class="k-button k-primary" (click)="OnSave()">Save</button>
                   <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
                   <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button>
                   <button type="button" class="k-button" (click)="closeItemForm()">Cancel</button>
