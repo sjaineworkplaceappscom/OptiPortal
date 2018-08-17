@@ -44,7 +44,7 @@
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Status</span>
-                                    <kendo-dropdownlist name="status" [data]="status"  [(ngModel)]="purchaseInquiryDetail.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="!isEnableStatusField">
+                                    <kendo-dropdownlist name="status" [data]="status"  [(ngModel)]="purchaseInquiryDetail.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
                                     </kendo-dropdownlist>
                                 </label>
 
@@ -62,7 +62,7 @@
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Valid Until</span>
-                                    <kendo-datepicker name="validUntil" [format]="'dd/MM/yyyy'" [(ngModel)]="purchaseInquiryDetail.ValidTillDate" [min]="minValidDate" > </kendo-datepicker>
+                                    <kendo-datepicker name="validUntil" [format]="'dd MMM yy'" [(ngModel)]="purchaseInquiryDetail.ValidTillDate" [min]="minValidDate" > </kendo-datepicker>
                                 </label>
 
                                 <label class="k-form-field">
@@ -72,8 +72,8 @@
                                 </label>
 
                                 <div class="text-right">
-                                    <button type="button" class="k-button k-primary" (click)="UpdatePurchaseInquiry()">Save</button>
-                                    <button type="button" class="k-button" (click)="UpdatePurchaseInquiryAsDraft()"> Save as draft</button>
+                                    <button type="button" class="k-button k-primary" [disabled] ="isDisableSave==true" (click)="UpdatePurchaseInquiry()">Save</button>
+                                    <button type="button" class="k-button" [disabled] ="isDisableSaveAsDraft==true" (click)="UpdatePurchaseInquiryAsDraft()"> Save as draft</button>
                                     <button type="button" class="k-button"  (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
                                 </div>
                             </form>

@@ -90,7 +90,7 @@ export class PurchaseInqAddComponent implements OnInit {
   private getUserDetails() {
     //for getting logged in user info from local storage.
     let userDetail: string = localStorage.getItem("LoginUserDetail");
-    console.log("user detail" + userDetail);
+   // console.log("user detail"+userDetail);
     let userData: any[] = JSON.parse(userDetail);
     this.loggedInUserName = userData[0].LoginUserName;
     this.customerName = userData[0].ParentName;
@@ -117,33 +117,6 @@ export class PurchaseInqAddComponent implements OnInit {
       },
       () => {
        // this.closeRightSidebar();
-      }
-
-    );
-
-  }
-
-  // Unused
-  /**
-   * This will set the data with the draft status.
-   */
-  public AddPurchaseInquiryAsDraft() {
-
-
-    this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
-      (data: any) => {
-        
-        //   debugger;
-        console.log("record added:")
-        this.commonService.refreshPIList(null);
-      },
-      error => {
-        //  debugger;
-        alert("Something went wrong");
-        console.log("Error: ", error)
-      },
-      () => {
-        this.closeRightSidebar();
       }
 
     );
