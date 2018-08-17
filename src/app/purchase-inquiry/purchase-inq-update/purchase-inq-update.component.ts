@@ -33,13 +33,15 @@ export class PurchaseInqUpdateComponent implements OnInit {
   public selectedInquiryId: string = '';
 
   public isEnableRefField: boolean = false;
-  public isEnableStatusField: boolean = false;
+  public isDisableStatusField: boolean = false;
 
   public minValidDate: Date = new Date();
   public customerName: string;
   public customerCode: string;
   public loggedInUserName: string;
   public loginUserType: number;
+  public isDisableSaveAsDraft = false;
+  public isDisableSave = false;
   // status section
   public status: Array<{ text: string, value: number }> = [
     { text: "Draft", value: 1 },
@@ -67,16 +69,10 @@ export class PurchaseInqUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-   
-    /**
-     * apply width on opti_TabID
-    */
+    // apply width on opti_TabID
     UIHelper.getWidthOfOuterTab();
-    /**
-     * Add active class on tab title 
-    */
+    // Add active class on tab title 
     this.optiTab.nativeElement.children[0].classList.add('active');
-
     // Set sidebar data;
     this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
@@ -88,14 +84,11 @@ export class PurchaseInqUpdateComponent implements OnInit {
             this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
             // Set notes data for inquiry
             this.notesMasterData.ParentId = this.purchaseInquiryDetail.PurchaseInquiryId;
-            
             // Fire note event 
             this.commonService.setNotesData(this.notesMasterData);
+
           }
-
-
         }
-
       }
     );
     this.getStatusListForUpdateByCustomer();
@@ -131,16 +124,35 @@ export class PurchaseInqUpdateComponent implements OnInit {
       this.isEnableRefField = true;
     }
 
-    this.isEnableStatusField = true;
   }
 
   /**
-  * filter the status list 
+  * filter the status list according to last selected status.
   */
   public getStatusListForUpdateByCustomer() {
-    this.status = [
-      { text: "New", value: 2 },
-      { text: "Canceled", value: 7 }];
+    
+    if (this.purchaseInquiryDetail.Status == 1) {
+      this.status = [
+        { text: "Draft", value: 1 },
+        { text: "New", value: 2 },
+        { text: "Canceled", value: 7 }];
+      
+    } else {
+      if (this.purchaseInquiryDetail.Status == 7) {
+        // user can not do anyting only view all things are disabled.
+        this.isDisableSave = true;
+        this.isDisableSaveAsDraft = true;
+        this.isDisableStatusField = true;
+      } else {
+        //means status is new.
+        this.isDisableSaveAsDraft = true;
+        this.status = [
+          { text: "New", value: 2 },
+          { text: "Canceled", value: 7 }];
+      }
+    
+    }
+
   }
   /**
   * UpdatePurchaseInquiry
@@ -159,27 +171,27 @@ export class PurchaseInqUpdateComponent implements OnInit {
   /**
    * This will set the data with the draft status.
    */
-  public UpdatePurchaseInquiryAsDraft(){
-    let Draftstatus:any = { text: "Draft", value: 1 };
-   this.purchaseInquiryDetail.Status = Draftstatus.value;
-   this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
-     (data:any) => {
-    //   debugger;
-       console.log("record added:")
-       this.commonService.refreshPIList(null);           
-     },
-     error => {
-     //  debugger;
-       alert("Something went wrong");            
-       console.log("Error: ", error)
-     }, 
-     ()=> {        
-       this.closeRightSidebar();
-     }
-     
-   );
+  public UpdatePurchaseInquiryAsDraft() {
+    let Draftstatus: any = { text: "Draft", value: 1 };
+    this.purchaseInquiryDetail.Status = Draftstatus.value;
+    this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
+      (data: any) => {
+        //   debugger;
+        console.log("record added:")
+        this.commonService.refreshPIList(null);
+      },
+      error => {
+        //  debugger;
+        alert("Something went wrong");
+        console.log("Error: ", error)
+      },
+      () => {
+        this.closeRightSidebar();
+      }
 
- }
+    );
+
+  }
 
   /**
 * 

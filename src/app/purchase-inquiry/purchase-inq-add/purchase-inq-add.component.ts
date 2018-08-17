@@ -90,7 +90,7 @@ export class PurchaseInqAddComponent implements OnInit {
   private getUserDetails() {
     //for getting logged in user info from local storage.
     let userDetail: string = localStorage.getItem("LoginUserDetail");
-    console.log("user detail"+userDetail);
+   // console.log("user detail"+userDetail);
     let userData: any[] = JSON.parse(userDetail);
     this.loggedInUserName = userData[0].LoginUserName;
     this.customerName = userData[0].ParentName;

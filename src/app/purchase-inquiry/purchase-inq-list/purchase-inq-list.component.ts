@@ -52,16 +52,13 @@ export class PurchaseInqListComponent implements OnInit {
   // End UI Section
 
   ngOnInit() {
-    
     let userDetail: string = localStorage.getItem("LoginUserDetail");
     let userData: any[] = JSON.parse(userDetail);
     this.loginUserType = userData[0].LoginUserType;
     this.gridHeight = UIHelper.getMainContentHeight();
     this.systemAdmin=localStorage.getItem('SystemAdmin');
-      
     this.commonService.refreshPIListSubscriber.subscribe(data => {
       this.getInquiryList();
-
     });
 
     //call method to get all inquiry data.
@@ -77,15 +74,12 @@ export class PurchaseInqListComponent implements OnInit {
     this.showLoader = true;
     this.purchaseInquiryService.getInquiryList().subscribe(
       inquiryData => {
-        
         if (inquiryData != null && inquiryData != undefined) {
           this.gridData = JSON.parse(inquiryData);
-
           this.gridData.forEach(element => {
             element.CreatedDate = new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat));
             element.ValidTillDate = new Date(this.datepipe.transform(element.ValidTillDate, Configuration.dateFormat));
           });
-
           this.showLoader = false;
         }
       },
