@@ -128,40 +128,17 @@ export class NotesComponent implements OnInit {
     * @param action
     */
     submitNote(e) {
-
-
-        //related to local storage.
-        // let dynamicNotesString = localStorage.getItem("setRequestDynamicNotes");
-        // let dynamicNotes: any[] = JSON.parse(dynamicNotesString);
-        // if (dynamicNotes == undefined || dynamicNotes.length <= 0) {
-        //     dynamicNotes = [];
-        // }
-        // let date = new Date();
-        // let CompleteDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-        // dynamicNotes.unshift({ Notes: this.addnotestring, NotesStatus: this.selectedNoteItem.text, Date: CompleteDate, CreatedBy: 'prashant' });
-        // localStorage.setItem("setRequestDynamicNotes", JSON.stringify(dynamicNotes));
-        // this.noteRequetData = dynamicNotes;
-
-
-        // Add Notes Data in model. when comes from inquiry
-        //this.noteModel.Notes
-        //this.noteModel.NoteId
+        // Add Notes Data in model. when comes from inquiry        
         this.noteModel.NoteType = this.selectedNoteItem.value;
         this.noteModel.GrandParentType = CustomerEntityType.PurchaseInquiry;
         this.noteModel.ParentType = CustomerEntityType.PurchaseInquiry;
-        //  this.noteModel.GrantParentId = "895AB8E3-FFDE-4F04-ADC9-D8A7B5A091D6";
-        //  this.noteModel.ParentId = "895AB8E3-FFDE-4F04-ADC9-D8A7B5A091D6";
+        
         this.noteModel.GrantParentId = "";
         this.addNoteForInquiry(this.noteModel);
-        // this.addnotestring = '';
     }
 
-    openEditNoteView(e, note) {
-        console.log(e);
-        console.log(note);
-        // this.notesgrid.nativeElement.style.display = 'none';
-        this.TabNotesGridStatus = false;
-        // this.editnoteform.nativeElement.style.display = 'block';
+    openEditNoteView(e, note) {           
+        this.TabNotesGridStatus = false;       
         this.TabEditNotesFormStatus = true;
         this.selectedNote = note;
     }
@@ -178,16 +155,11 @@ export class NotesComponent implements OnInit {
         this.resetModelValues();
     }
 
-
-
-
     /**
      * delete note from local storage.
      */
     deleteNote({ sender, rowIndex, dataItem }) {
-        console.log("delete note call:");
-        // this.noteRequetData.splice(rowIndex, 1);
-        // localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteRequetData));
+        console.log("delete note call:");       
     }
 
 
