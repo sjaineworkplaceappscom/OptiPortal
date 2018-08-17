@@ -23,7 +23,7 @@ export class PurchaseInqAddComponent implements OnInit {
   public minValidDate: Date = new Date();
   public purchaseInqueryAdd: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
   public validUntilForUpdate: Date;
-  publiccreatedDateForUpdate: Date;
+  public createdDateForUpdate: Date;
 
   public customerName: string;
   public customerCode: string;
@@ -50,19 +50,11 @@ export class PurchaseInqAddComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    /**
-     * apply width on opti_TabID
-    */
+    // apply width on opti_TabID
     UIHelper.getWidthOfOuterTab();
-
-    /**
-     * Add active class on tab title 
-    */
+    // Add active class on tab title 
     this.optiTab.nativeElement.children[0].classList.add('active');
-
     this.setDefaultData();
-    
   }
 
 
