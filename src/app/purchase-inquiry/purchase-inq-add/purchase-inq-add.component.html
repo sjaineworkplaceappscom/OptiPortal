@@ -43,25 +43,25 @@
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Status</span>
-                                    <kendo-dropdownlist name="status" [data]="status" [(ngModel)]="purchaseInqueryAdd.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" disabled>
+                                    <kendo-dropdownlist name="status" [data]="defaultStatus" [(ngModel)]="purchaseInqueryAdd.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" disabled>
                                     </kendo-dropdownlist>
                                 </label>
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Created Date</span>
-                                    <kendo-datepicker name="createdDate" [format]="'dd/MM/yyyy'" [(ngModel)]="purchaseInqueryAdd.CreatedDate"  disabled> </kendo-datepicker>
+                                    <kendo-datepicker name="createdDate" [format]="'dd MMM yy'" [(ngModel)]="purchaseInqueryAdd.CreatedDate"  disabled> </kendo-datepicker>
                                 </label>
 
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Created By</span>
-                                    <input type="text" name="createdBy" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.Buyer" placeholder="Created by"
+                                    <input type="text" name="createdBy"  class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.Buyer" placeholder="Created by"
                                     disabled/>
                                 </label>
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Valid Until</span>
-                                    <kendo-datepicker name="validUntil" [format]="'dd/MM/yyyy'"  [(ngModel)]="purchaseInqueryAdd.ValidTillDate" required [min]="minValidDate" > </kendo-datepicker>
+                                    <kendo-datepicker name="validUntil" [format]="'dd MMM yy'"  [(ngModel)]="purchaseInqueryAdd.ValidTillDate" required [min]="minValidDate" > </kendo-datepicker>
                                 </label>
 
                                 <label class="k-form-field">
@@ -71,8 +71,8 @@
                                 </label>
 
                                 <div class="text-right">
-                                    <button type="button" class="k-button k-primary" (click)="AddPurchaseInquiry()">Save</button>
-                                    <button type="button" class="k-button"  (click)="AddPurchaseInquiryAsDraft()">Save as draft</button>
+                                    <button type="button" class="k-button k-primary" (click)="AddPurchaseInquiry(false)">Save</button>
+                                    <button type="button" class="k-button"  (click)="AddPurchaseInquiry(true)">Save as draft</button>
                                     <button type="button" class="k-button"  (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
                                 </div>
                             </form>
