@@ -3,11 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { CustomerPurchaseOrderRoutingModule } from './customer-purchase-order-routing.module';
 import { CustomerPurchaseOrderListComponent } from './customer-purchase-order-list/customer-purchase-order-list.component';
+import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
+import { FormsModule } from '@angular/forms';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
   imports: [
     CommonModule,
-    CustomerPurchaseOrderRoutingModule
+    CustomerPurchaseOrderRoutingModule,
+    GridModule,
+    ExcelModule,
+    FormsModule,
+    AngularSvgIconModule
   ],
   declarations: [CustomerPurchaseOrderListComponent],
   exports:[CustomerPurchaseOrderListComponent]
