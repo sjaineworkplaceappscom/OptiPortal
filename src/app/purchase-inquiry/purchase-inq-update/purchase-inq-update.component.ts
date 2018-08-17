@@ -130,13 +130,13 @@ export class PurchaseInqUpdateComponent implements OnInit {
   * filter the status list according to last selected status.
   */
   public getStatusListForUpdateByCustomer() {
-    
+
     if (this.purchaseInquiryDetail.Status == 1) {
       this.status = [
         { text: "Draft", value: 1 },
         { text: "New", value: 2 },
         { text: "Canceled", value: 7 }];
-      
+
     } else {
       if (this.purchaseInquiryDetail.Status == 7) {
         // user can not do anyting only view all things are disabled.
@@ -150,51 +150,70 @@ export class PurchaseInqUpdateComponent implements OnInit {
           { text: "New", value: 2 },
           { text: "Canceled", value: 7 }];
       }
-    
+
     }
 
   }
   /**
   * UpdatePurchaseInquiry
   */
-  public UpdatePurchaseInquiry() {
-    if(this.purchaseInquiryDetail.Status==1){
-      this.purchaseInquiryDetail.Status = 2;
+  public UpdatePurchaseInquiry(saveAsDraft: boolean = false) {
+    // if No draft then disable draft button.
+    if (this.purchaseInquiryDetail.Status != 1) {
+      this.isDisableSaveAsDraft = true;
     }
+
+
+    //save as draft click
+    // Draft status
+    if (saveAsDraft) {
+      let Draftstatus: any = { text: "Draft", value: 1 };
+      this.purchaseInquiryDetail.Status = Draftstatus.value;
+    }
+    else {
+      //save click
+      if (this.purchaseInquiryDetail.Status == 1) {
+        this.purchaseInquiryDetail.Status = 2;
+      }
+    }
+
     this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
       data => {
         console.log(data),
           this.commonService.refreshPIList(null);
       },
       error => console.log("Error: ", error),
-      () => this.closeRightSidebar()
+      () => {
+        //this.closeRightSidebar()
+      }
     );
   }
 
+  // Unused
   /**
    * This will set the data with the draft status.
    */
-  public UpdatePurchaseInquiryAsDraft() {
-    let Draftstatus: any = { text: "Draft", value: 1 };
-    this.purchaseInquiryDetail.Status = Draftstatus.value;
-    this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
-      (data: any) => {
-        //   debugger;
-        console.log("record added:")
-        this.commonService.refreshPIList(null);
-      },
-      error => {
-        //  debugger;
-        alert("Something went wrong");
-        console.log("Error: ", error)
-      },
-      () => {
-        this.closeRightSidebar();
-      }
+  // public UpdatePurchaseInquiryAsDraft() {
 
-    );
 
-  }
+  //   this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
+  //     (data: any) => {
+  //       //   debugger;
+  //       console.log("record added:")
+  //       this.commonService.refreshPIList(null);
+  //     },
+  //     error => {
+  //       //  debugger;
+  //       alert("Something went wrong");
+  //       console.log("Error: ", error)
+  //     },
+  //     () => {
+  //       //this.closeRightSidebar();
+  //     }
+
+  //   );
+
+  // }
 
   /**
 * 
