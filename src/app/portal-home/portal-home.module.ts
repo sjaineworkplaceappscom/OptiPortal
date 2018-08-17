@@ -26,6 +26,9 @@ import { PurchaseInquiryModule } from '../purchase-inquiry/purchase-inquiry.modu
 
 import { SalesQuotationsModule } from '../sales-quotations/sales-quotations.module';
 import { ThemeManagerComponent } from '../common/theme-manager/theme-manager.component';
+import { DeliveryNotesModule } from '../delivery-notes/delivery-notes.module';
+import { SalesOrderModule } from '../sales-order/sales-order.module';
+import { CustomerPurchaseOrderModule } from '../customer-purchase-order/customer-purchase-order.module';
 
 
 
@@ -56,7 +59,12 @@ import { ThemeManagerComponent } from '../common/theme-manager/theme-manager.com
      FormsModule,
      
     PurchaseInquiryModule,
-    SalesQuotationsModule
+    SalesQuotationsModule,
+
+    DeliveryNotesModule,
+    SalesOrderModule,
+    CustomerPurchaseOrderModule       
+
   ],
   declarations: [
     PortalHomeComponent, PortalLeftComponent, PortalTopComponent, PortalRightComponent, DashboardComponent,ThemeManagerComponent 

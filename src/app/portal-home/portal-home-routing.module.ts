@@ -11,6 +11,11 @@ import { SalesQuotationsComponent } from '../sales-quotations/sales-quotations.c
 import { SalesQuotationsListComponent } from '../sales-quotations/sales-quotations-list/sales-quotations-list.component';
 import { ApproveUsersComponent } from '../account/approve-users/approve-users.component';
 
+import { SalesOrderListComponent } from '../sales-order/sales-order-list/sales-order-list.component';
+import { DeliveryNotesListComponent } from '../delivery-notes/delivery-notes-list/delivery-notes-list.component';
+import { CustomerPurchaseOrderListComponent } from '../customer-purchase-order/customer-purchase-order-list/customer-purchase-order-list.component';
+
+
 const routes: Routes = [
   {
     path: '', component: PortalHomeComponent,
@@ -19,7 +24,10 @@ const routes: Routes = [
       
       { path: 'shared', loadChildren: '../shared/shared.module#SharedModule' },
       { path: 'sales', component:SalesQuotationsListComponent },
-      {path:'dashboard',component:DashboardComponent},
+      { path:'dashboard', component:DashboardComponent },
+      { path: 'customerpurchaseorder', component:CustomerPurchaseOrderListComponent },
+      { path: 'salesorder', component:SalesOrderListComponent },
+      { path: 'deliverynotes', component:DeliveryNotesListComponent }
       
 
       // { path: 'list', component: PurchaseInqListComponent },
