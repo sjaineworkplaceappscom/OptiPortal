@@ -23,7 +23,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   isNotes: boolean = false;
   tabName: string = 'home';
   notesMasterData: NotesModel = new NotesModel();
-
+  showLoader: boolean = false;
   /**
   * This method will reset the model and date object for add form.
  */
@@ -74,33 +74,40 @@ export class PurchaseInqUpdateComponent implements OnInit {
     UIHelper.getWidthOfOuterTab();
     // Add active class on tab title 
     this.optiTab.nativeElement.children[0].classList.add('active');
+
     // Set sidebar data;
     this.commonService.currentSidebarInfo.subscribe(
+
       currentSidebarData => {
-        console.log("ngoninit subscriber");
+
         if (currentSidebarData != null && currentSidebarData != undefined) {
+          this.showLoader = true;
           this.purchaseInquiryDetail = currentSidebarData.RequesterData;
           if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
             this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
             this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
+
             // Set notes data for inquiry
             this.notesMasterData.ParentId = this.purchaseInquiryDetail.PurchaseInquiryId;
-            this.notesMasterData.ParentType=CustomerEntityType.PurchaseInquiry;
-            
+            this.notesMasterData.ParentType = CustomerEntityType.PurchaseInquiry;
+
             // Fire note event 
             this.commonService.setNotesData(this.notesMasterData);
+            this.getStatusListForUpdateByCustomer();
+            this.getUserDetails();
 
+            this.showLoader = false;
           }
         }
       },
       error => {
-        //this.showLoader=false;
+        this.showLoader = false;
         alert("Something went wrong");
         console.log("Error: ", error)
       }
+
     );
-    this.getStatusListForUpdateByCustomer();
-    this.getUserDetails();
+
   }
 
   ngOnChange() {
@@ -110,7 +117,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
         this.purchaseInquiryDetail = currentSidebarData.RequesterData;
       },
       error => {
-       // this.showLoader=false;
+        // this.showLoader=false;
         alert("Something went wrong");
         console.log("Error: ", error)
       }
@@ -190,16 +197,20 @@ export class PurchaseInqUpdateComponent implements OnInit {
       }
     }
 
+    this.showLoader = true;
     this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
       data => {
-        console.log(data),
-          this.commonService.refreshPIList(null);
+        this.showLoader = false;
+        this.commonService.refreshPIList(null);
+        
       },
       error => {
-        //this.showLoader=false;
         alert("Something went wrong");
         console.log("Error: ", error)
-      }
+        this.showLoader = false;
+      },
+      () => { this.showLoader = false; }
+
       // () => this.closeRightSidebar()
     );
   }

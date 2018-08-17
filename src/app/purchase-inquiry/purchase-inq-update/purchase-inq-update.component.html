@@ -17,6 +17,14 @@
         </ul>
     </div>
     
+     <!-- loader start -->
+     <div class="opti_loader opti_loader-home-tab" *ngIf="showLoader">
+        <div class="opti_spinner"></div>
+    </div>
+    <!-- loader end -->
+
+    <ng-container *ngIf="showLoader==false">
+
     <div id="home" *ngIf="tabName=='home'" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
 
         <!-- loader start -->
@@ -108,5 +116,7 @@
     <div id="notes" *ngIf="tabName=='notes'" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
         <app-notes [NotesMasterData]="notesMasterData" [tabparent]="'notesTab'"></app-notes>
     </div>
+
+    </ng-container>
     <!-- tab end -->
 </div> 

@@ -20,6 +20,7 @@ export class PurchaseInqAddComponent implements OnInit {
   isNotes: boolean = false;
   tabName: string = 'home';
   tabStatus: boolean = false;
+  showLoader:boolean=false;
 
   public minValidDate: Date = new Date();
   public purchaseInqueryAdd: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
@@ -81,14 +82,12 @@ export class PurchaseInqAddComponent implements OnInit {
 
   private getUserDetails() {
     //for getting logged in user info from local storage.
-    let userDetail: string = localStorage.getItem("LoginUserDetail");
-   // console.log("user detail"+userDetail);
+    let userDetail: string = localStorage.getItem("LoginUserDetail");   
     let userData: any[] = JSON.parse(userDetail);
     this.loggedInUserName = userData[0].LoginUserName;
     this.customerName = userData[0].ParentName;
     this.customerCode = userData[0].ParentCode;
-    this.loginUserType = userData[0].LoginUserType;
-    console.log("user detail:" + userData[0].LoginUserName + "," + userData[0].CustomerCode);
+    this.loginUserType = userData[0].LoginUserType;    
   }
 
   public AddPurchaseInquiry(saveAsDraft: boolean = false) {
@@ -97,17 +96,19 @@ export class PurchaseInqAddComponent implements OnInit {
       let Draftstatus: any = { text: "Draft", value: 1 };
       this.purchaseInqueryAdd.Status = Draftstatus.value;
     }
-
+    this.showLoader=true;
     this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
       (data: any) => {        
         this.commonService.refreshPIList(null);
         this.openUpdateSideBar(data);
+        this.showLoader=false;
       },
       error => {
         alert("Something went wrong");
         console.log("Error: ", error)
       },
       () => {
+        this.showLoader=false;
        // this.closeRightSidebar();
       }
 
