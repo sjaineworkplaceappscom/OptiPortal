@@ -172,9 +172,10 @@ export class NotesComponent implements OnInit {
      * close note add form
      * @param e
      */
-    closeNoteWindow(e) {
+    closeAddNoteWindow(e) {
         this.TabNotesGridStatus = true;
         this.TabAddNotesFormStatus = false;
+        this.resetModelValues();
     }
 
 
@@ -266,13 +267,21 @@ export class NotesComponent implements OnInit {
     /**
      * method will close add note form and reset model.
      */
-    resetModelAndCloseAddNoteView() {
-        //close add note component
-        this.TabNotesGridStatus = true;
-        this.TabAddNotesFormStatus = false;
+    resetModelValues() {
+        //reset note model and type.
         this.noteModel.Notes = '';
         let noteTypeDefault = { text: "General ", value: 1 };
         this.noteModel.NoteType = noteTypeDefault.value;
+        this.selectedNoteItem = this.noteTypes[0];
+    }
+
+    /**
+     * close add note view.
+     */
+    closeAddNote(){
+        //close add note component
+        this.TabNotesGridStatus = true;
+        this.TabAddNotesFormStatus = false;
     }
 
 
@@ -320,7 +329,8 @@ export class NotesComponent implements OnInit {
                 console.log("Error: ", error)
             },
             () => {
-                this.resetModelAndCloseAddNoteView();
+                this.resetModelValues();
+                this.closeAddNote();
                 // Get notes data.
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
 
@@ -349,17 +359,13 @@ export class NotesComponent implements OnInit {
             () => {
               
             });
-        //this.noteItemsData.splice(rowIndex, 1);
-        // localStorage.setItem("setRequestDynamicNotes", JSON.stringify(this.noteItemsData));
+        
     }
 
     updateNote(e) {
         
         this.selectedNote
-        console.log(this.selectedNote);
-        // this.notesgrid.nativeElement.style.display = 'block';
         this.TabNotesGridStatus = true;
-        // this.editnoteform.nativeElement.style.display = 'none';
         this.TabEditNotesFormStatus = false;
         this.sharedComponentService.updateNote(this.selectedNote).subscribe(
             resp => {

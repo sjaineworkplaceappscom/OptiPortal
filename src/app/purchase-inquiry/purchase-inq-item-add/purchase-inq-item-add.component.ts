@@ -26,15 +26,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    /**
-     * Apply Grid Height
-    */
+    // Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
-      
-    /**
-     * Check Mobile device
-    */
-      this.isMobile = UIHelper.isMobile();
+    // Check Mobile device
+    this.isMobile = UIHelper.isMobile();
   }
   gridItemsData = [];
   purchseInqItemModel = new TempPurchaseInquiryItemModel();
