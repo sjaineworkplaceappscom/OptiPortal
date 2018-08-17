@@ -59,6 +59,11 @@ export class PurchaseInqListComponent implements OnInit {
     this.systemAdmin=localStorage.getItem('SystemAdmin');
     this.commonService.refreshPIListSubscriber.subscribe(data => {
       this.getInquiryList();
+    },
+    error => {
+      this.showLoader=false;
+      alert("Something went wrong");
+      console.log("Error: ", error)
     });
 
     //call method to get all inquiry data.
@@ -82,6 +87,11 @@ export class PurchaseInqListComponent implements OnInit {
           });
           this.showLoader = false;
         }
+      },
+      error => {
+        this.showLoader=false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
       },
       ()=>{
             this.showLoader=false;

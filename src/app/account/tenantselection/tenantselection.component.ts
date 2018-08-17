@@ -26,6 +26,11 @@ export class TenantselectionComponent implements OnInit {
       authSharedData => {
         
         this.authSharedData = authSharedData;
+      },
+      error => {
+        //this.showLoader=false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
       }
     );
    

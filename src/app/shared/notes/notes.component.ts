@@ -101,7 +101,12 @@ export class NotesComponent implements OnInit {
                 // this.noteModel.ParentType=data.ParentType;
 
                 // Get notes data.
-                this.getNoteList(this.noteModel.ParentId, data.ParentType);
+                this.getNoteList(this.noteModel.ParentId, data.ParentType);                
+            },
+            error => {
+                this.showLoader=false;
+                alert("Something went wrong");
+                console.log("Error: ", error)
             }
         );
 
@@ -199,6 +204,11 @@ export class NotesComponent implements OnInit {
                     this.formatNotesDate();
                 }
                 this.showLoader = false;
+            },
+            error => {
+                this.showLoader=false;
+                alert("Something went wrong");
+                console.log("Error: ", error)
             });
     }
 
@@ -224,7 +234,7 @@ export class NotesComponent implements OnInit {
                 this.noteItemsData.splice(rowIndex, 1);
             },
             error => {
-
+                this.showLoader=false;
                 alert("Something went wrong");
                 console.log("Error: ", error)
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
@@ -248,6 +258,7 @@ export class NotesComponent implements OnInit {
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },
             error => {
+                this.showLoader=false;
                 alert("Something went wrong");
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },

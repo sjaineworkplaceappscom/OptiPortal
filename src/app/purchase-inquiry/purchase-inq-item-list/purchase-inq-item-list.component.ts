@@ -32,6 +32,8 @@ export class PurchaseInqItemListComponent implements OnInit {
           },
           error => {
               this.showLoader = false;
+              alert('Something Went Wrong')
+              console.log("Error: " + error);
               // handle error.
           });
 

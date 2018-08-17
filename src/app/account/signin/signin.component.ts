@@ -108,6 +108,11 @@ export class SigninComponent implements OnInit {
         else{
           this.userNotExist=true;
         }
+      },
+      error => {
+        this.showLoader=false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
       }
     );
 
