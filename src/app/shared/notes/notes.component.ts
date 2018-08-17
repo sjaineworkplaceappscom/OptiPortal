@@ -280,6 +280,7 @@ export class NotesComponent implements OnInit {
         this.showLoader = true;
         this.sharedComponentService.getNotesList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry).subscribe(
             notesData => {
+                
                 this.formatNotesDate(notesData);
                  console.log("Note data from server: " + notesData);
                 this.noteItemsData = JSON.parse(notesData);

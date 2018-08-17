@@ -30,7 +30,16 @@
                       <kendo-grid-column class="opti_notes-column" media="(min-width: 320px)">
                           <ng-template kendoGridCellTemplate let-dataItem>
                               <dl>
-                                  <dd><span style="font-weight:bold;">Created By: </span>  {{ dataItem.CreatedByName }} <span style="font-weight:bold;">On </span> {{ dataItem.CreatedDate }} for Item001
+                                  <!-- <dd><span style="font-weight:bold;">Created By </span>  {{ dataItem.CreatedByName }} <span style="font-weight:bold;">On </span> {{ dataItem.CreatedDate| date:'dd MMM yy'  }} <span style="font-weight:bold;">for</span>Item001 -->                                    
+                                    <dd *ngIf='dataItem.ParentIdText ===""'>{{ dataItem.CreatedByName }} <span style="font-weight:bold;">Created </span> {{dataItem.NoteText}} note <span style="font-weight:bold;">On </span> {{ dataItem.CreatedDate| date:'dd MMM yy'  }} 
+                                        <span class="float-right opti_note-action-button-sec">
+                                                <svg-icon kendoGridEditCommand src="assets/images/common/edit.svg" (click)="openEditNoteView($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
+                                                    class="opti_mouse-pointer"></svg-icon>
+                                                <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
+                                                    class="opti_mouse-pointer"></svg-icon>
+      
+                                            </span>
+                                    <dd *ngIf='dataItem.ParentIdText !=""'>{{ dataItem.CreatedByName }} <span style="font-weight:bold;">Created </span> {{dataItem.NoteText}} note <span style="font-weight:bold;">On </span> {{ dataItem.CreatedDate| date:'dd MMM yy'  }} <span style="font-weight:bold;">for {{dataItem.ParentIdText}}</span>
                                       <span class="float-right opti_note-action-button-sec">
                                           <svg-icon kendoGridEditCommand src="assets/images/common/edit.svg" (click)="openEditNoteView($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
                                               class="opti_mouse-pointer"></svg-icon>
