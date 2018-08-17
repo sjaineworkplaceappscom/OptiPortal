@@ -49,19 +49,19 @@
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Created Date</span>
-                                    <kendo-datepicker name="createdDate" [format]="'dd/MM/yyyy'" [(ngModel)]="purchaseInqueryAdd.CreatedDate"  disabled> </kendo-datepicker>
+                                    <kendo-datepicker name="createdDate" [format]="'dd MMM yy'" [(ngModel)]="purchaseInqueryAdd.CreatedDate"  disabled> </kendo-datepicker>
                                 </label>
 
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Created By</span>
-                                    <input type="text" name="createdBy" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.Buyer" placeholder="Created by"
+                                    <input type="text" name="createdBy"  class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.Buyer" placeholder="Created by"
                                     disabled/>
                                 </label>
 
                                 <label class="k-form-field">
                                     <span class="opti_form-label">Valid Until</span>
-                                    <kendo-datepicker name="validUntil" [format]="'dd/MM/yyyy'"  [(ngModel)]="purchaseInqueryAdd.ValidTillDate" required [min]="minValidDate" > </kendo-datepicker>
+                                    <kendo-datepicker name="validUntil" [format]="'dd MMM yy'"  [(ngModel)]="purchaseInqueryAdd.ValidTillDate" required [min]="minValidDate" > </kendo-datepicker>
                                 </label>
 
                                 <label class="k-form-field">
