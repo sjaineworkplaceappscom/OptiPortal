@@ -113,7 +113,9 @@ export class PurchaseInqItemAddComponent implements OnInit {
               console.log("grid item data" + JSON.stringify(this.gridItemsData) );
           },
           error => {
-              alert("Something went wrong");            
+            this.showLoader=false;
+              alert("Something went wrong");  
+              console.log("Error: " + error);          
           });
           () =>{
             this.showLoader = false;

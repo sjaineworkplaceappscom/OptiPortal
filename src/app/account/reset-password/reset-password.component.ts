@@ -24,6 +24,11 @@ export class ResetPasswordComponent implements OnInit {
          if(data==true)       {
            alert('We have sent reset password link to your email address ('+this.email+'), please check.');
          }
+      },
+      error => {
+        this.showLoader=false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
       }
     )
 

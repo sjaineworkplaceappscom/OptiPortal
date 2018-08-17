@@ -106,6 +106,11 @@ export class NotesComponent implements OnInit {
                 this.noteModel.ParentId = data.ParentId;
                 // Get notes data.
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
+            },
+            error => {
+                this.showLoader=false;
+                alert("Something went wrong");
+                console.log("Error: ", error)
             }
         );
 
@@ -300,6 +305,11 @@ export class NotesComponent implements OnInit {
                  console.log("Note data from server: " + notesData);
                 this.noteItemsData = JSON.parse(notesData);
                 this.showLoader = false;
+            },
+            error => {
+                this.showLoader=false;
+                alert("Something went wrong");
+                console.log("Error: ", error)
             });
     }   
 
@@ -324,7 +334,7 @@ export class NotesComponent implements OnInit {
                 console.log("record added:")
             },
             error => {
-
+                this.showLoader = false;
                 alert("Something went wrong");
                 console.log("Error: ", error)
             },
@@ -351,7 +361,7 @@ export class NotesComponent implements OnInit {
                 this.noteItemsData.splice(rowIndex, 1);
             },
             error => {
-
+                this.showLoader=false;
                 alert("Something went wrong");
                 console.log("Error: ", error)
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
@@ -372,7 +382,9 @@ export class NotesComponent implements OnInit {
                 console.log("record updated:")
             },
             error => {
+                this.showLoader=false;
                 alert("Something went wrong");
+                console.log("Error: " + error);
             },
             () => {
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);

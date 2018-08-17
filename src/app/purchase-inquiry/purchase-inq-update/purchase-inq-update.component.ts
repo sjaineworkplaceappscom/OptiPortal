@@ -89,6 +89,11 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
           }
         }
+      },
+      error => {
+        //this.showLoader=false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
       }
     );
     this.getStatusListForUpdateByCustomer();
@@ -100,6 +105,11 @@ export class PurchaseInqUpdateComponent implements OnInit {
       currentSidebarData => {
         console.log("ngonchange subscriber");
         this.purchaseInquiryDetail = currentSidebarData.RequesterData;
+      },
+      error => {
+       // this.showLoader=false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
       }
     );
   }
@@ -163,7 +173,11 @@ export class PurchaseInqUpdateComponent implements OnInit {
         console.log(data),
           this.commonService.refreshPIList(null);
       },
-      error => console.log("Error: ", error),
+      error => {
+        //this.showLoader=false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
+      },
       () => this.closeRightSidebar()
     );
   }

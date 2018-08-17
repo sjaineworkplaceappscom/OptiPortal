@@ -43,6 +43,11 @@ export class ApproveUsersComponent implements OnInit {
       data => {
         alert('User(s) Approved successfully.');
         this.getInactiveUsersData();
+      },
+      error => {
+        //this.showLoader=false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
       }
     );
    
@@ -54,6 +59,11 @@ export class ApproveUsersComponent implements OnInit {
       data => {
         alert('User(s) Rejected successfully.');
         this.getInactiveUsersData();
+      },
+      error => {
+        //this.showLoader=false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
       }
     );
 
@@ -64,6 +74,11 @@ export class ApproveUsersComponent implements OnInit {
     this.accountService.getInactiveUsers().subscribe(
       (data: any) => {
         this.items = JSON.parse(data, null);
+      },
+      error => {
+        //this.showLoader=false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
       }
     );
   }

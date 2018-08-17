@@ -76,6 +76,11 @@ export class SignupComponent implements OnInit {
       data => {
         this.userType = data;
        //localStorage.setItem("UserType", this.userType.toString());
+      },
+      error => {
+        this.showLoader=false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
       }
     )
 
