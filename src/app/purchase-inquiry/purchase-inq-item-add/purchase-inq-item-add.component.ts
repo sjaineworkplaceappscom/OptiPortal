@@ -98,10 +98,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
       //const selectedData = selection.selectedRows[0].dataItem;
       const selectedData = this.gridItemsData[0];
       
-      this.purchseInqItemModel = JSON.parse(JSON.stringify(selectedData));
-      this.requestDate = new Date(this.purchseInqItemModel.RequestDate);
-      this.requiredDate = new Date(this.purchseInqItemModel.RequiredDate);
-      this.selectedItemId = this.purchseInqItemModel.PurchaseInquiryItemId;
+      this.purchseInqItemAdd = JSON.parse(JSON.stringify(selectedData));
+      this.requestDate = new Date(this.purchseInqItemAdd.RequestDate);
+      this.requiredDate = new Date(this.purchseInqItemAdd.RequiredDate);
+      this.selectedItemId = this.purchseInqItemAdd.PurchaseInquiryItemId;
       
   }
 

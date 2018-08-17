@@ -158,6 +158,9 @@ export class PurchaseInqUpdateComponent implements OnInit {
   * UpdatePurchaseInquiry
   */
   public UpdatePurchaseInquiry() {
+    if(this.purchaseInquiryDetail.Status==1){
+      this.purchaseInquiryDetail.Status = 2;
+    }
     this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
       data => {
         console.log(data),
