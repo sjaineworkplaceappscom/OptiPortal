@@ -14,6 +14,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from '../../enums/enums';
 import { DatePipe } from '@angular/common'
 import { Configuration } from '../../../assets/configuration';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 @Component({
   selector: 'app-purchase-inq-list',
@@ -81,9 +82,10 @@ export class PurchaseInqListComponent implements OnInit {
       inquiryData => {
         if (inquiryData != null && inquiryData != undefined) {
           this.gridData = JSON.parse(inquiryData);
+          
           this.gridData.forEach(element => {
-            element.CreatedDate = new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat));
-            element.ValidTillDate = new Date(this.datepipe.transform(element.ValidTillDate, Configuration.dateFormat));
+            element.CreatedDate=DateTimeHelper.ParseDate(element.CreatedDate);
+            element.ValidTillDate=DateTimeHelper.ParseDate(element.ValidTillDate);            
           });
           this.showLoader = false;
         }

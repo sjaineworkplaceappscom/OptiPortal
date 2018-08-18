@@ -7,6 +7,7 @@ import { CustomerEntityType } from '../../enums/enums';
 import { Commonservice } from '../../services/commonservice.service';
 import { DatePipe } from '../../../../node_modules/@angular/common';
 import { Configuration } from '../../../assets/configuration';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 @Component({
     selector: 'app-notes',
@@ -211,8 +212,8 @@ export class NotesComponent implements OnInit {
     // Format dates.
     private formatNotesDate() {
         this.noteItemsData.forEach(element => {
-            element.CreatedDate = new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
-            element.ModifiedDate = new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
+            element.CreatedDate =DateTimeHelper.ParseDate(element.CreatedDate); //new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
+            element.ModifiedDate = DateTimeHelper.ParseDate(element.ModifiedDate);//new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
         });
 
     }

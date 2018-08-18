@@ -196,6 +196,8 @@ export class PurchaseInqUpdateComponent implements OnInit {
         this.purchaseInquiryDetail.Status = 2;
       }
     }
+    debugger;
+    console.log("update",this.purchaseInquiryDetail.ValidTillDate);
 
     this.showLoader = true;
     this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(

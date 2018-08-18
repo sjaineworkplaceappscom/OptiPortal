@@ -4,6 +4,7 @@ import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry'
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { UIHelper } from '../../helpers/ui.helpers';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 @Component({
   selector: 'app-purchase-inq-item-add',
@@ -105,8 +106,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
       const selectedData = this.gridItemsData[0];
       
       this.purchaseItemsModel = JSON.parse(JSON.stringify(selectedData));
-      this.requestDate = new Date(this.purchaseItemsModel.RequestDate);
-      this.requiredDate = new Date(this.purchaseItemsModel.RequiredDate);
+      this.requestDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequestDate);
+      this.requiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
       this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
       
   }

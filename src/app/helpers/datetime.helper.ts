@@ -1,9 +1,22 @@
+import * as moment from 'moment';
+// import * as momentTZ from 'moment-timezone';
+import { DatePipe } from '../../../node_modules/@angular/common';
+import { Configuration } from 'src/assets/configuration';
+export class DateTimeHelper{
+    constructor(private datepipe:DatePipe){}
+
+    public static  ParseDate(date:any){       
+       // return new Date(moment(date).format(Configuration.dateFormat));                       
+           return new Date(date);
+    }
+}
+
 // import * as moment from 'moment';
 // import * as momentTZ from 'moment-timezone';
-// import { LocalStorageHelper } from 'app/helpers/localstorage.helper';
-// import { DateTimeFormatConstants, TimeZoneFormatContants } from 'app/misc/constants';
-// import { UserOtherInfo } from 'app/models/login';
-// import { DateStyle, TimeStyle } from 'app/misc/datetime.enum';
+// //import { LocalStorageHelper } from 'app/helpers/localstorage.helper';
+// //import { DateTimeFormatConstants, TimeZoneFormatContants } from 'app/misc/constants';
+// //import { UserOtherInfo } from 'app/models/login';
+// //import { DateStyle, TimeStyle } from 'app/misc/datetime.enum';
 
 
 // export class DateTimeHelper {
