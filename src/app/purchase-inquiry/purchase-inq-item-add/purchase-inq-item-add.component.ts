@@ -122,6 +122,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
       this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
           inquiryItemData=>{        
               this.gridItemsData = JSON.parse(inquiryItemData);
+              this.gridItemsData.forEach(element => {
+                element.RequiredDate=DateTimeHelper.ParseDate(element.RequiredDate);
+                element.RequestDate=DateTimeHelper.ParseDate(element.RequestDate);            
+              });
               console.log("grid item data" + JSON.stringify(this.gridItemsData) );
           },
           error => {
