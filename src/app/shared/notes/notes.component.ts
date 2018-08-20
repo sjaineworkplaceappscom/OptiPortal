@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { NotesModel } from '../../models/purchaserequest/notes';
-import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { CustomerEntityType } from '../../enums/enums';
 import { Commonservice } from '../../services/commonservice.service';
@@ -45,7 +44,6 @@ export class NotesComponent implements OnInit {
     /**
      * ITEMS NOTES VARIABLE
     */
-
     noteItemsData: any[];
     selectedItemNote: any = {};
     itemNotesGrid: boolean = true;
@@ -88,20 +86,24 @@ export class NotesComponent implements OnInit {
 
 
         this.noteModel = new NotesModel();
+
         // Subscriber for Load data.
         this.commonService.currentNotesData.subscribe(
             (data: NotesModel) => {
-                this.noteModel=data;
-
+                this.noteModel = data;
+                console.log(this.noteModel);
                 // Note parent Id
-                // this.noteModel.ParentId = data.ParentId;
-                // this.noteModel.ParentType=data.ParentType;
-
-                // Get notes data.
-                this.getNoteList(this.noteModel.ParentId, data.ParentType);                
+                if (this.noteModel.ParentType == CustomerEntityType.PurchaseInquiry) {
+                    // Get notes data.
+                    this.getNoteList(this.noteModel.ParentId, data.ParentType);
+                }
+                // else if (this.noteModel.ParentType == CustomerEntityType.PurchaseInquiryItem) {
+                //     // Get notes data.
+                //     this.getNoteList(this.noteModel.ParentId, data.ParentType);
+                // }
             },
             error => {
-                this.showLoader=false;
+                this.showLoader = false;
                 alert("Something went wrong");
                 console.log("Error: ", error)
             }
@@ -123,7 +125,7 @@ export class NotesComponent implements OnInit {
         this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
         this.TabEditNotesFormStatus = true;
         this.selectedNote = note;
-        this.selectedNoteItem={text:this.selectedNote.NoteText,value: this.selectedNote.NoteType};        
+        this.selectedNoteItem = { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
     }
 
     /**
@@ -149,9 +151,9 @@ export class NotesComponent implements OnInit {
                 this.resetModelValues();
                 this.closeAddNote();
                 // Get notes data.
-                this.getNoteList(this.noteModel.ParentId,this.noteModel.ParentType);
+                this.getNoteList(this.noteModel.ParentId, this.noteModel.ParentType);
             });
-        
+
     }
 
 
@@ -203,7 +205,7 @@ export class NotesComponent implements OnInit {
                 this.showLoader = false;
             },
             error => {
-                this.showLoader=false;
+                this.showLoader = false;
                 alert("Something went wrong");
                 console.log("Error: ", error)
             });
@@ -212,7 +214,7 @@ export class NotesComponent implements OnInit {
     // Format dates.
     private formatNotesDate() {
         this.noteItemsData.forEach(element => {
-            element.CreatedDate =DateTimeHelper.ParseDate(element.CreatedDate); //new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
+            element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate); //new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
             element.ModifiedDate = DateTimeHelper.ParseDate(element.ModifiedDate);//new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
         });
 
@@ -231,7 +233,7 @@ export class NotesComponent implements OnInit {
                 this.noteItemsData.splice(rowIndex, 1);
             },
             error => {
-                this.showLoader=false;
+                this.showLoader = false;
                 alert("Something went wrong");
                 console.log("Error: ", error)
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
@@ -255,7 +257,7 @@ export class NotesComponent implements OnInit {
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },
             error => {
-                this.showLoader=false;
+                this.showLoader = false;
                 alert("Something went wrong");
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },
