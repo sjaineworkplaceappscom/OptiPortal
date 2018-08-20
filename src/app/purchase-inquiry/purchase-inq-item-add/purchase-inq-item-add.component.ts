@@ -6,6 +6,8 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
 import { UIHelper } from '../../helpers/ui.helpers';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { Commonservice } from '../../services/commonservice.service';
+import { NotesModel } from '../../models/purchaserequest/notes';
+import { CustomerEntityType } from '../../enums/enums';
 
 @Component({
   selector: 'app-purchase-inq-item-add',
@@ -27,7 +29,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   itemGrid:boolean = true;
   tabName: string = 'home';
   
-  
+  isFromGrid = false;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -50,38 +52,16 @@ export class PurchaseInqItemAddComponent implements OnInit {
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
   constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) { }
-<<<<<<< HEAD
-  ngOnChange() {
-    this.commonService.currentItemData.subscribe(
-      (data: TempPurchaseInquiryModel) => {
-          this.receivedPIModel=data;
-          this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId
-          console.log("received parent id at piia onchange:"+this.receivedPurchaseInquiryId);
-      },
-      error => {
-          this.showLoader=false;
-          alert("Something went wrong");
-          console.log("Error: ", error)
-      }
-  );
-  }
-=======
   
 
->>>>>>> c6afd0eb0ace35304862d5ef8d6cc8aeca70dad3
   ngOnInit() {
-    /**
-     * Apply Grid Height
-    */
+    
+    // Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
         
-    /**
-      * Check Mobile device
-    */
+    
+    // Check Mobile device
     this.isMobile = UIHelper.isMobile();
-<<<<<<< HEAD
-=======
-   
 
     // GET current theme colour
     this.commonService.themeCurrentData.subscribe(
@@ -90,13 +70,12 @@ export class PurchaseInqItemAddComponent implements OnInit {
       }
     );
 
->>>>>>> c6afd0eb0ace35304862d5ef8d6cc8aeca70dad3
-
     this.commonService.currentItemData.subscribe(
       (data: TempPurchaseInquiryModel) => {
           this.receivedPIModel=data;
           this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId
           console.log("received parent id at piia:"+this.receivedPurchaseInquiryId);
+          this.getInquiryItemsData(this.receivedPurchaseInquiryId);
       },
       error => {
           this.showLoader=false;
@@ -105,7 +84,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
       }
   );
 
-  this.getInquiryItemsData(this.receivedPurchaseInquiryId);
+
   }
 
   showItemsGrid(){
@@ -148,19 +127,17 @@ export class PurchaseInqItemAddComponent implements OnInit {
    */
   public onItemGridDataSelection(selection, status) {
     
-      //fatch and parse row value.
-      //let selectedItem = gridItemsData.data.data[selection.index];
-      //const selectedData = selection.selectedRows[0].dataItem;
-      const selectedData = this.gridItemsData[0];
-      
+      this.isFromGrid  = true;
+      const selectedData = this.gridItemsData[selection.index];
       this.purchaseItemsModel = JSON.parse(JSON.stringify(selectedData));
       this.requestDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequestDate);
       this.requiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
+
       this.purchaseItemsModel.RequestDate = this.requestDate;
       this.purchaseItemsModel.RequiredDate = this.requiredDate;
       this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
       this.showItemForm();
-      
+
       
   }
 
@@ -195,7 +172,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
      * When click on save 
      */
     public OnSave() {debugger;
-
+      this.isFromGrid = false;
       this.AddPurchaseInquiryItem();
       this.addItem = false;
       this.itemGrid = true;
@@ -215,6 +192,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
      */
     public AddPurchaseInquiryItem() {
       this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
+      console.log(":"+this.purchaseItemsModel.PurchaseInquiryId);
      this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
          data => {
            this.getInquiryItemsData(this.receivedPurchaseInquiryId);
@@ -230,10 +208,27 @@ export class PurchaseInqItemAddComponent implements OnInit {
     }
 
   // tab code start
-  
   openTab(evt, tabName) {
+
+    if(tabName=='notes')
+    {
+      let notedata:NotesModel=new NotesModel();
+      notedata.ParentId=this.purchaseItemsModel.PurchaseInquiryItemId;      
+      notedata.ParentType=CustomerEntityType.PurchaseInquiryItem;
+
+      notedata.GrantParentId=this.receivedPurchaseInquiryId;
+      notedata.GrandParentType=CustomerEntityType.PurchaseInquiry;
+
+      this.commonService.setNotesItemData(notedata);
+    }
+
+
+
     this.tabName = tabName;
     UIHelper.customOpenTab(evt, tabName, 'vertical');
+
+
+
   }
   // tab code end
     /**
