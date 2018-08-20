@@ -19,6 +19,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NotesItemComponent } from './notes-item/notes-item.component';
+import { AttachmentItemComponent } from './attachment-item/attachment-item.component';
 
 
 @NgModule({
@@ -48,7 +49,7 @@ import { NotesItemComponent } from './notes-item/notes-item.component';
      HttpClientModule,         
      FormsModule,
   ],
-  declarations: [AttachmentComponent,NotesComponent, NotesItemComponent],
-  exports:[AttachmentComponent,NotesComponent,NotesItemComponent]
+  declarations: [AttachmentComponent,NotesComponent, NotesItemComponent, AttachmentItemComponent],
+  exports:[AttachmentComponent,NotesComponent,NotesItemComponent,AttachmentItemComponent]
 })
 export class SharedModule { }

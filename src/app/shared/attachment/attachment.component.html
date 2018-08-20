@@ -1,4 +1,4 @@
-<div class="container-fluid" id="opti_purchaseInquiryAttachementSectionID" *ngIf="getTabParent=='attachementTab'">
+<div class="container-fluid" id="opti_purchaseInquiryAttachementSectionID">
   <div class="row">
       <div class="col-md-12">
           
@@ -91,62 +91,3 @@
 </div>
 
 
-<div id="opti_purchaseInquiryItemAttachementSectionID" *ngIf="getTabParent=='itemsTab'">
-    <h5>Upload Items Attachement</h5>
-    <kendo-upload class="opti_items-upload" [saveUrl]="uploadAttachementItemSaveUrl" [removeUrl]="uploadAttachementItemRemoveUrl">
-    </kendo-upload>
-
-    <!-- items attachement grid start -->
-        <kendo-grid  
-        [data]="gridAttachmentData" 
-        [resizable]="false" 
-        [pageSize]="50" 
-        [pageable]="true" 
-        [sortable]="true" 
-        [filterable]=isColumnFilterItemsAttachementGrid
-        [groupable]="false" 
-        [columnMenu]="{ columnChooser: false }" 
-        
-        [selectable]="true"
-        name="gridAttachmentData"
-        #gridAttachementsValues>
-
-        <!-- [height]=gridHeight-41-80  -->
-
-            <!-- grid template start -->
-            <ng-template kendoGridToolbarTemplate>
-                <!-- show hide column start show hide -->
-                <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
-
-                <!-- checkbox -->
-                <form class="k-form opti_show-hide-grid-column-filter float-left">
-                    <div class="k-form-field">
-                        <input type="checkbox" id="opti_ColumnItemsFilterattachementID" [(ngModel)]="isColumnFilterItemsAttachementGrid" class="k-checkbox" name="columnfilter"
-                        />
-                        <label class="k-checkbox-label" for="opti_ColumnItemsFilterattachementID">Enable Filter</label>
-                    </div>
-                </form>
-
-                <!-- xlsx button start -->
-                <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
-                    <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
-                </button>
-
-                
-            </ng-template>
-            <!-- grid template end -->
-
-            <!-- grid column start -->
-            <kendo-grid-column field="AttachmentId"  title="AttachmentID"[width]="160" title=""></kendo-grid-column>
-            <kendo-grid-column field="FileName" title="Name" [width]="140"></kendo-grid-column>
-            <kendo-grid-column field="Size" title="Size" [width]="200"></kendo-grid-column>
-            <kendo-grid-column field="FilePath" [width]="160" title="Reference"></kendo-grid-column>
-            <!-- grid column end -->
-
-            <!-- xlsx template start -->
-            <kendo-grid-excel fileName="attachements.xlsx"></kendo-grid-excel>
-            <!-- xlsx template end -->
-
-        </kendo-grid>
-    <!-- items attachement grid end -->
-</div>
