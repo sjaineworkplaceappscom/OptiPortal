@@ -90,9 +90,9 @@ export class NotesItemComponent implements OnInit {
               this.noteModel = data;
               console.log(this.noteModel);
               // Note parent Id
-              if (this.noteModel.ParentType == CustomerEntityType.PurchaseInquiry) {
+              if (this.noteModel.ParentType == CustomerEntityType.PurchaseInquiryItem) {
                   // Get notes data.
-                  this.getNoteList(this.noteModel.ParentId, data.ParentType);
+                  this.getNoteList(this.noteModel.ParentId, this.noteModel.ParentType);
               }
               // else if (this.noteModel.ParentType == CustomerEntityType.PurchaseInquiryItem) {
               //     // Get notes data.
@@ -233,7 +233,7 @@ export class NotesItemComponent implements OnInit {
               this.showLoader = false;
               alert("Something went wrong");
               console.log("Error: ", error)
-              this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
+              this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiryItem);
           },
           () => {
 
@@ -251,12 +251,12 @@ export class NotesItemComponent implements OnInit {
       this.sharedComponentService.updateNote(this.selectedNote).subscribe(
           resp => {
               console.log("record updated:")
-              this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
+              this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiryItem);
           },
           error => {
               this.showLoader = false;
               alert("Something went wrong");
-              this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
+              this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiryItem);
           },
           () => {
               //reset all values

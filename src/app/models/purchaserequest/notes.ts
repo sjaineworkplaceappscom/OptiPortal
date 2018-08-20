@@ -12,7 +12,7 @@ export class NotesModel{
     // parent type
     ParentType: number;  //.
     // grand parent id 
-    GrantParentId:string;
+    GrantParentId:string = '00000000-0000-0000-0000-000000000000';
 
 
 }
