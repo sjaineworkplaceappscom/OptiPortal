@@ -25,6 +25,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   */
   addItem:boolean = false;
   itemGrid:boolean = true;
+  tabName: string = 'home';
 
   
 
@@ -43,10 +44,13 @@ export class PurchaseInqItemAddComponent implements OnInit {
   public minValidDate: Date = new Date();
   purchaseItemsModel: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
   showLoader:boolean=false;
+
+  selectedThemeColor: string = 'opticonstants.DEFAULTTHEMECOLOR';
   
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
   constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) { }
+  
 
   ngOnInit() {
     /**
@@ -61,6 +65,13 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
     this.selectedInquiryId = 'E4F1A5AB-AEFE-4F34-847F-6252FD0C3403';
     this.getInquiryItemsData(this.selectedInquiryId);
+
+    // GET current theme colour
+    this.commonService.themeCurrentData.subscribe(
+      data => {
+        this.selectedThemeColor = data;
+      }
+    );
 
 
     this.commonService.currentItemData.subscribe(
@@ -192,5 +203,13 @@ export class PurchaseInqItemAddComponent implements OnInit {
         }
      );
     }
+
+  // tab code start
+  
+  openTab(evt, tabName) {
+    this.tabName = tabName;
+    UIHelper.customOpenTab(evt, tabName, 'vertical');
+  }
+  // tab code end
 
 }

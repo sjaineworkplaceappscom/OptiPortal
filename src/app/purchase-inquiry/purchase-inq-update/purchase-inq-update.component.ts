@@ -61,7 +61,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   // tab function
   openTab(evt, tabName) {
     this.tabName = tabName;
-    UIHelper.customOpenTab(evt, tabName);
+    UIHelper.customOpenTab(evt, tabName, 'horizontal');
   }
 
   @HostListener('window:resize', ['$event'])

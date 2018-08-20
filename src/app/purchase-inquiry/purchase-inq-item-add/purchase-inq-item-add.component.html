@@ -3,85 +3,121 @@
 <div #AddItemFormSection id="opti_AddItemFormSectionID" class="">
   <div class="container-fluid" >
       <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-              <div class="card opti_border-none" style="margin-bottom: 25px;">
-                  <div class="card-block">
-                      <form class="k-form opti_padding-zero">
+        <!-- Tab title start -->
+        <div class="opti_position-relative opti_vertical-tab-outer" id="opti_verticalTabTitleID">
+            <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
+                <li class="opti_tablinks-vertical" (click)="openTab($event, 'home')">
+                    <a href="javascript:void('0');">
+                        <svg-icon src="assets/images/left-panel/Customer-Contacts.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon>
+                    </a>
+                </li>
+                <li class="opti_tablinks-vertical" (click)="openTab($event, 'attachement')">
+                    <a href="javascript:void('0');">
+                        <svg-icon src="assets/images/left-panel/Customer-Contacts.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon>
+                    </a>
+                </li>
+                <li class="opti_tablinks-vertical" (click)="openTab($event, 'notes')">
+                    <a href="javascript:void('0');">
+                        <svg-icon src="assets/images/left-panel/Customer-Contacts.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-                          <!-- <label class="k-form-field">
-                              <span class="opti_form-label">Item Id</span>
-                              <input class="k-textbox" name="itemId" [(ngModel)]="purchseInqItemModel.PurchaseInquiryItemlId" placeholder="Item Id"
-                              />
-                          </label>
+        <div id="" *ngIf="tabName=='home'" class="opti_vertical-tabcontent">
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="card opti_border-none" style="margin-bottom: 25px;">
+                    <div class="card-block">
+                        <form class="k-form opti_padding-zero">
+    
+                            <!-- <label class="k-form-field">
+                                <span class="opti_form-label">Item Id</span>
+                                <input class="k-textbox" name="itemId" [(ngModel)]="purchseInqItemModel.PurchaseInquiryItemlId" placeholder="Item Id"
+                                />
+                            </label>
+    
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Description</span>
+                                <input type="text" name="description" class="k-textbox" value="" [(ngModel)]="purchseInqItemModel.Description"
+                                    placeholder="Description" />
+                            </label> -->
+    
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Item Details</span>
+                                <input type="text" class="k-textbox" name="custId_description" [(ngModel)]="purchaseItemsModel.CustomerItemCode"
+                                    value="" placeholder="Customer Item Id / description" />
+                            </label>
+    
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Item Quantity</span>
+                                <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModel.Quantity" value="" placeholder="Item Quantity"
+                                />
+                            </label>
+    
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Item Unit</span>
+                                <input type="text" class="k-textbox" name="Unit" [(ngModel)]="purchaseItemsModel.Unit" value="" placeholder="Item Unit"
+                                />
+                            </label>
+    
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Requester</span>
+                                <input type="text" class="k-textbox" name="requester" [(ngModel)]="purchaseItemsModel.Requester" value="" placeholder="Requester"
+                                />
+                            </label>
+    
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Request Date</span>
+                                <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModel.RequestDate"> </kendo-datepicker>
+                            </label>
+    
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Required Date</span>
+                                <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModel.RequiredDate"> </kendo-datepicker>
+                            </label>
+    
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Ship To location</span>
+                                <textarea class="k-textarea" name="unit" [(ngModel)]="purchaseItemsModel.ShipToLocation">Location</textarea>
+                            </label>
 
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Description</span>
-                              <input type="text" name="description" class="k-textbox" value="" [(ngModel)]="purchseInqItemModel.Description"
-                                  placeholder="Description" />
-                          </label> -->
+                            <div class="text-right">
+                                <button type="button" class="k-button k-primary" (click)="OnSave()">Save</button>
+                                <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
+                                <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button> 
+                                <button type="button" class="k-button" (click)="closeItemForm()">Cancel</button>
+                            </div>
+    
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Item Details</span>
-                              <input type="text" class="k-textbox" name="custId_description" [(ngModel)]="purchaseItemsModel.CustomerItemCode"
-                                  value="" placeholder="Customer Item Id / description" />
-                          </label>
+        <div id="" *ngIf="tabName=='attachement'" class="opti_vertical-tabcontent">
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <app-attachment [tabparent]="'itemsTab'"></app-attachment>
+            </div>
+        </div>
 
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Item Quantity</span>
-                              <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModel.Quantity" value="" placeholder="Item Quantity"
-                              />
-                          </label>
+        <div id="" *ngIf="tabName=='notes'" class="opti_vertical-tabcontent">
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <app-notes-item ></app-notes-item>
+            </div>
+        </div>
+        <!-- Tab title end -->
+        
 
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Item Unit</span>
-                              <input type="text" class="k-textbox" name="Unit" [(ngModel)]="purchaseItemsModel.Unit" value="" placeholder="Item Unit"
-                              />
-                          </label>
-
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Requester</span>
-                              <input type="text" class="k-textbox" name="requester" [(ngModel)]="purchaseItemsModel.Requester" value="" placeholder="Requester"
-                              />
-                          </label>
-
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Request Date</span>
-                              <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModel.RequestDate"> </kendo-datepicker>
-                          </label>
-
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Required Date</span>
-                              <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModel.RequiredDate"> </kendo-datepicker>
-                          </label>
-
-                          <label class="k-form-field">
-                              <span class="opti_form-label">Ship To location</span>
-                              <textarea class="k-textarea" name="unit" [(ngModel)]="purchaseItemsModel.ShipToLocation">Location</textarea>
-                          </label>
-                          <div class="text-right">
-                            <button type="button" class="k-button k-primary" (click)="OnSave()">Save</button>
-                            <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
-                            <!-- <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button> -->
-                            <button type="button" class="k-button" (click)="closeItemForm()">Cancel</button>
-                        </div>
-
-                      </form>
-                  </div>
-              </div>
-          </div>
+          
+          
           <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
               
-              <app-attachment [tabparent]="'itemsTab'"></app-attachment>
+              
 
-              <app-notes-item ></app-notes-item>
+              
 
               <br/>
-              <div class="text-right">
-                  <button type="button" class="k-button k-primary" (click)="OnSave()">Save</button>
-                  <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
-                   <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button> 
-                  <button type="button" class="k-button" (click)="closeItemForm()">Cancel</button>
-              </div>
+              
 
           </div>
       </div>
