@@ -9,8 +9,8 @@ export class TempPurchaseInquiryItemModel{
     Unit: string;
     //Comments:string;
     Requester:string; //it will be a free text.
-    RequestDate: string;
-    RequiredDate: string;
+    RequestDate: Date;
+    RequiredDate: Date;
     ShipToLocation: string; 
     PurchaseInquiryId:string;
     
