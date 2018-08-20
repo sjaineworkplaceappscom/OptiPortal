@@ -26,7 +26,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   addItem:boolean = false;
   itemGrid:boolean = true;
   tabName: string = 'home';
-
+  
   
 
   @HostListener('window:resize', ['$event'])
