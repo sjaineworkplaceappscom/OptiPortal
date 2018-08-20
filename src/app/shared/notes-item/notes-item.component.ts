@@ -25,7 +25,6 @@ export class NotesItemComponent implements OnInit {
   /**
    * NOTES TAB VARIABLE
   */
-
   // @Input() tabparent;
   getTabParent: string;
 
@@ -42,14 +41,13 @@ export class NotesItemComponent implements OnInit {
 
   /**
    * ITEMS NOTES VARIABLE
-  */
+   */
   noteItemsData: any[];
   selectedItemNote: any = {};
   itemNotesGrid: boolean = true;
   itemAddNotes: boolean = false;
   itemEditNotes: boolean = false;
   noteModel: NotesModel;
-
 
   public noteTypes: Array<{ text: string, value: number }> = [
       { text: "General ", value: 1 },
@@ -73,17 +71,13 @@ export class NotesItemComponent implements OnInit {
 
   ngOnInit() {
       // UI Start        
-      
       //Apply Grid Height
       this.gridHeight = UIHelper.getMainContentHeight();
-
       // Check Mobile device
       this.isMobile = UIHelper.isMobile();
       // UI End
 
-
       this.noteModel = new NotesModel();
-
       // Subscriber for Load data.
       this.commonService.currentNotesItemData.subscribe(
           (data: NotesModel) => {
@@ -94,10 +88,6 @@ export class NotesItemComponent implements OnInit {
                   // Get notes data.
                   this.getNoteList(this.noteModel.ParentId, data.ParentType);
               }
-              // else if (this.noteModel.ParentType == CustomerEntityType.PurchaseInquiryItem) {
-              //     // Get notes data.
-              //     this.getNoteList(this.noteModel.ParentId, data.ParentType);
-              // }
           },
           error => {
               this.showLoader = false;
@@ -105,14 +95,12 @@ export class NotesItemComponent implements OnInit {
               console.log("Error: ", error)
           }
       );
-
   }
 
   /**
   * visible add new comment layout.
   */
   public openNewNote() {
-
       this.TabNotesGridStatus = this.TabEditNotesFormStatus = false;
       this.TabAddNotesFormStatus = true;
       this.resetModelValues();
@@ -131,16 +119,13 @@ export class NotesItemComponent implements OnInit {
   * @param action
   */
   submitNote(e) {
-
       // Add Notes Data in model. when comes from inquiry        
       this.noteModel.NoteType = this.selectedNoteItem.value;
-
       this.sharedComponentService.AddNote(this.noteModel).subscribe(
           resp => {
               console.log("record added:")
           },
           error => {
-
               alert("Something went wrong");
               console.log("Error: ", error)
           },
@@ -150,10 +135,7 @@ export class NotesItemComponent implements OnInit {
               // Get notes data.
               this.getNoteList(this.noteModel.ParentId, this.noteModel.ParentType);
           });
-
   }
-
-
 
   /**
    * close note add form
@@ -166,7 +148,7 @@ export class NotesItemComponent implements OnInit {
   }
 
   /**
-* method will close add note form and reset model.
+   * method will close add note form and reset model.
    */
   public resetModelValues() {
       //reset note model and type.
@@ -190,7 +172,6 @@ export class NotesItemComponent implements OnInit {
    * Method to get list of inquries from server.
    */
   private getNoteList(parentId: string, parentType: number) {
-
       this.showLoader = true;
       this.sharedComponentService.getNotesList(parentId, parentType).subscribe(
           notesData => {
@@ -214,7 +195,6 @@ export class NotesItemComponent implements OnInit {
           element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate); //new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
           element.ModifiedDate = DateTimeHelper.ParseDate(element.ModifiedDate);//new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
       });
-
   }
 
   /**
@@ -225,7 +205,6 @@ export class NotesItemComponent implements OnInit {
 
       this.sharedComponentService.deleteNote(this.noteItemsData[rowIndex].NoteId).subscribe(
           resp => {
-
               console.log("record deleted:")
               this.noteItemsData.splice(rowIndex, 1);
           },
@@ -236,13 +215,11 @@ export class NotesItemComponent implements OnInit {
               this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
           },
           () => {
-
           });
 
   }
 
   public updateNote(e) {
-      //debugger;
       this.TabNotesGridStatus = true;
       this.TabEditNotesFormStatus = false;
       this.selectedNote;
@@ -250,7 +227,7 @@ export class NotesItemComponent implements OnInit {
       this.selectedNote.NoteType = this.selectedNoteItem.value;
       this.sharedComponentService.updateNote(this.selectedNote).subscribe(
           resp => {
-              console.log("record updated:")
+              console.log("record updated:");
               this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
           },
           error => {
@@ -262,7 +239,6 @@ export class NotesItemComponent implements OnInit {
               //reset all values
               this.resetModelValues();
           });
-
   }
 
   closeUpdateNote(e) {

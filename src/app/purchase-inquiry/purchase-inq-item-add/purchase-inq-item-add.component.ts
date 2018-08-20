@@ -142,7 +142,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
                 element.RequiredDate=DateTimeHelper.ParseDate(element.RequiredDate);
                 element.RequestDate=DateTimeHelper.ParseDate(element.RequestDate);            
               });
-              console.log("grid item data" + JSON.stringify(this.gridItemsData) );
+             // console.log("grid item data" + JSON.stringify(this.gridItemsData));
           },
           error => {
             this.showLoader=false;
