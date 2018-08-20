@@ -23,6 +23,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   isNotes: boolean = false;
   tabName: string = 'home';
   notesMasterData: NotesModel = new NotesModel();
+  inquiryModelForItems: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
   showLoader: boolean = false;
   /**
   * This method will reset the model and date object for add form.
@@ -94,6 +95,15 @@ export class PurchaseInqUpdateComponent implements OnInit {
             this.commonService.setNotesData(this.notesMasterData);
             this.getStatusListForUpdateByCustomer();
             this.getUserDetails();
+
+            // Set items data for inquiry items.
+            this.inquiryModelForItems.PurchaseInquiryId = this.purchaseInquiryDetail.PurchaseInquiryId;
+            //Fire event for items.
+            this.commonService.setItemsData(this.inquiryModelForItems);
+            console.log("oninit currentside bar info");
+            console.log("send id from udpate id:"+this.inquiryModelForItems.PurchaseInquiryId);
+            
+
 
             this.showLoader = false;
           }
@@ -195,9 +205,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
         this.purchaseInquiryDetail.Status = 2;
       }
     }
-    debugger;
     console.log("update",this.purchaseInquiryDetail.ValidTillDate);
-
     this.showLoader = true;
     this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
       data => {

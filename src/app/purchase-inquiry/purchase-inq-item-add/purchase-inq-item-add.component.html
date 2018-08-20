@@ -58,7 +58,12 @@
                               <span class="opti_form-label">Ship To location</span>
                               <textarea class="k-textarea" name="unit" [(ngModel)]="purchaseItemsModel.ShipToLocation">Location</textarea>
                           </label>
-
+                          <div class="text-right">
+                            <button type="button" class="k-button k-primary" (click)="OnSave()">Save</button>
+                            <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
+                            <!-- <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button> -->
+                            <button type="button" class="k-button" (click)="closeItemForm()">Cancel</button>
+                        </div>
 
                       </form>
                   </div>
@@ -74,7 +79,7 @@
               <div class="text-right">
                   <button type="button" class="k-button k-primary" (click)="OnSave()">Save</button>
                   <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
-                  <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button>
+                   <button type="button" class="k-button" (click)="addItemtagain()">Save and New</button> 
                   <button type="button" class="k-button" (click)="closeItemForm()">Cancel</button>
               </div>
 

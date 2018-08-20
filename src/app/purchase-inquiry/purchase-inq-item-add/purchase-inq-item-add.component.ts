@@ -5,6 +5,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { Commonservice } from '../../services/commonservice.service';
 
 @Component({
   selector: 'app-purchase-inq-item-add',
@@ -34,7 +35,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
   }
-  
+  receivedPIModel:TempPurchaseInquiryModel;
+  receivedPurchaseInquiryId:string;
   // store item grid data.
   gridItemsData = [];
 
@@ -44,7 +46,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
-  constructor(private purchaseInquiryService: PurchaseInquiryService) { }
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) { }
 
   ngOnInit() {
     /**
@@ -59,6 +61,20 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
     this.selectedInquiryId = 'E4F1A5AB-AEFE-4F34-847F-6252FD0C3403';
     this.getInquiryItemsData(this.selectedInquiryId);
+
+
+    this.commonService.currentItemData.subscribe(
+      (data: TempPurchaseInquiryModel) => {
+          this.receivedPIModel=data;
+          this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId
+          console.log("received parent id at piia:"+this.receivedPurchaseInquiryId);
+      },
+      error => {
+          this.showLoader=false;
+          alert("Something went wrong");
+          console.log("Error: ", error)
+      }
+  );
   }
 
   showItemsGrid(){

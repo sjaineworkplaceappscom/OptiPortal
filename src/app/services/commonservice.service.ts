@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment.prod';
 import { opticonstants } from '../constants';
 import { CurrentSidebarInfo } from '../models/sidebar/current-sidebar-info';
 import { NotesModel } from '../models/purchaserequest/notes';
+import { TempPurchaseInquiryModel } from '../tempmodels/temppurchase-inquiry';
 
 
 @Injectable({
@@ -100,6 +101,14 @@ export class Commonservice {
  
    public setNotesItemData(data:NotesModel){
      this.notesItemDataSub.next(data);
+   }
+   
+   // Refresh Item List
+   private itemDataSub =new BehaviorSubject<TempPurchaseInquiryModel>(null);
+   currentItemData=this.itemDataSub.asObservable();
+ 
+   public setItemsData(data:TempPurchaseInquiryModel){
+     this.itemDataSub.next(data);
    }
 
 }
