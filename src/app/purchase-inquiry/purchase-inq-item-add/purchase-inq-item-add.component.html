@@ -28,7 +28,7 @@
 
                           <label class="k-form-field">
                               <span class="opti_form-label">Item Quantity</span>
-                              <input type="text" class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModel.Quantity" value="" placeholder="Item Quantity"
+                              <input type="text"  class="k-textbox" name="itemQuantity" [(ngModel)]="purchaseItemsModel.Quantity" value="" placeholder="Item Quantity"
                               />
                           </label>
 
@@ -46,12 +46,12 @@
 
                           <label class="k-form-field">
                               <span class="opti_form-label">Request Date</span>
-                              <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModel.RequestDate"> </kendo-datepicker>
+                              <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModel.RequestDate" [format]="'dd MMM yy'" > </kendo-datepicker>
                           </label>
 
                           <label class="k-form-field">
                               <span class="opti_form-label">Required Date</span>
-                              <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModel.RequiredDate"> </kendo-datepicker>
+                              <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModel.RequiredDate" [format]="'dd MMM yy'"> </kendo-datepicker>
                           </label>
 
                           <label class="k-form-field">

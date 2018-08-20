@@ -58,9 +58,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
       * Check Mobile device
     */
     this.isMobile = UIHelper.isMobile();
-
-    this.selectedInquiryId = 'E4F1A5AB-AEFE-4F34-847F-6252FD0C3403';
-    this.getInquiryItemsData(this.selectedInquiryId);
+   
 
 
     this.commonService.currentItemData.subscribe(
@@ -75,6 +73,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
           console.log("Error: ", error)
       }
   );
+
+  this.getInquiryItemsData(this.receivedPurchaseInquiryId);
   }
 
   showItemsGrid(){
@@ -89,6 +89,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
   showAddItemSection(){
     this.showItemForm();
+    this.resetDefaultItemData();
   }
 
   // AddPurchaseInquiryItem(){
@@ -124,7 +125,11 @@ export class PurchaseInqItemAddComponent implements OnInit {
       this.purchaseItemsModel = JSON.parse(JSON.stringify(selectedData));
       this.requestDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequestDate);
       this.requiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
+      this.purchaseItemsModel.RequestDate = this.requestDate;
+      this.purchaseItemsModel.RequiredDate = this.requiredDate;
       this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
+      this.showItemForm();
+      
       
   }
 
@@ -142,7 +147,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
                 element.RequiredDate=DateTimeHelper.ParseDate(element.RequiredDate);
                 element.RequestDate=DateTimeHelper.ParseDate(element.RequestDate);            
               });
-              console.log("grid item data" + JSON.stringify(this.gridItemsData) );
+           //   console.log("grid item data" + JSON.stringify(this.gridItemsData) );
           },
           error => {
             this.showLoader=false;
@@ -178,10 +183,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
      * AddPurchaseInquiryItem
      */
     public AddPurchaseInquiryItem() {
-      this.purchaseItemsModel.PurchaseInquiryId = 'E4F1A5AB-AEFE-4F34-847F-6252FD0C3403';
+      this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
      this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
          data => {
-           
+           this.getInquiryItemsData(this.receivedPurchaseInquiryId);
            console.log(data)
          },
          error => 
@@ -192,5 +197,18 @@ export class PurchaseInqItemAddComponent implements OnInit {
         }
      );
     }
+
+    /**
+* This method will reset the model and date object for add form.
+*/
+  private resetDefaultItemData() {
+
+    this.purchaseItemsModel = new TempPurchaseInquiryItemModel();
+    this.purchaseItemsModel.RequestDate = new Date();
+
+    this.purchaseItemsModel.RequiredDate = new Date();
+    // this.purchaseItemsModel.CustomerItemCode= '';
+    // this.purchaseItemsModel.Unit = '';
+  }
 
 }
