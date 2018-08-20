@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { NotesItemComponent } from './notes-item/notes-item.component';
+
 
 @NgModule({
   imports: [
@@ -46,7 +48,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
      HttpClientModule,         
      FormsModule,
   ],
-  declarations: [AttachmentComponent,NotesComponent],
-  exports:[AttachmentComponent,NotesComponent]
+  declarations: [AttachmentComponent,NotesComponent, NotesItemComponent],
+  exports:[AttachmentComponent,NotesComponent,NotesItemComponent]
 })
 export class SharedModule { }

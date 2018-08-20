@@ -96,6 +96,13 @@ export class Commonservice {
      this.notesDataSub.next(data);
    }
 
+   private notesItemDataSub =new BehaviorSubject<NotesModel>(null);
+   currentNotesItemData=this.notesItemDataSub.asObservable();
+ 
+   public setNotesItemData(data:NotesModel){
+     this.notesItemDataSub.next(data);
+   }
+   
    // Refresh Item List
    private itemDataSub =new BehaviorSubject<TempPurchaseInquiryModel>(null);
    currentItemData=this.itemDataSub.asObservable();

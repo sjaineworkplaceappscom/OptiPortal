@@ -5,7 +5,6 @@ import { SharedComponentService } from '../../services/shared-component.service'
 import { CustomerEntityType } from '../../enums/enums';
 import { Commonservice } from '../../services/commonservice.service';
 import { DatePipe } from '../../../../node_modules/@angular/common';
-import { Configuration } from '../../../assets/configuration';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 @Component({
