@@ -42,7 +42,7 @@ export class PurchaseInqAddComponent implements OnInit {
   openTab(evt, tabName, tabStatus) {
     if (tabStatus == true) {
       this.tabName = tabName;
-      UIHelper.customOpenTab(evt, tabName);
+      UIHelper.customOpenTab(evt, tabName, 'horizontal');
     }
   }
 

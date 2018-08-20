@@ -25,6 +25,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   */
   addItem:boolean = false;
   itemGrid:boolean = true;
+  tabName: string = 'home';
 
   
 
@@ -43,10 +44,13 @@ export class PurchaseInqItemAddComponent implements OnInit {
   public minValidDate: Date = new Date();
   purchaseItemsModel: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
   showLoader:boolean=false;
+
+  selectedThemeColor: string = 'opticonstants.DEFAULTTHEMECOLOR';
   
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
   constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) { }
+<<<<<<< HEAD
   ngOnChange() {
     this.commonService.currentItemData.subscribe(
       (data: TempPurchaseInquiryModel) => {
@@ -61,6 +65,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
       }
   );
   }
+=======
+  
+
+>>>>>>> c6afd0eb0ace35304862d5ef8d6cc8aeca70dad3
   ngOnInit() {
     /**
      * Apply Grid Height
@@ -71,6 +79,18 @@ export class PurchaseInqItemAddComponent implements OnInit {
       * Check Mobile device
     */
     this.isMobile = UIHelper.isMobile();
+<<<<<<< HEAD
+=======
+   
+
+    // GET current theme colour
+    this.commonService.themeCurrentData.subscribe(
+      data => {
+        this.selectedThemeColor = data;
+      }
+    );
+
+>>>>>>> c6afd0eb0ace35304862d5ef8d6cc8aeca70dad3
 
     this.commonService.currentItemData.subscribe(
       (data: TempPurchaseInquiryModel) => {
@@ -209,6 +229,13 @@ export class PurchaseInqItemAddComponent implements OnInit {
      );
     }
 
+  // tab code start
+  
+  openTab(evt, tabName) {
+    this.tabName = tabName;
+    UIHelper.customOpenTab(evt, tabName, 'vertical');
+  }
+  // tab code end
     /**
 * This method will reset the model and date object for add form.
 */

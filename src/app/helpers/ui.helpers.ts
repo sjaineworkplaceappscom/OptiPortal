@@ -131,18 +131,32 @@ export  class UIHelper{
     }
 
     // our custom tab section
-    public static customOpenTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        // tabcontent = document.getElementsByClassName("opti_tabcontent");
-        // for (i = 0; i < tabcontent.length; i++) {
-        //     tabcontent[i].style.display = "none";
-        // }
-        tablinks = document.getElementsByClassName("opti_tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        //document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
+    public static customOpenTab(evt, tabName, type) {
+        if(type == 'horizontal'){
+            var i, tabcontent, tablinks;
+            // tabcontent = document.getElementsByClassName("opti_tabcontent");
+            // for (i = 0; i < tabcontent.length; i++) {
+            //     tabcontent[i].style.display = "none";
+            // }
+            tablinks = document.getElementsByClassName("opti_tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace("active", "");
+            }
+            //document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }else{
+            var i, tabcontent, tablinks;
+            // tabcontent = document.getElementsByClassName("opti_tabcontent");
+            // for (i = 0; i < tabcontent.length; i++) {
+            //     tabcontent[i].style.display = "none";
+            // }
+            tablinks = document.getElementsByClassName("opti_tablinks-vertical");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace("active", "");
+            }
+            //document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }    
     }
 
     // get width of opti_TabID 

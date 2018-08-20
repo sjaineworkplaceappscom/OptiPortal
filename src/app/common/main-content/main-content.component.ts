@@ -102,7 +102,7 @@ export class MainContentComponent implements OnInit {
 
     // tab function
     openTab(evt, tabName) {
-        UIHelper.customOpenTab(evt, tabName);
+        UIHelper.customOpenTab(evt, tabName, 'horizontal');
     }
 
     public position: string = 'top';
