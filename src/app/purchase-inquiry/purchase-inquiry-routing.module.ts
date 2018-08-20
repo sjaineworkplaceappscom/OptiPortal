@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PurchaseInqListComponent } from './purchase-inq-list/purchase-inq-list.component';
 import { PurchaseInqAddComponent } from './purchase-inq-add/purchase-inq-add.component';
 import { PurchaseInqUpdateComponent } from './purchase-inq-update/purchase-inq-update.component';
-import { PurchaseInqDetailComponent } from './purchase-inq-detail/purchase-inq-detail.component';
+
 import { PurchaseInquiryComponent } from './purchase-inquiry.component';
 import { AuthGuard } from '../guards/auth.guard';
 
@@ -13,8 +13,8 @@ const routes: Routes = [
     children: [      
       { path: 'list', component: PurchaseInqListComponent },
       { path: 'piadd', component: PurchaseInqAddComponent },
-      { path: 'piupdate', component: PurchaseInqUpdateComponent },
-      { path: 'pidetail', component: PurchaseInqDetailComponent }
+      { path: 'piupdate', component: PurchaseInqUpdateComponent }
+      
     ],
     canActivate:[AuthGuard]
   }

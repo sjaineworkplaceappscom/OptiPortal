@@ -31,7 +31,7 @@ export class PortalTopComponent implements OnInit {
     this.customerCode = userData[0].ParentCode;
     this.LoginUserType = userData[0].LoginUserType; 
     UIHelper.manageThemeCssFile();
-    console.log("user detail:"+userDetail);
+    
     
     if(isSystemAdmin == 'false') this.customerName = 'Admin';
     //console.log("ISSystemAdmin"+isSystemAdmin);

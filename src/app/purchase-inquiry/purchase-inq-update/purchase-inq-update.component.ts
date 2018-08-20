@@ -79,8 +79,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     // Set sidebar data;
     this.commonService.currentSidebarInfo.subscribe(
 
-      currentSidebarData => {
-
+      currentSidebarData => {         
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           this.purchaseInquiryDetail = currentSidebarData.RequesterData;
