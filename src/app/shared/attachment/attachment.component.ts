@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Commonservice } from '../../services/commonservice.service';
 import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({
@@ -19,12 +20,12 @@ export class AttachmentComponent implements OnInit {
   */
   @Input() tabparent;
   getTabParent:string;
-  TabAddAttachementFormStatus:boolean = false;
+  //TabAddAttachementFormStatus:boolean = false;
   TabAttachementGridStatus:boolean = true; 
   showLoader:boolean=false;
 
 
-  constructor() { }
+  constructor(private commonService: Commonservice) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -52,6 +53,12 @@ export class AttachmentComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
 
     this.getTabParent = this.tabparent;
+
+    this.commonService.purchaseInquiryAttachmentGridStatus.subscribe(
+      data => {
+        this.TabAttachementGridStatus = data;
+      }
+    );
     
   }
 
@@ -60,13 +67,14 @@ export class AttachmentComponent implements OnInit {
   */
   
   public showTabAddAttachementForm(){
-    this.TabAttachementGridStatus = false;
-    this.TabAddAttachementFormStatus = true;
-  }
-  public submitAttachements(event){
-    this.TabAttachementGridStatus = true;
-    this.TabAddAttachementFormStatus = false;
-  }
+    // this.TabAttachementGridStatus = false;
+    // this.TabAddAttachementFormStatus = true;
+
+    this.commonService.setPurchaseInquiryAttachmentGrid(false);
+   
+ }
+
+  
 
   
 

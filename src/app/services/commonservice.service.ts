@@ -111,4 +111,12 @@ export class Commonservice {
      this.itemDataSub.next(data);
    }
 
+   // for Seeting color of theme.
+   private purchaseInquiryAttachmentGrid = new BehaviorSubject<any>(true);
+   purchaseInquiryAttachmentGridStatus = this.purchaseInquiryAttachmentGrid.asObservable();
+
+   public setPurchaseInquiryAttachmentGrid(data: any) {
+      this.purchaseInquiryAttachmentGrid.next(data);
+   }
+
 }

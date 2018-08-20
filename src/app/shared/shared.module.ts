@@ -20,6 +20,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NotesItemComponent } from './notes-item/notes-item.component';
 import { AttachmentItemComponent } from './attachment-item/attachment-item.component';
+import { AttachmentUploadComponent } from './attachment-upload/attachment-upload.component';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { AttachmentItemComponent } from './attachment-item/attachment-item.compo
      HttpClientModule,         
      FormsModule,
   ],
-  declarations: [AttachmentComponent,NotesComponent, NotesItemComponent, AttachmentItemComponent],
-  exports:[AttachmentComponent,NotesComponent,NotesItemComponent,AttachmentItemComponent]
+  declarations: [AttachmentComponent,NotesComponent, NotesItemComponent, AttachmentItemComponent, AttachmentUploadComponent],
+  exports:[AttachmentComponent,NotesComponent,NotesItemComponent,AttachmentItemComponent,AttachmentUploadComponent]
 })
 export class SharedModule { }

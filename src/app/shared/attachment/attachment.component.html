@@ -3,17 +3,9 @@
       <div class="col-md-12">
           
           <!-- form section -->
-          <ng-container *ngIf="TabAddAttachementFormStatus==true">
-              <h5>Upload Attachement</h5>
-              <kendo-upload  (select)="selectEventHandler($event)">
-              </kendo-upload>
-              <div class="text-right">
-                  <button type="button" class="k-button k-primary" (click)="submitAttachements($event);" style="margin-top: 8px;">Save</button>
-                  <button type="button" class="k-button k-primary" (click)="submitAttachements($event);" style="margin-top: 8px;">Cancel</button>
-              </div>
+          <ng-container *ngIf="TabAttachementGridStatus==false">
+                <app-attachment-upload></app-attachment-upload>
           </ng-container>
-
-
           
           <!-- start attachement grid -->
           <ng-container *ngIf="TabAttachementGridStatus==true">

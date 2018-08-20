@@ -60,6 +60,10 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
   // tab function
   openTab(evt, tabName) {
+
+    // Set default condition for purchase inquiery attachment
+    this.commonService.setPurchaseInquiryAttachmentGrid(true);
+
     this.tabName = tabName;
     UIHelper.customOpenTab(evt, tabName, 'horizontal');
   }
