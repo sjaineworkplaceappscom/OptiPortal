@@ -42,6 +42,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   receivedPurchaseInquiryId:string;
   // store item grid data.
   gridItemsData = [];
+  
 
   public minValidDate: Date = new Date();
   purchaseItemsModel: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
@@ -171,8 +172,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
     /**
      * When click on save 
      */
-    public OnSave() {debugger;
-      this.isFromGrid = false;
+    public OnSave() {
+      this.isFromGrid = false
       this.AddPurchaseInquiryItem();
       this.addItem = false;
       this.itemGrid = true;
@@ -243,4 +244,13 @@ export class PurchaseInqItemAddComponent implements OnInit {
     // this.purchaseItemsModel.Unit = '';
   }
 
+  setNotesModel(parentId,grandParentId)
+  {
+    let notesModel:NotesModel=new NotesModel();
+    notesModel.GrantParentId=grandParentId;
+    notesModel.GrandParentType=CustomerEntityType.PurchaseInquiry;
+    notesModel.ParentType=CustomerEntityType.PurchaseInquiryItem;
+    notesModel.ParentId=parentId; 
+    this.commonService.setNotesItemData(notesModel);
+  }
 }

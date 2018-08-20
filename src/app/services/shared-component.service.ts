@@ -33,7 +33,7 @@ export class SharedComponentService {
       "grandParentType": note.GrandParentType,
       "parentId": note.ParentId,
       "parentType": note.ParentType,
-       "grantParentId": note.GrantParentId,
+      "grantParentId": note.GrantParentId,
     }
     return this.httpHelper.post(this.baseUrl + 'note/add', data, null);
   }
