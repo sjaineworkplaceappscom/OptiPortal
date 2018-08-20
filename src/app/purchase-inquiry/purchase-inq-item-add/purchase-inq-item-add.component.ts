@@ -47,7 +47,20 @@ export class PurchaseInqItemAddComponent implements OnInit {
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
   constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) { }
-
+  ngOnChange() {
+    this.commonService.currentItemData.subscribe(
+      (data: TempPurchaseInquiryModel) => {
+          this.receivedPIModel=data;
+          this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId
+          console.log("received parent id at piia onchange:"+this.receivedPurchaseInquiryId);
+      },
+      error => {
+          this.showLoader=false;
+          alert("Something went wrong");
+          console.log("Error: ", error)
+      }
+  );
+  }
   ngOnInit() {
     /**
      * Apply Grid Height
@@ -58,8 +71,6 @@ export class PurchaseInqItemAddComponent implements OnInit {
       * Check Mobile device
     */
     this.isMobile = UIHelper.isMobile();
-   
-
 
     this.commonService.currentItemData.subscribe(
       (data: TempPurchaseInquiryModel) => {
