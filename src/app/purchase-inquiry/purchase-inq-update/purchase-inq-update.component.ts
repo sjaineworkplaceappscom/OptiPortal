@@ -94,7 +94,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
             // Set notes data for inquiry
             this.notesMasterData.ParentId = this.purchaseInquiryDetail.PurchaseInquiryId;
             this.notesMasterData.ParentType = CustomerEntityType.PurchaseInquiry;
-
             // Fire note event 
             this.commonService.setNotesData(this.notesMasterData);
             this.getStatusListForUpdateByCustomer();
@@ -106,9 +105,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
             this.commonService.setItemsData(this.inquiryModelForItems);
             console.log("oninit currentside bar info");
             console.log("send id from udpate id:"+this.inquiryModelForItems.PurchaseInquiryId);
-            
-
-
             this.showLoader = false;
           }
         }

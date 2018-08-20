@@ -103,7 +103,7 @@ export class Commonservice {
      this.notesItemDataSub.next(data);
    }
    
-   // Refresh Item List
+   // send inquiry id to item list.
    private itemDataSub =new BehaviorSubject<TempPurchaseInquiryModel>(null);
    currentItemData=this.itemDataSub.asObservable();
  

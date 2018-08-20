@@ -6,6 +6,8 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
 import { UIHelper } from '../../helpers/ui.helpers';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { Commonservice } from '../../services/commonservice.service';
+import { NotesModel } from '../../models/purchaserequest/notes';
+import { CustomerEntityType } from '../../enums/enums';
 
 @Component({
   selector: 'app-purchase-inq-item-add',
@@ -27,7 +29,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   itemGrid:boolean = true;
   tabName: string = 'home';
   
-  
+  isFromGrid = false;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -40,6 +42,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   receivedPurchaseInquiryId:string;
   // store item grid data.
   gridItemsData = [];
+  
 
   public minValidDate: Date = new Date();
   purchaseItemsModel: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
@@ -53,16 +56,13 @@ export class PurchaseInqItemAddComponent implements OnInit {
   
 
   ngOnInit() {
-    /**
-     * Apply Grid Height
-    */
+    
+    // Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
         
-    /**
-      * Check Mobile device
-    */
+    
+    // Check Mobile device
     this.isMobile = UIHelper.isMobile();
-   
 
     // GET current theme colour
     this.commonService.themeCurrentData.subscribe(
@@ -71,12 +71,12 @@ export class PurchaseInqItemAddComponent implements OnInit {
       }
     );
 
-
     this.commonService.currentItemData.subscribe(
       (data: TempPurchaseInquiryModel) => {
           this.receivedPIModel=data;
           this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId
           console.log("received parent id at piia:"+this.receivedPurchaseInquiryId);
+          this.getInquiryItemsData(this.receivedPurchaseInquiryId);
       },
       error => {
           this.showLoader=false;
@@ -85,7 +85,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
       }
   );
 
-  this.getInquiryItemsData(this.receivedPurchaseInquiryId);
+
   }
 
   showItemsGrid(){
@@ -128,19 +128,17 @@ export class PurchaseInqItemAddComponent implements OnInit {
    */
   public onItemGridDataSelection(selection, status) {
     
-      //fatch and parse row value.
-      //let selectedItem = gridItemsData.data.data[selection.index];
-      //const selectedData = selection.selectedRows[0].dataItem;
-      const selectedData = this.gridItemsData[0];
-      
+      this.isFromGrid  = true;
+      const selectedData = this.gridItemsData[selection.index];
       this.purchaseItemsModel = JSON.parse(JSON.stringify(selectedData));
       this.requestDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequestDate);
       this.requiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
+
       this.purchaseItemsModel.RequestDate = this.requestDate;
       this.purchaseItemsModel.RequiredDate = this.requiredDate;
       this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
       this.showItemForm();
-      
+
       
   }
 
@@ -158,7 +156,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
                 element.RequiredDate=DateTimeHelper.ParseDate(element.RequiredDate);
                 element.RequestDate=DateTimeHelper.ParseDate(element.RequestDate);            
               });
-           //   console.log("grid item data" + JSON.stringify(this.gridItemsData) );
+             // console.log("grid item data" + JSON.stringify(this.gridItemsData));
           },
           error => {
             this.showLoader=false;
@@ -174,8 +172,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
     /**
      * When click on save 
      */
-    public OnSave() {debugger;
-
+    public OnSave() {
+      this.isFromGrid = false
       this.AddPurchaseInquiryItem();
       this.addItem = false;
       this.itemGrid = true;
@@ -195,6 +193,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
      */
     public AddPurchaseInquiryItem() {
       this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
+      console.log(":"+this.purchaseItemsModel.PurchaseInquiryId);
      this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
          data => {
            this.getInquiryItemsData(this.receivedPurchaseInquiryId);
@@ -210,10 +209,27 @@ export class PurchaseInqItemAddComponent implements OnInit {
     }
 
   // tab code start
-  
   openTab(evt, tabName) {
+
+    if(tabName=='notes')
+    {
+      let notedata:NotesModel=new NotesModel();
+      notedata.ParentId=this.purchaseItemsModel.PurchaseInquiryItemId;      
+      notedata.ParentType=CustomerEntityType.PurchaseInquiryItem;
+
+      notedata.GrantParentId=this.receivedPurchaseInquiryId;
+      notedata.GrandParentType=CustomerEntityType.PurchaseInquiry;
+
+      this.commonService.setNotesItemData(notedata);
+    }
+
+
+
     this.tabName = tabName;
     UIHelper.customOpenTab(evt, tabName, 'vertical');
+
+
+
   }
   // tab code end
     /**
@@ -223,10 +239,18 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
     this.purchaseItemsModel = new TempPurchaseInquiryItemModel();
     this.purchaseItemsModel.RequestDate = new Date();
-
     this.purchaseItemsModel.RequiredDate = new Date();
     // this.purchaseItemsModel.CustomerItemCode= '';
     // this.purchaseItemsModel.Unit = '';
   }
 
+  setNotesModel(parentId,grandParentId)
+  {
+    let notesModel:NotesModel=new NotesModel();
+    notesModel.GrantParentId=grandParentId;
+    notesModel.GrandParentType=CustomerEntityType.PurchaseInquiry;
+    notesModel.ParentType=CustomerEntityType.PurchaseInquiryItem;
+    notesModel.ParentId=parentId; 
+    this.commonService.setNotesItemData(notesModel);
+  }
 }
