@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+//import * as moment from 'moment';
 // import * as momentTZ from 'moment-timezone';
 import { DatePipe } from '../../../node_modules/@angular/common';
 import { Configuration } from 'src/assets/configuration';
