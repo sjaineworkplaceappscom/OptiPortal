@@ -17,6 +17,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   constructor(private commonService: Commonservice, private purchaseInquiryService: PurchaseInquiryService) { }
 
+  isCancelStatus:boolean=true;
   isHome: boolean = true;
   isItems: boolean = false;
   isAttchement: boolean = false;

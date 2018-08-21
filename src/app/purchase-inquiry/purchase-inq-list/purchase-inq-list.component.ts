@@ -53,6 +53,13 @@ export class PurchaseInqListComponent implements OnInit {
   // End UI Section
 
   ngOnInit() {
+    // Apply class on body start
+    const element = document.getElementsByTagName("body")[0];
+    element.className = "";
+    element.classList.add("opti_body-purchase-inquiries");
+    element.classList.add("opti_body-main-module");
+    // Apply class on body end
+
     let userDetail: string = localStorage.getItem("LoginUserDetail");
     let userData: any[] = JSON.parse(userDetail);
     this.loginUserType = userData[0].LoginUserType;
