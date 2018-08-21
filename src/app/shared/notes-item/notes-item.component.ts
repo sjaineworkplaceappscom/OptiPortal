@@ -27,7 +27,7 @@ export class NotesItemComponent implements OnInit {
     */
     // @Input() tabparent;
     getTabParent: string;
-
+    isCancelStatus:boolean=true;
     TabAddNotesFormStatus: boolean = false;
     TabEditNotesFormStatus: boolean = false;
     TabNotesGridStatus: boolean = true;

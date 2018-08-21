@@ -13,12 +13,13 @@ export class AttachmentItemComponent implements OnInit {
     */
    isMobile: boolean;
    gridHeight: number;
+   isCancelStatus:boolean = true;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
       //Apply Grid Height
       this.gridHeight = UIHelper.getMainContentHeight();
-      
+
       // Check Mobile device
       this.isMobile = UIHelper.isMobile();
   }

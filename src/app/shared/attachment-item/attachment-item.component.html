@@ -1,4 +1,7 @@
 <div id="opti_purchaseInquiryItemAttachementSectionID">
+
+    <div *ngIf="isCancelStatus" class="opti_overrite-section-for-disable"></div>
+
     <h5>Upload Items Attachement</h5>
     <kendo-upload class="opti_items-upload" [saveUrl]="uploadAttachementItemSaveUrl" [removeUrl]="uploadAttachementItemRemoveUrl">
     </kendo-upload>
