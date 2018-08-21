@@ -1,3 +1,5 @@
+import { hasFilterMenu } from "../../node_modules/@progress/kendo-angular-grid/dist/es2015/filtering/filterable";
+
 export const Configuration={
     // For Dev
     baseServerAPIEndpoint:"http://172.16.6.139:9090/"
@@ -8,5 +10,5 @@ export const Configuration={
 
     ,firstHomePage:"/home/purchaseinquiry"
     , dateFormat:'dd MMM yy'
-   
+      
 }
