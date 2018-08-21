@@ -30,6 +30,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
   tabName: string = 'home';
 
   isFromGrid = false;
+  addOperationInProgress:boolean=false;
+  
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -70,9 +72,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
       (data: TempPurchaseInquiryModel) => {
         this.receivedPIModel = data;
         
-
-        this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId
-        console.log("received parent id at piia:" + this.receivedPurchaseInquiryId);
+        this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId        
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
         this.showItemsGrid();
       },
@@ -98,6 +98,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   showItemForm() {
     this.addItem = true;
     this.itemGrid = false;
+    // this.addOperationInProgress=true;
   }
 
   /**
@@ -144,25 +145,23 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.purchaseItemsModel.RequiredDate = this.requiredDate;
     this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
     this.showItemForm();
-
-
   }
 
 
   /**
     * Method to get list of inquries from server.
     */
-  public getInquiryItemsData(inquiryId: string) {
-    console.log("in getInquiryItemList");
+  public getInquiryItemsData(inquiryId: string) {    
     this.showLoader = true;
     this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
       inquiryItemData => {
+        this.showLoader=false;
         this.gridItemsData = JSON.parse(inquiryItemData);
         this.gridItemsData.forEach(element => {
           element.RequiredDate = DateTimeHelper.ParseDate(element.RequiredDate);
           element.RequestDate = DateTimeHelper.ParseDate(element.RequestDate);
         });
-        // console.log("grid item data" + JSON.stringify(this.gridItemsData));
+        
       },
       error => {
         this.showLoader = false;
@@ -179,21 +178,18 @@ export class PurchaseInqItemAddComponent implements OnInit {
    * When click on save 
    */
   public OnSaveClick() {
-    debugger;
+    
     if (this.isFromGrid) {
       this.UpdatePurchaseInquiryItem();
     } else {
       this.AddPurchaseInquiryItem();
     }
-
-
   }
 
   /**
    * when click on save and new
    */
-  public OnSaveAndNew() {
-    
+  public OnSaveAndNew() {    
     if (this.isFromGrid) {
       this.UpdatePurchaseInquiryItem(true);
     } else {
@@ -205,17 +201,18 @@ export class PurchaseInqItemAddComponent implements OnInit {
   * AddPurchaseInquiryItem
   */
   public AddPurchaseInquiryItem(saveAndNew: boolean = false) {
-    this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
-    console.log(":" + this.purchaseItemsModel.PurchaseInquiryId);
+    this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;    
+    this.showLoader=true;
     this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
-        console.log(data)
+        //console.log(data)
         if (saveAndNew) {
           this.resetValuesAndShowForm()
         } else {
-           this.showItemsGrid();
+           //this.showItemsGrid();
         }
+        this.showLoader=false;
       },
       error => {
         this.showLoader = false;
@@ -224,6 +221,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
       },
       () => {
         this.isFromGrid = false
+        this.addOperationInProgress=false;
       }
     );
   }
@@ -234,16 +232,19 @@ export class PurchaseInqItemAddComponent implements OnInit {
  */
   public UpdatePurchaseInquiryItem(saveAndNew: boolean = false) {
     this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
+    this.showLoader=true;
     this.purchaseInquiryService.UpdatePurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
+        
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
-        console.log(data)
+        
         if (saveAndNew) {
           this.resetValuesAndShowForm()
         } else {
           //   this.showItemsGrid();
-          this.showItemsGrid();
+         // this.showItemsGrid();        
         }
+        this.showLoader=false;
       },
       error => {
         this.showLoader = false;
@@ -258,6 +259,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
   // tab code start
   openTab(evt, tabName) {
+    if(this.addOperationInProgress==true)
+    {
+      return;
+    }
 
     if (tabName == 'notes') {
       let notedata: NotesModel = new NotesModel();
@@ -286,7 +291,9 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
     this.purchaseItemsModel = new TempPurchaseInquiryItemModel();
     this.purchaseItemsModel.RequestDate = new Date();
-    this.purchaseItemsModel.RequiredDate = new Date();
+    this.purchaseItemsModel.RequiredDate = new Date();  
+
+    this.addOperationInProgress=true;
     // this.purchaseItemsModel.CustomerItemCode= '';
     // this.purchaseItemsModel.Unit = '';
   }
