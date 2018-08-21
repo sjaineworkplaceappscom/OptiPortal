@@ -69,7 +69,24 @@ export class PurchaseInquiryService {
   }
   return this.httpHelper.post(this.baseUrl + 'purchaseinquiryitem/add',data,null);
   }
-
+  
+  /**
+   * Update Purchase Inquiry Item.
+   */
+  public UpdatePurchaseInquiryItem(request: TempPurchaseInquiryItemModel) {
+    var data: any = {
+    "PurchaseInquiryId": request.PurchaseInquiryId,
+    "PurchaseInquiryItemId": request.PurchaseInquiryItemId,
+    "ItemDescription": request.Description,
+    "Quantitiy": request.Quantity,
+    "Unit": request.Unit,
+    "Requester": request.Requester,
+    "RequestDate": request.RequestDate,
+    "RequiredDate": request.RequiredDate,
+    "ShipToLocation": request.ShipToLocation
+    }
+    return this.httpHelper.put(this.baseUrl + 'purchaseinquiryitem/update',data,null);
+    }
 
   /**
   * UpdatePurchaseInquiry

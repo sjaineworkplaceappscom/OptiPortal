@@ -82,7 +82,7 @@ export class NotesComponent implements OnInit {
         // Check Mobile device
         this.isMobile = UIHelper.isMobile();
         // UI End
-
+        
 
         this.noteModel = new NotesModel();
 
@@ -133,7 +133,6 @@ export class NotesComponent implements OnInit {
     * @param action
     */
     submitNote(e) {
-
         // Add Notes Data in model. when comes from inquiry        
         this.noteModel.NoteType = this.selectedNoteItem.value;
 
@@ -199,6 +198,7 @@ export class NotesComponent implements OnInit {
                 if (notesData != null && notesData != undefined) {
                     this.noteItemsData = JSON.parse(notesData);
                     // To format result dates.
+                    console.log("note data"+JSON.stringify(this.noteItemsData));
                     this.formatNotesDate();
                 }
                 this.showLoader = false;
