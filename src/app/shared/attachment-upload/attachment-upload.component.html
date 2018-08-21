@@ -1,7 +1,17 @@
 <h5>Upload Attachement</h5>
-<kendo-upload  (select)="selectEventHandler($event)">
-</kendo-upload>
+<!-- <kendo-upload class="opti_items-upload" [saveUrl]="uploadAttachementItemSaveUrl" [removeUrl]="uploadAttachementItemRemoveUrl">
+    </kendo-upload> -->
+
+<input #file type="file" multiple (change)="upload(file.files)" />  
+<br />  
+<span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">  
+  {{progress}}%  
+</span>  
+  
+<span style="font-weight:bold;color:green;" *ngIf="message">  
+  {{message}}  
+</span>  
 <div class="text-right">
-    <button type="button" class="k-button k-primary" (click)="submitAttachements($event);" style="margin-top: 8px;">Save</button>
-    <button type="button" class="k-button k-primary" (click)="submitAttachements($event);" style="margin-top: 8px;">Cancel</button>
+    <!-- <button type="button" class="k-button k-primary" (click)="submitAttachements($event);" style="margin-top: 8px;">Save</button> -->
+    <button type="button" class="k-button k-primary" (click)="back();" style="margin-top: 8px;">Cancel</button>
 </div>
