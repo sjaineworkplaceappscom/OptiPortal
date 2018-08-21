@@ -46,7 +46,7 @@
     }
 
     // side panel navigation
-    app-left{
+    app-portal-left{
         position: fixed;
         display: none;
     }
@@ -56,7 +56,7 @@
     }
 
     .opti_menusidebar-mobile-open{
-        app-left {
+        app-portal-left {
             width: 100%;
             height: calc(100% - 65px);
             z-index: 999;
@@ -70,7 +70,7 @@
 
     // change Hamburger and cross icon
     .opti_menusidebar-mobile-open{
-        app-top{
+        app-portal-top{
             #sidebarCollapse .opti_backarrow{
                 display: block;
             }
@@ -84,7 +84,7 @@
     }
 
     // to fix the header in mobile
-    app-top{
+    app-portal-top{
         position: fixed;
         top: 0;
         width: 100%;

@@ -1,3 +1,13 @@
 // @import 'account_module/_deviceaccount';
 @import 'account_module/_mobile_account_common';
 @import 'global_layout/_devicelayout';
+
+/////////////////////////////////////////
+// css for main module grid loader start
+/////////////////////////////////////////
+body .opti_loader-module-grid-list {
+    height: calc(100vh - 85px) !important;
+}
+//////////////////////////////////////
+// css for main module grid loader end
+//////////////////////////////////////
