@@ -57,7 +57,9 @@ button{
 app-portal-left #opti_LeftPanelID .opti_left-nav-ul li:hover,
 .opti_user-profile-drop-down li.opti_mouse-pointer:hover,
 li.opti_list:hover,
-ul.opti_liststyle-one-ul .opti_liststyle-one-li:hover
+ul.opti_liststyle-one-ul .opti_liststyle-one-li:hover,
+.opti_vertical-tab-outer ul li:hover,
+.opti_vertical-tab-outer ul li.active
 {
   background-color: #daecf4;
 }

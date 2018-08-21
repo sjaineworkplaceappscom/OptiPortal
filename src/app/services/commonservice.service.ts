@@ -111,6 +111,12 @@ export class Commonservice {
      this.itemDataSub.next(data);
    }
 
-   // send item id to item-notes list.
+   // for Seeting color of theme.
+   private purchaseInquiryAttachmentGrid = new BehaviorSubject<any>(true);
+   purchaseInquiryAttachmentGridStatus = this.purchaseInquiryAttachmentGrid.asObservable();
+
+   public setPurchaseInquiryAttachmentGrid(data: any) {
+      this.purchaseInquiryAttachmentGrid.next(data);
+   }
 
 }
