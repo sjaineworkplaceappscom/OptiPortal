@@ -69,7 +69,6 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.commonService.currentItemData.subscribe(
       (data: TempPurchaseInquiryModel) => {
         this.receivedPIModel = data;
-        
 
         this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId
         console.log("received parent id at piia:" + this.receivedPurchaseInquiryId);
