@@ -25,6 +25,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   /**
    * Item tab Variable
   */
+  isCancelStatus:boolean = true;
   addItem: boolean = false;
   itemGrid: boolean = true;
   tabName: string = 'home';

@@ -65,6 +65,7 @@ export class PurchaseInqListComponent implements OnInit {
     this.loginUserType = userData[0].LoginUserType;
     this.gridHeight = UIHelper.getMainContentHeight();
     this.systemAdmin=localStorage.getItem('SystemAdmin');
+
     this.commonService.refreshPIListSubscriber.subscribe(data => {
       this.getInquiryList();
     },
@@ -138,6 +139,10 @@ export class PurchaseInqListComponent implements OnInit {
     // Selected Item Data
     let selectedIinquiry = this.gridData[selection.index];
     const selectedData = selection.selectedRows[0].dataItem;
+    console.log(selectedData);
+    localStorage.setItem("PurchaseinqueryId",selectedData.PurchaseInquiryId);  
+    
+    localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(selectedData));   
 
     currentsideBarInfo.RequesterData = selectedData;
     this.commonService.setCurrentSideBar(currentsideBarInfo);

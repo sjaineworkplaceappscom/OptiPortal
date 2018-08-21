@@ -254,6 +254,16 @@ body{
                         border-bottom-left-radius: 5px;
                         border-bottom-right-radius: 5px;
                     }
+                    li.opti_disable-tab{
+                        opacity: 0.5;
+                        cursor: default;
+                        a{
+                            cursor: default;
+                        }
+                    }
+                    li.opti_disable-tab:hover{
+                        background: #F8F8F8;
+                    }
                 }
             }
             .opti_vertical-tabcontent {
