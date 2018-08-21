@@ -119,3 +119,17 @@ Rejected = 2,
 /// </summary>
 PartialApproved = 3
 }
+
+export enum PurchaseInquiryStatus
+{
+
+Draft = 1,
+New = 2,
+Revised = 3,
+Approved = 4,
+PartialApproved = 5,
+Rejected = 6,
+Canceled = 7,
+Closed = 8
+
+}

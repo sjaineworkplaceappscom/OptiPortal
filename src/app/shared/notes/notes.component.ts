@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, HostListener, Input } from '@angular/core
 import { UIHelper } from '../../helpers/ui.helpers';
 import { NotesModel } from '../../models/purchaserequest/notes';
 import { SharedComponentService } from '../../services/shared-component.service';
-import { CustomerEntityType } from '../../enums/enums';
+import { CustomerEntityType, PurchaseInquiryStatus } from '../../enums/enums';
 import { Commonservice } from '../../services/commonservice.service';
 import { DatePipe } from '../../../../node_modules/@angular/common';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
@@ -83,9 +83,15 @@ export class NotesComponent implements OnInit {
         this.isMobile = UIHelper.isMobile();
         // UI End
         
+    //get status of selected inquiry for disabling or enabling  forms
+    let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
+    let inquiryData: any = JSON.parse(inquiryDetail);
+    let inquiryStatus = inquiryData.Status;
+    if(inquiryStatus == PurchaseInquiryStatus.Canceled){
+      //this.isCancelStatus = true;
+    }
 
         this.noteModel = new NotesModel();
-
         // Subscriber for Load data.
         this.commonService.currentNotesData.subscribe(
             (data: NotesModel) => {

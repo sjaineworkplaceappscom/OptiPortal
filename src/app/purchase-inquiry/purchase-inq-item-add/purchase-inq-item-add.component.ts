@@ -7,7 +7,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { Commonservice } from '../../services/commonservice.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
-import { CustomerEntityType } from '../../enums/enums';
+import { CustomerEntityType, PurchaseInquiryStatus } from '../../enums/enums';
 
 @Component({
   selector: 'app-purchase-inq-item-add',
@@ -25,7 +25,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   /**
    * Item tab Variable
   */
-  isCancelStatus:boolean = true;
+  isCancelStatus:boolean = false;
   addItem: boolean = false;
   itemGrid: boolean = true;
   tabName: string = 'home';
@@ -61,6 +61,15 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
+
+    //get status of selected inquiry for disabling or enabling  forms
+    let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
+    let inquiryData: any = JSON.parse(inquiryDetail);
+    let inquiryStatus = inquiryData.Status;
+    if(inquiryStatus == PurchaseInquiryStatus.Canceled){
+      this.isCancelStatus = true;
+    }
+
     // GET current theme colour
     this.commonService.themeCurrentData.subscribe(
       data => {

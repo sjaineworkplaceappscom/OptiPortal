@@ -5,7 +5,7 @@ import { HttpClient, HttpRequest, HttpEventType } from '../../../../node_modules
 import { Configuration } from '../../../assets/configuration';
 import { AttachmentDetail } from 'src/app/models/AttchmentDetail';
 import { SharedComponentService } from '../../services/shared-component.service';
-import { CustomerEntityType } from '../../enums/enums';
+import { CustomerEntityType, PurchaseInquiryStatus } from '../../enums/enums';
 
 
 @Component({
@@ -62,6 +62,14 @@ export class AttachmentComponent implements OnInit {
 
     this.getTabParent = this.tabparent;
     this.purchaseInqId = localStorage.getItem("PurchaseinqueryId");
+
+      //get status of selected inquiry for disabling or enabling  forms
+      let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
+      let inquiryData: any = JSON.parse(inquiryDetail);
+      let inquiryStatus = inquiryData.Status;
+      if(inquiryStatus == PurchaseInquiryStatus.Canceled){
+       // this.isCancelStatus = true;
+      }
     // Load data
     this.getAttchmentList();
   }

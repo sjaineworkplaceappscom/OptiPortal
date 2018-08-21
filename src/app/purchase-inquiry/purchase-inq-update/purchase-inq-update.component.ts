@@ -5,7 +5,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { Commonservice } from '../../services/commonservice.service';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
-import { CustomerEntityType } from '../../enums/enums';
+import { CustomerEntityType, PurchaseInquiryStatus } from '../../enums/enums';
 
 @Component({
   selector: 'app-purchase-inq-update',
@@ -80,7 +80,14 @@ export class PurchaseInqUpdateComponent implements OnInit {
     UIHelper.getWidthOfOuterTab();
     // Add active class on tab title 
     this.optiTab.nativeElement.children[0].classList.add('active');
-
+    //get status of selected inquiry for disabling or enabling  forms
+    let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
+    let inquiryData: any = JSON.parse(inquiryDetail);
+    let inquiryStatus = inquiryData.Status;
+    if(inquiryStatus == PurchaseInquiryStatus.Canceled){
+      this.isCancelStatus = true;
+    }
+    
     // Set sidebar data;
     this.commonService.currentSidebarInfo.subscribe(
 

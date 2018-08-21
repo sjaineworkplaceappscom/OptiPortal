@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
+import { PurchaseInquiryStatus } from '../../enums/enums';
 
 @Component({
   selector: 'app-attachment-item',
@@ -30,6 +31,14 @@ export class AttachmentItemComponent implements OnInit {
     //Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
 
+
+    //get status of selected inquiry for disabling or enabling  forms
+    let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
+    let inquiryData: any = JSON.parse(inquiryDetail);
+    let inquiryStatus = inquiryData.Status;
+    if(inquiryStatus == PurchaseInquiryStatus.Canceled){
+      this.isCancelStatus = true;
+    }
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
   }
