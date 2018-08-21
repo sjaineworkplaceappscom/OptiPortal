@@ -50,7 +50,7 @@ export class NotesComponent implements OnInit {
     itemEditNotes: boolean = false;
     noteModel: NotesModel;
 
-
+    isCancelStatus: boolean = false;
     public noteTypes: Array<{ text: string, value: number }> = [
         { text: "General ", value: 1 },
         { text: "Rejected", value: 2 },
@@ -88,7 +88,7 @@ export class NotesComponent implements OnInit {
     let inquiryData: any = JSON.parse(inquiryDetail);
     let inquiryStatus = inquiryData.Status;
     if(inquiryStatus == PurchaseInquiryStatus.Canceled){
-      //this.isCancelStatus = true;
+      this.isCancelStatus = true;
     }
 
         this.noteModel = new NotesModel();

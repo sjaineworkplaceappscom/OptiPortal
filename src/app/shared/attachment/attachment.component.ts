@@ -33,6 +33,8 @@ export class AttachmentComponent implements OnInit {
   public message: string;
   public purchaseInqId: string;
   public gridAttachmentData: any[] = [];
+
+  isCancelStatus: boolean = false;
   constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService) { }
 
   @HostListener('window:resize', ['$event'])
@@ -68,7 +70,7 @@ export class AttachmentComponent implements OnInit {
       let inquiryData: any = JSON.parse(inquiryDetail);
       let inquiryStatus = inquiryData.Status;
       if(inquiryStatus == PurchaseInquiryStatus.Canceled){
-       // this.isCancelStatus = true;
+        this.isCancelStatus = true;
       }
     // Load data
     this.getAttchmentList();
