@@ -6,6 +6,8 @@ import { CustomerEntityType } from '../../enums/enums';
 import { Commonservice } from '../../services/commonservice.service';
 import { DatePipe } from '../../../../node_modules/@angular/common';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { Observable } from '../../../../node_modules/rxjs';
+import { ISubscription } from "rxjs/Subscription";
 
 @Component({
     selector: 'app-notes-item',
@@ -27,7 +29,7 @@ export class NotesItemComponent implements OnInit {
     */
     // @Input() tabparent;
     getTabParent: string;
-
+    isCancelStatus:boolean=true;
     TabAddNotesFormStatus: boolean = false;
     TabEditNotesFormStatus: boolean = false;
     TabNotesGridStatus: boolean = true;
@@ -48,44 +50,24 @@ export class NotesItemComponent implements OnInit {
     itemAddNotes: boolean = false;
     itemEditNotes: boolean = false;
     noteModel: NotesModel;
+    notessub:ISubscription;
 
     public noteTypes: Array<{ text: string, value: number }> = [
         { text: "General ", value: 1 },
         { text: "Rejected", value: 2 },
         { text: "Partial accepted", value: 3 }
     ];
+     
 
     public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
     constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe) {
-    }
-    @HostListener('window:resize', ['$event'])
-    onResize(event) {
-        //Apply Grid Height
-        this.gridHeight = UIHelper.getMainContentHeight();
-        // Check Mobile device
-        this.isMobile = UIHelper.isMobile();
-    }
-
-    ngOnChange() {
-    }
-
-    ngOnInit() {
-        // UI Start        
-        //Apply Grid Height
-        this.gridHeight = UIHelper.getMainContentHeight();
-        // Check Mobile device
-        this.isMobile = UIHelper.isMobile();
-        // UI End
-
-        this.noteModel = new NotesModel();
-
-        // Subscriber for Load data.
-        this.commonService.currentNotesItemData.subscribe(
+          // Subscriber for Load data.
+          
+          this.notessub=this.commonService.currentNotesItemData.subscribe(
             (data: NotesModel) => {
 
                 if (data != undefined && data != null) {
                     this.noteModel = data;
-
                     // Get notes data.
                     this.getNoteList(this.noteModel.ParentId, data.ParentType);
 
@@ -97,6 +79,31 @@ export class NotesItemComponent implements OnInit {
                 console.log("Error: ", error)
             }
         );
+    }
+    @HostListener('window:resize', ['$event'])
+    onResize(event) {
+        //Apply Grid Height
+        this.gridHeight = UIHelper.getMainContentHeight();
+        // Check Mobile device
+        this.isMobile = UIHelper.isMobile();
+    }
+    ngOnDestroy(){
+        this.notessub.unsubscribe();
+    }
+    ngOnChange() {
+    }
+
+    ngOnInit() {
+        // UI Start        
+        //Apply Grid Height
+        this.gridHeight = UIHelper.getMainContentHeight();
+        // Check Mobile device
+        this.isMobile = UIHelper.isMobile();
+        // UI End
+
+      //  this.noteModel = new NotesModel();
+
+      
     }
 
     /**

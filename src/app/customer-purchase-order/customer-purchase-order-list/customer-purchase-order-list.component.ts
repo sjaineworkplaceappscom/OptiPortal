@@ -36,6 +36,14 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
   public gridData: any[];
 
   ngOnInit() {
+
+    // Apply class on body start
+    const element = document.getElementsByTagName("body")[0];
+    element.className = "";
+    element.classList.add("opti_body-customer-purchase-order");
+    element.classList.add("opti_body-main-module");
+    // Apply class on body end
+
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
 

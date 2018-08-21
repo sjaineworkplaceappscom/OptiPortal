@@ -5,8 +5,8 @@
 /////////////////////////////////////////
 // css for main module grid loader start
 /////////////////////////////////////////
-body .opti_loader-module-grid-list {
-    height: calc(100vh - 85px) !important;
+body.opti_body-main-module .opti_loader-module-grid-list {
+    height: calc(100vh - 85px) ;
 }
 //////////////////////////////////////
 // css for main module grid loader end
