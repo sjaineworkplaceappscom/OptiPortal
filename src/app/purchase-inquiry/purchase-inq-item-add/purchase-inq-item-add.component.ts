@@ -30,6 +30,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
   tabName: string = 'home';
 
   isFromGrid = false;
+  addOperationInProgress:boolean=false;
+  
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -43,7 +45,6 @@ export class PurchaseInqItemAddComponent implements OnInit {
   // store item grid data.
   gridItemsData = [];
 
-
   public minValidDate: Date = new Date();
   purchaseItemsModel: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
   showLoader: boolean = false;
@@ -52,9 +53,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
-  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) { }
-
-
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) {     
+  }
   ngOnInit() {
     // Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
@@ -66,12 +66,11 @@ export class PurchaseInqItemAddComponent implements OnInit {
         this.selectedThemeColor = data;
       }
     );
+
     this.commonService.currentItemData.subscribe(
       (data: TempPurchaseInquiryModel) => {
         this.receivedPIModel = data;
-
-        this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId
-        console.log("received parent id at piia:" + this.receivedPurchaseInquiryId);
+        this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId        
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
         this.showItemsGrid();
       },
@@ -97,6 +96,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   showItemForm() {
     this.addItem = true;
     this.itemGrid = false;
+    // this.addOperationInProgress=true;
   }
 
   /**
@@ -118,6 +118,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
   closeItemForm() {
     this.showItemsGrid();
+   // this.resetDefaultItemData();
   }
 
   //purchaseItemsModelForUpdate: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
@@ -132,6 +133,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
    * @param status 
    */
   public onItemGridDataSelection(selection, status) {
+    // set false for grid item only
+    this.addOperationInProgress=false;
 
     this.isFromGrid = true;
     const selectedData = this.gridItemsData[selection.index];
@@ -143,25 +146,23 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.purchaseItemsModel.RequiredDate = this.requiredDate;
     this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
     this.showItemForm();
-
-
   }
 
 
   /**
     * Method to get list of inquries from server.
     */
-  public getInquiryItemsData(inquiryId: string) {
-    console.log("in getInquiryItemList");
+  public getInquiryItemsData(inquiryId: string) {    
     this.showLoader = true;
     this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
       inquiryItemData => {
+        this.showLoader=false;
         this.gridItemsData = JSON.parse(inquiryItemData);
         this.gridItemsData.forEach(element => {
           element.RequiredDate = DateTimeHelper.ParseDate(element.RequiredDate);
           element.RequestDate = DateTimeHelper.ParseDate(element.RequestDate);
         });
-        // console.log("grid item data" + JSON.stringify(this.gridItemsData));
+        
       },
       error => {
         this.showLoader = false;
@@ -178,20 +179,18 @@ export class PurchaseInqItemAddComponent implements OnInit {
    * When click on save 
    */
   public OnSaveClick() {
-    debugger;
+    
     if (this.isFromGrid) {
       this.UpdatePurchaseInquiryItem();
     } else {
       this.AddPurchaseInquiryItem();
     }
-
-
   }
 
   /**
-   * when click on save and new
+   * when click on save and new.
    */
-  public OnSaveAndNew() {
+  public OnSaveAndNew() {    
     
     if (this.isFromGrid) {
       this.UpdatePurchaseInquiryItem(true);
@@ -204,17 +203,27 @@ export class PurchaseInqItemAddComponent implements OnInit {
   * AddPurchaseInquiryItem
   */
   public AddPurchaseInquiryItem(saveAndNew: boolean = false) {
-    this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
-    console.log(":" + this.purchaseItemsModel.PurchaseInquiryId);
+    this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;    
+    this.showLoader=true;
+    
     this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
+        //this.gridItemsData = JSON.parse(data);
+        //this.purchaseItemsModel = JSON.parse(data);
+        
+        let tempData: any = data;
+        this.purchaseItemsModel = tempData;
+        this.purchaseItemsModel.RequiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
+        this.purchaseItemsModel.RequestDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequestDate);
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
-        console.log(data)
+        //console.log(data)
         if (saveAndNew) {
           this.resetValuesAndShowForm()
-        } else {
-           this.showItemsGrid();
+        } else { 
+           //this.showItemsGrid();
+           this.addOperationInProgress=false;
         }
+        this.showLoader=false;
       },
       error => {
         this.showLoader = false;
@@ -223,6 +232,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
       },
       () => {
         this.isFromGrid = false
+       
+       // this.addOperationInProgress=false;
       }
     );
   }
@@ -233,16 +244,19 @@ export class PurchaseInqItemAddComponent implements OnInit {
  */
   public UpdatePurchaseInquiryItem(saveAndNew: boolean = false) {
     this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
+    this.showLoader=true;
     this.purchaseInquiryService.UpdatePurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
+        
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
-        console.log(data)
+        
         if (saveAndNew) {
           this.resetValuesAndShowForm()
         } else {
           //   this.showItemsGrid();
-          this.showItemsGrid();
+         // this.showItemsGrid();        
         }
+        this.showLoader=false;
       },
       error => {
         this.showLoader = false;
@@ -257,8 +271,12 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
   // tab code start
   openTab(evt, tabName) {
-
+    if(this.addOperationInProgress==true)
+    {
+      return;
+    }
     if (tabName == 'notes') {
+      
       let notedata: NotesModel = new NotesModel();
       notedata.ParentId = this.purchaseItemsModel.PurchaseInquiryItemId;
       notedata.ParentType = CustomerEntityType.PurchaseInquiryItem;
@@ -268,8 +286,6 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
       this.commonService.setNotesItemData(notedata);
     }
-
-
 
     this.tabName = tabName;
     UIHelper.customOpenTab(evt, tabName, 'vertical');
@@ -285,17 +301,17 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
     this.purchaseItemsModel = new TempPurchaseInquiryItemModel();
     this.purchaseItemsModel.RequestDate = new Date();
-    this.purchaseItemsModel.RequiredDate = new Date();
-    // this.purchaseItemsModel.CustomerItemCode= '';
-    // this.purchaseItemsModel.Unit = '';
+    this.purchaseItemsModel.RequiredDate = new Date();  
+    this.addOperationInProgress=true;
+   
   }
 
-  setNotesModel(parentId, grandParentId) {
-    let notesModel: NotesModel = new NotesModel();
-    notesModel.GrantParentId = grandParentId;
-    notesModel.GrandParentType = CustomerEntityType.PurchaseInquiry;
-    notesModel.ParentType = CustomerEntityType.PurchaseInquiryItem;
-    notesModel.ParentId = parentId;
-    this.commonService.setNotesItemData(notesModel);
-  }
+  // setNotesModel(parentId, grandParentId) {
+  //   let notesModel: NotesModel = new NotesModel();
+  //   notesModel.GrantParentId = grandParentId;
+  //   notesModel.GrandParentType = CustomerEntityType.PurchaseInquiry;
+  //   notesModel.ParentType = CustomerEntityType.PurchaseInquiryItem;
+  //   notesModel.ParentId = parentId;
+  //   this.commonService.setNotesItemData(notesModel);
+  // }
 }

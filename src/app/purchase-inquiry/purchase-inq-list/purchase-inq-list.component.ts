@@ -119,7 +119,7 @@ export class PurchaseInqListComponent implements OnInit {
    * Method will open the edit item window for selected grid item.
    * @param gridItem 
    * @param selection 
-   * @param status 
+   * @param status  
    */
   public openInqueryDetailOnSelectInquery(selection) {
 
