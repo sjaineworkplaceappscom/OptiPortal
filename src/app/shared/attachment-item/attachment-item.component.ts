@@ -14,7 +14,7 @@ export class AttachmentItemComponent implements OnInit {
     */
    isMobile: boolean;
    gridHeight: number;
-   isCancelStatus:boolean = true;
+   isCancelStatus:boolean = false;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {

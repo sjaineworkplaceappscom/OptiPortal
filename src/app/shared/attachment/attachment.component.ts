@@ -32,13 +32,13 @@ export class AttachmentComponent implements OnInit {
   public progress: number;
   public message: string;
   public purchaseInqId: string;
-  public gridAttachmentData:any;
+  public gridAttachmentData: any[] = [];
   constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     /**
-     * Apply Grid Height
+     * Apply Grid Height any[] = []
     */
     this.gridHeight = UIHelper.getMainContentHeight();
 
@@ -72,6 +72,7 @@ export class AttachmentComponent implements OnInit {
       }
     // Load data
     this.getAttchmentList();
+    console.log("Attachment ist",this.gridAttachmentData)
   }
 
   /**
@@ -88,10 +89,10 @@ export class AttachmentComponent implements OnInit {
         if(data!=undefined && data!=null)
         {
           let griddata:any=data;
-        this.gridAttachmentData=JSON.stringify(griddata);        
+        this.gridAttachmentData=JSON.parse(data);           
         }
       }
-    )
+    );
   }
 
   public upload(files) {
@@ -126,13 +127,13 @@ export class AttachmentComponent implements OnInit {
       else if (event.type === HttpEventType.Response)
         this.message = event.body.toString();
         // Get attachment list
-        this.getAttchmentList()
+       
     }
     );
 
   }
 
   public back(){
-    this.showGrid=false;
+    this.showGrid=true;
   }
 }
