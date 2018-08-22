@@ -14,11 +14,7 @@
 
                 <span style="font-weight:bold;color:green;" *ngIf="message">
                     {{message}}
-                </span>
-                <div class="text-right">
-                        <!-- <button type="button" class="k-button k-primary" (click)="submitAttachements($event);" style="margin-top: 8px;">Save</button> -->
-                        <button type="button" class="k-button k-primary" (click)="back()" style="margin-top: 8px;">Cancel</button>
-                </div>
+                </span>              
             </ng-container>
 
             <!-- start attachement grid -->
@@ -65,8 +61,11 @@
                     </ng-template>
                     <!-- grid template end -->
 
-                    <kendo-grid-column field="attachmentname" title="Name" [width]="160" ></kendo-grid-column>
-                    <kendo-grid-column field="sizeinkb"  title="Size(In KB)" [width]="140"></kendo-grid-column>
+                    <kendo-grid-column field="AttachmentName" title="Name" [width]="160" ></kendo-grid-column>
+                    <kendo-grid-column field="SizeInKb"  title="Size(In KB)" [width]="140"></kendo-grid-column>
+                    <kendo-grid-column field="AttachmentText"  title="Attchment Type" [width]="100"></kendo-grid-column>
+                    <kendo-grid-column field="CreatedByName"  title="Created By" [width]="200"></kendo-grid-column>                    
+                    <kendo-grid-column field="ParentIdText"  title="Reference" [width]="100"></kendo-grid-column>
 
                     <!-- xlsx template start -->
                     <kendo-grid-excel fileName="attachements.xlsx"></kendo-grid-excel>

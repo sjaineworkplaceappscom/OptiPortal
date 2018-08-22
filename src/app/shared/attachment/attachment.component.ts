@@ -134,6 +134,8 @@ export class AttachmentComponent implements OnInit {
         this.message = event.body.toString();
         // Get attachment list
        
+        this.getAttchmentList();
+        this.back();
     }
     );
 
