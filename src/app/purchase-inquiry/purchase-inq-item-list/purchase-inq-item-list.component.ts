@@ -5,6 +5,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { TempPurchaseInquiryItemModel } from '../../tempmodels/temppurchase-inquiry-item';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from '../../enums/enums';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 
 @Component({
   selector: 'app-purchase-inq-item-list',
@@ -29,6 +30,10 @@ export class PurchaseInqItemListComponent implements OnInit {
   @Input() id:string;
    //for item grid Data
   public gridItemsData: any[] = [];
+
+  // Subscriber
+  getPIitemlistSubs:ISubscription;
+  
   purchaseItemsModel: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
   constructor(private purchaseInquiryService: PurchaseInquiryService) { }
 
@@ -54,7 +59,11 @@ export class PurchaseInqItemListComponent implements OnInit {
     this.getInquiryItemsData(this.selectedInquiryId);
   }
 
-  
+  ngOnDestroy(){
+    if(this.getPIitemlistSubs!=undefined)
+    this.getPIitemlistSubs.unsubscribe();
+}
+
 
   /**
      * Method to get list of inquries from server.
@@ -62,7 +71,7 @@ export class PurchaseInqItemListComponent implements OnInit {
     public getInquiryItemList(inquiryId: string ){
         
       this.showLoader=true;  
-      this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
+      this.getPIitemlistSubs = this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
           inquiryItemData=>{  
              
               this.gridItemsData = JSON.parse(inquiryItemData);
@@ -84,7 +93,7 @@ export class PurchaseInqItemListComponent implements OnInit {
     public getInquiryItemsData(inquiryId: string ){
       
       this.showLoader=true;  
-      this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
+      this.getPIitemlistSubs = this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
           inquiryItemData=>{        
               this.gridItemsData = JSON.parse(inquiryItemData);
               this.gridItemsData.forEach(element => {

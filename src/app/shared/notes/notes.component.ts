@@ -51,6 +51,10 @@ export class NotesComponent implements OnInit {
     itemEditNotes: boolean = false;
     noteModel: NotesModel;
     notessub:ISubscription;
+    getnotessub:ISubscription;
+    addnotessub:ISubscription;
+    updatenotessub:ISubscription;
+    deletenotessub:ISubscription;
 
     isCancelStatus: boolean = false;
     public noteTypes: Array<{ text: string, value: number }> = [
@@ -116,7 +120,20 @@ export class NotesComponent implements OnInit {
 
     }
     ngOnDestroy(){
+        if(this.notessub!=undefined)
         this.notessub.unsubscribe();
+    
+        if(this.addnotessub!=undefined)
+        this.addnotessub.unsubscribe();
+    
+        if(this.getnotessub!=undefined)
+        this.getnotessub.unsubscribe();
+    
+        if(this.updatenotessub!=undefined)
+        this.updatenotessub.unsubscribe();
+
+        if(this.deletenotessub!=undefined)
+        this.deletenotessub.unsubscribe();
     }
 
     /**
@@ -145,7 +162,7 @@ export class NotesComponent implements OnInit {
         // Add Notes Data in model. when comes from inquiry        
         this.noteModel.NoteType = this.selectedNoteItem.value;
 
-        this.sharedComponentService.AddNote(this.noteModel).subscribe(
+        this.addnotessub=this.sharedComponentService.AddNote(this.noteModel).subscribe(
             resp => {
                 console.log("record added:")
             },
@@ -202,7 +219,7 @@ export class NotesComponent implements OnInit {
     private getNoteList(parentId: string, parentType: number) {
 
         this.showLoader = true;
-        this.sharedComponentService.getNotesList(parentId, parentType).subscribe(
+        this.getnotessub=this.sharedComponentService.getNotesList(parentId, parentType).subscribe(
             notesData => {
                 if (notesData != null && notesData != undefined) {
                     this.noteItemsData = JSON.parse(notesData);
@@ -232,7 +249,7 @@ export class NotesComponent implements OnInit {
      */
     public deleteNotes({ sender, rowIndex, dataItem }) {
 
-        this.sharedComponentService.deleteNote(this.noteItemsData[rowIndex].NoteId).subscribe(
+        this.deletenotessub = this.sharedComponentService.deleteNote(this.noteItemsData[rowIndex].NoteId).subscribe(
             resp => {
 
                 console.log("record deleted:")
@@ -257,7 +274,7 @@ export class NotesComponent implements OnInit {
         this.selectedNote;
         //selected note object : this.selectedNote
         this.selectedNote.NoteType = this.selectedNoteItem.value;
-        this.sharedComponentService.updateNote(this.selectedNote).subscribe(
+        this.updatenotessub=this.sharedComponentService.updateNote(this.selectedNote).subscribe(
             resp => {
                 console.log("record updated:")
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);

@@ -8,6 +8,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { Commonservice } from '../../services/commonservice.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType, PurchaseInquiryStatus } from '../../enums/enums';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 
 @Component({
   selector: 'app-purchase-inq-item-add',
@@ -52,10 +53,31 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
   selectedThemeColor: string = 'opticonstants.DEFAULTTHEMECOLOR';
 
+  // Subscriber
+  itemSub:ISubscription;
+  additemSub:ISubscription;
+  getitemSub:ISubscription;
+  updateitemSub:ISubscription;
+
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
   constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) {     
   }
+
+  ngOnDestroy(){
+    if(this.itemSub!=undefined)
+    this.itemSub.unsubscribe();
+
+    if(this.additemSub!=undefined)
+    this.additemSub.unsubscribe();
+
+    if(this.getitemSub!=undefined)
+    this.getitemSub.unsubscribe();
+
+    if(this.updateitemSub!=undefined)
+    this.updateitemSub.unsubscribe();
+}
+
   ngOnInit() {
     // Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
@@ -64,11 +86,13 @@ export class PurchaseInqItemAddComponent implements OnInit {
     debugger;
     //get status of selected inquiry for disabling or enabling  forms
     let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
+    if(inquiryDetail !=null && inquiryDetail!=undefined){
     let inquiryData: any = JSON.parse(inquiryDetail);
     let inquiryStatus = inquiryData.Status;
     if(inquiryStatus == PurchaseInquiryStatus.Canceled){
       this.isCancelStatus = true;
     }
+  }
 
     // GET current theme colour
     this.commonService.themeCurrentData.subscribe(
@@ -77,7 +101,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
       }
     );
 
-    this.commonService.currentItemData.subscribe(
+    this.itemSub=this.commonService.currentItemData.subscribe(
       (data: TempPurchaseInquiryModel) => {
         this.receivedPIModel = data;
         this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId        
@@ -91,6 +115,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
       }
     );
   }
+
+
 
   /**
    * show grid for item.
@@ -164,7 +190,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
     */
   public getInquiryItemsData(inquiryId: string) {    
     this.showLoader = true;
-    this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
+
+    this.getitemSub=this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
       inquiryItemData => {
         this.showLoader=false;
         this.gridItemsData = JSON.parse(inquiryItemData);
@@ -216,7 +243,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;    
     this.showLoader=true;
     
-    this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
+    this.additemSub=this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
         //this.gridItemsData = JSON.parse(data);
         //this.purchaseItemsModel = JSON.parse(data);
@@ -255,7 +282,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   public UpdatePurchaseInquiryItem(saveAndNew: boolean = false) {
     this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
     this.showLoader=true;
-    this.purchaseInquiryService.UpdatePurchaseInquiryItem(this.purchaseItemsModel).subscribe(
+    this.updateitemSub=this.purchaseInquiryService.UpdatePurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
         
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
@@ -325,3 +352,4 @@ export class PurchaseInqItemAddComponent implements OnInit {
   //   this.commonService.setNotesItemData(notesModel);
   // }
 }
+

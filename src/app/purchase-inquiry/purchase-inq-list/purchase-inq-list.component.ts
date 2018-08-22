@@ -15,6 +15,7 @@ import { ComponentName, ModuleName } from '../../enums/enums';
 import { DatePipe } from '@angular/common'
 import { Configuration } from '../../../assets/configuration';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 
 @Component({
   selector: 'app-purchase-inq-list',
@@ -37,6 +38,11 @@ export class PurchaseInqListComponent implements OnInit {
   public gridData: any[] = [];
   public systemAdmin:any;
   public loginUserType: number;
+
+  // Subscriber
+  getPIlistSubs:ISubscription;
+  refreshPIListSubs:ISubscription;
+
   @ViewChild('optirightfixedsection') optirightfixedsection;
   constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe) {
   }
@@ -66,7 +72,7 @@ export class PurchaseInqListComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     this.systemAdmin=localStorage.getItem('SystemAdmin');
 
-    this.commonService.refreshPIListSubscriber.subscribe(data => {
+    this.refreshPIListSubs=this.commonService.refreshPIListSubscriber.subscribe(data => {
       this.getInquiryList();
     },
     error => {
@@ -80,13 +86,20 @@ export class PurchaseInqListComponent implements OnInit {
     
   }
 
+  ngOnDestroy(){
+    if(this.refreshPIListSubs!=undefined)
+    this.refreshPIListSubs.unsubscribe();
+
+    if(this.getPIlistSubs!=undefined)
+    this.getPIlistSubs.unsubscribe();
+}
 
   /**
    * Method to get list of inquries from server.
    */
   public getInquiryList() {
     this.showLoader = true;
-    this.purchaseInquiryService.getInquiryList().subscribe(
+    this.getPIlistSubs = this.purchaseInquiryService.getInquiryList().subscribe(
       inquiryData => {
         if (inquiryData != null && inquiryData != undefined) {
           this.gridData = JSON.parse(inquiryData);

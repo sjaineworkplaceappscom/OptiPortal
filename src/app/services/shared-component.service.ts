@@ -21,7 +21,6 @@ export class SharedComponentService {
   */
   public getNotesList(id: string, type: number): Observable<any> {
     let url: string = this.baseUrl + "note/list/" + id + "/" + type;
-console.log("I am note api call")
     return this.httpHelper.get(url, null);
   }
   /**

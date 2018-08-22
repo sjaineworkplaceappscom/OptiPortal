@@ -5,6 +5,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { Commonservice } from '../../services/commonservice.service';
 import { ModuleName, ComponentName } from '../../enums/enums';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 @Component({
   selector: 'app-purchase-inq-add',
   templateUrl: './purchase-inq-add.component.html',
@@ -31,6 +32,7 @@ export class PurchaseInqAddComponent implements OnInit {
   public customerCode: string;
   public loggedInUserName: string;
   public loginUserType: number;
+  public addSub:ISubscription;
 
   // status section
   public defaultStatus: Array<{ text: string, value: number }> = [{ text: "New", value: 2 }];
@@ -60,6 +62,10 @@ export class PurchaseInqAddComponent implements OnInit {
     this.setDefaultData();
   }
 
+  ngOnDestroy(){
+    if(this.addSub!=undefined)
+    this.addSub.unsubscribe();
+}
 
 
 
@@ -97,7 +103,7 @@ export class PurchaseInqAddComponent implements OnInit {
       this.purchaseInqueryAdd.Status = Draftstatus.value;
     }
     this.showLoader=true;
-    this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
+    this.addSub=this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
       (data: any) => {        
         this.commonService.refreshPIList(null);
         this.openUpdateSideBar(data);

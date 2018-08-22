@@ -6,6 +6,7 @@ import { Commonservice } from '../../services/commonservice.service';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType, PurchaseInquiryStatus } from '../../enums/enums';
+import { ISubscription } from '../../../../node_modules/rxjs-compat/Subscription';
 
 @Component({
   selector: 'app-purchase-inq-update',
@@ -56,16 +57,28 @@ export class PurchaseInqUpdateComponent implements OnInit {
     { text: "Canceled", value: 7 },
     { text: "Closed", value: 8 }
   ];
+
+  public sideBarsubs:ISubscription;
+  public updatePISub:ISubscription;
+
   @ViewChild('optiRightAddInquiry') optiRightAddInquiry;
   @ViewChild('optiTab') optiTab;
 
   // tab function
   openTab(evt, tabName) {
+    
+    if(tabName=='notes')
+    this.commonService.setNotesData(this.notesMasterData);
 
-    // Set default condition for purchase inquiery attachment
+    if(tabName=='items')
+    this.commonService.setItemsData(this.inquiryModelForItems);
+
+      // Set default condition for purchase inquiery attachment
+    if(tabName=='attachement')  
     this.commonService.setPurchaseInquiryAttachmentGrid(true);
 
     this.tabName = tabName;
+    
     UIHelper.customOpenTab(evt, tabName, 'horizontal');
   }
 
@@ -75,10 +88,19 @@ export class PurchaseInqUpdateComponent implements OnInit {
     UIHelper.getWidthOfOuterTab();
   }
 
+  ngOnDestroy(){
+    if(this.sideBarsubs!=undefined)
+    this.sideBarsubs.unsubscribe();
+
+    if(this.updatePISub!=undefined)
+    this.updatePISub.unsubscribe();
+}
+
   ngOnInit() {
     // apply width on opti_TabID
     UIHelper.getWidthOfOuterTab();
     // Add active class on tab title 
+
     this.optiTab.nativeElement.children[0].classList.add('active');
     //get status of selected inquiry for disabling or enabling  forms
     let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
@@ -92,28 +114,38 @@ export class PurchaseInqUpdateComponent implements OnInit {
     }
 
     // Set sidebar data;
-    this.commonService.currentSidebarInfo.subscribe(
+    this.sideBarsubs=this.commonService.currentSidebarInfo.subscribe(
 
       currentSidebarData => {
         if (currentSidebarData != null && currentSidebarData != undefined) {
+
           this.showLoader = true;
+
           this.purchaseInquiryDetail = currentSidebarData.RequesterData;
+
           if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
+
             this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
             this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
+            
+            this.getStatusListForUpdateByCustomer();
+            this.getUserDetails();
 
             // Set notes data for inquiry
             this.notesMasterData.ParentId = this.purchaseInquiryDetail.PurchaseInquiryId;
             this.notesMasterData.ParentType = CustomerEntityType.PurchaseInquiry;
-            // Fire note event 
-            this.commonService.setNotesData(this.notesMasterData);
-            this.getStatusListForUpdateByCustomer();
-            this.getUserDetails();
 
             // Set items data for inquiry items.
             this.inquiryModelForItems.PurchaseInquiryId = this.purchaseInquiryDetail.PurchaseInquiryId;
+
+            //this.openTab(null,'home');
+
+            // Fire note event 
+            //this.commonService.setNotesData(this.notesMasterData);
+
             //Fire event for items.
-            this.commonService.setItemsData(this.inquiryModelForItems);
+            //this.commonService.setItemsData(this.inquiryModelForItems);
+
             this.showLoader = false;
           }
         }
@@ -129,7 +161,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   }
 
   ngOnChange() {
-    this.commonService.currentSidebarInfo.subscribe(
+    this.sideBarsubs=this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
 
         this.purchaseInquiryDetail = currentSidebarData.RequesterData;
@@ -216,7 +248,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     }
 
     this.showLoader = true;
-    this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
+    this.updatePISub=this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
       data => {
         this.showLoader = false;
         this.commonService.refreshPIList(null);
