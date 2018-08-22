@@ -66,7 +66,7 @@ export class PurchaseInqItemListComponent implements OnInit {
           inquiryItemData=>{  
              
               this.gridItemsData = JSON.parse(inquiryItemData);
-              console.log("grid item data" + JSON.stringify(this.gridItemsData) );
+              
               this.showLoader=false;
           },
           error => {
@@ -82,7 +82,7 @@ export class PurchaseInqItemListComponent implements OnInit {
      * Method to get list of inquries from server.
      */
     public getInquiryItemsData(inquiryId: string ){
-      console.log("in getInquiryItemList");
+      
       this.showLoader=true;  
       this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
           inquiryItemData=>{        
@@ -91,7 +91,7 @@ export class PurchaseInqItemListComponent implements OnInit {
                 element.RequiredDate=DateTimeHelper.ParseDate(element.RequiredDate);
                 element.RequestDate=DateTimeHelper.ParseDate(element.RequestDate);            
               });
-              console.log("grid item data" + JSON.stringify(this.gridItemsData) );
+              
           },
           error => {
             this.showLoader=false;

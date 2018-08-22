@@ -75,7 +75,7 @@ export class AttachmentComponent implements OnInit {
       }
     // Load data
     this.getAttchmentList();
-    console.log("Attachment ist",this.gridAttachmentData)
+    
   }
 
   /**

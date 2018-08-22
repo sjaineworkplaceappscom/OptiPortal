@@ -139,7 +139,7 @@ export class PurchaseInqListComponent implements OnInit {
     // Selected Item Data
     let selectedIinquiry = this.gridData[selection.index];
     const selectedData = selection.selectedRows[0].dataItem;
-    console.log(selectedData);
+    
     localStorage.setItem("PurchaseinqueryId",selectedData.PurchaseInquiryId);  
     
     localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(selectedData));   

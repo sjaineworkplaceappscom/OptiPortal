@@ -98,12 +98,12 @@ export class NotesComponent implements OnInit {
         this.notessub=this.commonService.currentNotesData.subscribe(
             (data: NotesModel) => {
                 this.noteModel = data;
-                console.log(this.noteModel);
+                
                 // Note parent Id
                 if (this.noteModel.ParentType == CustomerEntityType.PurchaseInquiry) {
                     // Get notes data.
                     this.getNoteList(this.noteModel.ParentId, data.ParentType);
-                    console.log("Note Main",this.noteModel);
+                    
                 }
                
             },
@@ -206,8 +206,6 @@ export class NotesComponent implements OnInit {
             notesData => {
                 if (notesData != null && notesData != undefined) {
                     this.noteItemsData = JSON.parse(notesData);
-                    // To format result dates.
-                    console.log("note data"+JSON.stringify(this.noteItemsData));
                     this.formatNotesDate();
                 }
                 this.showLoader = false;
