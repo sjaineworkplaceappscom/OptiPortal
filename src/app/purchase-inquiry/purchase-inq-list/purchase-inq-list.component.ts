@@ -17,6 +17,8 @@ import { Configuration } from '../../../assets/configuration';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 
+import * as $ from "jquery";
+
 @Component({
   selector: 'app-purchase-inq-list',
   templateUrl: './purchase-inq-list.component.html',
@@ -143,6 +145,8 @@ export class PurchaseInqListComponent implements OnInit {
    * @param status  
    */
   public openInqueryDetailOnSelectInquery(selection) {
+    // Set home tab active on click on any record
+    $('#opti_HomeTabPurchaseInquiry').click();
 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.UpdateInquery;
