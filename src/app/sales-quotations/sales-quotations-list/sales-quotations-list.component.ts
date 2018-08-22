@@ -11,7 +11,10 @@ import {
 } from '@progress/kendo-angular-grid';
 
 import { UIHelper } from '../../helpers/ui.helpers';
-import { data2 } from '../../DemoData/Data2';
+
+import { salesQuotations } from '../../DemoData/sales-quotations';
+
+
 
 
 @Component({
@@ -69,7 +72,7 @@ export class SalesQuotationsListComponent implements OnInit {
   */
   public getSalesQuotationList() {
     this.showLoader = true;
-    this.gridData = data2;
+    this.gridData = salesQuotations;
     setTimeout(()=>{    
       this.showLoader = false;
     }, 1000);
