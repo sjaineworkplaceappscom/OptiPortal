@@ -45,33 +45,16 @@
 
                               <kendo-grid-column class="opti_notes-column" media="(min-width: 320px)">
                                   <ng-template kendoGridCellTemplate let-dataItem>
-                                      <dl>
-                                          <!-- <dd><span style="font-weight:bold;">Created By </span>  {{ dataItem.CreatedByName }} <span style="font-weight:bold;">On </span> {{ dataItem.CreatedDate| date:'dd MMM yy'  }} <span style="font-weight:bold;">for</span>Item001 -->
-                                          <dd *ngIf='dataItem.ParentIdText ===""'>
-                                              <span class="opti_note-meta"> {{ dataItem.CreatedByName }}
-                                                  <strong>has created </strong> {{dataItem.NoteText}} note
-                                                  <strong>on </strong> {{ dataItem.CreatedDate| date:'dd MMM yy' }} </span>
+                                      <dl>                                        
+                                            <span class="opti_note-meta"><strong>{{ dataItem.CreatedByName }}</strong> 
+                                                has created <strong> {{dataItem.NoteText}} </strong>  note
+                                                on <strong>{{ dataItem.CreatedDate| date:'dd MMM yy' }} </strong> </span>
+                                              
                                               <span class="float-right opti_note-action-button-sec">
                                                   <svg-icon kendoGridEditCommand src="assets/images/common/edit.svg" (click)="openEditNoteView($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
-                                                      class="opti_mouse-pointer"></svg-icon>
-                                                  <!-- <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
-                                                  class="opti_mouse-pointer"></svg-icon> -->
+                                                      class="opti_mouse-pointer"></svg-icon>                                                  
                                               </span>
-                                          </dd>
-
-                                          <dd *ngIf='dataItem.ParentIdText !=""'>
-                                              <span class="opti_note-meta">{{ dataItem.CreatedByName }}
-                                                  <strong>Created </strong> {{dataItem.NoteText}} note
-                                                  <strong>On </strong> {{ dataItem.CreatedDate| date:'dd MMM yy' }}
-                                                  <strong>for {{dataItem.ParentIdText}}</strong>
-                                              </span>
-                                              <span class="float-right opti_note-action-button-sec">
-                                                  <svg-icon kendoGridEditCommand src="assets/images/common/edit.svg" (click)="openEditNoteView($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
-                                                      class="opti_mouse-pointer"></svg-icon>
-                                                  <!-- <svg-icon kendoGridRemoveCommand src="assets/images/common/trash.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
-                                                  class="opti_mouse-pointer"></svg-icon> -->
-                                              </span>
-                                          </dd>
+                                          <!-- </dd> -->
 
                                           <dd class="opti_note-msg">{{ dataItem.Notes }}</dd>
                                       </dl>

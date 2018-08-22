@@ -6,6 +6,7 @@ import { CustomerEntityType, PurchaseInquiryStatus } from '../../enums/enums';
 import { Commonservice } from '../../services/commonservice.service';
 import { DatePipe } from '../../../../node_modules/@angular/common';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 
 @Component({
     selector: 'app-notes',
@@ -49,6 +50,7 @@ export class NotesComponent implements OnInit {
     itemAddNotes: boolean = false;
     itemEditNotes: boolean = false;
     noteModel: NotesModel;
+    notessub:ISubscription;
 
     isCancelStatus: boolean = false;
     public noteTypes: Array<{ text: string, value: number }> = [
@@ -93,7 +95,7 @@ export class NotesComponent implements OnInit {
 
         this.noteModel = new NotesModel();
         // Subscriber for Load data.
-        this.commonService.currentNotesData.subscribe(
+        this.notessub=this.commonService.currentNotesData.subscribe(
             (data: NotesModel) => {
                 this.noteModel = data;
                 console.log(this.noteModel);
@@ -101,11 +103,9 @@ export class NotesComponent implements OnInit {
                 if (this.noteModel.ParentType == CustomerEntityType.PurchaseInquiry) {
                     // Get notes data.
                     this.getNoteList(this.noteModel.ParentId, data.ParentType);
+                    console.log("Note Main",this.noteModel);
                 }
-                // else if (this.noteModel.ParentType == CustomerEntityType.PurchaseInquiryItem) {
-                //     // Get notes data.
-                //     this.getNoteList(this.noteModel.ParentId, data.ParentType);
-                // }
+               
             },
             error => {
                 this.showLoader = false;
@@ -114,6 +114,9 @@ export class NotesComponent implements OnInit {
             }
         );
 
+    }
+    ngOnDestroy(){
+        this.notessub.unsubscribe();
     }
 
     /**
