@@ -8,6 +8,7 @@ import { LoginModel } from '../../models/account/login-model';
 import { ApplicationState } from '../../helpers/ApplicationState';
 import { Commonservice } from '../../services/commonservice.service';
 import { Configuration } from 'src/assets/configuration';
+import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 
 
 
@@ -132,7 +133,8 @@ export class SigninComponent implements OnInit {
         //show loader false.
         this1.showLoader = false;
         localStorage.setItem('AccessToken', data.token);
-
+        // Cloase side bar.
+        this.closeRightSidebar();
         this.router.navigateByUrl(Configuration.firstHomePage);
       }
     ).catch(
@@ -184,6 +186,12 @@ export class SigninComponent implements OnInit {
     this.randomstring = '';
     this.getRandomStringForCaptcha();
     this.customCaptcha(this.randomstring);
+  }
+
+  public  closeRightSidebar() {
+    let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentSidebarInfo.SideBarStatus = false;
+    this.commonService.setCurrentSideBar(currentSidebarInfo);
   }
 
 }

@@ -31,6 +31,9 @@ export  class UIHelper{
         //alert(getDeviceWidth);
     }
 
+   
+    
+
     // check is it mobile or not
     public static isMobile():boolean{
         let isMobile:boolean;
