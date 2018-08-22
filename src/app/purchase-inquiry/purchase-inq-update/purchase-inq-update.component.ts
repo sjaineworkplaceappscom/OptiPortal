@@ -54,7 +54,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     { text: "Approved", value: 4 },
     { text: "Partial Approved", value: 5 },
     { text: "Rejected", value: 6 },
-    { text: "Canceled", value: 7 },
+    { text: "Cancelled", value: 7 },
     { text: "Closed", value: 8 }
   ];
 
@@ -205,7 +205,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
       this.status = [
         { text: "Draft", value: 1 },
         { text: "New", value: 2 },
-        { text: "Canceled", value: 7 }];
+        { text: "Cancelled", value: 7 }];
 
     } else {
       if (this.purchaseInquiryDetail.Status == 7) {
@@ -218,7 +218,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
         this.isDisableSaveAsDraft = true;
         this.status = [
           { text: "New", value: 2 },
-          { text: "Canceled", value: 7 }];
+          { text: "Cancelled", value: 7 }];
       }
 
     }
