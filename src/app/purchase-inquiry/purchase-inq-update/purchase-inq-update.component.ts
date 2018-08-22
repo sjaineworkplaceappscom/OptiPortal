@@ -17,7 +17,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   constructor(private commonService: Commonservice, private purchaseInquiryService: PurchaseInquiryService) { }
 
-  isCancelStatus:boolean=false;
+  isCancelStatus: boolean = false;
   isHome: boolean = true;
   isItems: boolean = false;
   isAttchement: boolean = false;
@@ -81,17 +81,20 @@ export class PurchaseInqUpdateComponent implements OnInit {
     // Add active class on tab title 
     this.optiTab.nativeElement.children[0].classList.add('active');
     //get status of selected inquiry for disabling or enabling  forms
-    let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
-    let inquiryData: any = JSON.parse(inquiryDetail);
-    let inquiryStatus = inquiryData.Status;
-    if(inquiryStatus == PurchaseInquiryStatus.Canceled){
-      this.isCancelStatus = true;
-    }
+    let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
     
+    if (inquiryDetail != null && inquiryDetail != undefined) {
+      let inquiryData: any = JSON.parse(inquiryDetail);
+      let inquiryStatus = inquiryData.Status;
+      if (inquiryStatus == PurchaseInquiryStatus.Canceled) {
+        this.isCancelStatus = true;
+      }
+    }
+
     // Set sidebar data;
     this.commonService.currentSidebarInfo.subscribe(
 
-      currentSidebarData => {         
+      currentSidebarData => {
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           this.purchaseInquiryDetail = currentSidebarData.RequesterData;
@@ -128,7 +131,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   ngOnChange() {
     this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        
+
         this.purchaseInquiryDetail = currentSidebarData.RequesterData;
       },
       error => {
@@ -211,13 +214,13 @@ export class PurchaseInqUpdateComponent implements OnInit {
         this.purchaseInquiryDetail.Status = 2;
       }
     }
-    
+
     this.showLoader = true;
     this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
       data => {
         this.showLoader = false;
         this.commonService.refreshPIList(null);
-        
+
       },
       error => {
         alert("Something went wrong");
