@@ -33,6 +33,7 @@ export class AttachmentComponent implements OnInit {
   public message: string;
   public purchaseInqId: string;
   public gridAttachmentData: any[] = [];
+  public selectedFileName:string='';
 
   isCancelStatus: boolean = false;
   constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService) { }
@@ -104,9 +105,12 @@ export class AttachmentComponent implements OnInit {
 
     const formData = new FormData();
 
-    for (let file of files)
+    for (let file of files){
       formData.append(file.name, file);
+      this.selectedFileName=file.name;
+    }
 
+    
 
     // Attachment details
     let attachmentDetail: AttachmentDetail = new AttachmentDetail();
