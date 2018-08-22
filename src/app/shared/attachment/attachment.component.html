@@ -3,10 +3,21 @@
     <div class="row">
         <div class="col-md-12">
 
+            
+
+                
+
             <!-- form section -->
             <ng-container *ngIf="showGrid==false">                
                 <!-- <app-attachment-upload></app-attachment-upload> -->
-                <input #file type="file" multiple (change)="upload(file.files)" />
+                
+                <label class="custom-file-upload">
+                    <input #file type="file" multiple (change)="upload(file.files)" />
+                    <img src="assets/images/common/image-upload.svg" width="16px" height="16px" /> Custom Upload
+                </label>
+                {{selectedFileName}}
+
+
                 <br />
                 <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
                     {{progress}}%
