@@ -6,14 +6,12 @@
     <!-- <kendo-upload class="opti_items-upload" [saveUrl]="uploadAttachementItemSaveUrl" [removeUrl]="uploadAttachementItemRemoveUrl">
     </kendo-upload> -->
     
-    <br/>
-
     <!-- items attachement grid start -->
         <kendo-grid  
         [data]="gridAttachmentData" 
         [resizable]="false" 
         [pageSize]="50" 
-        [height]=gridHeight-153
+        [height]=gridHeight-153-39
         [pageable]="true" 
         [sortable]="true" 
         [filterable]=isColumnFilterItemsAttachementGrid
