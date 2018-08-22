@@ -33,7 +33,7 @@ export class AttachmentComponent implements OnInit {
   public message: string;
   public purchaseInqId: string;
   public gridAttachmentData: any[] = [];
-  public selectedFileName:string='';
+  public selectedFileName: string = '';
 
   isCancelStatus: boolean = false;
   constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService) { }
@@ -66,36 +66,46 @@ export class AttachmentComponent implements OnInit {
     this.getTabParent = this.tabparent;
     this.purchaseInqId = localStorage.getItem("PurchaseinqueryId");
 
-      //get status of selected inquiry for disabling or enabling  forms
-      let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
-      let inquiryData: any = JSON.parse(inquiryDetail);
-      let inquiryStatus = inquiryData.Status;
-      if(inquiryStatus == PurchaseInquiryStatus.Canceled){
-        this.isCancelStatus = true;
-      }
+    //get status of selected inquiry for disabling or enabling  forms
+    let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
+    let inquiryData: any = JSON.parse(inquiryDetail);
+    let inquiryStatus = inquiryData.Status;
+    if (inquiryStatus == PurchaseInquiryStatus.Canceled) {
+      this.isCancelStatus = true;
+    }
     // Load data
     this.getAttchmentList();
-    
+
   }
 
   /**
    * Attachement Tab
   */
   public showTabAddAttachementForm() {
-    this.showGrid=false;
+    this.showGrid = false;
   }
 
   public getAttchmentList() {
+    this.showLoader = true;
     this.sharedComponentService.getAtachmentList(this.purchaseInqId, CustomerEntityType.PurchaseInquiry)
-    .subscribe(
-      data=> {
-        if(data!=undefined && data!=null)
-        {
-          let griddata:any=data;
-        this.gridAttachmentData=JSON.parse(data);           
+      .subscribe(
+        data => {
+          this.showLoader = false;
+          if (data != undefined && data != null) {
+            let griddata: any = data;
+            this.gridAttachmentData = JSON.parse(data);
+          }
         }
+      ),
+      err => {
+        alert("Something went wrong.");        
+        console.log(err);
+        this.showLoader=false;
       }
-    );
+    () => {
+      this.showLoader = false;
+    }
+      ;
   }
 
   public upload(files) {
@@ -105,12 +115,12 @@ export class AttachmentComponent implements OnInit {
 
     const formData = new FormData();
 
-    for (let file of files){
+    for (let file of files) {
       formData.append(file.name, file);
-      this.selectedFileName=file.name;
+      this.selectedFileName = file.name;
     }
 
-    
+
 
     // Attachment details
     let attachmentDetail: AttachmentDetail = new AttachmentDetail();
@@ -132,16 +142,16 @@ export class AttachmentComponent implements OnInit {
 
       else if (event.type === HttpEventType.Response)
         this.message = event.body.toString();
-        // Get attachment list
-       
-        this.getAttchmentList();
-        this.back();
+      // Get attachment list
+
+      this.getAttchmentList();
+      this.back();
     }
     );
 
   }
 
-  public back(){
-    this.showGrid=true;
+  public back() {
+    this.showGrid = true;
   }
 }
