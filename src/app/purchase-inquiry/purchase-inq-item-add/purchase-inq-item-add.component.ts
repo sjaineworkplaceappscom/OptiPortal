@@ -140,6 +140,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
    * open a new form from save and new.
    */
   showAddItemSection() {
+    this.selectedInquiryId = '';
     console.log("at showAddItemSection  selectedItemId:"+this.selectedItemId);
     //validation on form
     this.showItemForm();
@@ -221,7 +222,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
    * When click on save 
    */
   public OnSaveOperationClick(saveAndNew:boolean=false) {       
-    if(this.isFromGrid) {
+    if(this.selectedItemId != '') {
       this.UpdatePurchaseInquiryItem(saveAndNew);
     }
     else
@@ -241,7 +242,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   public AddPurchaseInquiryItem(saveAndNew: boolean = false) {
     this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;    
     this.showLoader=true;
-    
+    debugger;
     this.additemSub=this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
         //this.gridItemsData = JSON.parse(data);
@@ -254,8 +255,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
         //console.log(data)
         if (saveAndNew) {
+          this.selectedItemId = '';
           this.resetValuesAndShowForm()
         } else { 
+          this.selectedItemId =this.purchaseItemsModel.PurchaseInquiryItemId
            //this.showItemsGrid();
            this.addOperationInProgress=false;
         }
@@ -283,12 +286,18 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.showLoader=true;
     this.updateitemSub=this.purchaseInquiryService.UpdatePurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
-        
+        let tempData: any = data;
+        this.purchaseItemsModel = tempData;
+        this.purchaseItemsModel.RequiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
+        this.purchaseItemsModel.RequestDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequestDate);
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
         
         if (saveAndNew) {
+          this.selectedItemId = '';
           this.resetValuesAndShowForm()
         } else {
+          this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
+          // we can reassign the selectedItemId value here
           //   this.showItemsGrid();
          // this.showItemsGrid();        
         }
