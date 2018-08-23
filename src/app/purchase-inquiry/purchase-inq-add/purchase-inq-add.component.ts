@@ -83,7 +83,7 @@ export class PurchaseInqAddComponent implements OnInit {
     this.purchaseInqueryAdd.CustomerName = this.customerName;
     this.purchaseInqueryAdd.CustomerCode = this.customerCode;
     this.purchaseInqueryAdd.Buyer = this.loggedInUserName;
-    this.purchaseInqueryAdd.Status = 2;
+    this.purchaseInqueryAdd.Status = PurchaseInquiryStatus.New;
   }
 
   private getUserDetails() {
