@@ -220,27 +220,21 @@ export class PurchaseInqItemAddComponent implements OnInit {
   /**
    * When click on save 
    */
-  public OnSaveClick() {
-    
-    if (this.isFromGrid) {
-      this.UpdatePurchaseInquiryItem();
-    } else {
-      this.AddPurchaseInquiryItem();
+  public OnSaveOperationClick(saveAndNew:boolean=false) {       
+    if(this.isFromGrid) {
+      this.UpdatePurchaseInquiryItem(saveAndNew);
     }
-  }
-
-  /**
-   * when click on save and new.
-   */
-  public OnSaveAndNew() {    
-    
-    if (this.isFromGrid) {
-      this.UpdatePurchaseInquiryItem(true);
-    } else {
-      this.AddPurchaseInquiryItem(true);
+    else
+    {
+      this.AddPurchaseInquiryItem(saveAndNew);
     }
+    // if (this.isFromGrid) {
+    //   this.UpdatePurchaseInquiryItem();
+    // } else {
+    //   this.AddPurchaseInquiryItem();
+    // }
   }
-
+  
   /**
   * AddPurchaseInquiryItem
   */
