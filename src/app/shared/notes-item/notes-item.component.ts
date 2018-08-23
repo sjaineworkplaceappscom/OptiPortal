@@ -125,7 +125,7 @@ export class NotesItemComponent implements OnInit {
       let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
       let inquiryData: any = JSON.parse(inquiryDetail);
       let inquiryStatus = inquiryData.Status;
-      if(inquiryStatus == PurchaseInquiryStatus.Canceled){
+      if(inquiryStatus == PurchaseInquiryStatus.Cancelled){
         this.isCancelStatus = true;
       }
       //  this.noteModel = new NotesModel();

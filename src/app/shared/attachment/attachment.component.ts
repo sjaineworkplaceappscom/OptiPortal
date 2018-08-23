@@ -72,7 +72,7 @@ export class AttachmentComponent implements OnInit {
     if(inquiryDetail!=null && inquiryDetail!=undefined){
       let inquiryData: any = JSON.parse(inquiryDetail);
       let inquiryStatus = inquiryData.Status;
-      if (inquiryStatus == PurchaseInquiryStatus.Canceled) {
+      if (inquiryStatus == PurchaseInquiryStatus.Cancelled) {
         this.isCancelStatus = true;
       }
   
