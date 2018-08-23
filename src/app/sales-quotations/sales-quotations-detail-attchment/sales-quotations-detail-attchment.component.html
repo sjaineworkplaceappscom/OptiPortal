@@ -2,7 +2,77 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-          Attachement
+          
+          <!-- loader start -->
+          <div class="opti_loader opti_loader-attachment-tab" *ngIf="showLoader">
+              <div class="opti_spinner"></div>
+          </div>
+          <!-- loader end -->  
+
+          <!-- grid start -->
+          <ng-container *ngIf="showLoader==false">
+            <kendo-grid 
+              [kendoGridBinding]="gridData" 
+              [resizable]="false" 
+              [pageSize]="50" 
+              [pageable]="true" 
+              [sortable]="true"  
+              [filterable]=isContentColumnFilter
+              [groupable]=isContentColumnGroup 
+              [columnMenu]="{ columnChooser: false }" 
+              [height]=gridHeight-56 
+              [selectable]="true" 
+              #gridItem>
+              <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
+              <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
+
+              <!-- grid template start -->
+              <ng-template kendoGridToolbarTemplate>
+
+                  <!-- show hide column start show hide -->
+                  <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
+
+                  <!-- filter and grouping -->
+                  <form class="k-form opti_show-hide-grid-column-filter float-left">
+                      <div class="k-form-field float-left">
+                          <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_SalesQuotationsAttachmentColumnFilterID" [(ngModel)]="isContentColumnFilter" class="k-checkbox" name="columnfilter" />
+                          <label class="k-checkbox-label" for="opti_SalesQuotationsAttachmentColumnFilterID">Enable Filter</label>
+                      </div>
+
+                      <div class="k-form-field float-left">
+                          <input type="checkbox" id="opti_SalesQuotationsAttachmentColumnGroupID"  [(ngModel)]="isContentColumnGroup" class="k-checkbox" name="columnGroup" />
+                          <label class="k-checkbox-label" for="opti_SalesQuotationsAttachmentColumnGroupID">Enable Grouping</label>
+                      </div>
+                  </form>
+
+                  <!-- export -->
+                  <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
+                      <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+                  </button>
+
+                  <!-- common search -->
+                  <div class="float-right opti_right-top-sec-grid-purchase opti_right-top-sec-grid">
+                      <form class="k-form opti_common-search-form float-left opti_padding-zero">
+                          <label class="k-form-field opti_common-search-label">
+                              <input type="text" class="k-textbox" name="searchRequest" [(ngModel)]="searchRequest" />
+                              <span class="opti_vertical-align opti_mouse-pointer"><img src="assets/images/common/search-black.svg" class="" alt="Search" width="15" /></span>
+                          </label>
+                      </form>
+                  </div>
+
+              </ng-template>
+
+              <kendo-grid-column field="FileName" title="File Name" ></kendo-grid-column>
+              <kendo-grid-column field="AttachmentDate" title="Attachment Date" ></kendo-grid-column>
+              
+              <!-- xlsx template start -->
+              <kendo-grid-excel fileName="sales-quotations-attachment.xlsx"></kendo-grid-excel>
+              <!-- xlsx template end -->
+
+            </kendo-grid>
+          </ng-container>
+          <!-- grid end -->
+
       </div>
     </div>
   </div>

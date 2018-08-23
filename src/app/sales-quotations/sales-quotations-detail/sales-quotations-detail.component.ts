@@ -25,6 +25,8 @@ export class SalesQuotationsDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    // apply width on opti_TabID
+    UIHelper.getWidthOfOuterTab();
   }
 
 }
