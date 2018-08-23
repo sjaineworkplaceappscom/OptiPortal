@@ -28,7 +28,7 @@ export class PurchaseInquiryService {
   }
 
   /**
-   * Add Purchase Inquiry.
+   * Add Purchase Inquiry. 
    */
   public AddPurchaseInquiry(request: TempPurchaseInquiryModel):Observable<any> {
     var data: any = {

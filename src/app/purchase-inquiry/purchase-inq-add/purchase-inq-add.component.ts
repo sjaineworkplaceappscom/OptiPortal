@@ -4,7 +4,7 @@ import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry'
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { Commonservice } from '../../services/commonservice.service';
-import { ModuleName, ComponentName } from '../../enums/enums';
+import { ModuleName, ComponentName, PurchaseInquiryStatus } from '../../enums/enums';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 @Component({
   selector: 'app-purchase-inq-add',
@@ -35,7 +35,7 @@ export class PurchaseInqAddComponent implements OnInit {
   public addSub:ISubscription;
 
   // status section
-  public defaultStatus: Array<{ text: string, value: number }> = [{ text: "New", value: 2 }];
+  public defaultStatus: Array<{ text: string, value: number }> = [{ text: "New", value: PurchaseInquiryStatus.New }];
 
   @ViewChild('optiRightAddInquiry') optiRightAddInquiry;
   @ViewChild('optiTab') optiTab;
@@ -99,7 +99,7 @@ export class PurchaseInqAddComponent implements OnInit {
   public AddPurchaseInquiry(saveAsDraft: boolean = false) {
 
     if (saveAsDraft == true) {
-      let Draftstatus: any = { text: "Draft", value: 1 };
+      let Draftstatus: any = { text: "Draft", value: PurchaseInquiryStatus.Draft };
       this.purchaseInqueryAdd.Status = Draftstatus.value;
     }
     this.showLoader=true;

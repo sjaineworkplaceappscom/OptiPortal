@@ -129,7 +129,7 @@ Revised = 3,
 Approved = 4,
 PartialApproved = 5,
 Rejected = 6,
-Canceled = 7,
-Closed = 8
-
+Cancelled = 7,
+Closed = 8,
+Updated = 9
 }

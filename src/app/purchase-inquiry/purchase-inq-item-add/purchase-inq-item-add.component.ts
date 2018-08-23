@@ -79,17 +79,18 @@ export class PurchaseInqItemAddComponent implements OnInit {
 }
 
   ngOnInit() {
+    console.log("onInit selectedItemId:"+this.selectedItemId);
     // Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
-    debugger;
+    //debugger;
     //get status of selected inquiry for disabling or enabling  forms
     let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
     if(inquiryDetail !=null && inquiryDetail!=undefined){
     let inquiryData: any = JSON.parse(inquiryDetail);
     let inquiryStatus = inquiryData.Status;
-    if(inquiryStatus == PurchaseInquiryStatus.Canceled){
+    if(inquiryStatus == PurchaseInquiryStatus.Cancelled){
       this.isCancelStatus = true;
     }
   }
@@ -139,6 +140,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
    * open a new form from save and new.
    */
   showAddItemSection() {
+    console.log("at showAddItemSection  selectedItemId:"+this.selectedItemId);
     //validation on form
     this.showItemForm();
     this.resetDefaultItemData();
@@ -153,6 +155,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
   }
 
   closeItemForm() {
+    //reset selected item id on cancel button click.
+    this.selectedItemId = '';
     this.showItemsGrid();
    // this.resetDefaultItemData();
   }
@@ -181,6 +185,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.purchaseItemsModel.RequestDate = this.requestDate;
     this.purchaseItemsModel.RequiredDate = this.requiredDate;
     this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
+    console.log("at onItemGridDataSelection  selectedItemId:"+this.selectedItemId);
     this.showItemForm();
   }
 

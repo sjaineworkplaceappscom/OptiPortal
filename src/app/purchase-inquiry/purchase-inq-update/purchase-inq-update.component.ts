@@ -48,14 +48,15 @@ export class PurchaseInqUpdateComponent implements OnInit {
   public isDisableSave = false;
   // status section
   public status: Array<{ text: string, value: number }> = [
-    { text: "Draft", value: 1 },
-    { text: "New", value: 2 },
-    { text: "Revised", value: 3 },
-    { text: "Approved", value: 4 },
-    { text: "Partial Approved", value: 5 },
-    { text: "Rejected", value: 6 },
-    { text: "Cancelled", value: 7 },
-    { text: "Closed", value: 8 }
+    { text: "Draft", value: PurchaseInquiryStatus.Draft },
+    { text: "New", value: PurchaseInquiryStatus.New },
+    { text: "Revised", value: PurchaseInquiryStatus.Revised },
+    { text: "Approved", value: PurchaseInquiryStatus.Approved },
+    { text: "Partial Approved", value: PurchaseInquiryStatus.PartialApproved },
+    { text: "Rejected", value: PurchaseInquiryStatus.Rejected },
+    { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled },
+    { text: "Closed", value: PurchaseInquiryStatus.Closed },
+    { text: "Updated", value: PurchaseInquiryStatus.Updated }
   ];
 
   public sideBarsubs:ISubscription;
@@ -108,7 +109,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     if (inquiryDetail != null && inquiryDetail != undefined) {
       let inquiryData: any = JSON.parse(inquiryDetail);
       let inquiryStatus = inquiryData.Status;
-      if (inquiryStatus == PurchaseInquiryStatus.Canceled) {
+      if (inquiryStatus == PurchaseInquiryStatus.Cancelled) {
         this.isCancelStatus = true;
       }
     }
@@ -203,12 +204,12 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
     if (this.purchaseInquiryDetail.Status == 1) {
       this.status = [
-        { text: "Draft", value: 1 },
-        { text: "New", value: 2 },
-        { text: "Cancelled", value: 7 }];
+        { text: "Draft", value: PurchaseInquiryStatus.Draft },
+        { text: "New", value: PurchaseInquiryStatus.New },
+        { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled }];
 
     } else {
-      if (this.purchaseInquiryDetail.Status == 7) {
+      if (this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.Cancelled) {
         // user can not do anyting only view all things are disabled.
         this.isDisableSave = true;
         this.isDisableSaveAsDraft = true;
@@ -217,8 +218,8 @@ export class PurchaseInqUpdateComponent implements OnInit {
         //means status is new.
         this.isDisableSaveAsDraft = true;
         this.status = [
-          { text: "New", value: 2 },
-          { text: "Cancelled", value: 7 }];
+          { text: "New", value: PurchaseInquiryStatus.New },
+          { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled }];
       }
 
     }
@@ -229,7 +230,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   */
   public UpdatePurchaseInquiry(saveAsDraft: boolean = false) {
     // if No draft then disable draft button.
-    if (this.purchaseInquiryDetail.Status != 1) {
+    if (this.purchaseInquiryDetail.Status != PurchaseInquiryStatus.Draft) {
       this.isDisableSaveAsDraft = true;
     }
 
@@ -237,13 +238,13 @@ export class PurchaseInqUpdateComponent implements OnInit {
     //save as draft click
     // Draft status
     if (saveAsDraft) {
-      let Draftstatus: any = { text: "Draft", value: 1 };
+      let Draftstatus: any = { text: "Draft", value: PurchaseInquiryStatus.Draft };
       this.purchaseInquiryDetail.Status = Draftstatus.value;
     }
     else {
       //save click
-      if (this.purchaseInquiryDetail.Status == 1) {
-        this.purchaseInquiryDetail.Status = 2;
+      if (this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.Draft) {
+        this.purchaseInquiryDetail.Status = PurchaseInquiryStatus.New;
       }
     }
 
