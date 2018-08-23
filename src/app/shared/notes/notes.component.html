@@ -24,18 +24,20 @@
 
                                 <!-- grid toolbar start -->
                                 <ng-template kendoGridToolbarTemplate>
+                                    <div class="float-right">
 
-                                    <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="openNewNote()" [svgStyle]="{ 'width.px':20, 'height.px':20}"
+                                        <form class="k-form opti_common-search-form float-left opti_padding-zero opti_icon-spacing">
+                                            <label class="k-form-field opti_common-search-label">
+                                                <input type="text" class="k-textbox" name="searchNotes" [(ngModel)]="notesSearchValue" />
+                                                <span class="opti_vertical-align opti_mouse-pointer">
+                                                    <img src="assets/images/common/search.svg" class="" alt="Search" width="15" />
+                                                </span>
+                                            </label>
+                                        </form>
+
+                                        <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="openNewNote()" [svgStyle]="{ 'width.px':20, 'height.px':20}"
                                         class="opti_vertical-align float-left opti_icon-spacing" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
-
-                                    <form class="k-form opti_common-search-form float-left opti_padding-zero">
-                                        <label class="k-form-field opti_common-search-label">
-                                            <input type="text" class="k-textbox" name="searchNotes" [(ngModel)]="notesSearchValue" />
-                                            <span class="opti_vertical-align opti_mouse-pointer">
-                                                <img src="assets/images/common/search.svg" class="" alt="Search" width="15" />
-                                            </span>
-                                        </label>
-                                    </form>
+                                    </div>
 
                                 </ng-template>
                                 <!-- grid toolbar end -->
