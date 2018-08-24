@@ -3,6 +3,9 @@ import { Configuration } from '../../assets/configuration';
 import { HttpHelper } from '../helpers/http.helper';
 import { NotesModel } from '../models/purchaserequest/notes';
 import { Observable } from '../../../node_modules/rxjs';
+import { HttpRequest, HttpHeaders, HttpClient } from '../../../node_modules/@angular/common/http';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,7 @@ export class SharedComponentService {
 
   baseUrl = Configuration.baseServerAPIEndpoint;
 
-  constructor(private httpHelper: HttpHelper) {
+  constructor(private httpHelper: HttpHelper,private httpClient:HttpClient) {
 
   }
 
@@ -36,6 +39,22 @@ export class SharedComponentService {
       "grantParentId": note.GrantParentId,
     }
     return this.httpHelper.post(this.baseUrl + 'note/add', data, null);
+  }
+
+  public uploadAttachment(formData:FormData): Observable<any>{   
+    let loginAccessToken = localStorage.getItem("AccessToken");
+    let loginUserId = localStorage.getItem("LoginUserId");
+    let  headers = new HttpHeaders();
+
+  
+    headers = headers    
+    .set('SessionKey', loginUserId)
+    .set('Authorization', 'Bearer ' + loginAccessToken);
+
+    
+   let req=new HttpRequest('POST',this.baseUrl+ 'attachment/upload',formData,{headers});   
+   return this.httpClient.request(req);
+
   }
 
   /**
