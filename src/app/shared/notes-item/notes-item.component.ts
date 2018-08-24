@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, HostListener, Input } from '@angular/core
 import { UIHelper } from '../../helpers/ui.helpers';
 import { NotesModel } from '../../models/purchaserequest/notes';
 import { SharedComponentService } from '../../services/shared-component.service';
-import { CustomerEntityType, PurchaseInquiryStatus } from '../../enums/enums';
+import { CustomerEntityType, PurchaseInquiryStatus, PurchaseInquiryItemStatus } from '../../enums/enums';
 import { Commonservice } from '../../services/commonservice.service';
 import { DatePipe } from '../../../../node_modules/@angular/common';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
@@ -112,7 +112,7 @@ export class NotesItemComponent implements OnInit {
     ngOnChange() {
     }
 
-    ngOnInit() {
+    ngOnInit() {debugger;
         // UI Start        
         //Apply Grid Height
         this.gridHeight = UIHelper.getMainContentHeight();
@@ -122,12 +122,14 @@ export class NotesItemComponent implements OnInit {
 
 
         //get status of selected inquiry for disabling or enabling  forms
-      let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
-      let inquiryData: any = JSON.parse(inquiryDetail);
-      let inquiryStatus = inquiryData.Status;
-      if(inquiryStatus == PurchaseInquiryStatus.Cancelled){
+      let inquiryItemDetail: string= localStorage.getItem("SelectedPurchaseInquiryItem");
+      let inquiryItemData: any = JSON.parse(inquiryItemDetail);
+      if(inquiryItemData != null || inquiryItemData != undefined) {
+      let inquiryStatus = inquiryItemData.Status;
+      if(inquiryStatus == PurchaseInquiryItemStatus.Cancelled){
         this.isCancelStatus = true;
       }
+    }
       //  this.noteModel = new NotesModel();
 
       

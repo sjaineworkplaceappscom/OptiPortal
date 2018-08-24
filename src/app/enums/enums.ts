@@ -133,3 +133,12 @@ Cancelled = 7,
 Closed = 8,
 Updated = 9
 }
+
+export enum PurchaseInquiryItemStatus
+{
+
+New = 1,
+Updated = 2,
+Cancelled = 3,
+
+}

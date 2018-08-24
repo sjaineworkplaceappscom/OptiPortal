@@ -92,11 +92,12 @@ export class NotesComponent implements OnInit {
     //get status of selected inquiry for disabling or enabling  forms
     let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
     let inquiryData: any = JSON.parse(inquiryDetail);
+    if(inquiryData != null || inquiryData != undefined) {
     let inquiryStatus = inquiryData.Status;
     if(inquiryStatus == PurchaseInquiryStatus.Cancelled){
       this.isCancelStatus = true;
     }
-
+    }
         this.noteModel = new NotesModel();
         // Subscriber for Load data.
         this.notessub=this.commonService.currentNotesData.subscribe(
