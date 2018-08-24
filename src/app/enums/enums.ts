@@ -23,7 +23,8 @@ export enum UserType {
 
 export  enum ModuleName {
     Purchase = 1,
-    Sales = 2
+    Sales = 2,
+    SalesOrder = 4
 }
 
 export enum ComponentName {
@@ -33,8 +34,12 @@ export enum ComponentName {
     AddInqueryItem=103,
     
 
-    // Sales
-    UpdateSales=201
+    // Sales Quotations
+    UpdateSales=201,
+
+    // Sales Order
+    SalesOrderDetail = 401
+
 
     
 }
