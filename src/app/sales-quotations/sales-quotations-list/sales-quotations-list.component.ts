@@ -96,6 +96,8 @@ export class SalesQuotationsListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus=true;    
     
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+     // Reset Selection.
+     e.selectedRows=[]; 
   }
 
   
