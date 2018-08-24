@@ -133,6 +133,7 @@ export class SigninComponent implements OnInit {
         //show loader false.
         this1.showLoader = false;
         localStorage.setItem('AccessToken', data.token);
+        localStorage.setItem('LoginUserId',userId)
         // Cloase side bar.
         this.closeRightSidebar();
         this.router.navigateByUrl(Configuration.firstHomePage);
