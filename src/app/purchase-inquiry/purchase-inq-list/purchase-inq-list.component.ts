@@ -18,6 +18,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 
 import * as $ from "jquery";
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-purchase-inq-list',
@@ -46,7 +47,7 @@ export class PurchaseInqListComponent implements OnInit {
   refreshPIListSubs:ISubscription;
 
   @ViewChild('optirightfixedsection') optirightfixedsection;
-  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe) {
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe,private router:Router) {
   }
 
   // UI Section
@@ -80,6 +81,7 @@ export class PurchaseInqListComponent implements OnInit {
     error => {
       this.showLoader=false;
       alert("Something went wrong");
+      
       console.log("Error: ", error)
     });
 
@@ -116,7 +118,11 @@ export class PurchaseInqListComponent implements OnInit {
       error => {
         this.showLoader=false;
         alert("Something went wrong");
-        console.log("Error: ", error)
+        console.log("Error: ", error);
+        localStorage.clear();
+        this.router.navigate(['landing']);
+      
+        
       },
       ()=>{
             this.showLoader=false;

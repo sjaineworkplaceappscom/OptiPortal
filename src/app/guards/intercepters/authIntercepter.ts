@@ -11,14 +11,26 @@ import { Observable } from "rxjs/Observable";
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
         let loginAccessToken = localStorage.getItem("AccessToken");
-        if (loginAccessToken != '' || loginAccessToken != undefined) {
+        let loginUserId = localStorage.getItem("LoginUserId");
+        
+        if (loginAccessToken != '' && loginAccessToken != undefined && loginAccessToken != null) {
             req = req.clone({
                 setHeaders: {
                     Authorization: 'Bearer ' + loginAccessToken
                 }
             }
             );
+
+            if(loginUserId!='' && loginUserId!=undefined &&  loginUserId!=null){
+                req = req.clone({
+                    setHeaders: {
+                        SessionKey: loginUserId
+                    }
+                }
+                );
+            }
         }
 
         return next.handle(req);
