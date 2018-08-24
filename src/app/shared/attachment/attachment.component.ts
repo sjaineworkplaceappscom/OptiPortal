@@ -6,6 +6,7 @@ import { Configuration } from '../../../assets/configuration';
 import { AttachmentDetail } from 'src/app/models/AttchmentDetail';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { CustomerEntityType, PurchaseInquiryStatus } from '../../enums/enums';
+import { initChangeDetectorIfExisting } from '../../../../node_modules/@angular/core/src/render3/instructions';
 
 
 @Component({
@@ -68,16 +69,16 @@ export class AttachmentComponent implements OnInit {
 
     //get status of selected inquiry for disabling or enabling  forms
     let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
-    
-    if(inquiryDetail!=null && inquiryDetail!=undefined){
+
+    if (inquiryDetail != null && inquiryDetail != undefined) {
       let inquiryData: any = JSON.parse(inquiryDetail);
       let inquiryStatus = inquiryData.Status;
       if (inquiryStatus == PurchaseInquiryStatus.Cancelled) {
         this.isCancelStatus = true;
       }
-  
+
     }
-    
+
     // Load data
     this.getAttchmentList();
 
@@ -87,7 +88,9 @@ export class AttachmentComponent implements OnInit {
    * Attachement Tab
   */
   public showTabAddAttachementForm() {
+    this.message='';
     this.showGrid = false;
+
   }
 
   public getAttchmentList() {
@@ -103,9 +106,9 @@ export class AttachmentComponent implements OnInit {
         }
       ),
       err => {
-        alert("Something went wrong.");        
+        alert("Something went wrong.");
         console.log(err);
-        this.showLoader=false;
+        this.showLoader = false;
       }
     () => {
       this.showLoader = false;
@@ -123,9 +126,8 @@ export class AttachmentComponent implements OnInit {
     for (let file of files) {
       formData.append(file.name, file);
       this.selectedFileName = file.name;
+
     }
-
-
 
     // Attachment details
     let attachmentDetail: AttachmentDetail = new AttachmentDetail();
@@ -133,28 +135,31 @@ export class AttachmentComponent implements OnInit {
     attachmentDetail.GrandParentId = this.purchaseInqId;
 
     formData.append('AttachmentDetail', JSON.stringify(attachmentDetail));
+   
 
-    const uploadReq = new HttpRequest('POST', Configuration.baseServerAPIEndpoint + 'attachment/upload',
-      formData, {
-        reportProgress: true,
+    this.sharedComponentService.uploadAttachment(formData).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress)
+          this.progress = Math.round(100 * event.loaded / event.total);
+
+        else if (event.type === HttpEventType.Response)
+          this.message = event.body.toString();
+        // Get attachment list
+        if(event.type===4 && event.status===200){
+        this.getAttchmentList();
+        this.back();                
+        }
+      },
+      error=> {
+        alert("Something went wrong");
+        console.log(error);
+        this.showGrid = false;
       }
-    );
 
-    this.http.request(uploadReq).subscribe(event => {
-
-      if (event.type === HttpEventType.UploadProgress)
-        this.progress = Math.round(100 * event.loaded / event.total);
-
-      else if (event.type === HttpEventType.Response)
-        this.message = event.body.toString();
-      // Get attachment list
-
-      this.getAttchmentList();
-      this.back();
-    }
     );
 
   }
+
 
   public back() {
     this.showGrid = true;
