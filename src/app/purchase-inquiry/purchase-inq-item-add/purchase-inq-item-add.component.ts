@@ -232,11 +232,11 @@ export class PurchaseInqItemAddComponent implements OnInit {
   /**
     * Method to get list of inquries from server.
     */
-  public getInquiryItemsData(inquiryId: string) {   debugger; 
+  public getInquiryItemsData(inquiryId: string) {    
     this.showLoader = true;
 
     this.getitemSub=this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
-      inquiryItemData => {debugger;
+      inquiryItemData => {
         this.showLoader=false;
         this.gridItemsData = JSON.parse(inquiryItemData);
         this.gridItemsData.forEach(element => {
@@ -259,12 +259,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
   /**
    * When click on save 
    */
-<<<<<<< HEAD
   public OnSaveOperationClick(saveAndNew:boolean=false) {     
      
-=======
-  public OnSaveOperationClick(saveAndNew:boolean=false) { debugger;      
->>>>>>> c455b1666e3cedf9f78761cae073542b70f38366
     if(this.selectedItemId != '') {
        // On selection of item check if status is cancel or not 
       if(this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled)
@@ -350,6 +346,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
  * UpdatePurchaseInquiryItem
  */
   public UpdatePurchaseInquiryItem(saveAndNew: boolean = false) {
+    debugger;
     this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
     this.showLoader=true;
     this.updateitemSub=this.purchaseInquiryService.UpdatePurchaseInquiryItem(this.purchaseItemsModel).subscribe(
