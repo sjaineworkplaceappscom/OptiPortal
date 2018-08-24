@@ -6,6 +6,7 @@ import { BsModalService } from 'ngx-bootstrap/modal'; // Bootstrap Modal
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service'; // Bootstrap Modal
 import { Router } from '@angular/router';
 import { opticonstants } from '../../constants';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-portal-top',
@@ -16,29 +17,29 @@ export class PortalTopComponent implements OnInit {
 
   modalRef: BsModalRef;
   openThemeSetting: boolean = false;
-  constructor(private modalService: BsModalService,private router: Router, private commonService: Commonservice) { }
+  constructor(private modalService: BsModalService, private router: Router, private commonService: Commonservice, private accountService: AccountService) { }
   selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
-  loggedInUserName:string = '';
-  customerName:string = '';
-  customerCode:string = '';
-  LoginUserType:number;
+  loggedInUserName: string = '';
+  customerName: string = '';
+  customerCode: string = '';
+  LoginUserType: number;
   ngOnInit() {
-    let userDetail: string= localStorage.getItem("LoginUserDetail");
-    let isSystemAdmin: string = localStorage.getItem("SystemAdmin"); 
+    let userDetail: string = localStorage.getItem("LoginUserDetail");
+    let isSystemAdmin: string = localStorage.getItem("SystemAdmin");
     let userData: any[] = JSON.parse(userDetail);
     this.loggedInUserName = userData[0].LoginUserName;
     this.customerName = userData[0].ParentName;
     this.customerCode = userData[0].ParentCode;
-    this.LoginUserType = userData[0].LoginUserType; 
+    this.LoginUserType = userData[0].LoginUserType;
     UIHelper.manageThemeCssFile();
-    if(isSystemAdmin == 'true') this.customerName = 'Admin';
+    if (isSystemAdmin == 'true') this.customerName = 'Admin';
     //console.log("ISSystemAdmin"+isSystemAdmin);
   }
 
   // open and close theme setting side panel
   openCloseRightPanel() {
     this.openThemeSetting = !this.openThemeSetting;
-    
+
     // get theme color
     this.commonService.themeCurrentData.subscribe(
       data => {
@@ -57,8 +58,18 @@ export class PortalTopComponent implements OnInit {
   }
 
   signOut() {
-    localStorage.clear();
-    this.router.navigateByUrl('/login');
+
+    this.accountService.logout().subscribe(
+      data => {        
+        localStorage.clear();
+        this.router.navigateByUrl('/login');
+      }
+    );
+
+
+
+
+
   }
 
 } 

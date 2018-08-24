@@ -28,26 +28,26 @@ export class AccountService {
   constructor(private httpHelper: HttpHelper, private router: Router) { }
 
   // Register user.
-  public registerUser(registerRequest: RegisterRequest):Observable<any> {
+  public registerUser(registerRequest: RegisterRequest): Observable<any> {
     let url: string = this.baseUrl + "account/register";
-    
-   return this.httpHelper.post(url, registerRequest, null, true);   
+
+    return this.httpHelper.post(url, registerRequest, null, true);
 
   }
 
   // reset user password.
-  public resetPassword(userName: string, newPassword: string):Observable<any> {
+  public resetPassword(userName: string, newPassword: string): Observable<any> {
     let url: string = this.baseUrl + "account/resetpassword";
     let updateCredential: UpdateCredentialModel = new UpdateCredentialModel();
     updateCredential.userName = userName;
     updateCredential.newPassword = newPassword;
 
-   return this.httpHelper.post(url, updateCredential, null, true);
+    return this.httpHelper.post(url, updateCredential, null, true);
 
   }
 
   // set user password.
-  public setPassword(userModel: UserModel):Observable<any> {
+  public setPassword(userModel: UserModel): Observable<any> {
     let url: string = this.baseUrl + "account/setpassword";
 
     return this.httpHelper.post(url, userModel, null, true);
@@ -79,8 +79,8 @@ export class AccountService {
     let error: boolean = false;
     //let data: string = "username=" + userName + "&password=" + password + "&grant_type=password";
     //let reqHeaders = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    let data:any={UserId:userName,Password:password};
-    return await this.httpHelper.post<any>(this.baseUrl + 'token', data,null).toPromise();
+    let data: any = { UserId: userName, Password: password };
+    return await this.httpHelper.post<any>(this.baseUrl + 'token', data, null).toPromise();
 
   }
 
@@ -92,8 +92,13 @@ export class AccountService {
     return this.httpHelper.put<Array<any>>(this.baseUrl + 'user/loginuser', data, null);
   }
 
+  //logout user
+  public logout(): Observable<any> {
+    return this.httpHelper.get(this.baseUrl + 'user/logout', null);
+  }
+
   // Invite users 
-  public inviteUsers(userEmails: string):Observable<any> {
+  public inviteUsers(userEmails: string): Observable<any> {
     let error: boolean = false;
     let data: string = userEmails
 
@@ -103,7 +108,7 @@ export class AccountService {
   }
 
   // Invite users 
-  public rejectUsers(userEmails: string):Observable<any> {
+  public rejectUsers(userEmails: string): Observable<any> {
     let error: boolean = false;
     let data: string = userEmails
 
@@ -119,17 +124,17 @@ export class AccountService {
     return this.httpHelper.get(this.baseUrl + 'user/list/invited', null);
   }
 
-  public getCustomerByCode(code:string){
-    return this.httpHelper.get(this.baseUrl + 'customer/'+code,null,true);
+  public getCustomerByCode(code: string) {
+    return this.httpHelper.get(this.baseUrl + 'customer/' + code, null, true);
   }
 
-  public getVendorByCode(code:string){
-    return this.httpHelper.get(this.baseUrl + 'vendor/'+code,null,true);
+  public getVendorByCode(code: string) {
+    return this.httpHelper.get(this.baseUrl + 'vendor/' + code, null, true);
   }
 
 
-  public sendResetPasswordLink(email:string){
-    return this.httpHelper.put(this.baseUrl + 'user/sendresetpasswordlink',email,null);
+  public sendResetPasswordLink(email: string) {
+    return this.httpHelper.put(this.baseUrl + 'user/sendresetpasswordlink', email, null);
   }
 
 }
