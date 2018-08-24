@@ -7,6 +7,7 @@ export class TempPurchaseInquiryItemModel{
     CustomerItemCode:string;
     Quantity: number;
     Unit: string;
+    Status: number;
     //Comments:string;
     Requester:string; //it will be a free text.
     RequestDate: Date;

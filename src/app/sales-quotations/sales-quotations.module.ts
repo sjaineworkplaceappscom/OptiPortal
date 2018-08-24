@@ -24,6 +24,6 @@ import { SalesQuotationsDetailAttchmentComponent } from './sales-quotations-deta
     PerfectScrollbarModule
   ],
   declarations: [SalesQuotationsComponent, SalesQuotationsListComponent, SalesQuotationsDetailComponent, SalesQuotationsDetailHomeComponent, SalesQuotationsDetailContentComponent, SalesQuotationsDetailAttchmentComponent],
-  exports:[SalesQuotationsComponent]
+  exports:[SalesQuotationsComponent, SalesQuotationsDetailComponent]
 })
 export class SalesQuotationsModule { }

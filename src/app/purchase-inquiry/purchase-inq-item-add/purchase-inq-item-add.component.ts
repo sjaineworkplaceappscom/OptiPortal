@@ -7,7 +7,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { Commonservice } from '../../services/commonservice.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
-import { CustomerEntityType, PurchaseInquiryStatus } from '../../enums/enums';
+import { CustomerEntityType, PurchaseInquiryStatus, PurchaseInquiryItemStatus } from '../../enums/enums';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 
 @Component({
@@ -27,6 +27,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
    * Item tab Variable
   */
   isCancelStatus:boolean = false;
+
+  // to disable all feilds when status is cancelled
+  IsItemStatusCancel: boolean = false;
+
   addItem: boolean = false;
   itemGrid: boolean = true;
   tabName: string = 'home';
@@ -52,6 +56,15 @@ export class PurchaseInqItemAddComponent implements OnInit {
   showLoader: boolean = false;
 
   selectedThemeColor: string = 'opticonstants.DEFAULTTHEMECOLOR';
+ // status section
+ public statusValues: Array<{ text: string, value: number }> = [
+  { text: "New", value: PurchaseInquiryItemStatus.New },
+  { text: "Updated", value: PurchaseInquiryItemStatus.Updated },
+  { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }
+];
+
+  //dropdown diable flag
+  public IsStatusDisbale: boolean = false;
 
   // Subscriber
   itemSub:ISubscription;
@@ -92,6 +105,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
     let inquiryStatus = inquiryData.Status;
     if(inquiryStatus == PurchaseInquiryStatus.Cancelled){
       this.isCancelStatus = true;
+      this.purchaseItemsModel.Status = PurchaseInquiryStatus.New;
     }
   }
 
@@ -144,6 +158,9 @@ export class PurchaseInqItemAddComponent implements OnInit {
     //validation on form
     this.showItemForm();
     this.resetDefaultItemData();
+    this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.New;
+    this.IsStatusDisbale = true;
+    this.IsItemStatusCancel = false;
   }
 
   /**
@@ -172,12 +189,16 @@ export class PurchaseInqItemAddComponent implements OnInit {
    * @param selection 
    * @param status 
    */
-  public onItemGridDataSelection(selection, status) {
+  public onItemGridDataSelection(selection, status) {debugger;
     // set false for grid item only
     this.addOperationInProgress=false;
 
     this.isFromGrid = true;
     const selectedData = this.gridItemsData[selection.index];
+
+    // store item data in local storage
+    localStorage.setItem("SelectedPurchaseInquiryItem",JSON.stringify(selectedData));
+    
     this.purchaseItemsModel = JSON.parse(JSON.stringify(selectedData));
     this.requestDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequestDate);
     this.requiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
@@ -186,18 +207,36 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.purchaseItemsModel.RequiredDate = this.requiredDate;
     this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
     console.log("at onItemGridDataSelection  selectedItemId:"+this.selectedItemId);
+
+    // On selection of item check if status is cancel or not 
+    if(this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled)
+      { 
+        this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Cancelled;
+        this.IsStatusDisbale = true;
+        this.IsItemStatusCancel = true;
+      }
+      else 
+      {
+        this.statusValues = [
+          { text: "New", value: PurchaseInquiryItemStatus.New },
+          { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
+        this.IsStatusDisbale = false;
+        this.IsItemStatusCancel = false;
+      }
     this.showItemForm();
+    
+    
   }
 
 
   /**
     * Method to get list of inquries from server.
     */
-  public getInquiryItemsData(inquiryId: string) {    
+  public getInquiryItemsData(inquiryId: string) {   debugger; 
     this.showLoader = true;
 
     this.getitemSub=this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
-      inquiryItemData => {
+      inquiryItemData => {debugger;
         this.showLoader=false;
         this.gridItemsData = JSON.parse(inquiryItemData);
         this.gridItemsData.forEach(element => {
@@ -220,9 +259,32 @@ export class PurchaseInqItemAddComponent implements OnInit {
   /**
    * When click on save 
    */
+<<<<<<< HEAD
   public OnSaveOperationClick(saveAndNew:boolean=false) {     
      
+=======
+  public OnSaveOperationClick(saveAndNew:boolean=false) { debugger;      
+>>>>>>> c455b1666e3cedf9f78761cae073542b70f38366
     if(this.selectedItemId != '') {
+       // On selection of item check if status is cancel or not 
+      if(this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled)
+      { 
+        this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Cancelled;
+        this.IsStatusDisbale = true;
+        this.IsItemStatusCancel = true;
+      }
+      else 
+      {
+        this.statusValues = [
+          { text: "New", value: PurchaseInquiryItemStatus.New },
+          { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
+        this.IsStatusDisbale = false;
+      }
+      // when status is cancelled and click on saveandnew
+      if(saveAndNew == true)
+      {
+        this.IsItemStatusCancel = false;
+      }
       this.UpdatePurchaseInquiryItem(saveAndNew);
     }
     else
@@ -256,11 +318,17 @@ export class PurchaseInqItemAddComponent implements OnInit {
         //console.log(data)
         if (saveAndNew) {
           this.selectedItemId = '';
-          this.resetValuesAndShowForm()
+          this.resetValuesAndShowForm();
+          this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.New;
+          this.IsStatusDisbale = true; 
         } else { 
           this.selectedItemId =this.purchaseItemsModel.PurchaseInquiryItemId
            //this.showItemsGrid();
            this.addOperationInProgress=false;
+           this.statusValues = [
+            { text: "New", value: PurchaseInquiryItemStatus.New },
+            { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
+           this.IsStatusDisbale = false;
         }
         this.showLoader=false;
       },
@@ -295,7 +363,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
         if (saveAndNew) {
           
           this.selectedItemId = '';
-          this.resetValuesAndShowForm()
+          this.resetValuesAndShowForm();
+          this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.New;
+          this.IsStatusDisbale = true;
+          // this.IsItemStatusCancel = false;
         } else {
           
           this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;

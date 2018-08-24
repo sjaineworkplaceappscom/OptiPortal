@@ -1,5 +1,6 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
+import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 
 @Component({
   selector: 'app-sales-quotations-detail',
@@ -7,6 +8,8 @@ import { UIHelper } from '../../helpers/ui.helpers';
   styleUrls: ['./sales-quotations-detail.component.scss']
 })
 export class SalesQuotationsDetailComponent implements OnInit {
+
+  @Input() currentSidebarInfo:CurrentSidebarInfo;
 
   constructor() { }
 

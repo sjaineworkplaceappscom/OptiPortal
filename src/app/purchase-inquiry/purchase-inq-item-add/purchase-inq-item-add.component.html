@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="opti_item-back"><img (click)="closeItemForm();" src="assets/images/common/close-black.svg" width="16px" height="16px" class="opti_mouse-pointer" /></div>
+                    <div class="opti_item-back"><img (click)="showItemsGrid();" src="assets/images/common/close-black.svg" width="16px" height="16px" class="opti_mouse-pointer" /></div>
 
                     <!-- Tab title start -->
                     <div class="opti_position-relative opti_vertical-tab-outer" id="opti_verticalTabTitleID">
@@ -48,42 +48,51 @@
                                             </span>   
                                                                                      
                                             <input type="text" class="k-textbox" #itemDetails = ngModel name="custId_description" [(ngModel)]="purchaseItemsModel.CustomerItemCode" required value=""
-                                                placeholder="Customer Item Id / description" />
+                                                placeholder="Customer Item Id / description" [disabled]="IsItemStatusCancel"/>
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Item Quantity *
                                                     <span *ngIf="itemQty.errors?.required && (itemQty.dirty || itemQty.touched)" class="float-right opti_error-msg" >Item Quantity is required.</span>
                                             </span>
-                                            <input  class="k-textbox" #itemQty = ngModel name="itemQuantity"  [(ngModel)]="purchaseItemsModel.Quantity" type="number" min="0"   value="0" required="true"  />
+                                            <input  class="k-textbox" #itemQty = ngModel name="itemQuantity"  [(ngModel)]="purchaseItemsModel.Quantity" type="number" min="0"   value="0" required="true"  [disabled]="IsItemStatusCancel"/>
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Item Unit *
                                                     <span *ngIf="itemUnit.errors?.required && (itemUnit.dirty || itemUnit.touched)" class="float-right opti_error-msg" >Item Unit is required.</span>
                                             </span>
-                                            <input type="text" class="k-textbox" name="Unit" #itemUnit = ngModel [(ngModel)]="purchaseItemsModel.Unit" value="" required placeholder="Item Unit" />
+                                            <input type="text" class="k-textbox" name="Unit" #itemUnit = ngModel [(ngModel)]="purchaseItemsModel.Unit" value="" required placeholder="Item Unit" [disabled]="IsItemStatusCancel"/>
+                                        </label>
+
+                                        <label class="k-form-field">
+                                            <span class="opti_form-label">Status *
+                                                <span *ngIf="status.errors?.required && (status.dirty || status.touched)" class="float-right opti_error-msg" >Item Status is required.</span>
+                                            </span>
+                                            <kendo-dropdownlist name="status" [data]="statusValues" #status = ngModel [(ngModel)]="purchaseItemsModel.Status" [valuePrimitive]="true"
+                                                [textField]="'text'" [valueField]="'value'" [disabled]="IsStatusDisbale">
+                                            </kendo-dropdownlist>
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Requester</span>
                                             <input type="text" class="k-textbox" name="requester" [(ngModel)]="purchaseItemsModel.Requester"  value="" placeholder="Requester"
-                                            />
+                                            [disabled]="IsItemStatusCancel"/>
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Request Date</span>
-                                            <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModel.RequestDate" [format]="'dd MMM yy'" > </kendo-datepicker>
+                                            <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModel.RequestDate" [format]="'dd MMM yy'" [disabled]="IsItemStatusCancel"> </kendo-datepicker>
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Required Date</span>
-                                            <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModel.RequiredDate" [format]="'dd MMM yy'"> </kendo-datepicker>
+                                            <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModel.RequiredDate" [format]="'dd MMM yy'" [disabled]="IsItemStatusCancel"> </kendo-datepicker>
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Ship To location</span>
-                                            <textarea class="k-textarea" name="unit" [(ngModel)]="purchaseItemsModel.ShipToLocation" >Location</textarea>
+                                            <textarea class="k-textarea" name="unit" [(ngModel)]="purchaseItemsModel.ShipToLocation" [disabled]="IsItemStatusCancel">Location</textarea>
                                         </label>
                                     </div>    
 
@@ -171,6 +180,7 @@
                         <kendo-grid-column field="CustomerItemCode" title="Item Details" [width]="200"></kendo-grid-column>
                         <kendo-grid-column field="Quantity" [width]="160" filter="numeric"></kendo-grid-column>
                         <kendo-grid-column field="Unit" [width]="140" filter="numeric"></kendo-grid-column>
+                        <kendo-grid-column field="StatusText" [width]="140" filter="numeric"></kendo-grid-column>
                         <kendo-grid-column field="Requester" [width]="140"></kendo-grid-column>
                         <kendo-grid-column field="RequestDate" title="Request Date" [width]="140" type=date filter="date" format="{0:dd MMM yy}"></kendo-grid-column>
                         <kendo-grid-column field="RequiredDate" title="Required Date" [width]="140" type=date filter="date" format="{0:dd MMM yy}"></kendo-grid-column>

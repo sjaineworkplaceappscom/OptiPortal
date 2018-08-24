@@ -3,5 +3,7 @@
     
     <app-purchase-inquiry *ngIf="currentSidebarInfo.ModuleName==1" [currentSidebarInfo]="currentSidebarInfo"> </app-purchase-inquiry>
     
-    <app-sales-quotations *ngIf="currentSidebarInfo.ModuleName==2" [currentSidebarInfo]="currentSidebarInfo"> </app-sales-quotations>
+    <app-sales-quotations-detail *ngIf="currentSidebarInfo.ModuleName==2" [currentSidebarInfo]="currentSidebarInfo"> </app-sales-quotations-detail>
+
+    <app-sales-order-detail *ngIf="currentSidebarInfo.ModuleName==4" [currentSidebarInfo]="currentSidebarInfo"></app-sales-order-detail>
 </div>        
