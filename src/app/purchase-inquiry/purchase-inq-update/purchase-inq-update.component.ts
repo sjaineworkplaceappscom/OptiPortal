@@ -59,27 +59,27 @@ export class PurchaseInqUpdateComponent implements OnInit {
     { text: "Updated", value: PurchaseInquiryStatus.Updated }
   ];
 
-  public sideBarsubs:ISubscription;
-  public updatePISub:ISubscription;
+  public sideBarsubs: ISubscription;
+  public updatePISub: ISubscription;
 
   @ViewChild('optiRightAddInquiry') optiRightAddInquiry;
   @ViewChild('optiTab') optiTab;
 
   // tab function
   openTab(evt, tabName) {
-    
-    if(tabName=='notes')
-    this.commonService.setNotesData(this.notesMasterData);
 
-    if(tabName=='items')
-    this.commonService.setItemsData(this.inquiryModelForItems);
+    if (tabName == 'notes')
+      this.commonService.setNotesData(this.notesMasterData);
 
-      // Set default condition for purchase inquiery attachment
-    if(tabName=='attachement')  
-    this.commonService.setPurchaseInquiryAttachmentGrid(true);
+    if (tabName == 'items')
+      this.commonService.setItemsData(this.inquiryModelForItems);
+
+    // Set default condition for purchase inquiery attachment
+    if (tabName == 'attachement')
+      this.commonService.setPurchaseInquiryAttachmentGrid(true);
 
     this.tabName = tabName;
-    
+
     UIHelper.customOpenTab(evt, tabName, 'horizontal');
   }
 
@@ -89,23 +89,22 @@ export class PurchaseInqUpdateComponent implements OnInit {
     UIHelper.getWidthOfOuterTab();
   }
 
-  ngOnDestroy(){
-    if(this.sideBarsubs!=undefined)
-    this.sideBarsubs.unsubscribe();
+  ngOnDestroy() {
+    if (this.sideBarsubs != undefined)
+      this.sideBarsubs.unsubscribe();
 
-    if(this.updatePISub!=undefined)
-    this.updatePISub.unsubscribe();
-}
+    if (this.updatePISub != undefined)
+      this.updatePISub.unsubscribe();
+  }
 
   ngOnInit() {
     // apply width on opti_TabID
     UIHelper.getWidthOfOuterTab();
     // Add active class on tab title 
-
     this.optiTab.nativeElement.children[0].classList.add('active');
     //get status of selected inquiry for disabling or enabling  forms
     let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
-    
+
     if (inquiryDetail != null && inquiryDetail != undefined) {
       let inquiryData: any = JSON.parse(inquiryDetail);
       let inquiryStatus = inquiryData.Status;
@@ -113,9 +112,8 @@ export class PurchaseInqUpdateComponent implements OnInit {
         this.isCancelStatus = true;
       }
     }
-
     // Set sidebar data;
-    this.sideBarsubs=this.commonService.currentSidebarInfo.subscribe(
+    this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
 
       currentSidebarData => {
         if (currentSidebarData != null && currentSidebarData != undefined) {
@@ -123,12 +121,11 @@ export class PurchaseInqUpdateComponent implements OnInit {
           this.showLoader = true;
 
           this.purchaseInquiryDetail = currentSidebarData.RequesterData;
-
           if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
 
             this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
             this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
-            
+
             this.getStatusListForUpdateByCustomer();
             this.getUserDetails();
 
@@ -162,7 +159,8 @@ export class PurchaseInqUpdateComponent implements OnInit {
   }
 
   ngOnChange() {
-    this.sideBarsubs=this.commonService.currentSidebarInfo.subscribe(
+    console.log("ng onchange");
+    this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
 
         this.purchaseInquiryDetail = currentSidebarData.RequesterData;
@@ -202,7 +200,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   */
   public getStatusListForUpdateByCustomer() {
 
-    if (this.purchaseInquiryDetail.Status == 1) {
+    if (this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.Draft) {
       this.status = [
         { text: "Draft", value: PurchaseInquiryStatus.Draft },
         { text: "New", value: PurchaseInquiryStatus.New },
@@ -215,11 +213,18 @@ export class PurchaseInqUpdateComponent implements OnInit {
         this.isDisableSaveAsDraft = true;
         this.isDisableStatusField = true;
       } else {
-        //means status is new.
         this.isDisableSaveAsDraft = true;
-        this.status = [
-          { text: "New", value: PurchaseInquiryStatus.New },
-          { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled }];
+        if (this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.Updated) {
+          this.status = [
+            { text: "Updated", value: PurchaseInquiryStatus.Updated },
+            { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled }];
+        } else {
+          //means status is new.
+          this.isDisableSaveAsDraft = true;
+          this.status = [
+            { text: "New", value: PurchaseInquiryStatus.New },
+            { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled }];
+        }
       }
 
     }
@@ -233,27 +238,47 @@ export class PurchaseInqUpdateComponent implements OnInit {
     if (this.purchaseInquiryDetail.Status != PurchaseInquiryStatus.Draft) {
       this.isDisableSaveAsDraft = true;
     }
-
-
     //save as draft click
     // Draft status
-    if (saveAsDraft) {
+    if (saveAsDraft) { //save as draft click
       let Draftstatus: any = { text: "Draft", value: PurchaseInquiryStatus.Draft };
       this.purchaseInquiryDetail.Status = Draftstatus.value;
     }
     else {
       //save click
+      //if user click on save and status was draft then save it with new status.
       if (this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.Draft) {
         this.purchaseInquiryDetail.Status = PurchaseInquiryStatus.New;
+      } else {
+        //if user click on save and status was new then save it with updated status.
+        if (this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
+          this.purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
+          //set status list for item for now
+          this.status = [
+            { text: "Updated", value: PurchaseInquiryStatus.Updated },
+            { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled }];
+        }else{
+          //if status is cancelled
+          
+        }
       }
+
     }
 
     this.showLoader = true;
-    this.updatePISub=this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
+    this.updatePISub = this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
       data => {
         this.showLoader = false;
         this.commonService.refreshPIList(null);
-
+        //if after save user set status to cancelled then we have to disable all functionality.
+        if (this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.Cancelled) {
+          this.isCancelStatus = true; 
+          this.isDisableSave =true;
+          this.isDisableSaveAsDraft = true;
+          this.isDisableStatusField = true;//disable status in case of status cancelled also.
+          localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(this.purchaseInquiryDetail));   
+       }
+      
       },
       error => {
         alert("Something went wrong");
@@ -262,7 +287,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
       },
       () => { this.showLoader = false; }
 
-      // () => this.closeRightSidebar()
     );
   }
 

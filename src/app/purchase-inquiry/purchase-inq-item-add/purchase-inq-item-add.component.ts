@@ -115,7 +115,6 @@ export class PurchaseInqItemAddComponent implements OnInit {
         this.selectedThemeColor = data;
       }
     );
-
     this.itemSub=this.commonService.currentItemData.subscribe(
       (data: TempPurchaseInquiryModel) => {
         this.receivedPIModel = data;
@@ -154,7 +153,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
    * open a new form from save and new.
    */
   showAddItemSection() {
-    this.selectedInquiryId = '';
+    this.selectedItemId = '';
     console.log("at showAddItemSection  selectedItemId:"+this.selectedItemId);
     //validation on form
     this.showItemForm();
@@ -300,7 +299,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   public AddPurchaseInquiryItem(saveAndNew: boolean = false) {
     this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;    
     this.showLoader=true;
-    debugger;
+    //debugger;
     this.additemSub=this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
         //this.gridItemsData = JSON.parse(data);
@@ -357,12 +356,14 @@ export class PurchaseInqItemAddComponent implements OnInit {
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
         
         if (saveAndNew) {
+          
           this.selectedItemId = '';
           this.resetValuesAndShowForm();
           this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.New;
           this.IsStatusDisbale = true;
           // this.IsItemStatusCancel = false;
         } else {
+          
           this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
           // we can reassign the selectedItemId value here
           //   this.showItemsGrid();

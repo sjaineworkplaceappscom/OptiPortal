@@ -15,6 +15,7 @@ export class AttachmentItemComponent implements OnInit {
    isMobile: boolean;
    gridHeight: number;
    isCancelStatus:boolean = false;
+   isGridStatus:boolean = true;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -44,4 +45,13 @@ export class AttachmentItemComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
   }
   }
+  showGrid(){
+    this.isGridStatus = true;
+  }
+
+  showUpload(){
+    this.isGridStatus = false;
+  }
+
+
 }

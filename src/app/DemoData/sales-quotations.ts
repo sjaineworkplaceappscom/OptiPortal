@@ -1,4 +1,4 @@
-//this list for purchase Inquiry 
+// Home tab
 export const salesQuotations = [  
     {  
         "QuotationNumber":"Cust001",
@@ -26,5 +26,51 @@ export const salesQuotations = [
         "DocumentDate":"02/08/2018",
         "Status":"New",
         "Branch":"Indore"
+    }
+]
+
+
+// Content Tab
+export const salesQuotationsContent = [  
+    {  
+        "ItemNumber":"item01",
+        "Quantity":"20",
+        "UnitPrice":"5210",
+        "DiscountInPercentage":"5",
+        "TaxCode":"code1",
+        "TotalLC":"5200",
+        "UoMCode":'UOM12',
+        "ShipTo":"Indore",
+        "BillTo":"Indore",
+        "ShippingType":"normal",
+        "DeliveryDate":"04/07/2018"
+    }
+ ,  
+    {  
+        "ItemNumber":"item02",
+        "Quantity":"25",
+        "UnitPrice":"2500",
+        "DiscountInPercentage":"10",
+        "TaxCode":"code2",
+        "TotalLC":"2000",
+        "UoMCode":'UOM25',
+        "ShipTo":"Bhopal",
+        "BillTo":"Bhopal",
+        "ShippingType":"Fast",
+        "DeliveryDate":"05/07/2018"
+    }
+]
+
+// Attchement tab
+// Content Tab
+export const salesQuotationsAttachment = [  
+    {  
+        "FileName":"Report1.doc",
+        "AttachmentDate":"05/07/2018"
+    }
+ ,  
+    {  
+        "FileName":"Report-final.doc",
+        "AttachmentDate":"06/07/2018"
     }
 ]
