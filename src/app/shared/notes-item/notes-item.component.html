@@ -65,56 +65,60 @@
               <!-- end notes grid -->
 
               <!-- Add Notes Form  -->
-              <ng-container *ngIf="TabAddNotesFormStatus == true">
-                  <div class="card" #noteform>
-                      <div class="card-block">
-                          <form #requestnoteform class="k-form">
-                              <label class="k-form-field">
-                                  <span class="opti_form-label">Add Note</span>
-                                  <textarea class="k-textarea" name="addnotestring" [(ngModel)]="noteModel.Notes">Please enter your note</textarea>
-                              </label>
+                <ng-container *ngIf="TabAddNotesFormStatus == true">
+                    <div class="opti_position-relative opti_item-add-notes-form" [perfectScrollbar]="">
+                        <div class="card" #noteform>
+                            <div class="card-block">
+                                <form #requestnoteform class="k-form">
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Add Note</span>
+                                        <textarea class="k-textarea" name="addnotestring" [(ngModel)]="noteModel.Notes">Please enter your note</textarea>
+                                    </label>
 
-                              <label class="k-form-field">
-                                  <span class="opti_form-label">Note Type</span>
-                                  <kendo-dropdownlist name="formNoteType" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem">
-                                  </kendo-dropdownlist>
-                              </label>
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Note Type</span>
+                                        <kendo-dropdownlist name="formNoteType" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem">
+                                        </kendo-dropdownlist>
+                                    </label>
 
-                              <div class="text-right">
-                                  <button type="button" class="k-button k-primary" (click)="submitNote($event);">Save</button>
-                                  <button type="button" class="k-button k-primary" (click)="closeAddNoteWindow($event);">Cancel</button>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
-              </ng-container>
+                                    <div class="text-right">
+                                        <button type="button" class="k-button k-primary" (click)="submitNote($event);">Save</button>
+                                        <button type="button" class="k-button k-primary" (click)="closeAddNoteWindow($event);">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>    
+                </ng-container>
               <!-- end Notes Form  -->
 
               <!-- start edit form -->
-              <ng-container *ngIf="TabEditNotesFormStatus == true">
-                  <div class="card" #editnoteform>
-                      <div class="card-block">
-                          <form class="k-form">
-                              <label class="k-form-field">
-                                  <span class="opti_form-label">Update Note</span>
-                                  <!-- <textarea id="notes" name="note" class="k-textarea" #noteValue >{{selectedNote.Notes}}</textarea> -->
-                                  <textarea id="notes" name="note" class="k-textarea" [(ngModel)]="selectedNote.Notes"></textarea>
-                              </label>
+                <ng-container *ngIf="TabEditNotesFormStatus == true">
+                    <div class="opti_position-relative opti_item-edit-notes-form" [perfectScrollbar]="">
+                        <div class="card" #editnoteform>
+                            <div class="card-block">
+                                <form class="k-form">
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Update Note</span>
+                                        <!-- <textarea id="notes" name="note" class="k-textarea" #noteValue >{{selectedNote.Notes}}</textarea> -->
+                                        <textarea id="notes" name="note" class="k-textarea" [(ngModel)]="selectedNote.Notes"></textarea>
+                                    </label>
 
-                              <label class="k-form-field">
-                                  <span class="opti_form-label">Note Type</span>
-                                  <kendo-dropdownlist name="role" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem">
-                                  </kendo-dropdownlist>
-                              </label>
+                                    <label class="k-form-field">
+                                        <span class="opti_form-label">Note Type</span>
+                                        <kendo-dropdownlist name="role" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem">
+                                        </kendo-dropdownlist>
+                                    </label>
 
-                              <div class="text-right">
-                                  <button type="button" id="updateNote" class="k-button k-primary" (click)="updateNote($event)">Save</button>
-                                  <button type="button" id="addNote" class="k-button k-primary" (click)="closeUpdateNote($event)">Cancel</button>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
-              </ng-container>
+                                    <div class="text-right">
+                                        <button type="button" id="updateNote" class="k-button k-primary" (click)="updateNote($event)">Save</button>
+                                        <button type="button" id="addNote" class="k-button k-primary" (click)="closeUpdateNote($event)">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>    
+                </ng-container>
               <!-- end edit form -->
           </ng-container>
       </div>
