@@ -74,7 +74,9 @@ export class PurchaseInquiryService {
    * Update Purchase Inquiry Item.
    */
   public UpdatePurchaseInquiryItem(request: TempPurchaseInquiryItemModel) {
+
     var data: any = {
+      "CustomerItemCode": request.CustomerItemCode,
     "PurchaseInquiryId": request.PurchaseInquiryId,
     "PurchaseInquiryItemId": request.PurchaseInquiryItemId,
     "ItemDescription": request.Description,

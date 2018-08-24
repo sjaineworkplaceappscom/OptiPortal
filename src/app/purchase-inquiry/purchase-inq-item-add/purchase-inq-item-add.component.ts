@@ -220,7 +220,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
   /**
    * When click on save 
    */
-  public OnSaveOperationClick(saveAndNew:boolean=false) {       
+  public OnSaveOperationClick(saveAndNew:boolean=false) {     
+     
     if(this.selectedItemId != '') {
       this.UpdatePurchaseInquiryItem(saveAndNew);
     }
