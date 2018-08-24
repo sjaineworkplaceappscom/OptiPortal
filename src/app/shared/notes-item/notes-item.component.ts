@@ -109,10 +109,8 @@ export class NotesItemComponent implements OnInit {
         this.getnotessub.unsubscribe();
     }
 
-    ngOnChange() {
-    }
 
-    ngOnInit() {debugger;
+    ngOnInit() {
         // UI Start        
         //Apply Grid Height
         this.gridHeight = UIHelper.getMainContentHeight();
@@ -257,25 +255,29 @@ export class NotesItemComponent implements OnInit {
 
     }
 
+    /**
+     * This method will be called when user click on button for update note.
+     */
+
     public updateNote(e) {
-        this.TabNotesGridStatus = true;
-        this.TabEditNotesFormStatus = false;
+  
         this.selectedNote;
         //selected note object : this.selectedNote
         this.selectedNote.NoteType = this.selectedNoteItem.value;
         this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
             resp => {
                 console.log("record updated:");
-                this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
+                this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiryItem);
             },
             error => {
                 this.showLoader = false;
                 alert("Something went wrong");
-                this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
+                this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiryItem);
             },
             () => {
                 //reset all values
-                this.resetModelValues();
+                //close screen.
+                this.closeUpdateNote(e);
             });
     }
 

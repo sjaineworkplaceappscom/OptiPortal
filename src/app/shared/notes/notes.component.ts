@@ -50,11 +50,11 @@ export class NotesComponent implements OnInit {
     itemAddNotes: boolean = false;
     itemEditNotes: boolean = false;
     noteModel: NotesModel;
-    notessub:ISubscription;
-    getnotessub:ISubscription;
-    addnotessub:ISubscription;
-    updatenotessub:ISubscription;
-    deletenotessub:ISubscription;
+    notessub: ISubscription;
+    getnotessub: ISubscription;
+    addnotessub: ISubscription;
+    updatenotessub: ISubscription;
+    deletenotessub: ISubscription;
 
     isCancelStatus: boolean = false;
     public noteTypes: Array<{ text: string, value: number }> = [
@@ -76,10 +76,10 @@ export class NotesComponent implements OnInit {
         this.isMobile = UIHelper.isMobile();
     }
 
-    ngOnChange() {
-    }
+
 
     ngOnInit() {
+
         // UI Start        
         this.getTabParent = this.tabparent;
         //Apply Grid Height
@@ -88,29 +88,29 @@ export class NotesComponent implements OnInit {
         // Check Mobile device
         this.isMobile = UIHelper.isMobile();
         // UI End
-        
-    //get status of selected inquiry for disabling or enabling  forms
-    let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
-    let inquiryData: any = JSON.parse(inquiryDetail);
-    if(inquiryData != null || inquiryData != undefined) {
-    let inquiryStatus = inquiryData.Status;
-    if(inquiryStatus == PurchaseInquiryStatus.Cancelled){
-      this.isCancelStatus = true;
-    }
-    }
+
+        //get status of selected inquiry for disabling or enabling  forms
+        let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
+        let inquiryData: any = JSON.parse(inquiryDetail);
+        if (inquiryData != null || inquiryData != undefined) {
+            let inquiryStatus = inquiryData.Status;
+            if (inquiryStatus == PurchaseInquiryStatus.Cancelled) {
+                this.isCancelStatus = true;
+            }
+        }
         this.noteModel = new NotesModel();
         // Subscriber for Load data.
-        this.notessub=this.commonService.currentNotesData.subscribe(
+        this.notessub = this.commonService.currentNotesData.subscribe(
             (data: NotesModel) => {
                 this.noteModel = data;
-                
+
                 // Note parent Id
                 if (this.noteModel.ParentType == CustomerEntityType.PurchaseInquiry) {
                     // Get notes data.
                     this.getNoteList(this.noteModel.ParentId, data.ParentType);
-                    
+
                 }
-               
+
             },
             error => {
                 this.showLoader = false;
@@ -120,22 +120,23 @@ export class NotesComponent implements OnInit {
         );
 
     }
-    ngOnDestroy(){
-        if(this.notessub!=undefined)
-        this.notessub.unsubscribe();
-    
-        if(this.addnotessub!=undefined)
-        this.addnotessub.unsubscribe();
-    
-        if(this.getnotessub!=undefined)
-        this.getnotessub.unsubscribe();
-    
-        if(this.updatenotessub!=undefined)
-        this.updatenotessub.unsubscribe();
+    ngOnDestroy() {
+        if (this.notessub != undefined)
+            this.notessub.unsubscribe();
 
-        if(this.deletenotessub!=undefined)
-        this.deletenotessub.unsubscribe();
+        if (this.addnotessub != undefined)
+            this.addnotessub.unsubscribe();
+
+        if (this.getnotessub != undefined)
+            this.getnotessub.unsubscribe();
+
+        if (this.updatenotessub != undefined)
+            this.updatenotessub.unsubscribe();
+
+        if (this.deletenotessub != undefined)
+            this.deletenotessub.unsubscribe();
     }
+
 
     /**
     * visible add new comment layout.
@@ -163,7 +164,7 @@ export class NotesComponent implements OnInit {
         // Add Notes Data in model. when comes from inquiry        
         this.noteModel.NoteType = this.selectedNoteItem.value;
 
-        this.addnotessub=this.sharedComponentService.AddNote(this.noteModel).subscribe(
+        this.addnotessub = this.sharedComponentService.AddNote(this.noteModel).subscribe(
             resp => {
                 console.log("record added:")
             },
@@ -220,7 +221,7 @@ export class NotesComponent implements OnInit {
     private getNoteList(parentId: string, parentType: number) {
 
         this.showLoader = true;
-        this.getnotessub=this.sharedComponentService.getNotesList(parentId, parentType).subscribe(
+        this.getnotessub = this.sharedComponentService.getNotesList(parentId, parentType).subscribe(
             notesData => {
                 if (notesData != null && notesData != undefined) {
                     this.noteItemsData = JSON.parse(notesData);
@@ -269,13 +270,11 @@ export class NotesComponent implements OnInit {
     }
 
     public updateNote(e) {
-        //debugger;
-        this.TabNotesGridStatus = true;
-        this.TabEditNotesFormStatus = false;
+
         this.selectedNote;
         //selected note object : this.selectedNote
         this.selectedNote.NoteType = this.selectedNoteItem.value;
-        this.updatenotessub=this.sharedComponentService.updateNote(this.selectedNote).subscribe(
+        this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
             resp => {
                 console.log("record updated:")
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
@@ -286,8 +285,7 @@ export class NotesComponent implements OnInit {
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },
             () => {
-                //reset all values
-                this.resetModelValues();
+                this.closeUpdateNote(e);
             });
 
     }

@@ -102,24 +102,14 @@ export class PurchaseInqUpdateComponent implements OnInit {
     UIHelper.getWidthOfOuterTab();
     // Add active class on tab title 
     this.optiTab.nativeElement.children[0].classList.add('active');
-    //get status of selected inquiry for disabling or enabling  forms
-    let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
-
-    if (inquiryDetail != null && inquiryDetail != undefined) {
-      let inquiryData: any = JSON.parse(inquiryDetail);
-      let inquiryStatus = inquiryData.Status;
-      if (inquiryStatus == PurchaseInquiryStatus.Cancelled) {
-        this.isCancelStatus = true;
-      }
-    }
+   
     // Set sidebar data;
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
 
       currentSidebarData => {
+        this.setInquiryStatusFlag();
         if (currentSidebarData != null && currentSidebarData != undefined) {
-
           this.showLoader = true;
-
           this.purchaseInquiryDetail = currentSidebarData.RequesterData;
           if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
 
@@ -158,6 +148,20 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
   }
 
+  private setInquiryStatusFlag(){
+     //get status of selected inquiry for disabling or enabling  forms
+     let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
+
+     if (inquiryDetail != null && inquiryDetail != undefined) {
+       let inquiryData: any = JSON.parse(inquiryDetail);
+       let inquiryStatus = inquiryData.Status;
+       if (inquiryStatus == PurchaseInquiryStatus.Cancelled) {
+         this.isCancelStatus = true;
+       }else{
+         this.isCancelStatus = false;
+       }
+     }
+  }
   ngOnChange() {
     console.log("ng onchange");
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
