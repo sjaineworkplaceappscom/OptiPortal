@@ -259,12 +259,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
   /**
    * When click on save 
    */
-<<<<<<< HEAD
   public OnSaveOperationClick(saveAndNew:boolean=false) {     
      
-=======
-  public OnSaveOperationClick(saveAndNew:boolean=false) { debugger;      
->>>>>>> c455b1666e3cedf9f78761cae073542b70f38366
     if(this.selectedItemId != '') {
        // On selection of item check if status is cancel or not 
       if(this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled)
