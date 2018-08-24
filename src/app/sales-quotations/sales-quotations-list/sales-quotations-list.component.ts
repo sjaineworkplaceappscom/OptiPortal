@@ -78,15 +78,6 @@ export class SalesQuotationsListComponent implements OnInit {
     }, 1000);
   }
 
-  openSales(){
-    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName=ComponentName.UpdateSales;
-    currentsideBarInfo.ModuleName=ModuleName.Sales;
-    currentsideBarInfo.SideBarStatus=true;    
-    
-    this.commonService.setCurrentSideBar(currentsideBarInfo);
-  }
-
   onFilterChange(checkBox:any,grid:GridComponent)
   {
     if(checkBox.checked==false){
@@ -96,6 +87,15 @@ export class SalesQuotationsListComponent implements OnInit {
 
   clearFilter(grid:GridComponent){      
     //grid.filter.filters=[];
+  }
+
+  openSalesQuotationDetailOnSelectSalesQuotations(e){
+    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName=ComponentName.UpdateSales;
+    currentsideBarInfo.ModuleName=ModuleName.Sales;
+    currentsideBarInfo.SideBarStatus=true;    
+    
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
   

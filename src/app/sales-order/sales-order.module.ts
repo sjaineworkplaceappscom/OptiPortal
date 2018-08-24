@@ -6,6 +6,7 @@ import { SalesOrderListComponent } from './sales-order-list/sales-order-list.com
 import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
 import { FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { SalesOrderDetailComponent } from './sales-order-detail/sales-order-detail.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     FormsModule,
     AngularSvgIconModule
   ],
-  declarations: [SalesOrderListComponent],
-  exports:[SalesOrderListComponent]
+  declarations: [SalesOrderListComponent, SalesOrderDetailComponent],
+  exports:[SalesOrderListComponent, SalesOrderDetailComponent]
 })
 export class SalesOrderModule { }

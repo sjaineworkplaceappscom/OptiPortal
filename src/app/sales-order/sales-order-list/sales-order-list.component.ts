@@ -3,6 +3,8 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { Commonservice } from '../../services/commonservice.service';
 import { data2 } from '../../demodata/data2';
 import { GridComponent } from '@progress/kendo-angular-grid';
+import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
+import { ModuleName, ComponentName } from '../../enums/enums';
 
 @Component({
   selector: 'app-sales-order-list',
@@ -76,6 +78,15 @@ export class SalesOrderListComponent implements OnInit {
 
   clearFilter(grid:GridComponent){      
     //grid.filter.filters=[];
+  }
+
+  openSalesOrderDetailOnSelectSalesOrder(e){
+    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName=ComponentName.SalesOrderDetail;
+    currentsideBarInfo.ModuleName=ModuleName.SalesOrder;
+    currentsideBarInfo.SideBarStatus=true;    
+    
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
 }
