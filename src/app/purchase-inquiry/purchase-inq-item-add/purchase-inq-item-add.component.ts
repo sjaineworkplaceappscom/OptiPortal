@@ -10,6 +10,8 @@ import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType, PurchaseInquiryStatus, PurchaseInquiryItemStatus } from '../../enums/enums';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 
+import * as $ from "jquery";
+
 @Component({
   selector: 'app-purchase-inq-item-add',
   templateUrl: './purchase-inq-item-add.component.html',
@@ -137,6 +139,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
    */
   showItemsGrid() {
     this.addItem = false;
+    // Set home tab active on click on any record
+    $('#opti_ItemHomeTabID').click();
     this.itemGrid = true;
   }
 
