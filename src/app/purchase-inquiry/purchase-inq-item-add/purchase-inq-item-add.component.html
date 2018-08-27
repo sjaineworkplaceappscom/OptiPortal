@@ -82,12 +82,12 @@
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Request Date</span>
-                                            <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModel.RequestDate" [format]="'dd MMM yy'" [disabled]="IsItemStatusCancel"> </kendo-datepicker>
+                                            <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModel.RequestDate" [format]="'dd MMM yy'" [min]="minValidDate" [disabled]="IsItemStatusCancel"> </kendo-datepicker>
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Required Date</span>
-                                            <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModel.RequiredDate" [format]="'dd MMM yy'" [disabled]="IsItemStatusCancel"> </kendo-datepicker>
+                                            <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModel.RequiredDate" [format]="'dd MMM yy'" [min]="minValidDate" [disabled]="IsItemStatusCancel" > </kendo-datepicker>
                                         </label>
 
                                         <label class="k-form-field">

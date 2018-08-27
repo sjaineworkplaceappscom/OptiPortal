@@ -28,7 +28,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   /**
    * Item tab Variable
   */
-  isCancelStatus:boolean = false;
+  isCancelStatus: boolean = false;
 
   // to disable all feilds when status is cancelled
   IsItemStatusCancel: boolean = false;
@@ -38,8 +38,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
   tabName: string = 'home';
 
   isFromGrid = false;
-  addOperationInProgress:boolean=false;
-  
+  addOperationInProgress: boolean = false;
+
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -58,58 +58,58 @@ export class PurchaseInqItemAddComponent implements OnInit {
   showLoader: boolean = false;
 
   selectedThemeColor: string = 'opticonstants.DEFAULTTHEMECOLOR';
- // status section
- public statusValues: Array<{ text: string, value: number }> = [
-  { text: "New", value: PurchaseInquiryItemStatus.New },
-  { text: "Updated", value: PurchaseInquiryItemStatus.Updated },
-  { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }
-];
+  // status section
+  public statusValues: Array<{ text: string, value: number }> = [
+    { text: "New", value: PurchaseInquiryItemStatus.New },
+    { text: "Updated", value: PurchaseInquiryItemStatus.Updated },
+    { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }
+  ];
 
   //dropdown diable flag
   public IsStatusDisbale: boolean = false;
 
   // Subscriber
-  itemSub:ISubscription;
-  additemSub:ISubscription;
-  getitemSub:ISubscription;
-  updateitemSub:ISubscription;
+  itemSub: ISubscription;
+  additemSub: ISubscription;
+  getitemSub: ISubscription;
+  updateitemSub: ISubscription;
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
-  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) {     
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) {
   }
 
-  ngOnDestroy(){
-    if(this.itemSub!=undefined)
-    this.itemSub.unsubscribe();
+  ngOnDestroy() {
+    if (this.itemSub != undefined)
+      this.itemSub.unsubscribe();
 
-    if(this.additemSub!=undefined)
-    this.additemSub.unsubscribe();
+    if (this.additemSub != undefined)
+      this.additemSub.unsubscribe();
 
-    if(this.getitemSub!=undefined)
-    this.getitemSub.unsubscribe();
+    if (this.getitemSub != undefined)
+      this.getitemSub.unsubscribe();
 
-    if(this.updateitemSub!=undefined)
-    this.updateitemSub.unsubscribe();
-}
+    if (this.updateitemSub != undefined)
+      this.updateitemSub.unsubscribe();
+  }
 
   ngOnInit() {
-    console.log("onInit selectedItemId:"+this.selectedItemId);
+    console.log("onInit selectedItemId:" + this.selectedItemId);
     // Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
     //debugger;
     //get status of selected inquiry for disabling or enabling  forms
-    let inquiryDetail: string= localStorage.getItem("SelectedPurchaseInquery");
-    if(inquiryDetail !=null && inquiryDetail!=undefined){
-    let inquiryData: any = JSON.parse(inquiryDetail);
-    let inquiryStatus = inquiryData.Status;
-    if(inquiryStatus == PurchaseInquiryStatus.Cancelled){
-      this.isCancelStatus = true;
-      this.purchaseItemsModel.Status = PurchaseInquiryStatus.New;
+    let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
+    if (inquiryDetail != null && inquiryDetail != undefined) {
+      let inquiryData: any = JSON.parse(inquiryDetail);
+      let inquiryStatus = inquiryData.Status;
+      if (inquiryStatus == PurchaseInquiryStatus.Cancelled) {
+        this.isCancelStatus = true;
+        this.purchaseItemsModel.Status = PurchaseInquiryStatus.New;
+      }
     }
-  }
 
     // GET current theme colour
     this.commonService.themeCurrentData.subscribe(
@@ -117,10 +117,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
         this.selectedThemeColor = data;
       }
     );
-    this.itemSub=this.commonService.currentItemData.subscribe(
+    this.itemSub = this.commonService.currentItemData.subscribe(
       (data: TempPurchaseInquiryModel) => {
         this.receivedPIModel = data;
-        this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId        
+        this.receivedPurchaseInquiryId = this.receivedPIModel.PurchaseInquiryId
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
         this.showItemsGrid();
       },
@@ -158,16 +158,16 @@ export class PurchaseInqItemAddComponent implements OnInit {
    */
   showAddItemSection() {
     this.selectedItemId = '';
-   
+
     //reset data source when new intem added.
-  this.statusValues= [
+    this.statusValues = [
       { text: "New", value: PurchaseInquiryItemStatus.New },
       { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }
     ];
 
     this.showItemForm();
     this.resetDefaultItemData();
-    
+
     this.IsStatusDisbale = true;
     this.IsItemStatusCancel = false;
   }
@@ -184,7 +184,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
     //reset selected item id on cancel button click.
     this.selectedItemId = '';
     this.showItemsGrid();
-   // this.resetDefaultItemData();
+    // this.resetDefaultItemData();
   }
 
   //purchaseItemsModelForUpdate: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
@@ -200,14 +200,14 @@ export class PurchaseInqItemAddComponent implements OnInit {
    */
   public onItemGridDataSelection(selection, status) {
     // set false for grid item only
-    this.addOperationInProgress=false;
+    this.addOperationInProgress = false;
 
     this.isFromGrid = true;
     const selectedData = this.gridItemsData[selection.index];
 
     // store item data in local storage
-    localStorage.setItem("SelectedPurchaseInquiryItem",JSON.stringify(selectedData));
-    
+    localStorage.setItem("SelectedPurchaseInquiryItem", JSON.stringify(selectedData));
+
     this.purchaseItemsModel = JSON.parse(JSON.stringify(selectedData));
     this.requestDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequestDate);
     this.requiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
@@ -215,50 +215,48 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.purchaseItemsModel.RequestDate = this.requestDate;
     this.purchaseItemsModel.RequiredDate = this.requiredDate;
     this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
-    console.log("at onItemGridDataSelection  selectedItemId:"+this.selectedItemId);
+    console.log("at onItemGridDataSelection  selectedItemId:" + this.selectedItemId);
 
     // On selection of item check if status is cancel or not 
-    if(this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled)
-      { 
-        this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Cancelled;
-        this.IsStatusDisbale = true;
-        this.IsItemStatusCancel = true;
-      }
-      else if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Updated) {
-        this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Updated;
-        this.statusValues = [
-          { text: "Updated", value: PurchaseInquiryItemStatus.Updated },
-          { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
-      }
-      else 
-      {
-        this.statusValues = [
-          { text: "New", value: PurchaseInquiryItemStatus.New },
-          { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
-        this.IsStatusDisbale = false;
-        this.IsItemStatusCancel = false;
-      }
+    if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled) {
+      this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Cancelled;
+      this.IsStatusDisbale = true;
+      this.IsItemStatusCancel = true;
+    }
+    else if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Updated) {
+      this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Updated;
+      this.statusValues = [
+        { text: "Updated", value: PurchaseInquiryItemStatus.Updated },
+        { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
+    }
+    else {
+      this.statusValues = [
+        { text: "New", value: PurchaseInquiryItemStatus.New },
+        { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
+      this.IsStatusDisbale = false;
+      this.IsItemStatusCancel = false;
+    }
     this.showItemForm();
-    
-    
+
+
   }
 
 
   /**
     * Method to get list of inquries from server.
     */
-  public getInquiryItemsData(inquiryId: string) {    
+  public getInquiryItemsData(inquiryId: string) {
     this.showLoader = true;
 
-    this.getitemSub=this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
+    this.getitemSub = this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
       inquiryItemData => {
-        this.showLoader=false;
+        this.showLoader = false;
         this.gridItemsData = JSON.parse(inquiryItemData);
         this.gridItemsData.forEach(element => {
           element.RequiredDate = DateTimeHelper.ParseDate(element.RequiredDate);
           element.RequestDate = DateTimeHelper.ParseDate(element.RequestDate);
         });
-        
+
       },
       error => {
         this.showLoader = false;
@@ -274,12 +272,11 @@ export class PurchaseInqItemAddComponent implements OnInit {
   /**
    * When click on save 
    */
-  public OnSaveOperationClick(saveAndNew:boolean=false) {   
-     
-    if(this.selectedItemId != '') {
-       // On selection of item check if status is cancel or not 
-      if(this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled)
-      { 
+  public OnSaveOperationClick(saveAndNew: boolean = false) {
+
+    if (this.selectedItemId != '') {
+      // On selection of item check if status is cancel or not 
+      if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled) {
         this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Cancelled;
         this.IsStatusDisbale = true;
         this.IsItemStatusCancel = true;
@@ -292,29 +289,25 @@ export class PurchaseInqItemAddComponent implements OnInit {
           { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
       }
       // if status is already new 
-      else if(this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.New)
-      {
+      else if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.New) {
         this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Updated;
         this.statusValues = [
           { text: "Updated", value: PurchaseInquiryItemStatus.Updated },
           { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
       }
-      else 
-      {
+      else {
         this.statusValues = [
           { text: "New", value: PurchaseInquiryItemStatus.New },
           { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
         this.IsStatusDisbale = false;
       }
       // when status is cancelled and click on saveandnew
-      if(saveAndNew == true)
-      {
+      if (saveAndNew == true) {
         this.IsItemStatusCancel = false;
       }
       this.UpdatePurchaseInquiryItem(saveAndNew);
     }
-    else
-    {
+    else {
       this.AddPurchaseInquiryItem(saveAndNew);
     }
     // if (this.isFromGrid) {
@@ -323,19 +316,19 @@ export class PurchaseInqItemAddComponent implements OnInit {
     //   this.AddPurchaseInquiryItem();
     // }
   }
-  
+
   /**
   * AddPurchaseInquiryItem
   */
   public AddPurchaseInquiryItem(saveAndNew: boolean = false) {
-    this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;    
-    this.showLoader=true;
+    this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
+    this.showLoader = true;
     //debugger;
-    this.additemSub=this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
+    this.additemSub = this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
         //this.gridItemsData = JSON.parse(data);
         //this.purchaseItemsModel = JSON.parse(data);
-        
+
         let tempData: any = data;
         this.purchaseItemsModel = tempData;
         this.purchaseItemsModel.RequiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
@@ -343,20 +336,25 @@ export class PurchaseInqItemAddComponent implements OnInit {
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
         //console.log(data)
         if (saveAndNew) {
+          //reset data source when new intem added.
+          this.statusValues = [
+            { text: "New", value: PurchaseInquiryItemStatus.New },
+            { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }
+          ];
           this.selectedItemId = '';
           this.resetValuesAndShowForm();
           this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.New;
-          this.IsStatusDisbale = true; 
-        } else { 
-          this.selectedItemId =this.purchaseItemsModel.PurchaseInquiryItemId
-           //this.showItemsGrid();
-           this.addOperationInProgress=false;
-           this.statusValues = [
+          this.IsStatusDisbale = true;
+        } else {
+          this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId
+          //this.showItemsGrid();
+          this.addOperationInProgress = false;
+          this.statusValues = [
             { text: "New", value: PurchaseInquiryItemStatus.New },
             { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
-           this.IsStatusDisbale = false;
+          this.IsStatusDisbale = false;
         }
-        this.showLoader=false;
+        this.showLoader = false;
       },
       error => {
         this.showLoader = false;
@@ -365,8 +363,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
       },
       () => {
         this.isFromGrid = false
-       
-       // this.addOperationInProgress=false;
+
+        // this.addOperationInProgress=false;
       }
     );
   }
@@ -378,37 +376,41 @@ export class PurchaseInqItemAddComponent implements OnInit {
   public UpdatePurchaseInquiryItem(saveAndNew: boolean = false) {
     debugger;
     this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
-    this.showLoader=true;
-    this.updateitemSub=this.purchaseInquiryService.UpdatePurchaseInquiryItem(this.purchaseItemsModel).subscribe(
+    this.showLoader = true;
+    this.updateitemSub = this.purchaseInquiryService.UpdatePurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
         let tempData: any = data;
         this.purchaseItemsModel = tempData;
         this.purchaseItemsModel.RequiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
         this.purchaseItemsModel.RequestDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequestDate);
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
-        
+
         if (saveAndNew) {
-          
+          //reset data source when new intem added.
+          this.statusValues = [
+            { text: "New", value: PurchaseInquiryItemStatus.New },
+            { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }
+          ];
           this.selectedItemId = '';
           this.resetValuesAndShowForm();
           this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.New;
           this.IsStatusDisbale = true;
           // this.IsItemStatusCancel = false;
         } else {
-          
+
           this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
           //if user click on save and status was new then save it with updated status.
-        if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.New) {
-          this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Updated;
-          this.statusValues = [
-            { text: "Updated", value: PurchaseInquiryItemStatus.Updated },
-            { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
-        }
+          if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.New) {
+            this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Updated;
+            this.statusValues = [
+              { text: "Updated", value: PurchaseInquiryItemStatus.Updated },
+              { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
+          }
           // we can reassign the selectedItemId value here
           //   this.showItemsGrid();
-         // this.showItemsGrid();        
+          // this.showItemsGrid();        
         }
-        this.showLoader=false;
+        this.showLoader = false;
       },
       error => {
         this.showLoader = false;
@@ -423,12 +425,11 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
   // tab code start
   openTab(evt, tabName) {
-    if(this.addOperationInProgress==true)
-    {
+    if (this.addOperationInProgress == true) {
       return;
     }
     if (tabName == 'notes') {
-      
+
       let notedata: NotesModel = new NotesModel();
       notedata.ParentId = this.purchaseItemsModel.PurchaseInquiryItemId;
       notedata.ParentType = CustomerEntityType.PurchaseInquiryItem;
@@ -453,10 +454,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
     this.purchaseItemsModel = new TempPurchaseInquiryItemModel();
     this.purchaseItemsModel.RequestDate = new Date();
-    this.purchaseItemsModel.RequiredDate = new Date();  
+    this.purchaseItemsModel.RequiredDate = new Date();
     this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.New;
-    this.addOperationInProgress=true;
-   
+    this.addOperationInProgress = true;
+
   }
 
   // setNotesModel(parentId, grandParentId) {
