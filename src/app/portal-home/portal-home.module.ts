@@ -29,6 +29,8 @@ import { ThemeManagerComponent } from '../common/theme-manager/theme-manager.com
 import { DeliveryNotesModule } from '../delivery-notes/delivery-notes.module';
 import { SalesOrderModule } from '../sales-order/sales-order.module';
 import { CustomerPurchaseOrderModule } from '../customer-purchase-order/customer-purchase-order.module';
+import { ChartsModule } from '@progress/kendo-angular-charts';
+import 'hammerjs';
 
 
 
@@ -63,12 +65,13 @@ import { CustomerPurchaseOrderModule } from '../customer-purchase-order/customer
 
     DeliveryNotesModule,
     SalesOrderModule,
-    CustomerPurchaseOrderModule       
+    CustomerPurchaseOrderModule,
+    ChartsModule
 
   ],
   declarations: [
     PortalHomeComponent, PortalLeftComponent, PortalTopComponent, PortalRightComponent, DashboardComponent,ThemeManagerComponent 
   ],
-  providers:[]
+  providers:[DashboardComponent]
 })
 export class PortalHomeModule { }

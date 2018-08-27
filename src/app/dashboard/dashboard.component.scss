@@ -1,0 +1,18 @@
+#opti_DashboardID {
+    background: white;
+    height: calc(100vh - 85px);
+    box-shadow: 0px 1px 15px var(--kendo-primary-color);
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 479px){
+.opti_zoom-donut-only-mobile{
+    zoom: 0.75;
+}
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px){
+.opti_zoom-donut-only-mobile{
+    zoom: 0.75;
+}
+}
