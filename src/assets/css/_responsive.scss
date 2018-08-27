@@ -7,6 +7,7 @@
     @media screen and (min-width: 480px) and (max-width: 767px){
         @import 'device/mobile/_mobile';
         @import 'device/mobile/account_module/_mobile_account_landscape';
+        @import 'device/mobile/purchase-inquiries_module/_mobile_purchase-inquiries_landscape';
     }
 
     @media only screen and (min-width: 768px) and (max-width: 959px) {

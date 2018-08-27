@@ -102,18 +102,18 @@
 
     </div>
 
-    <div id="items" *ngIf="tabName=='items'" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
+    <div id="items" *ngIf="tabName=='items'" class="opti_tabcontent opti_position-relative">
         
         <app-purchase-inq-item-add></app-purchase-inq-item-add>
 
     </div>
 
-    <div id="attachement" *ngIf="tabName=='attachement'" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
+    <div id="attachement" *ngIf="tabName=='attachement'" class="opti_tabcontent opti_position-relative">
         <app-attachment></app-attachment>
         <!-- Attachements -->
     </div>
 
-    <div id="notes" *ngIf="tabName=='notes'" class="opti_tabcontent opti_position-relative" [perfectScrollbar]="">
+    <div id="notes" *ngIf="tabName=='notes'" class="opti_tabcontent opti_position-relative">
         <app-notes [NotesMasterData]="notesMasterData" [tabparent]="'notesTab'"></app-notes>
     </div>
 

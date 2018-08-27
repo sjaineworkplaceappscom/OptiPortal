@@ -247,7 +247,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   /**
     * Method to get list of inquries from server.
     */
-  public getInquiryItemsData(inquiryId: string) { 
+  public getInquiryItemsData(inquiryId: string) {    
     this.showLoader = true;
 
     this.getitemSub=this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
