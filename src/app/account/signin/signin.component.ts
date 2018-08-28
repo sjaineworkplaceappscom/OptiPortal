@@ -28,26 +28,32 @@ export class SigninComponent implements OnInit {
   userNotExist:boolean=false;
   capchaText: string;
   invalidCapcha:boolean=false;
-
+  
+  isRemember:boolean = false;
+  
   constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: Commonservice) { }
 
   @ViewChild('myCanvas') myCanvas;
 
   ngOnInit() {
 
+    // Get cookie start
+    if(this.getCookie('cookieEmail') != '' && this.getCookie('cookiePassword') != ''){
+      this.userName = this.getCookie('cookieEmail');
+      this.password = this.getCookie('cookiePassword');
+    }else{
+      this.userName = '';
+      this.password = '';
+    }
+    // Get cookie end
+
     this. getRandomStringForCaptcha();
     this.customCaptcha(this.randomstring);
-
-    this.userName = '';
-    this.password = '';
-    
-
+        
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
     element.classList.add("opti_body-login");
     element.classList.add("opti_account-module");
-
-    
 
   }
 
@@ -56,7 +62,37 @@ export class SigninComponent implements OnInit {
     console.log("change boolean: " + this.invalidCapcha);
   }
   
+  public getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+          }
+      }
+      return "";
+  }
+
+  public setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+      var expires = "expires="+d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
   public async login() {
+
+    // cookie code start
+    if(this.isRemember == true){
+      this.setCookie('cookieEmail', this.userName, 365);
+      this.setCookie('cookiePassword', this.password, 365);
+    }
+    // cookie code end
+
     let userId: string;
     
     //reset validation message variables.

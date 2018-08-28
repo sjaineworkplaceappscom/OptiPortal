@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { Router } from '@angular/router';
 import { opticonstants } from '../../constants';
+import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 // import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({
@@ -49,7 +50,16 @@ export class PortalLeftComponent implements OnInit {
   
   listClick(event, module) {
       this.selectedItem = module;
+      //if(module!='purchaseinquiry'){
+        this.closeRightSidebar();
+      //}
       this.router.navigate(['home/'+module]);
+  }
+
+  closeRightSidebar() {
+    let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentSidebarInfo.SideBarStatus = false;
+    this.commonService.setCurrentSideBar(currentSidebarInfo);
   }
  
 }
