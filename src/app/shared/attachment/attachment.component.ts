@@ -124,9 +124,21 @@ export class AttachmentComponent implements OnInit {
     const formData = new FormData();
 
     for (let file of files) {
+      // exe
+      if(file.type=='application/x-msdownload')      {
+      this.message="Error: specified filetype not supported.";
+      return;      
+      }
+
+      // >10 mb file check.
+      if(file.size>1024*1024*10){
+        this.message="Error: file should not be greater then 10 MB.";
+        return;
+      }
+      
+
       formData.append(file.name, file);
       this.selectedFileName = file.name;
-
     }
 
     // Attachment details
@@ -136,9 +148,12 @@ export class AttachmentComponent implements OnInit {
 
     formData.append('AttachmentDetail', JSON.stringify(attachmentDetail));
    
-
+    this.showLoader=true;
     this.sharedComponentService.uploadAttachment(formData).subscribe(
       event => {
+        this.showLoader=false;
+
+
         if (event.type === HttpEventType.UploadProgress)
           this.progress = Math.round(100 * event.loaded / event.total);
 
@@ -153,7 +168,11 @@ export class AttachmentComponent implements OnInit {
       error=> {
         alert("Something went wrong");
         console.log(error);
+        this.showLoader=false;
         this.showGrid = false;
+      },
+      ()=> {
+       
       }
 
     );
