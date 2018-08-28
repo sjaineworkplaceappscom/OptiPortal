@@ -106,6 +106,9 @@ export class PurchaseInqAddComponent implements OnInit {
     this.addSub=this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
       (data: any) => {        
         this.commonService.refreshPIList(null);
+        
+        localStorage.setItem("PurchaseinqueryId",data.PurchaseInquiryId);      
+        localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(data));         
         this.openUpdateSideBar(data);
         this.showLoader=false;
       },
