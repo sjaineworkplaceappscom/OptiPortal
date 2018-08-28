@@ -42,7 +42,7 @@ export class AccountService {
     updateCredential.userName = userName;
     updateCredential.newPassword = newPassword;
 
-    return this.httpHelper.post(url, updateCredential, null, true);
+    return this.httpHelper.put(url, updateCredential, null, true);
 
   }
 
