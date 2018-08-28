@@ -13,6 +13,7 @@ const routes: Routes = [
   {
     path: '', component: PortalHomeComponent,
     children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'purchaseinquiry', loadChildren: '../purchase-inquiry/purchase-inquiry.module#PurchaseInquiryModule' },      
       { path: 'shared', loadChildren: '../shared/shared.module#SharedModule' },
       { path: 'sales', component:SalesQuotationsListComponent },

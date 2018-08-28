@@ -15,6 +15,7 @@ export class AuthGuard implements CanActivate {
   }
 
   private canActivated():boolean{
+    debugger;
     // get authenticated flag from db.
     let authenticated:boolean=localStorage.getItem('AccessToken')!= null;    
 

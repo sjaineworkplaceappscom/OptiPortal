@@ -53,7 +53,7 @@ import { PurchaseInquiryModule } from './purchase-inquiry/purchase-inquiry.modul
 
 // for new Routing for Lazy load
 const routes: Routes = [
-  { path: '', component:LandingComponent},
+  { path: '', redirectTo:'home',pathMatch: 'full'},
   { path:'landing',component:LandingComponent},  
   { path: 'account', loadChildren: "./account/account.module#AccountModule" },
   { path: 'home', loadChildren: "./portal-home/portal-home.module#PortalHomeModule" },
