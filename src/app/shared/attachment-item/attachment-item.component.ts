@@ -1,6 +1,11 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
-import { PurchaseInquiryStatus, PurchaseInquiryItemStatus } from '../../enums/enums';
+import { PurchaseInquiryStatus, PurchaseInquiryItemStatus, CustomerEntityType } from '../../enums/enums';
+import { SharedComponentService } from '../../services/shared-component.service';
+import { Commonservice } from '../../services/commonservice.service';
+import { HttpClient, HttpEventType } from '../../../../node_modules/@angular/common/http';
+import { AttachmentDetail } from '../../models/AttchmentDetail';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 
 @Component({
   selector: 'app-attachment-item',
@@ -17,41 +22,174 @@ export class AttachmentItemComponent implements OnInit {
    isCancelStatus:boolean = false;
    isGridStatus:boolean = true;
 
-  @HostListener('window:resize', ['$event'])
+   @Input() tabparent;
+   getTabParent: string;
+
+   showGrid: boolean = true;
+  showLoader: boolean = false;
+  public progress: number;
+  public message: string;
+  public purchaseInqId: string;
+  public purchaseInqItemId: string;
+  public gridAttachmentData: any[] = [];
+  public selectedFileName: string = '';
+  attachmentModel: AttachmentDetail;
+
+  attachmentsub:ISubscription;
+
+   @HostListener('window:resize', ['$event'])
   onResize(event) {
-      //Apply Grid Height
-      this.gridHeight = UIHelper.getMainContentHeight();
-
-      // Check Mobile device
-      this.isMobile = UIHelper.isMobile();
-  }
-
-  constructor() { }
-
-  ngOnInit() {
-    //Apply Grid Height
+    /**
+     * Apply Grid Height any[] = []
+    */
     this.gridHeight = UIHelper.getMainContentHeight();
 
+    /**
+     * Check Mobile device
+    */
+    this.isMobile = UIHelper.isMobile();
+  }
 
+  constructor(private commonService: Commonservice, private http: HttpClient,private sharedComponentService: SharedComponentService) 
+  {
+    this.attachmentsub = this.commonService.currentAttachmentItemData.subscribe(
+      (data: AttachmentDetail) => {
+        console.log(JSON.stringify(data));
+          if (data != undefined && data != null) {
+              this.attachmentModel = data;
+              this.purchaseInqId = this.attachmentModel.GrandParentId;
+              this.purchaseInqItemId = this.attachmentModel.ParentId;
+              // Get notes data.
+              this.getAttchmentList();
+
+          }
+      },
+      error => {
+          this.showLoader = false;
+          alert("Something went wrong");
+          console.log("Error: ", error)
+      }
+  );
+  }
+
+  ngOnInit() {
+    /**
+     * Apply Grid Height
+    */
+   this.gridHeight = UIHelper.getMainContentHeight();
+
+   /**
+   * Check Mobile device
+   */
+   this.isMobile = UIHelper.isMobile();
+
+   this.getTabParent = this.tabparent;
    //get status of selected inquiry for disabling or enabling  forms
    let inquiryItemDetail: string= localStorage.getItem("SelectedPurchaseInquiryItem");
    let inquiryItemData: any = JSON.parse(inquiryItemDetail);
+   
    if(inquiryItemData != null || inquiryItemData != undefined) {
    let inquiryStatus = inquiryItemData.Status;
    if(inquiryStatus == PurchaseInquiryItemStatus.Cancelled){
      this.isCancelStatus = true;
-   }
-    // Check Mobile device
-    this.isMobile = UIHelper.isMobile();
+      }
+    }
   }
+ 
+  ngOnDestroy(){
+    if(this.attachmentsub!=undefined)
+    this.attachmentsub.unsubscribe();
+}
+
+ /**
+   * Attachement Tab
+  */
+ public showTabAddAttachementForm() {
+  this.message='';
+  this.showGrid = false;
+
+}
+
+public getAttchmentList() {
+  
+  this.showLoader = true;
+  this.sharedComponentService.getAtachmentList(this.purchaseInqItemId, CustomerEntityType.PurchaseInquiryItem)
+    .subscribe(
+      data => {
+        this.showLoader = false;
+        if (data != undefined && data != null) {
+          let griddata: any = data;
+          this.gridAttachmentData = JSON.parse(data);
+        }
+      }
+    ),
+    err => {
+      alert("Something went wrong.");
+      console.log(err);
+      this.showLoader = false;
+    }
+  () => {
+    this.showLoader = false;
   }
-  showGrid(){
-    this.isGridStatus = true;
+    ;
+}
+
+public upload(files) {
+
+  if (files.length === 0)
+    return;
+
+  const formData = new FormData();
+
+  for (let file of files) {
+    formData.append(file.name, file);
+    this.selectedFileName = file.name;
+
   }
 
-  showUpload(){
-    this.isGridStatus = false;
-  }
+  // Attachment details
+  let attachmentDetail: AttachmentDetail = new AttachmentDetail();
+  attachmentDetail.ParentId = this.purchaseInqItemId;
+  attachmentDetail.GrandParentId = this.purchaseInqId;
+
+  formData.append('AttachmentDetail', JSON.stringify(attachmentDetail));
+ 
+
+  this.sharedComponentService.uploadAttachment(formData).subscribe(
+    event => {
+      if (event.type === HttpEventType.UploadProgress)
+        this.progress = Math.round(100 * event.loaded / event.total);
+
+      else if (event.type === HttpEventType.Response)
+        this.message = event.body.toString();
+      // Get attachment list
+      if(event.type===4 && event.status===200){
+      this.getAttchmentList();
+      this.back();                
+      }
+    },
+    error=> {
+      alert("Something went wrong");
+      console.log(error);
+      this.showGrid = false;
+    }
+
+  );
+
+}
+
+
+public back() {
+  this.showGrid = true;
+}
+
+  // showGrid(){
+  //   this.isGridStatus = true;
+  // }
+
+  // showUpload(){
+  //   this.isGridStatus = false;
+  // }
 
 
 }

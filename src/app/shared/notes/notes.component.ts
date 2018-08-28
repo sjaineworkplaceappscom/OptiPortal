@@ -161,6 +161,7 @@ export class NotesComponent implements OnInit {
     * @param action
     */
     submitNote(e) {
+        
         // Add Notes Data in model. when comes from inquiry        
         this.noteModel.NoteType = this.selectedNoteItem.value;
 
@@ -168,7 +169,7 @@ export class NotesComponent implements OnInit {
             resp => {
                 console.log("record added:")
             },
-            error => {
+            error => { 
 
                 alert("Something went wrong");
                 console.log("Error: ", error)

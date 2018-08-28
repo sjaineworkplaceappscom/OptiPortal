@@ -2,6 +2,6 @@ export class AttachmentDetail{
     ParentId:string='';
     ParentType:number;
     GrandParentId:string='';
-    GrandParentType:string='';
+    GrandParentType:number;
   
   }

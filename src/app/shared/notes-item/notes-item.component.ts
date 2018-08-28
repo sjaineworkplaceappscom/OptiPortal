@@ -69,7 +69,7 @@ export class NotesItemComponent implements OnInit {
           
           this.notessub=this.commonService.currentNotesItemData.subscribe(
             (data: NotesModel) => {
-
+                console.log("first time note data: "+JSON.stringify(data)); 
                 if (data != undefined && data != null) {
                     this.noteModel = data;
                     // Get notes data.
@@ -211,9 +211,10 @@ export class NotesItemComponent implements OnInit {
         this.showLoader = true;
         this.getnotessub = this.sharedComponentService.getNotesList(parentId, parentType).subscribe(
             notesData => {
+                console.log("Note item list subscriber");
                 if (notesData != null && notesData != undefined) {
                     this.noteItemsData = JSON.parse(notesData);
-                    // To format result dates.
+                    // To format result dates. 
                     this.formatNotesDate();
                 }
                 this.showLoader = false;

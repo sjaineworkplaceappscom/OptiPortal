@@ -44,7 +44,7 @@ import { UploadModule } from '@progress/kendo-angular-upload'
 
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { CustomFilterPipe } from './custom-filter.pipe';
-
+ 
 
 import { CommonModule, DatePipe } from '@angular/common';
 import { PortalHomeModule } from './portal-home/portal-home.module';
