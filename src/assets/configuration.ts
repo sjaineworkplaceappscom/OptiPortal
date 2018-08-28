@@ -8,7 +8,7 @@ export const Configuration={
     // Local
     // baseServerAPIEndpoint:"http://localhost:56986/"
 
-    ,firstHomePage:"/home/purchaseinquiry"
+    ,firstHomePage:"/home/dashboard"
     , dateFormat:'dd MMM yy'
       
 }
