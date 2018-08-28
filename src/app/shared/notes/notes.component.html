@@ -110,7 +110,7 @@
                                             <span *ngIf="noteEdit.errors?.required && (noteEdit.dirty || noteEdit.touched)" class="float-right opti_error-msg" >Note is required.</span>
                                     </span>
                                     <!-- <textarea id="notes" name="note" class="k-textarea" #noteValue >{{selectedNote.Notes}}</textarea> -->
-                                    <textarea id="notes" name="note"  #noteEdit = ngModel class="k-textarea" [(ngModel)]="selectedNote.Notes"></textarea>
+                                    <textarea id="notes" name="note"  #noteEdit = ngModel class="k-textarea" [(ngModel)]="selectedNote.Notes" required></textarea>
                                 </label>
 
                                 <label class="k-form-field">
