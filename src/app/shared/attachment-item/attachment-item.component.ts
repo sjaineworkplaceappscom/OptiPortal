@@ -1,11 +1,13 @@
 import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
-import { PurchaseInquiryStatus, PurchaseInquiryItemStatus, CustomerEntityType } from '../../enums/enums';
+import { PurchaseInquiryStatus, PurchaseInquiryItemStatus, CustomerEntityType, OperationType } from '../../enums/enums';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { Commonservice } from '../../services/commonservice.service';
 import { HttpClient, HttpEventType } from '../../../../node_modules/@angular/common/http';
 import { AttachmentDetail } from '../../models/AttchmentDetail';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
+import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 
 @Component({
   selector: 'app-attachment-item',
@@ -52,7 +54,7 @@ export class AttachmentItemComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
   }
 
-  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService) {
+  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private purchaseInquiryService: PurchaseInquiryService) {
     this.attachmentsub = this.commonService.currentAttachmentItemData.subscribe(
       (data: AttachmentDetail) => {
         console.log(JSON.stringify(data));
@@ -156,50 +158,71 @@ export class AttachmentItemComponent implements OnInit {
         return;
       }
 
-      // >10 mb file check.
+      // >10 mb file check. 
       if (file.size > 1024 * 1024 * 10) {
         this.message = "Error: file should not be greater then 10 MB.";
         return;
       }
- 
+
       formData.append(file.name, file);
       this.selectedFileName = file.name;
 
     }
-    this.showLoader=true;
+    this.showLoader = true;
     // Attachment details
     let attachmentDetail: AttachmentDetail = new AttachmentDetail();
     attachmentDetail.ParentId = this.purchaseInqItemId;
     attachmentDetail.GrandParentId = this.purchaseInqId;
 
     formData.append('AttachmentDetail', JSON.stringify(attachmentDetail));
- 
+
 
     this.uploadAttachmentsub = this.sharedComponentService.uploadAttachment(formData).subscribe(
       event => {
-        this.showLoader=false;
+        this.showLoader = false;
         if (event.type === HttpEventType.UploadProgress)
           this.progress = Math.round(100 * event.loaded / event.total);
- 
+
         else if (event.type === HttpEventType.Response)
           this.message = event.body.toString();
         // Get attachment list
         if (event.type === 4 && event.status === 200) {
           this.getAttchmentList();
+          //this method is updating the status if notes updated then update inquiry status.
+          this.callPurchaseInquiryStatusUpdateAPI();
           this.back();
         }
       },
       error => {
         alert("Something went wrong");
         console.log(error);
-        this.showLoader=false;
+        this.showLoader = false;
         this.showGrid = false;
       }
 
     );
 
-  } 
-
+  }
+  /**
+     * call api for update status of inquiry. 
+     */
+  callPurchaseInquiryStatusUpdateAPI() {
+    let purchaseInquiryDetail: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
+    //check from local storage.
+    if (parseInt(localStorage.getItem("OperationType")) == OperationType.Update) {
+      purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
+      if (purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
+        purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
+        this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
+          data => {
+            this.commonService.refreshPIList(null);
+          }, error => {
+            this.commonService.refreshPIList(null);
+          }, () => { }
+        );
+      }
+    }
+  }
 
   public back() {
     this.showGrid = true;
@@ -210,6 +233,7 @@ export class AttachmentItemComponent implements OnInit {
   // }
 
   // showUpload(){
+
   //   this.isGridStatus = false;
   // }
 

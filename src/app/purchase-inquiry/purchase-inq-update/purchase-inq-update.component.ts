@@ -5,7 +5,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { Commonservice } from '../../services/commonservice.service';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
-import { CustomerEntityType, PurchaseInquiryStatus } from '../../enums/enums';
+import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../enums/enums';
 import { ISubscription } from '../../../../node_modules/rxjs-compat/Subscription';
 
 @Component({
@@ -111,6 +111,13 @@ export class PurchaseInqUpdateComponent implements OnInit {
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           this.purchaseInquiryDetail = currentSidebarData.RequesterData;
+          
+          // console.log("data:"+JSON.stringify(this.purchaseInquiryDetail));
+          // console.log("data from LocalStorage:"+JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
+          // this.purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery')); 
+          // console.log("data Model:"+JSON.stringify(this.purchaseInquiryDetail));
+          
+          
           if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
 
             this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
@@ -237,7 +244,11 @@ export class PurchaseInqUpdateComponent implements OnInit {
   /**
   * UpdatePurchaseInquiry
   */
-  public UpdatePurchaseInquiry(saveAsDraft: boolean = false) {
+  public UpdatePurchaseInquiry(saveAsDraft: boolean = false,isDirty: boolean) {
+
+   // this.callPurchaseInquiryStatusUpdateAPI();
+
+    console.log("isDirty:"+isDirty);
     // if No draft then disable draft button.
     if (this.purchaseInquiryDetail.Status != PurchaseInquiryStatus.Draft) {
       this.isDisableSaveAsDraft = true;
@@ -293,7 +304,21 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
     );
   }
-
+ 
+  /**
+   * call api for update status of inquiry.
+   */
+  callPurchaseInquiryStatusUpdateAPI(){
+     //check from local storage.
+    if(parseInt(localStorage.getItem("OperationType"))==OperationType.Update){
+      this.purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
+      if(this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.New){
+        this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
+          data => {},error => {},() => { }
+        );
+      }
+    }
+  }
   // Unused
   /**
    * This will set the data with the draft status.

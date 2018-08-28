@@ -11,7 +11,7 @@ import { opticonstants } from '../../constants';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { Commonservice } from '../../services/commonservice.service';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
-import { ComponentName, ModuleName } from '../../enums/enums';
+import { ComponentName, ModuleName, OperationType } from '../../enums/enums';
 import { DatePipe } from '@angular/common'
 import { Configuration } from '../../../assets/configuration';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
@@ -135,17 +135,17 @@ export class PurchaseInqListComponent implements OnInit {
    * @param status show and hide right content section
   */
   addInqueryOnClickAdd(status: boolean) {
-
+    localStorage.setItem("OperationType",OperationType.add.toString());   
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.AddInquery;
     currentsideBarInfo.ModuleName = ModuleName.Purchase;
-    currentsideBarInfo.SideBarStatus = true;
+    currentsideBarInfo.SideBarStatus = true; 
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
 
   /**
-   * Method will open the edit item window for selected grid item.
+   * Method will open the   edit item window for selected grid item.
    * @param gridItem 
    * @param selection 
    * @param status  
@@ -166,6 +166,7 @@ export class PurchaseInqListComponent implements OnInit {
     localStorage.setItem("PurchaseinqueryId",selectedData.PurchaseInquiryId);  
     
     localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(selectedData));   
+    localStorage.setItem("OperationType",OperationType.Update.toString());   
 
     currentsideBarInfo.RequesterData = selectedData;
     this.commonService.setCurrentSideBar(currentsideBarInfo);

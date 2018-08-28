@@ -147,3 +147,11 @@ Updated = 2,
 Cancelled = 3,
 
 }
+
+export enum OperationType
+{
+
+add = 1,
+Update = 2,
+
+}

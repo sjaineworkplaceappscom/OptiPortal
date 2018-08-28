@@ -2,11 +2,13 @@ import { Component, OnInit, ViewChild, HostListener, Input } from '@angular/core
 import { UIHelper } from '../../helpers/ui.helpers';
 import { NotesModel } from '../../models/purchaserequest/notes';
 import { SharedComponentService } from '../../services/shared-component.service';
-import { CustomerEntityType, PurchaseInquiryStatus } from '../../enums/enums';
+import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../enums/enums';
 import { Commonservice } from '../../services/commonservice.service';
 import { DatePipe } from '../../../../node_modules/@angular/common';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
+import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 
 @Component({
     selector: 'app-notes',
@@ -55,8 +57,8 @@ export class NotesComponent implements OnInit {
     addnotessub: ISubscription;
     updatenotessub: ISubscription;
     deletenotessub: ISubscription;
-    searchNotes:string ="";
-    notesSearchValue:string=""
+    searchNotes: string = "";
+    notesSearchValue: string = ""
 
     isCancelStatus: boolean = false;
     public noteTypes: Array<{ text: string, value: number }> = [
@@ -67,7 +69,7 @@ export class NotesComponent implements OnInit {
 
     public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
 
-    constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe) {
+    constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private purchaseInquiryService: PurchaseInquiryService) {
     }
 
     @HostListener('window:resize', ['$event'])
@@ -163,16 +165,15 @@ export class NotesComponent implements OnInit {
     * @param action
     */
     submitNote(e) {
-        
         // Add Notes Data in model. when comes from inquiry        
         this.noteModel.NoteType = this.selectedNoteItem.value;
-
         this.addnotessub = this.sharedComponentService.AddNote(this.noteModel).subscribe(
             resp => {
+                //this method is updating the status if notes updated then update inquiry status.
+                this.callPurchaseInquiryStatusUpdateAPI();
                 console.log("record added:")
             },
-            error => { 
-
+            error => {
                 alert("Something went wrong");
                 console.log("Error: ", error)
             },
@@ -185,7 +186,26 @@ export class NotesComponent implements OnInit {
 
     }
 
-
+    /**
+     * call api for update status of inquiry.
+     */
+    callPurchaseInquiryStatusUpdateAPI() {
+        let purchaseInquiryDetail: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
+        //check from local storage.
+        if (parseInt(localStorage.getItem("OperationType")) == OperationType.Update) {
+            purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
+            if (purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
+                purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
+                this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
+                    data => {
+                        this.commonService.refreshPIList(null);
+                    }, error => {
+                        this.commonService.refreshPIList(null);
+                    }, () => { }
+                );
+            }
+        }
+    }
 
     /**
      * close note add form
@@ -279,6 +299,8 @@ export class NotesComponent implements OnInit {
         this.selectedNote.NoteType = this.selectedNoteItem.value;
         this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
             resp => {
+                //this method is updating the status if notes updated then update inquiry status.
+                this.callPurchaseInquiryStatusUpdateAPI();
                 console.log("record updated:")
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },

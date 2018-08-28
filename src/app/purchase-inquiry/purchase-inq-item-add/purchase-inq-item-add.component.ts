@@ -7,7 +7,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { Commonservice } from '../../services/commonservice.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
-import { CustomerEntityType, PurchaseInquiryStatus, PurchaseInquiryItemStatus } from '../../enums/enums';
+import { CustomerEntityType, PurchaseInquiryStatus, PurchaseInquiryItemStatus, OperationType } from '../../enums/enums';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 
 import * as $ from "jquery";
@@ -53,8 +53,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
   receivedPurchaseInquiryId: string;
   // store item grid data.
   gridItemsData = [];
-  public minValidDate: Date = DateTimeHelper.ParseDate( new Date());
-  
+  public minValidDate: Date = DateTimeHelper.ParseDate(new Date());
+
   purchaseItemsModel: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
   showLoader: boolean = false;
 
@@ -228,7 +228,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
       this.statusValues = [
         { text: "Updated", value: PurchaseInquiryItemStatus.Updated },
         { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
-        this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Updated;
+      this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Updated;
     }
     else {
       this.statusValues = [
@@ -275,7 +275,9 @@ export class PurchaseInqItemAddComponent implements OnInit {
    */
   public OnSaveOperationClick(saveAndNew: boolean = false) {
 
-    if (this.selectedItemId != '') {
+
+
+    if (this.selectedItemId != '') { //case of update PI
       // On selection of item check if status is cancel or not 
       if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled) {
         this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Cancelled;
@@ -288,7 +290,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
           { text: "Updated", value: PurchaseInquiryItemStatus.Updated },
           { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
         this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Updated;
-        
+
       }
       // if status is already new 
       else if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.New) {
@@ -296,7 +298,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
           { text: "Updated", value: PurchaseInquiryItemStatus.Updated },
           { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
         this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Updated;
-       
+
       }
       else {
         this.statusValues = [
@@ -310,7 +312,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
       }
       this.UpdatePurchaseInquiryItem(saveAndNew);
     }
-    else {
+    else { // case of add PI
       this.AddPurchaseInquiryItem(saveAndNew);
     }
     // if (this.isFromGrid) {
@@ -331,7 +333,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
       data => {
         //this.gridItemsData = JSON.parse(data);
         //this.purchaseItemsModel = JSON.parse(data);
-
+        //this method is updating the status if notes updated then update inquiry status.
+        this.callPurchaseInquiryStatusUpdateAPI();
         let tempData: any = data;
         this.purchaseItemsModel = tempData;
         this.purchaseItemsModel.RequiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
@@ -377,11 +380,13 @@ export class PurchaseInqItemAddComponent implements OnInit {
  * UpdatePurchaseInquiryItem
  */
   public UpdatePurchaseInquiryItem(saveAndNew: boolean = false) {
-    
+
     this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
     this.showLoader = true;
     this.updateitemSub = this.purchaseInquiryService.UpdatePurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
+        //this method is updating the status if notes updated then update inquiry status.
+        this.callPurchaseInquiryStatusUpdateAPI();
         let tempData: any = data;
         this.purchaseItemsModel = tempData;
         this.purchaseItemsModel.RequiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
@@ -404,11 +409,11 @@ export class PurchaseInqItemAddComponent implements OnInit {
           this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
           //if user click on save and status was new then save it with updated status.
           if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.New) {
-            
+
             this.statusValues = [
               { text: "Updated", value: PurchaseInquiryItemStatus.Updated },
               { text: "Cancelled", value: PurchaseInquiryItemStatus.Cancelled }];
-              this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Updated;
+            this.purchaseItemsModel.Status = PurchaseInquiryItemStatus.Updated;
           }
           // we can reassign the selectedItemId value here
           //   this.showItemsGrid();
@@ -427,6 +432,27 @@ export class PurchaseInqItemAddComponent implements OnInit {
     );
   }
 
+  /**
+  * call api for update status of inquiry. 
+  */
+  callPurchaseInquiryStatusUpdateAPI() {
+    let purchaseInquiryDetail: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
+    //check from local storage.
+    if (parseInt(localStorage.getItem("OperationType")) == OperationType.Update) {
+      purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
+      if (purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
+        purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
+        this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
+          data => {
+            this.commonService.refreshPIList(null);
+          }, error => {
+            this.commonService.refreshPIList(null);
+          }, () => { }
+        );
+      }
+    }
+  }
+
   // tab code start
   openTab(evt, tabName) {
     if (this.addOperationInProgress == true) {
@@ -443,8 +469,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
       this.commonService.setNotesItemData(notedata);
     }
-    else if(tabName == 'attachement')
-    {
+    else if (tabName == 'attachement') {
       let attachmentdata: AttachmentDetail = new AttachmentDetail();
       attachmentdata.ParentId = this.purchaseItemsModel.PurchaseInquiryItemId;
       attachmentdata.ParentType = CustomerEntityType.PurchaseInquiryItem;

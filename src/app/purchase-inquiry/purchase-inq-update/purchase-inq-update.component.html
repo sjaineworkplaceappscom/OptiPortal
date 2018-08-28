@@ -39,7 +39,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-block">
-                                <form class="k-form">
+                                <form class="k-form" #InquiryForm = "ngForm">
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Inquiry#</span>
                                         <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInquiryDetail.InquiryNumber" value="" placeholder="Inquiry"
@@ -88,8 +88,8 @@
                                     </label>
 
                                     <div class="text-right">
-                                        <button type="button" class="k-button k-primary" [disabled] ="isDisableSave==true" (click)="UpdatePurchaseInquiry()">Save</button>
-                                        <button type="button" class="k-button" [disabled] ="isDisableSaveAsDraft==true" (click)="UpdatePurchaseInquiry(true)"> Save as draft</button>
+                                        <button type="button" class="k-button k-primary" [disabled] ="isDisableSave==true" (click)="UpdatePurchaseInquiry(false,InquiryForm.dirty)">Save</button>
+                                        <button type="button" class="k-button" [disabled] ="isDisableSaveAsDraft==true" (click)="UpdatePurchaseInquiry(true,InquiryForm.dirty)"> Save as draft</button>
                                         <button type="button" class="k-button"  (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
                                     </div>
                                 </form>

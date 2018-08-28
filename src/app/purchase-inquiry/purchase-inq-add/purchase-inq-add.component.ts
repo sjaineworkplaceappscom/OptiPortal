@@ -112,6 +112,7 @@ export class PurchaseInqAddComponent implements OnInit {
       error => {
         alert("Something went wrong");
         console.log("Error: ", error)
+        this.showLoader=false;
       },
       () => {
         this.showLoader=false;
