@@ -55,6 +55,8 @@ export class NotesComponent implements OnInit {
     addnotessub: ISubscription;
     updatenotessub: ISubscription;
     deletenotessub: ISubscription;
+    searchNotes:string ="";
+    notesSearchValue:string=""
 
     isCancelStatus: boolean = false;
     public noteTypes: Array<{ text: string, value: number }> = [

@@ -21,6 +21,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NotesItemComponent } from './notes-item/notes-item.component';
 import { AttachmentItemComponent } from './attachment-item/attachment-item.component';
 import { AttachmentUploadComponent } from './attachment-upload/attachment-upload.component';
+import { CustomFilterPipe } from '../custom-filter.pipe';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { AttachmentUploadComponent } from './attachment-upload/attachment-upload
      HttpClientModule,         
      FormsModule,
   ],
-  declarations: [AttachmentComponent,NotesComponent, NotesItemComponent, AttachmentItemComponent, AttachmentUploadComponent],
-  exports:[AttachmentComponent,NotesComponent,NotesItemComponent,AttachmentItemComponent,AttachmentUploadComponent]
+  declarations: [AttachmentComponent,NotesComponent, NotesItemComponent, AttachmentItemComponent, AttachmentUploadComponent,CustomFilterPipe],
+  exports:[AttachmentComponent,NotesComponent,NotesItemComponent,AttachmentItemComponent,AttachmentUploadComponent],
+  providers:[CustomFilterPipe]
 })
 export class SharedModule { }
