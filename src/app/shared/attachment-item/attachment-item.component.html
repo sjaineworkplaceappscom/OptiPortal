@@ -5,9 +5,15 @@
     <div class="row">
         <div class="col-md-12">
 
-    <ng-container *ngIf="showGrid==false">                
-        
-        
+    <ng-container *ngIf="showGrid==false">
+        <h4>{{showLoader}}</h4>                
+          <!-- loader start -->
+          <div class="opti_loader opti_loader-item-attchement-tab-grid" *ngIf="showLoader==true">
+            <div class="opti_spinner"></div>
+        </div>
+
+        <!-- loader end -->
+        <ng-container *ngIf="showLoader==false">
         <label class="opti_custom-file-upload">
             <input #file type="file" multiple (change)="upload(file.files)" /> 
             <img src="assets/images/common/image-upload.svg" width="16px" height="16px" /> Upload
@@ -20,7 +26,8 @@
         <span style="font-weight:bold;color:green;" *ngIf="message">
             {{message}}
         </span>        
-        <button (click)="back()">Cancel</button>      
+        <button (click)="back()">Cancel</button>   
+        </ng-container>   
     </ng-container>
 
     <!-- start attachement grid -->

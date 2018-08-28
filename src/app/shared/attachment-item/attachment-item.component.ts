@@ -166,20 +166,21 @@ export class AttachmentItemComponent implements OnInit {
       this.selectedFileName = file.name;
 
     }
-
+    this.showLoader=true;
     // Attachment details
     let attachmentDetail: AttachmentDetail = new AttachmentDetail();
     attachmentDetail.ParentId = this.purchaseInqItemId;
     attachmentDetail.GrandParentId = this.purchaseInqId;
 
     formData.append('AttachmentDetail', JSON.stringify(attachmentDetail));
-
+ 
 
     this.uploadAttachmentsub = this.sharedComponentService.uploadAttachment(formData).subscribe(
       event => {
+        this.showLoader=false;
         if (event.type === HttpEventType.UploadProgress)
           this.progress = Math.round(100 * event.loaded / event.total);
-
+ 
         else if (event.type === HttpEventType.Response)
           this.message = event.body.toString();
         // Get attachment list
@@ -191,6 +192,7 @@ export class AttachmentItemComponent implements OnInit {
       error => {
         alert("Something went wrong");
         console.log(error);
+        this.showLoader=false;
         this.showGrid = false;
       }
 
