@@ -16,10 +16,15 @@ export class PortalLeftComponent implements OnInit {
   selectedThemeColor: string = 'opticonstants.DEFAULTTHEMECOLOR';
 
   //Already selected list in left panel
-  selectedItem:string='item2';
+  // selectedItem:string='item2';
+  selectedItem:string;
 
   ngOnInit() {    
     
+    // get current url with last word
+    let partsOfUrl = this.router.url.split('/');
+    this.selectedItem = partsOfUrl[partsOfUrl.length - 1];
+
     this.systemAdmin=localStorage.getItem('SystemAdmin');   
      
     this.commonService.themeCurrentData.subscribe(
@@ -42,9 +47,8 @@ export class PortalLeftComponent implements OnInit {
   }
 
   
-  listClick(event, newValue, module) {
-      console.log(newValue);
-      this.selectedItem = newValue;
+  listClick(event, module) {
+      this.selectedItem = module;
       this.router.navigate(['home/'+module]);
   }
  

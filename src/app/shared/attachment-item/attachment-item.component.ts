@@ -14,18 +14,18 @@ import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 })
 export class AttachmentItemComponent implements OnInit {
 
-    /**
-     * global variable
-    */
-   isMobile: boolean;
-   gridHeight: number;
-   isCancelStatus:boolean = false;
-   isGridStatus:boolean = true;
+  /**
+   * global variable
+  */
+  isMobile: boolean;
+  gridHeight: number;
+  isCancelStatus: boolean = false;
+  isGridStatus: boolean = true;
 
-   @Input() tabparent;
-   getTabParent: string;
+  @Input() tabparent;
+  getTabParent: string;
 
-   showGrid: boolean = true;
+  showGrid: boolean = true;
   showLoader: boolean = false;
   public progress: number;
   public message: string;
@@ -35,9 +35,11 @@ export class AttachmentItemComponent implements OnInit {
   public selectedFileName: string = '';
   attachmentModel: AttachmentDetail;
 
-  attachmentsub:ISubscription;
+  attachmentsub: ISubscription;
+  getAttachmentsub: ISubscription;
+  uploadAttachmentsub: ISubscription;
 
-   @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize', ['$event'])
   onResize(event) {
     /**
      * Apply Grid Height any[] = []
@@ -50,138 +52,156 @@ export class AttachmentItemComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
   }
 
-  constructor(private commonService: Commonservice, private http: HttpClient,private sharedComponentService: SharedComponentService) 
-  {
+  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService) {
     this.attachmentsub = this.commonService.currentAttachmentItemData.subscribe(
       (data: AttachmentDetail) => {
         console.log(JSON.stringify(data));
-          if (data != undefined && data != null) {
-              this.attachmentModel = data;
-              this.purchaseInqId = this.attachmentModel.GrandParentId;
-              this.purchaseInqItemId = this.attachmentModel.ParentId;
-              // Get notes data.
-              this.getAttchmentList();
+        if (data != undefined && data != null) {
+          this.attachmentModel = data;
+          this.purchaseInqId = this.attachmentModel.GrandParentId;
+          this.purchaseInqItemId = this.attachmentModel.ParentId;
+          // Get notes data.
+          this.getAttchmentList();
 
-          }
+        }
       },
       error => {
-          this.showLoader = false;
-          alert("Something went wrong");
-          console.log("Error: ", error)
+        this.showLoader = false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
       }
-  );
+    );
   }
 
   ngOnInit() {
     /**
      * Apply Grid Height
     */
-   this.gridHeight = UIHelper.getMainContentHeight();
+    this.gridHeight = UIHelper.getMainContentHeight();
 
-   /**
-   * Check Mobile device
-   */
-   this.isMobile = UIHelper.isMobile();
+    /**
+    * Check Mobile device
+    */
+    this.isMobile = UIHelper.isMobile();
 
-   this.getTabParent = this.tabparent;
-   //get status of selected inquiry for disabling or enabling  forms
-   let inquiryItemDetail: string= localStorage.getItem("SelectedPurchaseInquiryItem");
-   let inquiryItemData: any = JSON.parse(inquiryItemDetail);
-   
-   if(inquiryItemData != null || inquiryItemData != undefined) {
-   let inquiryStatus = inquiryItemData.Status;
-   if(inquiryStatus == PurchaseInquiryItemStatus.Cancelled){
-     this.isCancelStatus = true;
+    this.getTabParent = this.tabparent;
+    //get status of selected inquiry for disabling or enabling  forms
+    let inquiryItemDetail: string = localStorage.getItem("SelectedPurchaseInquiryItem");
+    let inquiryItemData: any = JSON.parse(inquiryItemDetail);
+
+    if (inquiryItemData != null || inquiryItemData != undefined) {
+      let inquiryStatus = inquiryItemData.Status;
+      if (inquiryStatus == PurchaseInquiryItemStatus.Cancelled) {
+        this.isCancelStatus = true;
       }
     }
   }
- 
-  ngOnDestroy(){
-    if(this.attachmentsub!=undefined)
-    this.attachmentsub.unsubscribe();
-}
 
- /**
-   * Attachement Tab
-  */
- public showTabAddAttachementForm() {
-  this.message='';
-  this.showGrid = false;
+  ngOnDestroy() {
+    if (this.attachmentsub != undefined)
+      this.attachmentsub.unsubscribe();
 
-}
+    if (this.getAttachmentsub != undefined)
+      this.getAttachmentsub.unsubscribe();
 
-public getAttchmentList() {
-  
-  this.showLoader = true;
-  this.sharedComponentService.getAtachmentList(this.purchaseInqItemId, CustomerEntityType.PurchaseInquiryItem)
-    .subscribe(
-      data => {
-        this.showLoader = false;
-        if (data != undefined && data != null) {
-          let griddata: any = data;
-          this.gridAttachmentData = JSON.parse(data);
+    if (this.uploadAttachmentsub != undefined)
+      this.uploadAttachmentsub.unsubscribe();
+  }
+
+  /**
+    * Attachement Tab
+   */
+  public showTabAddAttachementForm() {
+    this.message = '';
+    this.showGrid = false;
+
+  }
+
+  public getAttchmentList() {
+
+    this.showLoader = true;
+    this.getAttachmentsub = this.sharedComponentService.getAtachmentList(this.purchaseInqItemId, CustomerEntityType.PurchaseInquiryItem)
+      .subscribe(
+        data => {
+          this.showLoader = false;
+          if (data != undefined && data != null) {
+            let griddata: any = data;
+            this.gridAttachmentData = JSON.parse(data);
+          }
         }
+      ),
+      err => {
+        alert("Something went wrong.");
+        console.log(err);
+        this.showLoader = false;
       }
-    ),
-    err => {
-      alert("Something went wrong.");
-      console.log(err);
+    () => {
       this.showLoader = false;
     }
-  () => {
-    this.showLoader = false;
-  }
-    ;
-}
-
-public upload(files) {
-
-  if (files.length === 0)
-    return;
-
-  const formData = new FormData();
-
-  for (let file of files) {
-    formData.append(file.name, file);
-    this.selectedFileName = file.name;
-
+      ;
   }
 
-  // Attachment details
-  let attachmentDetail: AttachmentDetail = new AttachmentDetail();
-  attachmentDetail.ParentId = this.purchaseInqItemId;
-  attachmentDetail.GrandParentId = this.purchaseInqId;
+  public upload(files) {
 
-  formData.append('AttachmentDetail', JSON.stringify(attachmentDetail));
- 
+    if (files.length === 0)
+      return;
 
-  this.sharedComponentService.uploadAttachment(formData).subscribe(
-    event => {
-      if (event.type === HttpEventType.UploadProgress)
-        this.progress = Math.round(100 * event.loaded / event.total);
+    const formData = new FormData();
 
-      else if (event.type === HttpEventType.Response)
-        this.message = event.body.toString();
-      // Get attachment list
-      if(event.type===4 && event.status===200){
-      this.getAttchmentList();
-      this.back();                
+    for (let file of files) {
+
+      // exe file format not supported.
+      if (file.type == 'application/x-msdownload') {
+        this.message = "Error: specified filetype not supported.";
+        return;
       }
-    },
-    error=> {
-      alert("Something went wrong");
-      console.log(error);
-      this.showGrid = false;
+
+      // >10 mb file check.
+      if (file.size > 1024 * 1024 * 10) {
+        this.message = "Error: file should not be greater then 10 MB.";
+        return;
+      }
+ 
+      formData.append(file.name, file);
+      this.selectedFileName = file.name;
+
     }
 
-  );
+    // Attachment details
+    let attachmentDetail: AttachmentDetail = new AttachmentDetail();
+    attachmentDetail.ParentId = this.purchaseInqItemId;
+    attachmentDetail.GrandParentId = this.purchaseInqId;
 
-}
+    formData.append('AttachmentDetail', JSON.stringify(attachmentDetail));
 
 
-public back() {
-  this.showGrid = true;
-}
+    this.uploadAttachmentsub = this.sharedComponentService.uploadAttachment(formData).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress)
+          this.progress = Math.round(100 * event.loaded / event.total);
+
+        else if (event.type === HttpEventType.Response)
+          this.message = event.body.toString();
+        // Get attachment list
+        if (event.type === 4 && event.status === 200) {
+          this.getAttchmentList();
+          this.back();
+        }
+      },
+      error => {
+        alert("Something went wrong");
+        console.log(error);
+        this.showGrid = false;
+      }
+
+    );
+
+  } 
+
+
+  public back() {
+    this.showGrid = true;
+  }
 
   // showGrid(){
   //   this.isGridStatus = true;

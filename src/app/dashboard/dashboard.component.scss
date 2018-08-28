@@ -1,9 +1,4 @@
-#opti_DashboardID {
-    background: white;
-    height: calc(100vh - 85px);
-    box-shadow: 0px 1px 15px var(--kendo-primary-color);
-    border-radius: 5px;
-}
+@import 'src/assets/css/web/dashboard/dashboard';
 
 @media screen and (max-width: 479px){
 .opti_zoom-donut-only-mobile{
