@@ -75,7 +75,8 @@ import { ApproveUsersComponent } from 'src/app/account/approve-users/approve-use
       PurchaseInqAddComponent,
       PurchaseInqUpdateComponent,      
       PurchaseInquiryComponent, 
-      PurchaseInqItemListComponent],
+      PurchaseInqItemListComponent,
+      ApproveUsersComponent],
     providers:[CustomPipeItemPipe]
 })
 export class PurchaseInquiryModule { }

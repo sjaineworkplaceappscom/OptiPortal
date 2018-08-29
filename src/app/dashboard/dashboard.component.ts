@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   showLoader: boolean = false;
   searchRequest: string = '';
   seriesData: number[];
+  public systemAdmin:any;
   
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -37,6 +38,8 @@ export class DashboardComponent implements OnInit {
     element.classList.add("opti_body-dashboard");
     element.classList.add("opti_body-main-module");
     // Apply class on body end
+
+    this.systemAdmin=localStorage.getItem('SystemAdmin');
 
     this.renderChart();
   }
