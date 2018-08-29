@@ -1,10 +1,10 @@
 // Home tab
-export const salesQuotations = [  
+export const salesOrderList = [  
     {  
-        "QuotationNumber":"Cust001",
+        "QuotationNumber":"Cust0001",
         "QuotationDate":"01/07/2018",
         "Remark":"Samsung",
-        "DueDate":"04/07/2018",
+        "DeliveryDate":"04/07/2018",
         "SalesEmployee":"Shashank Jain",
         "Owner":"Ankur Sharma",
         "Total":1255.20,
@@ -15,10 +15,10 @@ export const salesQuotations = [
     }
  ,  
     {  
-        "QuotationNumber":"Cust002",
+        "QuotationNumber":"Cust0002",
         "QuotationDate":"01/08/2018",
         "Remark":"Apple",
-        "DueDate":"04/08/2018",
+        "DeliveryDate":"04/08/2018",
         "SalesEmployee":"Ankur",
         "Owner":"Sameer Sharma",
         "Total":2055.20,
@@ -31,9 +31,9 @@ export const salesQuotations = [
 
 
 // Content Tab
-export const salesQuotationsContent = [  
+export const salesOrderContent = [  
     {  
-        "ItemNumber":"item01",
+        "ItemNumber":"item001",
         "Quantity":"20",
         "UnitPrice":"5210",
         "DiscountInPercentage":"5",
@@ -47,7 +47,7 @@ export const salesQuotationsContent = [
     }
  ,  
     {  
-        "ItemNumber":"item02",
+        "ItemNumber":"item002",
         "Quantity":"25",
         "UnitPrice":"2500",
         "DiscountInPercentage":"10",
@@ -63,14 +63,14 @@ export const salesQuotationsContent = [
 
 // Attchement tab
 // Content Tab
-export const salesQuotationsAttachment = [  
+export const salesOrderAttachment = [  
     {  
-        "FileName":"Report1.doc",
+        "FileName":"Report01.doc",
         "AttachmentDate":"05/07/2018"
     }
  ,  
     {  
-        "FileName":"Report-final.doc",
+        "FileName":"Report-final01.doc",
         "AttachmentDate":"06/07/2018"
     }
 ]

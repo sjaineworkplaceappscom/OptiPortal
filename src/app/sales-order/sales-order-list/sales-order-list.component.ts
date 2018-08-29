@@ -1,10 +1,10 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { Commonservice } from '../../services/commonservice.service';
-import { data2 } from '../../demodata/data2';
 import { GridComponent } from '@progress/kendo-angular-grid';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ModuleName, ComponentName } from '../../enums/enums';
+import { salesOrderList } from '../../DemoData/sales-order';
 
 @Component({
   selector: 'app-sales-order-list',
@@ -61,7 +61,7 @@ export class SalesOrderListComponent implements OnInit {
   */
   public getOrderList() {
     this.showLoader = true;
-    this.gridData = data2;
+    this.gridData = salesOrderList;
     setTimeout(()=>{    
       this.showLoader = false;
     }, 1000);
