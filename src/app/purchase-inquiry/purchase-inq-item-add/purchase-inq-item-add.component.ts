@@ -74,6 +74,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   additemSub: ISubscription;
   getitemSub: ISubscription;
   updateitemSub: ISubscription;
+  updatePISub: ISubscription;
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
@@ -92,6 +93,9 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
     if (this.updateitemSub != undefined)
       this.updateitemSub.unsubscribe();
+
+    if (this.updatePISub != undefined)
+    this.updatePISub.unsubscribe();
   }
 
   ngOnInit() {
@@ -442,9 +446,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
       purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
       if (purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
         purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
-        this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
+        this.updatePISub = this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
           data => {
             this.commonService.refreshPIList(null);
+            // localStorage.setItem('SelectedPurchaseInquery', JSON.stringify(data));
           }, error => {
             this.commonService.refreshPIList(null);
           }, () => { }

@@ -57,6 +57,7 @@ export class NotesComponent implements OnInit {
     addnotessub: ISubscription;
     updatenotessub: ISubscription;
     deletenotessub: ISubscription;
+    updatePIStatussub: ISubscription;
     searchNotes: string = "";
     notesSearchValue: string = ""
 
@@ -139,6 +140,9 @@ export class NotesComponent implements OnInit {
 
         if (this.deletenotessub != undefined)
             this.deletenotessub.unsubscribe();
+
+         if (this.updatePIStatussub != undefined)
+            this.updatePIStatussub.unsubscribe();
     }
 
 
@@ -196,7 +200,7 @@ export class NotesComponent implements OnInit {
             purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
             if (purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
                 purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
-                this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
+                this.updatePIStatussub = this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
                     data => {
                         this.commonService.refreshPIList(null);
                     }, error => {

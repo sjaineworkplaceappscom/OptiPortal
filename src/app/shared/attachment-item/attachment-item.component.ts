@@ -40,6 +40,7 @@ export class AttachmentItemComponent implements OnInit {
   attachmentsub: ISubscription;
   getAttachmentsub: ISubscription;
   uploadAttachmentsub: ISubscription;
+  updatePIStatussub: ISubscription;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -108,6 +109,9 @@ export class AttachmentItemComponent implements OnInit {
 
     if (this.uploadAttachmentsub != undefined)
       this.uploadAttachmentsub.unsubscribe();
+
+    if (this.updatePIStatussub != undefined)
+      this.updatePIStatussub.unsubscribe();
   }
 
   /**
@@ -213,7 +217,7 @@ export class AttachmentItemComponent implements OnInit {
       purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
       if (purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
         purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
-        this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
+        this.updatePIStatussub = this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
           data => {
             this.commonService.refreshPIList(null);
           }, error => {

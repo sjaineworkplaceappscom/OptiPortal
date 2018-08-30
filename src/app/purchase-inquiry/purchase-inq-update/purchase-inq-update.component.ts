@@ -61,6 +61,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
   public sideBarsubs: ISubscription;
   public updatePISub: ISubscription;
+  public updatePIStatusSub: ISubscription;
 
   @ViewChild('optiRightAddInquiry') optiRightAddInquiry;
   @ViewChild('optiTab') optiTab;
@@ -77,6 +78,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     // Set default condition for purchase inquiery attachment
     if (tabName == 'attachement')
       this.commonService.setPurchaseInquiryAttachmentGrid(true);
+
 
     this.tabName = tabName;
 
@@ -95,6 +97,9 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
     if (this.updatePISub != undefined)
       this.updatePISub.unsubscribe();
+
+    if (this.updatePIStatusSub != undefined)
+      this.updatePIStatusSub.unsubscribe();
   }
 
   ngOnInit() {
@@ -249,6 +254,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
    // this.callPurchaseInquiryStatusUpdateAPI();
 
     console.log("isDirty:"+isDirty);
+    if (isDirty) {
     // if No draft then disable draft button.
     if (this.purchaseInquiryDetail.Status != PurchaseInquiryStatus.Draft) {
       this.isDisableSaveAsDraft = true;
@@ -304,6 +310,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
     );
   }
+  }
  
   /**
    * call api for update status of inquiry.
@@ -313,7 +320,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     if(parseInt(localStorage.getItem("OperationType"))==OperationType.Update){
       this.purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
       if(this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.New){
-        this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
+        this.updatePIStatusSub = this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
           data => {},error => {},() => { }
         );
       }
