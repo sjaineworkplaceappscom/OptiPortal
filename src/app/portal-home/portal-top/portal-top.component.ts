@@ -20,19 +20,20 @@ export class PortalTopComponent implements OnInit {
   constructor(private modalService: BsModalService, private router: Router, private commonService: Commonservice, private accountService: AccountService) { }
   selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
   loggedInUserName: string = '';
-  customerName: string = '';
+  parentName: string = '';
   customerCode: string = '';
   LoginUserType: number;
   ngOnInit() {
+    debugger;
     let userDetail: string = localStorage.getItem("LoginUserDetail");
     let isSystemAdmin: string = localStorage.getItem("SystemAdmin");
     let userData: any[] = JSON.parse(userDetail);
     this.loggedInUserName = userData[0].LoginUserName;
-    this.customerName = userData[0].ParentName;
+    this.parentName = userData[0].ParentName;
     this.customerCode = userData[0].ParentCode;
     this.LoginUserType = userData[0].LoginUserType;
     UIHelper.manageThemeCssFile();
-    if (isSystemAdmin == 'true') this.customerName = 'Admin';
+    if (isSystemAdmin == 'true') this.parentName = 'Admin';
     //console.log("ISSystemAdmin"+isSystemAdmin);
   }
 
