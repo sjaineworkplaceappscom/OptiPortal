@@ -57,6 +57,7 @@ export class NotesItemComponent implements OnInit {
     getnotessub: ISubscription;
     deletenotessub: ISubscription;
     updatenotessub: ISubscription;
+    updatePIStatussub: ISubscription;
     searchNotes: string = "";
 
     public noteTypes: Array<{ text: string, value: number }> = [
@@ -110,6 +111,9 @@ export class NotesItemComponent implements OnInit {
 
         if (this.updatenotessub != undefined)
             this.getnotessub.unsubscribe();
+
+         if (this.updatePIStatussub != undefined)
+            this.updatePIStatussub.unsubscribe();
     }
 
 
@@ -189,7 +193,7 @@ export class NotesItemComponent implements OnInit {
             purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
             if (purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
                 purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
-                this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
+                this.updatePIStatussub = this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
                     data => {
                         localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
                         // console.log("NOte:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));

@@ -62,6 +62,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   public getPIsubs: ISubscription;
   public sideBarsubs: ISubscription;
   public updatePISub: ISubscription;
+  public updatePIStatusSub: ISubscription;
 
   @ViewChild('optiRightAddInquiry') optiRightAddInquiry;
   @ViewChild('optiTab') optiTab;
@@ -95,6 +96,9 @@ export class PurchaseInqUpdateComponent implements OnInit {
       this.updatePISub.unsubscribe();
     if (this.getPIsubs != undefined)
       this.getPIsubs.unsubscribe();
+
+    if (this.updatePIStatusSub != undefined)
+      this.updatePIStatusSub.unsubscribe();
   }
 
   ngOnInit() {
