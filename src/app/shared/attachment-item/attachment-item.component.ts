@@ -57,7 +57,7 @@ export class AttachmentItemComponent implements OnInit {
   constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private purchaseInquiryService: PurchaseInquiryService) {
     this.attachmentsub = this.commonService.currentAttachmentItemData.subscribe(
       (data: AttachmentDetail) => {
-        console.log(JSON.stringify(data));
+        //console.log(JSON.stringify(data));
         if (data != undefined && data != null) {
           this.attachmentModel = data;
           this.purchaseInqId = this.attachmentModel.GrandParentId;
@@ -215,6 +215,9 @@ export class AttachmentItemComponent implements OnInit {
         purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
         this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
           data => {
+            localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
+            // console.log("NOte:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
+            purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
             this.commonService.refreshPIList(null);
           }, error => {
             this.commonService.refreshPIList(null);

@@ -72,7 +72,7 @@ export class NotesItemComponent implements OnInit {
 
         this.notessub = this.commonService.currentNotesItemData.subscribe(
             (data: NotesModel) => {
-                console.log("first time note data: " + JSON.stringify(data));
+              //  console.log("first time note data: " + JSON.stringify(data));
                 if (data != undefined && data != null) {
                     this.noteModel = data;
                     // Get notes data.
@@ -164,7 +164,7 @@ export class NotesItemComponent implements OnInit {
             resp => {
                 //this method is updating the status if notes updated then update inquiry status.
                 this.callPurchaseInquiryStatusUpdateAPI();
-                console.log("record added:")
+               // console.log("record added:")
             },
             error => {
                 alert("Something went wrong");
@@ -191,6 +191,9 @@ export class NotesItemComponent implements OnInit {
                 purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
                 this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
                     data => {
+                        localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
+                        // console.log("NOte:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
+                        purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
                         this.commonService.refreshPIList(null);
                     }, error => {
                         this.commonService.refreshPIList(null);
@@ -237,7 +240,7 @@ export class NotesItemComponent implements OnInit {
         this.showLoader = true;
         this.getnotessub = this.sharedComponentService.getNotesList(parentId, parentType).subscribe(
             notesData => {
-                console.log("Note item list subscriber");
+             //   console.log("Note item list subscriber");
                 if (notesData != null && notesData != undefined) {
                     this.noteItemsData = JSON.parse(notesData);
                     // To format result dates. 
@@ -268,7 +271,8 @@ export class NotesItemComponent implements OnInit {
 
         this.deletenotessub = this.sharedComponentService.deleteNote(this.noteItemsData[rowIndex].NoteId).subscribe(
             resp => {
-                console.log("record deleted:")
+              
+              //  console.log("record deleted:")
                 this.noteItemsData.splice(rowIndex, 1);
             },
             error => {
@@ -295,7 +299,7 @@ export class NotesItemComponent implements OnInit {
             resp => {
                 //this method is updating the status if notes updated then update inquiry status.
                 this.callPurchaseInquiryStatusUpdateAPI();
-                console.log("record updated:");
+               // console.log("record updated:");
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiryItem);
             },
             error => {

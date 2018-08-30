@@ -24,7 +24,7 @@ export class PortalTopComponent implements OnInit {
   customerCode: string = '';
   LoginUserType: number;
   ngOnInit() {
-    debugger;
+    
     let userDetail: string = localStorage.getItem("LoginUserDetail");
     let isSystemAdmin: string = localStorage.getItem("SystemAdmin");
     let userData: any[] = JSON.parse(userDetail);

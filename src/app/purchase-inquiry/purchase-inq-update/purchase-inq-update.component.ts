@@ -59,6 +59,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     { text: "Updated", value: PurchaseInquiryStatus.Updated }
   ];
 
+  public getPIsubs: ISubscription;
   public sideBarsubs: ISubscription;
   public updatePISub: ISubscription;
 
@@ -67,19 +68,17 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
   // tab function
   openTab(evt, tabName) {
-
+    if (tabName == 'home')
+    this.callPurchaseInquiryDetailAPI(this.purchaseInquiryDetail.PurchaseInquiryId);
+    
     if (tabName == 'notes')
       this.commonService.setNotesData(this.notesMasterData);
-
     if (tabName == 'items')
       this.commonService.setItemsData(this.inquiryModelForItems);
-
     // Set default condition for purchase inquiery attachment
     if (tabName == 'attachement')
       this.commonService.setPurchaseInquiryAttachmentGrid(true);
-
     this.tabName = tabName;
-
     UIHelper.customOpenTab(evt, tabName, 'horizontal');
   }
 
@@ -92,9 +91,10 @@ export class PurchaseInqUpdateComponent implements OnInit {
   ngOnDestroy() {
     if (this.sideBarsubs != undefined)
       this.sideBarsubs.unsubscribe();
-
     if (this.updatePISub != undefined)
       this.updatePISub.unsubscribe();
+    if (this.getPIsubs != undefined)
+      this.getPIsubs.unsubscribe();
   }
 
   ngOnInit() {
@@ -102,47 +102,19 @@ export class PurchaseInqUpdateComponent implements OnInit {
     UIHelper.getWidthOfOuterTab();
     // Add active class on tab title 
     this.optiTab.nativeElement.children[0].classList.add('active');
-   
     // Set sidebar data;
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
-
       currentSidebarData => {
+        
         this.setInquiryStatusFlag();
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           this.purchaseInquiryDetail = currentSidebarData.RequesterData;
+          if(this.purchaseInquiryDetail!=null){
+          this.callPurchaseInquiryDetailAPI(this.purchaseInquiryDetail.PurchaseInquiryId);
+          }else{}
           
-          // console.log("data:"+JSON.stringify(this.purchaseInquiryDetail));
-          // console.log("data from LocalStorage:"+JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
-          // this.purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery')); 
-          // console.log("data Model:"+JSON.stringify(this.purchaseInquiryDetail));
-          
-          
-          if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
-
-            this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
-            this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
-
-            this.getStatusListForUpdateByCustomer();
-            this.getUserDetails();
-
-            // Set notes data for inquiry
-            this.notesMasterData.ParentId = this.purchaseInquiryDetail.PurchaseInquiryId;
-            this.notesMasterData.ParentType = CustomerEntityType.PurchaseInquiry;
-
-            // Set items data for inquiry items.
-            this.inquiryModelForItems.PurchaseInquiryId = this.purchaseInquiryDetail.PurchaseInquiryId;
-
-            //this.openTab(null,'home');
-
-            // Fire note event 
-            //this.commonService.setNotesData(this.notesMasterData);
-
-            //Fire event for items.
-            //this.commonService.setItemsData(this.inquiryModelForItems);
-
-            this.showLoader = false;
-          }
+       
         }
       },
       error => {
@@ -155,25 +127,61 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
   }
 
-  private setInquiryStatusFlag(){
-     //get status of selected inquiry for disabling or enabling  forms
-     let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
+ private setModelAndSubscribeData(){
+    if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
+      this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
+      this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);
+      this.getStatusListForUpdateByCustomer();
+      this.getUserDetails();
+      // Set notes data for inquiry
+      this.notesMasterData.ParentId = this.purchaseInquiryDetail.PurchaseInquiryId;
+      this.notesMasterData.ParentType = CustomerEntityType.PurchaseInquiry;
+      // Set items data for inquiry items.
+      this.inquiryModelForItems.PurchaseInquiryId = this.purchaseInquiryDetail.PurchaseInquiryId;
 
-     if (inquiryDetail != null && inquiryDetail != undefined) {
-       let inquiryData: any = JSON.parse(inquiryDetail);
-       let inquiryStatus = inquiryData.Status;
-       if (inquiryStatus == PurchaseInquiryStatus.Cancelled) {
-         this.isCancelStatus = true;
-       }else{
-         this.isCancelStatus = false;
-       }
-     }
+    }
+  }
+
+  /** 
+    * call api for purchase inquiry detail.
+    */
+  callPurchaseInquiryDetailAPI(id: string) {
+   // console.log("Update:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
+    this.showLoader = true;
+    this.getPIsubs = this.purchaseInquiryService.getInquiryDetail(id).subscribe(
+      data => { 
+        this.showLoader = false;
+        let dataArray: any[] = JSON.parse(data);
+        this.purchaseInquiryDetail = dataArray[0];
+        localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(this.purchaseInquiryDetail));
+        this.setModelAndSubscribeData();
+         
+      }, error => {
+        this.showLoader = false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
+      }, () => { }
+    );
+  }
+
+  private setInquiryStatusFlag() {
+    //get status of selected inquiry for disabling or enabling  forms
+    let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
+    if (inquiryDetail != null && inquiryDetail != undefined) {
+      let inquiryData: any = JSON.parse(inquiryDetail);
+      let inquiryStatus = inquiryData.Status;
+      if (inquiryStatus == PurchaseInquiryStatus.Cancelled) {
+        this.isCancelStatus = true;
+      } else {
+        this.isCancelStatus = false;
+      }
+    }
   }
   ngOnChange() {
-    console.log("ng onchange");
+    
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-
+    
         this.purchaseInquiryDetail = currentSidebarData.RequesterData;
       },
       error => {
@@ -216,7 +224,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
         { text: "Draft", value: PurchaseInquiryStatus.Draft },
         { text: "New", value: PurchaseInquiryStatus.New },
         { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled }];
-
     } else {
       if (this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.Cancelled) {
         // user can not do anyting only view all things are disabled.
@@ -237,31 +244,27 @@ export class PurchaseInqUpdateComponent implements OnInit {
             { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled }];
         }
       }
-
     }
-
   }
+
   /**
   * UpdatePurchaseInquiry
   */
-  public UpdatePurchaseInquiry(saveAsDraft: boolean = false,isDirty: boolean) {
+  public UpdatePurchaseInquiry(saveAsDraft: boolean = false, isDirty: boolean) {
 
-   // this.callPurchaseInquiryStatusUpdateAPI();
-
-    console.log("isDirty:"+isDirty);
+    //console.log("isDirty:" + isDirty);
     // if No draft then disable draft button.
     if (this.purchaseInquiryDetail.Status != PurchaseInquiryStatus.Draft) {
       this.isDisableSaveAsDraft = true;
     }
-    //save as draft click
-    // Draft status
-    if (saveAsDraft) { //save as draft click
+
+    //save as draft click, Draft status
+    if (saveAsDraft) {
       let Draftstatus: any = { text: "Draft", value: PurchaseInquiryStatus.Draft };
       this.purchaseInquiryDetail.Status = Draftstatus.value;
     }
     else {
-      //save click
-      //if user click on save and status was draft then save it with new status.
+      //save click if user click on save and status was draft then save it with new status.
       if (this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.Draft) {
         this.purchaseInquiryDetail.Status = PurchaseInquiryStatus.New;
       } else {
@@ -272,14 +275,12 @@ export class PurchaseInqUpdateComponent implements OnInit {
           this.status = [
             { text: "Updated", value: PurchaseInquiryStatus.Updated },
             { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled }];
-        }else{
+        } else {
           //if status is cancelled
-          
         }
       }
 
     }
-
     this.showLoader = true;
     this.updatePISub = this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
       data => {
@@ -287,13 +288,12 @@ export class PurchaseInqUpdateComponent implements OnInit {
         this.commonService.refreshPIList(null);
         //if after save user set status to cancelled then we have to disable all functionality.
         if (this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.Cancelled) {
-          this.isCancelStatus = true; 
-          this.isDisableSave =true;
+          this.isCancelStatus = true;
+          this.isDisableSave = true;
           this.isDisableSaveAsDraft = true;
           this.isDisableStatusField = true;//disable status in case of status cancelled also.
-          localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(this.purchaseInquiryDetail));   
-       }
-      
+          localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(this.purchaseInquiryDetail));
+        }
       },
       error => {
         alert("Something went wrong");
@@ -304,46 +304,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
     );
   }
- 
-  /**
-   * call api for update status of inquiry.
-   */
-  callPurchaseInquiryStatusUpdateAPI(){
-     //check from local storage.
-    if(parseInt(localStorage.getItem("OperationType"))==OperationType.Update){
-      this.purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
-      if(this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.New){
-        this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
-          data => {},error => {},() => { }
-        );
-      }
-    }
-  }
-  // Unused
-  /**
-   * This will set the data with the draft status.
-   */
-  // public UpdatePurchaseInquiryAsDraft() {
-
-
-  //   this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
-  //     (data: any) => {
-  //       //   debugger;
-  //       console.log("record added:")
-  //       this.commonService.refreshPIList(null);
-  //     },
-  //     error => {
-  //       //  debugger;
-  //       alert("Something went wrong");
-  //       console.log("Error: ", error)
-  //     },
-  //     () => {
-  //       //this.closeRightSidebar();
-  //     }
-
-  //   );
-
-  // }
 
   /**
 * 
@@ -352,6 +312,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
   closeRightSidebar() {
     let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentSidebarInfo.SideBarStatus = false;
-    this.commonService.setCurrentSideBar(currentSidebarInfo);
+   // this.commonService.setCurrentSideBar(currentSidebarInfo);
   }
 }
