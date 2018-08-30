@@ -86,7 +86,8 @@ body .k-grid tbody tr:hover {
   background-color: #13688c;
 }
 
-body kendo-grid{
+body kendo-grid,
+#opti_DashboardID {
   box-shadow: 0px 1px 15px #13688c;
 }
 
