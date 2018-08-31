@@ -59,7 +59,7 @@ export class SigninComponent implements OnInit {
 
   changeValue() {
     this.invalidCapcha = false;
-    console.log("change boolean: " + this.invalidCapcha);
+    //console.log("change boolean: " + this.invalidCapcha);
   }
   
   public getCookie(cname) {

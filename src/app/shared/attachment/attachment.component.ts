@@ -121,7 +121,7 @@ export class AttachmentComponent implements OnInit {
           this.showLoader = false;
           if (data != undefined && data != null) {
             let griddata: any = data;
-            console.log(data);
+            //console.log(data);
             this.gridAttachmentData = JSON.parse(data);
           }
         }
