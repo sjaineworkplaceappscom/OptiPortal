@@ -3,22 +3,22 @@ import { Validator, AbstractControl, NG_VALIDATORS } from '@angular/forms';
 
 @Directive({
   selector: '[appConfirmPasswordEquilValidator]',
-  providers:[{
+  providers: [{
     provide: NG_VALIDATORS, useExisting: ConfirmPasswordEquilValidatorDirectiveDirective,
     multi: true
   }]
 })
 export class ConfirmPasswordEquilValidatorDirectiveDirective implements Validator {
-   @Input() appConfirmPasswordEquilValidator: string;
-   constructor(){
-  
-}
-  validate(control: AbstractControl):{[key:string]: any} | null{
-        
+  @Input() appConfirmPasswordEquilValidator: string;
+  constructor() {
+
+  }
+  validate(control: AbstractControl): { [key: string]: any } | null {
+    
     const controlToCompair = control.parent.get(this.appConfirmPasswordEquilValidator);
-    if(controlToCompair && controlToCompair.value != control.value){
-   
-      return {'notEqual': true};
+    if (controlToCompair && controlToCompair.value != control.value) {
+
+      return { 'notEqual': true };
     }
     return null;
 
