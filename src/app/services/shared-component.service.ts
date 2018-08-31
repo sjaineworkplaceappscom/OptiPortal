@@ -85,6 +85,10 @@ export class SharedComponentService {
     return this.httpHelper.get(url, null);
   }
 
+  public getAtachment(id: string,): Observable<any> {
+    let url: string = this.baseUrl + "attachment/download/" + id ;
+    return this.httpHelper.get(url, null);
+  }
 }
 
 

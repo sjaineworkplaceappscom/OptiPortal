@@ -89,6 +89,11 @@
             </ng-template>
             <!-- grid template end -->
 
+            <kendo-grid-column field="AttachmentId" title="Download" [width]="160">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">                                                                            
+                        <svg-icon src="assets/images/common/download.svg" (click)="download(dataItem.AttachmentId)" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+                    </ng-template>
+            </kendo-grid-column>
             <!-- grid column start -->
             <kendo-grid-column field="AttachmentName" title="Name" [width]="160" ></kendo-grid-column>
             <kendo-grid-column field="SizeInKb"  title="Size(In KB)" [width]="140"></kendo-grid-column>
