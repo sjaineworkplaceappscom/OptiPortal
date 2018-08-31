@@ -84,12 +84,12 @@
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Reference#</span>
                                         <input type="text" name="reference" class="k-textbox" value="" placeholder="Reference" [(ngModel)]="purchaseInquiryDetail.ReferenceNumber"
-                                        [disabled] = "!isEnableRefField"  />
+                                        [disabled] = "!isEnableRefField"  /> 
                                     </label>
 
                                     <div class="text-right">
-                                        <button type="button" class="k-button k-primary" [disabled] ="isDisableSave==true" (click)="UpdatePurchaseInquiry(false,InquiryForm.dirty)">Save</button>
-                                        <button type="button" class="k-button" [disabled] ="isDisableSaveAsDraft==true" (click)="UpdatePurchaseInquiry(true,InquiryForm.dirty)"> Save as draft</button>
+                                        <button type="button" class="k-button k-primary" [disabled] ="isDisableSave==true ||!InquiryForm.dirty" (click)="UpdatePurchaseInquiry(false,InquiryForm.dirty)">Save</button>
+                                        <button type="button" class="k-button" [disabled] ="isDisableSaveAsDraft==true || !InquiryForm.dirty" (click)="UpdatePurchaseInquiry(true,InquiryForm.dirty)"> Save as draft</button>
                                         <button type="button" class="k-button"  (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
                                     </div>
                                 </form>

@@ -171,7 +171,7 @@ export class AttachmentComponent implements OnInit {
     this.showLoader=true;
     this.uploadAttachmentsub = this.sharedComponentService.uploadAttachment(formData).subscribe(
       event => {
-        this.showLoader = false;
+     
 
 
         if (event.type === HttpEventType.UploadProgress)
@@ -181,7 +181,7 @@ export class AttachmentComponent implements OnInit {
           this.message = event.body.toString();
         // Get attachment list
         if (event.type === 4 && event.status === 200) {
-
+          this.showLoader = false;
           this.getAttchmentList();
           //this method is updating the status if notes updated then update inquiry status.
           this.callPurchaseInquiryStatusUpdateAPI();
@@ -212,7 +212,7 @@ export class AttachmentComponent implements OnInit {
       if (purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
         purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
         this.updatePIStatussub =  this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
-          data => {
+          data => { 
             localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
             // console.log("NOte:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
             purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));

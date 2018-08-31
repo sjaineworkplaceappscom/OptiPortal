@@ -8,6 +8,7 @@ import { AttachmentDetail } from '../../models/AttchmentDetail';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
+import { DecimalPipe } from '../../../../node_modules/@angular/common';
 
 @Component({
   selector: 'app-attachment-item',
@@ -56,6 +57,7 @@ export class AttachmentItemComponent implements OnInit {
   }
 
   constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private purchaseInquiryService: PurchaseInquiryService) {
+    
     this.attachmentsub = this.commonService.currentAttachmentItemData.subscribe(
       (data: AttachmentDetail) => {
         //console.log(JSON.stringify(data));
@@ -183,7 +185,7 @@ export class AttachmentItemComponent implements OnInit {
 
     this.uploadAttachmentsub = this.sharedComponentService.uploadAttachment(formData).subscribe(
       event => {
-        this.showLoader = false;
+      
         if (event.type === HttpEventType.UploadProgress)
           this.progress = Math.round(100 * event.loaded / event.total);
 
@@ -192,6 +194,7 @@ export class AttachmentItemComponent implements OnInit {
         // Get attachment list
         if (event.type === 4 && event.status === 200) {
           this.getAttchmentList();
+          this.showLoader = false;
           //this method is updating the status if notes updated then update inquiry status.
           this.callPurchaseInquiryStatusUpdateAPI();
           this.back();
@@ -203,9 +206,7 @@ export class AttachmentItemComponent implements OnInit {
         this.showLoader = false;
         this.showGrid = false;
       }
-
     );
-
   }
   /**
      * call api for update status of inquiry. 
@@ -244,5 +245,7 @@ export class AttachmentItemComponent implements OnInit {
   //   this.isGridStatus = false;
   // }
 
+  
+ 
 
 }

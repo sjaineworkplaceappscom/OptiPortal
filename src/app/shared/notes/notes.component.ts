@@ -194,7 +194,6 @@ export class NotesComponent implements OnInit {
      * call api for update status of inquiry.
      */
     callPurchaseInquiryStatusUpdateAPI() {
-        debugger;
         let purchaseInquiryDetail: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
         //check from local storage.
         if (parseInt(localStorage.getItem("OperationType")) == OperationType.Update) {

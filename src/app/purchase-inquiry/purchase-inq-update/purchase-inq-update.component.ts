@@ -9,7 +9,7 @@ import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../
 import { ISubscription } from '../../../../node_modules/rxjs-compat/Subscription';
 
 @Component({
-  selector: 'app-purchase-inq-update',
+  selector: 'app-purchase-inq-update', 
   templateUrl: './purchase-inq-update.component.html',
   styleUrls: ['./purchase-inq-update.component.scss']
 })
@@ -159,9 +159,9 @@ export class PurchaseInqUpdateComponent implements OnInit {
         this.purchaseInquiryDetail = dataArray[0];
         localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(this.purchaseInquiryDetail));
         this.setModelAndSubscribeData();
-         
-      }, error => {
-        this.showLoader = false;
+          
+      }, error => {  
+        this.showLoader = false; 
         alert("Something went wrong");
         console.log("Error: ", error)
       }, () => { }
@@ -256,8 +256,8 @@ export class PurchaseInqUpdateComponent implements OnInit {
   */
   public UpdatePurchaseInquiry(saveAsDraft: boolean = false, isDirty: boolean) {
 
-    //console.log("isDirty:" + isDirty);
-    // if No draft then disable draft button.
+     
+    // if No draft then disable draft button. 
     if (this.purchaseInquiryDetail.Status != PurchaseInquiryStatus.Draft) {
       this.isDisableSaveAsDraft = true;
     }
@@ -316,6 +316,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
   closeRightSidebar() {
     let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentSidebarInfo.SideBarStatus = false;
-   // this.commonService.setCurrentSideBar(currentSidebarInfo);
+    this.commonService.setCurrentSideBar(currentSidebarInfo);
   }
 }
