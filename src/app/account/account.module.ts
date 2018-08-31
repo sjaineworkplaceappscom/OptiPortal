@@ -57,6 +57,6 @@ import { ConfirmPasswordEquilValidatorDirectiveDirective } from '../directives/c
    // Directive
    
   ],
-  declarations: [AccountComponent, SigninComponent, SignupComponent, SetPasswordComponent, ResetPasswordComponent,TenantselectionComponent ]
+  declarations: [AccountComponent, SigninComponent, SignupComponent, SetPasswordComponent, ResetPasswordComponent,TenantselectionComponent ,ConfirmPasswordEquilValidatorDirectiveDirective]
 })
 export class AccountModule { }
