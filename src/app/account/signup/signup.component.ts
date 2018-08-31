@@ -146,7 +146,7 @@ export class SignupComponent implements OnInit {
 
   changeValue() {
     this.invalidCapcha = false;
-    console.log("change boolean: " + this.invalidCapcha);
+    //console.log("change boolean: " + this.invalidCapcha);
   }
 
   // On blur of compane id
