@@ -89,7 +89,7 @@
 
                                     <div class="text-right">
                                         <button type="button" class="k-button k-primary" [disabled] ="isDisableSave==true ||!InquiryForm.dirty" (click)="UpdatePurchaseInquiry(false,InquiryForm.dirty)">Save</button>
-                                        <button type="button" class="k-button" [disabled] ="isDisableSaveAsDraft==true || !InquiryForm.dirty" (click)="UpdatePurchaseInquiry(true,InquiryForm.dirty)"> Save as draft</button>
+                                        <button type="button" class="k-button" [disabled] ="isDisableSaveAsDraft==true" (click)="UpdatePurchaseInquiry(true,InquiryForm.dirty)"> Save as draft</button>
                                         <button type="button" class="k-button"  (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
                                     </div>
                                 </form>
