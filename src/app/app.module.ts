@@ -49,6 +49,8 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { CommonModule, DatePipe } from '@angular/common';
 import { PortalHomeModule } from './portal-home/portal-home.module';
 import { PurchaseInquiryModule } from './purchase-inquiry/purchase-inquiry.module';
+import { FileSizePipe } from './file-size.pipe';
+
 
 
 // for new Routing for Lazy load
@@ -88,7 +90,10 @@ const routes: Routes = [
     HomeComponent,
 
     // Directive
-    ConfirmPasswordEquilValidatorDirectiveDirective,        
+    ConfirmPasswordEquilValidatorDirectiveDirective,
+
+    FileSizePipe,
+        
   ],
   imports: [
     CommonModule, 
