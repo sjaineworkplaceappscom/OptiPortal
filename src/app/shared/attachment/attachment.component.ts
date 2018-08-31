@@ -103,6 +103,7 @@ export class AttachmentComponent implements OnInit {
           this.showLoader = false;
           if (data != undefined && data != null) {
             let griddata: any = data;
+            console.log(data);
             this.gridAttachmentData = JSON.parse(data);
           }
         }
@@ -206,5 +207,38 @@ export class AttachmentComponent implements OnInit {
 
   public back() {
     this.showGrid = true;
+  }
+
+
+  // download attachment file
+  download(id:string) {
+
+    let seletedAttachment=this.gridAttachmentData.filter(i=> i.AttachmentId==id)[0];   
+
+    try {
+      this.sharedComponentService.getAtachment(id)
+        .subscribe(
+        res => {
+          var data = res;
+
+          let blob = new Blob([data], {
+            type: 'application/pdf' // must match the Accept type
+          });
+
+            var a = document.createElement('a');
+            document.body.appendChild(a);
+            a.href = URL.createObjectURL(blob);
+            a.download = seletedAttachment.AttachmentName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          }
+        
+       
+      );
+    }
+    catch (err) {
+     // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
+    }
   }
 }
