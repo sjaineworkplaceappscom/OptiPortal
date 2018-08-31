@@ -106,6 +106,12 @@ export class PurchaseInquiryService {
 
 
 
-  
+     /**
+   * Get List of users.
+   */
+  public getInquiryDetail(inquiryId:string):Observable<any> {    
+    let url: string = this.baseUrl + "purchaseinquiry/detail/"+inquiryId;
+    return this.httpHelper.get(url,null);   
+  }
   
 }

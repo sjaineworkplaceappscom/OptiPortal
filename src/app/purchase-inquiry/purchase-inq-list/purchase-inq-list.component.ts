@@ -62,6 +62,7 @@ export class PurchaseInqListComponent implements OnInit {
   // End UI Section
 
   ngOnInit() {
+    
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
@@ -164,10 +165,8 @@ export class PurchaseInqListComponent implements OnInit {
     const selectedData = selection.selectedRows[0].dataItem;
     
     localStorage.setItem("PurchaseinqueryId",selectedData.PurchaseInquiryId);  
-    
     localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(selectedData));   
     localStorage.setItem("OperationType",OperationType.Update.toString());   
-
     currentsideBarInfo.RequesterData = selectedData;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
 

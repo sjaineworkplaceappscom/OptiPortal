@@ -99,7 +99,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("onInit selectedItemId:" + this.selectedItemId);
+    //console.log("onInit selectedItemId:" + this.selectedItemId);
     // Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
@@ -220,7 +220,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.purchaseItemsModel.RequestDate = this.requestDate;
     this.purchaseItemsModel.RequiredDate = this.requiredDate;
     this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
-    console.log("at onItemGridDataSelection  selectedItemId:" + this.selectedItemId);
+    
 
     // On selection of item check if status is cancel or not 
     if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled) {
@@ -252,7 +252,6 @@ export class PurchaseInqItemAddComponent implements OnInit {
     */
   public getInquiryItemsData(inquiryId: string) {
     this.showLoader = true;
-
     this.getitemSub = this.purchaseInquiryService.getInquiryItemList(inquiryId).subscribe(
       inquiryItemData => {
         this.showLoader = false;
@@ -344,7 +343,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
         this.purchaseItemsModel.RequiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
         this.purchaseItemsModel.RequestDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequestDate);
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
-        //console.log(data)
+        
         if (saveAndNew) {
           //reset data source when new intem added.
           this.statusValues = [
@@ -448,6 +447,9 @@ export class PurchaseInqItemAddComponent implements OnInit {
         purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
         this.updatePISub = this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
           data => {
+            localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(data)); 
+            
+             purchaseInquiryDetail = JSON.parse( localStorage.getItem('SelectedPurchaseInquery'));
             this.commonService.refreshPIList(null);
             // localStorage.setItem('SelectedPurchaseInquery', JSON.stringify(data));
           }, error => {
