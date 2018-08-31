@@ -23,6 +23,7 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { UploadModule } from '@progress/kendo-angular-upload/dist/es2015/main';
 import { InputsModule } from '@progress/kendo-angular-inputs';
+import { ConfirmPasswordEquilValidatorDirectiveDirective } from '../directives/confirm-password-equil-validator-directive.directive';
 
 
 
@@ -53,7 +54,8 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
     FormsModule,
     
     //PDFExportModule,
-   
+   // Directive
+   ConfirmPasswordEquilValidatorDirectiveDirective
   ],
   declarations: [AccountComponent, SigninComponent, SignupComponent, SetPasswordComponent, ResetPasswordComponent,TenantselectionComponent ]
 })
