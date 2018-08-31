@@ -63,3 +63,18 @@ kendo-grid tr:hover dl span strong {
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////end Purchase Inquiry//////////////////
 /////////////////////////////////////////////////////////////////////
+
+app-attachment, app-attachment-item{
+  kendo-grid{
+    table{
+      tbody{
+        tr td:first-child{
+          text-align: center;
+          svg-icon{
+            cursor: pointer;
+          }  
+        }
+      }
+    }
+  }
+}
