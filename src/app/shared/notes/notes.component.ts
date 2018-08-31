@@ -57,6 +57,7 @@ export class NotesComponent implements OnInit {
     addnotessub: ISubscription;
     updatenotessub: ISubscription;
     deletenotessub: ISubscription;
+    updatePIStatussub: ISubscription;
     searchNotes: string = "";
     notesSearchValue: string = ""
 
@@ -139,6 +140,9 @@ export class NotesComponent implements OnInit {
 
         if (this.deletenotessub != undefined)
             this.deletenotessub.unsubscribe();
+
+         if (this.updatePIStatussub != undefined)
+            this.updatePIStatussub.unsubscribe();
     }
 
 
@@ -171,7 +175,7 @@ export class NotesComponent implements OnInit {
             resp => {
                 //this method is updating the status if notes updated then update inquiry status.
                 this.callPurchaseInquiryStatusUpdateAPI();
-                console.log("record added:")
+               // console.log("record added:")
             },
             error => {
                 alert("Something went wrong");
@@ -190,14 +194,24 @@ export class NotesComponent implements OnInit {
      * call api for update status of inquiry.
      */
     callPurchaseInquiryStatusUpdateAPI() {
+        debugger;
         let purchaseInquiryDetail: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
         //check from local storage.
         if (parseInt(localStorage.getItem("OperationType")) == OperationType.Update) {
             purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
             if (purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
                 purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
-                this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
+                this.updatePIStatussub = this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
                     data => {
+
+                        // console.log("NOte:data from server:" + JSON.stringify(data));
+                         localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(data)); 
+                        // console.log("NOte:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
+                         purchaseInquiryDetail = JSON.parse( localStorage.getItem('SelectedPurchaseInquery'))
+                        // localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
+                        // purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
+                         //console.log("NOte:data Model:" + JSON.stringify(purchaseInquiryDetail));
+
                         this.commonService.refreshPIList(null);
                     }, error => {
                         this.commonService.refreshPIList(null);
@@ -277,7 +291,7 @@ export class NotesComponent implements OnInit {
         this.deletenotessub = this.sharedComponentService.deleteNote(this.noteItemsData[rowIndex].NoteId).subscribe(
             resp => {
 
-                console.log("record deleted:")
+               // console.log("record deleted:")
                 this.noteItemsData.splice(rowIndex, 1);
             },
             error => {
@@ -301,7 +315,7 @@ export class NotesComponent implements OnInit {
             resp => {
                 //this method is updating the status if notes updated then update inquiry status.
                 this.callPurchaseInquiryStatusUpdateAPI();
-                console.log("record updated:")
+               // console.log("record updated:")
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },
             error => {

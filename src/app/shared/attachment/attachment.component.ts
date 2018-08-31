@@ -9,6 +9,7 @@ import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../
 import { initChangeDetectorIfExisting } from '../../../../node_modules/@angular/core/src/render3/instructions';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 
 
 @Component({
@@ -39,6 +40,11 @@ export class AttachmentComponent implements OnInit {
   public selectedFileName: string = '';
 
   isCancelStatus: boolean = false;
+
+  getAttachmentsub: ISubscription;
+  uploadAttachmentsub: ISubscription;
+  updatePIStatussub: ISubscription;
+  
   constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService,  private purchaseInquiryService: PurchaseInquiryService) { }
 
   @HostListener('window:resize', ['$event'])
@@ -86,18 +92,30 @@ export class AttachmentComponent implements OnInit {
 
   }
 
+  ngOnDestroy() {
+
+    if (this.getAttachmentsub != undefined)
+      this.getAttachmentsub.unsubscribe();
+
+    if (this.uploadAttachmentsub != undefined)
+      this.uploadAttachmentsub.unsubscribe();
+
+    if (this.updatePIStatussub != undefined)
+      this.updatePIStatussub.unsubscribe();
+  }
+
   /**
    * Attachement Tab
   */
   public showTabAddAttachementForm() {
-    this.message='';
+    this.message = '';
     this.showGrid = false;
 
   }
 
   public getAttchmentList() {
     this.showLoader = true;
-    this.sharedComponentService.getAtachmentList(this.purchaseInqId, CustomerEntityType.PurchaseInquiry)
+    this.getAttachmentsub = this.sharedComponentService.getAtachmentList(this.purchaseInqId, CustomerEntityType.PurchaseInquiry)
       .subscribe(
         data => {
           this.showLoader = false;
@@ -128,17 +146,17 @@ export class AttachmentComponent implements OnInit {
 
     for (let file of files) {
       // exe
-      if(file.type=='application/x-msdownload')      {
-      this.message="Error: specified filetype not supported.";
-      return;      
+      if (file.type == 'application/x-msdownload') {
+        this.message = "Error: specified filetype not supported.";
+        return;
       }
 
       // >10 mb file check.
-      if(file.size>1024*1024*10){
-        this.message="Error: file should not be greater then 10 MB.";
+      if (file.size > 1024 * 1024 * 10) {
+        this.message = "Error: file should not be greater then 10 MB.";
         return;
       }
-      
+
 
       formData.append(file.name, file);
       this.selectedFileName = file.name;
@@ -152,10 +170,10 @@ export class AttachmentComponent implements OnInit {
     formData.append('AttachmentDetail', JSON.stringify(attachmentDetail));
 
     this.showLoader=true;
-    this.sharedComponentService.uploadAttachment(formData).subscribe(
+    this.uploadAttachmentsub = this.sharedComponentService.uploadAttachment(formData).subscribe(
       event => {
-        this.showLoader=false;
-       
+        this.showLoader = false;
+
 
         if (event.type === HttpEventType.UploadProgress)
           this.progress = Math.round(100 * event.loaded / event.total);
@@ -163,47 +181,50 @@ export class AttachmentComponent implements OnInit {
         else if (event.type === HttpEventType.Response)
           this.message = event.body.toString();
         // Get attachment list
-        if(event.type===4 && event.status===200){
-        
-        this.getAttchmentList();
-        //this method is updating the status if notes updated then update inquiry status.
-        this.callPurchaseInquiryStatusUpdateAPI();
-        this.back();                
+        if (event.type === 4 && event.status === 200) {
+
+          this.getAttchmentList();
+          //this method is updating the status if notes updated then update inquiry status.
+          this.callPurchaseInquiryStatusUpdateAPI();
+          this.back();
         }
       },
-      error=> {
+      error => {
         alert("Something went wrong");
         console.log(error);
-        this.showLoader=false;
+        this.showLoader = false;
         this.showGrid = false;
       },
-      ()=> {
-       
+      () => {
+
       }
 
     );
 
   }
-   /**
-   * call api for update status of inquiry. 
-   */
-  callPurchaseInquiryStatusUpdateAPI(){
-    let  purchaseInquiryDetail:  TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
-      //check from local storage.
-     if(parseInt(localStorage.getItem("OperationType"))==OperationType.Update){
-       purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
-       if(purchaseInquiryDetail.Status == PurchaseInquiryStatus.New){
-           purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
-         this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
-           data => {
-              this.commonService.refreshPIList(null);
-           },error => {
-              this.commonService.refreshPIList(null);
-           },() => { }
-         );
-       }
-     }
-   }
+  /**
+  * call api for update status of inquiry. 
+  */
+  callPurchaseInquiryStatusUpdateAPI() {
+    let purchaseInquiryDetail: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
+    //check from local storage.
+    if (parseInt(localStorage.getItem("OperationType")) == OperationType.Update) {
+      purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
+      if (purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
+        purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
+        this.updatePIStatussub =  this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
+          data => {
+            localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
+            // console.log("NOte:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
+            purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
+            this.commonService.refreshPIList(null);
+          }, error => {
+            this.commonService.refreshPIList(null);
+          }, () => { }
+        );
+      }
+    }
+  }
 
   public back() {
     this.showGrid = true;

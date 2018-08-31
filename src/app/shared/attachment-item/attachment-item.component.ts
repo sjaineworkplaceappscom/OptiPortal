@@ -40,6 +40,7 @@ export class AttachmentItemComponent implements OnInit {
   attachmentsub: ISubscription;
   getAttachmentsub: ISubscription;
   uploadAttachmentsub: ISubscription;
+  updatePIStatussub: ISubscription;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -57,7 +58,7 @@ export class AttachmentItemComponent implements OnInit {
   constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private purchaseInquiryService: PurchaseInquiryService) {
     this.attachmentsub = this.commonService.currentAttachmentItemData.subscribe(
       (data: AttachmentDetail) => {
-        console.log(JSON.stringify(data));
+        //console.log(JSON.stringify(data));
         if (data != undefined && data != null) {
           this.attachmentModel = data;
           this.purchaseInqId = this.attachmentModel.GrandParentId;
@@ -108,6 +109,9 @@ export class AttachmentItemComponent implements OnInit {
 
     if (this.uploadAttachmentsub != undefined)
       this.uploadAttachmentsub.unsubscribe();
+
+    if (this.updatePIStatussub != undefined)
+      this.updatePIStatussub.unsubscribe();
   }
 
   /**
@@ -213,8 +217,11 @@ export class AttachmentItemComponent implements OnInit {
       purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
       if (purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
         purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
-        this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
+        this.updatePIStatussub = this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
           data => {
+            localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
+            // console.log("NOte:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
+            purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
             this.commonService.refreshPIList(null);
           }, error => {
             this.commonService.refreshPIList(null);

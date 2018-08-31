@@ -7,6 +7,10 @@ import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
 import { FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SalesOrderDetailComponent } from './sales-order-detail/sales-order-detail.component';
+import { SalesOrderDetailHomeComponent } from './sales-order-detail-home/sales-order-detail-home.component';
+import { SalesOrderDetailContentComponent } from './sales-order-detail-content/sales-order-detail-content.component';
+import { SalesOrderDetailAttachmentComponent } from './sales-order-detail-attachment/sales-order-detail-attachment.component';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 @NgModule({
   imports: [
@@ -16,9 +20,10 @@ import { SalesOrderDetailComponent } from './sales-order-detail/sales-order-deta
     GridModule,
     ExcelModule,
     FormsModule,
-    AngularSvgIconModule
+    AngularSvgIconModule,
+    PerfectScrollbarModule
   ],
-  declarations: [SalesOrderListComponent, SalesOrderDetailComponent],
+  declarations: [SalesOrderListComponent, SalesOrderDetailComponent, SalesOrderDetailHomeComponent, SalesOrderDetailContentComponent, SalesOrderDetailAttachmentComponent],
   exports:[SalesOrderListComponent, SalesOrderDetailComponent]
 })
 export class SalesOrderModule { }
