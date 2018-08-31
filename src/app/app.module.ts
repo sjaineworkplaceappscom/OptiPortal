@@ -86,7 +86,8 @@ const routes: Routes = [
     TopComponent,
     MainContentComponent,
     RightComponent,
-    HomeComponent           
+    HomeComponent  ,
+    ConfirmPasswordEquilValidatorDirectiveDirective         
   ],
   imports: [
     CommonModule, 

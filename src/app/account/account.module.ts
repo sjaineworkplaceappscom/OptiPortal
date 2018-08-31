@@ -55,7 +55,7 @@ import { ConfirmPasswordEquilValidatorDirectiveDirective } from '../directives/c
     
     //PDFExportModule,
    // Directive
-   ConfirmPasswordEquilValidatorDirectiveDirective
+   
   ],
   declarations: [AccountComponent, SigninComponent, SignupComponent, SetPasswordComponent, ResetPasswordComponent,TenantselectionComponent ]
 })
