@@ -35,7 +35,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
-import { ConfirmPasswordEquilValidatorDirectiveDirective } from './directives/confirm-password-equil-validator-directive.directive';
+
 import { LandingComponent } from './common/landing/landing.component'
 import { LayoutModule } from '@progress/kendo-angular-layout'
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export'
@@ -87,13 +87,7 @@ const routes: Routes = [
     TopComponent,
     MainContentComponent,
     RightComponent,
-    HomeComponent,
-
-    // Directive
-    ConfirmPasswordEquilValidatorDirectiveDirective,
-
-    FileSizePipe,
-        
+    HomeComponent           
   ],
   imports: [
     CommonModule, 
