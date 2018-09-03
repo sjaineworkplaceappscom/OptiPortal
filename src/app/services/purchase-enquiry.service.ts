@@ -19,7 +19,7 @@ export class PurchaseInquiryService {
   }
 
   /**
-   * get List of users
+   * get List of Inquiries.
    */
   public getInquiryList():Observable<any> {    
     let url: string = this.baseUrl + "purchaseinquiry/list";

@@ -162,12 +162,12 @@ export class PurchaseInqListComponent implements OnInit {
 
     // Selected Item Data
     let selectedIinquiry = this.gridData[selection.index];
-    const selectedData = selection.selectedRows[0].dataItem;
+    //const selectedData = selection.selectedRows[0].dataItem;
     
-    localStorage.setItem("PurchaseinqueryId",selectedData.PurchaseInquiryId);  
-    localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(selectedData));   
+    localStorage.setItem("PurchaseinqueryId",selectedIinquiry.PurchaseInquiryId);  
+    localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(selectedIinquiry));   
     localStorage.setItem("OperationType",OperationType.Update.toString());   
-    currentsideBarInfo.RequesterData = selectedData;
+    currentsideBarInfo.RequesterData = selectedIinquiry;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
 
     // Reset Selection.
