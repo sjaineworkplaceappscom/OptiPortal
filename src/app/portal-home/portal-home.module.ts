@@ -31,7 +31,7 @@ import { SalesOrderModule } from '../sales-order/sales-order.module';
 import { CustomerPurchaseOrderModule } from '../customer-purchase-order/customer-purchase-order.module';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import 'hammerjs';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -66,7 +66,8 @@ import 'hammerjs';
     DeliveryNotesModule,
     SalesOrderModule,
     CustomerPurchaseOrderModule,
-    ChartsModule
+    ChartsModule,
+    NgbModule
 
   ],
   declarations: [

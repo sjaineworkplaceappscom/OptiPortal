@@ -1,12 +1,11 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { Commonservice } from '../../services/commonservice.service';
-
-import { BsModalService } from 'ngx-bootstrap/modal'; // Bootstrap Modal
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service'; // Bootstrap Modal
 import { Router } from '@angular/router';
 import { opticonstants } from '../../constants';
 import { AccountService } from '../../services/account.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
   selector: 'app-portal-top',
@@ -15,14 +14,16 @@ import { AccountService } from '../../services/account.service';
 })
 export class PortalTopComponent implements OnInit {
 
-  modalRef: BsModalRef;
   openThemeSetting: boolean = false;
-  constructor(private modalService: BsModalService, private router: Router, private commonService: Commonservice, private accountService: AccountService) { }
+  constructor(private modalService: NgbModal, private router: Router, private commonService: Commonservice, private accountService: AccountService) { }
   selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;
   loggedInUserName: string = '';
   parentName: string = '';
   customerCode: string = '';
   LoginUserType: number;
+
+  applicationVersion:string = Configuration.appVersion;
+
   ngOnInit() {
     
     let userDetail: string = localStorage.getItem("LoginUserDetail");
@@ -54,10 +55,6 @@ export class PortalTopComponent implements OnInit {
     this.openThemeSetting = $evenet;
   }
 
-  openSearchMobileModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
-
   signOut() {
 
     this.accountService.logout().subscribe(
@@ -66,11 +63,11 @@ export class PortalTopComponent implements OnInit {
         this.router.navigateByUrl('/login');
       }
     );
-
-
-
-
-
   }
+
+  openVerticallyCentered(content) {
+    this.modalService.open(content, { centered: true });
+  }  
+
 
 } 
