@@ -166,17 +166,16 @@
         </button>
     </div> -->
     
-    <div class="modal-body text-center">
+    <div class="modal-body text-center" style="padding: 20px;">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <img src="assets/images/common/close-black.svg" width="15" />
+        </button>
         <p></p>
         <p>
             <img src="assets/images/logo/large-logo-old.png" alt="Large Logo" class="opti_large-logo" />
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <img src="assets/images/common/close-black.svg" width="15" />
-            </button>
         </p>
         <p>Version {{applicationVersion}}</p>
         <p>Copyright 2000-2018. All rights reserved.</p>
-        <p>By joining you agree to our <a href="javascript:void('0');">Terms</a>  and <a href="javascript:void('0');">Privacy Policy</a>.</p>
     </div>
 
     <!-- <div class="modal-footer">
