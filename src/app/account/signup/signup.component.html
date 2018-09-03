@@ -22,46 +22,48 @@
                                 <h5>Create Account</h5>
                             </div>
 
-                            <label class="k-form-field opti_position-relative">
-                                <span class="opti_form-label">Customer ID *
-                                    <span *ngIf="compId.errors && (compId.dirty || compId.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter valid company id.</span>
-                                </span>
-                                <input class="k-textbox" required [(ngModel)]="companyId" #compId=ngModel type="text" name="companyId" placeholder="e.g. Cust1032"
-                                    (blur)="getCompaneyDetail()" tooltip="{{'Please Enter Id like Cust10325'}}" placement="right"
-                                    container="body" autocomplete="off"/>
-                            </label>
+                            <ng-container *ngIf="UserRegData!='usersignup'">
+                                <label class="k-form-field opti_position-relative">
+                                    <span class="opti_form-label">Customer ID *
+                                        <span *ngIf="compId.errors && (compId.dirty || compId.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter valid company id.</span>
+                                    </span>
+                                    <input class="k-textbox" required [(ngModel)]="companyId" #compId=ngModel type="text" name="companyId" placeholder="e.g. Cust1032"
+                                        (blur)="getCompaneyDetail()" tooltip="{{'Please Enter Id like Cust10325'}}" placement="right"
+                                        container="body" autocomplete="off"/>
+                                </label>
 
-                            <label class="k-form-field opti_signup-company-label">
-                                <span class="opti_form-label">Customer Details</span>
-                            </label>
+                                <label class="k-form-field opti_signup-company-label">
+                                    <span class="opti_form-label">Customer Details</span>
+                                </label>
 
-                            <label class="k-form-field opti_signup-companyname">
-                                <input type="text" name="CompanyName" [(ngModel)]="companyDetail.CompanyName" class="k-textbox" value="" placeholder="e.g. OptiPro ERP"
-                                    disabled/>
-                            </label>
+                                <label class="k-form-field opti_signup-companyname">
+                                    <input type="text" name="CompanyName" [(ngModel)]="companyDetail.CompanyName" class="k-textbox" value="" placeholder="e.g. OptiPro ERP"
+                                        disabled/>
+                                </label>
 
-                            <label class="k-form-field opti_signup-url">
-                                <input type="text" class="k-textbox" value="" placeholder="e.g. https://www.optiproerp.com/" disabled/>
-                            </label>
+                                <label class="k-form-field opti_signup-url">
+                                    <input type="text" class="k-textbox" value="" placeholder="e.g. https://www.optiproerp.com/" disabled/>
+                                </label>
 
-                            <label class="k-form-field opti_signup-primary-label">
-                                <span class="opti_form-label">Primary Contact Details</span>
-                            </label>
+                                <label class="k-form-field opti_signup-primary-label">
+                                    <span class="opti_form-label">Primary Contact Details</span>
+                                </label>
 
-                            <label class="k-form-field opti_signup-primary-name">
-                                <input type="text" class="k-textbox" name="PrimaryContactName" [(ngModel)]="companyDetail.PrimaryContactName" value="" placeholder="e.g. Kevin Peter"
-                                    disabled/>
-                            </label>
+                                <label class="k-form-field opti_signup-primary-name">
+                                    <input type="text" class="k-textbox" name="PrimaryContactName" [(ngModel)]="companyDetail.PrimaryContactName" value="" placeholder="e.g. Kevin Peter"
+                                        disabled/>
+                                </label>
 
-                            <label class="k-form-field opti_signup-primary-email">
-                                <input name="PrimaryContactEmail" [(ngModel)]="companyDetail.PrimaryContactEmail" type="email" class="k-textbox" value=""
-                                    placeholder="e.g. peter@gmail.com" disabled/>
-                            </label>
+                                <label class="k-form-field opti_signup-primary-email">
+                                    <input name="PrimaryContactEmail" [(ngModel)]="companyDetail.PrimaryContactEmail" type="email" class="k-textbox" value=""
+                                        placeholder="e.g. peter@gmail.com" disabled/>
+                                </label>
 
-                            <label class="k-form-field opti_signup-primary-phone">
-                                <input name="PrimaryContactPhone" [(ngModel)]="companyDetail.PrimaryContactPhone" type="text" class="k-textbox" value=""
-                                    placeholder="e.g. +01 321 856 5478" disabled/>
-                            </label>
+                                <label class="k-form-field opti_signup-primary-phone">
+                                    <input name="PrimaryContactPhone" [(ngModel)]="companyDetail.PrimaryContactPhone" type="text" class="k-textbox" value=""
+                                        placeholder="e.g. +01 321 856 5478" disabled/>
+                                </label>
+                            </ng-container>
 
                             <label class="k-form-field">
                                 <span class="opti_form-label">Your Name *

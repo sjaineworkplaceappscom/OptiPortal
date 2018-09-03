@@ -21,11 +21,17 @@ export class LandingComponent implements OnInit {
   navigateToSignUp(value: number) {
     // Click on Customer sign up
     if (value == 1) {
+      this.commonService.passCustomerUserDataToSignup(''); // Reset variable for user registration
       this.commonService.setCurrentNavigatedFromData(2);
     }
     // Click on vendor sign up
     if (value == 2) {
+      this.commonService.passCustomerUserDataToSignup(''); // Reset variable for user registration
       this.commonService.setCurrentNavigatedFromData(3);
+    }
+    // Click on user signup
+    if(value==3){
+      this.commonService.passCustomerUserDataToSignup('usersignup');
     }
     this.router.navigateByUrl('account/signup');
   }

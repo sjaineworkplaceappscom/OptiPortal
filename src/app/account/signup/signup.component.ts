@@ -47,6 +47,8 @@ export class SignupComponent implements OnInit {
   // Error Bits
   invalidCompanyId: boolean = false;
 
+  UserRegData:string='';
+
   constructor(private accountService: AccountService, private router: Router, private commonService: Commonservice, ) {
     //this.generatePurchaseRequestData();
   }
@@ -82,7 +84,17 @@ export class SignupComponent implements OnInit {
         alert("Something went wrong");
         console.log("Error: ", error)
       }
-    )
+    );
+
+    // pass data from landing to signup (customer user)
+    this.commonService.getcustomerUserDataSub.subscribe(
+      data => {
+        this.UserRegData = data;
+      }
+    );
+
+    console.log(this.UserRegData);
+
 
   }
 

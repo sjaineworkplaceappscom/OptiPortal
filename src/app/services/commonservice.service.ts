@@ -129,4 +129,14 @@ export class Commonservice {
    public setAttachementItemData(data:AttachmentDetail){
      this.attachmentItemDataSub.next(data);
    }
+
+  //  share data between landing and signup page
+   private customerUserDataSub =new BehaviorSubject<any>(null);
+   getcustomerUserDataSub=this.customerUserDataSub.asObservable();
+ 
+   public passCustomerUserDataToSignup(data:any){
+     this.customerUserDataSub.next(data);
+   }
+
+
 }
