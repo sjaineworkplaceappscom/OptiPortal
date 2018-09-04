@@ -56,14 +56,14 @@ export class SalesOrderListComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
 
-    //this.getOrderList1();
-    this.getSalesOrderList();
+   this.getOrderList1();
+ //   this.getSalesOrderList();
   }
 
   /**
    * Method to get list of inquries from server.
   */
-  public getOrderList() {
+  public getOrderList1() {
     this.showLoader = true;
     this.gridData = salesOrderList;
     setTimeout(() => {
