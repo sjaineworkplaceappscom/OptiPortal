@@ -4,9 +4,9 @@ import { NotesModel } from '../../models/purchaserequest/notes';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../enums/enums';
 import { Commonservice } from '../../services/commonservice.service';
-import { DatePipe } from '../../../../node_modules/@angular/common';
+import { DatePipe } from '@angular/common';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 

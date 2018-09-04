@@ -4,88 +4,93 @@
       <div class="col-md-12">
 
         <!-- loader start -->
-        <!-- <div class="opti_loader opti_loader-header-tab">
+        <div class="opti_loader opti_loader-header-tab" *ngIf="showLoader==true">
             <div class="opti_spinner"></div>
-        </div> -->
+        </div>
         <!-- loader end --> 
+       
 
-        <div class="card">
+    <ng-container *ngIf="showLoader==false">
+
+
+        <div class="card">  
           <div class="card-block">
             <form class="k-form">
 
               <label class="k-form-field">
                   <span class="opti_form-label">Quotation Number</span>
-                  <input name="quotationnumber" type="text" class="k-textbox" [(ngModel)]="quotationNumber" readonly />
+                  <input name="quotationnumber" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.QuotationNumber" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Status</span>
-                  <input name="status" type="text" class="k-textbox" [(ngModel)]="Status" readonly />
+                  <input name="status" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.Status" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Valid Until</span>
-                  <input name="validuntil" type="text" class="k-textbox" [(ngModel)]="validUntil" readonly />
+                  <input name="validuntil" type="text" class="k-textbox"(ngModelChange)="salesQuotationDetailModel.ValidUntil= $event" [ngModel]="salesQuotationDetailModel.ValidUntil | date:'dd MMM yy'" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Document Date</span>
-                  <input name="documentdate" type="text" class="k-textbox" [(ngModel)]="documentDate" readonly />
-              </label>
+                  <input name="documentdate" type="text" class="k-textbox" (ngModelChange)="salesQuotationDetailModel.DocumentDate= $event" [ngModel]="salesQuotationDetailModel.DocumentDate | date:'dd MMM yy'" readonly />
+              </label> 
 
               <label class="k-form-field">
                   <span class="opti_form-label">Sales Employee</span>
-                  <input name="salesemployee" type="text" class="k-textbox" [(ngModel)]="salesEmployee" readonly />
+                  <input name="salesemployee" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.SalesEmployee" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Owner</span>
-                  <input name="owner" type="text" class="k-textbox" [(ngModel)]="Owner" readonly />
+                  <input name="owner" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.Owner" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Remark</span>
-                  <input name="remark" type="text" class="k-textbox" [(ngModel)]="Remark" readonly />
+                  <input name="remark" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.Remark" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Place Of supply</span>
-                  <input name="placeofsupply" type="text" class="k-textbox" [(ngModel)]="placeOfSupply" readonly />
+                  <input name="placeofsupply" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.PlaceOfSupply" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Total before discount</span>
-                  <input name="beforediscount" type="text" class="k-textbox" [(ngModel)]="totalBeforeDiscount" readonly />
+                  <input name="beforediscount" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.TotalBeforeDisc" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Discount %</span>
-                  <input name="discountpercentage" type="text" class="k-textbox" [(ngModel)]="discountPercantage" readonly />
+                  <input name="discountpercentage" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.DiscountPercentage" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Discount</span>
-                  <input name="discount" type="text" class="k-textbox" [(ngModel)]="Discount" readonly />
+                  <input name="discount" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.Discount" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Freight</span>
-                  <input name="freight" type="text" class="k-textbox" [(ngModel)]="Freight" readonly />
+                  <input name="freight" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.Freight" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Tax</span>
-                  <input name="tax" type="text" class="k-textbox" [(ngModel)]="Tax" readonly />
+                  <input name="tax" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.Tax" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Total</span>
-                  <input name="total" type="text" class="k-textbox" [(ngModel)]="Total" readonly />
+                  <input name="total" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.Total" readonly />
               </label>
               
             </form>
           </div>
         </div>
+        </ng-container>
       </div> 
     </div> 
   </div>  

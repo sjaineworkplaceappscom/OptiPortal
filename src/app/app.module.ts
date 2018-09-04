@@ -20,7 +20,7 @@ import { RightComponent } from './common/right/right.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; // Bootstrap Dropdown
 import { ModalModule } from 'ngx-bootstrap/modal'; // Bootstrap modal
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'; // perfect scroll bar
-import { AuthGuard } from 'src/app/guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';

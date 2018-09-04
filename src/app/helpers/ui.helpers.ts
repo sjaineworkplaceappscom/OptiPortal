@@ -31,8 +31,6 @@ export  class UIHelper{
         //alert(getDeviceWidth);
     }
 
-   
-    
 
     // check is it mobile or not
     public static isMobile():boolean{
@@ -172,6 +170,22 @@ export  class UIHelper{
             tabWidth = tabWidth + tablinks[i].offsetWidth;
         }
         document.getElementById("opti_TabID").style.width  = tabWidth-50+'px';
+    }
+
+    // get width of opti_TabID 
+    // This is temporary function we create this function because if we do (save) or (save as draft) purchase inquiries that case we face issue in tab regarding width
+    public static getWidthOfOuterTabUpdateInq(){
+        let i;
+        let a;
+        let tabWidth : number = 0;
+
+        setTimeout(()=>{
+            let tablinks = document.getElementsByClassName("opti_tablinks") as HTMLCollectionOf<HTMLElement>;
+            for (i = 0; i < tablinks.length; i++) {
+                tabWidth = tabWidth + tablinks[i].offsetWidth;
+            }
+            document.getElementById("opti_TabID").style.width  = tabWidth-50+'px';
+        }, 500);
     }
 
     /**

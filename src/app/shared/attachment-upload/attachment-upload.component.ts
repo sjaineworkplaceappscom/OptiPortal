@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
-import { HttpClient, HttpRequest, HttpEventType } from '../../../../node_modules/@angular/common/http';
+import { HttpClient, HttpRequest, HttpEventType } from '@angular/common/http';
 import { Configuration } from '../../../assets/configuration';
 
 @Component({

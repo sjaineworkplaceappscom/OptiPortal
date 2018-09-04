@@ -15,10 +15,10 @@ import { ComponentName, ModuleName, OperationType } from '../../enums/enums';
 import { DatePipe } from '@angular/common'
 import { Configuration } from '../../../assets/configuration';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 
 import * as $ from "jquery";
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-purchase-inq-list',
@@ -162,12 +162,12 @@ export class PurchaseInqListComponent implements OnInit {
 
     // Selected Item Data
     let selectedIinquiry = this.gridData[selection.index];
-    const selectedData = selection.selectedRows[0].dataItem;
+    //const selectedData = selection.selectedRows[0].dataItem;
     
-    localStorage.setItem("PurchaseinqueryId",selectedData.PurchaseInquiryId);  
-    localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(selectedData));   
+    localStorage.setItem("PurchaseinqueryId",selectedIinquiry.PurchaseInquiryId);  
+    localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(selectedIinquiry));   
     localStorage.setItem("OperationType",OperationType.Update.toString());   
-    currentsideBarInfo.RequesterData = selectedData;
+    currentsideBarInfo.RequesterData = selectedIinquiry;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
 
     // Reset Selection.

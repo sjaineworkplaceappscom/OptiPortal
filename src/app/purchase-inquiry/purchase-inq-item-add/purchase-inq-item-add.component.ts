@@ -8,7 +8,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { Commonservice } from '../../services/commonservice.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType, PurchaseInquiryStatus, PurchaseInquiryItemStatus, OperationType } from '../../enums/enums';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 
 import * as $ from "jquery";
 import { AttachmentDetail } from '../../models/AttchmentDetail';

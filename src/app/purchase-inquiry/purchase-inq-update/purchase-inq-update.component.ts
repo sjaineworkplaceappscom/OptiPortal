@@ -6,7 +6,7 @@ import { Commonservice } from '../../services/commonservice.service';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../enums/enums';
-import { ISubscription } from '../../../../node_modules/rxjs-compat/Subscription';
+import { ISubscription } from 'rxjs-compat/Subscription';
 
 @Component({
   selector: 'app-purchase-inq-update', 
@@ -86,7 +86,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    UIHelper.getWidthOfOuterTabUpdateInq();
   }
 
   ngOnDestroy() {
@@ -103,7 +103,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
   ngOnInit() {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    UIHelper.getWidthOfOuterTabUpdateInq();
     // Add active class on tab title 
     this.optiTab.nativeElement.children[0].classList.add('active');
     // Set sidebar data;

@@ -1,15 +1,15 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { UIHelper } from '../../helpers/ui.helpers';
-import { HttpClient, HttpRequest, HttpEventType } from '../../../../node_modules/@angular/common/http';
+import { HttpClient, HttpRequest, HttpEventType } from '@angular/common/http';
 import { Configuration } from '../../../assets/configuration';
-import { AttachmentDetail } from 'src/app/models/AttchmentDetail';
+import { AttachmentDetail } from '../../models/AttchmentDetail';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../enums/enums';
-import { initChangeDetectorIfExisting } from '../../../../node_modules/@angular/core/src/render3/instructions';
+import { initChangeDetectorIfExisting } from '@angular/core/src/render3/instructions';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 
 
 @Component({

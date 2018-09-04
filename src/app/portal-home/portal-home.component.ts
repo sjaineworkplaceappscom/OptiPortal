@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { UIHelper } from 'src/app/helpers/ui.helpers';
+import { UIHelper } from '../helpers/ui.helpers';
 import { Commonservice } from '../services/commonservice.service';
 import { CurrentSidebarInfo } from '../models/sidebar/current-sidebar-info';
 
