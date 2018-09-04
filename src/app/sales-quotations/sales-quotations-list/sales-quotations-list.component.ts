@@ -107,7 +107,7 @@ export class SalesQuotationsListComponent implements OnInit {
             this.gridData = JSON.parse(Data);
             this.gridData.forEach(element => {
             element.QuotationDate = DateTimeHelper.ParseDate(element.QuotationDate);
-            element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
+          element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
             element.DueDate = DateTimeHelper.ParseDate(element.DueDate);
           });
           this.showLoader = false;

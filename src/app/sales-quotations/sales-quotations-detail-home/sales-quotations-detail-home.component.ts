@@ -5,6 +5,7 @@ import { SalesQuotationsModule } from '../sales-quotations.module';
 import { SalesQuotation } from '../../tempmodels/sales-quotation';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { SalesQuotationDetail } from '../../tempmodels/sales-quotation-detail';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 @Component({
   selector: 'app-sales-quotations-detail-home',
   templateUrl: './sales-quotations-detail-home.component.html',
@@ -13,6 +14,7 @@ import { SalesQuotationDetail } from '../../tempmodels/sales-quotation-detail';
 export class SalesQuotationsDetailHomeComponent implements OnInit {
 
   public getDetailsubs: ISubscription;
+  public getSidebarsubs: ISubscription;
   quotationNumber = 'Cust002';
   Status = 'New';
   validUntil = '02/08/2018';
@@ -34,12 +36,12 @@ export class SalesQuotationsDetailHomeComponent implements OnInit {
 
   ngOnInit() {
     console.log("oninit:");
-    this.getDetailsubs = this.commonService.currentSidebarInfo.subscribe(
+    this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
         this.salesQuotationModel = currentSidebarData.RequesterData;
         let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
         //need to chech show data directly or from API call.
-        console.log("side bar data:" + JSON.stringify(this.salesQuotationModel));
+        //   console.log("side bar data:" + JSON.stringify(this.salesQuotationModel));
         //this.salesQuotationModel = JSON.parse( localStorage.getItem('SelectedSalseQuotation'))
         this.callSalesQuotationDetailAPI(quotationNumber);
       }
@@ -51,13 +53,16 @@ export class SalesQuotationsDetailHomeComponent implements OnInit {
      * call api for purchase inquiry detail.
      */
   callSalesQuotationDetailAPI(id: number) {
-    console.log("detail:" + id);
+
     this.showLoader = true;
     this.getDetailsubs = this.salseQuotationService.getSalesQuotationDetail(id).subscribe(
       data => {
         this.showLoader = false;
-        this.salesQuotationDetailModel = JSON.parse(data);
-        console.log("Data:" + JSON.stringify(this.salesQuotationDetailModel));
+        let dataArray: any[] = JSON.parse(data);
+        this.salesQuotationDetailModel = dataArray[0];
+        this.salesQuotationDetailModel.DocumentDate = DateTimeHelper.ParseDate(this.salesQuotationDetailModel.DocumentDate);
+        this.salesQuotationDetailModel.ValidUntil = DateTimeHelper.ParseDate(this.salesQuotationDetailModel.ValidUntil);
+
       }, error => {
         this.showLoader = false;
         alert("Something went wrong");
@@ -67,8 +72,10 @@ export class SalesQuotationsDetailHomeComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    // if(this.sideBarsubs!=undefined)
-    // this.sideBarsubs.unsubscribe();
+    if (this.getSidebarsubs != undefined)
+      this.getSidebarsubs.unsubscribe();
+    if (this.getDetailsubs != undefined)
+      this.getDetailsubs.unsubscribe();
   }
 
 }

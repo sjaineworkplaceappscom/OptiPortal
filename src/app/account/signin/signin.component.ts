@@ -85,7 +85,7 @@ export class SigninComponent implements OnInit {
   }
 
   public async login() {
-
+debugger;
     // cookie code start
     if(this.isRemember == true){
       this.setCookie('cookieEmail', this.userName, 365);
