@@ -59,8 +59,7 @@ export class SalesQuotationsListComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
     // set salse quotation list data.
-    //this.getSalesQuotationList();
-    this.getSalseQuotationsList();
+    this.getSalesQuotationsList();
   }
 
   /**
@@ -91,9 +90,9 @@ export class SalesQuotationsListComponent implements OnInit {
     currentsideBarInfo.ModuleName = ModuleName.Sales;
     currentsideBarInfo.SideBarStatus = true;
     // Reset Selection.
-    let selectedSalseQuotation = this.gridData[selection.index];
-    currentsideBarInfo.RequesterData = selectedSalseQuotation;
-    localStorage.setItem("SelectedSalseQuotation", JSON.stringify(selectedSalseQuotation));
+    let selectedSalesQuotation = this.gridData[selection.index];
+    currentsideBarInfo.RequesterData = selectedSalesQuotation;
+    localStorage.setItem("SelectedSalesQuotation", JSON.stringify(selectedSalesQuotation));
     this.commonService.setCurrentSideBar(currentsideBarInfo);
 
     // Reset Selection.
@@ -103,7 +102,7 @@ export class SalesQuotationsListComponent implements OnInit {
   /**
   * Method to get list of inquries from server.
   */
-  public getSalseQuotationsList() {
+  public getSalesQuotationsList() {
     this.showLoader = true;
     this.getSaleslistSubs = this.salseQuotationService.getSalesQuotationList().subscribe(
       Data => {

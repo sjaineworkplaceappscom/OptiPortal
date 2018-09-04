@@ -11,10 +11,38 @@ export class SalesOrderService {
   baseUrl = Configuration.baseServerAPIEndpoint;
   constructor(private httpHelper: HttpHelper) { }
 
-  public getSalesQuotationList(): Observable<any> {
-    let url: string = this.baseUrl + "methodName";
-    this.httpHelper.get(url, null);
-    return null;
+
+   /**
+   * get Sales Quotation list data from server.
+   */
+  public getSalesOrderList(): Observable<any> {
+    let url: string = this.baseUrl + "salesquotation/list";
+    return this.httpHelper.get(url, null);
+    //return null;
+  }
+
+  /**
+   * getSalesQuotationDetail from server.
+   */
+  public getSalesOrderDetail(id:number): Observable<any> {
+    let url: string = this.baseUrl + "salesquotation/detail/"+id;
+    return this.httpHelper.get(url, null);
+  }
+
+  /**
+   * getSalesQuotationDetail from server.
+   */
+  public getSalesOrderContentDetail(id:number): Observable<any> {
+    let url: string = this.baseUrl + "salesquotation/contentdetail/"+id;
+    return this.httpHelper.get(url, null);
+  }
+
+    /**
+   * getSalesQuotationDetail from server.
+   */
+  public getSalesOrderAttachmentDetail(id:number): Observable<any> {
+    let url: string = this.baseUrl + "salesquotation/attachmentdetail/"+id;
+    return this.httpHelper.get(url, null);
   }
 
 }

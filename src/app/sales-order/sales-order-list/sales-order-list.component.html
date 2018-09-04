@@ -20,7 +20,7 @@
             [columnMenu]="{ columnChooser: false }" 
             [height]=gridHeight 
             [selectable]="true" 
-            (selectionChange)="openSalesOrderDetailOnSelectSalesOrder($event)"
+            (selectionChange)="openSalesOrderDetailOnSelection($event)"
             #gridItem>
                 <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
                 <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->

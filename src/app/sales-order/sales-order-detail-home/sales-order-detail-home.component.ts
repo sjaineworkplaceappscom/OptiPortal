@@ -25,6 +25,7 @@ export class SalesOrderDetailHomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("s o d h");
   }
 
 }
