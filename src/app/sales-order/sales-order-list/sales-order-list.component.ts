@@ -8,6 +8,7 @@ import { salesOrderList } from '../../DemoData/sales-order';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-sales-order-list',
@@ -84,6 +85,7 @@ export class SalesOrderListComponent implements OnInit {
   }
 
   openSalesOrderDetailOnSelection(selection) {
+    $('#opti_HomeTabSalesOrderID').click(); 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.SalesOrderDetail;
     currentsideBarInfo.ModuleName = ModuleName.SalesOrder;

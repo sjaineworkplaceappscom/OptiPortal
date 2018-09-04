@@ -85,7 +85,7 @@ export class SalesQuotationsListComponent implements OnInit {
   }
 
   openSalesQuotationDetailOnSelection(selection) {
-    $('#opti_HomeTabSalesQuotation').click(); 
+    $('#opti_HomeTabSalesQuotationID').click(); 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.UpdateSales;
     currentsideBarInfo.ModuleName = ModuleName.Sales;
