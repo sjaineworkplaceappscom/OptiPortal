@@ -40,12 +40,9 @@
                   <kendo-chart-series-item 
                     *ngFor="let series of model; let outermost = last;" 
                     type="donut" 
-                    [startAngle]="150" 
-                    [name]="series.name" 
-                    [data]="series.data" 
-                    field="value" 
-                    categoryField="category" 
-                    colorField="color">
+                    [startAngle]="150"                     
+                    [data]="series.data"                   
+                    >
 
                       <!-- label start -->
                       <kendo-chart-series-item-labels *ngIf="outermost" 
