@@ -16,6 +16,7 @@ import { salesQuotations } from '../../DemoData/sales-quotations';
 import { ISubscription } from 'rxjs/Subscription';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-sales-quotations-list',
@@ -84,7 +85,7 @@ export class SalesQuotationsListComponent implements OnInit {
   }
 
   openSalesQuotationDetailOnSelection(selection) {
-    //$('#opti_HomeTabSalesQuotation').click(); 
+    $('#opti_HomeTabSalesQuotation').click(); 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.UpdateSales;
     currentsideBarInfo.ModuleName = ModuleName.Sales;
