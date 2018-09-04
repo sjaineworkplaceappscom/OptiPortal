@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { ISubscription } from 'rxjs/Subscription';
-import { SalesQuotationsModule } from '../sales-quotations.module';
 import { SalesQuotation } from '../../tempmodels/sales-quotation';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { SalesQuotationDetail } from '../../tempmodels/sales-quotation-detail';
@@ -15,20 +14,7 @@ export class SalesQuotationsDetailHomeComponent implements OnInit {
 
   public getDetailsubs: ISubscription;
   public getSidebarsubs: ISubscription;
-  quotationNumber = 'Cust002';
-  Status = 'New';
-  validUntil = '02/08/2018';
-  documentDate = '02/08/2018';
-  salesEmployee = 'Ankur';
-  Owner = 'Sameer Sharma';
-  Remark = 'Apple';
-  placeOfSupply = 'Indore';
-  totalBeforeDiscount = '5%';
-  discountPercantage = '4%';
-  Discount = '52401';
-  Freight = '12';
-  Tax = '8521';
-  Total = '2514556';
+   
   showLoader: boolean = false;
   salesQuotationModel: SalesQuotation = new SalesQuotation();
   salesQuotationDetailModel: SalesQuotationDetail = new SalesQuotationDetail();
@@ -40,19 +26,15 @@ export class SalesQuotationsDetailHomeComponent implements OnInit {
       currentSidebarData => {
         this.salesQuotationModel = currentSidebarData.RequesterData;
         let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
-        //need to chech show data directly or from API call.
-        //   console.log("side bar data:" + JSON.stringify(this.salesQuotationModel));
-        //this.salesQuotationModel = JSON.parse( localStorage.getItem('SelectedSalseQuotation'))
-        this.callSalesQuotationDetailAPI(quotationNumber);
+        this.getSalesQuotationDetail(quotationNumber);
       }
     );
   }
 
-
   /** 
-     * call api for purchase inquiry detail.
+     * call api for Sales quotation detail .
      */
-  callSalesQuotationDetailAPI(id: number) {
+  getSalesQuotationDetail(id: number) {
 
     this.showLoader = true;
     this.getDetailsubs = this.salseQuotationService.getSalesQuotationDetail(id).subscribe(

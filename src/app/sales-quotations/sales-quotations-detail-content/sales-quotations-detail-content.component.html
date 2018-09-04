@@ -59,16 +59,16 @@
                               <span class="opti_vertical-align opti_mouse-pointer"><img src="assets/images/common/search-black.svg" class="" alt="Search" width="15" /></span>
                           </label>
                       </form>
-                  </div>
+                  </div> 
 
               </ng-template>
 
               <kendo-grid-column field="ItemNumber" title="Item Number" [width]="160"></kendo-grid-column>
-              <kendo-grid-column field="Quantity" title="Quantity" [width]="160"></kendo-grid-column>
-              <kendo-grid-column field="UnitPrice" [width]="160" title="Unit Price"></kendo-grid-column>
-              <kendo-grid-column field="DiscountInPercentage" [width]="160" title="Disc%" ></kendo-grid-column>
+              <kendo-grid-column field="Quantity" title="Quantity" [width]="160" ></kendo-grid-column>
+              <kendo-grid-column field="UnitPrice" [width]="160" title="Unit Price"  format= "{0:c}"></kendo-grid-column>
+              <kendo-grid-column field="DiscountInPercentage" [width]="160" title="Disc%"  format= "{0:c}"></kendo-grid-column>
               <kendo-grid-column field="TaxCode" title="Tax Code" [width]="160"></kendo-grid-column>
-              <kendo-grid-column field="TotalLC" title="Total (LC)" [width]="160"></kendo-grid-column>
+              <kendo-grid-column field="TotalLC" title="Total (LC)" [width]="160"  format= "{0:c}"></kendo-grid-column>
               <kendo-grid-column field="UoMCode" title="UoM Code" [width]="160"></kendo-grid-column>
               <kendo-grid-column field="ShipTo" title="Ship To" [width]="160"></kendo-grid-column>
               <kendo-grid-column field="BillTo" [width]="160" title="Bill To"></kendo-grid-column>

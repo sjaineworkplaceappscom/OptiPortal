@@ -146,12 +146,13 @@ export class PurchaseInqListComponent implements OnInit {
 
 
   /**
-   * Method will open the   edit item window for selected grid item.
+   * Method will open the edit item window for selected grid item.
    * @param gridItem 
    * @param selection 
    * @param status  
    */
   public openInqueryDetailOnSelectInquery(selection) {
+    
     // Set home tab active on click on any record
     $('#opti_HomeTabPurchaseInquiry').click();
 
@@ -181,10 +182,8 @@ export class PurchaseInqListComponent implements OnInit {
     }
   }
 
-  clearFilter(grid:GridComponent){      
-   
+  clearFilter(grid:GridComponent){       
     //grid.filter.filters=[];
     //this.gridData=process(this.gridData,null);
-      
   }
 }

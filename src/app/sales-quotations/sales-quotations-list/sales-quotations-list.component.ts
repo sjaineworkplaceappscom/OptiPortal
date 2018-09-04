@@ -85,6 +85,7 @@ export class SalesQuotationsListComponent implements OnInit {
   }
 
   openSalesQuotationDetailOnSelection(selection) {
+    //$('#opti_HomeTabSalesQuotation').click(); 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.UpdateSales;
     currentsideBarInfo.ModuleName = ModuleName.Sales;
@@ -94,6 +95,9 @@ export class SalesQuotationsListComponent implements OnInit {
     currentsideBarInfo.RequesterData = selectedSalseQuotation;
     localStorage.setItem("SelectedSalseQuotation", JSON.stringify(selectedSalseQuotation));
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+
+    // Reset Selection.
+    selection.selectedRows=[];  
   }
 
   /**
