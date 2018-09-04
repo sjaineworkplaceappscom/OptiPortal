@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Configuration } from '../../assets/configuration';
 import { HttpHelper } from '../helpers/http.helper';
 import { NotesModel } from '../models/purchaserequest/notes';
-import { Observable } from '../../../node_modules/rxjs';
-import { HttpRequest, HttpHeaders, HttpClient } from '../../../node_modules/@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpRequest, HttpHeaders, HttpClient } from '@angular/common/http';
 
 
 

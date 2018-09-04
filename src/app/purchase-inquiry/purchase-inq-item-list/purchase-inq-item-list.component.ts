@@ -5,7 +5,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { TempPurchaseInquiryItemModel } from '../../tempmodels/temppurchase-inquiry-item';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from '../../enums/enums';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-purchase-inq-item-list',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { Router } from '@angular/router';
 import { opticonstants } from '../../constants';
-import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
+import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 // import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({

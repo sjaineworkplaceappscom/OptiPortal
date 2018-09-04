@@ -13,7 +13,7 @@ import {
 import { UIHelper } from '../../helpers/ui.helpers';
 
 import { salesQuotations } from '../../DemoData/sales-quotations';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 
@@ -101,17 +101,15 @@ export class SalesQuotationsListComponent implements OnInit {
   */
   public getSalseQuotationsList() {
     this.showLoader = true;
-    debugger;
     this.getSaleslistSubs = this.salseQuotationService.getSalesQuotationList().subscribe(
       Data => {
         if (Data != null && Data != undefined) {
-          this.gridData = JSON.parse(Data);
-          this.gridData.forEach(element => {
-            debugger;
+            this.gridData = JSON.parse(Data);
+            this.gridData.forEach(element => {
             element.QuotationDate = DateTimeHelper.ParseDate(element.QuotationDate);
             element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
             element.DueDate = DateTimeHelper.ParseDate(element.DueDate);
-          }); 
+          });
           this.showLoader = false;
         }
       },

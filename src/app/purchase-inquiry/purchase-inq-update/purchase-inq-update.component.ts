@@ -6,7 +6,7 @@ import { Commonservice } from '../../services/commonservice.service';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../enums/enums';
-import { ISubscription } from '../../../../node_modules/rxjs-compat/Subscription';
+import { ISubscription } from 'rxjs-compat/Subscription';
 
 @Component({
   selector: 'app-purchase-inq-update', 

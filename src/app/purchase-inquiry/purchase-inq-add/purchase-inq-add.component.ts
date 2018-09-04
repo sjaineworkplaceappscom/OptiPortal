@@ -5,7 +5,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { Commonservice } from '../../services/commonservice.service';
 import { ModuleName, ComponentName, PurchaseInquiryStatus } from '../../enums/enums';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 @Component({
   selector: 'app-purchase-inq-add',
   templateUrl: './purchase-inq-add.component.html',

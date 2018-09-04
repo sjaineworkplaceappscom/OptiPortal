@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { SalesQuotationsModule } from '../sales-quotations.module';
 import { SalesQuotation } from '../../tempmodels/sales-quotation';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
+import { SalesQuotationDetail } from '../../tempmodels/sales-quotation-detail';
 @Component({
   selector: 'app-sales-quotations-detail-home',
   templateUrl: './sales-quotations-detail-home.component.html',
@@ -11,7 +12,7 @@ import { SalesQuotationService } from '../../services/sales-quotation.service';
 })
 export class SalesQuotationsDetailHomeComponent implements OnInit {
 
-  public sideBarsubs: ISubscription;
+  public getDetailsubs: ISubscription;
   quotationNumber = 'Cust002';
   Status = 'New';
   validUntil = '02/08/2018';
@@ -26,49 +27,48 @@ export class SalesQuotationsDetailHomeComponent implements OnInit {
   Freight = '12';
   Tax = '8521';
   Total = '2514556';
+  showLoader: boolean = false;
+  salesQuotationModel: SalesQuotation = new SalesQuotation();
+  salesQuotationDetailModel: SalesQuotationDetail = new SalesQuotationDetail();
+  constructor(private commonService: Commonservice, private salseQuotationService: SalesQuotationService) { }
 
-  salesQuotationModel:SalesQuotation = new SalesQuotation();
-  constructor(private commonService: Commonservice, private salseQuotationService: SalesQuotationService ) { }
-   
   ngOnInit() {
     console.log("oninit:");
-    this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
+    this.getDetailsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
         this.salesQuotationModel = currentSidebarData.RequesterData;
+        let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
         //need to chech show data directly or from API call.
-        console.log("side bar data:"+JSON.stringify(this.salesQuotationModel));
+        console.log("side bar data:" + JSON.stringify(this.salesQuotationModel));
         //this.salesQuotationModel = JSON.parse( localStorage.getItem('SelectedSalseQuotation'))
+        this.callSalesQuotationDetailAPI(quotationNumber);
       }
     );
   }
 
 
- /** 
-    * call api for purchase inquiry detail.
-    */
-   callSalesQuotationDetailAPI(id: string) {
-    // /salesquotation/list
-     console.log("detail:" + id);
-    //  this.showLoader = true;
-    //  this.getPIsubs = this.purchaseInquiryService.getInquiryDetail(id).subscribe(
-    //    data => { 
-    //      this.showLoader = false;
-    //      let dataArray: any[] = JSON.parse(data);
-    //      this.purchaseInquiryDetail = dataArray[0];
-    //      localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(this.purchaseInquiryDetail));
-    //      this.setModelAndSubscribeData();
-           
-    //    }, error => {  
-    //      this.showLoader = false; 
-    //      alert("Something went wrong");
-    //      console.log("Error: ", error)
-    //    }, () => { }
-    //  );
-   }
+  /** 
+     * call api for purchase inquiry detail.
+     */
+  callSalesQuotationDetailAPI(id: number) {
+    console.log("detail:" + id);
+    this.showLoader = true;
+    this.getDetailsubs = this.salseQuotationService.getSalesQuotationDetail(id).subscribe(
+      data => {
+        this.showLoader = false;
+        this.salesQuotationDetailModel = JSON.parse(data);
+        console.log("Data:" + JSON.stringify(this.salesQuotationDetailModel));
+      }, error => {
+        this.showLoader = false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
+      }, () => { }
+    );
+  }
 
-  ngOnDestroy(){
-    if(this.sideBarsubs!=undefined)
-    this.sideBarsubs.unsubscribe();
-}
+  ngOnDestroy() {
+    // if(this.sideBarsubs!=undefined)
+    // this.sideBarsubs.unsubscribe();
+  }
 
 }

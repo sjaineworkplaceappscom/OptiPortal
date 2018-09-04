@@ -3,12 +3,12 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { PurchaseInquiryStatus, PurchaseInquiryItemStatus, CustomerEntityType, OperationType } from '../../enums/enums';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { Commonservice } from '../../services/commonservice.service';
-import { HttpClient, HttpEventType } from '../../../../node_modules/@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { AttachmentDetail } from '../../models/AttchmentDetail';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
-import { DecimalPipe } from '../../../../node_modules/@angular/common';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-attachment-item',
