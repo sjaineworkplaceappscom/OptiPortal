@@ -54,12 +54,15 @@
 
   .opti_tab-outer ul.tabs > li:hover,
   .opti_tab-outer ul.tabs > li.active,
-  body .k-grid tbody tr:hover,
   .ps__thumb-y,
   .ps__rail-y:hover > .ps__thumb-y, 
   .ps__rail-y:focus > .ps__thumb-y,
   button {
       background-color: var(--kendo-primary-color);
+  }
+
+  body .k-grid tbody tr:hover{
+    background-color: var(--kendo-light-primary-hover-color);
   }
 
   .opti_loader .opti_spinner{
@@ -81,7 +84,6 @@
       color: var(--kendo-secondry-color);
   }
 
-  body .k-grid tbody tr:hover,
   button {
       color: var(--kendo-white-color);
   }
