@@ -105,7 +105,7 @@ export class SalesQuotationsListComponent implements OnInit {
   * Method to get list of inquries from server.
   */
   public getSalesQuotationsList() {
-    this.showLoader = true;
+    this.showLoader = true; 
     this.getSaleslistSubs = this.salseQuotationService.getSalesQuotationList().subscribe(
       data => {
         
