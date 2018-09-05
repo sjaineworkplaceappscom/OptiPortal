@@ -5,6 +5,7 @@ import { SalesQuotation } from '../../tempmodels/sales-quotation';
 import { SalesOrder } from '../../tempmodels/sales-order';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { SalesOrderDetail } from '../../tempmodels/sales-order-detail';
 
 @Component({
   selector: 'app-sales-order-detail-home',
@@ -13,68 +14,69 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 })
 export class SalesOrderDetailHomeComponent implements OnInit {
 
-  quotationNumber = 'Cust002';
-  Status = 'New';
-  validUntil = '02/08/2018';
-  documentDate= '02/08/2018';
-  salesEmployee = 'Ankur';
-  Owner = 'Sameer Sharma';
-  Remark = 'Apple';
-  placeOfSupply= 'Indore';
-  totalBeforeDiscount = '5%';
-  discountPercantage = '4%';
-  Discount = '52401';
-  Freight = '12';
-  Tax = '8521';
-  Total = '2514556';
+  // quotationNumber = 'Cust002';
+  // Status = 'New';
+  // validUntil = '02/08/2018';
+  // documentDate = '02/08/2018';
+  // salesEmployee = 'Ankur';
+  // Owner = 'Sameer Sharma';
+  // Remark = 'Apple';
+  // placeOfSupply = 'Indore';
+  // totalBeforeDiscount = '5%';
+  // discountPercantage = '4%';
+  // Discount = '52401';
+  // Freight = '12';
+  // Tax = '8521';
+  // Total = '2514556';
 
   showLoader: boolean = false;
   public getSidebarsubs: ISubscription;
   public getOrderDetailsubs: ISubscription;
-  salesOrderModel: SalesOrder = new SalesOrder();
+  salesOrderDetailModel: SalesOrderDetail = new SalesOrderDetail();
 
-  constructor(private commonService: Commonservice , private salseOrderService: SalesOrderService) { }
+  constructor(private commonService: Commonservice, private salseOrderService: SalesOrderService) { }
 
-  ngOnInit() {
-    console.log("oninit:");
-    debugger;
+  ngOnInit() { 
+    console.log("oninit: salsodh");
     this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        this.salesOrderModel = currentSidebarData.RequesterData;
-        let orderNumber: number = this.salesOrderModel.OrderNumber;
-        this.getSalesOrderDetail(orderNumber);
+        console.log("oninit: salsodh subs");
+        this.salesOrderDetailModel = currentSidebarData.RequesterData;
+        let orderNo: number = this.salesOrderDetailModel.OrderNumber;
+        this.getSalesOrderDetail(orderNo);  
       }
     );
-    console.log("s o d h");
   }
 
 
   /** 
-     * call api for Sales quotation detail .
+     * call api for Sales order detail .
      */
-    getSalesOrderDetail(id: number) {
+  getSalesOrderDetail(id: number) {
 
-      this.showLoader = true;
-      // this.getOrderDetailsubs = this.salseOrderService.getSales(id).subscribe(
-      //   data => {
-      //     this.showLoader = false;
-      //     let dataArray: any[] = JSON.parse(data);
-      //     this.salesQuotationDetailModel = dataArray[0];
-      //     this.salesQuotationDetailModel.DocumentDate = DateTimeHelper.ParseDate(this.salesQuotationDetailModel.DocumentDate);
-      //     this.salesQuotationDetailModel.ValidUntil = DateTimeHelper.ParseDate(this.salesQuotationDetailModel.ValidUntil);
-  
-      //   }, error => {
-      //     this.showLoader = false;
-      //     alert("Something went wrong");
-      //     console.log("Error: ", error)
-      //   }, () => { }
-      // );
-    }
-  
-    ngOnDestroy() {
-      if (this.getSidebarsubs != undefined)
-        this.getSidebarsubs.unsubscribe();
-     
-    }
+    this.showLoader = true;
+    this.getOrderDetailsubs = this.salseOrderService.getSalesOrderDetail(id,1).subscribe(
+      data => {
+        debugger;
+        this.showLoader = false; 
+        let dataArray: any[] = JSON.parse(data);
+        this.salesOrderDetailModel = dataArray[0];
+        this.salesOrderDetailModel.DocumentDate = DateTimeHelper.ParseDate(this.salesOrderDetailModel.DocumentDate);
+        this.salesOrderDetailModel.DeliveryDate = DateTimeHelper.ParseDate(this.salesOrderDetailModel.DeliveryDate);
+        
+      }, error => {
+        this.showLoader = false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
+      }, () => { }
+    );
+  }
+
+  ngOnDestroy() {
+    if (this.getSidebarsubs != undefined)
+      this.getSidebarsubs.unsubscribe();
+    if (this.getOrderDetailsubs != undefined)
+      this.getOrderDetailsubs.unsubscribe();
+  }
 
 }

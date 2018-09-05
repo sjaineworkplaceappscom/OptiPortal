@@ -24,26 +24,26 @@ export class SalesOrderService {
   /**
    * getSalesQuotationDetail from server.
    */
-  public getSalesOrderDetail(id:number): Observable<any> {
+  public getSalesOrderDetail(id:number,type:number): Observable<any> {
     
-    let url: string = this.baseUrl + "/salesorder/detail/"+id+"/"+1;  //1 for header tab.
+    let url: string = this.baseUrl + "salesorder/detail/"+id+"/"+type;  //1 for header tab.
     return this.httpHelper.get(url, null);
   }
 
   /**
    * getSalesQuotationDetail from server.
    */
-  public getSalesOrderContentDetail(id:number): Observable<any> {
-    let url: string = this.baseUrl + "salesquotation/contentdetail/"+id;
-    return this.httpHelper.get(url, null);
-  }
+  // public getSalesOrderContentDetail(id:number,type:number): Observable<any> {
+  //   let url: string = this.baseUrl + "salesquotation/contentdetail/"+id+"/"+type;
+  //   return this.httpHelper.get(url, null);
+  // }
 
-    /**
+  /**
    * getSalesQuotationDetail from server.
    */
-  public getSalesOrderAttachmentDetail(id:number): Observable<any> {
-    let url: string = this.baseUrl + "salesquotation/attachmentdetail/"+id;
-    return this.httpHelper.get(url, null);
-  }
+  // public getSalesOrderAttachmentDetail(id:number): Observable<any> {
+  //   let url: string = this.baseUrl + "salesquotation/attachmentdetail/"+id;
+  //   return this.httpHelper.get(url, null);
+  // }
 
 }
