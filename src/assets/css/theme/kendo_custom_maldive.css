@@ -7967,7 +7967,7 @@ div.k-grid-footer {
   box-shadow: 0 0 1px 0 #0ed2f7 inset; }
 
 .k-radio:checked + .k-radio-label::after {
-  background-color: #000000; }
+  background-color: #ffffff; }
 
 .k-radio:focus + .k-radio-label::before {
   box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #0ed2f7; }

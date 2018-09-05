@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { opticonstants } from '../../constants';
 
+import * as $ from "jquery";
+
 @Component({
   selector: 'app-theme-manager',
   templateUrl: './theme-manager.component.html',
@@ -12,8 +14,7 @@ export class ThemeManagerComponent implements OnInit {
   // Event emitter variable.
   @Output() messageEvent = new EventEmitter<boolean>();
   constructor(private commonService: Commonservice) { }
-  
-  
+
   opalColor = opticonstants.OPALTHEMECOLOR;
   urbanColor = opticonstants.URBANTHEMECOLOR;
   skypeColor = opticonstants.SKYPETHEMECOLOR;
@@ -27,12 +28,16 @@ export class ThemeManagerComponent implements OnInit {
   boraboraColor = opticonstants.BORABORA;
   bluelagooColor = opticonstants.BLUELAGOO;
 
-  
+  selectedColor = this.stripeColor;
+  selectedThemeID = opticonstants.STRIPEID;
 
   
 
 
   ngOnInit() {
+    setTimeout(()=>{
+      $('#'+this.selectedThemeID).click(); 
+    }, 500);
   }
 
   // Function called on cross icon.
@@ -41,7 +46,13 @@ export class ThemeManagerComponent implements OnInit {
   }
 
   onThemeChange(themeColor: any) {
+    // alert(themeColor);
     this.commonService.setThemeData(themeColor);
+    
   }
+
+  // onThemeChange1(themeColor1: any){
+  //   alert(themeColor1);
+  // }
 
 }

@@ -12,5 +12,17 @@ export const opticonstants = {
     SUNRISE:'#ff512f',
     MALDIVE:'#0ed2f7',
     BORABORA:'#2bc0e4',
-    BLUELAGOO:'#0052d4'
+    BLUELAGOO:'#0052d4',
+
+    STRIPEID:'stripe',
+    URBANID:'urban',
+    SKYPEID:'skype',
+    GREENID:'green',
+    COFFEEID:'coffee',
+    NEWTREND2018ID:'newtrend',
+    CASTFYID:'castify',
+    SUNRISEID:'sunrise',
+    MALDIVEID:'maldive',
+    BORABORAID:'borabora',
+    BLUELAGOOID:'bluelagoo'
 }
