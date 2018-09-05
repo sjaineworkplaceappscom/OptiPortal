@@ -16,7 +16,7 @@ export class SalesOrderService {
    * get Sales Quotation list data from server.
    */
   public getSalesOrderList(): Observable<any> {
-    let url: string = this.baseUrl + "salesquotation/list";
+    let url: string = this.baseUrl + "salesorder/list";
     return this.httpHelper.get(url, null);
     //return null;
   }
@@ -25,7 +25,8 @@ export class SalesOrderService {
    * getSalesQuotationDetail from server.
    */
   public getSalesOrderDetail(id:number): Observable<any> {
-    let url: string = this.baseUrl + "salesquotation/detail/"+id;
+    
+    let url: string = this.baseUrl + "/salesorder/detail/"+id+"/"+1;  //1 for header tab.
     return this.httpHelper.get(url, null);
   }
 

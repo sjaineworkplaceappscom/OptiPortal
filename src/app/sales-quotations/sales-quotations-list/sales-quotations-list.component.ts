@@ -106,9 +106,9 @@ export class SalesQuotationsListComponent implements OnInit {
   public getSalesQuotationsList() {
     this.showLoader = true;
     this.getSaleslistSubs = this.salseQuotationService.getSalesQuotationList().subscribe(
-      Data => {
-        if (Data != null && Data != undefined) {
-            this.gridData = JSON.parse(Data);
+      data => {
+        if (data != null && data != undefined) {
+            this.gridData = JSON.parse(data);
             this.gridData.forEach(element => {
             element.QuotationDate = DateTimeHelper.ParseDate(element.QuotationDate);
           element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);

@@ -57,8 +57,8 @@ export class SalesOrderListComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
 
-   this.getOrderList1();
- //   this.getSalesOrderList();
+    //this.getOrderList1();
+   this.getSalesOrderList();
   }
 
   /**
@@ -102,15 +102,17 @@ export class SalesOrderListComponent implements OnInit {
   * Method to get list of inquries from server.
   */
   public getSalesOrderList() {
+    console.log('get sales order list');
     this.showLoader = true;
     this.getSaleslistSubs = this.salseOrderService.getSalesOrderList().subscribe(
-      Data => {
-        if (Data != null && Data != undefined) {
-          this.gridData = JSON.parse(Data);
+      data => {
+        console.log("orderlist:"+data);
+        if (data != null && data != undefined) {
+          this.gridData = JSON.parse(data);
           this.gridData.forEach(element => {
-            element.QuotationDate = DateTimeHelper.ParseDate(element.QuotationDate);
+            element.OrderDate = DateTimeHelper.ParseDate(element.OrderDate);
+            element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
             element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
-            element.DueDate = DateTimeHelper.ParseDate(element.DueDate);
           });
           this.showLoader = false;
         }
