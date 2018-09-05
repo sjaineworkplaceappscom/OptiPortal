@@ -15,73 +15,73 @@
               <form class="k-form">
   
                 <label class="k-form-field">
-                    <span class="opti_form-label">Quotation Number</span>
-                    <input name="quotationnumber" type="text" class="k-textbox" [(ngModel)]="quotationNumber" readonly />
+                    <span class="opti_form-label">Order Number</span>
+                    <input name="ordernumber" type="text" class="k-textbox" [(ngModel)]="salesOrderDetailModel.OrderNumber" readonly />
                 </label>
   
                 <label class="k-form-field">
                     <span class="opti_form-label">Status</span>
-                    <input name="status" type="text" class="k-textbox" [(ngModel)]="Status" readonly />
-                </label>
-  
-                <label class="k-form-field">
-                    <span class="opti_form-label">Valid Until</span>
-                    <input name="validuntil" type="text" class="k-textbox" [(ngModel)]="validUntil" readonly />
+                    <input name="status" type="text" class="k-textbox" [(ngModel)]="salesOrderDetailModel.Status" readonly />
                 </label>
   
                 <label class="k-form-field">
                     <span class="opti_form-label">Document Date</span>
-                    <input name="documentdate" type="text" class="k-textbox" [(ngModel)]="documentDate" readonly />
+                    <input name="documentDate" type="text" class="k-textbox" (ngModelChange)="salesOrderDetailModel.DocumentDate= $event" [ngModel]="salesOrderDetailModel.DocumentDate | date:'dd MMM yy'"  readonly />
+                </label>
+  
+                <label class="k-form-field">
+                    <span class="opti_form-label">Delivery Date</span>
+                    <input name="Deliverydate" type="text" class="k-textbox" (ngModelChange)="salesOrderDetailModel.DeliveryDate= $event" [ngModel]="salesOrderDetailModel.DeliveryDate | date:'dd MMM yy'" readonly />
                 </label>
   
                 <label class="k-form-field">
                     <span class="opti_form-label">Sales Employee</span>
-                    <input name="salesemployee" type="text" class="k-textbox" [(ngModel)]="salesEmployee" readonly />
+                    <input name="salesemployee" type="text" class="k-textbox" [(ngModel)]="salesOrderDetailModel.SalesEmployee" readonly />
                 </label>
   
                 <label class="k-form-field">
                     <span class="opti_form-label">Owner</span>
-                    <input name="owner" type="text" class="k-textbox" [(ngModel)]="Owner" readonly />
+                    <input name="owner" type="text" class="k-textbox" [(ngModel)]="salesOrderDetailModel.Owner" readonly />
                 </label>
   
                 <label class="k-form-field">
                     <span class="opti_form-label">Remark</span>
-                    <input name="remark" type="text" class="k-textbox" [(ngModel)]="Remark" readonly />
+                    <input name="remark" type="text" class="k-textbox" [(ngModel)]="salesOrderDetailModel.Remark" readonly />
                 </label>
   
                 <label class="k-form-field">
                     <span class="opti_form-label">Place Of supply</span>
-                    <input name="placeofsupply" type="text" class="k-textbox" [(ngModel)]="placeOfSupply" readonly />
+                    <input name="placeofsupply" type="text" class="k-textbox" [(ngModel)]="salesOrderDetailModel.PlaceOfSupply" readonly />
                 </label>
   
                 <label class="k-form-field">
                     <span class="opti_form-label">Total before discount</span>
-                    <input name="beforediscount" type="text" class="k-textbox" [(ngModel)]="totalBeforeDiscount" readonly />
+                    <input name="beforediscount" type="text" class="k-textbox" [(ngModel)]="salesOrderDetailModel.TotalBeforeDiscount" readonly />
                 </label>
   
                 <label class="k-form-field">
                     <span class="opti_form-label">Discount %</span>
-                    <input name="discountpercentage" type="text" class="k-textbox" [(ngModel)]="discountPercantage" readonly />
+                    <input name="discountpercentage" type="text" class="k-textbox" [(ngModel)]="salesOrderDetailModel.DiscountPercent" readonly />
                 </label>
   
                 <label class="k-form-field">
                     <span class="opti_form-label">Discount</span>
-                    <input name="discount" type="text" class="k-textbox" [(ngModel)]="Discount" readonly />
+                    <input name="discount" type="text" class="k-textbox" [(ngModel)]="salesOrderDetailModel.Discount" readonly />
                 </label>
   
                 <label class="k-form-field">
                     <span class="opti_form-label">Freight</span>
-                    <input name="freight" type="text" class="k-textbox" [(ngModel)]="Freight" readonly />
+                    <input name="freight" type="text" class="k-textbox" [(ngModel)]="salesOrderDetailModel.Freight" readonly />
                 </label>
   
                 <label class="k-form-field">
                     <span class="opti_form-label">Tax</span>
-                    <input name="tax" type="text" class="k-textbox" [(ngModel)]="Tax" readonly />
+                    <input name="tax" type="text" class="k-textbox" [(ngModel)]="salesOrderDetailModel.Tax" readonly />
                 </label>
   
                 <label class="k-form-field">
                     <span class="opti_form-label">Total</span>
-                    <input name="total" type="text" class="k-textbox" [(ngModel)]="Total" readonly />
+                    <input name="total" type="text" class="k-textbox" [(ngModel)]="salesOrderDetailModel.Total" readonly />
                 </label>
                 
               </form>

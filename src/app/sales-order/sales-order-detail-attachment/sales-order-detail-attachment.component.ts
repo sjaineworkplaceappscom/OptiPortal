@@ -2,6 +2,10 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { salesOrderAttachment } from '../../DemoData/sales-order';
 import { GridComponent } from '@progress/kendo-angular-grid';
+import { SalesOrder } from '../../tempmodels/sales-order';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { SalesOrderService } from '../../services/sales-order.service';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 @Component({
   selector: 'app-sales-order-detail-attachment',
@@ -18,14 +22,16 @@ export class SalesOrderDetailAttachmentComponent implements OnInit {
   showLoader: boolean = false;
   searchRequest: string = '';
 
-  constructor() { }
+  salesOrderModel: SalesOrder = new SalesOrder();
+  public getSalseAttachmentubs: ISubscription;
+
+  constructor(private salseOrderService: SalesOrderService) { }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
-
     // check mobile device
     this.isMobile = UIHelper.isMobile();
   }
@@ -34,17 +40,21 @@ export class SalesOrderDetailAttachmentComponent implements OnInit {
   ngOnInit() {
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
-
     // check mobile device
     this.isMobile = UIHelper.isMobile();
 
-    this.getSalesOrderAttachmentList();
+
+    this.salesOrderModel = JSON.parse(localStorage.getItem('SelectedSalseQuotation'))
+    let orderNumber: number = this.salesOrderModel.OrderNumber;
+    this.getSalesOrderAttachmentList(orderNumber);
+
+    this.getSalesOrderAttachmentList1();
   }
 
    /**
    * Method to get list of inquries from server.
   */
-  public getSalesOrderAttachmentList() {
+  public getSalesOrderAttachmentList1() {
     this.showLoader = true;
     this.gridData = salesOrderAttachment;
     setTimeout(()=>{    
@@ -62,5 +72,36 @@ export class SalesOrderDetailAttachmentComponent implements OnInit {
   clearFilter(grid:GridComponent){      
     //grid.filter.filters=[];
   }
+
+
+   /** 
+  * call api for Sales quotation detail attachment .
+  */
+ getSalesOrderAttachmentList(id: number) {
+  this.showLoader = true;
+  this.getSalseAttachmentubs = this.salseOrderService.getSalesOrderDetail(id,3).subscribe(
+    data => {
+      this.showLoader = false;
+      if (data != null && data != undefined) {
+        this.gridData = JSON.parse(data);
+        this.gridData.forEach(element => { 
+        element.AttachmentDate = DateTimeHelper.ParseDate(element.AttachmentDate);
+      });
+      
+      this.showLoader = false;
+    }
+    }, error => {
+      this.showLoader = false;
+      alert("Something went wrong");
+      console.log("Error: ", error)
+    }, () => { }
+  );
+}
+
+ngOnDestroy() {
+  if (this.getSalseAttachmentubs != undefined)
+    this.getSalseAttachmentubs.unsubscribe();
+ }
+
 
 }

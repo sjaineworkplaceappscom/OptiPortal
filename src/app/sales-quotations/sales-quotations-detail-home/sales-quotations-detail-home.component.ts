@@ -21,9 +21,10 @@ export class SalesQuotationsDetailHomeComponent implements OnInit {
   constructor(private commonService: Commonservice, private salseQuotationService: SalesQuotationService) { }
 
   ngOnInit() {
-    console.log("oninit:");
+    console.log("oninit: salseqdh");
     this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
+        console.log("oninit: salseqdh subs");
         this.salesQuotationModel = currentSidebarData.RequesterData;
         let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
         this.getSalesQuotationDetail(quotationNumber);

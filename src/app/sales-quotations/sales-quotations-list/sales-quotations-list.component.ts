@@ -16,6 +16,7 @@ import { salesQuotations } from '../../DemoData/sales-quotations';
 import { ISubscription } from 'rxjs/Subscription';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-sales-quotations-list',
@@ -59,8 +60,7 @@ export class SalesQuotationsListComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
     // set salse quotation list data.
-    //this.getSalesQuotationList();
-    this.getSalseQuotationsList();
+    this.getSalesQuotationsList();
   }
 
   /**
@@ -85,15 +85,15 @@ export class SalesQuotationsListComponent implements OnInit {
   }
 
   openSalesQuotationDetailOnSelection(selection) {
-    //$('#opti_HomeTabSalesQuotation').click(); 
+    $('#opti_HomeTabSalesQuotationID').click(); 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.UpdateSales;
     currentsideBarInfo.ModuleName = ModuleName.Sales;
     currentsideBarInfo.SideBarStatus = true;
     // Reset Selection.
-    let selectedSalseQuotation = this.gridData[selection.index];
-    currentsideBarInfo.RequesterData = selectedSalseQuotation;
-    localStorage.setItem("SelectedSalseQuotation", JSON.stringify(selectedSalseQuotation));
+    let selectedSalesQuotation = this.gridData[selection.index];
+    currentsideBarInfo.RequesterData = selectedSalesQuotation;
+    localStorage.setItem("SelectedSalesQuotation", JSON.stringify(selectedSalesQuotation));
     this.commonService.setCurrentSideBar(currentsideBarInfo);
 
     // Reset Selection.
@@ -103,12 +103,12 @@ export class SalesQuotationsListComponent implements OnInit {
   /**
   * Method to get list of inquries from server.
   */
-  public getSalseQuotationsList() {
+  public getSalesQuotationsList() {
     this.showLoader = true;
     this.getSaleslistSubs = this.salseQuotationService.getSalesQuotationList().subscribe(
-      Data => {
-        if (Data != null && Data != undefined) {
-            this.gridData = JSON.parse(Data);
+      data => {
+        if (data != null && data != undefined) {
+            this.gridData = JSON.parse(data);
             this.gridData.forEach(element => {
             element.QuotationDate = DateTimeHelper.ParseDate(element.QuotationDate);
           element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
