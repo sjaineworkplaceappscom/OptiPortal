@@ -81,7 +81,7 @@ export class SalesOrderDetailAttachmentComponent implements OnInit {
   this.showLoader = true;
   this.getSalseAttachmentubs = this.salseOrderService.getSalesOrderDetail(id,3).subscribe(
     data => {
-      debugger; 
+      
       this.showLoader = false;
       if (data != null && data != undefined) {
         this.gridData = JSON.parse(data);

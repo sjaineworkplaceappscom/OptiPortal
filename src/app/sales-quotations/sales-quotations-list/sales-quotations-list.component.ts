@@ -91,6 +91,7 @@ export class SalesQuotationsListComponent implements OnInit {
     currentsideBarInfo.ModuleName = ModuleName.Sales;
     currentsideBarInfo.SideBarStatus = true;
     // Reset Selection.
+    
     let selectedSalesQuotation = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = selectedSalesQuotation;
     localStorage.setItem("SelectedSalesQuotation", JSON.stringify(selectedSalesQuotation));
@@ -107,6 +108,7 @@ export class SalesQuotationsListComponent implements OnInit {
     this.showLoader = true;
     this.getSaleslistSubs = this.salseQuotationService.getSalesQuotationList().subscribe(
       data => {
+        
         if (data != null && data != undefined) {
             this.gridData = JSON.parse(data);
             this.gridData.forEach(element => {

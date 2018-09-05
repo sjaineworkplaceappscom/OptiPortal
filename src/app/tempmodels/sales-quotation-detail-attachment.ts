@@ -1,4 +1,4 @@
 export class SalesQuotationDetailAttachment{    
    FileName:string;
-   AttachmentDate:Date;
+   AttachementDate:Date;
 } 

@@ -42,10 +42,10 @@ export class SalesQuotationsDetailAttchmentComponent implements OnInit {
 
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-
-    this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalseQuotation'))
-    let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
-    this.getSalesQuotationAttachmentList(quotationNumber);
+    
+    this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
+    let quotationId: number = this.salesQuotationModel.QuotationId;
+    this.getSalesQuotationAttachmentList(quotationId);
 
   }
 
@@ -76,13 +76,14 @@ export class SalesQuotationsDetailAttchmentComponent implements OnInit {
   */
   getSalesQuotationAttachmentList(id: number) {
     this.showLoader = true;
-    this.getDetailAttachsubs = this.salseQuotationService.getSalesQuotationAttachmentDetail(id).subscribe(
+    this.getDetailAttachsubs = this.salseQuotationService.getSalesQuotationDetail(id,3).subscribe(
       data => {
+        
         this.showLoader = false;
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
           this.gridData.forEach(element => { 
-          element.AttachmentDate = DateTimeHelper.ParseDate(element.AttachmentDate);
+          element.AttachementDate = DateTimeHelper.ParseDate(element.AttachementDate);
         });
         this.showLoader = false;
       }

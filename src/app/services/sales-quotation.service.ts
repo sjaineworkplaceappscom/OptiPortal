@@ -25,8 +25,8 @@ export class SalesQuotationService {
   /**
    * getSalesQuotationDetail from server.
    */
-  public getSalesQuotationDetail(id:number): Observable<any> {
-    let url: string = this.baseUrl + "salesquotation/detail/"+id;
+  public getSalesQuotationDetail(id:number,type:number): Observable<any> {
+    let url: string = this.baseUrl + "salesquotation/detail/"+id+"/"+type;
     return this.httpHelper.get(url, null);
   }
 

@@ -1,6 +1,6 @@
 
 export class SalesQuotation{    
-    
+    QuotationId:number;
     QuotationNumber:number;
     QuotationDate:Date; //customer item id or description
     Remark:string;
