@@ -49,6 +49,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { PortalHomeModule } from './portal-home/portal-home.module';
 import { PurchaseInquiryModule } from './purchase-inquiry/purchase-inquiry.module';
 import { FileSizePipe } from './file-size.pipe';
+import { HttpErrorInterceptor } from 'src/app/guards/intercepters/errorintercepter';
 
 
 
@@ -123,7 +124,11 @@ const routes: Routes = [
     useClass: AuthInterceptor,
     multi: true,
   },
-  
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpErrorInterceptor,
+    multi: true,
+  },
   DatePipe
 ],
   bootstrap: [AppComponent]
