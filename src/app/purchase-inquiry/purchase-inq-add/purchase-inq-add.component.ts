@@ -6,6 +6,7 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
 import { Commonservice } from '../../services/commonservice.service';
 import { ModuleName, ComponentName, PurchaseInquiryStatus } from '../../enums/enums';
 import { ISubscription } from 'rxjs/Subscription';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 @Component({
   selector: 'app-purchase-inq-add',
   templateUrl: './purchase-inq-add.component.html',
@@ -102,6 +103,11 @@ export class PurchaseInqAddComponent implements OnInit {
       let Draftstatus: any = { text: "Draft", value: PurchaseInquiryStatus.Draft };
       this.purchaseInqueryAdd.Status = Draftstatus.value;
     }
+    
+    
+    //DateTimeHelper.ParseToUTC(this.purchaseInqueryAdd.ValidTillDate);
+    this.purchaseInqueryAdd.ValidTillDate=DateTimeHelper.ParseToUTC(this.purchaseInqueryAdd.ValidTillDate);
+
     this.showLoader=true;
     this.addSub=this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
       (data: any) => {        

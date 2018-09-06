@@ -120,8 +120,8 @@ export class PurchaseInqListComponent implements OnInit {
         this.showLoader=false;
         alert("Something went wrong");
         console.log("Error: ", error);
-        localStorage.clear();
-        this.router.navigate(['landing']);
+        //localStorage.clear();
+       // this.router.navigate(['landing']);
       
         
       },
