@@ -63,14 +63,48 @@
                </div>
            </ng-template>
 
+           <!-- grid for mobile start -->
+           <kendo-grid-column media="(max-width: 767px)" title="Customer Purchase Order">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    <!-- template for mobile -->
+                    <!-- <h4 [class.discontinued]="dataItem.Discontinued">
+                        {{ dataItem.Name }}
+                    </h4> -->
+                    <dl>
+                        <dt>purchase Order Inquiry#</dt>
+                        <dd>{{ dataItem.Inquiry }}</dd>
+
+                        <dt>Customer Id</dt>
+                        <dd>{{ dataItem.Customer }}</dd>
+
+                        <dt>Customer Name</dt>
+                        <dd>{{ dataItem.Name }}</dd>
+
+                        <dt>Status</dt>
+                        <dd>{{ dataItem.Status }}</dd>
+
+                        <dt>Created Date</dt>
+                        <dd>{{ dataItem.BuyerCreatedBy }}</dd>
+
+                        <dt>Created By</dt>
+                        <dd>{{ dataItem.ValidUntil }}</dd>
+
+                        <dt>Valid Until</dt>
+                        <dd>{{ dataItem.Reference }}</dd>
+
+                    </dl>
+                </ng-template>
+            </kendo-grid-column>
+           <!-- grid for mobile end -->
+
            <!-- grid template end -->
-           <kendo-grid-column field="Inquiry" title="purchase Order Inquiry#" [width]="160" filter="numeric"></kendo-grid-column>
-           <kendo-grid-column field="Customer" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
-           <kendo-grid-column field="Name" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column>
-           <kendo-grid-column field="Status" [width]="140" title="Status" ></kendo-grid-column>
-           <kendo-grid-column field="BuyerCreatedBy" title="Created Date" [width]="200"  filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-           <kendo-grid-column field="ValidUntil" title="Created By" [width]="140"></kendo-grid-column>
-           <kendo-grid-column field="Reference" title="Valid Until" [width]="200" filter="date"  type=date format="{0:dd MMM yy}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="Inquiry" title="purchase Order Inquiry#" [width]="160" filter="numeric"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="Customer" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="Name" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="Status" [width]="140" title="Status" ></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="BuyerCreatedBy" title="Created Date" [width]="200"  filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="ValidUntil" title="Created By" [width]="140"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="Reference" title="Valid Until" [width]="200" filter="date"  type=date format="{0:dd MMM yy}"></kendo-grid-column>
            
            <!-- xlsx template start -->
            <kendo-grid-excel fileName="Sales-quotations.xlsx"></kendo-grid-excel>
