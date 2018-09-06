@@ -154,5 +154,8 @@ body.opti_account-module{
     .k-dropdown .k-state-focused, .k-dropdowntree .k-state-focused {
         box-shadow: 0 0 0 3px rgba($color: $themeForAccountSection, $alpha: 0.2); 
     }
+    .opti_loader .opti_spinner{
+        border-top-color: $themeForAccountSection !important;
+    }
 }
 
