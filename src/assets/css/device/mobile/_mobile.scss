@@ -4,6 +4,8 @@
 @import 'purchase-inquiries_module/_mobile_purchase-inquiries_common';
 @import 'sales-quotations_module/_mobile_sales_quotations_common';
 @import 'sales-order_module/_mobile_sales_order_common';
+@import 'customer-purchase-order_module/_mobile_customer_purchase_order_common';
+
 
 
 
@@ -16,3 +18,17 @@ body.opti_body-main-module .opti_loader-module-grid-list {
 //////////////////////////////////////
 // css for main module grid loader end
 //////////////////////////////////////
+
+
+//////////////////////////////////////
+// css start for mobile grid
+//////////////////////////////////////
+.opti_mobile_grid_dl{
+    width: 50%;
+    float: left;
+    margin-bottom: 0;
+    padding: 5px;
+}
+.opti_mobile-grid-td{
+    box-shadow: 0px 2px 10px $input-border-color;
+}
