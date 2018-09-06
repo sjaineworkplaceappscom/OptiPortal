@@ -157,5 +157,8 @@ body.opti_account-module{
     .opti_loader .opti_spinner{
         border-top-color: $themeForAccountSection !important;
     }
+    .k-button.k-primary:focus, .k-button.k-primary.k-state-focused{
+        box-shadow: 0 0 0 3px rgba($color: $themeForAccountSection, $alpha: 0.2);  
+    }
 }
 
