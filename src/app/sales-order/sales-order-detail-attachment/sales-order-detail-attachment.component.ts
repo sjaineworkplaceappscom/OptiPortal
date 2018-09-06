@@ -44,11 +44,11 @@ export class SalesOrderDetailAttachmentComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
 
 
-    this.salesOrderModel = JSON.parse(localStorage.getItem('SelectedSalseQuotation'))
+    this.salesOrderModel = JSON.parse(localStorage.getItem('SelectedSalesOrder'))
     let orderNumber: number = this.salesOrderModel.OrderNumber;
     this.getSalesOrderAttachmentList(orderNumber);
 
-    this.getSalesOrderAttachmentList1();
+//    this.getSalesOrderAttachmentList1();
   }
 
    /**
@@ -81,11 +81,12 @@ export class SalesOrderDetailAttachmentComponent implements OnInit {
   this.showLoader = true;
   this.getSalseAttachmentubs = this.salseOrderService.getSalesOrderDetail(id,3).subscribe(
     data => {
+      
       this.showLoader = false;
       if (data != null && data != undefined) {
         this.gridData = JSON.parse(data);
         this.gridData.forEach(element => { 
-        element.AttachmentDate = DateTimeHelper.ParseDate(element.AttachmentDate);
+        element.AttachementDate = DateTimeHelper.ParseDate(element.AttachementDate);
       });
       
       this.showLoader = false;

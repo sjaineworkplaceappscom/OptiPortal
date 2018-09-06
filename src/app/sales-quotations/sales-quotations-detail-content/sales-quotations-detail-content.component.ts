@@ -43,9 +43,10 @@ export class SalesQuotationsDetailContentComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-    this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalseQuotation'))
-    let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
-    this.getSalesQuotationContentList(quotationNumber);
+    this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'));
+    
+    let quotationId: number = this.salesQuotationModel.QuotationId;
+    this.getSalesQuotationContentList(quotationId);
 
   }
 
@@ -76,8 +77,9 @@ export class SalesQuotationsDetailContentComponent implements OnInit {
    */
   getSalesQuotationContentList(id: number) {
     this.showLoader = true;
-    this.getDetailsubs = this.salseQuotationService.getSalesQuotationContentDetail(id).subscribe(
+    this.getDetailsubs = this.salseQuotationService.getSalesQuotationDetail(id,2).subscribe(
       data => {
+        
         this.showLoader = false;
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);

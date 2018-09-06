@@ -57,7 +57,6 @@ export class SalesOrderDetailHomeComponent implements OnInit {
     this.showLoader = true;
     this.getOrderDetailsubs = this.salseOrderService.getSalesOrderDetail(id,1).subscribe(
       data => {
-        debugger;
         this.showLoader = false; 
         let dataArray: any[] = JSON.parse(data);
         this.salesOrderDetailModel = dataArray[0];

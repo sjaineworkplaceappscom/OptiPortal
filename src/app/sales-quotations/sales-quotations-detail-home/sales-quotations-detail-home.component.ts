@@ -25,9 +25,10 @@ export class SalesQuotationsDetailHomeComponent implements OnInit {
     this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
         console.log("oninit: salseqdh subs");
+        
         this.salesQuotationModel = currentSidebarData.RequesterData;
-        let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
-        this.getSalesQuotationDetail(quotationNumber);
+        let quotationId: number = this.salesQuotationModel.QuotationId;
+        this.getSalesQuotationDetail(quotationId);
       }
     );
   }
@@ -38,8 +39,9 @@ export class SalesQuotationsDetailHomeComponent implements OnInit {
   getSalesQuotationDetail(id: number) {
 
     this.showLoader = true;
-    this.getDetailsubs = this.salseQuotationService.getSalesQuotationDetail(id).subscribe(
+    this.getDetailsubs = this.salseQuotationService.getSalesQuotationDetail(id,1).subscribe(
       data => {
+        
         this.showLoader = false;
         let dataArray: any[] = JSON.parse(data);
         this.salesQuotationDetailModel = dataArray[0];

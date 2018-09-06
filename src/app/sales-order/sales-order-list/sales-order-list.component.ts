@@ -83,7 +83,7 @@ export class SalesOrderListComponent implements OnInit {
   clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
   }
-
+ 
   openSalesOrderDetailOnSelection(selection) {
     $('#opti_HomeTabSalesOrderID').click(); 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
@@ -95,6 +95,7 @@ export class SalesOrderListComponent implements OnInit {
     currentsideBarInfo.RequesterData = selectedSalesOrder;
     localStorage.setItem("SelectedSalesOrder", JSON.stringify(selectedSalesOrder));
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+    selection.selectedRows=[];  
   }
 
 

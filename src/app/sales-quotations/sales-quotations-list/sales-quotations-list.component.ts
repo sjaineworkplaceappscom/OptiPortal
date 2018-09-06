@@ -91,6 +91,7 @@ export class SalesQuotationsListComponent implements OnInit {
     currentsideBarInfo.ModuleName = ModuleName.Sales;
     currentsideBarInfo.SideBarStatus = true;
     // Reset Selection.
+    
     let selectedSalesQuotation = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = selectedSalesQuotation;
     localStorage.setItem("SelectedSalesQuotation", JSON.stringify(selectedSalesQuotation));
@@ -104,15 +105,16 @@ export class SalesQuotationsListComponent implements OnInit {
   * Method to get list of inquries from server.
   */
   public getSalesQuotationsList() {
-    this.showLoader = true;
+    this.showLoader = true; 
     this.getSaleslistSubs = this.salseQuotationService.getSalesQuotationList().subscribe(
       data => {
+        debugger;
         if (data != null && data != undefined) {
             this.gridData = JSON.parse(data);
             this.gridData.forEach(element => {
             element.QuotationDate = DateTimeHelper.ParseDate(element.QuotationDate);
           element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
-            element.DueDate = DateTimeHelper.ParseDate(element.DueDate);
+            element.Duedate = DateTimeHelper.ParseDate(element.Duedate);
           });
           this.showLoader = false;
         }

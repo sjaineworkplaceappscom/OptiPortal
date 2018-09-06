@@ -49,7 +49,7 @@
                     <label class="k-form-field opti_display-inline-flex opti_signin-captcha">
                         <!-- <div class="opti_captcha-box"> -->
                         <span class="float-left opti_captcha-text">
-                            <input required class="k-textbox" #Captcha=ngModel [(ngModel)]="capchaText" (input)="changeValue()" type="text" name="captchatext"/>
+                            <input required class="k-textbox" #Captcha=ngModel [(ngModel)]="capchaText" (input)="changeValue()" type="text" name="captchatext" autocomplete="off" />
                         </span>
                         <span class="float-left opti_captcha-canvas">
                             <canvas #myCanvas id="captchaCanvasID" width="70" height="30">Your browser does not support the HTML5 canvas tag.</canvas>
