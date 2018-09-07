@@ -65,6 +65,14 @@ body{
         font-size: 12px;
         margin-bottom: 0 !important;
     }
+    button[disabled], .k-button[disabled], [disabled] .k-button{
+        opacity: 0.2;
+        outline: none;
+        cursor: default;
+        filter: grayscale(0.1);
+        pointer-events: none;
+        box-shadow: none;
+    }
     /////////////////////////////////////////////////////////////////////////////////
     // Some basic css end
     /////////////////////////////////////////////////////////////////////////////////

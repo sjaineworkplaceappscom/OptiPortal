@@ -1,13 +1,20 @@
-//import * as moment from 'moment';
-// import * as momentTZ from 'moment-timezone';
+import * as moment from 'moment';
+import * as momentTZ from 'moment-timezone';
 import { DatePipe } from '@angular/common';
 import { Configuration } from '../../assets/configuration';
 export class DateTimeHelper{
     constructor(private datepipe:DatePipe){}
 
+    // 
     public static  ParseDate(date:any){       
-       // return new Date(moment(date).format(Configuration.dateFormat));                       
-           return new Date(date);
+        //return new Date(moment(date).format(Configuration.dateFormat));                       
+           //return new Date(date);          
+        return new Date(moment.utc(date).local().format(Configuration.dateFormat));
+        // momentTZ.tz(date, momentTZ.tz.guess()).format(Configuration.dateFormat);        
+    }
+
+    public static ParseToUTC(date:any):Date{        
+      return new Date(moment.utc(date).local().format(Configuration.dateFormat));
     }
 }
 

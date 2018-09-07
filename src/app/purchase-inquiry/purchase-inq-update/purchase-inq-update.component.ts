@@ -7,6 +7,7 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
 import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../enums/enums';
 import { ISubscription } from 'rxjs-compat/Subscription';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 @Component({
   selector: 'app-purchase-inq-update', 
@@ -157,6 +158,9 @@ export class PurchaseInqUpdateComponent implements OnInit {
         this.showLoader = false;
         let dataArray: any[] = JSON.parse(data);
         this.purchaseInquiryDetail = dataArray[0];
+       
+       
+        this.purchaseInquiryDetail.ValidTillDate=DateTimeHelper.ParseToUTC(this.purchaseInquiryDetail.ValidTillDate);
         localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(this.purchaseInquiryDetail));
         this.setModelAndSubscribeData();
           

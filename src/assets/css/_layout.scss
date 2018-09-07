@@ -131,3 +131,34 @@ section#opti_TopBarID{
 body kendo-grid {
     box-shadow: 0px 1px 15px #1fa2ff;
 }
+
+// Always set stripe theme for account module
+body.opti_account-module{
+    .k-indicator-container, a, h1, h2, h3, h4, h5, h6, .k-grid-header .k-header {
+        color: $themeForAccountSection;
+    }
+    .k-checkbox:checked + .k-checkbox-label::before {
+        border-color: $themeForAccountSection;
+        background-color: $themeForAccountSection;
+    }
+    .ps__thumb-y, .ps__rail-y:hover > .ps__thumb-y, .ps__rail-y:focus > .ps__thumb-y{
+        background-color: $themeForAccountSection;
+    }
+    .k-checkbox:focus + .k-checkbox-label::before{
+        box-shadow: 0 0 0 1px $white, 0 0 0 3px $themeForAccountSection;
+    }
+    .k-dropdown > :hover,
+    .k-dropdown .k-dropdown-wrap{
+        border-color: $themeForAccountSection;
+    }
+    .k-dropdown .k-state-focused, .k-dropdowntree .k-state-focused {
+        box-shadow: 0 0 0 3px rgba($color: $themeForAccountSection, $alpha: 0.2); 
+    }
+    .opti_loader .opti_spinner{
+        border-top-color: $themeForAccountSection !important;
+    }
+    .k-button.k-primary:focus, .k-button.k-primary.k-state-focused{
+        box-shadow: 0 0 0 3px rgba($color: $themeForAccountSection, $alpha: 0.2);  
+    }
+}
+
