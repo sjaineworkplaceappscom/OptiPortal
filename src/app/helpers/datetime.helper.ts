@@ -13,7 +13,8 @@ export class DateTimeHelper{
         // momentTZ.tz(date, momentTZ.tz.guess()).format(Configuration.dateFormat);        
     }
 
-    public static ParseToUTC(date:any):Date{        
+    public static ParseToUTC(date:any){  
+        console.log(moment.utc(date).local().format(Configuration.dateFormat));   
       return new Date(moment.utc(date).local().format(Configuration.dateFormat));
     }
 }

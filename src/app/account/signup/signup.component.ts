@@ -210,7 +210,7 @@ export class SignupComponent implements OnInit {
           this.showLoader = false;
           this.invalidCompanyId = false;
           console.log(err);
-        }
+        }  
       ); 
     }
   }

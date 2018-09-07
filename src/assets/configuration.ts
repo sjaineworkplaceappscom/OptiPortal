@@ -9,6 +9,6 @@ export const Configuration={
      //baseServerAPIEndpoint:"http://localhost:56986/"
 
     ,firstHomePage:"/home/dashboard"
-    , dateFormat:'dd MMM yy',
+    , dateFormat:'DD MMM YY',
     appVersion:'1.0'     
 }
