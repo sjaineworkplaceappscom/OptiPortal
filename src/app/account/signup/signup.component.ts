@@ -175,7 +175,7 @@ export class SignupComponent implements OnInit {
         (req: any) => {
           req = JSON.parse(req, null);
           this.showLoader = false;
-          this.companyDetail = req[0];
+          this.companyDetail = req.CustomerInfo[0];
           this.invalidCompanyId = false;
           if (this.companyDetail == null || this.companyDetail == undefined) {
             this.invalidCompanyId = true;
