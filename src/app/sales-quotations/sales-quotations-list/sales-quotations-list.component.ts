@@ -108,7 +108,6 @@ export class SalesQuotationsListComponent implements OnInit {
     this.showLoader = true; 
     this.getSaleslistSubs = this.salseQuotationService.getSalesQuotationList().subscribe(
       data => {
-        debugger;
         if (data != null && data != undefined) {
             this.gridData = JSON.parse(data);
             this.gridData.forEach(element => {

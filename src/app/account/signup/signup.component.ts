@@ -124,7 +124,7 @@ export class SignupComponent implements OnInit {
 
   // Click on Login button.
   submit() {
-
+    
     if (this.capchaText != this.randomstring) {
       this.invalidCapcha = true;
       return;
@@ -166,7 +166,7 @@ export class SignupComponent implements OnInit {
     if (this.companyId == null || this.companyId == '') {
       return null;
     }
-
+    debugger;
     this.companyDetail = new CompanyDetail();
 
     if (this.userType == 2) {
@@ -176,6 +176,7 @@ export class SignupComponent implements OnInit {
           req = JSON.parse(req, null);
           this.showLoader = false;
           this.companyDetail = req[0];
+          this.invalidCompanyId = false;
           if (this.companyDetail == null || this.companyDetail == undefined) {
             this.invalidCompanyId = true;
             this.companyDetail = new CompanyDetail();
@@ -198,6 +199,7 @@ export class SignupComponent implements OnInit {
           req = JSON.parse(req, null);
           this.showLoader = false;
           this.companyDetail = req[0];
+          this.invalidCompanyId = false;
           if (this.companyDetail == null || this.companyDetail == undefined) {
             this.invalidCompanyId = true;
           }
@@ -209,7 +211,7 @@ export class SignupComponent implements OnInit {
           this.invalidCompanyId = false;
           console.log(err);
         }
-      );
+      ); 
     }
   }
 

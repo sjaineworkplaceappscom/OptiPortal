@@ -102,7 +102,7 @@ export class PurchaseInqListComponent implements OnInit {
   /**
    * Method to get list of inquries from server.
    */
-  public getInquiryList() {
+  public getInquiryList() { 
     this.showLoader = true;
     this.getPIlistSubs = this.purchaseInquiryService.getInquiryList().subscribe(
       inquiryData => {
