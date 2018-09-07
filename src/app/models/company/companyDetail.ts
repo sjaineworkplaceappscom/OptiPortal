@@ -1,7 +1,8 @@
 // Company detail with primary user data
 
 export class CompanyDetail{
-    CompanyName:string="";
+    CustomerName:string="";
+    CustomerWebsite:string="";
     PrimaryContactName:string="";
     PrimaryContactEmail:string="";   
     PrimaryContactPhone:number; 
