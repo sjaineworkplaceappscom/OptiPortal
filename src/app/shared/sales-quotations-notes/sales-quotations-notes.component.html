@@ -78,12 +78,12 @@
                             <textarea class="k-textarea" name="addnotestring" #note = ngModel [(ngModel)]="noteModel.Notes" required>Please enter your note</textarea>
                         </label>
 
-                        <label class="k-form-field">
+                        <!-- <label class="k-form-field">
                             <span class="opti_form-label">Note Type</span>
-                            <!-- <kendo-dropdownlist name="formNoteType" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem"> -->
+                             <kendo-dropdownlist name="formNoteType" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem"> 
                                     <kendo-dropdownlist name="formNoteType" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem">
                             </kendo-dropdownlist>
-                        </label>
+                        </label> -->
 
                         <div class="text-right">
                             <button type="button" class="k-button k-primary" (click)="submitNote($event);" [disabled] = "!requestnoteform.form.valid">Save</button>

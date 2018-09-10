@@ -7,6 +7,7 @@ import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SalesQuotation } from '../../tempmodels/sales-quotation';
 import { CustomerEntityType } from '../../enums/enums';
 import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-sales-quotations-notes',
@@ -61,10 +62,11 @@ export class SalesQuotationsNotesComponent implements OnInit {
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
     this.noteModel = new SalesNoteModel();
-    this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesOrder'))
+    debugger;
+    this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
     let quotationId: number = this.salesQuotationModel.QuotationId;
     let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
-     this.getSalesNotesList(quotationId+"",CustomerEntityType.SalesQuotation);
+     this.getSalesNotesList(1+"",CustomerEntityType.SalesQuotation);
   }
 
   openNewNote() {
@@ -79,8 +81,15 @@ export class SalesQuotationsNotesComponent implements OnInit {
   }
 
   submitNote() {
-    // Add Notes Data in model. when comes from inquiry        
+    debugger;
+    // Add Notes Data in model. when comes from inquiry  
+    this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
+    let quotationId: number = this.salesQuotationModel.QuotationId;
+    let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
     this.noteModel.NoteType = this.selectedNoteItem.value;
+    this.noteModel.ParentId = quotationId.toString();
+    this.noteModel.SalesOptiId = quotationId;
+
     this.addnotessub = this.sharedComponentService.AddSalesNote(this.noteModel).subscribe(
       resp => {
         //this method is updating the status if notes updated then update inquiry status.

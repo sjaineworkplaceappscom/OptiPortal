@@ -5,6 +5,7 @@ import { SalesOrder } from '../../tempmodels/sales-order';
 import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { SharedComponentService } from '../../services/shared-component.service';
+import { CustomerEntityType } from '../../enums/enums';
 
 @Component({
   selector: 'app-sales-order-notes',
@@ -63,12 +64,14 @@ export class SalesOrderNotesComponent implements OnInit {
     this.salesOrderModel = JSON.parse(localStorage.getItem('SelectedSalesOrder'));
     let orderId: number = this.salesOrderModel.OrderId;
     let orderNumber: number = this.salesOrderModel.OrderNumber;
+    this.getSalesNotesList(orderId+"",CustomerEntityType.SalesOrder);
 
   }
-
+  
   openNewNote() {
     this.TabNotesGridStatus = this.TabEditNotesFormStatus = false;
     this.TabAddNotesFormStatus = true;
+    this.resetModelValues();
   }
 
   openEditNoteView(e, note) {
@@ -77,7 +80,30 @@ export class SalesOrderNotesComponent implements OnInit {
   }
 
   submitNote() {
+    debugger;
+    // Add Notes Data in model. when comes from inquiry  
+    this.salesOrderModel = JSON.parse(localStorage.getItem('SelectedSalesOrder'))
+    let orderId: number = this.salesOrderModel.OrderId;
+    let orderNumber: number = this.salesOrderModel.OrderNumber;
+    this.noteModel.NoteType = this.selectedNoteItem.value;
+    this.noteModel.ParentId = '';
+    this.noteModel.SalesOptiId = orderId;
 
+    this.addnotessub = this.sharedComponentService.AddSalesNote(this.noteModel).subscribe(
+      resp => {
+      
+        console.log("record added:")
+      },
+      error => {
+        alert("Something went wrong");
+        console.log("Error: ", error)
+      },
+      () => {
+        this.resetModelValues();
+        this.closeAddNote();
+        // Get notes data.
+        this.getSalesNotesList(this.noteModel.ParentId, this.noteModel.ParentType);
+      });
   }
 
   closeAddNoteWindow() {
@@ -119,6 +145,25 @@ export class SalesOrderNotesComponent implements OnInit {
   closeUpdateNote() {
     this.TabNotesGridStatus = true;
     this.TabEditNotesFormStatus = false;
+  }
+
+   /**
+    * method will close add note form and reset model.
+    */
+   public resetModelValues() {
+    //reset note model and type.
+    this.noteModel.Notes = '';
+    let noteTypeDefault = { text: "General ", value: 1 };
+    this.noteModel.NoteType = noteTypeDefault.value;
+    this.selectedNoteItem = noteTypeDefault;
+  }
+   /**
+     * close add note view.
+     */
+    public closeAddNote() {
+      //close add note component
+      this.TabNotesGridStatus = true;
+      this.TabAddNotesFormStatus = false;
   }
 
 }
