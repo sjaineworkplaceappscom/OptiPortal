@@ -33,14 +33,16 @@ export class SignupComponent implements OnInit {
   turmsOfUse: any = null;
   capchaText: string;
   emailRegex: string = "/^(([^[]()[\]\\.,;:\s@\"]+(\.[^[]()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/";
-  public roles: Array<{ text: string, value: string }> = [
-    { text: "Please Select Role", value: '0' },
-    { text: "Admin", value: '41F23977-C709-4B7C-BBEE-16A539211E9C' },
-    { text: "Manager", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EA' },
-    { text: "User", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EB' }
-  ];
-
+  // public roles: Array<{ text: string, value: string }> = [
+  //   { text: "Please Select Role", value: '0' },
+  //   { text: "Admin", value: '41F23977-C709-4B7C-BBEE-16A539211E9C' },
+  //   { text: "Manager", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EA' },
+  //   { text: "User", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EB' }
+  // ];
+  public roles: Array<{ text: string,value:string }> = [{ text: "Please Select Role", value: '0' }];
+ 
   public selectedItem: { text: string, value: string } = this.roles[0];
+  public isEnableRole: boolean = false;
 
   @ViewChild('myCanvas') myCanvas;
 
@@ -141,6 +143,7 @@ export class SignupComponent implements OnInit {
     this.registerReq.RequesterParentCode = this.companyId;
     this.registerReq.RequesterParentType = this.userType;
     this.showLoader = true;
+    debugger;
     this.accountService.registerUser(this.registerReq).subscribe(
       data => {
         this.showLoader = false;
@@ -163,19 +166,30 @@ export class SignupComponent implements OnInit {
 
   // On blur of compane id
   getCompaneyDetail() {
+    
     if (this.companyId == null || this.companyId == '') {
       return null;
     }
-    debugger;
+    
     this.companyDetail = new CompanyDetail();
 
     if (this.userType == 2) {
       this.showLoader = true;
       this.accountService.getCustomerByCode(this.companyId).subscribe(
         (req: any) => {
+          
           req = JSON.parse(req, null);
           this.showLoader = false;
           this.companyDetail = req.CustomerInfo[0];
+
+          let rolesArray: any[] = req.CustomerRoles;
+          this.roles = [{ text: "Please Select Role", value: '0' }]
+          for (var v in rolesArray) // for acts as a foreach  
+          {   
+            this.roles.push({text: rolesArray[v].Roles, value: rolesArray[v].Roles});  
+          }  
+          console.log(this.roles); 
+          if(this.roles.length>1){this.isEnableRole = true;}
           this.invalidCompanyId = false;
           if (this.companyDetail == null || this.companyDetail == undefined) {
             this.invalidCompanyId = true;
