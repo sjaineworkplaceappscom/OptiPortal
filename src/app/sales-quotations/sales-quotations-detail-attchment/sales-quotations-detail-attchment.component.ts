@@ -6,6 +6,8 @@ import { SalesQuotation } from '../../tempmodels/sales-quotation';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { SharedComponentService } from 'src/app/services/shared-component.service';
+import { Path } from '../../../../node_modules/@progress/kendo-drawing';
 
 @Component({
   selector: 'app-sales-quotations-detail-attchment',
@@ -23,7 +25,7 @@ export class SalesQuotationsDetailAttchmentComponent implements OnInit {
   searchRequest: string = '';
   salesQuotationModel: SalesQuotation = new SalesQuotation();
   public getDetailAttachsubs: ISubscription;
-  constructor( private salseQuotationService: SalesQuotationService) { }
+  constructor( private salseQuotationService: SalesQuotationService, private sharedComponentService: SharedComponentService) { }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -100,6 +102,38 @@ export class SalesQuotationsDetailAttchmentComponent implements OnInit {
       this.getDetailAttachsubs.unsubscribe();
    }
 
+   download(fileName:string) {
 
+    let seletedAttachment=this.gridData.filter(i=> i.FileName==fileName)[0];   
+
+    try {
+
+      let filePath:string="D:/Deployment/sample.txt";
+
+      this.sharedComponentService.getAtachmentFromPath(filePath)
+        .subscribe(
+        res => {
+          var data = res;
+
+          let blob = new Blob([data], {
+            type: 'application/pdf' // must match the Accept type
+          });
+
+            var a = document.createElement('a');
+            document.body.appendChild(a);
+            a.href = URL.createObjectURL(blob);
+            a.download = seletedAttachment.FileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          }
+        
+       
+      );
+    }
+    catch (err) {
+     // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
+    }
+  }
 
 }

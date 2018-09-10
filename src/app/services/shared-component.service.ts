@@ -42,6 +42,7 @@ export class SharedComponentService {
   }
 
   public uploadAttachment(formData:FormData): Observable<any>{   
+    
     let loginAccessToken = localStorage.getItem("AccessToken");
     let loginUserId = localStorage.getItem("LoginUserId");
     let  headers = new HttpHeaders();
@@ -85,8 +86,13 @@ export class SharedComponentService {
     return this.httpHelper.get(url, null);
   }
 
-  public getAtachment(id: string,): Observable<any> {
+  public getAtachment(id: string): Observable<any> {
     let url: string = this.baseUrl + "attachment/download/" + id ;
+    return this.httpHelper.get(url, null);
+  }
+
+  public getAtachmentFromPath(path:string): Observable<any> {
+    let url: string = this.baseUrl + "attachment/downloadFile/"+path ;
     return this.httpHelper.get(url, null);
   }
 }
