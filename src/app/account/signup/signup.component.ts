@@ -41,13 +41,13 @@ export class SignupComponent implements OnInit {
   ];
 
   public selectedItem: { text: string, value: string } = this.roles[0];
-
+  public emailAlredayExists: boolean = false;
   @ViewChild('myCanvas') myCanvas;
 
   // Error Bits
   invalidCompanyId: boolean = false;
 
-  UserRegData:string='';
+  UserRegData: string = '';
 
   constructor(private accountService: AccountService, private router: Router, private commonService: Commonservice, ) {
     //this.generatePurchaseRequestData();
@@ -77,10 +77,10 @@ export class SignupComponent implements OnInit {
     this.commonService.currentNavigatedFromValue.subscribe(
       data => {
         this.userType = data;
-       //localStorage.setItem("UserType", this.userType.toString());
+        //localStorage.setItem("UserType", this.userType.toString());
       },
       error => {
-        this.showLoader=false;
+        this.showLoader = false;
         alert("Something went wrong");
         console.log("Error: ", error)
       }
@@ -141,16 +141,30 @@ export class SignupComponent implements OnInit {
     this.registerReq.RequesterParentCode = this.companyId;
     this.registerReq.RequesterParentType = this.userType;
     this.showLoader = true;
+
     this.accountService.registerUser(this.registerReq).subscribe(
+
       data => {
         this.showLoader = false;
         alert(CommonMessages.RegistrationSuccess);
         this.router.navigateByUrl('/login');
+        this.emailAlredayExists = false;
       },
       (err: HttpErrorResponse) => {
-        alert('Something went wrong. please check console log for more detail.');
-        this.showLoader = false;
         console.log(err);
+        if (err.toString() == "Given email alreday exists.") {
+          this.showLoader = false;
+          this.emailAlredayExists = true;
+        }
+        else {
+
+          alert('Something went wrong. please check console log for more detail.');
+          this.showLoader = false;
+          console.log(err);
+        }
+      },
+      () => {
+        this.emailAlredayExists = false;
       }
     );
 
@@ -213,4 +227,4 @@ export class SignupComponent implements OnInit {
     }
   }
 
- }
+}

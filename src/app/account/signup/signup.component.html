@@ -77,6 +77,9 @@
                                     <span *ngIf="RequesterEmail.errors?.required && RequesterEmail.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
                                         Please enter emailId.
                                     </span>
+                                    <span *ngIf="RequesterEmail.touched && emailAlredayExists==true" class="float-right opti_signup-validation-top-side opti_error-msg">
+                                       Requested email already registered.
+                                    </span>
                                     <span *ngIf="RequesterEmail.errors?.email && RequesterEmail.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
                                         Please enter valid emailId.
                                     </span>
