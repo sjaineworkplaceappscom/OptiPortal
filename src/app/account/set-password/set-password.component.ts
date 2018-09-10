@@ -37,11 +37,11 @@ export class SetPasswordComponent implements OnInit {
   }
 
   setPassword() {
+    debugger;
     let this1 = this;
     this.showLoader = true;
     this.userModel.UserName = this.userId;
     this.userModel.Email = this.userLoginEmail;
-    
     if (this.resetPassword == 'True') {
       this.accountService.resetPassword(this.userId, this.userModel.Password).subscribe(
         data => {
@@ -53,15 +53,12 @@ export class SetPasswordComponent implements OnInit {
           this.showLoader = false;
           alert('Something went wrong please retry.')
           console.log(err);
-
         }
-
       );
     }
     else {
       this.accountService.setPassword(this.userModel).subscribe(
         data => {
-
           alert('Welcome to optipro Portals, your password set successfully.');
           this1.showLoader = false;
           this.router.navigateByUrl('account/login');
