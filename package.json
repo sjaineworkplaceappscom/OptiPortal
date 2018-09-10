@@ -46,6 +46,7 @@
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.21",
     "ngx-bootstrap": "^3.0.0",
+    "ngx-file-drop": "^4.0.6",
     "ngx-perfect-scrollbar": "^6.1.0",
     "npm": "^6.3.0",
     "rxjs": "^6.0.0",

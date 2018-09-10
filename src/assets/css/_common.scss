@@ -499,5 +499,14 @@ body{
     //////////////////////////////////////////////////
     // Disable form using overrite div on form end
     //////////////////////////////////////////////////
+
+    .opti_arrow-grid-detail{
+        font-weight: bold;
+        background: $input-border-color;
+        color: $dark-black;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
         
 }

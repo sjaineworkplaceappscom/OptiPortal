@@ -4,6 +4,7 @@ import { HttpHelper } from '../helpers/http.helper';
 import { NotesModel } from '../models/purchaserequest/notes';
 import { Observable } from 'rxjs';
 import { HttpRequest, HttpHeaders, HttpClient } from '@angular/common/http';
+import { SalesNoteModel } from '../tempmodels/SalesNoteModel';
 
 
 
@@ -95,6 +96,28 @@ export class SharedComponentService {
     let url: string = this.baseUrl + "attachment/downloadFile/"+path ;
     return this.httpHelper.get(url, null);
   }
+
+   /**
+  * Add Note.
+  */
+ public AddSalesNote(note: SalesNoteModel): Observable<any> {
+  var data: any = {
+    "notes": note.Notes,
+    "noteType": note.NoteType,
+    "SalesOptiId": note.SalesOptiId,
+    "parentId": note.ParentId,
+    "parentType": note.ParentType,
+    "SaleNumber": note.SaleNumber,
+  }
+  return this.httpHelper.post(this.baseUrl + 'note/add', data, null);
+}
+ /**
+  * Get List of users.
+  */
+ public getSalesNotesList(id: string, type: number): Observable<any> {
+  let url: string = this.baseUrl + "note/list/" + id + "/" + type;
+  return this.httpHelper.get(url, null);
+}
 }
 
 

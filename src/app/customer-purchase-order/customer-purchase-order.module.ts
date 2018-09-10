@@ -6,6 +6,7 @@ import { CustomerPurchaseOrderListComponent } from './customer-purchase-order-li
 import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
 import { FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { FileDropModule } from 'ngx-file-drop';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     GridModule,
     ExcelModule,
     FormsModule,
-    AngularSvgIconModule
+    AngularSvgIconModule,
+    FileDropModule
   ],
   declarations: [CustomerPurchaseOrderListComponent],
   exports:[CustomerPurchaseOrderListComponent]

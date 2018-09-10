@@ -82,7 +82,7 @@
                                     </span>
                                     <span *ngIf="RequesterEmail.errors?.email && RequesterEmail.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
                                         Please enter valid emailId.
-                                    </span>
+                                    </span> 
 
                                 </span>
                                 <input name="RequesterEmail" required email #RequesterEmail=ngModel [(ngModel)]="registerReq.RequesterEmail" type="email"

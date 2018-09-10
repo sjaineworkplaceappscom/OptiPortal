@@ -98,7 +98,7 @@ export class PurchaseInqAddComponent implements OnInit {
   }
 
   public AddPurchaseInquiry(saveAsDraft: boolean = false) {
-
+    
     if (saveAsDraft == true) {
       let Draftstatus: any = { text: "Draft", value: PurchaseInquiryStatus.Draft };
       this.purchaseInqueryAdd.Status = Draftstatus.value;
@@ -107,7 +107,7 @@ export class PurchaseInqAddComponent implements OnInit {
     
     //DateTimeHelper.ParseToUTC(this.purchaseInqueryAdd.ValidTillDate);
     this.purchaseInqueryAdd.ValidTillDate=DateTimeHelper.ParseToUTC(this.purchaseInqueryAdd.ValidTillDate);
-    debugger;
+    
     this.showLoader=true;
     this.addSub=this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
       (data: any) => {        

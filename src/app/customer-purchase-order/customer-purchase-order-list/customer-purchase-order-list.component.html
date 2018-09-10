@@ -5,8 +5,27 @@
    </div>
    <!-- loader end -->  
 
+    
+    <div class="upload-table">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody class="upload-name-style">
+            <tr *ngFor="let item of files; let i=index">
+                <td><strong>{{ item.relativePath }}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    
+
+
    <ng-container *ngIf="showLoader==false">
-       
+    <file-drop headertext="" (onFileDrop)="dropped($event)" 
+    (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
        
        <!-- for normal user   -->
        <!-- <div *ngIf="systemAdmin!='true'"> -->
@@ -14,8 +33,6 @@
            <kendo-grid 
            [kendoGridBinding]="gridData" 
            [resizable]="false" 
-           [pageSize]="50" 
-           [pageable]="true" 
            [sortable]="true"  
            [filterable]=isColumnFilter
            [groupable]=isColumnGroup 
@@ -45,9 +62,9 @@
                </form>
 
                <!-- export -->
-               <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton opti_hide-in-mobile">
+               <!-- <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton opti_hide-in-mobile">
                    <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
-               </button>
+               </button> -->
 
 
                <div class="float-right opti_right-top-sec-grid-purchase opti_right-top-sec-grid">
@@ -88,7 +105,7 @@
                     </dl>
 
                     <dl class="opti_mobile_grid_dl">
-                        <dt>Created Date</dt>
+                        <dt>Created Date <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
                         <dd>{{ dataItem.BuyerCreatedBy }}</dd>
 
                         <dt>Created By</dt>
@@ -117,5 +134,6 @@
 
           </kendo-grid>
        </div>
+    </file-drop>
    </ng-container>
 </div>

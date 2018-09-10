@@ -1,3 +1,5 @@
+
+
 export enum UserType {
     /// <summary>
     /// No Type.
@@ -60,7 +62,12 @@ PurchaseInquiry = 2,
 /// <summary>
 /// Purchase Inquiry Item type.
 /// </summary>
-PurchaseInquiryItem = 3
+PurchaseInquiryItem = 3,
+
+SalesQuotation = 4,
+
+SalesOrder = 5
+
 }
 
 
