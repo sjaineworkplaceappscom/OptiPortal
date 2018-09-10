@@ -40,6 +40,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                             return;
                         }
 
+                        if (error.error.PortalExceptionType==3) {
+                           errMsg="Given email alreday exists."                            
+                            //return;
+                        }
+
                     }
 
                     return throwError(errMsg);

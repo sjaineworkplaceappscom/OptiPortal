@@ -11,6 +11,9 @@
           <li class="opti_tablinks" (click)="openTab($event, 'attachement')">
             <a href="javascript:void('0');">Attachements</a>
           </li>
+          <li class="opti_tablinks" (click)="openTab($event, 'notes')">
+            <a href="javascript:void('0');">Notes</a>
+          </li>
       </ul>
     </div>
     <!-- tab start heading end -->
@@ -26,6 +29,10 @@
 
     <div id="" *ngIf="tabName=='attachement'" class="opti_tabcontent">
       <app-sales-order-detail-attachment></app-sales-order-detail-attachment>
+    </div>
+
+    <div id="" *ngIf="tabName=='notes'" class="opti_tabcontent">
+      <app-sales-order-notes></app-sales-order-notes>
     </div>
     <!-- tab content end -->
 </div>  

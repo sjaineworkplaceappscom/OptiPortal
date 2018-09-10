@@ -12,6 +12,10 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { SalesQuotationsDetailHomeComponent } from './sales-quotations-detail-home/sales-quotations-detail-home.component';
 import { SalesQuotationsDetailContentComponent } from './sales-quotations-detail-content/sales-quotations-detail-content.component';
 import { SalesQuotationsDetailAttchmentComponent } from './sales-quotations-detail-attchment/sales-quotations-detail-attchment.component';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+
+// Please check shashank sir
+import { SalesQuotationsNotesComponent } from '../shared/sales-quotations-notes/sales-quotations-notes.component';
 
 @NgModule({
   imports: [
@@ -21,9 +25,10 @@ import { SalesQuotationsDetailAttchmentComponent } from './sales-quotations-deta
     ExcelModule,
     FormsModule,
     AngularSvgIconModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    DropDownsModule
   ],
-  declarations: [SalesQuotationsComponent, SalesQuotationsListComponent, SalesQuotationsDetailComponent, SalesQuotationsDetailHomeComponent, SalesQuotationsDetailContentComponent, SalesQuotationsDetailAttchmentComponent],
+  declarations: [SalesQuotationsComponent, SalesQuotationsListComponent, SalesQuotationsDetailComponent, SalesQuotationsDetailHomeComponent, SalesQuotationsDetailContentComponent, SalesQuotationsDetailAttchmentComponent, SalesQuotationsNotesComponent],
   exports:[SalesQuotationsComponent, SalesQuotationsDetailComponent]
 })
 export class SalesQuotationsModule { }
