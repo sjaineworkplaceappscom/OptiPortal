@@ -4,6 +4,7 @@ import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SalesOrder } from '../../tempmodels/sales-order';
 import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { SharedComponentService } from '../../services/shared-component.service';
 
 @Component({
   selector: 'app-sales-order-notes',
