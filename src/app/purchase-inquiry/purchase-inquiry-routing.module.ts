@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [      
       { path: 'list', component: PurchaseInqListComponent },
       { path: 'piadd', component: PurchaseInqAddComponent },
-      { path: 'piupdate', component: PurchaseInqUpdateComponent }
+      { path: 'piupdate', component: PurchaseInqUpdateComponent } 
       
     ],
     canActivate:[AuthGuard]
