@@ -16,7 +16,6 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 // Please check shashank sir
 import { SalesQuotationsNotesComponent } from '../shared/sales-quotations-notes/sales-quotations-notes.component';
-import { SalesOrderNotesComponent } from '../shared/sales-order-notes/sales-order-notes.component';
 
 @NgModule({
   imports: [
@@ -29,7 +28,7 @@ import { SalesOrderNotesComponent } from '../shared/sales-order-notes/sales-orde
     PerfectScrollbarModule,
     DropDownsModule
   ],
-  declarations: [SalesQuotationsComponent, SalesQuotationsListComponent, SalesQuotationsDetailComponent, SalesQuotationsDetailHomeComponent, SalesQuotationsDetailContentComponent, SalesQuotationsDetailAttchmentComponent, SalesQuotationsNotesComponent, SalesOrderNotesComponent],
+  declarations: [SalesQuotationsComponent, SalesQuotationsListComponent, SalesQuotationsDetailComponent, SalesQuotationsDetailHomeComponent, SalesQuotationsDetailContentComponent, SalesQuotationsDetailAttchmentComponent, SalesQuotationsNotesComponent],
   exports:[SalesQuotationsComponent, SalesQuotationsDetailComponent]
 })
 export class SalesQuotationsModule { }
