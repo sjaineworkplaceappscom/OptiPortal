@@ -231,7 +231,7 @@ export class NotesComponent implements OnInit {
     }
 
     /**
- * method will close add note form and reset model.
+     * method will close add note form and reset model.
      */
     public resetModelValues() {
         //reset note model and type.

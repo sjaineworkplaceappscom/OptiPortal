@@ -13,7 +13,7 @@
         <ng-container *ngIf="showLoader==false">
 
           <!-- notes grid -->
-          <ng-container *ngIf="notesGridStatus == true">
+          <ng-container *ngIf="TabNotesGridStatus == true">
             <kendo-grid 
               [kendoGridBinding]="noteItemsData" 
               [resizable]="false" 
@@ -67,7 +67,7 @@
           </ng-container>
 
           <!-- Add notes -->
-          <ng-container *ngIf="addNotesFormStatus == true">
+          <ng-container *ngIf="TabAddNotesFormStatus == true">
               <div class="card" #noteform>
                 <div class="card-block">
                     <form #requestnoteform = "ngForm" class="k-form">
@@ -80,7 +80,8 @@
 
                         <label class="k-form-field">
                             <span class="opti_form-label">Note Type</span>
-                            <kendo-dropdownlist name="formNoteType" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem">
+                            <!-- <kendo-dropdownlist name="formNoteType" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem"> -->
+                                    <kendo-dropdownlist name="formNoteType" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem">
                             </kendo-dropdownlist>
                         </label>
 
@@ -94,7 +95,7 @@
           </ng-container>
 
           <!-- edit notes -->
-          <ng-container *ngIf="editNotesFormStatus == true">
+          <ng-container *ngIf="TabEditNotesFormStatus == true">
             <div class="card" >
               <div class="card-block">
                 <form class="k-form" #editnoteform = "ngForm">

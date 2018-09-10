@@ -55,7 +55,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     { text: "Approved", value: PurchaseInquiryStatus.Approved },
     { text: "Partial Approved", value: PurchaseInquiryStatus.PartialApproved },
     { text: "Rejected", value: PurchaseInquiryStatus.Rejected },
-    { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled },
+  { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled },
     { text: "Closed", value: PurchaseInquiryStatus.Closed },
     { text: "Updated", value: PurchaseInquiryStatus.Updated }
   ];
