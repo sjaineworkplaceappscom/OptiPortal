@@ -122,7 +122,7 @@ export class SalesQuotationsDetailAttchmentComponent implements OnInit {
             var a = document.createElement('a');
             document.body.appendChild(a);
             a.href = URL.createObjectURL(blob);
-            a.download = seletedAttachment.FileName;
+            a.download = "sample.txt";//seletedAttachment.FileName;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
