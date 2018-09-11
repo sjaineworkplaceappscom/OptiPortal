@@ -4,12 +4,12 @@ Notes :string;
 
 NoteType :number;
 
-SaleNumber :string;
+SaleNumber :number;
 
 ParentId :string;
 
 ParentType :number;
 
-SalesOptiId :number;
+SalesOptiId :string;
 
 }

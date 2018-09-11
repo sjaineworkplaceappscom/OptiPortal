@@ -25,7 +25,6 @@ export class SalesQuotationsNotesComponent implements OnInit {
   /**
    * NOTES TAB VARIABLE
   */
-
   TabAddNotesFormStatus: boolean = false;
   TabEditNotesFormStatus: boolean = false;
   TabNotesGridStatus: boolean = true;
@@ -35,10 +34,12 @@ export class SalesQuotationsNotesComponent implements OnInit {
   selectedItemNote: any = {};
   getnotessub: ISubscription;
   addnotessub: ISubscription;
+  updatenotessub: ISubscription;
 
   salesQuotationModel: SalesQuotation = new SalesQuotation();
   noteModel: SalesNoteModel;
-  constructor(private sharedComponentService: SharedComponentService ) { }
+
+  constructor(private sharedComponentService: SharedComponentService) { }
 
   public noteTypes: Array<{ text: string, value: number }> = [
     { text: "General ", value: 1 },
@@ -47,10 +48,11 @@ export class SalesQuotationsNotesComponent implements OnInit {
   ];
 
   public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
+  selectedNote: any = {};
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    //Apply Grid Height
+    // Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
@@ -66,7 +68,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
     this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
     let quotationId: number = this.salesQuotationModel.QuotationId;
     let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
-     this.getSalesNotesList(1+"",CustomerEntityType.SalesQuotation);
+    this.getSalesNotesList(quotationId.toString(), CustomerEntityType.SalesQuotation);
   }
 
   openNewNote() {
@@ -78,7 +80,10 @@ export class SalesQuotationsNotesComponent implements OnInit {
   openEditNoteView(e, note) {
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
+    this.selectedNote = note;
+    this.selectedNoteItem = this.noteTypes[0];
   }
+
 
   submitNote() {
     debugger;
@@ -87,10 +92,12 @@ export class SalesQuotationsNotesComponent implements OnInit {
     let quotationId: number = this.salesQuotationModel.QuotationId;
     let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
     this.noteModel.NoteType = this.selectedNoteItem.value;
-    this.noteModel.ParentId = quotationId.toString();
-    this.noteModel.SalesOptiId = quotationId;
+    this.noteModel.ParentId = undefined;
+    this.noteModel.ParentType = CustomerEntityType.SalesQuotation;
+    this.noteModel.SalesOptiId = quotationId.toString();
+    this.noteModel.SaleNumber = quotationNumber;
 
-    this.addnotessub = this.sharedComponentService.AddSalesNote(this.noteModel).subscribe(
+    this.addnotessub = this.sharedComponentService.AddSalesQuotationNote(this.noteModel).subscribe(
       resp => {
         //this method is updating the status if notes updated then update inquiry status.
         //this.callPurchaseInquiryStatusUpdateAPI();
@@ -104,7 +111,10 @@ export class SalesQuotationsNotesComponent implements OnInit {
         this.resetModelValues();
         this.closeAddNote();
         // Get notes data.
-        this.getSalesNotesList(this.noteModel.ParentId, this.noteModel.ParentType);
+        this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
+        let quotationId: number = this.salesQuotationModel.QuotationId;
+        let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
+        this.getSalesNotesList(quotationId.toString(), CustomerEntityType.SalesQuotation);
       });
   }
 
@@ -123,8 +133,39 @@ export class SalesQuotationsNotesComponent implements OnInit {
     this.noteModel.NoteType = noteTypeDefault.value;
     this.selectedNoteItem = noteTypeDefault;
   }
-  updateNote() {
 
+
+  updateNote(e) {
+
+    this.selectedNote;
+    //selected note object : this.selectedNote
+    this.selectedNote.NoteType = this.selectedNoteItem.value;
+    this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
+      resp => {
+        //this method is updating the status if notes updated then update inquiry status.
+        this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
+        let quotationId: number = this.salesQuotationModel.QuotationId;
+        let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
+        this.getSalesNotesList(quotationId.toString(), CustomerEntityType.SalesQuotation);
+
+      },
+      error => {
+        this.showLoader = false;
+        alert("Something went wrong");
+        this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesOrder'));
+        let quotationId: number = this.salesQuotationModel.QuotationId;
+        this.getSalesNotesList(quotationId.toString(), CustomerEntityType.SalesOrder);
+      },
+      () => {
+        this.closeUpdateNote(e);
+      });
+
+  }
+
+  closeUpdateNote(e) {
+    this.TabNotesGridStatus = true;
+    this.TabEditNotesFormStatus = false;
+    this.resetModelValues();
   }
 
   /**
@@ -132,7 +173,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
      */
   private getSalesNotesList(salesId: string, parentType: number) {
     this.showLoader = true;
-    this.getnotessub = this.sharedComponentService.getSalesNotesList(salesId, parentType).subscribe(
+    this.getnotessub = this.sharedComponentService.getSalesQuotationNotesList(salesId, parentType).subscribe(
       notesData => {
         if (notesData != null && notesData != undefined) {
           this.noteItemsData = JSON.parse(notesData);
@@ -155,10 +196,6 @@ export class SalesQuotationsNotesComponent implements OnInit {
     });
 
   }
-  closeUpdateNote() {
-    this.TabNotesGridStatus = true;
-    this.TabEditNotesFormStatus = false;
-  }
 
 
   ngOnDestroy() {
@@ -166,15 +203,17 @@ export class SalesQuotationsNotesComponent implements OnInit {
       this.addnotessub.unsubscribe();
     if (this.getnotessub != undefined)
       this.getnotessub.unsubscribe();
+    if (this.updatenotessub != undefined)
+      this.updatenotessub.unsubscribe();
   }
-  
-    /**
-     * close add note view.
-     */
-    public closeAddNote() {
-      //close add note component
-      this.TabNotesGridStatus = true;
-      this.TabAddNotesFormStatus = false;
+
+  /**
+   * close add note view.
+   */
+  public closeAddNote() {
+    //close add note component
+    this.TabNotesGridStatus = true;
+    this.TabAddNotesFormStatus = false;
   }
 }
 
