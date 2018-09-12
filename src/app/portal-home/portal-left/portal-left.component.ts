@@ -20,7 +20,15 @@ export class PortalLeftComponent implements OnInit {
   // selectedItem:string='item2';
   selectedItem: string;
 
+  fruits = ["Banana", "Orange", "Apple", "Mango"];
+  userPermission:any = [];
+
   ngOnInit() {
+
+    if (typeof(Storage) !== "undefined") {
+      let arr = localStorage.getItem('LoginUserPermissions');
+      this.userPermission = arr.split(','); // split, convert string into array string and return new array
+    }
 
     // get current url with last word
     let partsOfUrl = this.router.url.split('/');
