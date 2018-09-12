@@ -109,36 +109,18 @@ export class DashboardComponent implements OnInit {
    */
   public getPurchaseInquiryDashboardList() {
     this.showLoader = true;
-    
     this.getPIlistSubs = this.purchaseInquiryService.getPurchaseInquiryDashboardDetail().subscribe(
       PIData => {
+        this.showLoader=false;
         this.pidashboardResp=JSON.parse(PIData);
-       //this.model = JSON.parse(PIData);
-        //console.log("data:"+JSON.stringify(this.model));
-        // if (inquiryData != null && inquiryData != undefined) {
-        //   let datas1 = inquiryData;  
-          
-        //   let data = "[{"+inquiryData+"}]";
-        //   let data1 ={
-        //   data
-        //   } 
-        //  this.model = JSON.parse(gp);
-       // this.model = gp;
-          
-          //console.log("gp:>>>"+JSON.stringify(data1));
-          //console.log("gp:>>>"+JSON.stringify(this.model));
-         // console.log("model:>>>"+JSON.stringify(ap));
       },
       error => {
         this.showLoader=false;
         alert("Something went wrong");
         console.log("Error: ", error);
-        //localStorage.clear();
-       // this.router.navigate(['landing']);
+
       },
-      ()=>{
-            this.showLoader=false;
-      }
+      
     );
   }
 
