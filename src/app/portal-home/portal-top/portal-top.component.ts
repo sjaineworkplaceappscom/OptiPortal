@@ -6,6 +6,7 @@ import { opticonstants } from '../../constants';
 import { AccountService } from '../../services/account.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Configuration } from '../../../assets/configuration';
+import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http/http';
 
 @Component({
   selector: 'app-portal-top',
@@ -56,14 +57,16 @@ export class PortalTopComponent implements OnInit {
   }
 
   signOut() { 
-    
+    debugger;
     this.accountService.logout().subscribe(
       data => {        
         localStorage.clear();
         this.router.navigateByUrl('/login');
       },
-      error => {
-    
+      (error:HttpErrorResponse) => {
+        
+        // localStorage.clear();
+        // this.router.navigateByUrl('/login');
         console.log("Error: ", error)
       },
     );

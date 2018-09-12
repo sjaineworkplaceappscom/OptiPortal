@@ -15,7 +15,7 @@
           <!-- notes grid -->
           <ng-container *ngIf="TabNotesGridStatus == true">
             <kendo-grid 
-              [kendoGridBinding]="noteItemsData" 
+              [kendoGridBinding]="noteItemsData | customFilter:notesSearchValue" 
               [resizable]="false" 
               [pageSize]="50" 
               [pageable]="true" 

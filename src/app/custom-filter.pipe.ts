@@ -15,7 +15,10 @@ export class CustomFilterPipe implements PipeTransform {
     }
    
     return value.filter(items => {      
-      return (items.Notes!=null && items.Notes.toLowerCase().indexOf(args) != -1 )
+      return (items.Notes!=null && items.Notes.toLowerCase().indexOf(args) != -1 ) || 
+      (items.NoteText!=null && items.NoteText.toLowerCase().indexOf(args) != -1 )
+      
+
       
     });
 

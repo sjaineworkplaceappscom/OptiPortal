@@ -21,6 +21,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         return next.handle(request)
             .pipe(
                 catchError((error: HttpErrorResponse) => {
+                    debugger;
                     let errMsg = '';
                     // Client Side Error
                     if (error.error instanceof ErrorEvent) {
@@ -30,7 +31,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                         errMsg = `Error Code: ${error.status},  Message: ${error.message}`;
 
                         console.log(errMsg);
-
+                        if(error.error!=null && error.error!=undefined){
                        // Session expired
                         if (error.error.PortalExceptionType==1) {
                             alert("Your session has been expired. please login again.");
@@ -44,6 +45,14 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                            errMsg="Given email alreday exists."                            
                             //return;
                         }
+                    }
+                    else{
+                        if(error.status==401){
+                            alert("Your session has been expired. please login again.");
+                            localStorage.clear();
+                            this.router.navigate(['landing']);
+                        }
+                    }
 
                     }
 
