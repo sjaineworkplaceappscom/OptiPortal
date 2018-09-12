@@ -6,11 +6,7 @@ export const Configuration={
     // For Demo
     //  baseServerAPIEndpoint:"http://139.144.10.218:8080/"
     // Local
-<<<<<<< HEAD
-     baseServerAPIEndpoint:"http://localhost:56987/"
-=======
     //  baseServerAPIEndpoint:"http://localhost:56986/"
->>>>>>> 8f519faa46feabf208d95ebfb8b5f29a017ae4d6
 
     ,firstHomePage:"/home/dashboard"
     , dateFormat:'DD MMM YY',
