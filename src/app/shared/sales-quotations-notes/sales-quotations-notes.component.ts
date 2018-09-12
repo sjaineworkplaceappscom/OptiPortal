@@ -64,7 +64,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
     this.noteModel = new SalesNoteModel();
-    debugger;
+    
     this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
     let quotationId: number = this.salesQuotationModel.QuotationId;
     let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
@@ -86,7 +86,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
 
 
   submitNote() {
-    debugger;
+    
     // Add Notes Data in model. when comes from inquiry  
     this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
     let quotationId: number = this.salesQuotationModel.QuotationId;

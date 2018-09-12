@@ -55,13 +55,17 @@ export class PortalTopComponent implements OnInit {
     this.openThemeSetting = $evenet;
   }
 
-  signOut() {
-
+  signOut() { 
+    debugger;
     this.accountService.logout().subscribe(
       data => {        
         localStorage.clear();
         this.router.navigateByUrl('/login');
-      }
+      },
+      error => {
+        debugger; 
+        console.log("Error: ", error)
+      },
     );
   }
 
