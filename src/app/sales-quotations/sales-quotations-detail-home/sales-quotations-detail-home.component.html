@@ -59,32 +59,32 @@
 
               <label class="k-form-field">
                   <span class="opti_form-label">Total before discount</span>
-                  <input name="beforediscount" type="text" class="k-textbox" (ngModelChange)="salesQuotationDetailModel.TotalBeforeDisc = $event"  [ngModel]="salesQuotationDetailModel.TotalBeforeDisc | number : '1.2-2'" readonly />
+                  <input name="beforediscount" type="text" class="k-textbox"  [(ngModel)]="salesQuotationDetailModel.TotalBeforeDisc" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Discount %</span>
-                  <input name="discountpercentage" type="text" class="k-textbox" (ngModelChange)="salesQuotationDetailModel.DiscountPercentage = $event"  [ngModel]="salesQuotationDetailModel.DiscountPercentage | number : '1.2-2'" readonly />
+                  <input name="discountpercentage" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.DiscountPercentage" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Discount</span>
-                  <input name="discount" type="text" class="k-textbox" (ngModelChange)="salesQuotationDetailModel.Discount = $event" [ngModel]="salesQuotationDetailModel.Discount | number : '1.2-2'" readonly />
+                  <input name="discount" type="text" class="k-textbox"  [(ngModel)]="salesQuotationDetailModel.Discount" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Freight</span>
-                  <input name="freight" type="text" class="k-textbox" (ngModelChange)="salesQuotationDetailModel.Freight = $event" [ngModel]="salesQuotationDetailModel.Freight | number : '1.2-2'" readonly />
+                  <input name="freight" type="text" class="k-textbox"  [(ngModel)]="salesQuotationDetailModel.Freight" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Tax</span>
-                  <input name="tax" type="text" class="k-textbox" (ngModelChange)="salesQuotationDetailModel.Tax = $event" [ngModel]="salesQuotationDetailModel.Tax | number : '1.2-2'" readonly />
+                  <input name="tax" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.Tax" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Total</span>
-                  <input name="total" type="text" class="k-textbox"  (ngModelChange)="salesQuotationDetailModel.Total = $event" [ngModel]="salesQuotationDetailModel.Total | number : '1.2-2'" readonly />
+                  <input name="total" type="text" class="k-textbox"  [(ngModel)]="salesQuotationDetailModel.Total" readonly />
               </label>
               
             </form>
