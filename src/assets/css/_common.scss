@@ -287,6 +287,7 @@ body{
         // horizontal tab start
             .opti_tab-outer{
                 width: calc(100% - 35px);
+                overflow-x: auto;
 
                 // new design tab start
                     ul.tabs{
