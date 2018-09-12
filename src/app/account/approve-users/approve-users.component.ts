@@ -15,6 +15,8 @@ export class ApproveUsersComponent implements OnInit {
   gridHeight: number;
   isColumnApprovedUserFilter: boolean = false;
   isColumnApprovedUserGroup: boolean = false;
+  disableBtn:boolean=false;
+
   constructor(private accountService: AccountService) {
     
   }
@@ -38,13 +40,16 @@ export class ApproveUsersComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
   }
 
-  approveUsers(){      
+  approveUsers(){   
+    this.disableBtn=true;   
     this.accountService.inviteUsers(this.mySelection.toString()).subscribe(
       data => {
+        this.disableBtn=false;
         alert('User(s) Approved successfully.');
         this.getInactiveUsersData();
       },
       error => {
+        this.disableBtn=false;
         //this.showLoader=false;
         alert("Something went wrong");
         console.log("Error: ", error)
@@ -55,12 +60,15 @@ export class ApproveUsersComponent implements OnInit {
   }
 
   rejectUsers(){      
+    this.disableBtn=true;   
     this.accountService.rejectUsers(this.mySelection.toString()).subscribe(
       data => {
+        this.disableBtn=false;   
         alert('User(s) Rejected successfully.');
         this.getInactiveUsersData();
       },
       error => {
+        this.disableBtn=false;   
         //this.showLoader=false;
         alert("Something went wrong");
         console.log("Error: ", error)
@@ -71,9 +79,17 @@ export class ApproveUsersComponent implements OnInit {
   }
 
   getInactiveUsersData(){
+
     this.accountService.getInactiveUsers().subscribe(
       (data: any) => {
         this.items = JSON.parse(data, null);
+       
+        if(this.items.length==undefined || this.items.length<=0){
+          this.disableBtn=true;
+        }
+        else{
+          this.disableBtn=false;
+        }
       },
       error => {
         //this.showLoader=false;
