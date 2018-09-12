@@ -103,11 +103,11 @@ export class SalesOrderListComponent implements OnInit {
   * Method to get list of inquries from server.
   */
   public getSalesOrderList() {
-    console.log('get sales order list');
+   // console.log('get sales order list');
     this.showLoader = true;
     this.getSaleslistSubs = this.salseOrderService.getSalesOrderList().subscribe(
       data => {
-        console.log("orderlist:"+data);
+       // console.log("orderlist:"+data);
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
           this.gridData.forEach(element => {

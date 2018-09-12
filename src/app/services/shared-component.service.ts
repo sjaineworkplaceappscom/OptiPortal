@@ -100,22 +100,45 @@ export class SharedComponentService {
    /**
   * Add Note.
   */
- public AddSalesNote(note: SalesNoteModel): Observable<any> {
+ public AddSalesQuotationNote(note: SalesNoteModel): Observable<any> {
   var data: any = {
-    "notes": note.Notes,
-    "noteType": note.NoteType,
-    "SalesOptiId": note.SalesOptiId,
-    "parentId": note.ParentId,
-    "parentType": note.ParentType,
-    "SaleNumber": note.SaleNumber,
+    "Notes": note.Notes,
+    "NoteType": note.NoteType,
+    "SalesNumber": note.SaleNumber,    
+    "ParentId": note.ParentId,
+    "ParentType": note.ParentType,
+    "SalesOptiId": note.SalesOptiId
   }
-  return this.httpHelper.post(this.baseUrl + 'note/add', data, null);
+  return this.httpHelper.post(this.baseUrl + 'salesquotation/addnotes', data, null);
 }
  /**
   * Get List of users.
   */
- public getSalesNotesList(id: string, type: number): Observable<any> {
-  let url: string = this.baseUrl + "note/list/" + id + "/" + type;
+ public getSalesQuotationNotesList(id: string, type: number): Observable<any> {
+  let url: string = this.baseUrl + "salesquotation/notelist/" + id + "/" + type;
+  return this.httpHelper.get(url, null);
+}
+
+
+  /**
+  * Add Note.
+  */
+ public AddSalesOrderNote(note: SalesNoteModel): Observable<any> {
+  var data: any = {
+    "Notes": note.Notes,
+    "NoteType": note.NoteType,
+    "SalesNumber": note.SaleNumber,    
+    "ParentId": note.ParentId,
+    "ParentType": note.ParentType,
+    "SalesOptiId": note.SalesOptiId
+  }
+  return this.httpHelper.post(this.baseUrl + 'salesorder/addnotes', data, null);
+}
+ /**
+  * Get List of users.
+  */
+ public getSalesOrderNotesList(id: string, type: number): Observable<any> {
+  let url: string = this.baseUrl + "salesorder/notelist/" + id + "/" + type;
   return this.httpHelper.get(url, null);
 }
 }

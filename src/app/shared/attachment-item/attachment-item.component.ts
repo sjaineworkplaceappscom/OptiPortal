@@ -9,6 +9,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { DecimalPipe } from '@angular/common';
+import { Configuration } from 'src/assets/configuration';
 
 @Component({
   selector: 'app-attachment-item',
@@ -249,36 +250,52 @@ export class AttachmentItemComponent implements OnInit {
  
 
    // download attachment file
-   download(id:string) {
+  //  download(id:string) {
 
-    let seletedAttachment=this.gridAttachmentData.filter(i=> i.AttachmentId==id)[0];   
+  //   let seletedAttachment=this.gridAttachmentData.filter(i=> i.AttachmentId==id)[0];   
 
-    try {
-      this.sharedComponentService.getAtachment(id)
-        .subscribe(
-        res => {
-          var data = res;
+  //   try {
+  //     this.sharedComponentService.getAtachment(id)
+  //       .subscribe(
+  //       res => {
+  //         var data = res;
 
-          let blob = new Blob([data], {
-            type: 'application/pdf' // must match the Accept type
-          });
+  //         let blob = new Blob([data], {
+  //           type: 'application/pdf' // must match the Accept type
+  //         });
 
-            var a = document.createElement('a');
-            document.body.appendChild(a);
-            a.href = URL.createObjectURL(blob);
-            a.download = seletedAttachment.AttachmentName;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-          }
+  //           var a = document.createElement('a');
+  //           document.body.appendChild(a);
+  //           a.href = URL.createObjectURL(blob);
+  //           a.download = seletedAttachment.AttachmentName;
+  //           document.body.appendChild(a);
+  //           a.click();
+  //           document.body.removeChild(a);
+  //         }
         
        
-      );
-    }
-    catch (err) {
-     // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
-    }
-  }
+  //     );
+  //   }
+  //   catch (err) {
+  //    // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
+  //   }
+  // }
 
+
+  download(id:string) {
+
+    let seletedAttachment=this.gridAttachmentData.filter(i=> i.AttachmentId==id)[0];   
+    let filepath:string=Configuration.doccumentPath+ id + "\\" +seletedAttachment.AttachmentName;
+
+    var a = document.createElement('a');
+            // document.body.appendChild(a);
+            a.href =filepath;// URL.createObjectURL(blob);
+            a.target="_blank";
+            a.download = seletedAttachment.AttachmentName;
+            document.body.appendChild(a);
+            debugger;
+            a.click();
+            document.body.removeChild(a);
+  }
 
 }

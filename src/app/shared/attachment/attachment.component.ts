@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { UIHelper } from '../../helpers/ui.helpers';
-import { HttpClient, HttpRequest, HttpEventType } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpEventType, HttpErrorResponse } from '@angular/common/http';
 import { Configuration } from '../../../assets/configuration';
 import { AttachmentDetail } from '../../models/AttchmentDetail';
 import { SharedComponentService } from '../../services/shared-component.service';
@@ -235,28 +235,45 @@ export class AttachmentComponent implements OnInit {
   download(id:string) {
 
     let seletedAttachment=this.gridAttachmentData.filter(i=> i.AttachmentId==id)[0];   
+    let filepath:string=Configuration.doccumentPath+ id + "\\" +seletedAttachment.AttachmentName;
 
-    try {
-      this.sharedComponentService.getAtachment(id)
-        .subscribe(
-        res => {
-          var data = res;
-
-          let blob = new Blob([data], {
-            type: 'application/pdf' // must match the Accept type
-          });
-
-            var a = document.createElement('a');
+    var a = document.createElement('a');
             document.body.appendChild(a);
-            a.href = URL.createObjectURL(blob);
+            a.href =filepath;// URL.createObjectURL(blob);
+            a.target="_blank";
             a.download = seletedAttachment.AttachmentName;
             document.body.appendChild(a);
+            
             a.click();
             document.body.removeChild(a);
-          }
+            
+     try {
+    //   this.sharedComponentService.getAtachment(id)
+    //     .subscribe(
+    //     res => {
+    //      // var data =   JSON.stringify(res);
+    //       var data = res.blob();
+          
+
+    //       let blob = new Blob([data], {
+    //         type: 'application/pdf' // must match the Accept type
+    //       });
+
+    //         var a = document.createElement('a');
+    //         document.body.appendChild(a);
+    //         a.href = URL.createObjectURL(blob);
+    //         a.download = seletedAttachment.AttachmentName;
+    //         document.body.appendChild(a);
+    //         a.click();
+    //         document.body.removeChild(a);
+    //       }
         
        
-      );
+    //   ),
+    //   (err:HttpErrorResponse)=> {
+    //     debugger;
+    //     console.log(err);
+    //   };
     }
     catch (err) {
      // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
