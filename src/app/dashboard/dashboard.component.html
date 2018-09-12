@@ -19,44 +19,24 @@
 
           <ng-container *ngIf="systemAdmin!='true'">  
             <div class="col-md-6 opti_zoom-donut-only-mobile">
-              <kendo-chart>
-                <kendo-chart-title text="Purchase Inquiries"></kendo-chart-title>
-                <kendo-chart-legend [visible]="false"></kendo-chart-legend>
-                <kendo-chart-area background="none"></kendo-chart-area>
-
-                <!-- tooltip start -->
-                <!-- <kendo-chart-tooltip>
-                  <ng-template kendoChartSeriesTooltipTemplate
-                      let-value="value" 
-                      let-category="category" 
-                      let-series="series">
-                      {{ category }} : {{ value }}
-                  </ng-template>
-                </kendo-chart-tooltip> -->
-                <!-- tooltip end -->
-                
-                <!-- chart render start -->
-                <kendo-chart-series>
-                  <kendo-chart-series-item 
-                    *ngFor="let series of model; let outermost = last;" 
-                    type="donut" 
-                    [startAngle]="150"                     
-                    [data]="series.data"                   
-                    >
-
-                      <!-- label start -->
-                      <kendo-chart-series-item-labels *ngIf="outermost" 
-                        position="outsideEnd" 
-                        background="none" 
-                        [content]="labelContent">
-                      </kendo-chart-series-item-labels>
-                      <!-- label end -->
-
-                  </kendo-chart-series-item>
-                </kendo-chart-series>
-                <!-- chart render end -->
-
-              </kendo-chart>
+                <kendo-chart>
+                    <kendo-chart-title text="Purchase Inquiries"></kendo-chart-title>
+                    <kendo-chart-series>
+                      <kendo-chart-series-item
+                          type="donut" [data]="pidashboardResp"
+                          categoryField="StatusText" field="StatusCount">
+                         <!-- label start -->
+                      <kendo-chart-series-item-labels 
+                      position="outsideEnd" 
+                      background="none" 
+                      [content]="labelContent">
+                    </kendo-chart-series-item-labels>
+                    <!-- label end -->
+                      </kendo-chart-series-item>
+                    </kendo-chart-series>
+                    <kendo-chart-legend [visible]="false"></kendo-chart-legend>
+                  </kendo-chart>
+              
             </div>
 
             <div class="col-md-6">

@@ -43,7 +43,7 @@ export class SalesOrderNotesComponent implements OnInit {
     { text: "Rejected", value: 2 },
     { text: "Partial accepted", value: 3 }
   ];
-
+ 
   public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
 
   selectedNote: any = {};

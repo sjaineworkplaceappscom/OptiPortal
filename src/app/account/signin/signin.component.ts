@@ -109,19 +109,14 @@ export class SigninComponent implements OnInit {
       this.invalidCapcha = true;
       return;
     }
-
+    this.showLoader = true;
     await this.accountService.getUserDetails(this.userName).subscribe(
       userData => {
-        
-
-          // jsonfy response object.
-          
 
           if (userData != undefined && userData != null && userData!='') {
             let resUserData = JSON.parse(userData);
             let resUserDataPermissions = resUserData.Permissions
             resUserData =resUserData.LoginUserDetail;
-
             this.userNotExist = false;
             // // Multiteenet 
             // if (resUserData.length > 1) {
@@ -164,6 +159,7 @@ export class SigninComponent implements OnInit {
             //}
           }
           else {
+            this.showLoader = false;
             this.userNotExist = true;
           }
         },
@@ -182,7 +178,7 @@ export class SigninComponent implements OnInit {
 
     let errobj: ErrorObject = new ErrorObject();
     let this1 = this;
-    this.showLoader = true;
+    
     // Generate access token
     this.accountService.generateToken(userId, password, errobj).then(
       data => {

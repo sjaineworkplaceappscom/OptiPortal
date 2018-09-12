@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../helpers/ui.helpers';
+import { PurchaseInquiryService } from '../services/purchase-enquiry.service';
+import { ISubscription } from '../../../node_modules/rxjs/Subscription';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,6 +16,7 @@ export class DashboardComponent implements OnInit {
   searchRequest: string = '';
   seriesData: number[];
   public systemAdmin:any;
+  getPIlistSubs:ISubscription;
   
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -26,7 +29,7 @@ export class DashboardComponent implements OnInit {
   }
   // End UI Section
 
-  constructor() { }
+  constructor(private purchaseInquiryService: PurchaseInquiryService) { }
 
   ngOnInit() {
     // check mobile device
@@ -40,7 +43,7 @@ export class DashboardComponent implements OnInit {
     // Apply class on body end
 
     this.systemAdmin=localStorage.getItem('SystemAdmin');
-
+    this.getPurchaseInquiryDashboardList();
     this.renderChart();
   }
 
@@ -53,30 +56,34 @@ export class DashboardComponent implements OnInit {
       this.showLoader = false;
     }, 1000);
   }
- 
+  // public data: any[] =
+  public pidashboardResp:any[]=[];
 
   // pie chart code start
-  public internetGrowthData = [{  
-    data: [{
-      category: 'New',
-      value: 500
-    }, {
-      category: 'Updated',
-      value: 700
-    }, {
-      category: 'Cancelled',
-      value: 50
-    }, {
-      category: 'Draft',
-      value: 500
-    }]
+  public internetGrowthData = [
+    {  
+    Data:[{value:1,category:"New"},{value:200,category:"close"}]
+    // data: [{
+    //   category: 'New',
+    //   value: 500
+    // }, {
+    //   category: 'Updated',
+    //   value: 700
+    // }, {
+    //   category: 'Cancelled',
+    //   value: 50
+    // }, {
+    //   category: 'Draft',
+    //   value: 500
+    // }]
   }];
 
-  public model: any[] = this.internetGrowthData;
+   public model: any[] = this.internetGrowthData;
 
   public labelContent(e: any): string {
       return `${ e.category } \n ${e.value}`;
   }
+
   // pie chart code end
 
   // yearly chart code start
@@ -95,5 +102,27 @@ export class DashboardComponent implements OnInit {
   }];
   private categories: number[] = [2002, 2003, 2004, 2005, 2006];
   // yearly chart code end
+
+
+   /**
+   * Method to get list of inquries from server.
+   */
+  public getPurchaseInquiryDashboardList() {
+    this.showLoader = true;
+    this.getPIlistSubs = this.purchaseInquiryService.getPurchaseInquiryDashboardDetail().subscribe(
+      PIData => {
+        this.showLoader=false;
+        this.pidashboardResp=JSON.parse(PIData);
+      },
+      error => {
+        this.showLoader=false;
+        alert("Something went wrong");
+        console.log("Error: ", error);
+
+      },
+      
+    );
+  }
+
 
 }

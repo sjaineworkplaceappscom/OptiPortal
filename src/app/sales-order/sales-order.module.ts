@@ -13,8 +13,7 @@ import { SalesOrderDetailAttachmentComponent } from './sales-order-detail-attach
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
-// Please check shashank sir
-import { SalesOrderNotesComponent } from '../shared/sales-order-notes/sales-order-notes.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -26,9 +25,11 @@ import { SalesOrderNotesComponent } from '../shared/sales-order-notes/sales-orde
     FormsModule,
     AngularSvgIconModule,
     PerfectScrollbarModule,
-    DropDownsModule
+    DropDownsModule,
+    SharedModule
+  
   ],
-  declarations: [SalesOrderListComponent, SalesOrderDetailComponent, SalesOrderDetailHomeComponent, SalesOrderDetailContentComponent, SalesOrderDetailAttachmentComponent, SalesOrderNotesComponent],
+  declarations: [SalesOrderListComponent, SalesOrderDetailComponent, SalesOrderDetailHomeComponent, SalesOrderDetailContentComponent, SalesOrderDetailAttachmentComponent],
   exports:[SalesOrderListComponent, SalesOrderDetailComponent]
 })
 export class SalesOrderModule { }
