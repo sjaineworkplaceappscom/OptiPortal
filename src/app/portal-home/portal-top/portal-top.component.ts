@@ -56,14 +56,14 @@ export class PortalTopComponent implements OnInit {
   }
 
   signOut() { 
-    debugger;
+    
     this.accountService.logout().subscribe(
       data => {        
         localStorage.clear();
         this.router.navigateByUrl('/login');
       },
       error => {
-        debugger; 
+    
         console.log("Error: ", error)
       },
     );
