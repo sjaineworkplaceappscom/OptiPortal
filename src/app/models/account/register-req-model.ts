@@ -20,4 +20,5 @@ export class RegisterRequest {
     RequestedRoleId: string;
     RequesterParentCode: string;
     RequesterParentType: number;
+    RequesterRole:string;
 }
