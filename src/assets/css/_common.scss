@@ -448,7 +448,12 @@ body{
         padding-top: 5px;
     }
     tr:hover .opti_note-action-button-sec svg-icon svg {
-        fill: $white !important;
+        fill: $dark-black !important;
+    }
+    kendo-grid tr:hover .opti_note-meta, 
+    kendo-grid tr:hover .opti_note-meta strong,
+    kendo-grid tr:hover .opti_note-meta span {
+        color: $dark-black;
     }
 
     // item tab 
