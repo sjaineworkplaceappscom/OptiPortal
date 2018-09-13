@@ -20,8 +20,13 @@
           <ng-container *ngIf="systemAdmin!='true'">  
             <div class="col-md-6 opti_zoom-donut-only-mobile">
                 <kendo-chart>
-                    <kendo-chart-title text="Purchase Inquiries"></kendo-chart-title>
-                    <kendo-chart-series> 
+
+                    <kendo-chart-title *ngIf="showDefaultMsg==true" text="Purchase Inquiries
+                    No Record Found"></kendo-chart-title>
+
+                    <kendo-chart-title *ngIf="showDefaultMsg==false" text="Purchase Inquiries"></kendo-chart-title>
+                    
+                    <kendo-chart-series>
                       <kendo-chart-series-item
                           type="donut" [data]="pidashboardResp"
                           categoryField="StatusText" field="StatusCount">
@@ -30,12 +35,14 @@
                       position="outsideEnd" 
                       background="none" 
                       [content]="labelContent">
-                    </kendo-chart-series-item-labels>
+                      </kendo-chart-series-item-labels>
                     <!-- label end -->
                       </kendo-chart-series-item>
                     </kendo-chart-series>
                     <kendo-chart-legend [visible]="false"></kendo-chart-legend>
-                  </kendo-chart>
+
+                </kendo-chart>
+
               
             </div>
 

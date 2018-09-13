@@ -110,11 +110,16 @@ export class DashboardComponent implements OnInit {
    */
   public getPurchaseInquiryDashboardList() {
     this.showLoader = true;
+    debugger;
     this.getPIlistSubs = this.purchaseInquiryService.getPurchaseInquiryDashboardDetail().subscribe(
       PIData => {
-        if(PIData!=undefined && PIData!=null && PIData !=''){
+        if(PIData!=undefined && PIData!=null && PIData !='' ){
           this.showLoader=false;
           this.pidashboardResp=JSON.parse(PIData);
+          if(this.pidashboardResp.length<1){
+            this.showDefaultMsg = true;
+          }
+          console.log("Length:"+this.pidashboardResp.length);
         }else{
           this.showDefaultMsg = true;
         }
