@@ -617,7 +617,7 @@ export class MainContentComponent implements OnInit {
     //    console.log(this.date);
         this.purchaseInquiryForUpdate.ValidTillDate = this.date;
         this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInquiryForUpdate).subscribe(data => 
-          
+          {}
             
         );
         this.getInquiryList();
@@ -660,7 +660,7 @@ export class MainContentComponent implements OnInit {
     public AddPurchaseInquiryItem() {
         this.purchaseItemsModelForUpdate.PurchaseInquiryId = this.selectedInquiryId;
        this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModelForUpdate).subscribe(
-           data => 
+           data => {}
            //console.log(data)
        );
        this.getInquiryItemList(this.selectedInquiryId);
