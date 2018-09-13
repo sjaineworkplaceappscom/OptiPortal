@@ -275,7 +275,7 @@ export class DateTimeHelper{
 
 //     // Another method to add/subtract no. Of days in given day
 //     public static NtpOffset(clientRequestNTP: number, clientResponseNTP: number, serverNTP: number) {
-//         //    debugger;
+
 //         console.log('[Debug NTP]- Old NTP offset: ' + LocalStorageHelper.getNtpOffset());
 
 //         // console.log('client request time: ' + moment.utc(clientRequestNTP).toISOString());

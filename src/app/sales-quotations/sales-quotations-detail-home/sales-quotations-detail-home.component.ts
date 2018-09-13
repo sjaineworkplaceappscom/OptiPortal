@@ -39,6 +39,7 @@ export class SalesQuotationsDetailHomeComponent implements OnInit {
   getSalesQuotationDetail(id: number) {
 
     this.showLoader = true;
+    
     this.getDetailsubs = this.salseQuotationService.getSalesQuotationDetail(id,1).subscribe(
       data => {
         

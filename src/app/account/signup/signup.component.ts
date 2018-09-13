@@ -150,7 +150,7 @@ export class SignupComponent implements OnInit {
     this.registerReq.RequesterParentType = this.userType;
     this.registerReq.RequesterRole = this.selectedItem.value;
     this.showLoader = true;
-    debugger;
+    
     this.accountService.registerUser(this.registerReq).subscribe(
 
       data => {

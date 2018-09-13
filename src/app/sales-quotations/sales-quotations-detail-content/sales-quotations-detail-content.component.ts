@@ -77,6 +77,7 @@ export class SalesQuotationsDetailContentComponent implements OnInit {
    */
   getSalesQuotationContentList(id: number) {
     this.showLoader = true;
+    
     this.getDetailsubs = this.salseQuotationService.getSalesQuotationDetail(id,2).subscribe(
       data => {
         

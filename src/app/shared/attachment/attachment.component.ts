@@ -271,7 +271,7 @@ export class AttachmentComponent implements OnInit {
        
     //   ),
     //   (err:HttpErrorResponse)=> {
-    //     debugger;
+    
     //     console.log(err);
     //   };
     }

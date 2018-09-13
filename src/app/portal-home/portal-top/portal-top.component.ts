@@ -57,7 +57,7 @@ export class PortalTopComponent implements OnInit {
   }
 
   signOut() { 
-    debugger;
+    
     this.accountService.logout().subscribe(
       data => {        
         localStorage.clear();

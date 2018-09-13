@@ -104,7 +104,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
-    //debugger;
+    
     //get status of selected inquiry for disabling or enabling  forms
     let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
     if (inquiryDetail != null && inquiryDetail != undefined) {
@@ -331,7 +331,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   public AddPurchaseInquiryItem(saveAndNew: boolean = false) {
     this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
     this.showLoader = true;
-    //debugger;
+    
     this.additemSub = this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
         //this.gridItemsData = JSON.parse(data);

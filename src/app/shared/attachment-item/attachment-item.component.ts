@@ -293,7 +293,7 @@ export class AttachmentItemComponent implements OnInit {
             a.target="_blank";
             a.download = seletedAttachment.AttachmentName;
             document.body.appendChild(a);
-            debugger;
+            
             a.click();
             document.body.removeChild(a);
   }

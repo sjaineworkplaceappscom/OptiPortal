@@ -49,7 +49,7 @@ export class AccountService {
   // set user password.
   public setPassword(userModel: UserModel): Observable<any> {
     let url: string = this.baseUrl + "account/setpassword";
-    debugger;
+    
     return this.httpHelper.post(url, userModel, null, true);
 
   }

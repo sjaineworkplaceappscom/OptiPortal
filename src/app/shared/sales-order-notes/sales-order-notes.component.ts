@@ -83,7 +83,7 @@ export class SalesOrderNotesComponent implements OnInit {
   }
 
   submitNote() {
-    //debugger;
+    
     // Add Notes Data in model. when comes from inquiry  
     this.salesOrderModel = JSON.parse(localStorage.getItem('SelectedSalesOrder'))
     let orderId: number = this.salesOrderModel.OrderId;
