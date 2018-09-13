@@ -21,4 +21,12 @@ export class RegisterRequest {
     RequesterParentCode: string;
     RequesterParentType: number;
     RequesterRole:string;
+
+    // company details
+    CustomerCode: string = "";
+    CustomerName:string="";
+    CustomerWebsite:string="";
+    PrimaryContactName:string="";
+    PrimaryContactEmail:string="";   
+    PrimaryContactPhone:number; 
 }

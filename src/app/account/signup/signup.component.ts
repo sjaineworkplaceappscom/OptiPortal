@@ -140,7 +140,12 @@ export class SignupComponent implements OnInit {
     else {
       this.invalidRole = false;
     }
-
+    this.registerReq.CustomerCode = this.companyDetail.CustomerCode;
+    this.registerReq.CustomerName = this.companyDetail.CustomerName;
+    this.registerReq.CustomerWebsite = this.companyDetail.CustomerWebsite;
+    this.registerReq.PrimaryContactEmail = this.companyDetail.PrimaryContactEmail;
+    this.registerReq.PrimaryContactPhone = this.companyDetail.PrimaryContactPhone;
+    this.registerReq.PrimaryContactName = this.companyDetail.PrimaryContactName;
     this.registerReq.RequesterParentCode = this.companyId;
     this.registerReq.RequesterParentType = this.userType;
     this.registerReq.RequesterRole = this.selectedItem.value;
@@ -196,7 +201,7 @@ export class SignupComponent implements OnInit {
           req = JSON.parse(req, null);
           this.showLoader = false;
           this.companyDetail = req.CustomerInfo[0];
-
+          this.companyDetail.CustomerCode = this.companyId;
           let rolesArray: any[] = req.CustomerRoles;
           this.roles = [{ text: "Please Select Role", value: '0' }]
           for (var v in rolesArray) // for acts as a foreach  
