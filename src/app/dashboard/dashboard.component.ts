@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   seriesData: number[];
   public systemAdmin:any;
   getPIlistSubs:ISubscription;
+  public showDefaultMsg: boolean = false;
   
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -111,8 +112,13 @@ export class DashboardComponent implements OnInit {
     this.showLoader = true;
     this.getPIlistSubs = this.purchaseInquiryService.getPurchaseInquiryDashboardDetail().subscribe(
       PIData => {
-        this.showLoader=false;
-        this.pidashboardResp=JSON.parse(PIData);
+        if(PIData!=undefined && PIData!=null && PIData !=''){
+          this.showLoader=false;
+          this.pidashboardResp=JSON.parse(PIData);
+        }else{
+          this.showDefaultMsg = true;
+        }
+        
       },
       error => {
         this.showLoader=false;
