@@ -96,7 +96,7 @@ export class SignupComponent implements OnInit {
       }
     );
 
-    console.log(this.UserRegData);
+    //console.log(this.UserRegData);
 
 
   }
@@ -160,7 +160,7 @@ export class SignupComponent implements OnInit {
         this.emailAlredayExists = false;
       },
       (err: HttpErrorResponse) => {
-        console.log(err);
+        console.log("Error:"+err);
         if (err.toString() == "Given email alreday exists.") {
           this.showLoader = false;
           this.emailAlredayExists = true;
@@ -169,7 +169,7 @@ export class SignupComponent implements OnInit {
 
           alert('Something went wrong. please check console log for more detail.');
           this.showLoader = false;
-          console.log(err);
+          console.log("Error:"+err);
         }
       },
       () => {
@@ -181,7 +181,7 @@ export class SignupComponent implements OnInit {
 
   changeValue() {
     this.invalidCapcha = false;
-    //console.log("change boolean: " + this.invalidCapcha);
+    
   }
 
   // On blur of compane id
@@ -208,7 +208,7 @@ export class SignupComponent implements OnInit {
           {   
             this.roles.push({text: rolesArray[v].Roles, value: rolesArray[v].Roles});  
           }  
-          console.log(this.roles); 
+        
           if(this.roles.length>1){this.isEnableRole = true;}
           this.invalidCompanyId = false;
           if (this.companyDetail == null || this.companyDetail == undefined) {
@@ -221,7 +221,7 @@ export class SignupComponent implements OnInit {
           alert('Something went wrong. please check console log for more detail.');
           this.showLoader = false;
           this.invalidCompanyId = false;
-          console.log(err);
+          console.log("Error:"+err);
         }
       );
 
@@ -243,7 +243,7 @@ export class SignupComponent implements OnInit {
           alert('Something went wrong. please check console log for more detail.');
           this.showLoader = false;
           this.invalidCompanyId = false;
-          console.log(err);
+          console.log("Error:"+err);
         }  
       ); 
     }

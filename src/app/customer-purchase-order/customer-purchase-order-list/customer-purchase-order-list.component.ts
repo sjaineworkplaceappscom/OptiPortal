@@ -94,7 +94,7 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
         fileEntry.file((file: File) => {
  
           // Here you can access the real file
-          console.log(droppedFile.relativePath, file);
+          //console.log(droppedFile.relativePath, file);
  
           /**
           // You could upload it like this:
@@ -116,7 +116,7 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
       } else {
         // It was a directory (empty directories are added, otherwise only files)
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, fileEntry);
+        //console.log(droppedFile.relativePath, fileEntry);
       }
     }
   }

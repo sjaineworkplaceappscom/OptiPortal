@@ -47,7 +47,7 @@ export class LeftComponent implements OnInit {
 
   
   listClick(event, newValue) {
-     // console.log(newValue);
+   
       this.selectedItem = newValue; 
   }
 

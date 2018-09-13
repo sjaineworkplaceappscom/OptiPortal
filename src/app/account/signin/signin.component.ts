@@ -58,12 +58,12 @@ export class SigninComponent implements OnInit {
   }
 
   changeEmailValue() {
-    console.log("email value change" + this.userNotExist);
+    
     this.userNotExist = false;
-    //console.log("change boolean: " + this.invalidCapcha);
+   
   }
   newValue() {
-    console.log("new val");
+    
   }
 
   public getCookie(cname) {
@@ -138,7 +138,7 @@ export class SigninComponent implements OnInit {
             userId = data.LoginUserId;
             this.generateLogintoken(userId, this.password, this.userName);
             var userPermissionArray = resUserDataPermissions.split(',');
-            console.log(userPermissionArray);
+           // console.log(userPermissionArray);
             localStorage.setItem('LoginUserDetail',JSON.stringify(resUserData));
             localStorage.setItem('LoginUserPermissions', resUserDataPermissions);
             

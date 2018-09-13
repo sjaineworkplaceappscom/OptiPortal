@@ -30,7 +30,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                     else {  // Server Side Error
                         errMsg = `Error Code: ${error.status},  Message: ${error.message}`;
 
-                        console.log(errMsg);
+                        console.log("Error:"+errMsg);
                         if(error.error!=null && error.error!=undefined){
                        // Session expired
                         if (error.error.PortalExceptionType==1) {

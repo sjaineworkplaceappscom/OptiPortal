@@ -215,7 +215,6 @@ export class AttachmentComponent implements OnInit {
         this.updatePIStatussub =  this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
           data => { 
             localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
-            // console.log("NOte:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
             purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
             this.commonService.refreshPIList(null);
           }, error => {

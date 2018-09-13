@@ -101,7 +101,6 @@ export class SalesQuotationsNotesComponent implements OnInit {
       resp => {
         //this method is updating the status if notes updated then update inquiry status.
         //this.callPurchaseInquiryStatusUpdateAPI();
-        // console.log("record added:")
       },
       error => {
         alert("Something went wrong");

@@ -14,7 +14,7 @@ export class DateTimeHelper{
     }
 
     public static ParseToUTC(date:any){  
-        console.log(moment.utc(date).local().format(Configuration.dateFormat));   
+       // console.log(moment.utc(date).local().format(Configuration.dateFormat));   
       return new Date(moment.utc(date).local().format(Configuration.dateFormat));
     }
 }

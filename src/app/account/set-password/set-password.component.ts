@@ -52,7 +52,7 @@ export class SetPasswordComponent implements OnInit {
         err => {
           this.showLoader = false;
           alert('Something went wrong please retry.')
-          console.log(err);
+          console.log("Error:"+err);
         }
       );
     }
@@ -66,7 +66,7 @@ export class SetPasswordComponent implements OnInit {
         err => {
           this.showLoader = false;
           alert('Something went wrong please retry.')
-          console.log(err);
+          console.log("Error:"+err);
 
         }
       );

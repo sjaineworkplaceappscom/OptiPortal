@@ -37,10 +37,8 @@ export class SalesOrderDetailHomeComponent implements OnInit {
   constructor(private commonService: Commonservice, private salseOrderService: SalesOrderService) { }
 
   ngOnInit() { 
-    console.log("oninit: salsodh");
     this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        console.log("oninit: salsodh subs");
         this.salesOrderDetailModel = currentSidebarData.RequesterData;
         let orderNo: number = this.salesOrderDetailModel.OrderNumber;
         this.getSalesOrderDetail(orderNo);  

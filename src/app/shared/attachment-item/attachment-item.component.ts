@@ -61,7 +61,6 @@ export class AttachmentItemComponent implements OnInit {
     
     this.attachmentsub = this.commonService.currentAttachmentItemData.subscribe(
       (data: AttachmentDetail) => {
-        //console.log(JSON.stringify(data));
         if (data != undefined && data != null) {
           this.attachmentModel = data;
           this.purchaseInqId = this.attachmentModel.GrandParentId;
@@ -222,7 +221,6 @@ export class AttachmentItemComponent implements OnInit {
         this.updatePIStatussub = this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
           data => {
             localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
-            // console.log("NOte:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
             purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
             this.commonService.refreshPIList(null);
           }, error => {
