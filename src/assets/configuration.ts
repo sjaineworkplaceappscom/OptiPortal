@@ -10,6 +10,6 @@ export const Configuration = {
 
     ,firstHomePage:"/home/dashboard"
     , dateFormat:'DD MMM YY',
-    appVersion:'1.0' ,
+    appVersion:'1.1' ,
     doccumentPath:"http://139.144.10.218:5000/Upload/"    
 }
