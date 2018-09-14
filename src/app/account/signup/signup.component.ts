@@ -39,13 +39,14 @@ export class SignupComponent implements OnInit {
   //   { text: "Manager", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EA' },
   //   { text: "User", value: 'DA427D60-7B0F-446B-AA40-40D3B7F571EB' }
   // ];
-  public roles: Array<{ text: string,value:string }> = [{ text: "Please Select Role", value: '0' }];
- 
+  public roles: Array<{ text: string, value: string }> = [{ text: "Please Select Role", value: '0' }];
+
   public selectedItem: { text: string, value: string } = this.roles[0];
   public isEnableRole: boolean = false;
 
   public emailAlredayExists: boolean = false;
   @ViewChild('myCanvas') myCanvas;
+  @ViewChild('compId') compId;
 
   // Error Bits
   invalidCompanyId: boolean = false;
@@ -127,7 +128,7 @@ export class SignupComponent implements OnInit {
 
   // Click on Login button.
   submit() {
-    
+
     if (this.capchaText != this.randomstring) {
       this.invalidCapcha = true;
       return;
@@ -150,7 +151,7 @@ export class SignupComponent implements OnInit {
     this.registerReq.RequesterParentType = this.userType;
     this.registerReq.RequesterRole = this.selectedItem.value;
     this.showLoader = true;
-    
+
     this.accountService.registerUser(this.registerReq).subscribe(
 
       data => {
@@ -160,7 +161,7 @@ export class SignupComponent implements OnInit {
         this.emailAlredayExists = false;
       },
       (err: HttpErrorResponse) => {
-        console.log("Error:"+err);
+        console.log("Error:" + err);
         if (err.toString() == "Given email alreday exists.") {
           this.showLoader = false;
           this.emailAlredayExists = true;
@@ -169,7 +170,7 @@ export class SignupComponent implements OnInit {
 
           alert('Something went wrong. please check console log for more detail.');
           this.showLoader = false;
-          console.log("Error:"+err);
+          console.log("Error:" + err);
         }
       },
       () => {
@@ -181,12 +182,12 @@ export class SignupComponent implements OnInit {
 
   changeValue() {
     this.invalidCapcha = false;
-    
+
   }
 
   // On blur of compane id
   getCompaneyDetail() {
-    
+
     if (this.companyId == null || this.companyId == '') {
       return null;
     }
@@ -197,31 +198,37 @@ export class SignupComponent implements OnInit {
       this.showLoader = true;
       this.accountService.getCustomerByCode(this.companyId).subscribe(
         (req: any) => {
-          
+
           req = JSON.parse(req, null);
           this.showLoader = false;
           this.companyDetail = req.CustomerInfo[0];
-          this.companyDetail.CustomerCode = this.companyId;
-          let rolesArray: any[] = req.CustomerRoles;
-          this.roles = [{ text: "Please Select Role", value: '0' }]
-          for (var v in rolesArray) // for acts as a foreach  
-          {   
-            this.roles.push({text: rolesArray[v].Roles, value: rolesArray[v].Roles});  
-          }  
-        
-          if(this.roles.length>1){this.isEnableRole = true;}
-          this.invalidCompanyId = false;
           if (this.companyDetail == null || this.companyDetail == undefined) {
             this.invalidCompanyId = true;
             this.companyDetail = new CompanyDetail();
+            this.compId.nativeElement.focus();
+
+          } else {
+
+            this.companyDetail.CustomerCode = this.companyId;
+            this.invalidCompanyId = false;
+
+            let rolesArray: any[] = req.CustomerRoles;
+            this.roles = [{ text: "Please Select Role", value: '0' }]
+            for (var v in rolesArray) // for acts as a foreach  
+            {
+              this.roles.push({ text: rolesArray[v].Roles, value: rolesArray[v].Roles });
+            }
+            if (this.roles.length > 1) {
+              this.isEnableRole = true;
+            }
           }
-        }
-        ,
+        },
         (err: HttpErrorResponse) => {
           alert('Something went wrong. please check console log for more detail.');
           this.showLoader = false;
           this.invalidCompanyId = false;
-          console.log("Error:"+err);
+          
+          console.log("Error:" + err);
         }
       );
 
@@ -236,6 +243,7 @@ export class SignupComponent implements OnInit {
           this.invalidCompanyId = false;
           if (this.companyDetail == null || this.companyDetail == undefined) {
             this.invalidCompanyId = true;
+            this.compId.nativeElement.focus();
           }
         }
         ,
@@ -243,10 +251,14 @@ export class SignupComponent implements OnInit {
           alert('Something went wrong. please check console log for more detail.');
           this.showLoader = false;
           this.invalidCompanyId = false;
-          console.log("Error:"+err);
-        }  
-      ); 
+          console.log("Error:" + err);
+        }
+      );
     }
   }
 
+  resetCompanyIdVariable() {
+    console.log("change in company id");
+    this.invalidCompanyId = false;
+  }
 }
