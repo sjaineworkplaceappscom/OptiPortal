@@ -47,6 +47,8 @@ export class SignupComponent implements OnInit {
   public emailAlredayExists: boolean = false;
   @ViewChild('myCanvas') myCanvas;
   @ViewChild('compId') compId;
+  @ViewChild('focusID') focusID;
+  
 
   // Error Bits
   invalidCompanyId: boolean = false;
@@ -205,7 +207,7 @@ export class SignupComponent implements OnInit {
           if (this.companyDetail == null || this.companyDetail == undefined) {
             this.invalidCompanyId = true;
             this.companyDetail = new CompanyDetail();
-            this.compId.nativeElement.focus();
+            this.focusID.nativeElement.focus();
 
           } else {
 
