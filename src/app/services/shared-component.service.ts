@@ -93,7 +93,7 @@ export class SharedComponentService {
   }
 
   public getAtachmentFromPath(path:string): Observable<any> {
-    let url: string = this.baseUrl + "attachment/downloadFile/"+path ;
+    let url: string = this.baseUrl + "attachment/downloadFile/"+path+"";
     return this.httpHelper.get(url, null);
   }
 
@@ -111,6 +111,7 @@ export class SharedComponentService {
   }
   return this.httpHelper.post(this.baseUrl + 'salesquotation/addnotes', data, null);
 }
+
  /**
   * Get List of users.
   */

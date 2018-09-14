@@ -57,12 +57,13 @@
 
                         </ng-template>
 
-                        <!-- <kendo-grid-column field="FileName" title="Download" [width]="95" [filterable]="false" [sortable]="false">
-                            <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                                <svg-icon src="assets/images/common/download.svg" (click)="download(dataItem.FileName)" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
-                            </ng-template>
 
+                        <!-- <kendo-grid-column field="AttachmentId" title="" [width]="95" [filterable]="false" [sortable]="false" >
+                                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">                                     
+                                    <span  (click)="download(dataItem.AttachmentId)" class="opti_mouse-pointer" style="color: #1fa2ff;">view</span>                                    
+                                </ng-template>
                         </kendo-grid-column> -->
+                        
                         <kendo-grid-column field="FileName" title="File Name"></kendo-grid-column>
                         <kendo-grid-column field="AttachementDate" title="Attachment Date" format="{0:dd MMM yy}"></kendo-grid-column>
 

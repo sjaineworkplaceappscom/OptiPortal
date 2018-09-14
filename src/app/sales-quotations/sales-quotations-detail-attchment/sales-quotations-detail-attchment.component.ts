@@ -8,6 +8,7 @@ import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { SharedComponentService } from 'src/app/services/shared-component.service';
 import { Path } from '../../../../node_modules/@progress/kendo-drawing';
+import { Configuration } from 'src/assets/configuration';
 
 @Component({
   selector: 'app-sales-quotations-detail-attchment',
@@ -25,7 +26,7 @@ export class SalesQuotationsDetailAttchmentComponent implements OnInit {
   searchRequest: string = '';
   salesQuotationModel: SalesQuotation = new SalesQuotation();
   public getDetailAttachsubs: ISubscription;
-  constructor( private salseQuotationService: SalesQuotationService, private sharedComponentService: SharedComponentService) { }
+  constructor(private salseQuotationService: SalesQuotationService, private sharedComponentService: SharedComponentService) { }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -44,51 +45,50 @@ export class SalesQuotationsDetailAttchmentComponent implements OnInit {
 
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-    
+
     this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
     let quotationId: number = this.salesQuotationModel.QuotationId;
     this.getSalesQuotationAttachmentList(quotationId);
 
   }
 
-   /**
-   * Method to get list of inquries from server.
-  */
+  /**
+  * Method to get list of inquries from server.
+ */
   public getSalesQuotationAttachmentList1() {
     this.showLoader = true;
     this.gridData = salesQuotationsAttachment;
-    setTimeout(()=>{    
+    setTimeout(() => {
       this.showLoader = false;
     }, 1000);
   }
 
-  onFilterChange(checkBox:any,grid:GridComponent)
-  {
-    if(checkBox.checked==false){
+  onFilterChange(checkBox: any, grid: GridComponent) {
+    if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
 
-  clearFilter(grid:GridComponent){      
+  clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
   }
 
- /** 
-  * call api for Sales quotation detail attachment .
-  */
+  /** 
+   * call api for Sales quotation detail attachment .
+   */
   getSalesQuotationAttachmentList(id: number) {
     this.showLoader = true;
-    this.getDetailAttachsubs = this.salseQuotationService.getSalesQuotationDetail(id,3).subscribe(
+    this.getDetailAttachsubs = this.salseQuotationService.getSalesQuotationDetail(id, 3).subscribe(
       data => {
-        
+
         this.showLoader = false;
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
-          this.gridData.forEach(element => { 
-          element.AttachementDate = DateTimeHelper.ParseDate(element.AttachementDate);
-        });
-        this.showLoader = false;
-      }
+          this.gridData.forEach(element => {
+            element.AttachementDate = DateTimeHelper.ParseDate(element.AttachementDate);
+          });
+          this.showLoader = false;
+        }
       }, error => {
         this.showLoader = false;
         alert("Something went wrong");
@@ -100,40 +100,43 @@ export class SalesQuotationsDetailAttchmentComponent implements OnInit {
   ngOnDestroy() {
     if (this.getDetailAttachsubs != undefined)
       this.getDetailAttachsubs.unsubscribe();
-   }
+  }
 
-   download(fileName:string) {
+  download(fileName: string) {
 
-    let seletedAttachment=this.gridData.filter(i=> i.FileName==fileName)[0];   
+    let seletedAttachment = this.gridData.filter(i => i.FileName == fileName)[0];
 
     try {
-
-      let filePath:string="D:/Deployment/sample.txt";
+      // Create file path from response
+      let filePath: string = "\\\\172.16.6.20\\People\\Vaibhav\\ListofFilesRequiredForSetup.xlsx";
 
       this.sharedComponentService.getAtachmentFromPath(filePath)
         .subscribe(
-        res => {
-          var data = res;
-
-          let blob = new Blob([data], {
-            type: 'application/pdf' // must match the Accept type
-          });
-
+          res => {
+           if(res!=undefined && res!=null){
+            let fileName=res.Item1;
+            let tempAttachmentId=res.Item2;
+            
+            let filepath:string=Configuration.doccumentPath + "Temp/"+tempAttachmentId +"/"+fileName;          
+                        
             var a = document.createElement('a');
             document.body.appendChild(a);
-            a.href = URL.createObjectURL(blob);
-            a.download = "sample.txt";//seletedAttachment.FileName;
+            a.href = filepath;
+            a.download = fileName;
+            a.target="_blank";
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
+           }
           }
-        
-       
-      );
+
+
+        );
     }
     catch (err) {
-     // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
+      // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
     }
   }
 
 }
+

@@ -6,6 +6,8 @@ import { SalesOrder } from '../../tempmodels/sales-order';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { Configuration } from 'src/assets/configuration';
+import { SharedComponentService } from '../../services/shared-component.service';
 
 @Component({
   selector: 'app-sales-order-detail-attachment',
@@ -25,7 +27,7 @@ export class SalesOrderDetailAttachmentComponent implements OnInit {
   salesOrderModel: SalesOrder = new SalesOrder();
   public getSalseAttachmentubs: ISubscription;
 
-  constructor(private salseOrderService: SalesOrderService) { }
+  constructor(private salseOrderService: SalesOrderService, private sharedComponentService: SharedComponentService) { }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -97,6 +99,42 @@ export class SalesOrderDetailAttachmentComponent implements OnInit {
       console.log("Error: ", error)
     }, () => { }
   );
+}
+
+download(fileName: string) {
+
+  let seletedAttachment = this.gridData.filter(i => i.FileName == fileName)[0];
+
+  try {
+    // Create file path from response
+    let filePath: string = "\\\\172.16.6.20\\People\\Vaibhav\\ListofFilesRequiredForSetup.xlsx";
+
+    this.sharedComponentService.getAtachmentFromPath(filePath)
+      .subscribe(
+        res => {
+         if(res!=undefined && res!=null){
+          let fileName=res.Item1;
+          let tempAttachmentId=res.Item2;
+          
+          let filepath:string=Configuration.doccumentPath + "Temp/"+tempAttachmentId +"/"+fileName;          
+                      
+          var a = document.createElement('a');
+          document.body.appendChild(a);
+          a.href = filepath;
+          a.download = fileName;
+          a.target="_blank";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+         }
+        }
+
+
+      );
+  }
+  catch (err) {
+    // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
+  }
 }
 
 ngOnDestroy() {
