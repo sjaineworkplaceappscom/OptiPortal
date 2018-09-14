@@ -28,5 +28,5 @@ export class RegisterRequest {
     CustomerWebsite:string="";
     PrimaryContactName:string="";
     PrimaryContactEmail:string="";   
-    PrimaryContactPhone:number; 
+    PrimaryContactPhone:string; 
 }
