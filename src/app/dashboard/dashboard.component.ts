@@ -119,7 +119,7 @@ export class DashboardComponent implements OnInit {
           if(this.pidashboardResp.length<1){
             this.showDefaultMsg = true;
           }
-          console.log("Length:"+this.pidashboardResp.length);
+          //console.log("Length:"+this.pidashboardResp.length);
         }else{
           this.showDefaultMsg = true;
         }
