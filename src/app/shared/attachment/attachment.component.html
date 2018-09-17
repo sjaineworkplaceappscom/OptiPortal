@@ -15,7 +15,7 @@
                     <label class="opti_custom-file-upload">
                         <input #file type="file" multiple (change)="upload(file.files)"  />
                         <!-- accept=".png,.jpg" -->
-                        <img src="assets/images/common/image-upload.svg" width="16px" height="16px" /> Upload
+                        <img src="{{imgPath}}/common/image-upload.svg" width="16px" height="16px" /> Upload
                     </label>
                     <!-- {{selectedFileName}} -->
 
@@ -45,7 +45,25 @@
                 </div>
                 <!-- loader end -->
 
+                <div class="upload-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody class="upload-name-style">
+                            <tr *ngFor="let item of files; let i=index">
+                                <td><strong>{{ item.relativePath }}</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <ng-container *ngIf="showLoader==false">
+
+                <file-drop headertext="" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+
                     <kendo-grid [kendoGridBinding]="gridAttachmentData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true"
                         [filterable]=isColumnFilterAttachementsGrid [groupable]="false" [columnMenu]="{ columnChooser: false }"
                         [height]=gridHeight-56 [selectable]="true" name="gridAttachmentData" #AttachementsTab>
@@ -66,12 +84,12 @@
 
                             <!-- xlsx button start -->
                             <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
-                                <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+                                <svg-icon src="{{imgPath}}/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
                             </button>
 
                             <!-- add items -->
                             <div class="float-right">
-                                <svg-icon #showAddAttachementForm src="assets/images/common/add.svg" (click)="showTabAddAttachementForm()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                                <svg-icon #showAddAttachementForm src="{{imgPath}}/common/add.svg" (click)="showTabAddAttachementForm()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
                                     class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
                             </div>
 
@@ -83,7 +101,7 @@
                                 <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex"> 
                                     <!-- <a href="http://139.144.10.218:5000/Upload/e70754db-1b84-4285-bece-101f79f6d04c/cats-cute-animals-kitten-Favim.com-2144514%20(3).jpg" target="_blank">view</a> -->
                                     <span  (click)="download(dataItem.AttachmentId)" class="opti_mouse-pointer" style="color: #1fa2ff;">view</span>
-                                    <!-- <svg-icon  src="assets/images/common/download.svg" (click)="download(dataItem.AttachmentId)" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon> -->
+                                    <!-- <svg-icon  src="{{imgPath}}/common/download.svg" (click)="download(dataItem.AttachmentId)" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon> -->
                                 </ng-template>
                         </kendo-grid-column>
 
@@ -99,6 +117,7 @@
                         <!-- xlsx template end -->
 
                     </kendo-grid>
+                </file-drop>    
                 </ng-container>
 
             </ng-container>

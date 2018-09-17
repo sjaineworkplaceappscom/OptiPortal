@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { opticonstants } from '../../constants';
+import { Configuration } from '../../../assets/configuration';
 
 import * as $ from "jquery";
 
@@ -10,6 +11,8 @@ import * as $ from "jquery";
   styleUrls: ['./theme-manager.component.scss']
 })
 export class ThemeManagerComponent implements OnInit {
+
+  imgPath = Configuration.imagePath;
 
   // Event emitter variable.
   @Output() messageEvent = new EventEmitter<boolean>();

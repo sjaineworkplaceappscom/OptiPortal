@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { UIHelper } from '../../helpers/ui.helpers';
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
   selector: 'app-approve-users',
@@ -8,6 +9,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
   styleUrls: ['./approve-users.component.scss']
 })
 export class ApproveUsersComponent implements OnInit {
+  imgPath = Configuration.imagePath;
   isMobile: boolean;
    items: Array<any>;
   private approveList:any;

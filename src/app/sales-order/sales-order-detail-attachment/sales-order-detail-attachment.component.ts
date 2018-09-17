@@ -6,6 +6,7 @@ import { SalesOrder } from '../../tempmodels/sales-order';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
   selector: 'app-sales-order-detail-attachment',
@@ -13,7 +14,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
   styleUrls: ['./sales-order-detail-attachment.component.scss']
 })
 export class SalesOrderDetailAttachmentComponent implements OnInit {
-
+  imgPath = Configuration.imagePath;
   public gridData: any[];
   isMobile: boolean;
   isColumnFilter: boolean = false;

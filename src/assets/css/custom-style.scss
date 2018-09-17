@@ -16,7 +16,7 @@
 
   body.opti_account-module
   {
-    background-image: url('/assets/images/signup/nouse/shutter/body-bg-new-5.jpg');
+    // background-image: url('/assets/images/signup/nouse/shutter/body-bg-new-5.jpg');
     background-position: center center;
     background-size: cover;
     padding: 50px;
@@ -58,6 +58,32 @@
 kendo-grid tr:hover dl span,
 kendo-grid tr:hover dl span strong {
   color: white;
+}
+
+app-attachment, 
+file-drop {
+  height: 100%;
+  display: flex;
+}
+
+.opti_body-purchase-inquiries #opti_purchaseInquiryAttachementSectionID,
+.opti_body-purchase-inquiries #opti_purchaseInquiryItemAttachementSectionID{
+  file-drop #dropZone{
+    height: auto;
+    border: none;
+    .content{
+      height: auto;
+    }
+  }
+}
+
+.opti_body-purchase-inquiries #opti_purchaseInquiryItemAttachementSectionID{
+  .drop-zone{
+    width: 100%;
+    kendo-grid{
+      width: 100%;
+    }
+  }
 }
 
 /////////////////////////////////////////////////////////////////////

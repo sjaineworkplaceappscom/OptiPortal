@@ -11,6 +11,7 @@ import { PurchaseInquiryItemModel } from '../../models/purchaserequest/purchase-
 import { NotesModel } from '../../models/purchaserequest/notes';
 import { PurchaseInquiryModel } from '../../models/purchaserequest/purchase-inquiry';
 import { Jsonp } from '@angular/http';
+import { Configuration } from '../../../assets/configuration';
 
 
 
@@ -21,6 +22,7 @@ import { Jsonp } from '@angular/http';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  imgPath = Configuration.imagePath;
   invalidRole: boolean = false;
   invalidCapcha: boolean = false;
   showLoader: boolean = false;

@@ -1,3 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
+
+body.opti_account-module{
+    background-image: url('assets/images/signup/nouse/shutter/body-bg-new-5.jpg');
+}
+
+#captchaCanvasID{
+    background-image:url('assets/images/common/captcha-background.jpg'); 
+}
+
+.opti_account-banner-section{
+    background-image: url('assets/images/signup/nouse/shutter/body-bg-new-1.jpg');
+}

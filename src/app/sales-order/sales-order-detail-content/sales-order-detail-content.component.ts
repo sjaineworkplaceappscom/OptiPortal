@@ -7,6 +7,7 @@ import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
   selector: 'app-sales-order-detail-content',
@@ -14,7 +15,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
   styleUrls: ['./sales-order-detail-content.component.scss']
 })
 export class SalesOrderDetailContentComponent implements OnInit {
-
+  imgPath = Configuration.imagePath;
   public gridData: any[];
   isMobile: boolean;
   isColumnFilter: boolean = false;

@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { ISubscription } from "rxjs/Subscription";
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
     selector: 'app-notes-item',
@@ -23,6 +24,7 @@ export class NotesItemComponent implements OnInit {
     /**
      * global variable
     */
+    imgPath = Configuration.imagePath;
     isMobile: boolean;
     gridHeight: number;
 

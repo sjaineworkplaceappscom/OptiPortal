@@ -17,6 +17,7 @@ import { Configuration } from '../../../assets/configuration';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ISubscription } from 'rxjs/Subscription';
 
+
 import * as $ from "jquery";
 import { Router } from '@angular/router';
 
@@ -26,6 +27,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./purchase-inq-list.component.scss']
 })
 export class PurchaseInqListComponent implements OnInit {
+  imgPath = Configuration.imagePath;
   isMobile: boolean;
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;
