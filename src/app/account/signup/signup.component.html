@@ -71,14 +71,14 @@
                                     <span *ngIf="RequesterName.errors && (RequesterName.dirty || RequesterName.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your full name.</span>
                                 </span>
                                 <input name="RequesterName" required #RequesterName=ngModel maxlength="" [(ngModel)]="registerReq.RequesterName" type="text"
-                                    class="k-textbox" value="" placeholder="e.g. Kevin" autocomplete="off"/>
+                                    class="k-textbox" value="" placeholder="e.g. Kevin" autocomplete="off" maxlength="100"/>
                             </label>
                             <label class="k-form-field opti_position-relative">
                                 <span class="opti_form-label">Your Email *
                                     <span *ngIf="RequesterEmail.errors?.required && RequesterEmail.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
                                         Please enter emailId.
                                     </span>
-                                    <span *ngIf="RequesterEmail.touched && emailAlredayExists==true" class="float-right opti_signup-validation-top-side opti_error-msg">
+                                    <span *ngIf="emailAlredayExists==true && !RequesterEmail.errors?.required && !RequesterEmail.errors?.email"  class="float-right opti_signup-validation-top-side opti_error-msg">
                                        Requested email already registered.
                                     </span>
                                     <span *ngIf="RequesterEmail.errors?.email && RequesterEmail.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
@@ -87,7 +87,7 @@
 
                                 </span>
                                 <input name="RequesterEmail" required email #RequesterEmail=ngModel [(ngModel)]="registerReq.RequesterEmail" type="email"
-                                    class="k-textbox" value="email" placeholder="e.g. kevin@gmail.com"
+                                    class="k-textbox" value="email" placeholder="e.g. kevin@gmail.com" (input) ="resetRequesterEmail()"
                                     placement="right" container="body" autocomplete="off"/>
 
                             </label>
