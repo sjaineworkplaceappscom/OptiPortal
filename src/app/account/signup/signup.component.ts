@@ -130,6 +130,9 @@ export class SignupComponent implements OnInit {
     this.customCaptcha(this.randomstring);
   }
 
+  resetRequesterEmail(){
+    this.emailAlredayExists = false;
+  }
   // Click on Login button.
   submit() {
 

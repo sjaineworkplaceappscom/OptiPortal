@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../../services/account.service';
 import { UserModel } from '../../models/account/user-model';
 import { NgForm } from '@angular/forms';
+import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class SetPasswordComponent implements OnInit {
   }
 
   setPassword() {
-   
+   debugger;     
     let this1 = this;
     this.showLoader = true;
     this.userModel.UserName = this.userId;
@@ -48,8 +49,9 @@ export class SetPasswordComponent implements OnInit {
           alert('Your password set successfully.');
           this1.showLoader = false;
           this.router.navigateByUrl('account/login');
-        },
-        err => {
+        },        
+        (err:HttpErrorResponse) => {
+          debugger;
           this.showLoader = false;
           alert('Something went wrong please retry.')
           console.log("Error:"+err);
@@ -63,17 +65,23 @@ export class SetPasswordComponent implements OnInit {
           this1.showLoader = false;
           this.router.navigateByUrl('account/login');
         },
-        err => {
-          this.showLoader = false;
-          alert('Something went wrong please retry.')
+        (err:HttpErrorResponse) => {
+
+          if(err.status==400){
+            alert("Opration you are trying is invalid.");
+          }
+          else{
+          
+          alert('Something went wrong please retry.');          
           console.log("Error:"+err);
+          }
+          this.showLoader = false;
 
         }
       );
     }
   }
-
- 
+  
   public checkPasswordStrength(password: string) {
 
     var numbers = "[0-9]+";
