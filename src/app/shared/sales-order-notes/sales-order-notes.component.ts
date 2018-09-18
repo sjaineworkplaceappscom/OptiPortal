@@ -6,6 +6,7 @@ import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { CustomerEntityType } from '../../enums/enums';
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
   selector: 'app-sales-order-notes',
@@ -17,6 +18,7 @@ export class SalesOrderNotesComponent implements OnInit {
   /**
    * global variable
   */
+  imgPath = Configuration.imagePath;
   isMobile: boolean;
   gridHeight: number;
 

@@ -8,7 +8,11 @@ import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { SharedComponentService } from 'src/app/services/shared-component.service';
 import { Path } from '../../../../node_modules/@progress/kendo-drawing';
+<<<<<<< HEAD
 import { Configuration } from 'src/assets/configuration';
+=======
+import { Configuration } from '../../../assets/configuration';
+>>>>>>> d98450b90295a784e11cdbb50267bd83e7714099
 
 @Component({
   selector: 'app-sales-quotations-detail-attchment',
@@ -16,7 +20,7 @@ import { Configuration } from 'src/assets/configuration';
   styleUrls: ['./sales-quotations-detail-attchment.component.scss']
 })
 export class SalesQuotationsDetailAttchmentComponent implements OnInit {
-
+  imgPath = Configuration.imagePath;
   public gridData: any[];
   isMobile: boolean;
   isColumnFilter: boolean = false;

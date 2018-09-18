@@ -110,7 +110,7 @@ export class DashboardComponent implements OnInit {
    */
   public getPurchaseInquiryDashboardList() {
     this.showLoader = true;
-    debugger;
+    
     this.getPIlistSubs = this.purchaseInquiryService.getPurchaseInquiryDashboardDetail().subscribe(
       PIData => {
         if(PIData!=undefined && PIData!=null && PIData !='' ){

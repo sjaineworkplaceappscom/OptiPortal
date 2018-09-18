@@ -3,6 +3,8 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { Commonservice } from '../../services/commonservice.service';
 import { data2 } from '../../demodata/data2';
 import { GridComponent } from '@progress/kendo-angular-grid';
+import { Configuration } from '../../../assets/configuration';
+
 
 @Component({
   selector: 'app-delivery-notes-list',
@@ -10,6 +12,7 @@ import { GridComponent } from '@progress/kendo-angular-grid';
   styleUrls: ['./delivery-notes-list.component.scss']
 })
 export class DeliveryNotesListComponent implements OnInit {
+  imgPath = Configuration.imagePath;
 
   isMobile: boolean;
   isColumnFilter: boolean = false;

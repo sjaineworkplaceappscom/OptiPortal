@@ -3,6 +3,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ModuleName, ComponentName } from '../../enums/enums';
 import { Commonservice } from '../../services/commonservice.service';
 import { DatePipe } from '@angular/common'
+import { Configuration } from '../../../assets/configuration';
 
 import {
   GridComponent,
@@ -24,7 +25,7 @@ import * as $ from "jquery";
   styleUrls: ['./sales-quotations-list.component.scss']
 })
 export class SalesQuotationsListComponent implements OnInit {
-
+  imgPath = Configuration.imagePath;
   isMobile: boolean;
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;

@@ -6,6 +6,7 @@ import { TempPurchaseInquiryItemModel } from '../../tempmodels/temppurchase-inqu
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from '../../enums/enums';
 import { ISubscription } from 'rxjs/Subscription';
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
   selector: 'app-purchase-inq-item-list',
@@ -13,6 +14,7 @@ import { ISubscription } from 'rxjs/Subscription';
   styleUrls: ['./purchase-inq-item-list.component.scss']
 })
 export class PurchaseInqItemListComponent implements OnInit {
+  imgPath = Configuration.imagePath;
   showLoader:boolean=false;
 
   /**
@@ -136,8 +138,6 @@ export class PurchaseInqItemListComponent implements OnInit {
     public onItemGridDataSelection(selection, status) {
       
       //fatch and parse row value.
-      //let selectedItem = gridItemsData.data.data[selection.index];
-      //const selectedData = selection.selectedRows[0].dataItem;
       const selectedData = this.gridItemsData[0];
       
       this.purchaseItemsModel = JSON.parse(JSON.stringify(selectedData));

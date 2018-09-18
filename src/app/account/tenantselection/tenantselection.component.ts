@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Commonservice } from '../../services/commonservice.service';
 import { AccountService } from '../../services/account.service';
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
   selector: 'app-tenantselection',
@@ -13,6 +14,7 @@ import { AccountService } from '../../services/account.service';
   styleUrls: ['./tenantselection.component.scss']
 })
 export class TenantselectionComponent implements OnInit {
+  imgPath = Configuration.imagePath;
   userData: any;
   isError: boolean = false;
   authSharedData: any;

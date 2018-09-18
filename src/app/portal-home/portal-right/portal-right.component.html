@@ -1,5 +1,5 @@
 <div #optirightfixedsection class="opti_right-fix-section" id="opti_optirightfixedsectionID">
-    <svg-icon src="assets/images/common/back-opposite.svg" (click)="closeRightSidebar(false)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }" class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon>    
+    <svg-icon src="{{imgPath}}/common/back-opposite.svg" (click)="closeRightSidebar(false)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }" class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon>    
     
     <app-purchase-inquiry *ngIf="currentSidebarInfo.ModuleName==1" [currentSidebarInfo]="currentSidebarInfo"> </app-purchase-inquiry>
     

@@ -3,6 +3,7 @@ import { Commonservice } from '../../services/commonservice.service';
 import { opticonstants } from '../../constants';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
+import { Configuration } from '../../../assets/configuration';
 
 
 
@@ -12,6 +13,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
   styleUrls: ['./portal-right.component.scss']
 })
 export class PortalRightComponent implements OnInit {
+  imgPath = Configuration.imagePath;
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   // Event emitter variable.
   //  @Output() messageEvent = new EventEmitter<boolean>();

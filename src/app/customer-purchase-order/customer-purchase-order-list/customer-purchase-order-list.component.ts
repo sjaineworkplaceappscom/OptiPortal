@@ -3,7 +3,8 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { Commonservice } from '../../services/commonservice.service';
 import { data2 } from '../../demodata/data2';
 import { GridComponent } from '@progress/kendo-angular-grid';
-import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { Configuration } from '../../../assets/configuration';
+
 
 @Component({
   selector: 'app-customer-purchase-order-list',
@@ -12,16 +13,25 @@ import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry 
 })
 export class CustomerPurchaseOrderListComponent implements OnInit {
 
+  imgPath = Configuration.imagePath;
+
   isMobile: boolean;
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;
   gridHeight: number;
   showLoader: boolean = false;
   searchRequest: string = '';
+
+  pageLimit:string;
+  pagination:boolean;
   
   // UI Section
   @HostListener('window:resize', ['$event'])
   onResize(event) {
+
+    // show/hide pagintaion
+    this.paginationAttributes();
+
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
 
@@ -36,6 +46,17 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
 
   public gridData: any[];
 
+  public paginationAttributes(){
+    this.isMobile = UIHelper.isMobile();
+    if(this.isMobile==true){
+      this.pageLimit = '';
+      this.pagination = false;
+    }else{
+      this.pageLimit = '50';
+      this.pagination = true;
+    }
+  }
+
   ngOnInit() {
 
     // Apply class on body start
@@ -45,12 +66,14 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
     element.classList.add("opti_body-main-module");
     // Apply class on body end
 
+    // show/hide pagintaion
+    this.paginationAttributes();
+
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
 
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-
     
     this.getCustomerPurchaseOrderList();
   }
@@ -79,57 +102,5 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  ///////////////////////////////////////////
-  // drag file code start
-  ///////////////////////////////////////////
-  public files: UploadFile[] = [];
  
-  public dropped(event: UploadEvent) {
-    this.files = event.files;
-    for (const droppedFile of event.files) {
- 
-      // Is it a file?
-      if (droppedFile.fileEntry.isFile) {
-        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-        fileEntry.file((file: File) => {
- 
-          // Here you can access the real file
-          //console.log(droppedFile.relativePath, file);
- 
-          /**
-          // You could upload it like this:
-          const formData = new FormData()
-          formData.append('logo', file, relativePath)
- 
-          // Headers
-          const headers = new HttpHeaders({
-            'security-token': 'mytoken'
-          })
- 
-          this.http.post('https://mybackend.com/api/upload/sanitize-and-save-logo', formData, { headers: headers, responseType: 'blob' })
-          .subscribe(data => {
-            // Sanitized logo returned from backend
-          })
-          **/
- 
-        });
-      } else {
-        // It was a directory (empty directories are added, otherwise only files)
-        const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        //console.log(droppedFile.relativePath, fileEntry);
-      }
-    }
-  }
- 
-  public fileOver(event){
-    console.log(event);
-  }
- 
-  public fileLeave(event){
-    console.log(event);
-  }
-  ///////////////////////////////////////////
-  // drag file code end
-  ///////////////////////////////////////////
-
 }

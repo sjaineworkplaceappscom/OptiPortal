@@ -30,12 +30,12 @@
                                             <label class="k-form-field opti_common-search-label">
                                                 <input type="text" class="k-textbox" name="notesSearchValue" [(ngModel)]="notesSearchValue" />
                                                 <span class="opti_vertical-align opti_mouse-pointer">
-                                                    <img src="assets/images/common/search-black.svg" class="" alt="Search" width="15" />
+                                                    <img src="{{imgPath}}/common/search-black.svg" class="" alt="Search" width="15" />
                                                 </span>
                                             </label>
                                         </form>
 
-                                        <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="openNewNote()" [svgStyle]="{ 'width.px':20, 'height.px':20}"
+                                        <svg-icon #showItemButtonSection src="{{imgPath}}/common/add.svg" (click)="openNewNote()" [svgStyle]="{ 'width.px':20, 'height.px':20}"
                                         class="opti_vertical-align float-left opti_icon-spacing" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
                                     </div>
 
@@ -55,7 +55,7 @@
                                                    </span> 
                                                 </span>
                                                 <span class="float-right opti_note-action-button-sec">
-                                                    <svg-icon kendoGridEditCommand src="assets/images/common/edit.svg" (click)="openEditNoteView($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
+                                                    <svg-icon kendoGridEditCommand src="{{imgPath}}/common/edit.svg" (click)="openEditNoteView($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
                                                         class="opti_mouse-pointer float-right"></svg-icon>
                                                  
                                                 </span>

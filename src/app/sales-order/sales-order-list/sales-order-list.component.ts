@@ -9,6 +9,7 @@ import { SalesOrderService } from '../../services/sales-order.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import * as $ from "jquery";
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
   selector: 'app-sales-order-list',
@@ -16,7 +17,7 @@ import * as $ from "jquery";
   styleUrls: ['./sales-order-list.component.scss']
 })
 export class SalesOrderListComponent implements OnInit {
-
+  imgPath = Configuration.imagePath;
   isMobile: boolean;
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;
