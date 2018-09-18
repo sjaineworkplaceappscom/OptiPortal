@@ -19,6 +19,8 @@
            [columnMenu]="{ columnChooser: false }" 
            [height]=gridHeight 
            [selectable]="true" 
+           [pageSize]=pageLimit 
+           [pageable]=pagination 
            #gridItem>
            <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
            <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->

@@ -2,4 +2,20 @@ body.opti_body-customer-purchase-order{
     kendo-grid-toolbar.k-header.k-grid-toolbar {
         // display: none;
     }
+
+    // make sarch box in full width
+    .opti_right-top-sec-grid-purchase{
+        width: 100%;
+        form{
+            width: 100%;
+            label{
+                width: 100%;
+                input{
+                    width: calc(100% - 17px) !important;
+                }
+            }
+        }
+    }
+
 }
+

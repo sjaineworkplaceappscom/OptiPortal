@@ -21,10 +21,17 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
   gridHeight: number;
   showLoader: boolean = false;
   searchRequest: string = '';
+
+  pageLimit:string;
+  pagination:boolean;
   
   // UI Section
   @HostListener('window:resize', ['$event'])
   onResize(event) {
+
+    // show/hide pagintaion
+    this.paginationAttributes();
+
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
 
@@ -39,6 +46,17 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
 
   public gridData: any[];
 
+  public paginationAttributes(){
+    this.isMobile = UIHelper.isMobile();
+    if(this.isMobile==true){
+      this.pageLimit = '';
+      this.pagination = false;
+    }else{
+      this.pageLimit = '50';
+      this.pagination = true;
+    }
+  }
+
   ngOnInit() {
 
     // Apply class on body start
@@ -48,12 +66,14 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
     element.classList.add("opti_body-main-module");
     // Apply class on body end
 
+    // show/hide pagintaion
+    this.paginationAttributes();
+
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
 
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-
     
     this.getCustomerPurchaseOrderList();
   }
