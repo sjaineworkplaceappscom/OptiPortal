@@ -24,6 +24,7 @@ import { AttachmentUploadComponent } from './attachment-upload/attachment-upload
 import { CustomFilterPipe } from '../custom-filter.pipe';
 import { SalesQuotationsNotesComponent } from 'src/app/shared/sales-quotations-notes/sales-quotations-notes.component';
 import { SalesOrderNotesComponent } from 'src/app/shared/sales-order-notes/sales-order-notes.component';
+import { FileDropModule } from 'ngx-file-drop';
 
 
 
@@ -54,6 +55,7 @@ import { SalesOrderNotesComponent } from 'src/app/shared/sales-order-notes/sales
      // Angular
      HttpClientModule,         
      FormsModule,
+     FileDropModule
   ],
   declarations: [AttachmentComponent,NotesComponent, NotesItemComponent, AttachmentItemComponent, AttachmentUploadComponent,CustomFilterPipe,SalesQuotationsNotesComponent,SalesOrderNotesComponent],
   exports:[AttachmentComponent,NotesComponent,NotesItemComponent,AttachmentItemComponent,AttachmentUploadComponent,SalesQuotationsNotesComponent,SalesOrderNotesComponent],

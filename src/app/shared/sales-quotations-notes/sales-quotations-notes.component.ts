@@ -8,6 +8,7 @@ import { SalesQuotation } from '../../tempmodels/sales-quotation';
 import { CustomerEntityType } from '../../enums/enums';
 import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
 import { debug } from 'util';
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
   selector: 'app-sales-quotations-notes',
@@ -19,6 +20,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
   /**
      * global variable
     */
+  imgPath = Configuration.imagePath;
   isMobile: boolean;
   gridHeight: number;
 

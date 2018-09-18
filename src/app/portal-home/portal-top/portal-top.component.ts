@@ -14,7 +14,7 @@ import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http
   styleUrls: ['./portal-top.component.scss']
 })
 export class PortalTopComponent implements OnInit {
-
+  imgPath = Configuration.imagePath;
   openThemeSetting: boolean = false;
   constructor(private modalService: NgbModal, private router: Router, private commonService: Commonservice, private accountService: AccountService) { }
   selectedThemeColor: string = opticonstants.DEFAULTTHEMECOLOR;

@@ -70,7 +70,7 @@
                                 <span class="opti_form-label">Your Name *
                                     <span *ngIf="RequesterName.errors && (RequesterName.dirty || RequesterName.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your full name.</span>
                                 </span>
-                                <input name="RequesterName" required #RequesterName=ngModel maxlength="" [(ngModel)]="registerReq.RequesterName" type="text"
+                                <input name="RequesterName" required #RequesterName=ngModel [(ngModel)]="registerReq.RequesterName" type="text"
                                     class="k-textbox" value="" placeholder="e.g. Kevin" autocomplete="off" maxlength="100"/>
                             </label>
                             <label class="k-form-field opti_position-relative">
@@ -130,7 +130,7 @@
                                 </span>
                                 <span class="float-left opti_captcha-refresh opti_vertical-align">
                                     <div (click)="changeCaptcha()" class="opti_mouse-pointer">
-                                        <img src="assets/images/common/refresh-button.svg" width="20" height="20" />
+                                        <img src="{{imgPath}}/common/refresh-button.svg" width="20" height="20" />
                                     </div>
                                 </span>
                                 

@@ -18,6 +18,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
+  imgPath = Configuration.imagePath;
   showLoader: boolean = false;
   isError: boolean = false;
 

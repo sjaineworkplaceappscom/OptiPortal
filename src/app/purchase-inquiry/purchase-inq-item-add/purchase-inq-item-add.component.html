@@ -11,24 +11,24 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="opti_item-back"><img (click)="showItemsGrid();" src="assets/images/common/close-black.svg" width="16px" height="16px" class="opti_mouse-pointer" /></div>
+                    <div class="opti_item-back"><img (click)="showItemsGrid();" src="{{imgPath}}/common/close-black.svg" width="16px" height="16px" class="opti_mouse-pointer" /></div>
 
                     <!-- Tab title start -->
                     <div class="opti_position-relative opti_vertical-tab-outer" id="opti_verticalTabTitleID">
                         <ul #optiTabvertical class="opti_tab tabs clearfix" id="opti_VerticalTabID">
                             <li class="opti_tablinks-vertical active" id="opti_ItemHomeTabID" (click)="openTab($event, 'home')">
                                 <a href="javascript:void('0');">
-                                    <svg-icon src="assets/images/purchase-inquiries/home.svg" [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':selectedThemeColor }"></svg-icon>
+                                    <svg-icon src="{{imgPath}}/purchase-inquiries/home.svg" [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':selectedThemeColor }"></svg-icon>
                                 </a>
                             </li>
                             <li class="opti_tablinks-vertical" [ngClass]="{'opti_disable-tab':addOperationInProgress === true}" (click)="openTab($event, 'attachement')">
                                 <a href="javascript:void('0');">
-                                    <svg-icon src="assets/images/purchase-inquiries/attchment.svg" [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':selectedThemeColor }"></svg-icon>
+                                    <svg-icon src="{{imgPath}}/purchase-inquiries/attchment.svg" [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':selectedThemeColor }"></svg-icon>
                                 </a>
                             </li>
                             <li class="opti_tablinks-vertical" [ngClass]="{'opti_disable-tab':addOperationInProgress === true}" (click)="openTab($event, 'notes')">
                                 <a href="javascript:void('0');">
-                                    <svg-icon src="assets/images/purchase-inquiries/notes.svg" [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':selectedThemeColor }"></svg-icon>
+                                    <svg-icon src="{{imgPath}}/purchase-inquiries/notes.svg" [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':selectedThemeColor }"></svg-icon>
                                 </a>
                             </li>
                         </ul>
@@ -163,12 +163,12 @@
 
                             <!-- xlsx button start -->
                             <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
-                                <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+                                <svg-icon src="{{imgPath}}/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
                             </button>
 
                             <!-- add items -->
                             <div class="float-right">
-                                <svg-icon #showItemButtonSection src="assets/images/common/add.svg" (click)="showAddItemSection()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                                <svg-icon #showItemButtonSection src="{{imgPath}}/common/add.svg" (click)="showAddItemSection()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
                                 *ngIf="!isCancelStatus"   class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
                             </div>
                         </ng-template>

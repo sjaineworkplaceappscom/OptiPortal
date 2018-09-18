@@ -9,6 +9,7 @@ import { Commonservice } from '../../services/commonservice.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType, PurchaseInquiryStatus, PurchaseInquiryItemStatus, OperationType } from '../../enums/enums';
 import { ISubscription } from 'rxjs/Subscription';
+import { Configuration } from '../../../assets/configuration';
 
 import * as $ from "jquery";
 import { AttachmentDetail } from '../../models/AttchmentDetail';
@@ -25,6 +26,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   */
   isMobile: boolean;
   gridHeight: number;
+  imgPath = Configuration.imagePath;
 
   /**
    * Item tab Variable

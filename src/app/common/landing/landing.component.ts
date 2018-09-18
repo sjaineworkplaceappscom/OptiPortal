@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Commonservice } from '../../services/commonservice.service';
+import { Configuration } from '../../../assets/configuration';
 
 @Component({
   selector: 'app-landing',
@@ -8,6 +9,8 @@ import { Commonservice } from '../../services/commonservice.service';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
+
+  imgPath = Configuration.imagePath;
 
   constructor(private router: Router, private commonService: Commonservice) { }
 
