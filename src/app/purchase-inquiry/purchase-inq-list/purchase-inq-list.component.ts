@@ -48,6 +48,10 @@ export class PurchaseInqListComponent implements OnInit {
   getPIlistSubs:ISubscription;
   refreshPIListSubs:ISubscription;
 
+  // pagination variable
+  pageLimit;
+  pagination:boolean;
+
   @ViewChild('optirightfixedsection') optirightfixedsection;
   constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe,private router:Router) {
   }
@@ -60,11 +64,20 @@ export class PurchaseInqListComponent implements OnInit {
 
     // check mobile device
     this.isMobile = UIHelper.isMobile();
+
+    this.getPaginationAttributes();
   }
   // End UI Section
 
+  getPaginationAttributes(){
+    // pagination add/remove for desktop and mobile
+    let paginationAttributesArray = UIHelper.paginationAttributes();
+    this.pageLimit = paginationAttributesArray[0];
+    this.pagination = paginationAttributesArray[1];
+    console.log('pageLimit-'+this.pageLimit + 'pagination-'+this.pagination);
+  }
+
   ngOnInit() {
-    
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
@@ -77,6 +90,8 @@ export class PurchaseInqListComponent implements OnInit {
     this.loginUserType = userData[0].LoginUserType;
     this.gridHeight = UIHelper.getMainContentHeight();
     this.systemAdmin=localStorage.getItem('SystemAdmin');
+
+    this.getPaginationAttributes();
 
     this.refreshPIListSubs=this.commonService.refreshPIListSubscriber.subscribe(data => {
       this.getInquiryList();

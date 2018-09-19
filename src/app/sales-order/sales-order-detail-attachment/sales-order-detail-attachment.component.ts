@@ -6,12 +6,8 @@ import { SalesOrder } from '../../tempmodels/sales-order';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
-<<<<<<< HEAD
 import { Configuration } from 'src/assets/configuration';
 import { SharedComponentService } from '../../services/shared-component.service';
-=======
-import { Configuration } from '../../../assets/configuration';
->>>>>>> d98450b90295a784e11cdbb50267bd83e7714099
 
 @Component({
   selector: 'app-sales-order-detail-attachment',

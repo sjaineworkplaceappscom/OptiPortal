@@ -35,13 +35,27 @@ export class SalesQuotationsListComponent implements OnInit {
 
   getSaleslistSubs: ISubscription;
 
+  // pagination variable
+  pageLimit;
+  pagination:boolean;
+
   // UI Section 
+
+  getPaginationAttributes(){
+    // pagination add/remove for desktop and mobile
+    let paginationAttributesArray = UIHelper.paginationAttributes();
+    this.pageLimit = paginationAttributesArray[0];
+    this.pagination = paginationAttributesArray[1];
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
     // check mobile device
     this.isMobile = UIHelper.isMobile();
+
+    this.getPaginationAttributes();
   }
   // End UI Section
 
@@ -60,6 +74,9 @@ export class SalesQuotationsListComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // check mobile device
     this.isMobile = UIHelper.isMobile();
+
+    this.getPaginationAttributes();
+
     // set salse quotation list data.
     this.getSalesQuotationsList();
   }
