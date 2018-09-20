@@ -186,7 +186,7 @@ export class AttachmentComponent implements OnInit {
         // Get attachment list
         if (event.type === 4 && event.status === 200) {
           this.showLoader = false;
-          this.getAttchmentList();
+          this.getAttchmentList(); 
           //this method is updating the status if notes updated then update inquiry status.
           this.callPurchaseInquiryStatusUpdateAPI();
           this.back();
