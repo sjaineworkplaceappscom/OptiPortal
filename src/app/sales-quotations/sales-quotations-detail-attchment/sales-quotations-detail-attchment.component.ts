@@ -108,7 +108,7 @@ export class SalesQuotationsDetailAttchmentComponent implements OnInit {
 
     try {
       // Create file path from response
-      let filePath: string = "\\\\172.16.6.20\\People\\Vaibhav\\ListofFilesRequiredForSetup.xlsx";
+      let filePath: string = seletedAttachment.FullPath;//"\\\\172.16.6.20\\People\\Vaibhav\\ListofFilesRequiredForSetup.xlsx";
 
       this.sharedComponentService.getAtachmentFromPath(filePath)
         .subscribe(
@@ -123,7 +123,7 @@ export class SalesQuotationsDetailAttchmentComponent implements OnInit {
             document.body.appendChild(a);
             a.href = filepath;
             a.download = fileName;
-            a.target="_blank";
+            // a.target="_blank";
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);

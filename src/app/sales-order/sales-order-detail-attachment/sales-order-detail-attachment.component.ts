@@ -50,97 +50,98 @@ export class SalesOrderDetailAttachmentComponent implements OnInit {
     let orderNumber: number = this.salesOrderModel.OrderNumber;
     this.getSalesOrderAttachmentList(orderNumber);
 
-//    this.getSalesOrderAttachmentList1();
+    //    this.getSalesOrderAttachmentList1();
   }
 
-   /**
-   * Method to get list of inquries from server.
-  */
+  /**
+  * Method to get list of inquries from server.
+ */
   public getSalesOrderAttachmentList1() {
     this.showLoader = true;
     this.gridData = salesOrderAttachment;
-    setTimeout(()=>{    
+    setTimeout(() => {
       this.showLoader = false;
     }, 1000);
   }
 
-  onFilterChange(checkBox:any,grid:GridComponent)
-  {
-    if(checkBox.checked==false){
+  onFilterChange(checkBox: any, grid: GridComponent) {
+    if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
 
-  clearFilter(grid:GridComponent){      
+  clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
   }
 
 
-   /** 
-  * call api for Sales quotation detail attachment .
-  */
- getSalesOrderAttachmentList(id: number) {
-  this.showLoader = true;
-  this.getSalseAttachmentubs = this.salseOrderService.getSalesOrderDetail(id,3).subscribe(
-    data => {
-      
-      this.showLoader = false;
-      if (data != null && data != undefined) {
-        this.gridData = JSON.parse(data);
-        this.gridData.forEach(element => { 
-        element.AttachementDate = DateTimeHelper.ParseDate(element.AttachementDate);
-      });
-      
-      this.showLoader = false;
-    }
-    }, error => {
-      this.showLoader = false;
-      alert("Something went wrong");
-      console.log("Error: ", error)
-    }, () => { }
-  );
-}
+  /** 
+ * call api for Sales quotation detail attachment .
+ */
+  getSalesOrderAttachmentList(id: number) {
+    this.showLoader = true;
+    this.getSalseAttachmentubs = this.salseOrderService.getSalesOrderDetail(id, 3).subscribe(
+      data => {
 
-download(fileName: string) {
+        this.showLoader = false;
+        if (data != null && data != undefined) {
+          this.gridData = JSON.parse(data);
+          this.gridData.forEach(element => {
+            element.AttachementDate = DateTimeHelper.ParseDate(element.AttachementDate);
+          });
 
-  let seletedAttachment = this.gridData.filter(i => i.FileName == fileName)[0];
-
-  try {
-    // Create file path from response
-    let filePath: string = "\\\\172.16.6.20\\People\\Vaibhav\\ListofFilesRequiredForSetup.xlsx";
-
-    this.sharedComponentService.getAtachmentFromPath(filePath)
-      .subscribe(
-        res => {
-         if(res!=undefined && res!=null){
-          let fileName=res.Item1;
-          let tempAttachmentId=res.Item2;
-          
-          let filepath:string=Configuration.doccumentPath + "Temp/"+tempAttachmentId +"/"+fileName;          
-                      
-          var a = document.createElement('a');
-          document.body.appendChild(a);
-          a.href = filepath;
-          a.download = fileName;
-          a.target="_blank";
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-         }
+          this.showLoader = false;
         }
-
-
-      );
+      }, error => {
+        this.showLoader = false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
+      }, () => { }
+    );
   }
-  catch (err) {
-    // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
-  }
-}
 
-ngOnDestroy() {
-  if (this.getSalseAttachmentubs != undefined)
-    this.getSalseAttachmentubs.unsubscribe();
- }
+  download(fileName: string) {
+
+    let seletedAttachment = this.gridData.filter(i => i.FileName == fileName)[0];
+
+    try {
+      // Create file path from response
+      let filePath: string = seletedAttachment.FullPath;//"\\\\172.16.6.20\\People\\Vaibhav\\ListofFilesRequiredForSetup.xlsx";
+      if (filePath == undefined) {
+        return;
+      }
+      this.sharedComponentService.getAtachmentFromPath(filePath)
+        .subscribe(
+          res => {
+            if (res != undefined && res != null) {
+              let fileName = res.Item1;
+              let tempAttachmentId = res.Item2;
+
+              let filepath: string = Configuration.doccumentPath + "Temp/" + tempAttachmentId + "/" + fileName;
+
+              var a = document.createElement('a');
+              document.body.appendChild(a);
+              a.href = filepath;
+              a.download = fileName;
+              // a.target = "_blank";
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+            }
+          }
+
+
+        );
+    }
+    catch (err) {
+      // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.getSalseAttachmentubs != undefined)
+      this.getSalseAttachmentubs.unsubscribe();
+  }
 
 
 }

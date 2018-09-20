@@ -47,8 +47,8 @@ export class AttachmentComponent implements OnInit {
   getAttachmentsub: ISubscription;
   uploadAttachmentsub: ISubscription;
   updatePIStatussub: ISubscription;
-  
-  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService,  private purchaseInquiryService: PurchaseInquiryService) { }
+
+  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private purchaseInquiryService: PurchaseInquiryService) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -172,10 +172,10 @@ export class AttachmentComponent implements OnInit {
 
     formData.append('AttachmentDetail', JSON.stringify(attachmentDetail));
 
-    this.showLoader=true;
+    this.showLoader = true;
     this.uploadAttachmentsub = this.sharedComponentService.uploadAttachment(formData).subscribe(
       event => {
-     
+
 
 
         if (event.type === HttpEventType.UploadProgress)
@@ -215,8 +215,8 @@ export class AttachmentComponent implements OnInit {
       purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
       if (purchaseInquiryDetail.Status == PurchaseInquiryStatus.New) {
         purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
-        this.updatePIStatussub =  this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
-          data => { 
+        this.updatePIStatussub = this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
+          data => {
             localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
             purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
             this.commonService.refreshPIList(null);
@@ -234,51 +234,50 @@ export class AttachmentComponent implements OnInit {
 
 
   // download attachment file
-  download(id:string) {
+  download(id: string) {
 
-    let seletedAttachment=this.gridAttachmentData.filter(i=> i.AttachmentId==id)[0];   
-    let filepath:string=Configuration.doccumentPath+ id + "\\" +seletedAttachment.AttachmentName;
+    let seletedAttachment = this.gridAttachmentData.filter(i => i.AttachmentId == id)[0];
+    let filepath: string = Configuration.doccumentPath + id + "\\" + seletedAttachment.AttachmentName;
 
     var a = document.createElement('a');
-            document.body.appendChild(a);
-            a.href =filepath;// URL.createObjectURL(blob);
-            a.target="_blank";
-            a.download = seletedAttachment.AttachmentName;
-            document.body.appendChild(a);
-            
-            a.click();
-            document.body.removeChild(a);
-            
-     try {
-    //   this.sharedComponentService.getAtachment(id)
-    //     .subscribe(
-    //     res => {
-    //      // var data =   JSON.stringify(res);
-    //       var data = res.blob();
-          
+    document.body.appendChild(a);
+    a.href = filepath;// URL.createObjectURL(blob);
+    // a.target="_blank";
+    a.download = seletedAttachment.AttachmentName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 
-    //       let blob = new Blob([data], {
-    //         type: 'application/pdf' // must match the Accept type
-    //       });
+    try {
+      //   this.sharedComponentService.getAtachment(id)
+      //     .subscribe(
+      //     res => {
+      //      // var data =   JSON.stringify(res);
+      //       var data = res.blob();
 
-    //         var a = document.createElement('a');
-    //         document.body.appendChild(a);
-    //         a.href = URL.createObjectURL(blob);
-    //         a.download = seletedAttachment.AttachmentName;
-    //         document.body.appendChild(a);
-    //         a.click();
-    //         document.body.removeChild(a);
-    //       }
-        
-       
-    //   ),
-    //   (err:HttpErrorResponse)=> {
-    
-    //     console.log(err);
-    //   };
+
+      //       let blob = new Blob([data], {
+      //         type: 'application/pdf' // must match the Accept type
+      //       });
+
+      //         var a = document.createElement('a');
+      //         document.body.appendChild(a);
+      //         a.href = URL.createObjectURL(blob);
+      //         a.download = seletedAttachment.AttachmentName;
+      //         document.body.appendChild(a);
+      //         a.click();
+      //         document.body.removeChild(a);
+      //       }
+
+
+      //   ),
+      //   (err:HttpErrorResponse)=> {
+
+      //     console.log(err);
+      //   };
     }
     catch (err) {
-     // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
+      // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
     }
   }
 
@@ -293,49 +292,37 @@ export class AttachmentComponent implements OnInit {
   // drag file code start
   ///////////////////////////////////////////
   public files: UploadFile[] = [];
- 
+
   public dropped(event: UploadEvent) {
     this.files = event.files;
+
     for (const droppedFile of event.files) {
- 
+
       // Is it a file?
       if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+
         fileEntry.file((file: File) => {
- 
-          // Here you can access the real file
-          //console.log(droppedFile.relativePath, file);
- 
-          /**
-          // You could upload it like this:
-          const formData = new FormData()
-          formData.append('logo', file, relativePath)
- 
-          // Headers
-          const headers = new HttpHeaders({
-            'security-token': 'mytoken'
-          })
- 
-          this.http.post('https://mybackend.com/api/upload/sanitize-and-save-logo', formData, { headers: headers, responseType: 'blob' })
-          .subscribe(data => {
-            // Sanitized logo returned from backend
-          })
-          **/
- 
+          
+          // My code
+          let files: Array<any> = [file];
+          this.upload(files);
+
         });
       } else {
+
         // It was a directory (empty directories are added, otherwise only files)
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
         //console.log(droppedFile.relativePath, fileEntry);
       }
     }
   }
- 
-  public fileOver(event){
+
+  public fileOver(event) {
     console.log(event);
   }
- 
-  public fileLeave(event){
+
+  public fileLeave(event) {
     console.log(event);
   }
   ///////////////////////////////////////////
