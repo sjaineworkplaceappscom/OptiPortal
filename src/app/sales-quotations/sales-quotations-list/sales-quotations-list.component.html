@@ -13,8 +13,8 @@
             <kendo-grid 
             [kendoGridBinding]="gridData" 
             [resizable]="false" 
-            [pageSize]="50" 
-            [pageable]="true" 
+            [pageSize]=pageLimit 
+            [pageable]=pagination 
             [sortable]="true"  
             [filterable]=isColumnFilter
             [groupable]=isColumnGroup 
@@ -29,10 +29,10 @@
             <!-- grid template start -->
             <ng-template kendoGridToolbarTemplate>
                 <!-- show hide column start show hide -->
-                <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
+                <kendo-grid-column-chooser class="float-left opti_hide-in-mobile"></kendo-grid-column-chooser>
 
                 <!-- checkbox -->
-                <form class="k-form opti_show-hide-grid-column-filter float-left">
+                <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
                     <div class="k-form-field float-left">
                         <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_SalesQuotationsListColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
                         <label class="k-checkbox-label" for="opti_SalesQuotationsListColumnFilterID">Enable Filter</label>
@@ -45,19 +45,19 @@
                 </form>
 
                 <!-- export -->
-                <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
+                <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton opti_hide-in-mobile">
                     <svg-icon src="{{imgPath}}/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
                 </button>
 
 
-                <!-- <div class="float-right opti_right-top-sec-grid-purchase opti_right-top-sec-grid">
+                <div class="float-right opti_right-top-sec-grid-sales-quotation-list opti_right-top-sec-grid">
                     <form class="k-form opti_common-search-form float-left opti_padding-zero">
                         <label class="k-form-field opti_common-search-label">
                             <input type="text" class="k-textbox" name="searchRequest" [(ngModel)]="searchRequest" />
                             <span class="opti_vertical-align opti_mouse-pointer"><img src="{{imgPath}}/common/search-black.svg" class="" alt="Search" width="15" /></span>
                         </label>
                     </form>
-                </div> -->
+                </div>
             </ng-template>
 
             <!-- grid template end -->
@@ -69,20 +69,67 @@
             <kendo-grid-column field="ValidUntil" title="Created By" [width]="140"></kendo-grid-column>
             <kendo-grid-column field="Reference" title="Valid Until" [width]="200" filter="date"  type=date format="{0:dd MMM yy}"></kendo-grid-column> -->
 
+            
+            <!-- grid for mobile start -->
+            <kendo-grid-column media="(max-width: 767px)" title="Sales Quotation" class="opti_mobile-grid-td">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    
+                    <dl class="opti_mobile_grid_dl">
+                        <dt>Quotation Number</dt>
+                        <dd>{{ dataItem.QuotationNumber }}</dd>
+
+                        <dt>Quotation Date</dt>
+                        <dd>{{ dataItem.QuotationDate }}</dd>
+
+                        <dt>Remark</dt>
+                        <dd>{{ dataItem.Remark }}</dd>
+
+                        <dt>Due Date</dt>
+                        <dd>{{ dataItem.Duedate }}</dd>
+
+                        <dt>Sales Employee</dt>
+                        <dd>{{ dataItem.SalesEmployee }}</dd>
+
+                        <dt>Owner</dt>
+                        <dd>{{ dataItem.Owner }}</dd>
+
+                        
+                    </dl>
+
+                    <dl class="opti_mobile_grid_dl">
+                        <dt>Total <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
+                        <dd>{{ dataItem.Total }}</dd>
+
+                        <dt>Item/Service Type</dt>
+                        <dd>{{ dataItem.ServiceType }}</dd>
+
+                        <dt>Document Date</dt>
+                        <dd>{{ dataItem.DocumentDate }}</dd>
+
+                        <dt>Status</dt>
+                        <dd>{{ dataItem.Status }}</dd>
+                        
+                        <dt>Branch</dt>
+                        <dd>{{ dataItem.Branch }}</dd>
+                    </dl>
+
+                </ng-template>
+            </kendo-grid-column>
+            <!-- grid for mobile end -->
+            
 
 
-
-            <kendo-grid-column field="QuotationNumber" title="Quotation Number" [width]="160"></kendo-grid-column>
-            <kendo-grid-column field="QuotationDate" title="Quotation Date" [width]="160" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-            <kendo-grid-column field="Remark" [width]="160" title="Remark"></kendo-grid-column>
-            <kendo-grid-column field="Duedate" [width]="160" title="Due Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-            <kendo-grid-column field="SalesEmployee" title="Sales Employee" [width]="160"></kendo-grid-column>
-            <kendo-grid-column field="Owner" title="Owner" [width]="160"></kendo-grid-column>
-            <kendo-grid-column field="Total" title="Total" [width]="160"></kendo-grid-column>
-            <kendo-grid-column field="ServiceType" [width]="160" title="Item/Service Type"></kendo-grid-column>
-            <kendo-grid-column field="DocumentDate" title="Document Date" [width]="160" filter="date"  type=date format="{0:dd MMM yy}"></kendo-grid-column>
-            <kendo-grid-column field="Status" title="Status" [width]="160"></kendo-grid-column>
-            <kendo-grid-column field="Branch" title="Branch" [width]="160"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="QuotationNumber" title="Quotation Number" [width]="160"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="QuotationDate" title="Quotation Date" [width]="160" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="Remark" [width]="160" title="Remark"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="Duedate" [width]="160" title="Due Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="SalesEmployee" title="Sales Employee" [width]="160"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="Owner" title="Owner" [width]="160"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="Total" title="Total" [width]="160"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="ServiceType" [width]="160" title="Item/Service Type"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="DocumentDate" title="Document Date" [width]="160" filter="date"  type=date format="{0:dd MMM yy}"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="Status" title="Status" [width]="160"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="Branch" title="Branch" [width]="160"></kendo-grid-column>
             
             <!-- xlsx template start -->
             <kendo-grid-excel fileName="Sales-quotations.xlsx"></kendo-grid-excel>

@@ -27,7 +27,19 @@ export class SalesOrderListComponent implements OnInit {
 
   getSaleslistSubs: ISubscription;
 
+  // pagination variable
+  pageLimit;
+  pagination:boolean;
+
   // UI Section
+
+  getPaginationAttributes(){
+    // pagination add/remove for desktop and mobile
+    let paginationAttributesArray = UIHelper.paginationAttributes();
+    this.pageLimit = paginationAttributesArray[0];
+    this.pagination = paginationAttributesArray[1];
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply grid height
@@ -35,6 +47,8 @@ export class SalesOrderListComponent implements OnInit {
 
     // check mobile device
     this.isMobile = UIHelper.isMobile();
+
+    this.getPaginationAttributes();
   }
   // End UI Section
 
@@ -57,6 +71,8 @@ export class SalesOrderListComponent implements OnInit {
 
     // check mobile device
     this.isMobile = UIHelper.isMobile();
+
+    this.getPaginationAttributes();
 
     //this.getOrderList1();
    this.getSalesOrderList();

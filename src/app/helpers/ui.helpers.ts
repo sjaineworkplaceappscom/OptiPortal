@@ -197,5 +197,18 @@ export  class UIHelper{
     //     this.isRightSectionContainer = value;
     // }
 
+    public static paginationAttributes(){ 
+        let pageLimit;
+        let pagination;
+        if(UIHelper.isMobile()==true){
+          pageLimit = '';
+          pagination = false;
+        }else{
+          pageLimit = '50';
+          pagination = true;
+        }
+        return [pageLimit, pagination];
+    }
+
 
 }

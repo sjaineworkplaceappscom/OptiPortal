@@ -6,7 +6,11 @@ import { SalesOrder } from '../../tempmodels/sales-order';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+<<<<<<< HEAD
 import { Configuration } from '../../../assets/configuration';
+=======
+import { Configuration } from 'src/assets/configuration';
+>>>>>>> cbdbbd5778c238c863b6bbe82d27f0a368818838
 import { SharedComponentService } from '../../services/shared-component.service';
 
 @Component({

@@ -8,7 +8,11 @@ import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { SharedComponentService } from 'src/app/services/shared-component.service';
 import { Path } from '../../../../node_modules/@progress/kendo-drawing';
+<<<<<<< HEAD
 import { Configuration } from '../../../assets/configuration';
+=======
+import { Configuration } from 'src/assets/configuration';
+>>>>>>> cbdbbd5778c238c863b6bbe82d27f0a368818838
 
 @Component({
   selector: 'app-sales-quotations-detail-attchment',
