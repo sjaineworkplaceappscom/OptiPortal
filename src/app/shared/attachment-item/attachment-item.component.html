@@ -110,10 +110,10 @@
                 </ng-template>
                 <!-- grid template end -->
 
-                <kendo-grid-column field="AttachmentId" title="" [width]="95" [filterable]="false" [sortable]="false">
+                <kendo-grid-column field="AttachmentId" title="Download" [width]="95" [filterable]="false" [sortable]="false">
                         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">                                                                            
                             <!-- <svg-icon src="{{imgPath}}/common/download.svg" (click)="download(dataItem.AttachmentId)" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon> -->
-                            <span  (click)="download(dataItem.AttachmentId)" class="opti_mouse-pointer" style="color: #1fa2ff;">view</span>
+                            <span  (click)="download(dataItem.AttachmentId)" class="opti_mouse-pointer" style="color: #1fa2ff;">Download</span>
                         </ng-template>
                 </kendo-grid-column>
                 <!-- grid column start --> 

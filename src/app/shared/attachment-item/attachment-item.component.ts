@@ -290,7 +290,7 @@ export class AttachmentItemComponent implements OnInit {
     var a = document.createElement('a');
             // document.body.appendChild(a);
             a.href =filepath;// URL.createObjectURL(blob);
-            a.target="_blank";
+            // a.target="_blank";
             a.download = seletedAttachment.AttachmentName;
             document.body.appendChild(a);
             

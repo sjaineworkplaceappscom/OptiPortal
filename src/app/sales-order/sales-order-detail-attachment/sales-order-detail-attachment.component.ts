@@ -123,7 +123,7 @@ export class SalesOrderDetailAttachmentComponent implements OnInit {
               document.body.appendChild(a);
               a.href = filepath;
               a.download = fileName;
-              a.target = "_blank";
+              // a.target = "_blank";
               document.body.appendChild(a);
               a.click();
               document.body.removeChild(a);
