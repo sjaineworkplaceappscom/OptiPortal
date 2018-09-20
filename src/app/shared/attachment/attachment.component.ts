@@ -199,7 +199,7 @@ export class AttachmentComponent implements OnInit {
         this.showGrid = false;
       },
       () => {
-
+        this.showLoader = false;
       }
 
     );

@@ -43,7 +43,13 @@ export class ApproveUsersComponent implements OnInit {
   }
 
   approveUsers(){   
+
+    if(this.mySelection.toString()==null || this.mySelection.toString() == ''){
+      alert('Please select any user to Approve.');
+      return;
+    }
     this.disableBtn=true;   
+   // console.log(this.mySelection.toString());
     this.accountService.inviteUsers(this.mySelection.toString()).subscribe(
       data => {
         this.disableBtn=false;
@@ -57,12 +63,16 @@ export class ApproveUsersComponent implements OnInit {
         console.log("Error: ", error)
       }
     );
-   
     
   }
 
-  rejectUsers(){      
+  rejectUsers(){   
+    if(this.mySelection.toString()==null || this.mySelection.toString() == ''){
+      alert('Please select any user to Reject.');
+      return;
+    }
     this.disableBtn=true;   
+   // console.log(this.mySelection.toString());
     this.accountService.rejectUsers(this.mySelection.toString()).subscribe(
       data => {
         this.disableBtn=false;   
