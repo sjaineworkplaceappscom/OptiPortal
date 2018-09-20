@@ -60,7 +60,7 @@ export class AttachmentItemComponent implements OnInit {
   }
 
   constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private purchaseInquiryService: PurchaseInquiryService) {
-    
+
     this.attachmentsub = this.commonService.currentAttachmentItemData.subscribe(
       (data: AttachmentDetail) => {
         if (data != undefined && data != null) {
@@ -187,7 +187,7 @@ export class AttachmentItemComponent implements OnInit {
 
     this.uploadAttachmentsub = this.sharedComponentService.uploadAttachment(formData).subscribe(
       event => {
-      
+
         if (event.type === HttpEventType.UploadProgress)
           this.progress = Math.round(100 * event.loaded / event.total);
 
@@ -246,10 +246,10 @@ export class AttachmentItemComponent implements OnInit {
   //   this.isGridStatus = false;
   // }
 
-  
- 
 
-   // download attachment file
+
+
+  // download attachment file
   //  download(id:string) {
 
   //   let seletedAttachment=this.gridAttachmentData.filter(i=> i.AttachmentId==id)[0];   
@@ -272,8 +272,8 @@ export class AttachmentItemComponent implements OnInit {
   //           a.click();
   //           document.body.removeChild(a);
   //         }
-        
-       
+
+
   //     );
   //   }
   //   catch (err) {
@@ -282,20 +282,20 @@ export class AttachmentItemComponent implements OnInit {
   // }
 
 
-  download(id:string) {
+  download(id: string) {
 
-    let seletedAttachment=this.gridAttachmentData.filter(i=> i.AttachmentId==id)[0];   
-    let filepath:string=Configuration.doccumentPath+ id + "\\" +seletedAttachment.AttachmentName;
+    let seletedAttachment = this.gridAttachmentData.filter(i => i.AttachmentId == id)[0];
+    let filepath: string = Configuration.doccumentPath + id + "\\" + seletedAttachment.AttachmentName;
 
     var a = document.createElement('a');
-            // document.body.appendChild(a);
-            a.href =filepath;// URL.createObjectURL(blob);
-            // a.target="_blank";
-            a.download = seletedAttachment.AttachmentName;
-            document.body.appendChild(a);
-            
-            a.click();
-            document.body.removeChild(a);
+    // document.body.appendChild(a);
+    a.href = filepath;// URL.createObjectURL(blob);
+    // a.target="_blank";
+    a.download = seletedAttachment.AttachmentName;
+    document.body.appendChild(a);
+
+    a.click();
+    document.body.removeChild(a);
   }
 
 
@@ -303,19 +303,22 @@ export class AttachmentItemComponent implements OnInit {
   // drag file code start
   ///////////////////////////////////////////
   public files: UploadFile[] = [];
- 
+
   public dropped(event: UploadEvent) {
     this.files = event.files;
     for (const droppedFile of event.files) {
- 
+
       // Is it a file?
       if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File) => {
- 
+          // My code
+          let files: Array<any> = [file];
+          this.upload(files);
+          
           // Here you can access the real file
           //console.log(droppedFile.relativePath, file);
- 
+
           /**
           // You could upload it like this:
           const formData = new FormData()
@@ -331,7 +334,7 @@ export class AttachmentItemComponent implements OnInit {
             // Sanitized logo returned from backend
           })
           **/
- 
+
         });
       } else {
         // It was a directory (empty directories are added, otherwise only files)
@@ -340,12 +343,12 @@ export class AttachmentItemComponent implements OnInit {
       }
     }
   }
- 
-  public fileOver(event){
+
+  public fileOver(event) {
     console.log(event);
   }
- 
-  public fileLeave(event){
+
+  public fileLeave(event) {
     console.log(event);
   }
   ///////////////////////////////////////////
