@@ -57,8 +57,8 @@ import { FileDropModule } from 'ngx-file-drop';
      FormsModule,
      FileDropModule
   ],
-  declarations: [AttachmentComponent,NotesComponent, NotesItemComponent, AttachmentItemComponent, AttachmentUploadComponent,CustomFilterPipe,SalesQuotationsNotesComponent,SalesOrderNotesComponent],
-  exports:[AttachmentComponent,NotesComponent,NotesItemComponent,AttachmentItemComponent,AttachmentUploadComponent,SalesQuotationsNotesComponent,SalesOrderNotesComponent],
+  declarations: [AttachmentComponent,NotesComponent, NotesItemComponent, AttachmentItemComponent, AttachmentUploadComponent,CustomFilterPipe,SalesQuotationsNotesComponent,SalesOrderNotesComponent,CustomFilterPipe],
+  exports:[AttachmentComponent,NotesComponent,NotesItemComponent,AttachmentItemComponent,AttachmentUploadComponent,SalesQuotationsNotesComponent,SalesOrderNotesComponent,CustomFilterPipe],
   providers:[CustomFilterPipe]
 })
 export class SharedModule { }
