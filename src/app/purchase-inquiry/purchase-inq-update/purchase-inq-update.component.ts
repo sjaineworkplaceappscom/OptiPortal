@@ -15,7 +15,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
   styleUrls: ['./purchase-inq-update.component.scss']
 })
 export class PurchaseInqUpdateComponent implements OnInit {
-
+  
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   constructor(private commonService: Commonservice, private purchaseInquiryService: PurchaseInquiryService) { }
 
@@ -67,7 +67,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
 
   @ViewChild('optiRightAddInquiry') optiRightAddInquiry;
   @ViewChild('optiTab') optiTab;
-
+  
   // tab function
   openTab(evt, tabName) {
     if (tabName == 'home')
@@ -131,7 +131,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     );
 
   }
-
+  
  private setModelAndSubscribeData(){
     if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
       this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
@@ -260,7 +260,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   */
   public UpdatePurchaseInquiry(saveAsDraft: boolean = false, isDirty: boolean) {
 
-     
+      
     // if No draft then disable draft button. 
     if (this.purchaseInquiryDetail.Status != PurchaseInquiryStatus.Draft) {
       this.isDisableSaveAsDraft = true;

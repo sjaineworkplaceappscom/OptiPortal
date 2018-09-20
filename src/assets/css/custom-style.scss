@@ -60,15 +60,16 @@ kendo-grid tr:hover dl span strong {
   color: white;
 }
 
-app-attachment, 
-file-drop {
-  height: 100%;
-  display: flex;
-}
+// app-attachment, 
+// file-drop {
+//   height: 100%;
+//   display: flex;
+// }
 
 .opti_body-purchase-inquiries #opti_purchaseInquiryAttachementSectionID,
 .opti_body-purchase-inquiries #opti_purchaseInquiryItemAttachementSectionID{
   file-drop #dropZone{
+    margin: 0;
     height: auto;
     border: none;
     .content{
@@ -77,6 +78,7 @@ file-drop {
   }
 }
 
+.opti_body-purchase-inquiries #opti_purchaseInquiryAttachementSectionID,
 .opti_body-purchase-inquiries #opti_purchaseInquiryItemAttachementSectionID{
   .drop-zone{
     width: 100%;
@@ -109,21 +111,7 @@ app-attachment, app-attachment-item{
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////start customer Purchase Order///////////
 /////////////////////////////////////////////////////////////////////
-app-customer-purchase-order-list, 
-file-drop {
-  height: 100%;
-  display: flex;
-}
 
-.opti_body-customer-purchase-order{
-  file-drop #dropZone{
-    height: auto;
-    border: none;
-    .content{
-      height: auto;
-    }
-  }
-}
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////end customer Purchase Order/////////////
 /////////////////////////////////////////////////////////////////////
