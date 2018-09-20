@@ -74,7 +74,6 @@ export class PurchaseInqListComponent implements OnInit {
     let paginationAttributesArray = UIHelper.paginationAttributes();
     this.pageLimit = paginationAttributesArray[0];
     this.pagination = paginationAttributesArray[1];
-    console.log('pageLimit-'+this.pageLimit + 'pagination-'+this.pagination);
   }
 
   ngOnInit() {
