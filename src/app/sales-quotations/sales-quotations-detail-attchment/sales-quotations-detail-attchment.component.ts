@@ -8,11 +8,7 @@ import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { SharedComponentService } from 'src/app/services/shared-component.service';
 import { Path } from '../../../../node_modules/@progress/kendo-drawing';
-<<<<<<< HEAD
-import { Configuration } from 'src/assets/configuration';
-=======
 import { Configuration } from '../../../assets/configuration';
->>>>>>> d98450b90295a784e11cdbb50267bd83e7714099
 
 @Component({
   selector: 'app-sales-quotations-detail-attchment',
@@ -112,7 +108,7 @@ export class SalesQuotationsDetailAttchmentComponent implements OnInit {
 
     try {
       // Create file path from response
-      let filePath: string = "\\\\172.16.6.20\\People\\Vaibhav\\ListofFilesRequiredForSetup.xlsx";
+      let filePath: string = seletedAttachment.FullPath;//"\\\\172.16.6.20\\People\\Vaibhav\\ListofFilesRequiredForSetup.xlsx";
 
       this.sharedComponentService.getAtachmentFromPath(filePath)
         .subscribe(
