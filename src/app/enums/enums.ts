@@ -26,7 +26,8 @@ export enum UserType {
 export  enum ModuleName {
     Purchase = 1,
     Sales = 2,
-    SalesOrder = 4
+    SalesOrder = 4,
+    DeliveryNotes = 5
 }
 
 export enum ComponentName {
@@ -40,8 +41,10 @@ export enum ComponentName {
     UpdateSales=201,
 
     // Sales Order
-    SalesOrderDetail = 401
+    SalesOrderDetail = 401,
 
+    // Delivery Notes
+    DeliveryNotes = 501
 
     
 }

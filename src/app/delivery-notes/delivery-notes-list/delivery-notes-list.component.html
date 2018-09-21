@@ -12,14 +12,15 @@
            <kendo-grid 
            [kendoGridBinding]="gridData" 
            [resizable]="false" 
-           [pageSize]="50" 
-           [pageable]="true" 
+           [pageSize]=pageLimit 
+           [pageable]=pagination 
            [sortable]="true"  
            [filterable]=isColumnFilter
            [groupable]=isColumnGroup 
            [columnMenu]="{ columnChooser: false }" 
            [height]=gridHeight 
            [selectable]="true" 
+           (selectionChange)="openDeliveryNotesDetailOnSelection($event)"
            #gridItem>
            <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
            <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
@@ -27,10 +28,10 @@
            <!-- grid template start -->
            <ng-template kendoGridToolbarTemplate>
                <!-- show hide column start show hide -->
-               <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
+               <kendo-grid-column-chooser class="float-left opti_hide-in-mobile"></kendo-grid-column-chooser>
 
                <!-- checkbox -->
-               <form class="k-form opti_show-hide-grid-column-filter float-left">
+               <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
                    <div class="k-form-field float-left">
                        <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
                        <label class="k-checkbox-label" for="opti_ColumnFilterID">Enable Filter</label>
@@ -43,14 +44,14 @@
                </form>
 
                <!-- export -->
-               <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
+               <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton opti_hide-in-mobile">
                    <svg-icon src="{{imgPath}}/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
                </button>
 
 
-               <div class="float-right opti_right-top-sec-grid-delivery-notes opti_right-top-sec-grid">
+               <div class="float-right opti_right-top-sec-grid-delivery-list-notes opti_right-top-sec-grid">
                    <svg-icon src="{{imgPath}}/common/add.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"
-                       class="opti_vertical-align float-left opti_icon-spacing opti_add-request"></svg-icon>
+                       class="opti_vertical-align float-left opti_icon-spacing opti_add-request opti_hide-in-mobile"></svg-icon>
 
                    <form class="k-form opti_common-search-form float-left opti_padding-zero">
                        <label class="k-form-field opti_common-search-label">
@@ -60,18 +61,63 @@
                    </form>
                </div>
            </ng-template>
+           
+            <!-- grid for mobile start -->
+            <kendo-grid-column media="(max-width: 767px)" title="Sales Order" class="opti_mobile-grid-td">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    
+                    <dl class="opti_mobile_grid_dl">
+                        <dt>Delivery#</dt>
+                        <dd>{{ dataItem.delivery }}</dd>
+
+                        <dt>Ship Date</dt>
+                        <dd>{{ dataItem.shipDate }}</dd>
+
+                        <dt>Delivered Date</dt>
+                        <dd>{{ dataItem.deliveredDate }}</dd>
+
+                        <dt>Way Bill#</dt>
+                        <dd>{{ dataItem.wayBill }}</dd>
+
+                        <dt>Tracking#</dt>
+                        <dd>{{ dataItem.Tracking }}</dd>
+                    </dl>
+
+                    <dl class="opti_mobile_grid_dl">
+                        <dt>Mode of Shipment <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
+                        <dd>{{ dataItem.modeOfShipment }}</dd>
+
+                        <dt>Shipping Method</dt>
+                        <dd>{{ dataItem.shippingMethod }}</dd>
+
+                        <dt>Packing Slip#</dt>
+                        <dd>{{ dataItem.packingSlip }}</dd>
+
+                        <dt>Ship-To Location</dt>
+                        <dd>{{ dataItem.shipToLocation }}</dd>
+                        
+                        <dt>Total Price</dt>
+                        <dd>{{ dataItem.totalPrice }}</dd>
+                    </dl>
+
+                </ng-template>
+            </kendo-grid-column>
+            <!-- grid for mobile end -->
 
            <!-- grid template end -->
-           <kendo-grid-column field="Inquiry" title="delivery Order Inquiry#" [width]="160" filter="numeric"></kendo-grid-column>
-           <kendo-grid-column field="Customer" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
-           <kendo-grid-column field="Name" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column>
-           <kendo-grid-column field="Status" [width]="140" title="Status" ></kendo-grid-column>
-           <kendo-grid-column field="BuyerCreatedBy" title="Created Date" [width]="200"  filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-           <kendo-grid-column field="ValidUntil" title="Created By" [width]="140"></kendo-grid-column>
-           <kendo-grid-column field="Reference" title="Valid Until" [width]="200" filter="date"  type=date format="{0:dd MMM yy}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="delivery" title="Delivery#" [width]="160" filter="numeric"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="shipDate" title="Ship Date" [width]="140" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="deliveredDate" [width]="140" title="Delivered Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="wayBill" [width]="140" title="Way Bill#" ></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="Tracking" title="Tracking#" [width]="200"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="modeOfShipment" title="Mode of Shipment" [width]="140"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="shippingMethod" title="Shipping Method" [width]="200"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="packingSlip" title="Packing Slip#" [width]="200" ></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="shipToLocation" title="Ship-To Location" [width]="200"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="totalPrice" title="Total Price" [width]="200"></kendo-grid-column>
            
            <!-- xlsx template start -->
-           <kendo-grid-excel fileName="Sales-quotations.xlsx"></kendo-grid-excel>
+           <kendo-grid-excel fileName="delivery-notes.xlsx"></kendo-grid-excel>
            <!-- xlsx template end -->
 
           </kendo-grid>
