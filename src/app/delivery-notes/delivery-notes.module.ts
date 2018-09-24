@@ -12,6 +12,7 @@ import { DeliveryNotesDetailContentComponent } from './delivery-notes-detail-con
 import { DeliveryNotesDetailAttachmentComponent } from './delivery-notes-detail-attachment/delivery-notes-detail-attachment.component';
 import { DeliveryNotesDetailNotesComponent } from './delivery-notes-detail-notes/delivery-notes-detail-notes.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { FileDropModule } from 'ngx-file-drop';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
     ExcelModule,
     FormsModule,
     AngularSvgIconModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    FileDropModule
   ],
   declarations: [DeliveryNotesListComponent, DeliveryNotesDetailComponent, DeliveryNotesDetailHomeComponent, DeliveryNotesDetailContentComponent, DeliveryNotesDetailAttachmentComponent, DeliveryNotesDetailNotesComponent],
   exports:[DeliveryNotesListComponent, DeliveryNotesDetailComponent]

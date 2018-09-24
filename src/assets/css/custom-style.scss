@@ -66,27 +66,7 @@ kendo-grid tr:hover dl span strong {
 //   display: flex;
 // }
 
-.opti_body-purchase-inquiries #opti_purchaseInquiryAttachementSectionID,
-.opti_body-purchase-inquiries #opti_purchaseInquiryItemAttachementSectionID{
-  file-drop #dropZone{
-    margin: 0;
-    height: auto;
-    border: none;
-    .content{
-      height: auto;
-    }
-  }
-}
 
-.opti_body-purchase-inquiries #opti_purchaseInquiryAttachementSectionID,
-.opti_body-purchase-inquiries #opti_purchaseInquiryItemAttachementSectionID{
-  .drop-zone{
-    width: 100%;
-    kendo-grid{
-      width: 100%;
-    }
-  }
-}
 
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////end Purchase Inquiry//////////////////
@@ -99,7 +79,11 @@ kendo-grid tr:hover dl span strong {
 /////////////////////////////some common css start///////////////////
 /////////////////////////////////////////////////////////////////////
 
-app-attachment, app-attachment-item, app-sales-order-detail-attachment, app-sales-quotations-detail-attchment{
+app-attachment, 
+app-attachment-item, 
+app-sales-order-detail-attachment, 
+app-sales-quotations-detail-attchment,
+app-delivery-notes-detail-attachment{
   kendo-grid{
     table{
       tbody{
@@ -116,4 +100,36 @@ app-attachment, app-attachment-item, app-sales-order-detail-attachment, app-sale
 
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////some common css end/////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////File drop css start/////////////////////
+/////////////////////////////////////////////////////////////////////
+.opti_body-purchase-inquiries #opti_purchaseInquiryAttachementSectionID,
+.opti_body-purchase-inquiries #opti_purchaseInquiryItemAttachementSectionID,
+.opti_body-delivery-notes #opti_DeliveryNotesAttchment{
+  file-drop #dropZone{
+    margin: 0;
+    height: auto;
+    border: none;
+    .content{
+      height: auto;
+    }
+  }
+}
+
+.opti_body-purchase-inquiries #opti_purchaseInquiryAttachementSectionID,
+.opti_body-purchase-inquiries #opti_purchaseInquiryItemAttachementSectionID,
+.opti_body-delivery-notes #opti_DeliveryNotesAttchment{
+  .drop-zone{
+    width: 100%;
+    kendo-grid{
+      width: 100%;
+    }
+  }
+}
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////File drop css start/////////////////////
 /////////////////////////////////////////////////////////////////////

@@ -38,7 +38,7 @@ export const deliveryNotesContent = [
         "Price":"5",
         "Tax":"code1",
         "totalPrice":"5200",
-        "sales order":'UOM12',
+        "salesOrder":'UOM12',
         "salesOrderLine":"Indore",
         "shipToLocation":"Indore"
     }
@@ -51,7 +51,7 @@ export const deliveryNotesContent = [
         "Price":"5",
         "Tax":"code1",
         "totalPrice":"5200",
-        "sales order":'UOM12',
+        "salesOrder":'UOM12',
         "salesOrderLine":"Indore",
         "shipToLocation":"Indore"
     }
@@ -60,13 +60,17 @@ export const deliveryNotesContent = [
 // Attchement tab
 export const deliveryNotesAttachment = [  
     {  
-        "FileName":"Report1.doc",
-        "AttachmentDate":"05/07/2018"
+        "AttachmentName":"Report1.png",
+        "SizeInKb":"10KB",
+        "AttachmentTypeText":"PNG",
+        "CreatedByName":"Prashant"
     }
  ,  
     {  
-        "FileName":"Report-final.doc",
-        "AttachmentDate":"06/07/2018"
+        "AttachmentName":"Report2.png",
+        "SizeInKb":"10KB",
+        "AttachmentTypeText":"PNG",
+        "CreatedByName":"Prashant"
     }
 ]
 
