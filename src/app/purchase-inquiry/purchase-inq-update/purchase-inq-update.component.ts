@@ -71,6 +71,10 @@ export class PurchaseInqUpdateComponent implements OnInit {
   
   // tab function
   openTab(evt, tabName) {
+     // Check for unsaved data.
+    if(GlobalResource.leaveUnsavedDataConfirmation()==false){
+     return;
+    }
     if (tabName == 'home')
     this.callPurchaseInquiryDetailAPI(this.purchaseInquiryDetail.PurchaseInquiryId);
     
@@ -265,11 +269,11 @@ export class PurchaseInqUpdateComponent implements OnInit {
   }
 
   /**
-  * UpdatePurchaseInquiry
+  * UpdatePurchaseInquiry 
   */
   public UpdatePurchaseInquiry(saveAsDraft: boolean = false, isDirty: boolean) {
 
-      
+  GlobalResource.dirty=false;
     // if No draft then disable draft button. 
     if (this.purchaseInquiryDetail.Status != PurchaseInquiryStatus.Draft) {
       this.isDisableSaveAsDraft = true;
@@ -322,11 +326,12 @@ export class PurchaseInqUpdateComponent implements OnInit {
     );
   }
 
-  /**
+  /**   
 * 
 * @param status close right content section, will pass false
 */
   closeRightSidebar() {
+    GlobalResource.dirty=false;
     let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentSidebarInfo.SideBarStatus = false;
     this.commonService.setCurrentSideBar(currentSidebarInfo);

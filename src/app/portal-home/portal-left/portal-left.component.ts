@@ -23,11 +23,11 @@ export class PortalLeftComponent implements OnInit {
   selectedItem: string;
 
   fruits = ["Banana", "Orange", "Apple", "Mango"];
-  userPermission:any = [];
+  userPermission: any = [];
 
   ngOnInit() {
 
-    if (typeof(Storage) !== "undefined") {
+    if (typeof (Storage) !== "undefined") {
       let arr = localStorage.getItem('LoginUserPermissions');
       this.userPermission = arr.split(','); // split, convert string into array string and return new array
     }
@@ -58,13 +58,16 @@ export class PortalLeftComponent implements OnInit {
   }
 
 
-  listClick(event, module) { 
-    GlobalResource.leaveUnsavedDataConfirmation();
-    
+  listClick(event, module) {
+    // Check for unsaved data.
+    if (GlobalResource.leaveUnsavedDataConfirmation() == false) {
+      return;
+    }
+
     this.selectedItem = module;
     //if(module!='purchaseinquiry'){
     this.closeRightSidebar();
-    
+
     this.resetLocalStorage(module);
     //}
     this.router.navigate(['home/' + module]);
@@ -76,12 +79,12 @@ export class PortalLeftComponent implements OnInit {
     this.commonService.setCurrentSideBar(currentSidebarInfo);
   }
 
- public resetLocalStorage(module: string) {
+  public resetLocalStorage(module: string) {
     if (module !== 'purchaseinquiry') {
       //clear purchase inquiry item from local storage.
       localStorage.removeItem('SelectedPurchaseInquery');
       localStorage.removeItem('PurchaseinqueryId');
-      
+
     }
   }
 
