@@ -13,6 +13,7 @@ import { DeliveryNotesDetailAttachmentComponent } from './delivery-notes-detail-
 import { DeliveryNotesDetailNotesComponent } from './delivery-notes-detail-notes/delivery-notes-detail-notes.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FileDropModule } from 'ngx-file-drop';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { FileDropModule } from 'ngx-file-drop';
     FormsModule,
     AngularSvgIconModule,
     PerfectScrollbarModule,
-    FileDropModule
+    FileDropModule,
+    DropDownsModule,
   ],
   declarations: [DeliveryNotesListComponent, DeliveryNotesDetailComponent, DeliveryNotesDetailHomeComponent, DeliveryNotesDetailContentComponent, DeliveryNotesDetailAttachmentComponent, DeliveryNotesDetailNotesComponent],
   exports:[DeliveryNotesListComponent, DeliveryNotesDetailComponent]

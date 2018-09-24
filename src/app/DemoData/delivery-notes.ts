@@ -75,14 +75,16 @@ export const deliveryNotesAttachment = [
 ]
 
 // Notes
-export const deliveryNotesNotes = [  
+export const deliveryNotesTabNotes = [  
     {  
-        "FileName":"Report1.doc",
-        "AttachmentDate":"05/07/2018"
+        "CreatedByName":"prashant",
+        "CreatedDate":"05/07/2018",
+        "Notes":"This is note"
     }
  ,  
     {  
-        "FileName":"Report-final.doc",
-        "AttachmentDate":"06/07/2018"
+        "CreatedByName":"Ankur",
+        "CreatedDate":"05/07/2018",
+        "Notes":"This is note"
     }
 ]
