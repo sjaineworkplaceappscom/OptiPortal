@@ -8,6 +8,7 @@ import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../enums/enums';
 import { ISubscription } from 'rxjs-compat/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { GlobalResource } from 'src/app/helpers/global-resource';
 
 @Component({
   selector: 'app-purchase-inq-update', 
@@ -64,7 +65,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   public sideBarsubs: ISubscription;
   public updatePISub: ISubscription;
   public updatePIStatusSub: ISubscription;
-
+  public isDirty:boolean=false;
   @ViewChild('optiRightAddInquiry') optiRightAddInquiry;
   @ViewChild('optiTab') optiTab;
   
@@ -103,6 +104,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
+    GlobalResource.dirty=false;
     // apply width on opti_TabID
     UIHelper.getWidthOfOuterTabUpdateInq();
     // Add active class on tab title 
@@ -131,7 +133,11 @@ export class PurchaseInqUpdateComponent implements OnInit {
     );
 
   }
-  
+  checkChanges(){
+    if(this.isDirty==true){
+      confirm('move?')
+    }
+  }
  private setModelAndSubscribeData(){
     if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
       this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
@@ -172,6 +178,10 @@ export class PurchaseInqUpdateComponent implements OnInit {
     );
   }
 
+  valueChange(value:any){    
+    GlobalResource.dirty=true;
+  }
+
   private setInquiryStatusFlag() {
     //get status of selected inquiry for disabling or enabling  forms
     let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
@@ -185,8 +195,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
       }
     }
   }
-  ngOnChange() {
-    
+  ngOnChange() {    
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
     

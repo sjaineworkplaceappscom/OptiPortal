@@ -20,6 +20,7 @@ import { ISubscription } from 'rxjs/Subscription';
 
 import * as $ from "jquery";
 import { Router } from '@angular/router';
+import { GlobalResource } from 'src/app/helpers/global-resource';
 
 @Component({
   selector: 'app-purchase-inq-list',
@@ -41,19 +42,19 @@ export class PurchaseInqListComponent implements OnInit {
 
   //for inquiry grid Data
   public gridData: any[] = [];
-  public systemAdmin:any;
+  public systemAdmin: any;
   public loginUserType: number;
 
   // Subscriber
-  getPIlistSubs:ISubscription;
-  refreshPIListSubs:ISubscription;
+  getPIlistSubs: ISubscription;
+  refreshPIListSubs: ISubscription;
 
   // pagination variable
   pageLimit;
-  pagination:boolean;
+  pagination: boolean;
 
   @ViewChild('optirightfixedsection') optirightfixedsection;
-  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe,private router:Router) {
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe, private router: Router) {
   }
 
   // UI Section
@@ -69,7 +70,7 @@ export class PurchaseInqListComponent implements OnInit {
   }
   // End UI Section
 
-  getPaginationAttributes(){
+  getPaginationAttributes() {
     // pagination add/remove for desktop and mobile
     let paginationAttributesArray = UIHelper.paginationAttributes();
     this.pageLimit = paginationAttributesArray[0];
@@ -77,6 +78,7 @@ export class PurchaseInqListComponent implements OnInit {
   }
 
   ngOnInit() {
+    GlobalResource.dirty=false;
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
@@ -88,32 +90,32 @@ export class PurchaseInqListComponent implements OnInit {
     let userData: any[] = JSON.parse(userDetail);
     this.loginUserType = userData[0].LoginUserType;
     this.gridHeight = UIHelper.getMainContentHeight();
-    this.systemAdmin=localStorage.getItem('SystemAdmin');
+    this.systemAdmin = localStorage.getItem('SystemAdmin');
 
     this.getPaginationAttributes();
 
-    this.refreshPIListSubs=this.commonService.refreshPIListSubscriber.subscribe(data => {
+    this.refreshPIListSubs = this.commonService.refreshPIListSubscriber.subscribe(data => {
       this.getInquiryList();
     },
-    error => {
-      this.showLoader=false;
-      alert("Something went wrong");
-      
-      console.log("Error: ", error)
-    });
+      error => {
+        this.showLoader = false;
+        alert("Something went wrong");
+
+        console.log("Error: ", error)
+      });
 
     //call method to get all inquiry data.
     this.getInquiryList();
-    
+
   }
 
-  ngOnDestroy(){
-    if(this.refreshPIListSubs!=undefined)
-    this.refreshPIListSubs.unsubscribe();
+  ngOnDestroy() {
+    if (this.refreshPIListSubs != undefined)
+      this.refreshPIListSubs.unsubscribe();
 
-    if(this.getPIlistSubs!=undefined)
-    this.getPIlistSubs.unsubscribe();
-}
+    if (this.getPIlistSubs != undefined)
+      this.getPIlistSubs.unsubscribe();
+  }
 
   /**
    * Method to get list of inquries from server.
@@ -124,25 +126,25 @@ export class PurchaseInqListComponent implements OnInit {
       inquiryData => {
         if (inquiryData != null && inquiryData != undefined) {
           this.gridData = JSON.parse(inquiryData);
-          
+
           this.gridData.forEach(element => {
-            element.CreatedDate=DateTimeHelper.ParseDate(element.CreatedDate);
-            element.ValidTillDate=DateTimeHelper.ParseDate(element.ValidTillDate);            
+            element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate);
+            element.ValidTillDate = DateTimeHelper.ParseDate(element.ValidTillDate);
           });
           this.showLoader = false;
         }
       },
       error => {
-        this.showLoader=false;
+        this.showLoader = false;
         alert("Something went wrong");
         console.log("Error: ", error);
         //localStorage.clear();
-       // this.router.navigate(['landing']);
-      
-        
+        // this.router.navigate(['landing']);
+
+
       },
-      ()=>{
-            this.showLoader=false;
+      () => {
+        this.showLoader = false;
       }
     );
   }
@@ -152,11 +154,11 @@ export class PurchaseInqListComponent implements OnInit {
    * @param status show and hide right content section
   */
   addInqueryOnClickAdd(status: boolean) {
-    localStorage.setItem("OperationType",OperationType.add.toString());   
+    localStorage.setItem("OperationType", OperationType.add.toString());
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.AddInquery;
     currentsideBarInfo.ModuleName = ModuleName.Purchase;
-    currentsideBarInfo.SideBarStatus = true; 
+    currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
@@ -168,7 +170,12 @@ export class PurchaseInqListComponent implements OnInit {
    * @param status  
    */
   public openInqueryDetailOnSelectInquery(selection) {
-    
+
+    // Check for unsaved data.
+   if(GlobalResource.leaveUnsavedDataConfirmation()==false){
+     return;
+   }
+
     // Set home tab active on click on any record
     $('#opti_HomeTabPurchaseInquiry').click();
 
@@ -180,25 +187,26 @@ export class PurchaseInqListComponent implements OnInit {
     // Selected Item Data
     let selectedIinquiry = this.gridData[selection.index];
     //const selectedData = selection.selectedRows[0].dataItem;
-    
-    localStorage.setItem("PurchaseinqueryId",selectedIinquiry.PurchaseInquiryId);  
-    localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(selectedIinquiry));   
-    localStorage.setItem("OperationType",OperationType.Update.toString());   
+
+    localStorage.setItem("PurchaseinqueryId", selectedIinquiry.PurchaseInquiryId);
+    localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(selectedIinquiry));
+    localStorage.setItem("OperationType", OperationType.Update.toString());
     currentsideBarInfo.RequesterData = selectedIinquiry;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
 
     // Reset Selection.
-    selection.selectedRows=[];    
+    selection.selectedRows = [];
+
+
   }
 
-  onFilterChange(checkBox:any,grid:GridComponent)
-  {
-    if(checkBox.checked==false){
+  onFilterChange(checkBox: any, grid: GridComponent) {
+    if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
 
-  clearFilter(grid:GridComponent){       
+  clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
     //this.gridData=process(this.gridData,null);
   }

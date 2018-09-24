@@ -1,4 +1,4 @@
-<div #optiRightAddInquiry id="opti_purchaseInqUpdate">    
+<div #optiRightAddInquiry (blur)="checkChanges()" id="opti_purchaseInqUpdate">    
     <!-- tab start -->
     <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="">
         <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
@@ -60,7 +60,7 @@
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Status</span>
-                                        <kendo-dropdownlist name="status" [data]="status"  [(ngModel)]="purchaseInquiryDetail.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
+                                        <kendo-dropdownlist name="status" [data]="status" (valueChange)="valueChange($event)"  [(ngModel)]="purchaseInquiryDetail.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
                                         </kendo-dropdownlist>
                                     </label>
 
@@ -78,7 +78,7 @@
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Valid Until</span>
-                                        <kendo-datepicker name="validUntil" [format]="'dd MMM yy'" [(ngModel)]="purchaseInquiryDetail.ValidTillDate" [min]="minValidDate" [disabled] = "isCancelStatus"> </kendo-datepicker>
+                                        <kendo-datepicker (valueChange)="valueChange($event)" name="validUntil" [format]="'dd MMM yy'" [(ngModel)]="purchaseInquiryDetail.ValidTillDate" [min]="minValidDate" [disabled] = "isCancelStatus"> </kendo-datepicker>
                                     </label>
 
                                     <label class="k-form-field">

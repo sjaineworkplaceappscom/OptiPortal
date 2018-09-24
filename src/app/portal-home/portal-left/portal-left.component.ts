@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { opticonstants } from '../../constants';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { Configuration } from '../../../assets/configuration';
+import { GlobalResource } from 'src/app/helpers/global-resource';
 // import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({
@@ -58,6 +59,8 @@ export class PortalLeftComponent implements OnInit {
 
 
   listClick(event, module) { 
+    GlobalResource.leaveUnsavedDataConfirmation();
+    
     this.selectedItem = module;
     //if(module!='purchaseinquiry'){
     this.closeRightSidebar();

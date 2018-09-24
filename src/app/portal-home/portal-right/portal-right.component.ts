@@ -4,6 +4,7 @@ import { opticonstants } from '../../constants';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { Configuration } from '../../../assets/configuration';
+import { GlobalResource } from '../../helpers/global-resource';
 
 
 
@@ -27,6 +28,10 @@ export class PortalRightComponent implements OnInit {
   * @param status close right content section, will pass false
   */
   closeRightSidebar() {
+    if(GlobalResource.leaveUnsavedDataConfirmation()==false){
+      return;
+    }
+    
     let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentSidebarInfo.SideBarStatus = false;
     this.commonService.setCurrentSideBar(currentSidebarInfo);
