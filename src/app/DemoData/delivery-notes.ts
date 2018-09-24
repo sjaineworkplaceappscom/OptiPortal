@@ -88,3 +88,36 @@ export const deliveryNotesTabNotes = [
         "Notes":"This is note"
     }
 ]
+
+// Advance shipment notes list
+
+
+export const advanceShipmentNotesList = [  
+    {  
+        "ASN":"XYNB",
+        "delivery":"Indore",
+        "shipDate":"05/07/2018",
+        "expectedDelivery":"05/07/2018",
+        "wayBill":"WAYBILL",
+        "tracking":"Indore",
+        "modeOfShipment":"FirstFlight",
+        "shippingMethod":"XYZ",
+        "packingSlip":"ABS",
+        "shipToLocation":"Indore",
+        "totalPrice":"15264"
+    }
+ ,  
+    {  
+        "ASN":"XTZ",
+        "delivery":"Indore",
+        "shipDate":"05/07/2018",
+        "expectedDelivery":"05/07/2018",
+        "wayBill":"WAYBILL",
+        "tracking":"Indore",
+        "modeOfShipment":"FirstFlight",
+        "shippingMethod":"XYZ",
+        "packingSlip":"ABS",
+        "shipToLocation":"Indore",
+        "totalPrice":"15264"
+    }
+]

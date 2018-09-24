@@ -6,6 +6,7 @@ import { AuthGuard } from '../guards/auth.guard';
 import { SalesQuotationsListComponent } from '../sales-quotations/sales-quotations-list/sales-quotations-list.component';
 import { SalesOrderListComponent } from '../sales-order/sales-order-list/sales-order-list.component';
 import { DeliveryNotesListComponent } from '../delivery-notes/delivery-notes-list/delivery-notes-list.component';
+import { AdvanceShipmentNotesListComponent } from '../delivery-notes/advance-shipment-notes-list/advance-shipment-notes-list.component';
 import { CustomerPurchaseOrderListComponent } from '../customer-purchase-order/customer-purchase-order-list/customer-purchase-order-list.component';
 
 
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path:'dashboard', component:DashboardComponent },
       { path: 'customerpurchaseorder', component:CustomerPurchaseOrderListComponent },
       { path: 'salesorder', component:SalesOrderListComponent },
-      { path: 'deliverynotes', component:DeliveryNotesListComponent }
+      { path: 'deliverynotes', component:DeliveryNotesListComponent },
+      { path: 'advanceshipmentnotes', component:AdvanceShipmentNotesListComponent }
       
 
       // { path: 'list', component: PurchaseInqListComponent },
