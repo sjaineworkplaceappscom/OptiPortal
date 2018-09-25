@@ -4,7 +4,7 @@ export class GlobalResource {
     public static leaveUnsavedDataConfirmation(): boolean {
         if (GlobalResource.dirty == true) {
             // Leave
-            let leave: boolean = confirm("You have unsaved data. Do you want to leave?");
+            let leave: boolean = confirm("Do you want to discard your changes?");
             if (leave) {
                 GlobalResource.dirty = false;
             }
