@@ -69,7 +69,9 @@ PurchaseInquiryItem = 3,
 
 SalesQuotation = 4,
 
-SalesOrder = 5
+SalesOrder = 5,
+
+DeliveryNotes = 6
 
 }
 

@@ -3,6 +3,10 @@ import { Configuration } from '../../../assets/configuration';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { deliveryNotesTabNotes } from '../../demodata/delivery-notes';
 import { NotesModel } from '../../models/purchaserequest/notes';
+import { CustomerEntityType } from '../../enums/enums';
+import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { SharedComponentService } from '../../services/shared-component.service';
 
 @Component({
   selector: 'app-delivery-notes-detail-notes',
@@ -28,8 +32,8 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
 
   public noteItemsData: any[];
 
-  noteModel:NotesModel = new NotesModel();
-
+  noteModel:SalesNoteModel = new SalesNoteModel();
+  addnotessub: ISubscription;
   public noteTypes: Array<{ text: string, value: number }> = [
     { text: "General ", value: 1 },
     { text: "Rejected", value: 2 },
@@ -37,7 +41,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
   ];
 
   public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
-
+  
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     //Apply Grid Height
@@ -57,7 +61,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
   }, 1000);
 }
 
-  constructor() { }
+  constructor(private sharedComponentService: SharedComponentService) { }
 
   ngOnInit() {
     //Apply Grid Height
@@ -101,7 +105,9 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
    */
   public resetModelValues() {
     //reset note model and type.
+    this.noteModel.Notes = '';
     let noteTypeDefault = { text: "General ", value: 1 };
+    this.noteModel.NoteType = noteTypeDefault.value;
     this.selectedNoteItem = noteTypeDefault;
   }
 
@@ -110,6 +116,33 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
   }
 
   submitNote(e) {
+    debugger;
+    let salesOptiId: number = 3;
+    let salesNumber: number = 3;
+    this.noteModel.NoteType = this.selectedNoteItem.value;
+    this.noteModel.ParentId = undefined;
+    this.noteModel.ParentType = CustomerEntityType.DeliveryNotes;
+    this.noteModel.SalesOptiId = salesOptiId.toString();
+    this.noteModel.SaleNumber = salesNumber;
+
+    this.addnotessub = this.sharedComponentService.AddDeliveryNotesNote(this.noteModel).subscribe(
+      resp => {
+        //this method is updating the status if notes updated then update inquiry status.
+        //this.callPurchaseInquiryStatusUpdateAPI();
+      },
+      error => {
+        alert("Something went wrong");
+        console.log("Error: ", error)
+      },
+      () => {
+        this.resetModelValues();
+        this.closeAddNote();
+        // Get notes data.
+        //this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
+        let salesOptiId: number = 3;
+        let salesNumber: number = 3;
+        //this.getSalesNotesList(salesOptiId.toString(), CustomerEntityType.DeliveryNotes);
+      });
     this.closeAddNote();
   }
 

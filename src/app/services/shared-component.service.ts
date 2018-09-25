@@ -142,6 +142,26 @@ export class SharedComponentService {
   let url: string = this.baseUrl + "salesorder/notelist/" + id + "/" + type;
   return this.httpHelper.get(url, null);
 }
+
+public getDeliveryNoteNotesList(id:string,type:string): Observable<any>{
+  let url: string = this.baseUrl + "deliverynotes/addnotes/" + id + "/" + type;
+  return this.httpHelper.get(url, null);
+ }
+
+  /**
+  * Add Note.
+  */
+ public AddDeliveryNotesNote(note: SalesNoteModel): Observable<any> {
+  var data: any = {
+    "Notes": note.Notes,
+    "NoteType": note.NoteType,
+    "SalesNumber": note.SaleNumber,    
+    "ParentId": note.ParentId,
+    "ParentType": note.ParentType,
+    "SalesOptiId": note.SalesOptiId
+  }
+  return this.httpHelper.post(this.baseUrl + 'deliverynotes/addnotes', data, null);
+}
 }
 
 
