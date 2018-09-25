@@ -7,6 +7,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { CustomerEntityType } from '../../enums/enums';
 import { Configuration } from '../../../assets/configuration';
+import { GlobalResource } from '../../helpers/global-resource';
 
 @Component({
   selector: 'app-sales-order-notes',
@@ -85,7 +86,7 @@ export class SalesOrderNotesComponent implements OnInit {
   }
 
   submitNote() {
-    
+    GlobalResource.dirty=false;
     // Add Notes Data in model. when comes from inquiry  
     this.salesOrderModel = JSON.parse(localStorage.getItem('SelectedSalesOrder'))
     let orderId: number = this.salesOrderModel.OrderId;
@@ -116,12 +117,13 @@ export class SalesOrderNotesComponent implements OnInit {
   }
 
   closeAddNoteWindow() {
+    GlobalResource.dirty=false;
     this.TabNotesGridStatus = true;
     this.TabAddNotesFormStatus = false;
   }
 
   updateNote(e) {
-
+    GlobalResource.dirty=false;
     this.selectedNote;
     //selected note object : this.selectedNote
     this.selectedNote.NoteType = this.selectedNoteItem.value;
@@ -148,6 +150,11 @@ export class SalesOrderNotesComponent implements OnInit {
 
   }
 
+
+  changeDiv(e){
+    GlobalResource.dirty=true;
+      console.log('notes div changes');
+  }
   /**
      * Method to get list of inquries from server.
      */
@@ -177,6 +184,7 @@ export class SalesOrderNotesComponent implements OnInit {
   }
 
   closeUpdateNote(e) {
+    GlobalResource.dirty=false;
     this.TabNotesGridStatus = true;
     this.TabEditNotesFormStatus = false;
     this.resetModelValues();

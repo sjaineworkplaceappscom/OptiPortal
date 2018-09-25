@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
+import { GlobalResource } from '../../helpers/global-resource';
 
 @Component({
   selector: 'app-sales-quotations-detail',
@@ -17,6 +18,12 @@ export class SalesQuotationsDetailComponent implements OnInit {
 
   // tab function
   openTab(evt, tabName) {
+    // Check for unsaved data.
+    if(GlobalResource.leaveUnsavedDataConfirmation()==false){
+      return;
+     }
+
+     
     this.tabName = tabName;
     UIHelper.customOpenTab(evt, tabName, 'horizontal');
   }

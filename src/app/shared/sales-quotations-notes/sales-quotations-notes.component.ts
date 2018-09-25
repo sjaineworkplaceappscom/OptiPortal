@@ -9,6 +9,7 @@ import { CustomerEntityType } from '../../enums/enums';
 import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
 import { debug } from 'util';
 import { Configuration } from '../../../assets/configuration';
+import { GlobalResource } from '../../helpers/global-resource';
 
 @Component({
   selector: 'app-sales-quotations-notes',
@@ -47,7 +48,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
     { text: "General ", value: 1 },
     { text: "Rejected", value: 2 },
     { text: "Partial accepted", value: 3 }
-  ];
+  ];  
 
   public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
   selectedNote: any = {};
@@ -88,7 +89,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
 
 
   submitNote() {
-    
+    GlobalResource.dirty=false;
     // Add Notes Data in model. when comes from inquiry  
     this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
     let quotationId: number = this.salesQuotationModel.QuotationId;
@@ -120,8 +121,14 @@ export class SalesQuotationsNotesComponent implements OnInit {
   }
 
   closeAddNoteWindow() {
+    GlobalResource.dirty=false;
+
     this.TabNotesGridStatus = true;
     this.TabAddNotesFormStatus = false;
+  }
+  changeDiv(e){
+    GlobalResource.dirty=true;
+      console.log('notes div changes');
   }
 
   /**
@@ -137,7 +144,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
 
 
   updateNote(e) {
-
+    GlobalResource.dirty=false;
     this.selectedNote;
     //selected note object : this.selectedNote
     this.selectedNote.NoteType = this.selectedNoteItem.value;
@@ -164,6 +171,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
   }
 
   closeUpdateNote(e) {
+    GlobalResource.dirty=false;
     this.TabNotesGridStatus = true;
     this.TabEditNotesFormStatus = false;
     this.resetModelValues();

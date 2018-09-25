@@ -69,14 +69,14 @@
           <!-- Add notes -->
           <ng-container *ngIf="TabAddNotesFormStatus == true">
               <div class="card" #noteform>
-                <div class="card-block">
+                <div  (change)="changeDiv($event)" class="card-block">
                     <form #requestnoteform = "ngForm" class="k-form">
                         <label class="k-form-field">
                             <span class="opti_form-label">Add Note
                                     <span *ngIf="note.errors?.required && (note.dirty || note.touched)" class="float-right opti_error-msg" >Note is required.</span>
                             </span>
                             <textarea class="k-textarea" name="addnotestring" #note = ngModel [(ngModel)]="noteModel.Notes" required>Please enter your note</textarea>
-                        </label>
+                        </label> 
 
                         <!-- <label class="k-form-field">
                             <span class="opti_form-label">Note Type</span>
@@ -97,7 +97,7 @@
           <!-- edit notes -->
           <ng-container *ngIf="TabEditNotesFormStatus == true">
             <div class="card" >
-              <div class="card-block">
+              <div  (change)="changeDiv($event)" class="card-block">
                 <form class="k-form" #editnoteform = "ngForm">
                     <label class="k-form-field">
                         <span class="opti_form-label">Update Note

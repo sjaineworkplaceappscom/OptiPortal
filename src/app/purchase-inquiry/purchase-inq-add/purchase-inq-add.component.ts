@@ -7,6 +7,7 @@ import { Commonservice } from '../../services/commonservice.service';
 import { ModuleName, ComponentName, PurchaseInquiryStatus } from '../../enums/enums';
 import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { GlobalResource } from '../../helpers/global-resource';
 @Component({
   selector: 'app-purchase-inq-add',
   templateUrl: './purchase-inq-add.component.html',
@@ -55,6 +56,11 @@ export class PurchaseInqAddComponent implements OnInit {
     UIHelper.getWidthOfOuterTab();
   }
 
+  valueChange(value:any){    
+    GlobalResource.dirty=true;
+    console.log('change in datepicker value'); 
+  }
+
   ngOnInit() {
     // apply width on opti_TabID
     UIHelper.getWidthOfOuterTab();
@@ -98,7 +104,8 @@ export class PurchaseInqAddComponent implements OnInit {
   }
 
   public AddPurchaseInquiry(saveAsDraft: boolean = false) {
-    
+    GlobalResource.dirty=false;
+
     if (saveAsDraft == true) {
       let Draftstatus: any = { text: "Draft", value: PurchaseInquiryStatus.Draft };
       this.purchaseInqueryAdd.Status = Draftstatus.value;
@@ -132,11 +139,12 @@ export class PurchaseInqAddComponent implements OnInit {
 
   }
 
-/**
+/** 
 * 
 * @param status close right content section, will pass false
 */
   closeRightSidebar() {
+    GlobalResource.dirty=false;
     let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentSidebarInfo.SideBarStatus = false;
     this.commonService.setCurrentSideBar(currentSidebarInfo);

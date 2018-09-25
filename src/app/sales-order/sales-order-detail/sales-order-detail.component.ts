@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { UIHelper } from '../../helpers/ui.helpers';
+import { GlobalResource } from '../../helpers/global-resource';
 
 @Component({
   selector: 'app-sales-order-detail',
@@ -9,7 +10,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
 })
 export class SalesOrderDetailComponent implements OnInit {
 
-  @Input() currentSidebarInfo:CurrentSidebarInfo;
+  @Input() currentSidebarInfo: CurrentSidebarInfo;
 
   constructor() { }
 
@@ -17,6 +18,11 @@ export class SalesOrderDetailComponent implements OnInit {
 
   // tab function
   openTab(evt, tabName) {
+    // Check for unsaved data.
+    if (GlobalResource.leaveUnsavedDataConfirmation() == false) {
+      return;
+    }
+
     this.tabName = tabName;
     UIHelper.customOpenTab(evt, tabName, 'horizontal');
   }

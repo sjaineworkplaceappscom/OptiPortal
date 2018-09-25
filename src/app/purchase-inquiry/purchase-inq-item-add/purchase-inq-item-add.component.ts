@@ -13,6 +13,7 @@ import { Configuration } from '../../../assets/configuration';
 
 import * as $ from "jquery";
 import { AttachmentDetail } from '../../models/AttchmentDetail';
+import { GlobalResource } from '../../helpers/global-resource';
 
 @Component({
   selector: 'app-purchase-inq-item-add',
@@ -157,7 +158,17 @@ export class PurchaseInqItemAddComponent implements OnInit {
   showItemForm() {
     this.addItem = true;
     this.itemGrid = false;
+    console.log('show add item section'); 
     // this.addOperationInProgress=true;
+  }
+
+  changeDiv(e){
+    GlobalResource.dirty=true;
+    console.log('change in div value'); 
+  }
+  valueChange(value:any){    
+    GlobalResource.dirty=true;
+    console.log('change in datepicker value'); 
   }
 
   /**
@@ -165,7 +176,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
    */
   showAddItemSection() {
     this.selectedItemId = '';
-
+    
     //reset data source when new intem added.
     this.statusValues = [
       { text: "New", value: PurchaseInquiryItemStatus.New },
@@ -188,6 +199,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   }
 
   closeItemForm() {
+    GlobalResource.dirty = false;
     //reset selected item id on cancel button click.
     this.selectedItemId = '';
     this.showItemsGrid();
@@ -281,7 +293,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   public OnSaveOperationClick(saveAndNew: boolean = false) {
 
 
-
+    GlobalResource.dirty=false;
     if (this.selectedItemId != '') { //case of update PI
       // On selection of item check if status is cancel or not 
       if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled) {
@@ -464,6 +476,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
   // tab code start
   openTab(evt, tabName) {
+     // Check for unsaved data.
+     if(GlobalResource.leaveUnsavedDataConfirmation()==false){
+      return;
+     }
     if (this.addOperationInProgress == true) {
       return;
     }

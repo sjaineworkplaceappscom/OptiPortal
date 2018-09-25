@@ -10,6 +10,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { Configuration } from '../../../assets/configuration';
+import { GlobalResource } from '../../helpers/global-resource';
 
 @Component({
     selector: 'app-notes',
@@ -165,12 +166,22 @@ export class NotesComponent implements OnInit {
         this.selectedNoteItem = { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
     }
 
+    valueChange(value:any){    
+        console.log('kendo dropdown changes');
+        GlobalResource.dirty=true;
+      }
+      changeDiv(e){
+        GlobalResource.dirty=true;
+          console.log('notes div changes');
+      }
+
     /**
     * add note.
     * @param e
     * @param action
     */
     submitNote(e) {
+        GlobalResource.dirty=false;
         // Add Notes Data in model. when comes from inquiry        
         this.noteModel.NoteType = this.selectedNoteItem.value;
         this.addnotessub = this.sharedComponentService.AddNote(this.noteModel).subscribe(
@@ -227,6 +238,8 @@ export class NotesComponent implements OnInit {
      * @param e
      */
     public closeAddNoteWindow(e) {
+        GlobalResource.dirty=false;
+ 
         this.TabNotesGridStatus = true;
         this.TabAddNotesFormStatus = false;
         this.resetModelValues();
@@ -308,7 +321,7 @@ export class NotesComponent implements OnInit {
     }
 
     public updateNote(e) {
-
+        GlobalResource.dirty=false;
         this.selectedNote;
         //selected note object : this.selectedNote
         this.selectedNote.NoteType = this.selectedNoteItem.value;
@@ -331,6 +344,7 @@ export class NotesComponent implements OnInit {
     }
 
     closeUpdateNote(e) {
+        GlobalResource.dirty=false;
         // this.notesgrid.nativeElement.style.display = 'block';
         this.TabNotesGridStatus = true;
         // this.editnoteform.nativeElement.style.display = 'none';

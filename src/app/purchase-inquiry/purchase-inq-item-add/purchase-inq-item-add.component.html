@@ -35,7 +35,7 @@
                     </div>
 
                     <div id="" *ngIf="tabName=='home'" class="opti_vertical-tabcontent opti_position-relative" [perfectScrollbar]="">
-                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                        <div   (change)="changeDiv($event)" class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
                             <div class="card opti_border-none" style="margin-bottom: 25px;">
                                 <div class="card-block">
                                     <form class="k-form opti_padding-zero" #piForm="ngForm">
@@ -69,7 +69,7 @@
                                             <span class="opti_form-label">Status *
                                                 <span *ngIf="status.errors?.required && (status.dirty || status.touched)" class="float-right opti_error-msg" >Item Status is required.</span>
                                             </span>
-                                            <kendo-dropdownlist name="status" [data]="statusValues" #status = ngModel [(ngModel)]="purchaseItemsModel.Status" [valuePrimitive]="true"
+                                            <kendo-dropdownlist (valueChange)="valueChange($event)" name="status" [data]="statusValues" #status = ngModel [(ngModel)]="purchaseItemsModel.Status" [valuePrimitive]="true"
                                                 [textField]="'text'" [valueField]="'value'" [disabled]="IsStatusDisbale">
                                             </kendo-dropdownlist>
                                         </label>
@@ -82,12 +82,12 @@
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Request Date</span>
-                                            <kendo-datepicker name="requestDate" [(ngModel)]="purchaseItemsModel.RequestDate"    [format]="'dd MMM yy'"  [disabled]="IsItemStatusCancel"> </kendo-datepicker>
+                                            <kendo-datepicker (valueChange)="valueChange($event)"  name="requestDate" [(ngModel)]="purchaseItemsModel.RequestDate"    [format]="'dd MMM yy'"  [disabled]="IsItemStatusCancel"> </kendo-datepicker>
                                         </label>
 
                                         <label class="k-form-field">
                                             <span class="opti_form-label">Required Date</span>
-                                            <kendo-datepicker name="requiredDate" [(ngModel)]="purchaseItemsModel.RequiredDate" [format]="'dd MMM yy'" [disabled]="IsItemStatusCancel"> </kendo-datepicker>
+                                            <kendo-datepicker (valueChange)="valueChange($event)"  name="requiredDate" [(ngModel)]="purchaseItemsModel.RequiredDate" [format]="'dd MMM yy'" [disabled]="IsItemStatusCancel"> </kendo-datepicker>
                                         </label>
        
                                         <label class="k-form-field">
