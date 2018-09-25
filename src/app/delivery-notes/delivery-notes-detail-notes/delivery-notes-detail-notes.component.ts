@@ -107,7 +107,6 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     //reset note model and type.
     this.noteModel.Notes = '';
     let noteTypeDefault = { text: "General ", value: 1 };
-    this.noteModel.NoteType = noteTypeDefault.value;
     this.selectedNoteItem = noteTypeDefault;
   }
 
