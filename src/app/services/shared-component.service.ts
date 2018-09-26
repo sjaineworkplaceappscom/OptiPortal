@@ -144,7 +144,8 @@ export class SharedComponentService {
 }
 
 public getDeliveryNoteNotesList(id:string,type:string): Observable<any>{
-  let url: string = this.baseUrl + "deliverynotes/addnotes/" + id + "/" + type;
+  
+  let url: string = this.baseUrl + "deliverynotes/notelist/" + id + "/" + type;
   return this.httpHelper.get(url, null);
  }
 
