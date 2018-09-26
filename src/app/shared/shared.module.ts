@@ -20,11 +20,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NotesItemComponent } from './notes-item/notes-item.component';
 import { AttachmentItemComponent } from './attachment-item/attachment-item.component';
-import { AttachmentUploadComponent } from './attachment-upload/attachment-upload.component';
+//import { AttachmentUploadComponent } from './attachment-upload/attachment-upload.component';
 import { CustomFilterPipe } from '../custom-filter.pipe';
 import { SalesQuotationsNotesComponent } from 'src/app/shared/sales-quotations-notes/sales-quotations-notes.component';
 import { SalesOrderNotesComponent } from 'src/app/shared/sales-order-notes/sales-order-notes.component';
 import { FileDropModule } from 'ngx-file-drop';
+import { SharedComponent } from './shared.component';
 
 
 
@@ -54,11 +55,11 @@ import { FileDropModule } from 'ngx-file-drop';
     
      // Angular
      HttpClientModule,         
-     FormsModule,
+     FormsModule, 
      FileDropModule
   ],
-  declarations: [AttachmentComponent,NotesComponent, NotesItemComponent, AttachmentItemComponent, AttachmentUploadComponent,CustomFilterPipe,SalesQuotationsNotesComponent,SalesOrderNotesComponent,CustomFilterPipe],
-  exports:[AttachmentComponent,NotesComponent,NotesItemComponent,AttachmentItemComponent,AttachmentUploadComponent,SalesQuotationsNotesComponent,SalesOrderNotesComponent,CustomFilterPipe],
+  declarations: [AttachmentComponent,NotesComponent, NotesItemComponent, AttachmentItemComponent, CustomFilterPipe,SalesQuotationsNotesComponent,SalesOrderNotesComponent,CustomFilterPipe,SharedComponent],
+  exports:[AttachmentComponent,NotesComponent,NotesItemComponent,AttachmentItemComponent,SalesQuotationsNotesComponent,SalesOrderNotesComponent,CustomFilterPipe],
   providers:[CustomFilterPipe]
 })
 export class SharedModule { }
