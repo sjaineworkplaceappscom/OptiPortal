@@ -42,37 +42,5 @@ export class ConfirmDialog {
 
             return true;
         }
-    }
-    //  return  dialog.result.subscribe(
-    //         (result) => {
-
-    //             if (result instanceof DialogCloseResult) {
-
-    //                 console.log('close');
-    //                 leave = false;
-    //             }
-    //             else {
-    //                 console.log('action', result);
-
-    //                 if (result.text == 'Yes') {
-    //                     leave = true;
-    //                     GlobalResource.dirty = false;
-    //                 }
-    //                 else {
-    //                     leave = false;
-    //                 }
-
-    //             }
-
-    //             //this.result = JSON.stringify(result);
-    //             return leave;
-    //         },
-    //         () => {
-    //             return leave;
-    //         }
-    //     );
-
-
-
-
+    }   
 }
