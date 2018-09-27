@@ -7,8 +7,13 @@
 import * as $ from "jquery";
 import { CurrentSidebarInfo } from "../models/sidebar/current-sidebar-info";
 import { Commonservice } from "../services/commonservice.service";
+import { Configuration } from '../../assets/configuration';
+
+var getThemePath = Configuration.themePath;
 
 export  class UIHelper{
+
+    
 
     // start sidebar and right panel manage
     // this function will call only for desktop and ipad
@@ -70,7 +75,7 @@ export  class UIHelper{
             
             $('#opal').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_blue_opal.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="'+ getThemePath +'"/kendo_custom_blue_opal.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
 
             // $('#bootstrap').click(function (){
@@ -80,52 +85,52 @@ export  class UIHelper{
 
             $('#urban').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_urban.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="'+ getThemePath +'/kendo_custom_urban.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
 
             $('#skype').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_skype.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="'+ getThemePath +'/kendo_custom_skype.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
 
             $('#green').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_green.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="'+ getThemePath +'/kendo_custom_green.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
 
             $('#stripe').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_stripe.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="'+ getThemePath +'/kendo_custom_stripe.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
 
             $('#coffee').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_coffee.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="'+ getThemePath +'/kendo_custom_coffee.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
 
             $('#newtrend').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_newtrend18.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="'+ getThemePath +'/kendo_custom_newtrend18.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
             $('#castify').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_castify.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="'+ getThemePath +'/kendo_custom_castify.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
             $('#sunrise').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_sunrise.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="'+ getThemePath +'/kendo_custom_sunrise.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
             $('#maldive').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_maldive.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="'+ getThemePath +'/kendo_custom_maldive.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
             $('#borabora').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_borabora.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="'+ getThemePath +'/kendo_custom_borabora.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
             $('#bluelagoo').click(function (){
                 $('footer').find('link.opti__theme-css-file').remove();
-                $('footer').append('<link rel="stylesheet" href="../assets/css/theme/kendo_custom_bluelagoo.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
+                $('footer').append('<link rel="stylesheet" href="'+ getThemePath +'/kendo_custom_bluelagoo.css?v= ' + (new Date()).getTime() + '" class="opti__theme-css-file" type="text/css" />');
             });
             
         });

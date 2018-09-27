@@ -11,7 +11,6 @@
 [pageSize]="50" 
 [pageable]="true" 
 [sortable]="true" 
-[filterable]=isColumnFilterItemsGrid
 [groupable]="false" 
 [columnMenu]="{ columnChooser: false }" 
 [height]=gridHeight-56
@@ -28,7 +27,7 @@
         <!-- checkbox -->
         <form class="k-form opti_show-hide-grid-column-filter float-left">
             <div class="k-form-field">
-                <input type="checkbox" id="opti_ColumnFilterItemID" [(ngModel)]="isColumnFilterItemsGrid" class="k-checkbox" name="columnfilter"
+                <input type="checkbox" id="opti_ColumnFilterItemID" class="k-checkbox" name="columnfilter"
                 />
                 <label class="k-checkbox-label" for="opti_ColumnFilterItemID">Enable Filter</label>
             </div>

@@ -7,6 +7,7 @@ import { CustomerEntityType } from '../../enums/enums';
 import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SharedComponentService } from '../../services/shared-component.service';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 @Component({
   selector: 'app-delivery-notes-detail-notes',
@@ -34,6 +35,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
 
   noteModel:SalesNoteModel = new SalesNoteModel();
   addnotessub: ISubscription;
+  getDeliveryNotesNoteSubs: ISubscription;
   public noteTypes: Array<{ text: string, value: number }> = [
     { text: "General ", value: 1 },
     { text: "Rejected", value: 2 },
@@ -69,7 +71,8 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
 
-    this.getDeliveryAllNotesList();
+    //this.getDeliveryAllNotesList();
+    this.getDeliveryNotesNoteList(3+"",3);
   }
 
   public openNewNote() {
@@ -116,8 +119,8 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
 
   submitNote(e) {
     debugger;
-    let salesOptiId: number = 3;
-    let salesNumber: number = 3;
+    let salesOptiId: number = 4;
+    let salesNumber: number = 4;
     this.noteModel.NoteType = this.selectedNoteItem.value;
     this.noteModel.ParentId = undefined;
     this.noteModel.ParentType = CustomerEntityType.DeliveryNotes;
@@ -140,7 +143,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
         //this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
         let salesOptiId: number = 3;
         let salesNumber: number = 3;
-        //this.getSalesNotesList(salesOptiId.toString(), CustomerEntityType.DeliveryNotes);
+        this.getDeliveryNotesNoteList(salesOptiId.toString(),CustomerEntityType.DeliveryNotes);
       });
     this.closeAddNote();
   }
@@ -154,5 +157,41 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     this.TabAddNotesFormStatus = false;
     this.resetModelValues();
   }
+
+  
+ /**
+     * Method to get list of inquries from server.
+     */ 
+    private getDeliveryNotesNoteList(salesId: string, parentType: number) {
+      let deliveryNoteOptiId: number = 4;
+      let salesNumber: number = 4;
+      //deliverynotes/notelist/{deliveryNotesOptiId}/{parentType:int
+      this.showLoader = true;
+      this.getDeliveryNotesNoteSubs = this.sharedComponentService.getDeliveryNoteNotesList(deliveryNoteOptiId.toString(), CustomerEntityType.DeliveryNotes.toString()).subscribe(
+        notesData => {
+          if (notesData != null && notesData != undefined) {
+            this.noteItemsData = JSON.parse(notesData);
+            this.formatNotesDate();
+          }
+          this.showLoader = false;
+        },
+        error => {
+          this.showLoader = false;
+          alert("Something went wrong");
+          console.log("Error: ", error)
+        });
+    }
+
+      // Format dates.
+  private formatNotesDate() {
+    this.noteItemsData.forEach(element => {
+      element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate); //new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
+      element.ModifiedDate = DateTimeHelper.ParseDate(element.ModifiedDate);//new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
+    });
+
+  }
+  
+   
+
 
 }

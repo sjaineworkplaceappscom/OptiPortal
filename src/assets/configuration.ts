@@ -12,5 +12,6 @@ export const Configuration = {
     , dateFormat:'DD MMM YY',
     appVersion:'1.1' ,
     doccumentPath:"http://139.144.10.218:5000/Upload/",
-    imagePath:'assets/images'    
+    imagePath:'assets/images',
+    themePath:'../assets/css/theme'    
 }

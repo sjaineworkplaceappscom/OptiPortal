@@ -48,13 +48,10 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { CommonModule, DatePipe } from '@angular/common';
 import { PortalHomeModule } from './portal-home/portal-home.module';
 import { PurchaseInquiryModule } from './purchase-inquiry/purchase-inquiry.module';
-import { FileSizePipe } from './file-size.pipe';
+
 import { HttpErrorInterceptor } from 'src/app/guards/intercepters/errorintercepter'
 import { NotificationModule } from '@progress/kendo-angular-notification'
 import { DialogsModule } from '@progress/kendo-angular-dialog';
-;
-;
-
 
 
 // for new Routing for Lazy load

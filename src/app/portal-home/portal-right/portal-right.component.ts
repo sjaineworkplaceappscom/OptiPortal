@@ -27,7 +27,7 @@ export class PortalRightComponent implements OnInit {
   * 
   * @param status close right content section, will pass false
   */
-  closeRightSidebar() {
+  closeRightSidebar(param) {
     if(GlobalResource.leaveUnsavedDataConfirmation()==false){
       return;
     }

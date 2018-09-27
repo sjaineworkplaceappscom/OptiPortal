@@ -144,7 +144,7 @@ export class PurchaseInqItemListComponent implements OnInit {
       this.requestDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequestDate);
       this.requiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
       this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;      
-  }
+  } 
 
 }
 

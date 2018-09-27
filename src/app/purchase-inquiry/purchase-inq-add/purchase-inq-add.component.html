@@ -2,7 +2,7 @@
     <!-- tab start -->
     <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="">
         <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
-            <li class="opti_tablinks" (click)="openTab($event, 'home')">
+            <li class="opti_tablinks" (click)="openTab($event, 'home',tabStatus)">
                 <a href="javascript:void('0');">Header</a>
             </li>
             <li class="opti_tablinks" [ngClass]="{'opti_disable-tab':tabStatus === false}" (click)="openTab($event, 'items', tabStatus)">
@@ -34,7 +34,7 @@
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Inquiry#</span>
                                         <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInqueryAdd.InquiryNumber" value="" placeholder="Inquiry number"
-                                            disabled />
+                                            disabled /> 
                                     </label>
 
                                     <label class="k-form-field" *ngIf="loginUserType==1">
