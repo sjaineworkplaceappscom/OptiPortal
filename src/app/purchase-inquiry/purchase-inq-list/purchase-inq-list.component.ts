@@ -21,6 +21,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import * as $ from "jquery";
 import { Router } from '@angular/router';
 import { GlobalResource } from 'src/app/helpers/global-resource';
+import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
 
 @Component({
   selector: 'app-purchase-inq-list',
@@ -54,7 +55,7 @@ export class PurchaseInqListComponent implements OnInit {
   pagination: boolean;
 
   @ViewChild('optirightfixedsection') optirightfixedsection;
-  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe, private router: Router) {
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe, private router: Router, private confirmService: ConfirmDialog) {
   }
 
   // UI Section
@@ -78,7 +79,7 @@ export class PurchaseInqListComponent implements OnInit {
   }
 
   ngOnInit() {
-    GlobalResource.dirty=false;
+    GlobalResource.dirty = false;
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
@@ -169,13 +170,19 @@ export class PurchaseInqListComponent implements OnInit {
    * @param selection 
    * @param status  
    */
-  public openInqueryDetailOnSelectInquery(selection) {
+  public async openInqueryDetailOnSelectInquery(selection) {
+   
+    // Check for dirty confirmation from
+    let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
+    if (a == false) {
+      return;
+    }
 
-    // Check for unsaved data.
-   if(GlobalResource.leaveUnsavedDataConfirmation()==false){
-     return;
-   }
+    this.openPIDetail(selection);
+   
+  }
 
+  openPIDetail(selection) {
     // Set home tab active on click on any record
     $('#opti_HomeTabPurchaseInquiry').click();
 
@@ -196,8 +203,6 @@ export class PurchaseInqListComponent implements OnInit {
 
     // Reset Selection.
     selection.selectedRows = [];
-
-
   }
 
   onFilterChange(checkBox: any, grid: GridComponent) {

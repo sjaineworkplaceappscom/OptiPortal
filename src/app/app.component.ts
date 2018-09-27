@@ -6,6 +6,7 @@
 
 import { Component, HostListener } from '@angular/core';
 import { UIHelper } from './helpers/ui.helpers';
+import { GlobalResource } from './helpers/global-resource';
 
 
 @Component({
@@ -14,13 +15,12 @@ import { UIHelper } from './helpers/ui.helpers';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'OptiPortals';    
-  isMobile:boolean;
-  constructor(){ }
-  
-  ngOnInit(){    
+  title = 'OptiPortals';
+  isMobile: boolean;
+
+  constructor() { }
+
+  ngOnInit() {
     UIHelper.deviceClass();
   }
-  
-
 }
