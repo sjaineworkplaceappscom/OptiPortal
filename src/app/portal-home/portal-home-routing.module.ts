@@ -8,6 +8,7 @@ import { SalesOrderListComponent } from '../sales-order/sales-order-list/sales-o
 import { DeliveryNotesListComponent } from '../delivery-notes/delivery-notes-list/delivery-notes-list.component';
 import { AdvanceShipmentNotesListComponent } from '../delivery-notes/advance-shipment-notes-list/advance-shipment-notes-list.component';
 import { CustomerPurchaseOrderListComponent } from '../customer-purchase-order/customer-purchase-order-list/customer-purchase-order-list.component';
+import { OpenInvoicesListComponent } from '../open-invoices/open-invoices-list/open-invoices-list.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
       { path: 'customerpurchaseorder', component:CustomerPurchaseOrderListComponent },
       { path: 'salesorder', component:SalesOrderListComponent },
       { path: 'deliverynotes', component:DeliveryNotesListComponent },
-      { path: 'advanceshipmentnotes', component:AdvanceShipmentNotesListComponent }
+      { path: 'advanceshipmentnotes', component:AdvanceShipmentNotesListComponent },
+      { path: 'openinvoices', component:OpenInvoicesListComponent }
       
 
       // { path: 'list', component: PurchaseInqListComponent },
