@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { GlobalResource } from '../../helpers/global-resource';
+import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
 
 @Component({
   selector: 'app-sales-quotations-detail',
@@ -12,17 +13,21 @@ export class SalesQuotationsDetailComponent implements OnInit {
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
 
-  constructor() { }
+  constructor( private confirmService: ConfirmDialog) { }
 
   tabName: string = 'home';
 
   // tab function
-  openTab(evt, tabName) {
+  async openTab(evt, tabName) {
     // Check for unsaved data.
-    if(GlobalResource.leaveUnsavedDataConfirmation()==false){
-      return;
-     }
-
+    // if(GlobalResource.leaveUnsavedDataConfirmation()==false){
+    //   return;
+    //  }
+  // Check for dirty confirmation from
+  let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
+  if (a == false) {
+    return;
+  }
      
     this.tabName = tabName;
     UIHelper.customOpenTab(evt, tabName, 'horizontal');

@@ -9,6 +9,7 @@ import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../
 import { ISubscription } from 'rxjs-compat/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { GlobalResource } from 'src/app/helpers/global-resource';
+import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
 
 @Component({
   selector: 'app-purchase-inq-update', 
@@ -18,7 +19,7 @@ import { GlobalResource } from 'src/app/helpers/global-resource';
 export class PurchaseInqUpdateComponent implements OnInit {
   
   @Input() currentSidebarInfo: CurrentSidebarInfo;
-  constructor(private commonService: Commonservice, private purchaseInquiryService: PurchaseInquiryService) { }
+  constructor(private commonService: Commonservice, private purchaseInquiryService: PurchaseInquiryService, private confirmService: ConfirmDialog) { }
 
   isCancelStatus: boolean = false;
   isHome: boolean = true;
@@ -72,9 +73,9 @@ export class PurchaseInqUpdateComponent implements OnInit {
   // tab function
   openTab(evt, tabName) {
      // Check for unsaved data.
-    if(GlobalResource.leaveUnsavedDataConfirmation()==false){
-     return;
-    }
+    // if(GlobalResource.leaveUnsavedDataConfirmation()==false){
+    //  return;
+    // }
     if (tabName == 'home')
     this.callPurchaseInquiryDetailAPI(this.purchaseInquiryDetail.PurchaseInquiryId);
     

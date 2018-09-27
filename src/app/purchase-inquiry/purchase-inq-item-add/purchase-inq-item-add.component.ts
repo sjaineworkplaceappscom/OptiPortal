@@ -14,6 +14,7 @@ import { Configuration } from '../../../assets/configuration';
 import * as $ from "jquery";
 import { AttachmentDetail } from '../../models/AttchmentDetail';
 import { GlobalResource } from '../../helpers/global-resource';
+import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
 
 @Component({
   selector: 'app-purchase-inq-item-add',
@@ -81,7 +82,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
-  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) {
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, private confirmService: ConfirmDialog) {
   }
 
   ngOnDestroy() {
@@ -98,7 +99,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
       this.updateitemSub.unsubscribe();
 
     if (this.updatePISub != undefined)
-    this.updatePISub.unsubscribe();
+      this.updatePISub.unsubscribe();
   }
 
   ngOnInit() {
@@ -107,7 +108,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
-    
+
     //get status of selected inquiry for disabling or enabling  forms
     let inquiryDetail: string = localStorage.getItem("SelectedPurchaseInquery");
     if (inquiryDetail != null && inquiryDetail != undefined) {
@@ -158,17 +159,17 @@ export class PurchaseInqItemAddComponent implements OnInit {
   showItemForm() {
     this.addItem = true;
     this.itemGrid = false;
-    console.log('show add item section'); 
+    console.log('show add item section');
     // this.addOperationInProgress=true;
   }
 
-  changeDiv(e){
-    GlobalResource.dirty=true;
-    console.log('change in div value'); 
+  changeDiv(e) {
+    GlobalResource.dirty = true;
+    console.log('change in div value');
   }
-  valueChange(value:any){    
-    GlobalResource.dirty=true;
-    console.log('change in datepicker value'); 
+  valueChange(value: any) {
+    GlobalResource.dirty = true;
+    console.log('change in datepicker value');
   }
 
   /**
@@ -176,7 +177,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
    */
   showAddItemSection() {
     this.selectedItemId = '';
-    
+
     //reset data source when new intem added.
     this.statusValues = [
       { text: "New", value: PurchaseInquiryItemStatus.New },
@@ -234,7 +235,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
     this.purchaseItemsModel.RequestDate = this.requestDate;
     this.purchaseItemsModel.RequiredDate = this.requiredDate;
     this.selectedItemId = this.purchaseItemsModel.PurchaseInquiryItemId;
-    
+
 
     // On selection of item check if status is cancel or not 
     if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled) {
@@ -293,7 +294,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   public OnSaveOperationClick(saveAndNew: boolean = false) {
 
 
-    GlobalResource.dirty=false;
+    GlobalResource.dirty = false;
     if (this.selectedItemId != '') { //case of update PI
       // On selection of item check if status is cancel or not 
       if (this.purchaseItemsModel.Status == PurchaseInquiryItemStatus.Cancelled) {
@@ -345,7 +346,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
   public AddPurchaseInquiryItem(saveAndNew: boolean = false) {
     this.purchaseItemsModel.PurchaseInquiryId = this.receivedPurchaseInquiryId;
     this.showLoader = true;
-    
+
     this.additemSub = this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
         //this.gridItemsData = JSON.parse(data);
@@ -357,7 +358,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
         this.purchaseItemsModel.RequiredDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequiredDate);
         this.purchaseItemsModel.RequestDate = DateTimeHelper.ParseDate(this.purchaseItemsModel.RequestDate);
         this.getInquiryItemsData(this.receivedPurchaseInquiryId);
-        
+
         if (saveAndNew) {
           //reset data source when new intem added.
           this.statusValues = [
@@ -461,9 +462,9 @@ export class PurchaseInqItemAddComponent implements OnInit {
         purchaseInquiryDetail.Status = PurchaseInquiryStatus.Updated;
         this.updatePISub = this.purchaseInquiryService.UpdatePurchaseInquiry(purchaseInquiryDetail).subscribe(
           data => {
-            localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(data)); 
-            
-             purchaseInquiryDetail = JSON.parse( localStorage.getItem('SelectedPurchaseInquery'));
+            localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
+
+            purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
             this.commonService.refreshPIList(null);
             // localStorage.setItem('SelectedPurchaseInquery', JSON.stringify(data));
           }, error => {
@@ -475,11 +476,17 @@ export class PurchaseInqItemAddComponent implements OnInit {
   }
 
   // tab code start
-  openTab(evt, tabName) {
-     // Check for unsaved data.
-     if(GlobalResource.leaveUnsavedDataConfirmation()==false){
+ async openTab(evt, tabName) {
+    // Check for unsaved data.
+    //  if(GlobalResource.leaveUnsavedDataConfirmation()==false){
+    //   return;
+    //  }
+
+    // Check for dirty confirmation from
+    let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
+    if (a == false) {
       return;
-     }
+    }
     if (this.addOperationInProgress == true) {
       return;
     }

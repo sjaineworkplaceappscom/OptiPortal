@@ -5,6 +5,7 @@ import { opticonstants } from '../../constants';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { Configuration } from '../../../assets/configuration';
 import { GlobalResource } from 'src/app/helpers/global-resource';
+import { ConfirmDialog } from '../../helpers/services/dialog.service';
 // import { UIHelper } from '../../helpers/ui.helpers';
 
 @Component({
@@ -15,7 +16,7 @@ import { GlobalResource } from 'src/app/helpers/global-resource';
 export class PortalLeftComponent implements OnInit {
   imgPath = Configuration.imagePath;
   systemAdmin: string;
-  constructor(private commonService: Commonservice, private router: Router) { }
+  constructor(private commonService: Commonservice, private router: Router,private confirmService:ConfirmDialog) { }
   selectedThemeColor: string = 'opticonstants.DEFAULTTHEMECOLOR';
 
   //Already selected list in left panel
@@ -58,11 +59,17 @@ export class PortalLeftComponent implements OnInit {
   }
 
 
-  listClick(event, module) {
+ async listClick(event, module) {
     // Check for unsaved data.
-    if (GlobalResource.leaveUnsavedDataConfirmation() == false) {
-      return;
-    }
+    // if (GlobalResource.leaveUnsavedDataConfirmation() == false) {
+    //   return;
+    // }
+
+     // Check for dirty confirmation from
+     let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
+     if (a == false) {
+       return;
+     }
 
     this.selectedItem = module;
     //if(module!='purchaseinquiry'){

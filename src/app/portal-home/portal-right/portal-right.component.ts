@@ -5,6 +5,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { Configuration } from '../../../assets/configuration';
 import { GlobalResource } from '../../helpers/global-resource';
+import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
 
 
 
@@ -18,7 +19,7 @@ export class PortalRightComponent implements OnInit {
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   // Event emitter variable.
   //  @Output() messageEvent = new EventEmitter<boolean>();
-  constructor(private commonService: Commonservice) { }
+  constructor(private commonService: Commonservice, private confirmService: ConfirmDialog) { }
 
 
   ngOnInit() {
@@ -27,11 +28,17 @@ export class PortalRightComponent implements OnInit {
   * 
   * @param status close right content section, will pass false
   */
-  closeRightSidebar(param) {
-    if(GlobalResource.leaveUnsavedDataConfirmation()==false){
+  async closeRightSidebar(param) {
+    // if(GlobalResource.leaveUnsavedDataConfirmation()==false){
+    //   return;
+    // }
+
+    // Check for dirty confirmation from
+    let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
+    if (a == false) {
       return;
     }
-    
+
     let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentSidebarInfo.SideBarStatus = false;
     this.commonService.setCurrentSideBar(currentSidebarInfo);
