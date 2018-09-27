@@ -21,7 +21,6 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
-import { UploadModule } from '@progress/kendo-angular-upload/dist/es2015/main';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { ConfirmPasswordEquilValidatorDirectiveDirective } from '../directives/confirm-password-equil-validator-directive.directive';
 
@@ -39,7 +38,7 @@ import { ConfirmPasswordEquilValidatorDirectiveDirective } from '../directives/c
     LayoutModule,
     ExcelModule,
     DateInputsModule,
-    UploadModule,
+  
     InputsModule,        
 
     // BS
