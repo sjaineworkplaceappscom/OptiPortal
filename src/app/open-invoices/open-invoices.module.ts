@@ -27,6 +27,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
     FileDropModule,
     DropDownsModule
   ],
-  declarations: [OpenInvoicesListComponent, OpenInvoicesDetailComponent, OpenInvoicesDetailHomeComponent, OpenInvoicesDetailContentComponent, OpenInvoicesDetailAttachmentComponent, OpenInvoicesDetailNotesComponent]
+  declarations: [OpenInvoicesListComponent, OpenInvoicesDetailComponent, OpenInvoicesDetailHomeComponent, OpenInvoicesDetailContentComponent, OpenInvoicesDetailAttachmentComponent, OpenInvoicesDetailNotesComponent],
+  exports:[OpenInvoicesListComponent, OpenInvoicesDetailComponent]
 })
 export class OpenInvoicesModule { }

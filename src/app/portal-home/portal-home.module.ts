@@ -28,10 +28,12 @@ import { SalesQuotationsModule } from '../sales-quotations/sales-quotations.modu
 import { ThemeManagerComponent } from '../common/theme-manager/theme-manager.component';
 import { DeliveryNotesModule } from '../delivery-notes/delivery-notes.module';
 import { SalesOrderModule } from '../sales-order/sales-order.module';
+import { OpenInvoicesModule } from '../open-invoices/open-invoices.module';
 import { CustomerPurchaseOrderModule } from '../customer-purchase-order/customer-purchase-order.module';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import 'hammerjs';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -67,7 +69,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     SalesOrderModule,
     CustomerPurchaseOrderModule,
     ChartsModule,
-    NgbModule
+    NgbModule,
+    OpenInvoicesModule
 
   ],
   declarations: [

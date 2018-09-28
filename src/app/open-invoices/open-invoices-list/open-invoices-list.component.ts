@@ -99,13 +99,15 @@ export class OpenInvoicesListComponent implements OnInit {
   }
 
   openInvoiceDetailOnSelection(selection){
-    $('#opti_HomeTabDeliveryNotesID').click(); 
+    $('#opti_OpenInvoicesID').click(); 
 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
-    currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
+    currentsideBarInfo.ComponentName = ComponentName.OpenInvoices;
+    currentsideBarInfo.ModuleName = ModuleName.OpenInvoices;
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+
+    
     // Reset Selection.
     // let selectedSalesOrder = this.gridData[selection.index];
     // currentsideBarInfo.RequesterData = selectedSalesOrder;

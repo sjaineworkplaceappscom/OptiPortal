@@ -27,7 +27,8 @@ export  enum ModuleName {
     Purchase = 1,
     Sales = 2,
     SalesOrder = 4,
-    DeliveryNotes = 5
+    DeliveryNotes = 5,
+    OpenInvoices = 6
 }
 
 export enum ComponentName {
@@ -44,7 +45,10 @@ export enum ComponentName {
     SalesOrderDetail = 401,
 
     // Delivery Notes
-    DeliveryNotes = 501
+    DeliveryNotes = 501,
+
+    // Open Invoices
+    OpenInvoices = 601
 
     
 }
@@ -71,7 +75,9 @@ SalesQuotation = 4,
 
 SalesOrder = 5,
 
-DeliveryNotes = 6
+DeliveryNotes = 6,
+
+OpenInvoices = 7
 
 }
 
