@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { Commonservice } from '../../services/commonservice.service';
-import { openInvoicesList } from '../../demodata/open-invoices';
+import { customerContactsList } from '../../demodata/customer-contacts';
 import { GridComponent } from '@progress/kendo-angular-grid';
 import { Configuration } from '../../../assets/configuration';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
@@ -9,11 +9,11 @@ import { ModuleName, ComponentName } from '../../enums/enums';
 import * as $ from "jquery";
 
 @Component({
-  selector: 'app-open-invoices-list',
-  templateUrl: './open-invoices-list.component.html',
-  styleUrls: ['./open-invoices-list.component.scss']
+  selector: 'app-customer-contacts-list',
+  templateUrl: './customer-contacts-list.component.html',
+  styleUrls: ['./customer-contacts-list.component.scss']
 })
-export class OpenInvoicesListComponent implements OnInit {
+export class CustomerContactsListComponent implements OnInit {
 
   imgPath = Configuration.imagePath;
 
@@ -58,7 +58,7 @@ export class OpenInvoicesListComponent implements OnInit {
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
-    element.classList.add("opti_body-open-invoives");
+    element.classList.add("opti_body-customer-contacts");
     element.classList.add("opti_body-main-module");
     // Apply class on body end
 
@@ -71,15 +71,15 @@ export class OpenInvoicesListComponent implements OnInit {
     this.getPaginationAttributes();
 
     
-    this.getOpenInvoicesList();
+    this.getCustomerContactsList();
   }
 
   /**
    * Method to get list of inquries from server.
   */
-  public getOpenInvoicesList() {
+  public getCustomerContactsList() {
     this.showLoader = true;
-    this.gridData = openInvoicesList;
+    this.gridData = customerContactsList;
     setTimeout(()=>{    
       this.showLoader = false;
     }, 1000);
@@ -98,23 +98,20 @@ export class OpenInvoicesListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openInvoiceDetailOnSelection(selection){
-    $('#opti_OpenInvoicesID').click(); 
-
+  openContactsDetailOnSelection(selection){
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName = ComponentName.OpenInvoices;
-    currentsideBarInfo.ModuleName = ModuleName.OpenInvoices;
+    currentsideBarInfo.ComponentName = ComponentName.UpdateContact;
+    currentsideBarInfo.ModuleName = ModuleName.CustomerContacts;
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
-
-    
-    // Reset Selection.
-    // let selectedSalesOrder = this.gridData[selection.index];
-    // currentsideBarInfo.RequesterData = selectedSalesOrder;
-    // localStorage.setItem("SelectedSalesOrder", JSON.stringify(selectedSalesOrder));
-    // this.commonService.setCurrentSideBar(currentsideBarInfo);
-    // selection.selectedRows=[];  
   }
 
+  addContactsOnClick(status:boolean){
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName = ComponentName.AddContact;
+    currentsideBarInfo.ModuleName = ModuleName.CustomerContacts;
+    currentsideBarInfo.SideBarStatus = status;
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
+  }
 
 }

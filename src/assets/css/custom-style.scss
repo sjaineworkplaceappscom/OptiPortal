@@ -107,9 +107,10 @@ app-delivery-notes-detail-attachment{
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////File drop css start/////////////////////
 /////////////////////////////////////////////////////////////////////
-.opti_body-purchase-inquiries #opti_purchaseInquiryAttachementSectionID,
-.opti_body-purchase-inquiries #opti_purchaseInquiryItemAttachementSectionID,
-.opti_body-delivery-notes #opti_DeliveryNotesAttchment{
+#opti_purchaseInquiryAttachementSectionID,
+#opti_purchaseInquiryItemAttachementSectionID,
+#opti_DeliveryNotesAttchment,
+#opti_OpenInvoicesAttchmentID{
   file-drop #dropZone{
     margin: 0;
     height: auto;
@@ -120,9 +121,10 @@ app-delivery-notes-detail-attachment{
   }
 }
 
-.opti_body-purchase-inquiries #opti_purchaseInquiryAttachementSectionID,
-.opti_body-purchase-inquiries #opti_purchaseInquiryItemAttachementSectionID,
-.opti_body-delivery-notes #opti_DeliveryNotesAttchment{
+#opti_purchaseInquiryAttachementSectionID,
+#opti_purchaseInquiryItemAttachementSectionID,
+#opti_DeliveryNotesAttchment,
+#opti_OpenInvoicesAttchmentID{
   .drop-zone{
     width: 100%;
     kendo-grid{

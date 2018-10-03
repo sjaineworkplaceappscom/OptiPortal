@@ -27,45 +27,46 @@ export const openInvoicesList = [
 
 
 // Content Tab
-export const deliveryNotesContent = [  
+
+export const openInvoicesContent = [  
     {  
-        "Line":"item01",
-        "itemCode":"20",
-        "Quantity":"5210",
-        "UOM":"5",
-        "Price":"5",
-        "Tax":"code1",
-        "totalPrice":"5200",
-        "salesOrder":'UOM12',
-        "salesOrderLine":"Indore",
-        "shipToLocation":"Indore"
+        "Line":"invoice01",
+        "salesOrder":"20",
+        "salesOrderLine":"10",
+        "Item":"10",
+        "deliveredQuantity":"7",
+        "UOM":"code1",
+        "shipToAddress":"Indore",
+        "Price":"500",
+        "Tax":"150",
+        "totalPrice":"1235"
     }
  ,  
     {  
-        "Line":"item01",
-        "itemCode":"20",
-        "Quantity":"5210",
-        "UOM":"5",
-        "Price":"5",
-        "Tax":"code1",
-        "totalPrice":"5200",
-        "salesOrder":'UOM12',
-        "salesOrderLine":"Indore",
-        "shipToLocation":"Indore"
+        "Line":"invoice02",
+        "salesOrder":"20",
+        "salesOrderLine":"10",
+        "Item":"10",
+        "deliveredQuantity":"7",
+        "UOM":"code1",
+        "shipToAddress":"Indore",
+        "Price":"500",
+        "Tax":"150",
+        "totalPrice":"1235"
     }
 ]
 
 // Attchement tab
-export const deliveryNotesAttachment = [  
+export const openInvoicesAttachment = [  
     {  
-        "AttachmentName":"Report1.png",
+        "AttachmentName":"invoices1.png",
         "SizeInKb":"10KB",
         "AttachmentTypeText":"PNG",
         "CreatedByName":"Prashant"
     }
  ,  
     {  
-        "AttachmentName":"Report2.png",
+        "AttachmentName":"invoices2.png",
         "SizeInKb":"10KB",
         "AttachmentTypeText":"PNG",
         "CreatedByName":"Prashant"
@@ -73,49 +74,16 @@ export const deliveryNotesAttachment = [
 ]
 
 // Notes
-export const deliveryNotesTabNotes = [  
-    {  
-        "CreatedByName":"prashant",
-        "CreatedDate":"05/07/2018",
-        "Notes":"This is note"
-    }
- ,  
+export const openInvoicesNotes = [  
     {  
         "CreatedByName":"Ankur",
         "CreatedDate":"05/07/2018",
         "Notes":"This is note"
     }
-]
-
-// Advance shipment notes list
-
-
-export const advanceShipmentNotesList = [  
-    {  
-        "ASN":"XYNB",
-        "delivery":"Indore",
-        "shipDate":"05/07/2018",
-        "expectedDelivery":"05/07/2018",
-        "wayBill":"WAYBILL",
-        "tracking":"Indore",
-        "modeOfShipment":"FirstFlight",
-        "shippingMethod":"XYZ",
-        "packingSlip":"ABS",
-        "shipToLocation":"Indore",
-        "totalPrice":"15264"
-    }
  ,  
     {  
-        "ASN":"XTZ",
-        "delivery":"Indore",
-        "shipDate":"05/07/2018",
-        "expectedDelivery":"05/07/2018",
-        "wayBill":"WAYBILL",
-        "tracking":"Indore",
-        "modeOfShipment":"FirstFlight",
-        "shippingMethod":"XYZ",
-        "packingSlip":"ABS",
-        "shipToLocation":"Indore",
-        "totalPrice":"15264"
+        "CreatedByName":"Aryan",
+        "CreatedDate":"05/07/2018",
+        "Notes":"This is note"
     }
 ]

@@ -29,6 +29,8 @@ import { ThemeManagerComponent } from '../common/theme-manager/theme-manager.com
 import { DeliveryNotesModule } from '../delivery-notes/delivery-notes.module';
 import { SalesOrderModule } from '../sales-order/sales-order.module';
 import { OpenInvoicesModule } from '../open-invoices/open-invoices.module';
+import { CustomerContactsModule } from '../customer-contacts/customer-contacts.module';
+import { CustomerContractsModule } from '../customer-contracts/customer-contracts.module';
 import { CustomerPurchaseOrderModule } from '../customer-purchase-order/customer-purchase-order.module';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import 'hammerjs';
@@ -70,7 +72,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     CustomerPurchaseOrderModule,
     ChartsModule,
     NgbModule,
-    OpenInvoicesModule
+    OpenInvoicesModule,
+    CustomerContactsModule,
+    CustomerContractsModule
 
   ],
   declarations: [

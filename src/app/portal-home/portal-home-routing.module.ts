@@ -9,6 +9,8 @@ import { DeliveryNotesListComponent } from '../delivery-notes/delivery-notes-lis
 import { AdvanceShipmentNotesListComponent } from '../delivery-notes/advance-shipment-notes-list/advance-shipment-notes-list.component';
 import { CustomerPurchaseOrderListComponent } from '../customer-purchase-order/customer-purchase-order-list/customer-purchase-order-list.component';
 import { OpenInvoicesListComponent } from '../open-invoices/open-invoices-list/open-invoices-list.component';
+import { CustomerContactsListComponent } from '../customer-contacts/customer-contacts-list/customer-contacts-list.component';
+import { CustomerContractsListComponent } from '../customer-contracts/customer-contracts-list/customer-contracts-list.component';
 
 
 const routes: Routes = [
@@ -24,7 +26,9 @@ const routes: Routes = [
       { path: 'salesorder', component:SalesOrderListComponent },
       { path: 'deliverynotes', component:DeliveryNotesListComponent },
       { path: 'advanceshipmentnotes', component:AdvanceShipmentNotesListComponent },
-      { path: 'openinvoices', component:OpenInvoicesListComponent }
+      { path: 'openinvoices', component:OpenInvoicesListComponent },
+      { path: 'customercontacts', component:CustomerContactsListComponent },
+      { path: 'customercontracts', component:CustomerContractsListComponent }
       
 
       // { path: 'list', component: PurchaseInqListComponent },

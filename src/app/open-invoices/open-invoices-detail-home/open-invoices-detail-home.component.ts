@@ -7,7 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpenInvoicesDetailHomeComponent implements OnInit {
 
-  constructor() { }
+
+  Invoice;
+  invoiceDate;
+  dueDate;
+  Amount;
+  Freight;
+  Tax;
+  discount;
+  totalAmount;
+  billToaddress;
+  contactPerson;
+  paymentTerms;
+  advancePaidamount;
+  balancedue;
+
 
   ngOnInit() {
   }

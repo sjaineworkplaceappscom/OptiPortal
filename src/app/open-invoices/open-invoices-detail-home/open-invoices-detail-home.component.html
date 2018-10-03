@@ -1,3 +1,87 @@
-<p>
-  open-invoices-detail-home works!
-</p>
+<div class="opti_open_invoices-detail-home opti_position-relative opti_fullheight" id="opti_OpenInvoicesHomeID" [perfectScrollbar]="">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+
+          <!-- loader start -->
+          <!-- <div class="opti_loader opti_loader-header-tab">
+              <div class="opti_spinner"></div>
+          </div> -->
+          <!-- loader end --> 
+          
+
+        <div class="card">
+          <div class="card-block">
+            <form class="k-form">
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Invoice#</span>
+                  <input name="delivery" type="text" class="k-textbox" [(ngModel)]="Invoice" readonly />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Invoice Date</span>
+                  <input name="shipDate" type="text" class="k-textbox" [(ngModel)]="invoiceDate" readonly />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Due Date</span>
+                  <input name="deliveredDate" type="text" class="k-textbox" [ngModel]="dueDate"  readonly />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Amount</span>
+                  <input name="customerName" type="text" class="k-textbox" [ngModel]="Amount" readonly />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Freight</span>
+                  <input name="wayBill" type="text" class="k-textbox" [(ngModel)]="Freight" readonly />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Tax</span>
+                  <input name="tracking" type="text" class="k-textbox" [(ngModel)]="Tax" readonly />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">discount</span>
+                  <input name="packingSlip" type="text" class="k-textbox" [(ngModel)]="discount" readonly />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Total Amount</span>
+                  <input name="modeOfShipment" type="text" class="k-textbox" [(ngModel)]="totalAmount" readonly />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Bill-To address</span>
+                  <input name="shippingMethod" type="text" class="k-textbox" [(ngModel)]="billToaddress" readonly />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Contact Person</span>
+                  <input name="shipToLocation" type="text" class="k-textbox" [(ngModel)]="contactPerson" readonly />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Payment Terms</span>
+                  <input name="totalPrice" type="text" class="k-textbox" [(ngModel)]="paymentTerms" readonly />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Advance Paid amount</span>
+                  <input name="freight" type="text" class="k-textbox" [(ngModel)]="advancePaidamount" readonly />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Balance Due</span>
+                  <input name="tax" type="text" class="k-textbox" [(ngModel)]="balancedue" readonly />
+              </label>
+            </form>
+          </div>
+        </div>
+      </div> 
+    </div> 
+  </div>  
+</div>

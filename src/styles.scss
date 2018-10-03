@@ -14,8 +14,10 @@ body.opti_account-module{
     background-image: url('assets/images/account/body-bg-new-1.jpg');
 }
 
-.opti_body-purchase-inquiries #opti_purchaseInquiryAttachementSectionID,
-.opti_body-purchase-inquiries #opti_purchaseInquiryItemAttachementSectionID{  
+#opti_purchaseInquiryAttachementSectionID,
+#opti_purchaseInquiryItemAttachementSectionID,
+#opti_DeliveryNotesAttchment,
+#opti_OpenInvoicesAttchmentID{  
     kendo-grid-list{
         .k-grid-content{
             background-image:url('assets/images/common/drop-grid-bg.png'); 
