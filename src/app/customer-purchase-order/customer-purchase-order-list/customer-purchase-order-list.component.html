@@ -21,6 +21,7 @@
            [selectable]="true" 
            [pageSize]=pageLimit 
            [pageable]=pagination 
+           (selectionChange)="openInqueryDetailOnSelectInquery($event)"
            #gridItem>
            <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
            <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
@@ -71,30 +72,19 @@
                     </h4> -->
                     
                     <dl class="opti_mobile_grid_dl">
-                        <dt>purchase Order Inquiry#</dt>
-                        <dd>{{ dataItem.Inquiry }}</dd>
+                        <dt>Id</dt>
+                        <dd>{{ dataItem.id }}</dd>
 
-                        <dt>Customer Id</dt>
-                        <dd>{{ dataItem.Customer }}</dd>
-
-                        <dt>Customer Name</dt>
-                        <dd>{{ dataItem.Name }}</dd>
-
-                        <dt>Status</dt>
-                        <dd>{{ dataItem.Status }}</dd>
-
-                        
+                        <dt>Reference#</dt>
+                        <dd>{{ dataItem.ReferenceNumber }}</dd>
                     </dl>
 
                     <dl class="opti_mobile_grid_dl">
-                        <dt>Created Date <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
-                        <dd>{{ dataItem.BuyerCreatedBy }}</dd>
+                        <dt>Reference Type <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
+                        <dd>{{ dataItem.ReferenceType }}</dd>
 
-                        <dt>Created By</dt>
-                        <dd>{{ dataItem.ValidUntil }}</dd>
-
-                        <dt>Valid Until</dt>
-                        <dd>{{ dataItem.Reference }}</dd>
+                        <dt>Purchase Order Date</dt>
+                        <dd>{{ dataItem.PurchaseOrderDate }}</dd>
                     </dl>
 
                 </ng-template>
@@ -102,16 +92,13 @@
            <!-- grid for mobile end -->
 
            <!-- grid template end -->
-           <kendo-grid-column media="(min-width: 768px)" field="Inquiry" title="purchase Order Inquiry#" [width]="160" filter="numeric"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="Customer" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="Name" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="Status" [width]="140" title="Status" ></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="BuyerCreatedBy" title="Created Date" [width]="200"  filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="ValidUntil" title="Created By" [width]="140"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="Reference" title="Valid Until" [width]="200" filter="date"  type=date format="{0:dd MMM yy}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="id" title="Id" [width]="160" filter="numeric"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="ReferenceNumber" title="Reference#" filter="numeric" [width]="160"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="ReferenceType" [width]="160" title="Reference Type"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="PurchaseOrderDate" [width]="160" title="Purchase Order Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
            
            <!-- xlsx template start -->
-           <kendo-grid-excel fileName="Sales-quotations.xlsx"></kendo-grid-excel>
+           <kendo-grid-excel fileName="customer-purchase-order.xlsx"></kendo-grid-excel>
            <!-- xlsx template end -->
 
           </kendo-grid>

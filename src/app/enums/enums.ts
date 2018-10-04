@@ -30,7 +30,9 @@ export  enum ModuleName {
     DeliveryNotes = 5,
     OpenInvoices = 6,
     CustomerContracts=7,
-    CustomerContacts=8
+    CustomerContacts=8,
+    CustomerPurchaseOrder=9
+
 }
 
 export enum ComponentName {
@@ -54,9 +56,10 @@ export enum ComponentName {
 
     // Customer Contacts
     AddContact = 801,
-    UpdateContact = 802
+    UpdateContact = 802,
 
     
+    CPOUpdate=901    
 }
 
 

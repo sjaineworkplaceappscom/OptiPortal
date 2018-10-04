@@ -7,6 +7,12 @@ import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
 import { FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { FileDropModule } from 'ngx-file-drop';
+import { CustomerPurchaseOrderDetailComponent } from './customer-purchase-order-detail/customer-purchase-order-detail.component';
+import { CustomerPurchaseOrderHomeComponent } from './customer-purchase-order-home/customer-purchase-order-home.component';
+import { CustomerPurchaseOrderNotesComponent } from './customer-purchase-order-notes/customer-purchase-order-notes.component';
+import { CustomerPurchaseOrderAttachmentComponent } from './customer-purchase-order-attachment/customer-purchase-order-attachment.component';
+import { CustomerPurchaseOrderUpdateComponent } from './customer-purchase-order-update/customer-purchase-order-update.component';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 @NgModule({
   imports: [
@@ -16,9 +22,10 @@ import { FileDropModule } from 'ngx-file-drop';
     ExcelModule,
     FormsModule,
     AngularSvgIconModule,
-    FileDropModule
+    FileDropModule,
+    PerfectScrollbarModule
   ],
-  declarations: [CustomerPurchaseOrderListComponent],
-  exports:[CustomerPurchaseOrderListComponent]
+  declarations: [CustomerPurchaseOrderListComponent, CustomerPurchaseOrderDetailComponent, CustomerPurchaseOrderHomeComponent, CustomerPurchaseOrderNotesComponent, CustomerPurchaseOrderAttachmentComponent, CustomerPurchaseOrderUpdateComponent],
+  exports:[CustomerPurchaseOrderListComponent,CustomerPurchaseOrderDetailComponent, CustomerPurchaseOrderUpdateComponent]
 })
 export class CustomerPurchaseOrderModule { }

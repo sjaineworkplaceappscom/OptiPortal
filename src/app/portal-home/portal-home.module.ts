@@ -74,7 +74,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     OpenInvoicesModule,
     CustomerContactsModule,
-    CustomerContractsModule
+    CustomerContractsModule,
+    CustomerPurchaseOrderModule
 
   ],
   declarations: [

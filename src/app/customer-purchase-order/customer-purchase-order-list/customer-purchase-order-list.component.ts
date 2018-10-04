@@ -1,9 +1,12 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { Commonservice } from '../../services/commonservice.service';
-import { data2 } from '../../demodata/data2';
+import { customerPurchaseOrderList } from '../../demodata/customer-purchase-order';
 import { GridComponent } from '@progress/kendo-angular-grid';
 import { Configuration } from '../../../assets/configuration';
+import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
+import { ComponentName, ModuleName } from 'src/app/enums/enums';
+import * as $ from "jquery";
 
 
 @Component({
@@ -83,7 +86,7 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
   */
   public getCustomerPurchaseOrderList() {
     this.showLoader = true;
-    this.gridData = data2;
+    this.gridData = customerPurchaseOrderList;
     setTimeout(()=>{    
       this.showLoader = false;
     }, 1000);
@@ -102,5 +105,14 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
- 
+  openInqueryDetailOnSelectInquery(e:Event){
+    $('#opti_HomeTabCustomerPurchaseOrderID').click();
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName = ComponentName.CPOUpdate;
+    currentsideBarInfo.ModuleName = ModuleName.CustomerPurchaseOrder;
+    currentsideBarInfo.SideBarStatus = true;
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
+  }
+  
+
 }
