@@ -145,4 +145,9 @@ export class SalesQuotationsListComponent implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    if (this.getSaleslistSubs != undefined)
+      this.getSaleslistSubs.unsubscribe();
+  }
+
 }

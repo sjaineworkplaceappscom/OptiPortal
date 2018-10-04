@@ -16,72 +16,72 @@
 
               <label class="k-form-field">
                   <span class="opti_form-label">Delivery#</span>
-                  <input name="delivery" type="text" class="k-textbox" [(ngModel)]="delivery" readonly />
+                  <input name="delivery" type="text" class="k-textbox" [(ngModel)]="deliveryNoteHeaderModel.DeliveryNumber" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Ship Date</span>
-                  <input name="shipDate" type="text" class="k-textbox" [(ngModel)]="shipdate" readonly />
+                  <input name="shipDate" type="text" class="k-textbox" (ngModelChange)="deliveryNoteHeaderModel.ShipDate= $event" [ngModel]="deliveryNoteHeaderModel.ShipDate| date:'dd MMM yy'" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Delivered Date</span>
-                  <input name="deliveredDate" type="text" class="k-textbox" [ngModel]="deliveredDate"  readonly />
+                  <input name="deliveredDate" type="text" class="k-textbox" (ngModelChange)="deliveryNoteHeaderModel.DeliveredDate= $event" [ngModel]="deliveryNoteHeaderModel.DeliveredDate | date:'dd MMM yy'"  readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Customer Name</span>
-                  <input name="customerName" type="text" class="k-textbox" [ngModel]="customerName" readonly />
+                  <input name="customerName" type="text" class="k-textbox" [ngModel]="deliveryNoteHeaderModel.CustomerName" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Way Bill #</span>
-                  <input name="wayBill" type="text" class="k-textbox" [(ngModel)]="wayBill" readonly />
+                  <input name="wayBill" type="text" class="k-textbox" [(ngModel)]="deliveryNoteHeaderModel.WayBillNumber" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Tracking #</span>
-                  <input name="tracking" type="text" class="k-textbox" [(ngModel)]="tracking" readonly />
+                  <input name="tracking" type="text" class="k-textbox" [(ngModel)]="deliveryNoteHeaderModel.TrackingNumber" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Packing Slip #</span>
-                  <input name="packingSlip" type="text" class="k-textbox" [(ngModel)]="packingSlip" readonly />
+                  <input name="packingSlip" type="text" class="k-textbox" [(ngModel)]="deliveryNoteHeaderModel.PackingSlipNumber" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Mode of Shipment</span>
-                  <input name="modeOfShipment" type="text" class="k-textbox" [(ngModel)]="modeOfShipment" readonly />
+                  <input name="modeOfShipment" type="text" class="k-textbox" [(ngModel)]="deliveryNoteHeaderModel.ModeOfShipment" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Shipping Method</span>
-                  <input name="shippingMethod" type="text" class="k-textbox" [(ngModel)]="shippingMethod" readonly />
+                  <input name="shippingMethod" type="text" class="k-textbox" [(ngModel)]="deliveryNoteHeaderModel.ShippingMethod" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Ship-To Location</span>
-                  <input name="shipToLocation" type="text" class="k-textbox" [(ngModel)]="shipToLocation" readonly />
+                  <input name="shipToLocation" type="text" class="k-textbox" [(ngModel)]="deliveryNoteHeaderModel.ShipToLocation" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Total Price</span>
-                  <input name="totalPrice" type="text" class="k-textbox" [(ngModel)]="totalPrice" readonly />
+                  <input name="totalPrice" type="text" class="k-textbox" [(ngModel)]="deliveryNoteHeaderModel.TotalPrice" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Freight</span>
-                  <input name="freight" type="text" class="k-textbox" [(ngModel)]="freight" readonly />
+                  <input name="freight" type="text" class="k-textbox" [(ngModel)]="deliveryNoteHeaderModel.Freight" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Tax</span>
-                  <input name="tax" type="text" class="k-textbox" [(ngModel)]="tax" readonly />
+                  <input name="tax" type="text" class="k-textbox" [(ngModel)]="deliveryNoteHeaderModel.Tax" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Disc Amt</span>
-                  <input name="discAmt" type="text" class="k-textbox" [(ngModel)]="discAmt" readonly />
+                  <input name="discAmt" type="text" class="k-textbox" [(ngModel)]="deliveryNoteHeaderModel.Disc" readonly />
               </label>
               
             </form>

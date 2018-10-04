@@ -171,18 +171,29 @@ export class PurchaseInqListComponent implements OnInit {
    * @param status  
    */
   public async openInqueryDetailOnSelectInquery(selection) {
-   
-    // Check for dirty confirmation from
-    let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
-    if (a == false) {
-      return;
-    }
+    let selectedIinquiry = this.gridData[selection.index];
+    console.log('b4 leave dialog');
 
-    this.openPIDetail(selection);
+     let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
+     console.log('after leave dialog boolean:'+a);
+     console.log('selected Inq:'+JSON.stringify(selectedIinquiry));
+     if (a == false) {
+       console.log('a== false condition and return');
+       selection.selectedRows = [];
+       return;
+ 
+     }
+     console.log('after dialog code complete');
+     //console.log('selected Inq:'+selectedIinquiry.toString());
+    this.openPIDetail(selection,selectedIinquiry);
    
   }
 
-  openPIDetail(selection) {
+   openPIDetail(selection,selectedInq) {
+    console.log('in openPIDetail');
+     // Check for dirty confirmation from
+    
+ 
     // Set home tab active on click on any record
     $('#opti_HomeTabPurchaseInquiry').click();
 
@@ -192,7 +203,7 @@ export class PurchaseInqListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus = true;
 
     // Selected Item Data
-    let selectedIinquiry = this.gridData[selection.index];
+    let selectedIinquiry =  selectedInq //this.gridData[selection.index];
     //const selectedData = selection.selectedRows[0].dataItem;
 
     localStorage.setItem("PurchaseinqueryId", selectedIinquiry.PurchaseInquiryId);
@@ -200,9 +211,10 @@ export class PurchaseInqListComponent implements OnInit {
     localStorage.setItem("OperationType", OperationType.Update.toString());
     currentsideBarInfo.RequesterData = selectedIinquiry;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
-
+    console.log('b4 reset selection');
     // Reset Selection.
     selection.selectedRows = [];
+    console.log('after reset selection');
   }
 
   onFilterChange(checkBox: any, grid: GridComponent) {

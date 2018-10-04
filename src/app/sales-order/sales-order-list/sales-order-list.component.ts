@@ -143,4 +143,9 @@ export class SalesOrderListComponent implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    if (this.getSaleslistSubs != undefined)
+      this.getSaleslistSubs.unsubscribe();
+  }
+
 }

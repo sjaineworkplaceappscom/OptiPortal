@@ -16,15 +16,16 @@ import { Configuration } from '../../../assets/configuration';
 })
 export class SalesQuotationsDetailContentComponent implements OnInit {
   imgPath = Configuration.imagePath;
-  public gridData: any[];
+  
   isMobile: boolean;
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;
   gridHeight: number;
-  showLoader: boolean = false;
+  
   searchRequest: string = '';
+  showLoader: boolean = false;
   public getDetailsubs: ISubscription;
-
+  public gridData: any[];
   salesQuotationModel: SalesQuotation = new SalesQuotation();
   
   constructor( private salseQuotationService: SalesQuotationService) { }
