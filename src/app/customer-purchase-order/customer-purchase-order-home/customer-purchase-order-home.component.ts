@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-purchase-order-home.component.scss']
 })
 export class CustomerPurchaseOrderHomeComponent implements OnInit {
-
+  contactId;
+  contactName;
+  phone;
+  email;
+  address;
   constructor() { }
 
   ngOnInit() {

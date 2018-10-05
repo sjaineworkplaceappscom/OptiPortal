@@ -8,6 +8,9 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ModuleName, ComponentName } from '../../enums/enums';
 import * as $ from "jquery";
 import { Configuration } from '../../helpers/Configuration';
+import { OpenInvoiceService } from '../../services/open-invoice.service';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 @Component({
   selector: 'app-open-invoices-list',
@@ -27,6 +30,8 @@ export class OpenInvoicesListComponent implements OnInit {
   gridHeight: number;
   showLoader: boolean = false;
   searchRequest: string = '';
+
+  getOpenInvoicelistSubs: ISubscription;
 
   getPaginationAttributes(){
     // pagination add/remove for desktop and mobile
@@ -50,7 +55,7 @@ export class OpenInvoicesListComponent implements OnInit {
 
   
 
-  constructor(private commonService:Commonservice) { }
+  constructor(private commonService: Commonservice, private openInvoiceService: OpenInvoiceService) { }
 
   public gridData: any[];
 
@@ -71,14 +76,14 @@ export class OpenInvoicesListComponent implements OnInit {
 
     this.getPaginationAttributes();
 
-    
-    this.getOpenInvoicesList();
+    this.getOpenInvoicesList1(); 
+   // this.getOpenInvoicesList();
   }
 
   /**
    * Method to get list of inquries from server.
   */
-  public getOpenInvoicesList() {
+  public getOpenInvoicesList1() {
     this.showLoader = true;
     this.gridData = openInvoicesList;
     setTimeout(()=>{    
@@ -107,15 +112,44 @@ export class OpenInvoicesListComponent implements OnInit {
     currentsideBarInfo.ModuleName = ModuleName.OpenInvoices;
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
-
     
     // Reset Selection.
-    // let selectedSalesOrder = this.gridData[selection.index];
-    // currentsideBarInfo.RequesterData = selectedSalesOrder;
-    // localStorage.setItem("SelectedSalesOrder", JSON.stringify(selectedSalesOrder));
-    // this.commonService.setCurrentSideBar(currentsideBarInfo);
-    // selection.selectedRows=[];  
+     let selectedSalesOrder = this.gridData[selection.index];
+     currentsideBarInfo.RequesterData = selectedSalesOrder;
+     localStorage.setItem("SelectedOpenInvoice", JSON.stringify(selectedSalesOrder));
+     this.commonService.setCurrentSideBar(currentsideBarInfo);
+     selection.selectedRows=[];  
   }
+
+   /**
+  * Method to get list of inquries from server.
+  */
+ public getOpenInvoicesList() {
+  this.showLoader = true; 
+  this.getOpenInvoicelistSubs = this.openInvoiceService.getOpenInvoiceList().subscribe(
+    data => {
+      if (data != null && data != undefined) {
+          this.gridData = JSON.parse(data);
+          this.gridData.forEach(element => {
+          element.InvoiceDate = DateTimeHelper.ParseDate(element.InvoiceDate);
+          element.Duedate = DateTimeHelper.ParseDate(element.Duedate);
+        });
+        this.showLoader = false;
+      }
+    },
+    error => {
+      this.showLoader = false;
+      alert("Something went wrong");
+      console.log("Error: ", error);
+      localStorage.clear();
+    }
+  );
+}
+
+ngOnDestroy() {
+  if (this.getOpenInvoicelistSubs != undefined)
+    this.getOpenInvoicelistSubs.unsubscribe();
+}
 
 
 }

@@ -5,6 +5,11 @@ import { GridComponent } from '@progress/kendo-angular-grid';
 
 import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { Configuration } from '../../helpers/Configuration';
+import { OpenInvoiceListModel } from '../../tempmodels/open-invoice-list-model';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { OpenInvoiceService } from '../../services/open-invoice.service';
+import { SharedComponentService } from '../../services/shared-component.service';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 @Component({
   selector: 'app-open-invoices-detail-attachment',
@@ -23,11 +28,14 @@ export class OpenInvoicesDetailAttachmentComponent implements OnInit {
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;
   gridHeight: number;
-  showLoader: boolean = false;
 
   public gridData: any[];
+  showLoader: boolean = false;
+  searchRequest: string = '';
+  openInvoiceListModel: OpenInvoiceListModel = new OpenInvoiceListModel();
+  public getDetailAttachsubs: ISubscription;
+  constructor(private openInvoiceService: OpenInvoiceService, private sharedComponentService: SharedComponentService) { }
 
-  constructor() { }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -45,7 +53,10 @@ export class OpenInvoicesDetailAttachmentComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
 
-    this.getOPenInvoicesAttachmentList();
+    this.openInvoiceListModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
+    let invoiceNumber: number = this.openInvoiceListModel.InvoiceNumber;
+    this.getOpenInvoiceAttachmentList(invoiceNumber);
+    //this.getOPenInvoicesAttachmentList();
   }
 
   /**
@@ -125,5 +136,70 @@ export class OpenInvoicesDetailAttachmentComponent implements OnInit {
     console.log(event);
   }
   // file upload code end
+
+
+   /** 
+   * call api for Sales quotation detail attachment .
+   */
+  getOpenInvoiceAttachmentList(id: number) {
+    this.showLoader = true;
+    this.getDetailAttachsubs = this.openInvoiceService.getOpenInvoiceDetail(id, 3).subscribe(
+      data => {
+
+        this.showLoader = false;
+        if (data != null && data != undefined) {
+          this.gridData = JSON.parse(data);
+          this.gridData.forEach(element => {
+            element.AttachementDate = DateTimeHelper.ParseDate(element.AttachementDate);
+          });
+          this.showLoader = false;
+        }
+      }, error => {
+        this.showLoader = false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
+      }, () => { }
+    );
+  }
+
+  ngOnDestroy() {
+    if (this.getDetailAttachsubs != undefined)
+      this.getDetailAttachsubs.unsubscribe();
+  }
+
+  download(fileName: string) {
+
+    let seletedAttachment = this.gridData.filter(i => i.FileName == fileName)[0];
+    try {
+      // Create file path from response
+      let filePath: string = seletedAttachment.FullPath;//"\\\\172.16.6.20\\People\\Vaibhav\\ListofFilesRequiredForSetup.xlsx";
+
+      this.sharedComponentService.getAtachmentFromPath(filePath)
+        .subscribe(
+          res => {
+           if(res!=undefined && res!=null){
+            let fileName=res.Item1;
+            let tempAttachmentId=res.Item2;
+            
+            let filepath:string=Configuration.doccumentPath + "Temp/"+tempAttachmentId +"/"+fileName;          
+                        
+            var a = document.createElement('a');
+            document.body.appendChild(a);
+            a.href = filepath;
+            a.download = fileName;
+            // a.target="_blank";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+           }
+          }
+
+
+        );
+    }
+    catch (err) {
+      // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
+    }
+  }
 
 }
