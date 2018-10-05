@@ -8,6 +8,8 @@ import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { DeliveryNoteNoteModel } from '../../tempmodels/delivery-note-note-model';
+import { DeliveryNoteListModel } from '../../tempmodels/delivery-note-list-model';
 
 @Component({
   selector: 'app-delivery-notes-detail-notes',
@@ -33,9 +35,11 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
 
   public noteItemsData: any[];
 
-  noteModel:SalesNoteModel = new SalesNoteModel();
+  deliveryNoteListModel: DeliveryNoteListModel = new DeliveryNoteListModel();
+  noteModel: DeliveryNoteNoteModel;
   addnotessub: ISubscription;
   getDeliveryNotesNoteSubs: ISubscription;
+  updatenotessub: ISubscription;
   public noteTypes: Array<{ text: string, value: number }> = [
     { text: "General ", value: 1 },
     { text: "Rejected", value: 2 },
@@ -43,7 +47,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
   ];
 
   public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
-  
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     //Apply Grid Height
@@ -52,16 +56,16 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
   }
 
-   /**
-   * Method to get list of inquries from server.
-  */
- public getDeliveryAllNotesList() {
-  this.showLoader = true;
-  this.noteItemsData = deliveryNotesTabNotes;
-  setTimeout(()=>{    
-    this.showLoader = false;
-  }, 1000);
-}
+  /**
+  * Method to get list of inquries from server.
+ */
+  public getDeliveryAllNotesList() {
+    this.showLoader = true;
+    this.noteItemsData = deliveryNotesTabNotes;
+    setTimeout(() => {
+      this.showLoader = false;
+    }, 1000);
+  }
 
   constructor(private sharedComponentService: SharedComponentService) { }
 
@@ -72,7 +76,11 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
 
     //this.getDeliveryAllNotesList();
-    this.getDeliveryNotesNoteList(3+"",3);
+    this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
+    let deliveryNumber: number = this.deliveryNoteListModel.DeliveryNumber;
+    // let deliveryNoteOptiId1: number = this.deliveryNoteNoteModel.DeliveryNoteOptiId;
+    this.getDeliveryNotesNoteList(deliveryNumber.toString(), CustomerEntityType.SalesQuotation);
+    this.getDeliveryNotesNoteList(3 + "", 3);
   }
 
   public openNewNote() {
@@ -85,7 +93,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
     this.selectedNote = note;
-    this.selectedNoteItem = { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
+    this.selectedNoteItem = this.noteTypes[0];// { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
   }
 
   public closeAddNote() {
@@ -95,12 +103,12 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
   }
 
   closeUpdateNote(e) {
-      // this.notesgrid.nativeElement.style.display = 'block';
-      this.TabNotesGridStatus = true;
-      // this.editnoteform.nativeElement.style.display = 'none';
-      this.TabEditNotesFormStatus = false;
-      //reset model after close edit form.
-      this.resetModelValues();
+    // this.notesgrid.nativeElement.style.display = 'block';
+    this.TabNotesGridStatus = true;
+    // this.editnoteform.nativeElement.style.display = 'none';
+    this.TabEditNotesFormStatus = false;
+    //reset model after close edit form.
+    this.resetModelValues();
   }
 
   /**
@@ -111,6 +119,8 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     this.noteModel.Notes = '';
     let noteTypeDefault = { text: "General ", value: 1 };
     this.selectedNoteItem = noteTypeDefault;
+    this.noteModel.NoteType = noteTypeDefault.value;
+
   }
 
   public deleteNotes({ sender, rowIndex, dataItem }) {
@@ -118,14 +128,13 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
   }
 
   submitNote(e) {
-    debugger;
-    let salesOptiId: number = 4;
+    let Id: number = 4;
     let salesNumber: number = 4;
     this.noteModel.NoteType = this.selectedNoteItem.value;
     this.noteModel.ParentId = undefined;
     this.noteModel.ParentType = CustomerEntityType.DeliveryNotes;
-    this.noteModel.SalesOptiId = salesOptiId.toString();
-    this.noteModel.SaleNumber = salesNumber;
+    this.noteModel.DeliveryNoteNumber = Id;
+    this.noteModel.DeliveryNoteOptiId = salesNumber.toString();
 
     this.addnotessub = this.sharedComponentService.AddDeliveryNotesNote(this.noteModel).subscribe(
       resp => {
@@ -143,9 +152,35 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
         //this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
         let salesOptiId: number = 3;
         let salesNumber: number = 3;
-        this.getDeliveryNotesNoteList(salesOptiId.toString(),CustomerEntityType.DeliveryNotes);
+        this.getDeliveryNotesNoteList(salesOptiId.toString(), CustomerEntityType.DeliveryNotes);
       });
     this.closeAddNote();
+  }
+
+  updateNote(e) {
+    this.selectedNote;
+    //selected note object : this.selectedNote
+    this.selectedNote.NoteType = this.selectedNoteItem.value;
+    this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
+      resp => {
+        //this method is updating the status if notes updated then update inquiry status.
+        this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
+        let deliveryNumber: number = this.deliveryNoteListModel.DeliveryNumber;
+        // let quotationNumber: number = this.noteModel.DeliveryNoteOptiId;
+        this.getDeliveryNotesNoteList(deliveryNumber.toString(), CustomerEntityType.SalesQuotation);
+
+      },
+      error => {
+        this.showLoader = false;
+        alert("Something went wrong");
+        this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'));
+        let deliveryNumber: number = this.deliveryNoteListModel.DeliveryNumber;
+        this.getDeliveryNotesNoteList(deliveryNumber.toString(), CustomerEntityType.SalesOrder);
+      },
+      () => {
+        this.closeUpdateNote(e);
+      });
+
   }
 
   /**
@@ -158,31 +193,31 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     this.resetModelValues();
   }
 
-  
- /**
-     * Method to get list of inquries from server.
-     */ 
-    private getDeliveryNotesNoteList(salesId: string, parentType: number) {
-      let deliveryNoteOptiId: number = 4;
-      let salesNumber: number = 4;
-      //deliverynotes/notelist/{deliveryNotesOptiId}/{parentType:int
-      this.showLoader = true;
-      this.getDeliveryNotesNoteSubs = this.sharedComponentService.getDeliveryNoteNotesList(deliveryNoteOptiId.toString(), CustomerEntityType.DeliveryNotes.toString()).subscribe(
-        notesData => {
-          if (notesData != null && notesData != undefined) {
-            this.noteItemsData = JSON.parse(notesData);
-            this.formatNotesDate();
-          }
-          this.showLoader = false;
-        },
-        error => {
-          this.showLoader = false;
-          alert("Something went wrong");
-          console.log("Error: ", error)
-        });
-    }
 
-      // Format dates.
+  /**
+      * Method to get list of inquries from server.
+      */
+  private getDeliveryNotesNoteList(salesId: string, parentType: number) {
+    let deliveryNoteOptiId: number = 4;
+    let salesNumber: number = 4;
+    //deliverynotes/notelist/{deliveryNotesOptiId}/{parentType:int
+    this.showLoader = true;
+    this.getDeliveryNotesNoteSubs = this.sharedComponentService.getDeliveryNoteNotesList(deliveryNoteOptiId.toString(), CustomerEntityType.DeliveryNotes.toString()).subscribe(
+      notesData => {
+        if (notesData != null && notesData != undefined) {
+          this.noteItemsData = JSON.parse(notesData);
+          this.formatNotesDate();
+        }
+        this.showLoader = false;
+      },
+      error => {
+        this.showLoader = false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
+      });
+  }
+
+  // Format dates.
   private formatNotesDate() {
     this.noteItemsData.forEach(element => {
       element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate); //new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
@@ -190,8 +225,14 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     });
 
   }
-  
-   
 
+  ngOnDestroy() {
+    if (this.addnotessub != undefined)
+      this.addnotessub.unsubscribe();
+    if (this.getDeliveryNotesNoteSubs != undefined)
+      this.getDeliveryNotesNoteSubs.unsubscribe();
+    if (this.updatenotessub != undefined)
+      this.updatenotessub.unsubscribe();
+  }
 
 }

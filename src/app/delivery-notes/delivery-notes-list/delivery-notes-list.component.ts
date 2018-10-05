@@ -10,6 +10,7 @@ import * as $ from "jquery";
 import { DeliveryNotesService } from '../../services/delivery-notes.service';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { DeliveryNoteListModel } from '../../tempmodels/delivery-note-list-model';
 
 
 @Component({
@@ -30,6 +31,8 @@ export class DeliveryNotesListComponent implements OnInit {
   searchRequest: string = '';
 
   getDeliverylistSubs: ISubscription;
+  deliveryNoteListModel: DeliveryNoteListModel = new DeliveryNoteListModel();
+  
 
   getPaginationAttributes(){
     // pagination add/remove for desktop and mobile
@@ -129,9 +132,9 @@ export class DeliveryNotesListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     // Reset Selection. 
-    let selectedSalesQuotation = this.gridData[selection.index];
-    currentsideBarInfo.RequesterData = selectedSalesQuotation;
-    localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedSalesQuotation));
+    let selectedgridItem = this.gridData[selection.index];
+    currentsideBarInfo.RequesterData = selectedgridItem;
+    localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedgridItem));
     this.commonService.setCurrentSideBar(currentsideBarInfo);
 
     // Reset Selection.

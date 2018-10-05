@@ -5,6 +5,7 @@ import { NotesModel } from '../models/purchaserequest/notes';
 import { Observable } from 'rxjs';
 import { HttpRequest, HttpHeaders, HttpClient } from '@angular/common/http';
 import { SalesNoteModel } from '../tempmodels/SalesNoteModel';
+import { DeliveryNoteNoteModel } from '../tempmodels/delivery-note-note-model';
 
 
 
@@ -152,14 +153,14 @@ public getDeliveryNoteNotesList(id:string,type:string): Observable<any>{
   /**
   * Add Note.
   */
- public AddDeliveryNotesNote(note: SalesNoteModel): Observable<any> {
+ public AddDeliveryNotesNote(note: DeliveryNoteNoteModel): Observable<any> {
   var data: any = {
     "Notes": note.Notes,
     "NoteType": note.NoteType,
-    "SalesNumber": note.SaleNumber,    
+    "SalesNumber": note.DeliveryNoteNumber,    
     "ParentId": note.ParentId,
     "ParentType": note.ParentType,
-    "SalesOptiId": note.SalesOptiId
+    "SalesOptiId": note.DeliveryNoteOptiId
   }
   return this.httpHelper.post(this.baseUrl + 'deliverynotes/addnotes', data, null);
 }

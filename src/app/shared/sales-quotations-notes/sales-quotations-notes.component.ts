@@ -160,7 +160,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
       error => {
         this.showLoader = false;
         alert("Something went wrong");
-        this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesOrder'));
+        this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'));
         let quotationId: number = this.salesQuotationModel.QuotationId;
         this.getSalesNotesList(quotationId.toString(), CustomerEntityType.SalesOrder);
       },
