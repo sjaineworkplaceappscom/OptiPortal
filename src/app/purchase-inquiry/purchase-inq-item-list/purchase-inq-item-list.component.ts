@@ -17,6 +17,7 @@ import { Configuration } from '../../helpers/Configuration';
 export class PurchaseInqItemListComponent implements OnInit {
   imgPath = Configuration.imagePath;
   showLoader:boolean=false;
+  displayDateformat:string=Configuration.getDisplayDateFormat(true);
 
   /**
    * global variable

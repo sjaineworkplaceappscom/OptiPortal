@@ -10,6 +10,7 @@ import { ISubscription } from 'rxjs-compat/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { GlobalResource } from 'src/app/helpers/global-resource';
 import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-purchase-inq-update', 
@@ -20,7 +21,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   constructor(private commonService: Commonservice, private purchaseInquiryService: PurchaseInquiryService, private confirmService: ConfirmDialog) { }
-
+  dateformat:string=Configuration.getDisplayDateFormat();
   isCancelStatus: boolean = false;
   isHome: boolean = true;
   isItems: boolean = false;
