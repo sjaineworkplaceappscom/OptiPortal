@@ -2,7 +2,7 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { HttpClient, HttpRequest, HttpEventType, HttpErrorResponse } from '@angular/common/http';
-import { Configuration } from '../../../assets/configuration';
+
 import { AttachmentDetail } from '../../models/AttchmentDetail';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../enums/enums';
@@ -11,6 +11,7 @@ import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry'
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { ISubscription } from 'rxjs/Subscription';
 import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { Configuration } from '../../helpers/Configuration';
 
 
 

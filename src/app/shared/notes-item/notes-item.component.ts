@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
 import { ISubscription } from "rxjs/Subscription";
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
-import { Configuration } from '../../../assets/configuration';
+import { Configuration } from '../../helpers/Configuration';
+
 
 @Component({
     selector: 'app-notes-item',

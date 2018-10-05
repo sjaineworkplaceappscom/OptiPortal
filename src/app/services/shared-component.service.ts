@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Configuration } from '../../assets/configuration';
+import { Configuration } from '../../app/helpers/Configuration';
 import { HttpHelper } from '../helpers/http.helper';
 import { NotesModel } from '../models/purchaserequest/notes';
 import { Observable } from 'rxjs';

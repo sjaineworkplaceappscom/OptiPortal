@@ -3,10 +3,11 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { Commonservice } from '../../services/commonservice.service';
 import { openInvoicesList } from '../../demodata/open-invoices';
 import { GridComponent } from '@progress/kendo-angular-grid';
-import { Configuration } from '../../../assets/configuration';
+
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ModuleName, ComponentName } from '../../enums/enums';
 import * as $ from "jquery";
+import { Configuration } from '../../helpers/Configuration';
 import { OpenInvoiceService } from '../../services/open-invoice.service';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';

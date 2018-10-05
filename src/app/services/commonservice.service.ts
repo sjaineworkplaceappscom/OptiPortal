@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject } from 'rxjs';
-import { environment } from '../../environments/environment.prod';
 import { opticonstants } from '../constants';
 import { CurrentSidebarInfo } from '../models/sidebar/current-sidebar-info';
 import { NotesModel } from '../models/purchaserequest/notes';
 import { TempPurchaseInquiryModel } from '../tempmodels/temppurchase-inquiry';
 import { AttachmentDetail } from '../models/AttchmentDetail';
-import { AttachmentComponent } from '../shared/attachment/attachment.component';
+
 
 
 @Injectable({

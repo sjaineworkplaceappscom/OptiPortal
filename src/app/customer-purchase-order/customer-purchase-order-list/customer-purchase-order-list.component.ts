@@ -3,10 +3,12 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { Commonservice } from '../../services/commonservice.service';
 import { customerPurchaseOrderList } from '../../demodata/customer-purchase-order';
 import { GridComponent } from '@progress/kendo-angular-grid';
-import { Configuration } from '../../../assets/configuration';
+
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from 'src/app/enums/enums';
 import * as $ from "jquery";
+import { Configuration } from '../../helpers/Configuration';
+
 
 
 @Component({

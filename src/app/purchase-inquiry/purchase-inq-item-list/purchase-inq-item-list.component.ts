@@ -6,7 +6,8 @@ import { TempPurchaseInquiryItemModel } from '../../tempmodels/temppurchase-inqu
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from '../../enums/enums';
 import { ISubscription } from 'rxjs/Subscription';
-import { Configuration } from '../../../assets/configuration';
+import { Configuration } from '../../helpers/Configuration';
+
 
 @Component({
   selector: 'app-purchase-inq-item-list',

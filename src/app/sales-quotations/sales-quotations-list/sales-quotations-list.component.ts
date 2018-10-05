@@ -3,7 +3,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ModuleName, ComponentName } from '../../enums/enums';
 import { Commonservice } from '../../services/commonservice.service';
 import { DatePipe } from '@angular/common'
-import { Configuration } from '../../../assets/configuration';
+
 
 import {
   GridComponent,
@@ -18,6 +18,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import * as $ from "jquery";
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-sales-quotations-list',

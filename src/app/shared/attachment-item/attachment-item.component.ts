@@ -8,9 +8,10 @@ import { AttachmentDetail } from '../../models/AttchmentDetail';
 import { ISubscription } from 'rxjs/Subscription';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
-import { DecimalPipe } from '@angular/common';
-import { Configuration } from 'src/assets/configuration';
+
+
 import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-attachment-item',

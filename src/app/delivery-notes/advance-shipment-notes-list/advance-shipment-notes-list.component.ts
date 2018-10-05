@@ -3,13 +3,14 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { Commonservice } from '../../services/commonservice.service';
 import { advanceShipmentNotesList } from '../../demodata/delivery-notes';
 import { GridComponent } from '@progress/kendo-angular-grid';
-import { Configuration } from '../../../assets/configuration';
+
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ModuleName, ComponentName } from '../../enums/enums';
 import * as $ from "jquery";
 import { AdvanceShipmentNoteService } from '../../services/advance-shipment-note.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-advance-shipment-notes-list',

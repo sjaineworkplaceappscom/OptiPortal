@@ -13,7 +13,7 @@ import { Commonservice } from '../../services/commonservice.service';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName, OperationType } from '../../enums/enums';
 import { DatePipe } from '@angular/common'
-import { Configuration } from '../../../assets/configuration';
+
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ISubscription } from 'rxjs/Subscription';
 
@@ -22,6 +22,7 @@ import * as $ from "jquery";
 import { Router } from '@angular/router';
 import { GlobalResource } from 'src/app/helpers/global-resource';
 import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-purchase-inq-list',

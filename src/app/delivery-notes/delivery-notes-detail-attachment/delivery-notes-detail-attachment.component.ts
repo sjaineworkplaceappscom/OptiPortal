@@ -2,13 +2,13 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { deliveryNotesAttachment } from '../../demodata/delivery-notes';
 import { GridComponent } from '@progress/kendo-angular-grid';
-import { Configuration } from '../../../assets/configuration';
 import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { DeliveryNoteListModel } from '../../tempmodels/delivery-note-list-model';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { DeliveryNotesService } from '../../services/delivery-notes.service';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-delivery-notes-detail-attachment',

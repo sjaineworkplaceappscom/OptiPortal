@@ -2,7 +2,9 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { openInvoicesContent } from '../../demodata/open-invoices';
 import { GridComponent } from '@progress/kendo-angular-grid';
-import { Configuration } from '../../../assets/configuration';
+import { Configuration } from '../../helpers/Configuration';
+
+
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { OpenInvoiceListModel } from '../../tempmodels/open-invoice-list-model';
 import { OpenInvoiceService } from '../../services/open-invoice.service';

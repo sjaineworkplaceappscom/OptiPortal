@@ -7,7 +7,8 @@ import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { SalesQuotationDetailContent } from '../../tempmodels/sales-quotation-detail-content';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
-import { Configuration } from '../../../assets/configuration';
+import { Configuration } from '../../helpers/Configuration';
+
 
 @Component({
   selector: 'app-sales-quotations-detail-content',

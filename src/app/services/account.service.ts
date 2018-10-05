@@ -13,10 +13,9 @@ import { UpdateCredentialModel } from '../models/account/update-credential-req-m
 import { UserModel } from '../models/account/user-model';
 import { HttpHeaders } from '@angular/common/http';
 import { ErrorObject } from '../models/error/error-object';
-import { environment } from '../../environments/environment';
-import { CommonMessages } from '../../common-messages';
+
 import { Observable } from 'rxjs';
-import { Configuration } from '../../assets/configuration';
+import { Configuration } from '../../app/helpers/Configuration';
 
 @Injectable({
   providedIn: 'root'

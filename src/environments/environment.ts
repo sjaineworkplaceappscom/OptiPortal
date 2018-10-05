@@ -3,18 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  //baseServerAPIEndpoint:"http://139.144.10.218:8080/"
-
-  // For debugging direct to visual studio
-   //baseServerAPIEndpoint:"http://localhost:56986/",
-  // For Deployed uri
-  // baseServerAPIEndpoint:"http://localhost:8080/"
-  //baseServerAPIEndpoint: "http://139.144.10.218/service/"
- // baseServerAPIEndpoint: "http://139.144.10.218:8000/"
-  baseServerAPIEndpoint: "http://139.144.10.218:8080/"
-
-  
+  production: false,  
+    //assetsPath:"../assets/"
+    assetsPath:"/assets/"
 };
 
 /*

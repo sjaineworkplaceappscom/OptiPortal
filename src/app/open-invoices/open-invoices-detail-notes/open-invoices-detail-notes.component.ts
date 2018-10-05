@@ -1,10 +1,11 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { Configuration } from '../../../assets/configuration';
+
 import { UIHelper } from '../../helpers/ui.helpers';
 import { openInvoicesNotes } from '../../demodata/open-invoices';
-import { NotesModel } from '../../models/purchaserequest/notes';
-import { CustomerEntityType } from '../../enums/enums';
+
+
 import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
+import { Configuration } from '../../helpers/Configuration';
 
 
 @Component({
