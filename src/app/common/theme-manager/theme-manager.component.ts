@@ -1,9 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { opticonstants } from '../../constants';
-import { Configuration } from '../../../assets/configuration';
+
 
 import * as $ from "jquery";
+import { Configuration } from 'src/app/helpers/Configuration';
 
 @Component({
   selector: 'app-theme-manager',

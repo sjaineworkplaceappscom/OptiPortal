@@ -9,8 +9,9 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ISubscription } from 'rxjs/Subscription';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
-import { Configuration } from '../../../assets/configuration';
+
 import { GlobalResource } from '../../helpers/global-resource';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
     selector: 'app-notes',

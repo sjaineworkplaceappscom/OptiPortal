@@ -2,8 +2,9 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { openInvoicesAttachment } from '../../demodata/open-invoices';
 import { GridComponent } from '@progress/kendo-angular-grid';
-import { Configuration } from '../../../assets/configuration';
+
 import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-open-invoices-detail-attachment',

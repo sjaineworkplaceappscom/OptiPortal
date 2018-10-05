@@ -7,7 +7,8 @@ import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
-import { Configuration } from '../../../assets/configuration';
+import { Configuration } from '../../helpers/Configuration';
+
 
 @Component({
   selector: 'app-sales-order-detail-content',

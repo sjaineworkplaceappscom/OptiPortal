@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Commonservice } from '../../services/commonservice.service';
 import { AccountService } from '../../services/account.service';
-import { Configuration } from '../../../assets/configuration';
+import { Configuration } from '../../helpers/Configuration';
+
 
 @Component({
   selector: 'app-tenantselection',

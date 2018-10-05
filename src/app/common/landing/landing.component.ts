@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Commonservice } from '../../services/commonservice.service';
-import { Configuration } from '../../../assets/configuration';
+import { Configuration } from '../../helpers/Configuration';
+
 
 @Component({
   selector: 'app-landing',

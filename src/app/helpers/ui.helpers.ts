@@ -7,7 +7,7 @@
 import * as $ from "jquery";
 import { CurrentSidebarInfo } from "../models/sidebar/current-sidebar-info";
 import { Commonservice } from "../services/commonservice.service";
-import { Configuration } from '../../assets/configuration';
+import { Configuration } from '../../app/helpers/Configuration';
 
 var getThemePath = Configuration.themePath;
 

@@ -7,6 +7,7 @@
 import { Component, HostListener } from '@angular/core';
 import { UIHelper } from './helpers/ui.helpers';
 import { GlobalResource } from './helpers/global-resource';
+import { ConfigurationService } from 'src/app/services/configuration.service';
 
 
 @Component({
@@ -18,9 +19,10 @@ export class AppComponent {
   title = 'OptiPortals';
   isMobile: boolean;
 
-  constructor() { }
+  constructor(private configService:ConfigurationService) { }
 
   ngOnInit() {
     UIHelper.deviceClass();
+    this.configService.congigure();
   }
 }

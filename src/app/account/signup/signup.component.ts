@@ -7,11 +7,10 @@ import { CommonMessages } from '../../../common-messages';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Commonservice } from '../../services/commonservice.service';
-import { PurchaseInquiryItemModel } from '../../models/purchaserequest/purchase-inquiry-item';
-import { NotesModel } from '../../models/purchaserequest/notes';
-import { PurchaseInquiryModel } from '../../models/purchaserequest/purchase-inquiry';
-import { Jsonp } from '@angular/http';
-import { Configuration } from '../../../assets/configuration';
+import { Configuration } from '../../helpers/Configuration';
+
+
+
 
 
 

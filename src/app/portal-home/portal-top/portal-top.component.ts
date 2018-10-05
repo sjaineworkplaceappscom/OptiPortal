@@ -5,8 +5,9 @@ import { Router } from '@angular/router';
 import { opticonstants } from '../../constants';
 import { AccountService } from '../../services/account.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Configuration } from '../../../assets/configuration';
+
 import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http/http';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-portal-top',

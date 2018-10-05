@@ -6,8 +6,9 @@ import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { CustomerEntityType } from '../../enums/enums';
-import { Configuration } from '../../../assets/configuration';
+
 import { GlobalResource } from '../../helpers/global-resource';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-sales-order-notes',

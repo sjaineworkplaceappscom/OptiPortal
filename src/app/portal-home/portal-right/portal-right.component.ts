@@ -3,9 +3,10 @@ import { Commonservice } from '../../services/commonservice.service';
 import { opticonstants } from '../../constants';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
-import { Configuration } from '../../../assets/configuration';
-import { GlobalResource } from '../../helpers/global-resource';
+
+
 import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
+import { Configuration } from '../../helpers/Configuration';
 
 
 

@@ -7,8 +7,9 @@ import { AccountService } from '../../services/account.service';
 import { LoginModel } from '../../models/account/login-model';
 import { ApplicationState } from '../../helpers/ApplicationState';
 import { Commonservice } from '../../services/commonservice.service';
-import { Configuration } from '../../../assets/configuration';
+
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
+import { Configuration } from '../../helpers/Configuration';
 
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { Configuration } from '../../../assets/configuration';
+
 import { UIHelper } from '../../helpers/ui.helpers';
 import { deliveryNotesTabNotes } from '../../demodata/delivery-notes';
 import { NotesModel } from '../../models/purchaserequest/notes';
@@ -8,6 +8,7 @@ import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-delivery-notes-detail-notes',

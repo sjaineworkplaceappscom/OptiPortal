@@ -9,12 +9,13 @@ import { Commonservice } from '../../services/commonservice.service';
 import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType, PurchaseInquiryStatus, PurchaseInquiryItemStatus, OperationType } from '../../enums/enums';
 import { ISubscription } from 'rxjs/Subscription';
-import { Configuration } from '../../../assets/configuration';
+
 
 import * as $ from "jquery";
 import { AttachmentDetail } from '../../models/AttchmentDetail';
 import { GlobalResource } from '../../helpers/global-resource';
 import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-purchase-inq-item-add',

@@ -8,8 +8,9 @@ import { SalesQuotation } from '../../tempmodels/sales-quotation';
 import { CustomerEntityType } from '../../enums/enums';
 import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
 import { debug } from 'util';
-import { Configuration } from '../../../assets/configuration';
+
 import { GlobalResource } from '../../helpers/global-resource';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-sales-quotations-notes',
