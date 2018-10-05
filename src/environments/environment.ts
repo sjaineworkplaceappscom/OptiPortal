@@ -5,7 +5,7 @@
 export const environment = {
   production: false,  
     //assetsPath:"../assets/"
-    assetsPath:"/OptiProPortals/assets/"
+    assetsPath:"/assets/"
 };
 
 /*

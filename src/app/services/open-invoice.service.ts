@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs';
 import { HttpHelper } from '../helpers/http.helper';
-import { Configuration } from '../../assets/configuration';
+import { Configuration } from '../helpers/Configuration';
+
 
 @Injectable({
   providedIn: 'root'
