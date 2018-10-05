@@ -70,8 +70,8 @@ export class DeliveryNotesListComponent implements OnInit {
     this.getPaginationAttributes();
 
     //call api for delivery note list.
-    this.getDeliveryNotesList1();
-    //this.getDeliveryNotesList();
+    //this.getDeliveryNotesList1();
+    this.getDeliveryNotesList();
   }
 
   /**
@@ -90,6 +90,7 @@ export class DeliveryNotesListComponent implements OnInit {
   */
  public getDeliveryNotesList() {
   this.showLoader = true; 
+  debugger;
   this.getDeliverylistSubs = this.deliveryNotesService.getDeliveryNotesList().subscribe(
     data => {
       if (data != null && data != undefined) {
@@ -130,9 +131,9 @@ export class DeliveryNotesListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     // Reset Selection. 
-    let selectedSalesQuotation = this.gridData[selection.index];
-    currentsideBarInfo.RequesterData = selectedSalesQuotation;
-    localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedSalesQuotation));
+    let selectedDeliveryNote = this.gridData[selection.index];
+    currentsideBarInfo.RequesterData = selectedDeliveryNote;
+    localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedDeliveryNote));
     this.commonService.setCurrentSideBar(currentsideBarInfo);
 
     // Reset Selection.
