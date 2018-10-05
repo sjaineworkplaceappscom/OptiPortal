@@ -10,18 +10,20 @@ import { SharedComponentService } from 'src/app/services/shared-component.servic
 import { Path } from '../../../../node_modules/@progress/kendo-drawing';
 import { Configuration } from 'src/assets/configuration';
 
-@Component({
+@Component({ 
   selector: 'app-sales-quotations-detail-attchment',
   templateUrl: './sales-quotations-detail-attchment.component.html',
   styleUrls: ['./sales-quotations-detail-attchment.component.scss']
 })
 export class SalesQuotationsDetailAttchmentComponent implements OnInit {
   imgPath = Configuration.imagePath;
-  public gridData: any[];
+  
   isMobile: boolean;
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;
   gridHeight: number;
+  
+  public gridData: any[];
   showLoader: boolean = false;
   searchRequest: string = '';
   salesQuotationModel: SalesQuotation = new SalesQuotation();

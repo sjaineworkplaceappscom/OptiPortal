@@ -27,7 +27,6 @@ export class DeliveryNotesDetailAttachmentComponent implements OnInit {
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;
   gridHeight: number;
-  
  
   searchRequest: string = '';
   showLoader: boolean = false;
