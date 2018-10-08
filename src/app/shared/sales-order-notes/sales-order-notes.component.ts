@@ -36,7 +36,7 @@ export class SalesOrderNotesComponent implements OnInit {
   selectedItemNote: any = {};
   getnotessub: ISubscription;
   addnotessub: ISubscription;
-  updatenotessub: ISubscription;
+  updatenotessub: ISubscription; 
 
   salesOrderModel: SalesOrder = new SalesOrder();
   noteModel: SalesNoteModel = new SalesNoteModel();
@@ -157,8 +157,8 @@ export class SalesOrderNotesComponent implements OnInit {
       console.log('notes div changes');
   }
   /**
-     * Method to get list of inquries from server.
-     */
+   * Method to get list of inquries from server.
+   */
   private getSalesNotesList(salesId: string, parentType: number) {
     this.showLoader = true;
     this.getnotessub = this.sharedComponentService.getSalesOrderNotesList(salesId, parentType).subscribe(

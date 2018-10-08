@@ -37,10 +37,11 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
   public noteItemsData: any[];
 
   deliveryNoteListModel: DeliveryNoteListModel = new DeliveryNoteListModel();
-  noteModel: DeliveryNoteNoteModel;
+  noteModel: DeliveryNoteNoteModel = new DeliveryNoteNoteModel();
   addnotessub: ISubscription;
   getDeliveryNotesNoteSubs: ISubscription;
   updatenotessub: ISubscription;
+  selectedDeliveryNoteId:number;
   public noteTypes: Array<{ text: string, value: number }> = [
     { text: "General ", value: 1 },
     { text: "Rejected", value: 2 },
@@ -78,9 +79,9 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
 
     //this.getDeliveryAllNotesList();
     this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
-    let deliveryNumber: number = this.deliveryNoteListModel.DeliveryNumber;
+    this.selectedDeliveryNoteId = this.deliveryNoteListModel.DeliveryId;
     // let deliveryNoteOptiId1: number = this.deliveryNoteNoteModel.DeliveryNoteOptiId;
-    this.getDeliveryNotesNoteList(deliveryNumber.toString(), CustomerEntityType.SalesQuotation);
+    this.getDeliveryNotesNoteList(this.selectedDeliveryNoteId.toString(), CustomerEntityType.SalesQuotation);
     this.getDeliveryNotesNoteList(3 + "", 3);
   }
 
@@ -129,13 +130,13 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
   }
 
   submitNote(e) {
-    let Id: number = 4;
-    let salesNumber: number = 4;
+    let DNId: number = this.deliveryNoteListModel.DeliveryId;
+    let DNNumber: number = this.deliveryNoteListModel.DeliveryNumber;
     this.noteModel.NoteType = this.selectedNoteItem.value;
     this.noteModel.ParentId = undefined;
     this.noteModel.ParentType = CustomerEntityType.DeliveryNotes;
-    this.noteModel.DeliveryNoteNumber = Id;
-    this.noteModel.DeliveryNoteOptiId = salesNumber.toString();
+    this.noteModel.DeliveryNoteNumber = DNNumber;
+    this.noteModel.DeliveryNoteOptiId = DNId.toString();
 
     this.addnotessub = this.sharedComponentService.AddDeliveryNotesNote(this.noteModel).subscribe(
       resp => {
@@ -150,10 +151,10 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
         this.resetModelValues();
         this.closeAddNote();
         // Get notes data.
-        //this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
-        let salesOptiId: number = 3;
-        let salesNumber: number = 3;
-        this.getDeliveryNotesNoteList(salesOptiId.toString(), CustomerEntityType.DeliveryNotes);
+        this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
+        let DNId: number = this.deliveryNoteListModel.DeliveryId;
+        let DNNumber: number = this.deliveryNoteListModel.DeliveryNumber;
+        this.getDeliveryNotesNoteList(DNId.toString(), CustomerEntityType.DeliveryNotes);
       });
     this.closeAddNote();
   }
@@ -165,22 +166,29 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
       resp => {
         //this method is updating the status if notes updated then update inquiry status.
-        this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
+        
         let deliveryNumber: number = this.deliveryNoteListModel.DeliveryNumber;
         // let quotationNumber: number = this.noteModel.DeliveryNoteOptiId;
-        this.getDeliveryNotesNoteList(deliveryNumber.toString(), CustomerEntityType.SalesQuotation);
+
+        // Get notes data.
+        this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
+        let DNId: number = this.deliveryNoteListModel.DeliveryId;
+        let DNNumber: number = this.deliveryNoteListModel.DeliveryNumber;
+        this.getDeliveryNotesNoteList(DNId.toString(), CustomerEntityType.DeliveryNotes);
 
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
-        this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'));
-        let deliveryNumber: number = this.deliveryNoteListModel.DeliveryNumber;
-        this.getDeliveryNotesNoteList(deliveryNumber.toString(), CustomerEntityType.SalesOrder);
+        alert("Something went wrong"); 
+        this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
+        let DNId: number = this.deliveryNoteListModel.DeliveryId;
+        let DNNumber: number = this.deliveryNoteListModel.DeliveryNumber;
+        this.getDeliveryNotesNoteList(DNId.toString(), CustomerEntityType.DeliveryNotes);
+        
       },
       () => {
         this.closeUpdateNote(e);
-      });
+      }); 
 
   }
 
@@ -198,12 +206,10 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
   /**
       * Method to get list of inquries from server.
       */
-  private getDeliveryNotesNoteList(salesId: string, parentType: number) {
-    let deliveryNoteOptiId: number = 4;
-    let salesNumber: number = 4;
-    //deliverynotes/notelist/{deliveryNotesOptiId}/{parentType:int
+  private getDeliveryNotesNoteList(id: string, parentType: number) {
+
     this.showLoader = true;
-    this.getDeliveryNotesNoteSubs = this.sharedComponentService.getDeliveryNoteNotesList(deliveryNoteOptiId.toString(), CustomerEntityType.DeliveryNotes.toString()).subscribe(
+    this.getDeliveryNotesNoteSubs = this.sharedComponentService.getDeliveryNoteNotesList(id.toString(), CustomerEntityType.DeliveryNotes.toString()).subscribe(
       notesData => {
         if (notesData != null && notesData != undefined) {
           this.noteItemsData = JSON.parse(notesData);

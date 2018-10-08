@@ -1,5 +1,5 @@
 {
-    "baseServerAPIEndpoint": "http://139.144.10.218:9090/",
+    "baseServerAPIEndpoint": "http://172.16.6.139:9090/",
     "firstHomePage": "/home/dashboard",
     "dateFormat": "DD MMM YY",
     "displayDateFormat":"dd MMM yy",

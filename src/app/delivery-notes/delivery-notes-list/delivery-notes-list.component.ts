@@ -93,10 +93,8 @@ export class DeliveryNotesListComponent implements OnInit {
   */
  public getDeliveryNotesList() {
   this.showLoader = true; 
-  debugger;
   this.getDeliverylistSubs = this.deliveryNotesService.getDeliveryNotesList().subscribe(
     data => {
-      debugger;
       if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
           this.gridData.forEach(element => {
@@ -135,15 +133,9 @@ export class DeliveryNotesListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     // Reset Selection. 
-<<<<<<< HEAD
-    let selectedgridItem = this.gridData[selection.index];
-    currentsideBarInfo.RequesterData = selectedgridItem;
-    localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedgridItem));
-=======
     let selectedDeliveryNote = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = selectedDeliveryNote;
     localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedDeliveryNote));
->>>>>>> 5f961277bd8c67239387fd29bbb55d21c6da2acb
     this.commonService.setCurrentSideBar(currentsideBarInfo);
 
     // Reset Selection.

@@ -51,13 +51,11 @@ export class DeliveryNotesDetailAttachmentComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-
-    //this.getDeliveryNotesAttachmentList1();
-
+    debugger;
     this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'));
-    let deliveryNumber: number = this.deliveryNoteListModel.DeliveryNumber;
+    let deliveryId: number = this.deliveryNoteListModel.DeliveryId;
     
-    this.getDeliveryNotesAttachmentList(deliveryNumber);
+    this.getDeliveryNotesAttachmentList(deliveryId);
   }
 
   /**
@@ -143,6 +141,7 @@ export class DeliveryNotesDetailAttachmentComponent implements OnInit {
    */
   getDeliveryNotesAttachmentList(id: number) {
     this.showLoader = true;
+    debugger;
     this.getDetailAttachsubs = this.deliveryNotesService.getDeliveryNotesDetail(id, 3).subscribe(
       data => {
         this.showLoader = false;

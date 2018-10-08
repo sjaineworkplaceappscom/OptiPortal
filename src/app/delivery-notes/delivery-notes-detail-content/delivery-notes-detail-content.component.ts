@@ -48,12 +48,11 @@ export class DeliveryNotesDetailContentComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
 
-    this.getDeliveryNotesContentList1();
-
+    
     this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'));
     
     let deliveryNumber: number = this.deliveryNoteListModel.DeliveryNumber;
-   // this.getDeliveryNotesContentList(deliveryNumber);
+    this.getDeliveryNotesContentList(deliveryNumber);
   }
 
   /**

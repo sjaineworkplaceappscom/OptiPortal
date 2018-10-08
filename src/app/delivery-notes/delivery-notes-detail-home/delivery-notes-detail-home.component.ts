@@ -42,11 +42,12 @@ export class DeliveryNotesDetailHomeComponent implements OnInit {
 
     this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        
         this.deliveryNoteListModel = currentSidebarData.RequesterData;
-        let deliveryNoteId: number = this.deliveryNoteListModel.DeliveryId;
-        debugger;
-        this.getDeliveryNotesDetail(deliveryNoteId);
+        if(this.deliveryNoteHeaderModel!=null){
+          let deliveryNoteId: number = this.deliveryNoteListModel.DeliveryId;
+          this.getDeliveryNotesDetail(deliveryNoteId);
+        }
+        
       }
     );
   }
@@ -55,7 +56,7 @@ export class DeliveryNotesDetailHomeComponent implements OnInit {
      * call api for Sales quotation detail .
      */
     getDeliveryNotesDetail(id: number) {
-        debugger;
+        
       this.showLoader = true;
       this.getDetailsubs = this.deliveryNotesService.getDeliveryNotesDetail(id,1).subscribe(
         data => {
