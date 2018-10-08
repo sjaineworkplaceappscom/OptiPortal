@@ -1,31 +1,31 @@
 <div class="opti_customer-purchase-order-update" id="opti_CustomerPurchaseOrderID">
   <!-- tab start heading start -->
-  <div class="opti_position-relative opti_tab-outer">
-    <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
-        <li class="opti_tablinks active" id="opti_HomeTabCustomerPurchaseOrderID" (click)="openTab($event, 'home')">
-          <a href="javascript:void('0');">Header</a>
-        </li>
-        <li class="opti_tablinks" (click)="openTab($event, 'attachement')">
-          <a href="javascript:void('0');">Attachments</a>
-        </li>
-        <li class="opti_tablinks" (click)="openTab($event, 'notes')">
-          <a href="javascript:void('0');">Notes</a>
-        </li>
-    </ul>
-  </div>
+    <!-- <div class="opti_position-relative opti_tab-outer">
+      <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
+          <li class="opti_tablinks active" id="opti_HomeTabCustomerPurchaseOrderID" (click)="openTab($event, 'home')">
+            <a href="javascript:void('0');">Header</a>
+          </li>
+          <li class="opti_tablinks" (click)="openTab($event, 'attachement')">
+            <a href="javascript:void('0');">Attachments</a>
+          </li>
+          <li class="opti_tablinks" (click)="openTab($event, 'notes')">
+            <a href="javascript:void('0');">Notes</a>
+          </li>
+      </ul>
+    </div> -->
   <!-- tab start heading end -->
 
   <!-- tab content start -->
-  <div id="" *ngIf="tabName=='home'" class="opti_tabcontent">
-    <app-customer-purchase-order-home></app-customer-purchase-order-home>
-  </div>
+    <!-- <div id="" *ngIf="tabName=='home'" class="opti_tabcontent">
+      <app-customer-purchase-order-home></app-customer-purchase-order-home>
+    </div>
 
-  <div id="" *ngIf="tabName=='attachement'" class="opti_tabcontent">
-    <app-customer-purchase-order-attachment></app-customer-purchase-order-attachment>
-  </div>
+    <div id="" *ngIf="tabName=='attachement'" class="opti_tabcontent">
+      <app-customer-purchase-order-attachment></app-customer-purchase-order-attachment>
+    </div>
 
-  <div id="" *ngIf="tabName=='notes'" class="opti_tabcontent">
-    <app-customer-purchase-order-notes></app-customer-purchase-order-notes>
-  </div>
+    <div id="" *ngIf="tabName=='notes'" class="opti_tabcontent">
+      <app-customer-purchase-order-notes></app-customer-purchase-order-notes>
+    </div> -->
   <!-- tab content end -->
 </div>  

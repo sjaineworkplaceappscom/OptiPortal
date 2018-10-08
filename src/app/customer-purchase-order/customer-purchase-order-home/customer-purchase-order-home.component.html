@@ -14,36 +14,42 @@
           <div class="card-block">
             <form class="k-form">
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Contact Id</span>
-                  <input name="contactId" type="text" class="k-textbox" [(ngModel)]="contactId" />
-              </label>
+                <label class="k-form-field">
+                    <span class="opti_form-label">Custmer Name</span>
+                    <input name="custmerName" type="text" class="k-textbox" [(ngModel)]="custmerName" />
+                </label>
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Contact Name</span>
-                  <input name="contactName" type="text" class="k-textbox" [(ngModel)]="contactName" />
-              </label>
+                <label class="k-form-field">
+                    <input name="custmerCompanyName" type="text" class="k-textbox" [(ngModel)]="custmerCompanyName" disabled/>
+                </label>
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Phone</span>
-                  <input name="phone" type="text" class="k-textbox" [ngModel]="phone"  />
-              </label>
+                <label class="k-form-field">
+                    <span class="opti_form-label">PO Date</span>
+                    <kendo-datepicker ></kendo-datepicker>
+                </label>
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Email</span>
-                  <input name="email" type="text" class="k-textbox" [ngModel]="email" />
-              </label>
+                <label class="k-form-field">
+                    <span class="opti_form-label">Reference#</span>
+                    <input name="reference" type="text" class="k-textbox" [ngModel]="reference"  />
+                </label>
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Address</span>
-                  <textarea class="k-textarea" name="address" [(ngModel)]="address" >Address</textarea>
-              </label>
+                <label class="k-form-field">
+                    <span class="opti_form-label">Reference Type</span>
+                    <kendo-dropdownlist
+                        [data]="ReferenceType"
+                        textField="text"
+                        valueField="value"
+                        [(ngModel)]="selectedItem"
+                    >
+                    </kendo-dropdownlist>
+                    
+                </label>
 
-              <div class="text-right">
-                  <button type="button" class="k-button k-primary">Save</button>
-                  <button type="button" class="k-button">Save as draft</button>
-                  <button type="button" class="k-button">Cancel</button>
-              </div>
+                <div class="text-right">
+                    <button type="button" class="k-button k-primary">Save</button>
+                    <button type="button" class="k-button">Save as draft</button>
+                    <button type="button" class="k-button">Cancel</button>
+                </div>
 
             </form>
           </div>

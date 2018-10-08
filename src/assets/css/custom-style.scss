@@ -83,7 +83,8 @@ app-attachment,
 app-attachment-item, 
 app-sales-order-detail-attachment, 
 app-sales-quotations-detail-attchment,
-app-delivery-notes-detail-attachment{
+app-delivery-notes-detail-attachment,
+app-customer-purchase-order-attachment{
   kendo-grid{
     table{
       tbody{
@@ -110,7 +111,8 @@ app-delivery-notes-detail-attachment{
 #opti_purchaseInquiryAttachementSectionID,
 #opti_purchaseInquiryItemAttachementSectionID,
 #opti_DeliveryNotesAttchment,
-#opti_OpenInvoicesAttchmentID{
+#opti_OpenInvoicesAttchmentID,
+#opti_CustomerPurchaseOrderUpdateID{
   file-drop #dropZone{
     margin: 0;
     height: auto;
@@ -124,7 +126,8 @@ app-delivery-notes-detail-attachment{
 #opti_purchaseInquiryAttachementSectionID,
 #opti_purchaseInquiryItemAttachementSectionID,
 #opti_DeliveryNotesAttchment,
-#opti_OpenInvoicesAttchmentID{
+#opti_OpenInvoicesAttchmentID,
+#opti_CustomerPurchaseOrderUpdateID{
   .drop-zone{
     width: 100%;
     kendo-grid{

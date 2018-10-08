@@ -9,26 +9,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
 })
 export class CustomerPurchaseOrderDetailComponent implements OnInit {
   constructor() { }
-
-  @Input() currentSidebarInfo:CurrentSidebarInfo;
-
-  tabName: string = 'home';
-
-  // tab function
-  openTab(evt, tabName) {
-    this.tabName = tabName;
-    UIHelper.customOpenTab(evt, tabName, 'horizontal');
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
-  }
-
   ngOnInit() {
-    // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    
   }
-
 }
