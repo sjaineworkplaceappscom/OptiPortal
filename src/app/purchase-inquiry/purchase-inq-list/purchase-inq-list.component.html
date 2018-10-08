@@ -92,13 +92,13 @@
 
                                 <dl class="opti_mobile_grid_dl">
                                     <dt>Created Date <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
-                                    <dd>{{ dataItem.CreatedDate }} </dd>
+                                    <dd>{{ dataItem.CreatedDate | date:dateformat }} </dd>
 
                                     <dt>Created By</dt>
                                     <dd>{{ dataItem.Buyer }}</dd>
 
                                     <dt>Valid Until</dt>
-                                    <dd>{{ dataItem.ValidTillDate }}</dd>
+                                    <dd>{{ dataItem.ValidTillDate | date:dateformat }}</dd>
 
                                     <dt>Reference#</dt>
                                     <dd>{{ dataItem.ReferenceNumber }}</dd>
