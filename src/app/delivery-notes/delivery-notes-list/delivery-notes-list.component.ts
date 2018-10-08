@@ -96,6 +96,7 @@ export class DeliveryNotesListComponent implements OnInit {
   debugger;
   this.getDeliverylistSubs = this.deliveryNotesService.getDeliveryNotesList().subscribe(
     data => {
+      debugger;
       if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
           this.gridData.forEach(element => {
