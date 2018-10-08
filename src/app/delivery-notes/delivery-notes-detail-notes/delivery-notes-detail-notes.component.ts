@@ -76,7 +76,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
-
+    debugger;
     //this.getDeliveryAllNotesList();
     this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
     this.selectedDeliveryNoteId = this.deliveryNoteListModel.DeliveryId;
