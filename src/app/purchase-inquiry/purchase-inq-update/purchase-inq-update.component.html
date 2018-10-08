@@ -66,7 +66,7 @@
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Created Date</span>
-                                        <kendo-datepicker name="createdDate" [format]="'dd MMM yy'" [(ngModel)]="purchaseInquiryDetail.CreatedDate" disabled> </kendo-datepicker>
+                                        <kendo-datepicker name="createdDate" [format]="dateformat" [(ngModel)]="purchaseInquiryDetail.CreatedDate" disabled> </kendo-datepicker>
                                     </label>
 
 
@@ -78,7 +78,7 @@
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Valid Until</span>
-                                        <kendo-datepicker (valueChange)="valueChange($event)" name="validUntil" [format]="'dd MMM yy'" [(ngModel)]="purchaseInquiryDetail.ValidTillDate" [min]="minValidDate" [disabled] = "isCancelStatus"> </kendo-datepicker>
+                                        <kendo-datepicker (valueChange)="valueChange($event)" name="validUntil" [format]="dateformat" [(ngModel)]="purchaseInquiryDetail.ValidTillDate" [min]="minValidDate" [disabled] = "isCancelStatus"> </kendo-datepicker>
                                     </label>
 
                                     <label class="k-form-field">

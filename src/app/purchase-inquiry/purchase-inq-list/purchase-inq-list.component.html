@@ -92,7 +92,7 @@
 
                                 <dl class="opti_mobile_grid_dl">
                                     <dt>Created Date <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
-                                    <dd>{{ dataItem.CreatedDate }}</dd>
+                                    <dd>{{ dataItem.CreatedDate }} </dd>
 
                                     <dt>Created By</dt>
                                     <dd>{{ dataItem.Buyer }}</dd>
@@ -113,9 +113,9 @@
                     <kendo-grid-column media="(min-width: 768px)" field="CustomerCode" *ngIf="loginUserType==1" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
                     <kendo-grid-column media="(min-width: 768px)" field="CustomerName" *ngIf="loginUserType==1" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column>
                     <kendo-grid-column media="(min-width: 768px)" field="StatusText" [width]="140" title="Status" ></kendo-grid-column>
-                    <kendo-grid-column media="(min-width: 768px)" field="CreatedDate" title="Created Date" [width]="200"  filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+                    <kendo-grid-column media="(min-width: 768px)" field="CreatedDate" title="Created Date" [width]="200"  filter="date" type=date [format]="displayDateformat"></kendo-grid-column>
                     <kendo-grid-column media="(min-width: 768px)" field="Buyer" title="Created By" [width]="140"></kendo-grid-column>
-                    <kendo-grid-column media="(min-width: 768px)" field="ValidTillDate" title="Valid Until" [width]="200" filter="date"  type=date format="{0:dd MMM yy}"></kendo-grid-column>
+                    <kendo-grid-column media="(min-width: 768px)" field="ValidTillDate" title="Valid Until" [width]="200" filter="date"  type=date [format]="displayDateformat"></kendo-grid-column>
                     <kendo-grid-column media="(min-width: 768px)" field="ReferenceNumber" [width]="140" title = "Reference#"></kendo-grid-column>
 
                     <!-- xlsx template start -->

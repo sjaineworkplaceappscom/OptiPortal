@@ -23,6 +23,7 @@ export class ConfigurationService {
     Configuration.doccumentPath = res.doccumentPath;
     Configuration.firstHomePage = res.firstHomePage;
     Configuration.assetsRootpath = res.assetsRootpath;
+    Configuration.displayDateFormat=res.displayDateFormat;
   }
 
 

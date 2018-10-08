@@ -1,4 +1,5 @@
 export class DeliveryNoteListModel{
+    DeliveryId:number;
     DeliveryNumber :number;
     ShipDate: Date;
     DeliveredDate: Date;

@@ -44,8 +44,9 @@ export class DeliveryNotesDetailHomeComponent implements OnInit {
       currentSidebarData => {
         
         this.deliveryNoteListModel = currentSidebarData.RequesterData;
-        let quotationId: number = this.deliveryNoteListModel.DeliveryNumber;
-        //this.getDeliveryNotesDetail(quotationId);
+        let deliveryNoteId: number = this.deliveryNoteListModel.DeliveryId;
+        debugger;
+        this.getDeliveryNotesDetail(deliveryNoteId);
       }
     );
   }
@@ -54,7 +55,7 @@ export class DeliveryNotesDetailHomeComponent implements OnInit {
      * call api for Sales quotation detail .
      */
     getDeliveryNotesDetail(id: number) {
-
+        debugger;
       this.showLoader = true;
       this.getDetailsubs = this.deliveryNotesService.getDeliveryNotesDetail(id,1).subscribe(
         data => {

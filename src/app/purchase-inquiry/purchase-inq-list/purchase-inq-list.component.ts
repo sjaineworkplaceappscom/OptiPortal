@@ -30,7 +30,10 @@ import { Configuration } from '../../helpers/Configuration';
   styleUrls: ['./purchase-inq-list.component.scss']
 })
 export class PurchaseInqListComponent implements OnInit {
+  displayDateformat:string=Configuration.getDisplayDateFormat(true);
+  dateformat:string=Configuration.getDisplayDateFormat();
   imgPath = Configuration.imagePath;
+
   isMobile: boolean;
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;
@@ -39,8 +42,6 @@ export class PurchaseInqListComponent implements OnInit {
   gridHeight: number;
   showLoader: boolean = false;
   searchRequest: string = '';
-  //date: Date;
-  public dateFormat: string = Configuration.dateFormat;
 
   //for inquiry grid Data
   public gridData: any[] = [];
