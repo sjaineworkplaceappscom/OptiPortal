@@ -8,6 +8,7 @@ import { SalesNoteModel } from '../tempmodels/SalesNoteModel';
 import { DeliveryNoteNoteModel } from '../tempmodels/delivery-note-note-model';
 import { OpenInvoicesModule } from '../open-invoices/open-invoices.module';
 import { OpenInvoiceNoteModel } from '../tempmodels/open-invoice-note-model';
+import { AdvanceShipmentNotesNoteModel } from '../tempmodels/advance-shipment-notes-note-model';
 
 
 
@@ -186,6 +187,27 @@ public getOpenInvoiceNotesList(id:string,type:string): Observable<any>{
     "SalesOptiId": note.OpenInvoiceNoteOptiId
   }
   return this.httpHelper.post(this.baseUrl + 'openinvoice/addnotes', data, null);
+}
+
+public getASNNotesList(id:string,type:string): Observable<any>{
+  
+  let url: string = this.baseUrl + "advanceshipment/notelist/" + id + "/" + type;
+  return this.httpHelper.get(url, null);
+ }
+
+  /**
+  * Add Note.
+  */
+ public AddASNNote(note: AdvanceShipmentNotesNoteModel): Observable<any> {
+  var data: any = {
+    "Notes": note.Notes,
+    "NoteType": note.NoteType,
+    "SalesNumber": note.ASNNoteNumber,    
+    "ParentId": note.ParentId,
+    "ParentType": note.ParentType,
+    "SalesOptiId": note.ASNNoteOptiId
+  }
+  return this.httpHelper.post(this.baseUrl + 'advanceshipment/addnotes', data, null);
 }
 }
 

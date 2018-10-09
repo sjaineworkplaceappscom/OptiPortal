@@ -1,4 +1,5 @@
 export class AdvanceShipmentNotesListModel{
+    ASNId:number;
     ASNNumber:number;
     DeliveryNumber:number;
     ShipDate:Date;

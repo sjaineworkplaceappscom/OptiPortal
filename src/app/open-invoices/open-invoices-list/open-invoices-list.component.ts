@@ -126,6 +126,7 @@ export class OpenInvoicesListComponent implements OnInit {
   */
  public getOpenInvoicesList() {
   this.showLoader = true; 
+  debugger;
   this.getOpenInvoicelistSubs = this.openInvoiceService.getOpenInvoiceList().subscribe(
     data => {
       if (data != null && data != undefined) {

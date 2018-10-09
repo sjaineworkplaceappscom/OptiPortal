@@ -86,8 +86,11 @@ SalesOrder = 5,
 
 DeliveryNotes = 6,
 
-OpenInvoice = 7,
-CustomerPurchaseOrder = 8
+AdvanceShipmentNote = 7,
+
+OpenInvoice = 8,
+
+CustomerPurchaseOrder = 9,
 
 }
 

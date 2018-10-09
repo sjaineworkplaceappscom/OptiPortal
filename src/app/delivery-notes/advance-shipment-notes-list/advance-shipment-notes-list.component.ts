@@ -70,8 +70,8 @@ export class AdvanceShipmentNotesListComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
     this.getPaginationAttributes();
-    //this.getASNList();
-    this.getAdvanceShipmentNotesList();
+    this.getASNList();
+    //this.getAdvanceShipmentNotesList();
   }
 
   /**
@@ -90,6 +90,7 @@ export class AdvanceShipmentNotesListComponent implements OnInit {
    */
   public getASNList() {
     this.showLoader = true;
+    debugger;
     this.getASNlistSubs = this.advanceShipmentNoteService.getAdvanceShipmentNotesList().subscribe(
       data => {
         if (data != null && data != undefined) { 

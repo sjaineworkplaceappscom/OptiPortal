@@ -16,12 +16,12 @@ export class AdvanceShipmentNoteService {
    * get Sales Quotation list data from server.
    */
   public getAdvanceShipmentNotesList(): Observable<any> {
-    let url: string = this.baseUrl + "salesquotation/list";
+    let url: string = this.baseUrl + "advanceshipment/list";
     return this.httpHelper.get(url, null);
     //return null;
-  }
+  } 
 
-  /**
+  /** 
    * getSalesQuotationDetail from server.
    */
   public getAdvanceShipmentNotesDetail(id:number,type:number): Observable<any> {

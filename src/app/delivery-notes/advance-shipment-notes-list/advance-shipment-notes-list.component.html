@@ -68,39 +68,39 @@
                     
                     <dl class="opti_mobile_grid_dl">
                         <dt>ASN#</dt>
-                        <dd>{{ dataItem.ASN }}</dd>
+                        <dd>{{ dataItem.ASNNumber }}</dd>
 
                         <dt>delivery#</dt>
-                        <dd>{{ dataItem.delivery }}</dd>
+                        <dd>{{ dataItem.DeliveryNumber }}</dd>
 
                         <dt>Ship Date</dt>
-                        <dd>{{ dataItem.shipDate }}</dd>
+                        <dd>{{ dataItem.ShipDate }}</dd>
 
                         <dt>Expected Delivery</dt>
-                        <dd>{{ dataItem.expectedDelivery }}</dd>
+                        <dd>{{ dataItem.ExpectedDeliveryDate }}</dd>
 
                         <dt>wayBill#</dt>
-                        <dd>{{ dataItem.wayBill }}</dd>
+                        <dd>{{ dataItem.WayBillNumber }}</dd>
 
                         <dt>Tracking#</dt>
-                        <dd>{{ dataItem.tracking }}</dd>
+                        <dd>{{ dataItem.TrackingNumber }}</dd>
                     </dl>
 
                     <dl class="opti_mobile_grid_dl">
                         <dt>Mode of Shipment <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
-                        <dd>{{ dataItem.modeOfShipment }}</dd>
+                        <dd>{{ dataItem.ModeOfShipment }}</dd>
 
                         <dt>Shipping Method</dt>
-                        <dd>{{ dataItem.shippingMethod }}</dd>
+                        <dd>{{ dataItem.ShippingMethod }}</dd>
 
                         <dt>Packing Slip#</dt>
-                        <dd>{{ dataItem.packingSlip }}</dd>
+                        <dd>{{ dataItem.PackingSlipNumber }}</dd>
 
                         <dt>ShipTo Location</dt>
-                        <dd>{{ dataItem.shipToLocation }}</dd>
+                        <dd>{{ dataItem.ShipToLocation }}</dd>
                         
                         <dt>Total Price</dt>
-                        <dd>{{ dataItem.totalPrice }}</dd>
+                        <dd>{{ dataItem.TotalPrice }}</dd>
                     </dl>
 
                 </ng-template>
@@ -108,17 +108,17 @@
             <!-- grid for mobile end -->
 
             <!-- grid template end -->
-            <kendo-grid-column media="(min-width: 768px)" field="ASN" title="ASN#" [width]="160" filter="numeric"></kendo-grid-column>
-            <kendo-grid-column media="(min-width: 768px)" field="delivery" title="delivery#" [width]="140" ></kendo-grid-column>
-            <kendo-grid-column media="(min-width: 768px)" field="shipDate" [width]="140" title="Ship Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-            <kendo-grid-column media="(min-width: 768px)" field="expectedDelivery" [width]="140" title="Expected Delivery" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-            <kendo-grid-column media="(min-width: 768px)" field="wayBill" title="wayBill#" [width]="200"></kendo-grid-column>
-            <kendo-grid-column media="(min-width: 768px)" field="tracking" title="Tracking#" [width]="140"></kendo-grid-column>
-            <kendo-grid-column media="(min-width: 768px)" field="modeOfShipment" title="Mode Of Shipment" [width]="200"></kendo-grid-column>
-            <kendo-grid-column media="(min-width: 768px)" field="shippingMethod" title="Shipping Method" [width]="200" ></kendo-grid-column>
-            <kendo-grid-column media="(min-width: 768px)" field="packingSlip" title="Packing Slip#" [width]="200"></kendo-grid-column>
-            <kendo-grid-column media="(min-width: 768px)" field="shipToLocation" title="shipTo Location" [width]="200"></kendo-grid-column>
-            <kendo-grid-column media="(min-width: 768px)" field="totalPrice" title="Total Price" [width]="200"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="ASNNumber" title="ASN#" [width]="160" filter="numeric"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="DeliveryNumber" title="delivery#" [width]="140" ></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="ShipDate" [width]="140" title="Ship Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="ExpectedDeliveryDate" [width]="140" title="Expected Delivery" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="WayBillNumber" title="wayBill#" [width]="200"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="TrackingNumber" title="Tracking#" [width]="140"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="ModeOfShipment" title="Mode Of Shipment" [width]="200"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="ShippingMethod" title="Shipping Method" [width]="200" ></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="PackingSlipNumber" title="Packing Slip#" [width]="200"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="ShipToLocation" title="shipTo Location" [width]="200"></kendo-grid-column>
+            <kendo-grid-column media="(min-width: 768px)" field="TotalPrice" title="Total Price" [width]="200"></kendo-grid-column>
             
             <!-- xlsx template start -->
             <kendo-grid-excel fileName="advance-shipment-notes.xlsx"></kendo-grid-excel>

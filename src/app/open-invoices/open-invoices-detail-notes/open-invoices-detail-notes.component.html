@@ -117,7 +117,7 @@
                                   <kendo-dropdownlist name="role" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem">
                                   </kendo-dropdownlist>
                               </label> -->
-
+ 
                               <div class="text-right">
                                   <button type="button" id="updateNote" class="k-button k-primary" (click)="updateNote($event)"  [disabled] = "!editnoteform.form.valid">Save</button>
                                   <button type="button" id="addNote" class="k-button k-primary" (click)="closeUpdateNote($event)">Cancel</button>
