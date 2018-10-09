@@ -11,6 +11,7 @@ import { AdvanceShipmentNoteService } from '../../services/advance-shipment-note
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { Configuration } from '../../helpers/Configuration';
+import { GlobalResource } from '../../helpers/global-resource';
 
 @Component({
   selector: 'app-advance-shipment-notes-list',
@@ -55,6 +56,8 @@ export class AdvanceShipmentNotesListComponent implements OnInit {
   public gridData: any[];
 
   ngOnInit() {
+
+    GlobalResource.NavigateFromAdvanseShipmentNotes = true;
 
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
@@ -119,6 +122,8 @@ export class AdvanceShipmentNotesListComponent implements OnInit {
 
   openAdvanceShipmentNotesDetailOnSelection(selection) {
     $('#opti_HomeTabDeliveryNotesID').click();
+
+    
 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;

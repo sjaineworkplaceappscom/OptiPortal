@@ -12,6 +12,7 @@ import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { DeliveryNoteListModel } from '../../tempmodels/delivery-note-list-model';
 import { Configuration } from '../../helpers/Configuration';
+import { GlobalResource } from '../../helpers/global-resource';
 
 
 @Component({
@@ -59,6 +60,8 @@ export class DeliveryNotesListComponent implements OnInit {
   public gridData: any[];
 
   ngOnInit() {
+
+    GlobalResource.NavigateFromAdvanseShipmentNotes = false;
 
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];

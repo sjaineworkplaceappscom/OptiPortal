@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
+import { GlobalResource } from '../../helpers/global-resource';
+
 
 @Component({
   selector: 'app-delivery-notes-detail',
@@ -14,6 +16,7 @@ export class DeliveryNotesDetailComponent implements OnInit {
   @Input() currentSidebarInfo:CurrentSidebarInfo;
 
   tabName: string = 'home';
+  shipMentNotes:boolean;
 
   // tab function
   openTab(evt, tabName) {
@@ -28,6 +31,7 @@ export class DeliveryNotesDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.shipMentNotes = GlobalResource.NavigateFromAdvanseShipmentNotes ;
     // apply width on opti_TabID
     UIHelper.getWidthOfOuterTab();
   }

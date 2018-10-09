@@ -15,6 +15,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FileDropModule } from 'ngx-file-drop';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { AdvanceShipmentNotesListComponent } from './advance-shipment-notes-list/advance-shipment-notes-list.component';
+import { AdvanceShipmentNotestabComponent } from './advance-shipment-notestab/advance-shipment-notestab.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { AdvanceShipmentNotesListComponent } from './advance-shipment-notes-list
     FileDropModule,
     DropDownsModule,
   ],
-  declarations: [DeliveryNotesListComponent, DeliveryNotesDetailComponent, DeliveryNotesDetailHomeComponent, DeliveryNotesDetailContentComponent, DeliveryNotesDetailAttachmentComponent, DeliveryNotesDetailNotesComponent, AdvanceShipmentNotesListComponent],
+  declarations: [DeliveryNotesListComponent, DeliveryNotesDetailComponent, DeliveryNotesDetailHomeComponent, DeliveryNotesDetailContentComponent, DeliveryNotesDetailAttachmentComponent, DeliveryNotesDetailNotesComponent, AdvanceShipmentNotesListComponent, AdvanceShipmentNotestabComponent],
   exports:[DeliveryNotesListComponent, DeliveryNotesDetailComponent]
 })
 export class DeliveryNotesModule { }
