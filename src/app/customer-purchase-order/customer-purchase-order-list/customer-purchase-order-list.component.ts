@@ -116,5 +116,12 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
   
+  AddCustomerPurchaseOrder(){
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName = ComponentName.CPOAdd;
+    currentsideBarInfo.ModuleName = ModuleName.CustomerPurchaseOrder;
+    currentsideBarInfo.SideBarStatus = true;
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
+  }
 
 }

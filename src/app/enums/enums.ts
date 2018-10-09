@@ -59,7 +59,8 @@ export enum ComponentName {
     UpdateContact = 802,
 
     
-    CPOUpdate=901    
+    CPOUpdate=901,
+    CPOAdd=902    
 }
 
 
