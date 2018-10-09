@@ -7,7 +7,6 @@ import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
 import { FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { FileDropModule } from 'ngx-file-drop';
-import { CustomerPurchaseOrderDetailComponent } from './customer-purchase-order-detail/customer-purchase-order-detail.component';
 import { CustomerPurchaseOrderHomeComponent } from './customer-purchase-order-home/customer-purchase-order-home.component';
 import { CustomerPurchaseOrderNotesComponent } from './customer-purchase-order-notes/customer-purchase-order-notes.component';
 import { CustomerPurchaseOrderAttachmentComponent } from './customer-purchase-order-attachment/customer-purchase-order-attachment.component';
@@ -30,7 +29,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
     DropDownsModule,
     DateInputsModule
   ],
-  declarations: [CustomerPurchaseOrderListComponent, CustomerPurchaseOrderDetailComponent, CustomerPurchaseOrderHomeComponent, CustomerPurchaseOrderNotesComponent, CustomerPurchaseOrderAttachmentComponent, CustomerPurchaseOrderUpdateComponent],
-  exports:[CustomerPurchaseOrderListComponent,CustomerPurchaseOrderDetailComponent, CustomerPurchaseOrderUpdateComponent]
+  declarations: [CustomerPurchaseOrderListComponent, CustomerPurchaseOrderHomeComponent, CustomerPurchaseOrderNotesComponent, CustomerPurchaseOrderAttachmentComponent, CustomerPurchaseOrderUpdateComponent],
+  exports:[CustomerPurchaseOrderListComponent, CustomerPurchaseOrderUpdateComponent]
 })
 export class CustomerPurchaseOrderModule { }
