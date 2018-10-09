@@ -32,7 +32,8 @@
   </div>
 
   <div id="" *ngIf="tabName=='notes'" class="opti_tabcontent">
-    <app-delivery-notes-detail-notes></app-delivery-notes-detail-notes>
+    <app-delivery-notes-detail-notes *ngIf="shipMentNotes==false"></app-delivery-notes-detail-notes>
+    <app-advance-shipment-notestab *ngIf="shipMentNotes==true"></app-advance-shipment-notestab>
   </div>
   <!-- tab content end -->
 </div>  
