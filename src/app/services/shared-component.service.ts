@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { HttpRequest, HttpHeaders, HttpClient } from '@angular/common/http';
 import { SalesNoteModel } from '../tempmodels/SalesNoteModel';
 import { DeliveryNoteNoteModel } from '../tempmodels/delivery-note-note-model';
+import { OpenInvoicesModule } from '../open-invoices/open-invoices.module';
+import { OpenInvoiceNoteModel } from '../tempmodels/open-invoice-note-model';
 
 
 
@@ -163,6 +165,27 @@ public getDeliveryNoteNotesList(id:string,type:string): Observable<any>{
     "SalesOptiId": note.DeliveryNoteOptiId
   }
   return this.httpHelper.post(this.baseUrl + 'deliverynotes/addnotes', data, null);
+}
+
+public getOpenInvoiceNotesList(id:string,type:string): Observable<any>{
+  
+  let url: string = this.baseUrl + "openinvoice/notelist/" + id + "/" + type;
+  return this.httpHelper.get(url, null);
+ }
+
+  /**
+  * Add Note.
+  */
+ public AddOpenInvoiceNote(note: OpenInvoiceNoteModel): Observable<any> {
+  var data: any = {
+    "Notes": note.Notes,
+    "NoteType": note.NoteType,
+    "SalesNumber": note.OpenInvoiceNoteNumber,    
+    "ParentId": note.ParentId,
+    "ParentType": note.ParentType,
+    "SalesOptiId": note.OpenInvoiceNoteOptiId
+  }
+  return this.httpHelper.post(this.baseUrl + 'openinvoice/addnotes', data, null);
 }
 }
 

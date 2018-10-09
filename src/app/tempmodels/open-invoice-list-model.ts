@@ -1,5 +1,7 @@
 export class OpenInvoiceListModel{
+    InvoiceId:number;
     InvoiceNumber:number;
+
     InvoiceDate:Date;
     DueDate:Date;
     Amount:number;

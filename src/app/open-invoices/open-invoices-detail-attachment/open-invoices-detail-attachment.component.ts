@@ -53,7 +53,7 @@ export class OpenInvoicesDetailAttachmentComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
 
-    this.openInvoiceListModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'))
+    this.openInvoiceListModel = JSON.parse(localStorage.getItem('SelectedOpenInvoice'))
     let invoiceNumber: number = this.openInvoiceListModel.InvoiceNumber;
     this.getOpenInvoiceAttachmentList(invoiceNumber);
     //this.getOPenInvoicesAttachmentList();

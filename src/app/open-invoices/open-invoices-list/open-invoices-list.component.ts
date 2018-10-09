@@ -76,8 +76,8 @@ export class OpenInvoicesListComponent implements OnInit {
 
     this.getPaginationAttributes();
 
-    this.getOpenInvoicesList1(); 
-   // this.getOpenInvoicesList();
+   // this.getOpenInvoicesList1(); 
+    this.getOpenInvoicesList();
   }
 
   /**

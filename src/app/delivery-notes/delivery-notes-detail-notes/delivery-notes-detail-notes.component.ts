@@ -2,9 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 
 import { UIHelper } from '../../helpers/ui.helpers';
 import { deliveryNotesTabNotes } from '../../demodata/delivery-notes';
-import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType } from '../../enums/enums';
-import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
@@ -76,13 +74,12 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
-    debugger;
+    
     //this.getDeliveryAllNotesList();
     this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
     this.selectedDeliveryNoteId = this.deliveryNoteListModel.DeliveryId;
     // let deliveryNoteOptiId1: number = this.deliveryNoteNoteModel.DeliveryNoteOptiId;
-    this.getDeliveryNotesNoteList(this.selectedDeliveryNoteId.toString(), CustomerEntityType.SalesQuotation);
-    this.getDeliveryNotesNoteList(3 + "", 3);
+    this.getDeliveryNotesNoteList(this.selectedDeliveryNoteId.toString(), CustomerEntityType.DeliveryNotes);
   }
 
   public openNewNote() {
@@ -161,15 +158,10 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
 
   updateNote(e) {
     this.selectedNote;
-    //selected note object : this.selectedNote
     this.selectedNote.NoteType = this.selectedNoteItem.value;
     this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
       resp => {
-        //this method is updating the status if notes updated then update inquiry status.
-        
-        let deliveryNumber: number = this.deliveryNoteListModel.DeliveryNumber;
-        // let quotationNumber: number = this.noteModel.DeliveryNoteOptiId;
-
+       
         // Get notes data.
         this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
         let DNId: number = this.deliveryNoteListModel.DeliveryId;

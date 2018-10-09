@@ -133,7 +133,7 @@ export class DeliveryNotesListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     // Reset Selection.
-    debugger; 
+    
     let selectedDeliveryNote = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = selectedDeliveryNote;
     localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedDeliveryNote));
