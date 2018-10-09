@@ -1,0 +1,31 @@
+<div class="opti_customer-purchase-order-add" id="opti_CustomerPurchaseOrderAddID">
+    <!-- tab start heading start -->
+    <div class="opti_position-relative opti_tab-outer">
+      <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
+          <li class="opti_tablinks active" id="opti_HomeTabCustomerPurchaseOrderID" (click)="openTab($event, 'home')">
+            <a href="javascript:void('0');">Header</a>
+          </li>
+          <li class="opti_tablinks" [ngClass]="{'opti_disable-tab':tabStatus === false}" (click)="openTab($event, 'attachement', 'tabStatus')">
+            <a href="javascript:void('0');">Attachments</a>
+          </li>
+          <li class="opti_tablinks" [ngClass]="{'opti_disable-tab':tabStatus === false}" (click)="openTab($event, 'notes', 'tabStatus')">
+            <a href="javascript:void('0');">Notes</a>
+          </li>
+      </ul>
+    </div>
+    <!-- tab start heading end -->
+  
+    <!-- tab content start -->
+    <div id="" *ngIf="tabName=='home'" class="opti_tabcontent">
+      <app-customer-purchase-order-home-add></app-customer-purchase-order-home-add>
+    </div>
+  
+    <div id="" *ngIf="tabName=='attachement'" class="opti_tabcontent">
+      attachmenet
+    </div>
+  
+    <div id="" *ngIf="tabName=='notes'" class="opti_tabcontent">
+      notes
+    </div>
+    <!-- tab content end -->
+  </div>  

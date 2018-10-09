@@ -14,6 +14,8 @@ import { CustomerPurchaseOrderUpdateComponent } from './customer-purchase-order-
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { CustomerPurchaseOrderAddComponent } from './customer-purchase-order-add/customer-purchase-order-add.component';
+import { CustomerPurchaseOrderHomeAddComponent } from './customer-purchase-order-home-add/customer-purchase-order-home-add.component';
 
 
 @NgModule({
@@ -29,7 +31,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
     DropDownsModule,
     DateInputsModule
   ],
-  declarations: [CustomerPurchaseOrderListComponent, CustomerPurchaseOrderHomeComponent, CustomerPurchaseOrderNotesComponent, CustomerPurchaseOrderAttachmentComponent, CustomerPurchaseOrderUpdateComponent],
-  exports:[CustomerPurchaseOrderListComponent, CustomerPurchaseOrderUpdateComponent]
+  declarations: [CustomerPurchaseOrderListComponent, CustomerPurchaseOrderHomeComponent, CustomerPurchaseOrderNotesComponent, CustomerPurchaseOrderAttachmentComponent, CustomerPurchaseOrderUpdateComponent, CustomerPurchaseOrderAddComponent, CustomerPurchaseOrderHomeAddComponent],
+  exports:[CustomerPurchaseOrderListComponent, CustomerPurchaseOrderUpdateComponent, CustomerPurchaseOrderAddComponent]
 })
 export class CustomerPurchaseOrderModule { }

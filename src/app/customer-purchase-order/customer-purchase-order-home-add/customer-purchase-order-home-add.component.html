@@ -1,0 +1,61 @@
+<div class="opti_customer-purchase-order-home-add opti_position-relative opti_fullheight" id="opti_CustomerPurchaseOrderUpdateHomeAddID" [perfectScrollbar]="">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+  
+            <!-- loader start -->
+            <!-- <div class="opti_loader opti_loader-header-tab">
+                <div class="opti_spinner"></div>
+            </div> -->
+            <!-- loader end --> 
+            
+  
+          <div class="card">
+            <div class="card-block">
+              <form class="k-form">
+  
+                  <label class="k-form-field">
+                      <span class="opti_form-label">Custmer Name</span>
+                      <input name="custmerName" type="text" class="k-textbox" [(ngModel)]="custmerName" />
+                  </label>
+  
+                  <label class="k-form-field">
+                      <input name="custmerCompanyName" type="text" class="k-textbox" [(ngModel)]="custmerCompanyName" disabled/>
+                  </label>
+  
+                  <label class="k-form-field">
+                      <span class="opti_form-label">PO Date</span>
+                      <kendo-datepicker ></kendo-datepicker>
+                  </label>
+  
+                  <label class="k-form-field">
+                      <span class="opti_form-label">Reference#</span>
+                      <input name="reference" type="text" class="k-textbox" [ngModel]="reference"  />
+                  </label>
+  
+                  <label class="k-form-field">
+                      <span class="opti_form-label">Reference Type</span>
+                      <kendo-dropdownlist
+                          [data]="ReferenceType"
+                          textField="text"
+                          valueField="value"
+                          [(ngModel)]="selectedItem"
+                      >
+                      </kendo-dropdownlist>
+                      
+                  </label>
+  
+                  <div class="text-right">
+                      <button type="button" class="k-button k-primary">Save</button>
+                      <button type="button" class="k-button">Save as draft</button>
+                      <button type="button" class="k-button">Cancel</button>
+                  </div>
+  
+              </form>
+            </div>
+          </div>
+        </div> 
+      </div> 
+    </div>  
+  </div>
+  
