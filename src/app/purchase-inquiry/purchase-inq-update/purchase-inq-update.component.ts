@@ -126,7 +126,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
           if(this.purchaseInquiryDetail!=null){
           this.callPurchaseInquiryDetailAPI(this.purchaseInquiryDetail.PurchaseInquiryId);
           }else{}
-          
        
         }
       },

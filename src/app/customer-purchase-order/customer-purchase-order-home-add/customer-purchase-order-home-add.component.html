@@ -1,61 +1,67 @@
-<div class="opti_customer-purchase-order-home-add opti_position-relative opti_fullheight" id="opti_CustomerPurchaseOrderUpdateHomeAddID" [perfectScrollbar]="">
+<div class="opti_customer-purchase-order-home-add opti_position-relative opti_fullheight" id="opti_CustomerPurchaseOrderUpdateHomeAddID"
+    [perfectScrollbar]="">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-  
-            <!-- loader start -->
-            <!-- <div class="opti_loader opti_loader-header-tab">
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- loader start -->
+                <!-- <div class="opti_loader opti_loader-header-tab">
                 <div class="opti_spinner"></div>
             </div> -->
-            <!-- loader end --> 
-            
-  
-          <div class="card">
-            <div class="card-block">
-              <form class="k-form">
-  
-                  <label class="k-form-field">
-                      <span class="opti_form-label">Custmer Name</span>
-                      <input name="custmerName" type="text" class="k-textbox" [(ngModel)]="custmerName" disabled/>
-                  </label>
-  
-                  <label class="k-form-field">
-                      <input name="custmerCompanyName" type="text" class="k-textbox" [(ngModel)]="custmerCompanyName" disabled/>
-                  </label>
-  
-                  <label class="k-form-field">
-                      <span class="opti_form-label">PO Date</span>
-                      <kendo-datepicker ></kendo-datepicker>
-                  </label>
-  
-                  <label class="k-form-field">
-                      <span class="opti_form-label">Reference#</span>
-                      <input name="reference" type="text" class="k-textbox" [ngModel]="reference"  disabled/>
-                  </label>
-  
-                  <label class="k-form-field">
-                      <span class="opti_form-label">Reference Type</span>
-                      <kendo-dropdownlist
-                          [data]="ReferenceType"
-                          textField="text"
-                          valueField="value"
-                          [(ngModel)]="selectedItem"
-                      >
-                      </kendo-dropdownlist>
-                      
-                  </label>
-  
-                  <div class="text-right">
-                      <button type="button" class="k-button k-primary">Save</button>
-                      <button type="button" class="k-button">Save as draft</button>
-                      <button type="button" class="k-button">Cancel</button>
-                  </div>
-  
-              </form>
+                <!-- loader end -->
+
+
+                <div class="card">
+                    <div class="card-block">
+                        <form class="k-form">
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Custmer Name</span>
+                                <input name="custmerName" type="text" class="k-textbox" [(ngModel)]="customerCode" disabled/>
+                            </label>
+
+                            <label class="k-form-field">
+                                <input name="custmerCompanyName" type="text" class="k-textbox" [(ngModel)]="customerName" disabled/>
+                            </label>
+
+                            <label class="k-form-field">
+                                <span class="opti_form-label">PO Date</span>
+
+                                <kendo-datepicker (valueChange)="valueChange($event)" name="PurchaseOrderDate" [format]="'dd MMM yy'" [(ngModel)]="customerPurchaseOrderAddModel.PurchaseOrderDate"
+                                    required [min]="minPODate">
+                                </kendo-datepicker>
+                            </label>
+
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Reference#</span>
+                                <input name="reference" type="text" placeholder="Reference number" class="k-textbox" [(ngModel)]="customerPurchaseOrderAddModel.RefrenceNumber"
+                                    disabled/>
+                            </label>
+
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Reference Type</span>
+                                <!-- <kendo-dropdownlist
+                                 name="referencetype"
+                                  [data]="ReferenceType"
+                                   [textField]="'text'"
+                                    [valueField]="'value'"
+                                     [(ngModel)]="customerPurchaseOrderAddModel.RefrenceType">
+                                </kendo-dropdownlist> -->
+                                <kendo-dropdownlist name="referencetype" [data]="ReferenceType" (valueChange)="valueChange($event)"  [(ngModel)]="customerPurchaseOrderAddModel.RefrenceType" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
+                                </kendo-dropdownlist>
+                                <!-- <kendo-dropdownlist name="refType" [data]="defaultStatus" [(ngModel)]="purchaseInqueryAdd.Status" [valuePrimitive]="true"
+                      [textField]="'text'" [valueField]="'value'" disabled>
+                  </kendo-dropdownlist> -->
+
+                            </label>
+
+                            <div class="text-right">
+                                <button type="button" class="k-button k-primary" (click)="AddCustomerPurchaseOrder(false)">Save</button>
+                                <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div> 
-      </div> 
-    </div>  
-  </div>
-  
+        </div>
+    </div>
+</div>

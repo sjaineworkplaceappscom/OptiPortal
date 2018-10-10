@@ -29,7 +29,7 @@ export class PurchaseInqAddComponent implements OnInit {
   public purchaseInqueryAdd: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
   public validUntilForUpdate: Date;
   public createdDateForUpdate: Date;
-
+ 
   public customerName: string;
   public customerCode: string;
   public loggedInUserName: string;
@@ -119,10 +119,10 @@ export class PurchaseInqAddComponent implements OnInit {
     this.addSub=this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
       (data: any) => {        
         this.commonService.refreshPIList(null);
-        
+         
         localStorage.setItem("PurchaseinqueryId",data.PurchaseInquiryId);      
         localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(data));         
-        this.openUpdateSideBar(data);
+        this.openUpdateSideBar(data); 
         this.showLoader=false;
       },
       error => {

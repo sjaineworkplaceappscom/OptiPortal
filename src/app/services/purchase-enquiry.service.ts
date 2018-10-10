@@ -11,7 +11,7 @@ import { NotesModel } from '../models/purchaserequest/notes';
 @Injectable({
   providedIn: 'root'
 })
-export class PurchaseInquiryService {
+export class PurchaseInquiryService {  
   baseUrl = Configuration.baseServerAPIEndpoint;
 
   constructor(private httpHelper: HttpHelper) {

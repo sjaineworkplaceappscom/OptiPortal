@@ -170,6 +170,11 @@ Cancelled = 7,
 Closed = 8,
 Updated = 9
 }
+export enum CPOReferenceType{
+    PurchaseOrder = 1,
+    Quotation = 2,
+    Agreement = 3
+}
 
 export enum PurchaseInquiryItemStatus
 {

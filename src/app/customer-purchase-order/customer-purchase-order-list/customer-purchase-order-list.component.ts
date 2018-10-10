@@ -8,6 +8,11 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from 'src/app/enums/enums';
 import * as $ from "jquery";
 import { Configuration } from '../../helpers/Configuration';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { CustomerPurchaseOrderService } from '../../services/customer-purchase-order.service';
+import { DatePipe } from '../../../../node_modules/@angular/common';
+import { Router } from '../../../../node_modules/@angular/router';
 
 
 
@@ -27,19 +32,25 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
   showLoader: boolean = false;
   searchRequest: string = '';
 
+//for inquiry grid Data
+public gridData: any[] = [];
+public systemAdmin: any;
+public loginUserType: number;
+
+// Subscriber
+getCPOlistSubs: ISubscription;
+refreshCPOListSubs: ISubscription;
+
   pageLimit:string;
   pagination:boolean;
   
   // UI Section
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-
     // show/hide pagintaion
     this.paginationAttributes();
-
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
-
     // check mobile device
     this.isMobile = UIHelper.isMobile();
   }
@@ -47,9 +58,10 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
 
   
 
-  constructor(private commonService:Commonservice) { }
+  constructor(private customerPurchaseOrderService: CustomerPurchaseOrderService, private commonService: Commonservice, public datepipe: DatePipe, private router: Router) {
+  
+  }
 
-  public gridData: any[];
 
   public paginationAttributes(){
     this.isMobile = UIHelper.isMobile();
@@ -70,23 +82,36 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
     element.classList.add("opti_body-customer-purchase-order");
     element.classList.add("opti_body-main-module");
     // Apply class on body end
-
     // show/hide pagintaion
     this.paginationAttributes();
-
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
-
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-    
+    // user detail.
+    let userDetail: string = localStorage.getItem("LoginUserDetail");
+    let userData: any[] = JSON.parse(userDetail);
+    this.loginUserType = userData[0].LoginUserType;
+    this.gridHeight = UIHelper.getMainContentHeight();
+    this.systemAdmin = localStorage.getItem('SystemAdmin');
+
+    this.refreshCPOListSubs = this.commonService.refreshPIListSubscriber.subscribe(data => {
+      this.getCustomerPurchaseOrderList();
+    },
+      error => {
+        this.showLoader = false;
+        alert("Something went wrong");
+        console.log("Error: ", error)
+      });
+
+    //call method to get all inquiry data.
     this.getCustomerPurchaseOrderList();
   }
 
   /**
    * Method to get list of inquries from server.
   */
-  public getCustomerPurchaseOrderList() {
+  public getCustomerPurchaseOrderList1() {
     this.showLoader = true;
     this.gridData = customerPurchaseOrderList;
     setTimeout(()=>{    
@@ -96,6 +121,34 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
 
 
 
+  /**
+   * Method to get list of inquries from server.
+   */
+  public getCustomerPurchaseOrderList() {
+    this.showLoader = true;
+    debugger;
+    this.getCPOlistSubs = this.customerPurchaseOrderService.getCustomerPurchaseOrderList().subscribe(
+      customerPurchaseData => {
+        if (customerPurchaseData != null && customerPurchaseData != undefined) {
+          this.gridData = JSON.parse(customerPurchaseData);
+          this.gridData.forEach(element => {
+            element.PurchaseOrderDate = DateTimeHelper.ParseDate(element.PurchaseOrderDate);
+          });
+          this.showLoader = false;
+        }
+      },
+      error => {
+        this.showLoader = false;
+        alert("Something went wrong");
+        console.log("Error: ", error);
+        //localStorage.clear();
+        // this.router.navigate(['landing']);
+      },
+      () => {
+        this.showLoader = false;
+      }
+    );
+  }
   onFilterChange(checkBox:any,grid:GridComponent)
   {
     if(checkBox.checked==false){
@@ -107,13 +160,23 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openInqueryDetailOnSelectInquery(e:Event){
+  openInqueryDetailOnSelectInquery(selection){
     $('#opti_HomeTabCustomerPurchaseOrderID').click();
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.CPOUpdate;
     currentsideBarInfo.ModuleName = ModuleName.CustomerPurchaseOrder;
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+
+    let selectedCustomerPurchaseOrder = this.gridData[selection.index];
+    
+    localStorage.setItem("SelectedCustomerPurchaseOrder", JSON.stringify(selectedCustomerPurchaseOrder));
+    currentsideBarInfo.RequesterData = selectedCustomerPurchaseOrder;
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
+    console.log('b4 reset selection');
+    // Reset Selection.
+    selection.selectedRows = [];
+
   }
   
   AddCustomerPurchaseOrder(){
@@ -123,5 +186,14 @@ export class CustomerPurchaseOrderListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
+
+  ngOnDestroy() {
+    if (this.refreshCPOListSubs != undefined)
+      this.refreshCPOListSubs.unsubscribe();
+
+    if (this.getCPOlistSubs != undefined)
+      this.getCPOlistSubs.unsubscribe();
+  }
+
 
 }

@@ -8,7 +8,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
   styleUrls: ['./customer-purchase-order-add.component.scss']
 })
 export class CustomerPurchaseOrderAddComponent implements OnInit {
-
+ 
   constructor() { }
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
