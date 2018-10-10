@@ -52,7 +52,7 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    //Apply Grid Height
+    //Apply Grid Height 
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();

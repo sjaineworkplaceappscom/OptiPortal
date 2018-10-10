@@ -56,6 +56,7 @@ export class CustomerPurchaseOrderService {
    */
   public getPurchaseOrderDetail(PurchaseOrderId: string): Observable<any> {
     let url: string = this.baseUrl + "purchaseorder/detail/" + PurchaseOrderId;
+    
     return this.httpHelper.get(url, null);
   }
 }
