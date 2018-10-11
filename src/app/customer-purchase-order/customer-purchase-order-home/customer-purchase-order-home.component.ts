@@ -18,7 +18,7 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
   podate;
   reference;
   public value: Date = new Date(2000, 2, 10);
-
+  public minPODate: Date = new Date();
   public ReferenceType = [
     { text: "Purchase Order", value: 1 },
     { text: "Quotation", value: 2 },

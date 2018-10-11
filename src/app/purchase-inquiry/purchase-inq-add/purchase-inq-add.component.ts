@@ -25,7 +25,7 @@ export class PurchaseInqAddComponent implements OnInit {
   tabStatus: boolean = false;
   showLoader:boolean=false;
 
-  public minValidDate: Date = new Date();
+public minValidDate: Date = new Date();
   public purchaseInqueryAdd: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
   public validUntilForUpdate: Date;
   public createdDateForUpdate: Date;

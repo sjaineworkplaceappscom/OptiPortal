@@ -107,7 +107,7 @@ openUpdateSideBar(data: any){
   let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
   currentSidebarInfo.SideBarStatus = true,
   currentSidebarInfo.ModuleName=ModuleName.CustomerPurchaseOrder;
-  currentSidebarInfo.ComponentName=ComponentName.CPOAdd;
+  currentSidebarInfo.ComponentName=ComponentName.CPOUpdate;
   currentSidebarInfo.RequesterData=data
   this.commonService.setCurrentSideBar(currentSidebarInfo);
 }
