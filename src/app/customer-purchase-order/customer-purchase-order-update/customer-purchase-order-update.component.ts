@@ -17,6 +17,7 @@ export class CustomerPurchaseOrderUpdateComponent implements OnInit {
   public getPIsubs: ISubscription;
   public sideBarsubs: ISubscription;
   public updatePISub: ISubscription;
+  public updatePIStatusSub: ISubscription;
   showLoader: boolean = false;
   customerPurchaseOrderModel: CustomerPurchaseOrderModel = new CustomerPurchaseOrderModel();
   constructor(private commonService: Commonservice, private customerPurchaseOrderService: CustomerPurchaseOrderService) { }
@@ -44,7 +45,6 @@ export class CustomerPurchaseOrderUpdateComponent implements OnInit {
      debugger;
      this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        
         console.log("current side bar data:"+currentSidebarData)
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
@@ -52,7 +52,6 @@ export class CustomerPurchaseOrderUpdateComponent implements OnInit {
           if(this.customerPurchaseOrderModel!=null){
           this.callCustomerPurchaseOrderDetailAPI(this.customerPurchaseOrderModel.PurchaseOrderId);
           }else{}
-       
         }
       },
       error => {
@@ -60,9 +59,19 @@ export class CustomerPurchaseOrderUpdateComponent implements OnInit {
         alert("Something went wrong");
         console.log("Error: ", error)
       }
-
     );
+  }
 
+  ngOnDestroy() {
+    if (this.sideBarsubs != undefined)
+      this.sideBarsubs.unsubscribe();
+    if (this.updatePISub != undefined)
+      this.updatePISub.unsubscribe();
+    if (this.getPIsubs != undefined)
+      this.getPIsubs.unsubscribe();
+
+    if (this.updatePIStatusSub != undefined)
+      this.updatePIStatusSub.unsubscribe();
   }
 
 
@@ -113,6 +122,32 @@ export class CustomerPurchaseOrderUpdateComponent implements OnInit {
   this.customerCode = userData[0].ParentCode;
   this.loginUserType = userData[0].LoginUserType;
 }
+
+
+ /**
+  * UpdatePurchaseInquiry 
+  */
+ public UpdatePurchaseInquiry() {
+
+ 
+
+   this.showLoader = true;
+    this.updatePISub = this.customerPurchaseOrderService.UpdatePurchaseOrder(this.customerPurchaseOrderModel).subscribe(
+      data => {
+        this.showLoader = false;
+        this.commonService.refreshPIList(null);
+        
+        localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(this.customerPurchaseOrderModel));
+      },
+      error => {
+        alert("Something went wrong");
+        console.log("Error: ", error)
+        this.showLoader = false;
+      },
+      () => { this.showLoader = false; }
+
+    );
+  }
 }
 
   
