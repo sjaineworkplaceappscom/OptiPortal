@@ -2,43 +2,11 @@
   <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
-              <!-- file upload section start -->
-                <ng-container *ngIf="showGrid==false">
-                    
-                  <!-- loader start -->
-                    <div class="opti_loader opti_loader-attachment-tab" *ngIf="showLoader==true">
-                        <div class="opti_spinner"></div>
-                    </div>
-                    <!-- loader end -->
-
-                    <ng-container *ngIf="showLoader==false">
-                        <label class="opti_custom-file-upload">
-                            <input #file type="file" multiple (change)="upload(file.files)"  />
-                            <!-- accept=".png,.jpg" -->
-                            <img src="{{imgPath}}/common/image-upload.svg" width="16px" height="16px" /> Upload
-                        </label>
-                        <!-- {{selectedFileName}} -->
-                        <br />
-
-                        <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
-                            {{progress}}%
-                        </span>
-
-                        <span style="font-weight:bold;color:green;" *ngIf="message">
-                            {{message}}
-                        </span>
-
-                        <div class="text-right">
-                            <button (click)="back()">Cancel</button>
-                        </div>
-
-                    </ng-container>
-                </ng-container>
-              <!-- file upload section end -->
+             
 
 
               <!-- start attachement grid -->
-                <ng-container *ngIf="showGrid==true">
+                
 
                     <!-- loader start -->
                     <div class="opti_loader opti_loader-attachment-tab" *ngIf="showLoader==true">
@@ -86,7 +54,7 @@
 
                                   <!-- add items -->
                                   <div class="float-right">
-                                      <svg-icon #showAddAttachementForm src="{{imgPath}}/common/add.svg" (click)="showAttachementForm()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                                      <svg-icon #showAddAttachementForm src="{{imgPath}}/common/add.svg"  [svgStyle]="{ 'width.px':16, 'height.px':16}"
                                           class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
                                   </div>
                               </ng-template>
@@ -115,7 +83,7 @@
 
                     </ng-container>
 
-                </ng-container>
+                
             <!-- end attachement grid -->
           </div>
       </div>
