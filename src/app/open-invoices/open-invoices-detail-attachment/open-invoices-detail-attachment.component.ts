@@ -18,7 +18,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 })
 export class OpenInvoicesDetailAttachmentComponent implements OnInit {
 
-  showGrid:boolean=true;
+  // showGrid:boolean=true;
 
   imgPath = Configuration.imagePath;
   pageLimit;
@@ -80,13 +80,13 @@ export class OpenInvoicesDetailAttachmentComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  back() {
-    this.showGrid = true;
-  }
+  // back() {
+  //   this.showGrid = true;
+  // }
 
-  showAttachementForm(){
-    this.showGrid = false;
-  }
+  // showAttachementForm(){
+  //   this.showGrid = false;
+  // }
 
   // file upload code start
   public files: UploadFile[] = [];
