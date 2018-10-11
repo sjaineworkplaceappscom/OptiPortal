@@ -10,43 +10,47 @@
           <!-- loader end --> 
           
  
-        <div class="card">
+        <div class="card">  
           <div class="card-block">
             <form class="k-form">
                 <label class="k-form-field">
                     <span class="opti_form-label">Custmer Name</span>
-                    <input name="custmerName" type="text" class="k-textbox" [(ngModel)]="custmerName" />
+                    <input name="custmerName" type="text" class="k-textbox" [(ngModel)]="customerCode" />
                 </label>
 
                 <label class="k-form-field">
-                    <input name="custmerCompanyName" type="text" class="k-textbox" [(ngModel)]="custmerCompanyName" disabled/>
+                    <input name="custmerCompanyName" type="text" class="k-textbox" [(ngModel)]="customerName" disabled/>
                 </label>
 
                 <label class="k-form-field">
                     <span class="opti_form-label">PO Date</span>
-                    <kendo-datepicker ></kendo-datepicker>
+                    <kendo-datepicker (valueChange)="valueChange($event)" name="PurchaseOrderDate" [format]="'dd MMM yy'" [(ngModel)]="customerPurchaseOrderModel.PurchaseOrderDate"
+                    required [min]="minPODate" ></kendo-datepicker>
                 </label>
 
                 <label class="k-form-field">
                     <span class="opti_form-label">Reference#</span>
-                    <input name="reference" type="text" class="k-textbox" [ngModel]="reference"  />
+                    <!-- <input name="reference" type="text" class="k-textbox" [ngModel]="reference"  /> -->
+                    <input name="reference" type="text" placeholder="Reference number" class="k-textbox" [(ngModel)]="customerPurchaseOrderModel.RefrenceNumber"
+                    disabled/>
                 </label>
 
                 <label class="k-form-field">
                     <span class="opti_form-label">Reference Type</span>
-                    <kendo-dropdownlist
+                    <!-- <kendo-dropdownlist
                         [data]="ReferenceType"
                         textField="text"
                         valueField="value"
-                        [(ngModel)]="selectedItem"
+                        [(ngModel)]="customerPurchaseOrderModel"
                     >
+                    </kendo-dropdownlist> -->
+                    <kendo-dropdownlist name="referencetype" [data]="ReferenceType" (valueChange)="valueChange($event)"  [(ngModel)]="customerPurchaseOrderModel.RefrenceType" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
                     </kendo-dropdownlist>
-                    
                 </label>
 
                 <div class="text-right">
-                    <button type="button" class="k-button k-primary">Save</button>
-                    <button type="button" class="k-button">Cancel</button>
+                    <button type="button" class="k-button k-primary" (click)="UpdateCustomerPurchaseOrder()">Save</button>
+                    <button type="button" class="k-button" (click)="closeRightSidebar()">Cancel</button>
                 </div>
 
             </form>
