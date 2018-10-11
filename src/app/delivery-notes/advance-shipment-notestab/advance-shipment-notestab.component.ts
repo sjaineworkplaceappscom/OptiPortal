@@ -76,7 +76,6 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
-    debugger;
      this.advanceShipmentNotesListModel = JSON.parse(localStorage.getItem('SelectedASN'))
      this.selectedASNNoteId = this.advanceShipmentNotesListModel.DeliveryNumber;
      this.getAdvanceShipmentNotesList(this.selectedASNNoteId.toString(), CustomerEntityType.AdvanceShipmentNote);

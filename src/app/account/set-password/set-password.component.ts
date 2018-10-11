@@ -37,8 +37,7 @@ export class SetPasswordComponent implements OnInit {
     );
   }
 
-  setPassword() {
-   debugger;     
+  setPassword() { 
     let this1 = this;
     this.showLoader = true;
     this.userModel.UserName = this.userId;
@@ -51,7 +50,6 @@ export class SetPasswordComponent implements OnInit {
           this.router.navigateByUrl('account/login');
         },        
         (err:HttpErrorResponse) => {
-          debugger;
           this.showLoader = false;
           alert('Something went wrong please retry.')
           console.log("Error:"+err);

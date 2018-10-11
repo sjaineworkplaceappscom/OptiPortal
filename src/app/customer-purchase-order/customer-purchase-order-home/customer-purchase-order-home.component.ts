@@ -129,7 +129,6 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
   * UpdatePurchaseInquiry 
   */
   public UpdateCustomerPurchaseOrder() {
-     debugger;
     this.showLoader = true;
     this.updatePISub = this.customerPurchaseOrderService.UpdatePurchaseOrder(this.customerPurchaseOrderModel).subscribe(
       data => {

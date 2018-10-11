@@ -10,8 +10,8 @@ export class DeliveryNoteHeaderModel{
     ModeOfShipment: string;
     ShippingMethod: string;
     ShipToLocation: string;
-    TotalPrice: string;
+    Total: string;
     Freight: string;
     Tax: string;
-    Disc: string;
+    Discount: string;
 } 

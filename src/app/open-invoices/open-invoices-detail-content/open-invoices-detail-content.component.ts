@@ -48,8 +48,6 @@ export class OpenInvoicesDetailContentComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-
-    debugger;
     this.openInvoiceListModel = JSON.parse(localStorage.getItem('SelectedOpenInvoice'));
     let invoiceID: number = this.openInvoiceListModel.InvoiceId;
 
@@ -82,7 +80,6 @@ export class OpenInvoicesDetailContentComponent implements OnInit {
  */
   getOpenInvoiceContentList(id: number) {
     this.showLoader = true;
-    debugger;
     this.getDetailsubs = this.openInvoiceService.getOpenInvoiceDetail(id, 2).subscribe(
       data => {
 

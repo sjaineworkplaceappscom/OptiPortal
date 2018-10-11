@@ -81,7 +81,6 @@ ngOnDestroy(){
 
 
 public AddCustomerPurchaseOrder() {
-   debugger; 
   this.customerPurchaseOrderAddModel.PurchaseOrderDate=DateTimeHelper.ParseToUTC(this.customerPurchaseOrderAddModel.PurchaseOrderDate);
   this.showLoader=true;
   this.addSub=this.customerPurchaseOrderService.AddPurchaseOrder(this.customerPurchaseOrderAddModel).subscribe(

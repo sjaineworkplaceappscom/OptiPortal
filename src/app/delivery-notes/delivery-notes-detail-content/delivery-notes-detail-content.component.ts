@@ -47,12 +47,11 @@ export class DeliveryNotesDetailContentComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-
-    
     this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'));
-    
-    let deliveryNumber: number = this.deliveryNoteListModel.DeliveryNumber;
-    this.getDeliveryNotesContentList(deliveryNumber);
+    if(this.deliveryNoteListModel!=null && this.deliveryNoteListModel!= undefined){
+    let deliveryId: number = this.deliveryNoteListModel.DeliveryNumber; 
+    this.getDeliveryNotesContentList(deliveryId);
+    }
   }
 
   /**
@@ -80,7 +79,7 @@ export class DeliveryNotesDetailContentComponent implements OnInit {
    /** 
    * call api for Sales quotation detail.
    */
-  getDeliveryNotesContentList(id: number) {
+    getDeliveryNotesContentList(id: number) {
     this.showLoader = true;
     
     this.getDetailsubs = this.deliveryNotesService.getDeliveryNotesDetail(id,2).subscribe(

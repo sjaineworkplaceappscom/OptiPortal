@@ -90,7 +90,6 @@ export class AdvanceShipmentNotesListComponent implements OnInit {
    */
   public getASNList() {
     this.showLoader = true;
-    debugger;
     this.getASNlistSubs = this.advanceShipmentNoteService.getAdvanceShipmentNotesList().subscribe(
       data => {
         if (data != null && data != undefined) { 
@@ -134,7 +133,8 @@ export class AdvanceShipmentNotesListComponent implements OnInit {
     //Reset Selection.
     let selectedSalesOrder = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = selectedSalesOrder;
-    localStorage.setItem("SelectedASN", JSON.stringify(selectedSalesOrder));
+    //we will put in delivery note local storage for ASN because it will show same record of DN in respect to ASN.
+    localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedSalesOrder));
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     selection.selectedRows=[];  
   }
