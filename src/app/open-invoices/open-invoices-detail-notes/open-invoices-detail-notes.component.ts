@@ -78,8 +78,8 @@ public getOpenInvoicesAllNotesList1() {
    this.isMobile = UIHelper.isMobile();
    this.openInvoiceListModel = JSON.parse(localStorage.getItem('SelectedOpenInvoice'))
    this.selectedOpenInvoiceId = this.openInvoiceListModel.InvoiceId;
-  // this.getOpenInvoiceNoteList(this.selectedOpenInvoiceId.toString(), CustomerEntityType.OpenInvoice);
-   this.getOpenInvoicesAllNotesList1();
+   this.getOpenInvoiceNoteList(this.selectedOpenInvoiceId.toString(), CustomerEntityType.OpenInvoice);
+  // this.getOpenInvoicesAllNotesList1();
  }
 
  public openNewNote() {

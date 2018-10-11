@@ -5,6 +5,7 @@ import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { OpenInvoiceHeaderModel } from '../../tempmodels/open-invoice-header-model';
 import { OpenInvoiceListModel } from '../../tempmodels/open-invoice-list-model';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-open-invoices-detail-home',
@@ -13,38 +14,27 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 })
 export class OpenInvoicesDetailHomeComponent implements OnInit {
 
-
-  Invoice;
-  invoiceDate;
-  dueDate;
-  Amount;
-  Freight;
-  Tax;
-  discount;
-  totalAmount;
-  billToaddress;
-  contactPerson;
-  paymentTerms;
-  advancePaidamount;
-  balancedue;
-
+ 
   public getDetailsubs: ISubscription;
   public getSidebarsubs: ISubscription;
 
   showLoader: boolean = false;
   openInvoiceHeaderModel: OpenInvoiceHeaderModel = new OpenInvoiceHeaderModel();
   openInvoiceListModel: OpenInvoiceListModel = new OpenInvoiceListModel();
-
+  public dateformat:string=Configuration.getDisplayDateFormat();
 
   constructor(private commonService: Commonservice, private openInvoiceService: OpenInvoiceService) { }
   
-  ngOnInit() {
+  ngOnInit() { 
     this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
         
+        if(currentSidebarData.RequesterData!=null && currentSidebarData.RequesterData != undefined){
+        console.log('side bar data'+currentSidebarData.RequesterData);
         this.openInvoiceListModel = currentSidebarData.RequesterData;
         let invoiceNumber: number = this.openInvoiceListModel.InvoiceNumber;
-        //this.getOpenInvoiceDetail(invoiceNumber);
+       this.getOpenInvoiceDetail(invoiceNumber);
+      }
       }
     );
   }
@@ -53,7 +43,6 @@ export class OpenInvoicesDetailHomeComponent implements OnInit {
      * call api for Sales quotation detail .
      */
     getOpenInvoiceDetail(id: number) {
-
       this.showLoader = true;
       this.getDetailsubs = this.openInvoiceService.getOpenInvoiceDetail(id,1).subscribe(
         data => {
