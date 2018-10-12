@@ -16,6 +16,7 @@ import { FileDropModule } from 'ngx-file-drop';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { AdvanceShipmentNotesListComponent } from './advance-shipment-notes-list/advance-shipment-notes-list.component';
 import { AdvanceShipmentNotestabComponent } from './advance-shipment-notestab/advance-shipment-notestab.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { AdvanceShipmentNotestabComponent } from './advance-shipment-notestab/ad
     PerfectScrollbarModule,
     FileDropModule,
     DropDownsModule,
+    SharedModule
   ],
   declarations: [DeliveryNotesListComponent, DeliveryNotesDetailComponent, DeliveryNotesDetailHomeComponent, DeliveryNotesDetailContentComponent, DeliveryNotesDetailAttachmentComponent, DeliveryNotesDetailNotesComponent, AdvanceShipmentNotesListComponent, AdvanceShipmentNotestabComponent],
   exports:[DeliveryNotesListComponent, DeliveryNotesDetailComponent]
