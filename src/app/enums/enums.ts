@@ -172,8 +172,7 @@ Updated = 9
 }
 export enum CPOReferenceType{
     PurchaseOrder = 1,
-    Quotation = 2,
-    Agreement = 3
+    Agreement = 2
 }
 
 export enum PurchaseInquiryItemStatus

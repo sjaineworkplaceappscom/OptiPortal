@@ -27,7 +27,9 @@
                                 <span class="opti_form-label">PO Date</span>
 
                                 <kendo-datepicker (valueChange)="valueChange($event)" name="PurchaseOrderDate" [format]="'dd MMM yy'" [(ngModel)]="customerPurchaseOrderAddModel.PurchaseOrderDate"
-                                    required [min]="minPODate">
+                                    [min]="minPODate">
+                                    <!-- <kendo-datepicker (valueChange)="valueChange($event)" name="validUntil" [format]="'dd MMM yy'" [(ngModel)]="purchaseInqueryAdd.ValidTillDate" required [min]="minValidDate">
+                                    </kendo-datepicker> this.customerPurchaseOrderAddModel.PurchaseOrderDate-->
                                 </kendo-datepicker>
                             </label>
 

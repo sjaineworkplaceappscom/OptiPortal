@@ -23,11 +23,10 @@ export class CustomerPurchaseOrderHomeAddComponent implements OnInit {
 
   public ReferenceType = [
     { text: "Purchase Order", value: CPOReferenceType.PurchaseOrder },
-    { text: "Quotation", value: CPOReferenceType.Quotation },
     { text: "Agreement", value: CPOReferenceType.Agreement }
   ];
   showLoader: boolean = false;
-  public selectedItem = [{ text: "Quotation", value: 2 }];
+  public selectedItem = [{ text: "Purchase Order", value: CPOReferenceType.PurchaseOrder }];
   public customerName: string;
   public customerCode: string;
   public loggedInUserName: string;
@@ -35,7 +34,7 @@ export class CustomerPurchaseOrderHomeAddComponent implements OnInit {
   public addSub:ISubscription;
   public customerPurchaseOrderAddModel:CustomerPurchaseOrderModel;
   public systemAdmin;
-  public PODate:Date;
+  public PODate:Date = new Date();;
   public minPODate: Date = new Date();
   
   constructor(private customerPurchaseOrderService: CustomerPurchaseOrderService, private commonService: Commonservice) { }
@@ -81,6 +80,7 @@ ngOnDestroy(){
 
 
 public AddCustomerPurchaseOrder() {
+  
   this.customerPurchaseOrderAddModel.PurchaseOrderDate=DateTimeHelper.ParseToUTC(this.customerPurchaseOrderAddModel.PurchaseOrderDate);
   this.showLoader=true;
   this.addSub=this.customerPurchaseOrderService.AddPurchaseOrder(this.customerPurchaseOrderAddModel).subscribe(
@@ -108,6 +108,7 @@ openUpdateSideBar(data: any){
   currentSidebarInfo.SideBarStatus = true,
   currentSidebarInfo.ModuleName=ModuleName.CustomerPurchaseOrder;
   currentSidebarInfo.ComponentName=ComponentName.CPOUpdate;
+  data.PurchaseOrderDate=DateTimeHelper.ParseToUTC(data.PurchaseOrderDate);//new Date(data.PurchaseOrderDate);
   currentSidebarInfo.RequesterData=data
   this.commonService.setCurrentSideBar(currentSidebarInfo);
 }

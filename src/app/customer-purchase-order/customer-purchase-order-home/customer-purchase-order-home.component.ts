@@ -6,6 +6,7 @@ import { CustomerPurchaseOrderService } from '../../services/customer-purchase-o
 import { UIHelper } from '../../helpers/ui.helpers';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
+import { CPOReferenceType } from '../../enums/enums';
 
 @Component({
   selector: 'app-customer-purchase-order-home',
@@ -20,9 +21,8 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
   public value: Date = new Date(2000, 2, 10);
   public minPODate: Date = new Date();
   public ReferenceType = [
-    { text: "Purchase Order", value: 1 },
-    { text: "Quotation", value: 2 },
-    { text: "Agreement", value: 3 }
+    { text: "Purchase Order", value: CPOReferenceType.PurchaseOrder },
+    { text: "Agreement", value: CPOReferenceType.Agreement }
   ];
 
   public getPIsubs: ISubscription;
@@ -38,7 +38,7 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
 
   constructor(private commonService: Commonservice, private customerPurchaseOrderService: CustomerPurchaseOrderService) { }
 
-  public selectedItem = [{ text: "Quotation", value: 2 }];
+  public selectedItem = [ {text: "Purchase Order", value: CPOReferenceType.PurchaseOrder }];
 
 
   ngOnInit() {
@@ -156,4 +156,8 @@ closeRightSidebar() {
   currentSidebarInfo.SideBarStatus = false;
   this.commonService.setCurrentSideBar(currentSidebarInfo);
 }
+valueChange(value:any){    
+  // GlobalResource.dirty=true;
+   console.log('change in datepicker value'); 
+ }
 }
