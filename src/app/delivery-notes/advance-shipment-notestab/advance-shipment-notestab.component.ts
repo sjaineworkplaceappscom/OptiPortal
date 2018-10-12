@@ -76,7 +76,7 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
-     this.advanceShipmentNotesListModel = JSON.parse(localStorage.getItem('SelectedASN'))
+     this.advanceShipmentNotesListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
      this.selectedASNNoteId = this.advanceShipmentNotesListModel.DeliveryNumber;
      this.getAdvanceShipmentNotesList(this.selectedASNNoteId.toString(), CustomerEntityType.AdvanceShipmentNote);
     
@@ -168,7 +168,7 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
         this.resetModelValues();
         this.closeAddNote();
         // Get notes data.
-        this.advanceShipmentNotesListModel = JSON.parse(localStorage.getItem('SelectedASN'))
+        this.advanceShipmentNotesListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
         this.selectedASNNoteId = this.advanceShipmentNotesListModel.ASNId;
         this.getAdvanceShipmentNotesList(this.selectedASNNoteId.toString(), CustomerEntityType.AdvanceShipmentNote);
       });
@@ -194,7 +194,7 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
        
         // Get notes data.
       // Get notes data.
-      this.advanceShipmentNotesListModel = JSON.parse(localStorage.getItem('SelectedASN'))
+      this.advanceShipmentNotesListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
       this.selectedASNNoteId = this.advanceShipmentNotesListModel.ASNId;
       this.getAdvanceShipmentNotesList(this.selectedASNNoteId.toString(), CustomerEntityType.AdvanceShipmentNote);
 
@@ -203,7 +203,7 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
         this.showLoader = false;
         alert("Something went wrong"); 
       // Get notes data.
-      this.advanceShipmentNotesListModel = JSON.parse(localStorage.getItem('SelectedASN'))
+      this.advanceShipmentNotesListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
       this.selectedASNNoteId = this.advanceShipmentNotesListModel.ASNId;
       this.getAdvanceShipmentNotesList(this.selectedASNNoteId.toString(), CustomerEntityType.AdvanceShipmentNote);
         
