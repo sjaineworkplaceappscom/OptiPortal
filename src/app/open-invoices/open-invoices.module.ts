@@ -14,6 +14,9 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FileDropModule } from 'ngx-file-drop';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { CustomFilterPipe } from 'src/app/custom-filter.pipe';
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
   imports: [
@@ -25,7 +28,9 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
     AngularSvgIconModule,
     PerfectScrollbarModule,
     FileDropModule,
-    DropDownsModule
+    DropDownsModule,
+    SharedModule    
+
   ],
   declarations: [OpenInvoicesListComponent, OpenInvoicesDetailComponent, OpenInvoicesDetailHomeComponent, OpenInvoicesDetailContentComponent, OpenInvoicesDetailAttachmentComponent, OpenInvoicesDetailNotesComponent],
   exports:[OpenInvoicesListComponent, OpenInvoicesDetailComponent]

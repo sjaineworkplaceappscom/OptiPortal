@@ -43,8 +43,20 @@ export class CustomFilterPipe implements PipeTransform {
       (items.Branch!=null && items.Branch.toLowerCase().indexOf(args) != -1 ) ||
       (items.QuotationDate!=null && items.QuotationDate.toString().toLowerCase().indexOf(args) != -1 ) ||
       (items.Duedate!=null && items.Duedate.toString().toLowerCase().indexOf(args) != -1 ) ||
-      (items.DocumentDate!=null && items.DocumentDate.toString().toLowerCase().indexOf(args) != -1 ) 
+      (items.DocumentDate!=null && items.DocumentDate.toString().toLowerCase().indexOf(args) != -1 ) ||
 
+      // CPO
+      (items.InvoiceNumber!=null && items.InvoiceNumber.toString().toLowerCase().indexOf(args) != -1 ) ||
+      (items.Amount!=null && items.Amount.toLowerCase().indexOf(args) != -1 ) ||
+      (items.SalesEmployee!=null && items.SalesEmployee.toLowerCase().indexOf(args) != -1 ) ||
+      (items.Freight!=null && items.Freight.toLowerCase().indexOf(args) != -1 ) ||
+      (items.Tax!=null && items.Tax.toLowerCase().indexOf(args) != -1 ) ||
+      (items.TotalAmount!=null && items.TotalAmount.toLowerCase().indexOf(args) != -1 ) ||
+      (items.BillToAddress!=null && items.BillToAddress.toLowerCase().indexOf(args) != -1 ) ||
+      (items.ContactPerson!=null && items.ContactPerson.toLowerCase().indexOf(args) != -1 ) ||
+      (items.InvoiceDate!=null && items.InvoiceDate.toString().toLowerCase().indexOf(args) != -1 ) ||
+      (items.DueDate!=null && items.DueDate.toString().toLowerCase().indexOf(args) != -1 ) 
+     
       
     });
 

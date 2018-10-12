@@ -18,7 +18,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
   styleUrls: ['./open-invoices-list.component.scss']
 })
 export class OpenInvoicesListComponent implements OnInit {
-
+  displayDateformat:string=Configuration.getDisplayDateFormat(true);
   imgPath = Configuration.imagePath;
 
   pageLimit;
@@ -129,11 +129,11 @@ export class OpenInvoicesListComponent implements OnInit {
   
   this.getOpenInvoicelistSubs = this.openInvoiceService.getOpenInvoiceList().subscribe(
     data => {
-      if (data != null && data != undefined) {
-          this.gridData = JSON.parse(data);
+      if (data != null && data != undefined) {        
+          this.gridData = JSON.parse(data);          
           this.gridData.forEach(element => {
           element.InvoiceDate = DateTimeHelper.ParseDate(element.InvoiceDate);
-          element.Duedate = DateTimeHelper.ParseDate(element.Duedate);
+          element.DueDate = DateTimeHelper.ParseDate(element.DueDate);
         });
         this.showLoader = false;
       }
