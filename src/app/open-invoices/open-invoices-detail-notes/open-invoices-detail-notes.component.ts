@@ -126,7 +126,7 @@ public getOpenInvoicesAllNotesList1() {
  }
 
  submitNote(e) {
-  this.showLoader = false;
+  this.showLoader = true;
   let OpenInvoiceId: number = this.openInvoiceListModel.InvoiceId;
   let OpenInvoiceNumber: number = this.openInvoiceListModel.InvoiceNumber;
   this.noteModel.NoteType = this.selectedNoteItem.value;
@@ -149,6 +149,7 @@ public getOpenInvoicesAllNotesList1() {
       this.showLoader = false;
     },
     error => {
+      this.showLoader = false;
       alert("Something went wrong");
       this.resetModelValues();
       this.closeAddNote();
@@ -161,7 +162,7 @@ public getOpenInvoicesAllNotesList1() {
       console.log("Error: ", error)
     },
     () => {
-    
+      this.showLoader = false;
     });
   this.closeAddNote();
  }
