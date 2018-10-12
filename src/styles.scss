@@ -16,12 +16,12 @@ body.opti_account-module{
 
 #opti_purchaseInquiryAttachementSectionID,
 #opti_purchaseInquiryItemAttachementSectionID,
-#opti_CustomerPurchaseOrderUpdateID{  
+#opti_CustomerPurchaseOrderAttachmentID{  
     kendo-grid-list{
         .k-grid-content{
             background-image:url('assets/images/common/drop-grid-bg.png'); 
             background-repeat: no-repeat;
             background-position: center center;
         }
-    } 
+    }  
 }

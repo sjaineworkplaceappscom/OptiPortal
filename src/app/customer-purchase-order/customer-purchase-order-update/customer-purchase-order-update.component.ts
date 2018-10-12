@@ -33,7 +33,7 @@ export class CustomerPurchaseOrderUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
- 
+    UIHelper.getWidthOfOuterTab();
   }
 
  
