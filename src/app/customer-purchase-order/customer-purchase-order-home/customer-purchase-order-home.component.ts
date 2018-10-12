@@ -6,7 +6,8 @@ import { CustomerPurchaseOrderService } from '../../services/customer-purchase-o
 import { UIHelper } from '../../helpers/ui.helpers';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
-import { CPOReferenceType } from '../../enums/enums';
+import { CPOReferenceType, CustomerEntityType } from '../../enums/enums';
+import { NotesModel } from '../../models/purchaserequest/notes';
 
 @Component({
   selector: 'app-customer-purchase-order-home',
@@ -35,6 +36,7 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
   public customerCode: string;
   public loggedInUserName: string;
   public loginUserType: number;
+  notesMasterData: NotesModel = new NotesModel();
 
   constructor(private commonService: Commonservice, private customerPurchaseOrderService: CustomerPurchaseOrderService) { }
 
@@ -108,6 +110,12 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
       this.customerPurchaseOrderModel.PurchaseOrderDate = new Date(this.customerPurchaseOrderModel.PurchaseOrderDate);
       this.getUserDetails();
 
+      // Set notes data for inquiry
+      this.notesMasterData.ParentId = this.customerPurchaseOrderModel.PurchaseOrderId;
+      this.notesMasterData.ParentType = CustomerEntityType.CustomerPurchaseOrder;
+      this.notesMasterData.GrantParentId = this.customerPurchaseOrderModel.PurchaseOrderId;
+      this.notesMasterData.GrandParentType = CustomerEntityType.CustomerPurchaseOrder;
+      this.commonService.setNotesData(this.notesMasterData);
     }
   }
 

@@ -59,7 +59,6 @@ export class CustomerPurchaseOrderAttachmentComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-    debugger;
     this.customerPurchaseOrderModel = JSON.parse(localStorage.getItem('SelectedCustomerPurchaseOrder'));
     this.purchaseOrderID = this.customerPurchaseOrderModel.PurchaseOrderId;
     this.getAttchmentList(this.purchaseOrderID);
