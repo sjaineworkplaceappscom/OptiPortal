@@ -193,6 +193,20 @@ export  class UIHelper{
         }, 500);
     }
 
+    public static getWidthOfOuterTabCPO(){
+        let i;
+        let a;
+        let tabWidth : number = 0;
+
+        setTimeout(()=>{
+            let tablinks = document.getElementsByClassName("opti_tablinks") as HTMLCollectionOf<HTMLElement>;
+            for (i = 0; i < tablinks.length; i++) {
+                tabWidth = tabWidth + tablinks[i].offsetWidth;
+            }
+            document.getElementById("opti_TabID").style.width  = tabWidth-50+'px';
+        }, 500);
+    }
+
     /**
      * Open Right section container
     */

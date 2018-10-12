@@ -58,7 +58,7 @@
                        </label>
                    </form>
 
-                   <svg-icon src="{{imgPath}}/common/add.svg" (click)="AddCustomerPurchaseOrder()" [svgStyle]="{ 'width.px':16, 'height.px':16}" class="opti_vertical-align float-left opti_icon-spacing opti_add-CPO opti_hide-in-mobile"></svg-icon>
+                   <svg-icon src="{{imgPath}}/common/add.svg" (click)="AddCustomerPurchaseOrder()" [svgStyle]="{ 'width.px':16, 'height.px':16}" class="opti_vertical-align float-left opti_icon-spacing opti_add-CPO"></svg-icon>
                </div>
            </ng-template>
 
@@ -74,12 +74,12 @@
                         <dt>Id</dt>
                         <dd>{{ dataItem.PurchaseOrderNumber }}</dd>
 
-                        <dt>Reference Type <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
+                        <dt>Reference Type </dt>
                         <dd>{{ dataItem.RefrenceTypeText }}</dd>
                     </dl>
 
                     <dl class="opti_mobile_grid_dl">
-                        <dt>Purchase Order Date</dt>
+                        <dt>Purchase Order Date <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
                         <dd>{{ dataItem.PurchaseOrderDate }}</dd>
 
                         <dt>Reference#</dt>
