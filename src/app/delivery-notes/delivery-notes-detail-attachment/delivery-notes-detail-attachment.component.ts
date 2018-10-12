@@ -20,13 +20,13 @@ export class DeliveryNotesDetailAttachmentComponent implements OnInit {
 
   imgPath = Configuration.imagePath;
   pageLimit;
-  pagination:boolean;
+  pagination: boolean;
 
   isMobile: boolean;
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;
   gridHeight: number;
- 
+
   searchRequest: string = '';
   showLoader: boolean = false;
   deliveryNoteListModel: DeliveryNoteListModel = new DeliveryNoteListModel();
@@ -35,26 +35,27 @@ export class DeliveryNotesDetailAttachmentComponent implements OnInit {
 
   constructor(private deliveryNotesService: DeliveryNotesService, private sharedComponentService: SharedComponentService) { }
 
-   // UI Section
-   @HostListener('window:resize', ['$event'])
-   onResize(event) {
-     // apply grid height
-     this.gridHeight = UIHelper.getMainContentHeight();
-     // check mobile device
-     this.isMobile = UIHelper.isMobile();
-   }
-   // End UI Section
+  // UI Section
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    // apply grid height
+    this.gridHeight = UIHelper.getMainContentHeight();
+    // check mobile device
+    this.isMobile = UIHelper.isMobile();
+  }
+  // End UI Section
 
   ngOnInit() {
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-    
+
     this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'));
-    let deliveryId: number = this.deliveryNoteListModel.DeliveryId;
-    
-    this.getDeliveryNotesAttachmentList(deliveryId);
+    if (this.deliveryNoteListModel != null) {
+      let deliveryId: number = this.deliveryNoteListModel.DeliveryId;
+      this.getDeliveryNotesAttachmentList(deliveryId);
+    }
   }
 
   /**
@@ -63,28 +64,28 @@ export class DeliveryNotesDetailAttachmentComponent implements OnInit {
   public getDeliveryNotesAttachmentList1() {
     this.showLoader = true;
     this.gridData = deliveryNotesAttachment;
-    setTimeout(()=>{    
+    setTimeout(() => {
       this.showLoader = false;
     }, 1000);
   }
 
-  onFilterChange(checkBox:any,grid:GridComponent){
-    if(checkBox.checked==false){
+  onFilterChange(checkBox: any, grid: GridComponent) {
+    if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
 
-  clearFilter(grid:GridComponent){      
+  clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
   }
 
 
- /** 
-   * call api for Sales quotation detail attachment .
-   */
+  /** 
+    * call api for Sales quotation detail attachment .
+    */
   getDeliveryNotesAttachmentList(id: number) {
     this.showLoader = true;
-    
+
     this.getDetailAttachsubs = this.deliveryNotesService.getDeliveryNotesDetail(id, 3).subscribe(
       data => {
         this.showLoader = false;
@@ -102,7 +103,7 @@ export class DeliveryNotesDetailAttachmentComponent implements OnInit {
       }, () => { }
     );
   }
-  
+
   download(fileName: string) {
     let seletedAttachment = this.gridData.filter(i => i.FileName == fileName)[0];
     try {
@@ -111,19 +112,19 @@ export class DeliveryNotesDetailAttachmentComponent implements OnInit {
       this.sharedComponentService.getAtachmentFromPath(filePath)
         .subscribe(
           res => {
-           if(res!=undefined && res!=null){
-            let fileName=res.Item1;
-            let tempAttachmentId=res.Item2;
-            let filepath:string=Configuration.doccumentPath + "Temp/"+tempAttachmentId +"/"+fileName;          
-            var a = document.createElement('a');
-            document.body.appendChild(a);
-            a.href = filepath;
-            a.download = fileName;
-            // a.target="_blank";
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-           }
+            if (res != undefined && res != null) {
+              let fileName = res.Item1;
+              let tempAttachmentId = res.Item2;
+              let filepath: string = Configuration.doccumentPath + "Temp/" + tempAttachmentId + "/" + fileName;
+              var a = document.createElement('a');
+              document.body.appendChild(a);
+              a.href = filepath;
+              a.download = fileName;
+              // a.target="_blank";
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+            }
           }
         );
     }

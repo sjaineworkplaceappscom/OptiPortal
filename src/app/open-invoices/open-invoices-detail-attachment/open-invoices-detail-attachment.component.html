@@ -2,43 +2,11 @@
   <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
-              <!-- file upload section start -->
-                <ng-container *ngIf="showGrid==false">
-                    
-                  <!-- loader start -->
-                    <div class="opti_loader opti_loader-attachment-tab" *ngIf="showLoader==true">
-                        <div class="opti_spinner"></div>
-                    </div>
-                    <!-- loader end -->
-
-                    <ng-container *ngIf="showLoader==false">
-                        <label class="opti_custom-file-upload">
-                            <input #file type="file" multiple (change)="upload(file.files)"  />
-                            <!-- accept=".png,.jpg" -->
-                            <img src="{{imgPath}}/common/image-upload.svg" width="16px" height="16px" /> Upload
-                        </label>
-                        <!-- {{selectedFileName}} -->
-                        <br />
-
-                        <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
-                            {{progress}}%
-                        </span>
-
-                        <span style="font-weight:bold;color:green;" *ngIf="message">
-                            {{message}}
-                        </span>
-
-                        <div class="text-right">
-                            <button (click)="back()">Cancel</button>
-                        </div>
-
-                    </ng-container>
-                </ng-container>
-              <!-- file upload section end -->
+             
 
 
               <!-- start attachement grid -->
-                <ng-container *ngIf="showGrid==true">
+                
 
                     <!-- loader start -->
                     <div class="opti_loader opti_loader-attachment-tab" *ngIf="showLoader==true">
@@ -49,7 +17,7 @@
                     
                     <ng-container *ngIf="showLoader==false">
 
-                      <file-drop headertext="" (onFileDrop)="dropped($event)">
+                      
 
                           <kendo-grid 
                           [kendoGridBinding]="gridData" 
@@ -85,10 +53,10 @@
                                   </button>
 
                                   <!-- add items -->
-                                  <div class="float-right">
-                                      <svg-icon #showAddAttachementForm src="{{imgPath}}/common/add.svg" (click)="showAttachementForm()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                                  <!-- <div class="float-right">
+                                      <svg-icon #showAddAttachementForm src="{{imgPath}}/common/add.svg"  [svgStyle]="{ 'width.px':16, 'height.px':16}"
                                           class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
-                                  </div>
+                                  </div> -->
                               </ng-template>
                               <!-- grid template end -->
 
@@ -96,14 +64,17 @@
                                       <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex"> 
                                           <!-- <a href="http://139.144.10.218:5000/Upload/e70754db-1b84-4285-bece-101f79f6d04c/cats-cute-animals-kitten-Favim.com-2144514%20(3).jpg" target="_blank">view</a> -->
                                           <!-- <span  (click)="download(dataItem.AttachmentId)" class="opti_mouse-pointer" style="color: #1fa2ff;">Download</span> -->
-                                          <svg-icon  src="{{imgPath}}/common/download.svg" (click)="download(dataItem.AttachmentId)" [svgStyle]="{ 'width.px':16, 'height.px':16}" class="opti_mouse-pointer"></svg-icon>
+                                          <svg-icon  src="{{imgPath}}/common/download.svg" (click)="download(dataItem.FileName)" [svgStyle]="{ 'width.px':16, 'height.px':16}" class="opti_mouse-pointer"></svg-icon>
                                       </ng-template>
                               </kendo-grid-column>
 
-                              <kendo-grid-column field="AttachmentName" title="Name" [width]="160"></kendo-grid-column>
+                              <!-- <kendo-grid-column field="AttachmentName" title="Name" [width]="160"></kendo-grid-column>
                               <kendo-grid-column field="SizeInKb" title="Size(In Bytes)" [width]="140" filter="numeric"></kendo-grid-column>
                               <kendo-grid-column field="AttachmentTypeText" title="Attachment Type" [width]="140"></kendo-grid-column>
-                              <kendo-grid-column field="CreatedByName" title="Created By" [width]="150"></kendo-grid-column>
+                              <kendo-grid-column field="CreatedByName" title="Created By" [width]="150"></kendo-grid-column> -->
+
+                              <kendo-grid-column field="FileName" title="File Name"></kendo-grid-column>
+                              <kendo-grid-column field="AttachementDate" title="Attachment Date" format="{0:dd MMM yy}"></kendo-grid-column>
                                                             
                               <!-- xlsx template start -->
                               <kendo-grid-excel fileName="open-voices-attachements.xlsx"></kendo-grid-excel>
@@ -111,11 +82,11 @@
 
                           </kendo-grid>
 
-                      </file-drop>    
+                      
 
                     </ng-container>
 
-                </ng-container>
+                
             <!-- end attachement grid -->
           </div>
       </div>

@@ -74,7 +74,6 @@ export class DeliveryNotesListComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
     this.getPaginationAttributes();
-
     //call api for delivery note list.
     //this.getDeliveryNotesList1();
     this.getDeliveryNotesList();
@@ -83,7 +82,7 @@ export class DeliveryNotesListComponent implements OnInit {
   /**
    * Method to get list of inquries from server.
   */
-  public getDeliveryNotesList1() {
+  public getDeliveryNotesList1() { 
     this.showLoader = true;
     this.gridData = deliveryNotesList;
     setTimeout(()=>{    
@@ -134,7 +133,6 @@ export class DeliveryNotesListComponent implements OnInit {
     currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
     currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
     currentsideBarInfo.SideBarStatus = true;
-    this.commonService.setCurrentSideBar(currentsideBarInfo);
     // Reset Selection.
     
     let selectedDeliveryNote = this.gridData[selection.index];

@@ -69,7 +69,7 @@ public getOpenInvoicesAllNotesList1() {
  setTimeout(()=>{    
    this.showLoader = false;
  }, 1000);
-}
+} 
 
  ngOnInit() {
    //Apply Grid Height
@@ -78,8 +78,8 @@ public getOpenInvoicesAllNotesList1() {
    this.isMobile = UIHelper.isMobile();
    this.openInvoiceListModel = JSON.parse(localStorage.getItem('SelectedOpenInvoice'))
    this.selectedOpenInvoiceId = this.openInvoiceListModel.InvoiceId;
-  // this.getOpenInvoiceNoteList(this.selectedOpenInvoiceId.toString(), CustomerEntityType.OpenInvoice);
-   this.getOpenInvoicesAllNotesList1();
+   this.getOpenInvoiceNoteList(this.selectedOpenInvoiceId.toString(), CustomerEntityType.OpenInvoice);
+  // this.getOpenInvoicesAllNotesList1();
  }
 
  public openNewNote() {
@@ -126,6 +126,7 @@ public getOpenInvoicesAllNotesList1() {
  }
 
  submitNote(e) {
+  this.showLoader = false;
   let OpenInvoiceId: number = this.openInvoiceListModel.InvoiceId;
   let OpenInvoiceNumber: number = this.openInvoiceListModel.InvoiceNumber;
   this.noteModel.NoteType = this.selectedNoteItem.value;
@@ -138,12 +139,6 @@ public getOpenInvoicesAllNotesList1() {
     resp => {
       //this method is updating the status if notes updated then update inquiry status.
       //this.callPurchaseInquiryStatusUpdateAPI();
-    },
-    error => {
-      alert("Something went wrong");
-      console.log("Error: ", error)
-    },
-    () => {
       this.resetModelValues();
       this.closeAddNote();
       // Get notes data.
@@ -151,6 +146,22 @@ public getOpenInvoicesAllNotesList1() {
       let OpenInvoiceId: number = this.openInvoiceListModel.InvoiceId;
       let OpenInvoiceNumber: number = this.openInvoiceListModel.InvoiceNumber;
       this.getOpenInvoiceNoteList(OpenInvoiceId.toString(), CustomerEntityType.OpenInvoice);
+      this.showLoader = false;
+    },
+    error => {
+      alert("Something went wrong");
+      this.resetModelValues();
+      this.closeAddNote();
+      // Get notes data.
+      this.openInvoiceListModel = JSON.parse(localStorage.getItem('SelectedOpenInvoice'))
+      let OpenInvoiceId: number = this.openInvoiceListModel.InvoiceId;
+      let OpenInvoiceNumber: number = this.openInvoiceListModel.InvoiceNumber;
+      this.getOpenInvoiceNoteList(OpenInvoiceId.toString(), CustomerEntityType.OpenInvoice);
+      this.showLoader = false;
+      console.log("Error: ", error)
+    },
+    () => {
+    
     });
   this.closeAddNote();
  }
@@ -201,6 +212,7 @@ public getOpenInvoicesAllNotesList1() {
 
  public updateNote(e){
   this.selectedNote;
+  this.showLoader = true;
   //selected note object : this.selectedNote
   this.selectedNote.NoteType = this.selectedNoteItem.value;
   this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
@@ -222,6 +234,7 @@ public getOpenInvoicesAllNotesList1() {
       
     },
     () => {
+      this.showLoader = false;
       this.closeUpdateNote(e);
     }); 
 

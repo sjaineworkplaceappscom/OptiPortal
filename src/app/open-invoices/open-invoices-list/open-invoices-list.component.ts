@@ -111,13 +111,13 @@ export class OpenInvoicesListComponent implements OnInit {
     currentsideBarInfo.ComponentName = ComponentName.OpenInvoices;
     currentsideBarInfo.ModuleName = ModuleName.OpenInvoices;
     currentsideBarInfo.SideBarStatus = true;
-    this.commonService.setCurrentSideBar(currentsideBarInfo);
     
     // Reset Selection.
-     let selectedSalesOrder = this.gridData[selection.index];
-     currentsideBarInfo.RequesterData = selectedSalesOrder;
-     localStorage.setItem("SelectedOpenInvoice", JSON.stringify(selectedSalesOrder));
+     let selectedOpenInvoice = this.gridData[selection.index];
+     currentsideBarInfo.RequesterData = selectedOpenInvoice;
+     localStorage.setItem("SelectedOpenInvoice", JSON.stringify(selectedOpenInvoice));
      this.commonService.setCurrentSideBar(currentsideBarInfo);
+     //this.commonService.setCurrentSideBar(currentsideBarInfo);
      selection.selectedRows=[];  
   }
 
@@ -126,7 +126,7 @@ export class OpenInvoicesListComponent implements OnInit {
   */
  public getOpenInvoicesList() {
   this.showLoader = true; 
-  debugger;
+  
   this.getOpenInvoicelistSubs = this.openInvoiceService.getOpenInvoiceList().subscribe(
     data => {
       if (data != null && data != undefined) {

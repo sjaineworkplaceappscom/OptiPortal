@@ -81,7 +81,6 @@ ngOnDestroy(){
 
 
 public AddCustomerPurchaseOrder() {
-   debugger; 
   this.customerPurchaseOrderAddModel.PurchaseOrderDate=DateTimeHelper.ParseToUTC(this.customerPurchaseOrderAddModel.PurchaseOrderDate);
   this.showLoader=true;
   this.addSub=this.customerPurchaseOrderService.AddPurchaseOrder(this.customerPurchaseOrderAddModel).subscribe(
@@ -108,7 +107,7 @@ openUpdateSideBar(data: any){
   let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
   currentSidebarInfo.SideBarStatus = true,
   currentSidebarInfo.ModuleName=ModuleName.CustomerPurchaseOrder;
-  currentSidebarInfo.ComponentName=ComponentName.CPOAdd;
+  currentSidebarInfo.ComponentName=ComponentName.CPOUpdate;
   currentSidebarInfo.RequesterData=data
   this.commonService.setCurrentSideBar(currentSidebarInfo);
 }

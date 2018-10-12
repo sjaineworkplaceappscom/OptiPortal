@@ -17,7 +17,7 @@ export class OpenInvoiceService {
    * get Sales Quotation list data from server.
    */
   public getOpenInvoiceList(): Observable<any> {
-    let url: string = this.baseUrl + "openinvoicelist/list";
+    let url: string = this.baseUrl + "openinvoice/list";
     return this.httpHelper.get(url, null);
     //return null;
   }
@@ -27,7 +27,7 @@ export class OpenInvoiceService {
    */
   public getOpenInvoiceDetail(id:number,type:number): Observable<any> {
     
-    let url: string = this.baseUrl + "openinvoicelist/detail/"+id+"/"+type;  //1 for header tab.
+    let url: string = this.baseUrl + "openinvoice/detail/"+id+"/"+type;  //1 for header tab.
     return this.httpHelper.get(url, null);
   }
 

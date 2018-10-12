@@ -19,7 +19,7 @@ export class OpenInvoicesDetailContentComponent implements OnInit {
 
   imgPath = Configuration.imagePath;
   pageLimit;
-  pagination:boolean;
+  pagination: boolean;
 
   isMobile: boolean;
   isColumnFilter: boolean = false;
@@ -30,7 +30,7 @@ export class OpenInvoicesDetailContentComponent implements OnInit {
   public gridData: any[];
   public getDetailsubs: ISubscription;
   openInvoiceListModel: OpenInvoiceListModel = new OpenInvoiceListModel();
-  
+
   constructor(private openInvoiceService: OpenInvoiceService) { }
 
   // UI Section
@@ -48,11 +48,10 @@ export class OpenInvoicesDetailContentComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-
-    this.getOpenInvoiceContentList1();
     this.openInvoiceListModel = JSON.parse(localStorage.getItem('SelectedOpenInvoice'));
-    let invoiceNumber: number = this.openInvoiceListModel.InvoiceNumber;
-    
+    let invoiceID: number = this.openInvoiceListModel.InvoiceId;
+
+    this.getOpenInvoiceContentList(invoiceID);
   }
 
   /**
@@ -61,39 +60,37 @@ export class OpenInvoicesDetailContentComponent implements OnInit {
   public getOpenInvoiceContentList1() {
     this.showLoader = true;
     this.gridData = openInvoicesContent;
-    setTimeout(()=>{    
+    setTimeout(() => {
       this.showLoader = false;
     }, 1000);
   }
 
-  onFilterChange(checkBox:any,grid:GridComponent)
-  {
-    if(checkBox.checked==false){
+  onFilterChange(checkBox: any, grid: GridComponent) {
+    if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
 
-  clearFilter(grid:GridComponent){      
+  clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
   }
 
-    /** 
-   * call api for Sales quotation detail.
-   */
+  /** 
+ * call api for Sales quotation detail.
+ */
   getOpenInvoiceContentList(id: number) {
     this.showLoader = true;
-    
-    this.getDetailsubs = this.openInvoiceService.getOpenInvoiceDetail(id,2).subscribe(
+    this.getDetailsubs = this.openInvoiceService.getOpenInvoiceDetail(id, 2).subscribe(
       data => {
-        
+
         this.showLoader = false;
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
           this.gridData.forEach(element => {
-        //  element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
-        });
-        this.showLoader = false;
-      }
+            //  element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
+          });
+          this.showLoader = false;
+        }
 
       }, error => {
         this.showLoader = false;
@@ -106,6 +103,6 @@ export class OpenInvoicesDetailContentComponent implements OnInit {
   ngOnDestroy() {
     if (this.getDetailsubs != undefined)
       this.getDetailsubs.unsubscribe();
-   }
+  }
 
 }

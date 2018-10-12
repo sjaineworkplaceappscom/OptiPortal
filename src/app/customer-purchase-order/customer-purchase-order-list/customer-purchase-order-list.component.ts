@@ -126,7 +126,6 @@ refreshCPOListSubs: ISubscription;
    */
   public getCustomerPurchaseOrderList() {
     this.showLoader = true;
-    debugger;
     this.getCPOlistSubs = this.customerPurchaseOrderService.getCustomerPurchaseOrderList().subscribe(
       customerPurchaseData => {
         if (customerPurchaseData != null && customerPurchaseData != undefined) {
