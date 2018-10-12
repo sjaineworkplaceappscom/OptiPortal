@@ -6,6 +6,7 @@ import { Commonservice } from '../../services/commonservice.service';
 import { CustomerPurchaseOrderService } from '../../services/customer-purchase-order.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { CustomerPurchaseOrderModel } from '../../tempmodels/customer-purchase-order-model';
+import { CPOReferenceType } from 'src/app/enums/enums';
 
 @Component({
   selector: 'app-customer-purchase-order-update',
@@ -20,6 +21,22 @@ export class CustomerPurchaseOrderUpdateComponent implements OnInit {
   showLoader: boolean = false;
   customerPurchaseOrderModel: CustomerPurchaseOrderModel = new CustomerPurchaseOrderModel();
   constructor(private commonService: Commonservice, private customerPurchaseOrderService: CustomerPurchaseOrderService) { }
+
+
+  custmerName;
+  custmerCompanyName:string='BizChat';
+  podate;
+  reference;
+  public value: Date = new Date(2000, 2, 10);
+
+  public ReferenceType = [
+    { text: "Purchase Order", value: CPOReferenceType.PurchaseOrder },
+    { text: "Quotation", value: CPOReferenceType.Quotation },
+    { text: "Agreement", value: CPOReferenceType.Agreement }
+  ];
+  public selectedItem = [{ text: "Quotation", value: 2 }];
+  public customerName: string;
+  public customerCode: string;
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
 
@@ -100,10 +117,8 @@ export class CustomerPurchaseOrderUpdateComponent implements OnInit {
     }
  }
 
- public customerName: string;
-  public customerCode: string;
-  public loggedInUserName: string;
-  public loginUserType: number;
+ public loggedInUserName: string;
+ public loginUserType: number;
  private getUserDetails() {
   //for getting logged in user info from local storage.
   let userDetail: string = localStorage.getItem("LoginUserDetail");
