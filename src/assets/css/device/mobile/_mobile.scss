@@ -35,7 +35,7 @@ body.opti_body-main-module .opti_loader-module-grid-list {
 
 // make sarch box in full width
 body.opti_body-main-module{
-    .opti_right-top-sec-grid-purchase-order-list,
+    
     .opti_right-top-sec-grid-sales-order-list,
     .opti_right-top-sec-grid-sales-quotation-list,
     .opti_right-top-sec-grid-delivery-list-notes{
@@ -54,8 +54,10 @@ body.opti_body-main-module{
 }
 
 body.opti_body-main-module{
+    .opti_right-top-sec-grid-purchase-order-list,
     .opti_right-top-sec-grid-purchase-inq-list,
-    .opti_right-top-sec-grid-customer-contacts-list{
+    .opti_right-top-sec-grid-customer-contacts-list,
+    {
         width: 100%;
         form{
             width: calc(100% - 26px);

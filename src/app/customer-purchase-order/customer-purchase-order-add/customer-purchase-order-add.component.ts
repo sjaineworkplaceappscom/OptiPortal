@@ -28,12 +28,12 @@ export class CustomerPurchaseOrderAddComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    UIHelper.getWidthOfOuterTabCPO();
   }
 
   ngOnInit() {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    UIHelper.getWidthOfOuterTabCPO();
   }
 
 }

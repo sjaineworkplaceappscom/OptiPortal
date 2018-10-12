@@ -29,11 +29,11 @@ export class CustomerPurchaseOrderUpdateComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    UIHelper.getWidthOfOuterTabCPO();
   }
 
   ngOnInit() {
-    UIHelper.getWidthOfOuterTab();
+    UIHelper.getWidthOfOuterTabCPO();
   }
 
  
