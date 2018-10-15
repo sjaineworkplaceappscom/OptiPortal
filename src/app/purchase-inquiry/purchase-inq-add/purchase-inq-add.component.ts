@@ -8,6 +8,7 @@ import { ModuleName, ComponentName, PurchaseInquiryStatus } from '../../enums/en
 import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { GlobalResource } from '../../helpers/global-resource';
+import { ToastService } from '../../helpers/services/toast.service';
 @Component({
   selector: 'app-purchase-inq-add',
   templateUrl: './purchase-inq-add.component.html',
@@ -15,7 +16,7 @@ import { GlobalResource } from '../../helpers/global-resource';
 })
 export class PurchaseInqAddComponent implements OnInit {
   @Input() currentSidebarInfo: CurrentSidebarInfo;
-  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice) { }
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice,private toast:ToastService) { }
 
   isHome: boolean = true;
   isItems: boolean = false;
@@ -117,7 +118,9 @@ public minValidDate: Date = new Date();
     
     this.showLoader=true;
     this.addSub=this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
-      (data: any) => {        
+      (data: any) => {  
+        //this.toast.ShowNotification("Inquery added successfully.");
+
         this.commonService.refreshPIList(null);
          
         localStorage.setItem("PurchaseinqueryId",data.PurchaseInquiryId);      
