@@ -111,6 +111,7 @@ export class SigninComponent implements OnInit {
       this.invalidCapcha = true;
       return;
     }
+    this.invalidCapcha = false;
     this.showLoader = true;
     await this.accountService.getUserDetails(this.userName).subscribe(
       userData => {
@@ -120,21 +121,7 @@ export class SigninComponent implements OnInit {
             let resUserDataPermissions = resUserData.Permissions
             resUserData =resUserData.LoginUserDetail;
             this.userNotExist = false;
-            // // Multiteenet 
-            // if (resUserData.length > 1) {
-            //   ApplicationState.SharedData = resUserData;
-            //   let loginModel: LoginModel = new LoginModel();
-            //   loginModel.AuthData = resUserData;
-            //   loginModel.Password = password;
-
-            //   // Pass data to tennant selection component.
-            //   // this.commonService.shareAuthData(loginModel);
-            //   this.commonService.setAuthCurrentValue(loginModel);
-            //   this.router.navigateByUrl('/tenantselection');
-            // }
-            // // single tenanat
-            // else {            
-            
+          
             let data = resUserData[0];
 
             userId = data.LoginUserId;
@@ -171,7 +158,6 @@ export class SigninComponent implements OnInit {
           console.log("Error: ", error)
         }
     );
-
 
   }
 
