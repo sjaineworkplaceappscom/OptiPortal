@@ -120,7 +120,7 @@ public minValidDate: Date = new Date();
     this.showLoader=true;
     this.addSub=this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
       (data: any) => {  
-        this.toast.ShowNotification();
+        this.toast.showSuccess("Purchase inquery added successfully.");
 
         this.commonService.refreshPIList(null);
          
