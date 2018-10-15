@@ -8,12 +8,12 @@ export class ToastService {
 
   constructor(private notificationService: NotificationService) { }
 
-  public ShowNotification(message = '', style: any = 'success') {
+  public ShowNotification() {
     debugger;
     this.notificationService.show({      
-      content: "hi",
+      content: "Your data has been saved. Time for tea!",
       animation: { type: 'slide', duration: 400 },
-      position: { horizontal: 'left', vertical: 'top' },
+      position: { horizontal: 'right', vertical: 'top' },
       type: { style: 'success', icon: true },
       closable: true
     });

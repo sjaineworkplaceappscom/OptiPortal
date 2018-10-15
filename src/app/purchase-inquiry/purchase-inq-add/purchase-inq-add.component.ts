@@ -9,6 +9,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { GlobalResource } from '../../helpers/global-resource';
 import { ToastService } from '../../helpers/services/toast.service';
+
 @Component({
   selector: 'app-purchase-inq-add',
   templateUrl: './purchase-inq-add.component.html',
@@ -119,7 +120,7 @@ public minValidDate: Date = new Date();
     this.showLoader=true;
     this.addSub=this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
       (data: any) => {  
-        //this.toast.ShowNotification("Inquery added successfully.");
+        this.toast.ShowNotification();
 
         this.commonService.refreshPIList(null);
          
@@ -161,5 +162,15 @@ public minValidDate: Date = new Date();
     currentSidebarInfo.RequesterData=data
     this.commonService.setCurrentSideBar(currentSidebarInfo);
   }
+
+  // public show(): void {
+  //     this.notificationService.show({
+  //         content: 'Your data has been saved. Time for tea!',
+  //         animation: { type: 'slide', duration: 400 },
+  //         position: { horizontal: 'right', vertical: 'top' },
+  //         type: { style: 'success', icon: true },
+  //         closable: true
+  //     });
+  // }
 
 }
