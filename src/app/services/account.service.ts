@@ -15,7 +15,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { ErrorObject } from '../models/error/error-object';
 
 import { Observable } from 'rxjs';
-import { Configuration } from '../../app/helpers/Configuration';
+import { Configuration } from 'src/app/helpers/Configuration';
 
 @Injectable({
   providedIn: 'root'

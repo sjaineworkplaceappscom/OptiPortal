@@ -47,14 +47,14 @@
                                         <dl>
                                             <!-- <dd><span style="font-weight:bold;">Created By </span>  {{ dataItem.CreatedByName }} <span style="font-weight:bold;">On </span> {{ dataItem.CreatedDate| date:'dd MMM yy'  }} <span style="font-weight:bold;">for</span>Item001 -->
                                             <!-- <dd *ngIf='dataItem.ParentIdText ===""'> -->
-                                                <span class="opti_note-meta"><strong>{{ dataItem.CreatedByName }}</strong> 
+                                                <span class="opti_note-meta" *ngIf ='dataItem.System != true'><strong>{{ dataItem.CreatedByName }}</strong> 
                                                     has created <strong> {{dataItem.NoteText}} </strong>  note
                                                     on <strong>{{ dataItem.CreatedDate| date:'dd MMM yy' }} </strong> 
                                                    <span *ngIf='dataItem.ParentIdText !=null'> for
                                                        <strong>{{dataItem.ParentIdText}}</strong>
                                                    </span> 
                                                 </span>
-                                                <span class="float-right opti_note-action-button-sec">
+                                                <span class="float-right opti_note-action-button-sec" *ngIf ='dataItem.System != true'>
                                                     <svg-icon kendoGridEditCommand src="{{imgPath}}/common/edit.svg" (click)="openEditNoteView($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
                                                         class="opti_mouse-pointer float-right"></svg-icon>
                                                  

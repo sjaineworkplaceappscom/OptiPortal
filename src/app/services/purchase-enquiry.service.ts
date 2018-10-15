@@ -4,7 +4,7 @@ import { HttpHelper } from '../helpers/http.helper';
 import { Observable } from 'rxjs/Observable';
 import { RequestOptions } from '@angular/http';
 import { TempPurchaseInquiryModel } from '../tempmodels/temppurchase-inquiry';
-import { Configuration } from '../../app/helpers/Configuration';
+import { Configuration } from 'src/app/helpers/Configuration';
 import { TempPurchaseInquiryItemModel } from '../tempmodels/temppurchase-inquiry-item';
 import { NotesModel } from '../models/purchaserequest/notes';
 

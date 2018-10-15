@@ -52,11 +52,11 @@
                           <kendo-grid-column class="opti_notes-column" media="(min-width: 320px)">
                               <ng-template kendoGridCellTemplate let-dataItem>
                                 <dl>
-                                    <span class="opti_note-meta"><strong>{{ dataItem.CreatedByName }}</strong> 
+                                    <span class="opti_note-meta"  *ngIf ='dataItem.System != true'><strong>{{ dataItem.CreatedByName }}</strong> 
                                         has created <strong> {{dataItem.NoteText}} </strong>  note
                                         on <strong>{{ dataItem.CreatedDate| date:'dd MMM yy' }} </strong> 
                                     </span>
-                                    <span class="float-right opti_note-action-button-sec">
+                                    <span class="float-right opti_note-action-button-sec"  *ngIf ='dataItem.System != true'>
                                         <svg-icon kendoGridEditCommand src="{{imgPath}}/common/edit.svg" (click)="openEditNoteView($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
                                             class="opti_mouse-pointer float-right"></svg-icon>
                                     </span>
