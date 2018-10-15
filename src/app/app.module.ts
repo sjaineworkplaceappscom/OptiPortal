@@ -60,6 +60,7 @@ const routes: Routes = [
   { path:'landing',component:LandingComponent},  
   { path: 'account', loadChildren: "./account/account.module#AccountModule" },
   { path: 'home', loadChildren: "./portal-home/portal-home.module#PortalHomeModule" },
+  { path: 'vendor', loadChildren: "./vendor/vendor.module#VendorModule" },
   { path: '**', component: LandingComponent}
  ];
 
