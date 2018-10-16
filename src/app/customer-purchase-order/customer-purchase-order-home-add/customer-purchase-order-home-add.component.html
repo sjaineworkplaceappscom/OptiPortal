@@ -48,7 +48,7 @@
                                     [valueField]="'value'"
                                      [(ngModel)]="customerPurchaseOrderAddModel.RefrenceType">
                                 </kendo-dropdownlist> -->
-                                <kendo-dropdownlist name="referencetype" [data]="ReferenceType" (valueChange)="valueChange($event)"  [(ngModel)]="customerPurchaseOrderAddModel.RefrenceType" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
+                                <kendo-dropdownlist name="referencetype" [data]="ReferenceType" (valueChange)="valueChange($event)"  [(ngModel)]="customerPurchaseOrderAddModel.RefrenceType" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" >
                                 </kendo-dropdownlist>
                                 <!-- <kendo-dropdownlist name="refType" [data]="defaultStatus" [(ngModel)]="purchaseInqueryAdd.Status" [valuePrimitive]="true"
                       [textField]="'text'" [valueField]="'value'" disabled>
@@ -57,8 +57,8 @@
                             </label>
 
                             <div class="text-right">
-                                <button type="button" class="k-button k-primary" (click)="AddCustomerPurchaseOrder(false)">Save</button>
-                                <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
+                                <button type="button" class="k-button k-primary" (click)="AddCustomerPurchaseOrder()">Save</button>
+                                <button type="button" class="k-button" (click)="closeRightSidebar()">Cancel</button>
                             </div>
                         </form>
                     </div>
