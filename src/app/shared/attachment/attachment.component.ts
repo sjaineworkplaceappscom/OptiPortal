@@ -12,6 +12,8 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
 import { ISubscription } from 'rxjs/Subscription';
 import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { Configuration } from '../../helpers/Configuration';
+import { ToastService } from '../../helpers/services/toast.service';
+import { AppMessages } from '../../helpers/app-messages';
 
 
 
@@ -48,8 +50,8 @@ export class AttachmentComponent implements OnInit {
   getAttachmentsub: ISubscription;
   uploadAttachmentsub: ISubscription;
   updatePIStatussub: ISubscription;
-
-  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private purchaseInquiryService: PurchaseInquiryService) { }
+  
+  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private purchaseInquiryService: PurchaseInquiryService,private toast:ToastService) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -117,8 +119,11 @@ export class AttachmentComponent implements OnInit {
 
   }
 
-  public getAttchmentList() {
+  public getAttchmentList(selfCall:boolean=true) {
+
+    if(selfCall)
     this.showLoader = true;
+
     this.getAttachmentsub = this.sharedComponentService.getAtachmentList(this.purchaseInqId, CustomerEntityType.PurchaseInquiry)
       .subscribe(
         data => {
@@ -133,9 +138,11 @@ export class AttachmentComponent implements OnInit {
       err => {
         alert("Something went wrong.");
         console.log(err);
+        if(selfCall)
         this.showLoader = false;
       }
     () => {
+      if(selfCall)
       this.showLoader = false;
     }
       ;
@@ -177,8 +184,6 @@ export class AttachmentComponent implements OnInit {
     this.uploadAttachmentsub = this.sharedComponentService.uploadAttachment(formData).subscribe(
       event => {
 
-
-
         if (event.type === HttpEventType.UploadProgress)
           this.progress = Math.round(100 * event.loaded / event.total);
 
@@ -186,11 +191,13 @@ export class AttachmentComponent implements OnInit {
           this.message = event.body.toString();
         // Get attachment list
         if (event.type === 4 && event.status === 200) {
+          
           this.showLoader = false;
-          this.getAttchmentList(); 
+          this.getAttchmentList(false); 
           //this method is updating the status if notes updated then update inquiry status.
           this.callPurchaseInquiryStatusUpdateAPI();
           this.back();
+          this.toast.showSuccess(AppMessages.AttachmentAddedSuccessMsg);
         }
       },
       error => {
@@ -250,43 +257,12 @@ export class AttachmentComponent implements OnInit {
     document.body.removeChild(a);
 
     try {
-      //   this.sharedComponentService.getAtachment(id)
-      //     .subscribe(
-      //     res => {
-      //      // var data =   JSON.stringify(res);
-      //       var data = res.blob();
-
-
-      //       let blob = new Blob([data], {
-      //         type: 'application/pdf' // must match the Accept type
-      //       });
-
-      //         var a = document.createElement('a');
-      //         document.body.appendChild(a);
-      //         a.href = URL.createObjectURL(blob);
-      //         a.download = seletedAttachment.AttachmentName;
-      //         document.body.appendChild(a);
-      //         a.click();
-      //         document.body.removeChild(a);
-      //       }
-
-
-      //   ),
-      //   (err:HttpErrorResponse)=> {
-
-      //     console.log(err);
-      //   };
+   
     }
     catch (err) {
       // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
     }
   }
-
-
-
-
-
-
 
 
   ///////////////////////////////////////////

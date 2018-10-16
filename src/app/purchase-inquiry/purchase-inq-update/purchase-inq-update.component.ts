@@ -35,7 +35,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   * This method will reset the model and date object for add form.
  */
   purchaseInquiryDetail: TempPurchaseInquiryModel = new TempPurchaseInquiryModel();
-
+  public a:boolean=GlobalResource.dirty;
   public validUntilForUpdate: Date;
   public createdDateForUpdate: Date;
   public selectedInquiryId: string = '';
@@ -72,14 +72,21 @@ export class PurchaseInqUpdateComponent implements OnInit {
   @ViewChild('optiTab') optiTab;
   
   // tab function
-  openTab(evt, tabName) {
+  async openTab(evt, tabName) {
      // Check for unsaved data.
     // if(GlobalResource.leaveUnsavedDataConfirmation()==false){
     //  return;
     // }
-    if (tabName == 'home')
-    this.callPurchaseInquiryDetailAPI(this.purchaseInquiryDetail.PurchaseInquiryId);
+
+    let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
+     console.log('after leave dialog boolean:'+a);
+
+    if(a==false){
+      return;
+    }
     
+    if (tabName == 'home')
+    this.callPurchaseInquiryDetailAPI(this.purchaseInquiryDetail.PurchaseInquiryId);    
     if (tabName == 'notes')
       this.commonService.setNotesData(this.notesMasterData);
     if (tabName == 'items')
@@ -87,6 +94,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     // Set default condition for purchase inquiery attachment
     if (tabName == 'attachement')
       this.commonService.setPurchaseInquiryAttachmentGrid(true);
+
     this.tabName = tabName;
     UIHelper.customOpenTab(evt, tabName, 'horizontal');
   }
@@ -143,7 +151,8 @@ export class PurchaseInqUpdateComponent implements OnInit {
       confirm('move?')
     }
   }
- private setModelAndSubscribeData(){
+ 
+  private setModelAndSubscribeData(){
     if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
       this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
       this.purchaseInquiryDetail.ValidTillDate = new Date(this.purchaseInquiryDetail.ValidTillDate);

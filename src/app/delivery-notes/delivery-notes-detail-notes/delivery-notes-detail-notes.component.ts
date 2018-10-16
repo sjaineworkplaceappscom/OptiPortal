@@ -9,6 +9,8 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { DeliveryNoteNoteModel } from '../../tempmodels/delivery-note-note-model';
 import { DeliveryNoteListModel } from '../../tempmodels/delivery-note-list-model';
 import { Configuration } from '../../helpers/Configuration';
+import { AppMessages } from '../../helpers/app-messages';
+import { ToastService } from '../../helpers/services/toast.service';
 
 @Component({
   selector: 'app-delivery-notes-detail-notes',
@@ -67,7 +69,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     }, 1000);
   }
 
-  constructor(private sharedComponentService: SharedComponentService) { }
+  constructor(private sharedComponentService: SharedComponentService,private toast:ToastService) { }
 
   ngOnInit() {
     //Apply Grid Height
@@ -137,6 +139,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
 
     this.addnotessub = this.sharedComponentService.AddDeliveryNotesNote(this.noteModel).subscribe(
       resp => {
+        this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
         //this method is updating the status if notes updated then update inquiry status.
         //this.callPurchaseInquiryStatusUpdateAPI();
       },
@@ -167,8 +170,8 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
         let DNId: number = this.deliveryNoteListModel.DeliveryId;
         let DNNumber: number = this.deliveryNoteListModel.DeliveryNumber;
         this.getDeliveryNotesNoteList(DNId.toString(), CustomerEntityType.DeliveryNotes);
-
-      },
+        this.toast.showSuccess(AppMessages.NoteUpdateSuccessMsg);
+      },  
       error => {
         this.showLoader = false;
         alert("Something went wrong"); 

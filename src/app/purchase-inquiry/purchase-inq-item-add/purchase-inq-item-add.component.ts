@@ -16,6 +16,8 @@ import { AttachmentDetail } from '../../models/AttchmentDetail';
 import { GlobalResource } from '../../helpers/global-resource';
 import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
 import { Configuration } from '../../helpers/Configuration';
+import { ToastService } from '../../helpers/services/toast.service';
+import { AppMessages } from '../../helpers/app-messages';
 
 @Component({
   selector: 'app-purchase-inq-item-add',
@@ -83,7 +85,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
-  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, private confirmService: ConfirmDialog) {
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, private confirmService: ConfirmDialog,private toast:ToastService) {
   }
 
   ngOnDestroy() {
@@ -350,6 +352,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
     this.additemSub = this.purchaseInquiryService.AddPurchaseInquiryItem(this.purchaseItemsModel).subscribe(
       data => {
+        
         //this.gridItemsData = JSON.parse(data);
         //this.purchaseItemsModel = JSON.parse(data);
         //this method is updating the status if notes updated then update inquiry status.
@@ -380,6 +383,8 @@ export class PurchaseInqItemAddComponent implements OnInit {
           this.IsStatusDisbale = false;
         }
         this.showLoader = false;
+        this.toast.showSuccess(AppMessages.PurchaseInqItemAddedSuccessMsg);
+        
       },
       error => {
         this.showLoader = false;
@@ -439,6 +444,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
           // this.showItemsGrid();        
         }
         this.showLoader = false;
+        this.toast.showSuccess(AppMessages.PurchaseInqItemUpdateSuccessMsg);
       },
       error => {
         this.showLoader = false;

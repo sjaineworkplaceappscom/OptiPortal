@@ -11,6 +11,8 @@ import { Commonservice } from '../../services/commonservice.service';
 import { DatePipe } from '../../../../node_modules/@angular/common';
 import { GlobalResource } from '../../helpers/global-resource';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { AppMessages } from '../../helpers/app-messages';
+import { ToastService } from '../../helpers/services/toast.service';
 
 @Component({
   selector: 'app-customer-purchase-order-notes',
@@ -79,11 +81,11 @@ export class CustomerPurchaseOrderNotesComponent implements OnInit {
   setTimeout(()=>{    
     this.showLoader = false;
   }, 1000);
-  }
+  }  
 
-  constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe) {}
+  constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe,private toast:ToastService) {}
 
-  ngOnInit() {
+  ngOnInit() { 
     //Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device
@@ -186,6 +188,7 @@ ngOnDestroy() {
         resp => {
            // console.log("record added:")
            this.getNoteList(this.noteModel.ParentId, this.noteModel.ParentType);
+           this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
         },
         error => {
             alert("Something went wrong");
@@ -274,6 +277,7 @@ ngOnDestroy() {
       this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
           resp => {
               this.getNoteList(this.noteModel.ParentId, CustomerEntityType.CustomerPurchaseOrder);
+              this.toast.showSuccess(AppMessages.NoteUpdateSuccessMsg);
           },
           error => {
               this.showLoader = false;

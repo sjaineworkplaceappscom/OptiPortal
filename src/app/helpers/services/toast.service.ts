@@ -3,7 +3,7 @@ import { NotificationService } from '@progress/kendo-angular-notification';
 
 @Injectable({
   providedIn: 'root'
-})
+}) 
 export class ToastService {
 
   constructor(private notificationService: NotificationService) { }

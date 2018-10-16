@@ -12,6 +12,8 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
 
 import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { Configuration } from '../../helpers/Configuration';
+import { AppMessages } from '../../helpers/app-messages';
+import { ToastService } from '../../helpers/services/toast.service';
 
 @Component({
   selector: 'app-attachment-item',
@@ -60,7 +62,7 @@ export class AttachmentItemComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
   }
 
-  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private purchaseInquiryService: PurchaseInquiryService) {
+  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private purchaseInquiryService: PurchaseInquiryService,private toast:ToastService) {
 
     this.attachmentsub = this.commonService.currentAttachmentItemData.subscribe(
       (data: AttachmentDetail) => {
@@ -201,6 +203,7 @@ export class AttachmentItemComponent implements OnInit {
           //this method is updating the status if notes updated then update inquiry status.
           this.callPurchaseInquiryStatusUpdateAPI();
           this.back();
+          this.toast.showSuccess(AppMessages.AttachmentAddedSuccessMsg);
         }
       },
       error => {

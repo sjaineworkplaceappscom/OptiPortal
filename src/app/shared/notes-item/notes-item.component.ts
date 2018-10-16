@@ -11,6 +11,8 @@ import { ISubscription } from "rxjs/Subscription";
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';
 import { PurchaseInquiryService } from '../../services/purchase-enquiry.service';
 import { Configuration } from '../../helpers/Configuration';
+import { AppMessages } from '../../helpers/app-messages';
+import { ToastService } from '../../helpers/services/toast.service';
 
 
 @Component({
@@ -71,7 +73,7 @@ export class NotesItemComponent implements OnInit {
 
 
     public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
-    constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private purchaseInquiryService: PurchaseInquiryService) {
+    constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private purchaseInquiryService: PurchaseInquiryService,private toast:ToastService) {
         // Subscriber for Load data.
 
         this.notessub = this.commonService.currentNotesItemData.subscribe(
@@ -171,6 +173,7 @@ export class NotesItemComponent implements OnInit {
             resp => {
                 //this method is updating the status if notes updated then update inquiry status.
                 this.callPurchaseInquiryStatusUpdateAPI();
+                this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
                // console.log("record added:")
             },
             error => {
@@ -308,6 +311,7 @@ export class NotesItemComponent implements OnInit {
                 this.callPurchaseInquiryStatusUpdateAPI();
                // console.log("record updated:");
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiryItem);
+                this.toast.showSuccess(AppMessages.NoteUpdateSuccessMsg); 
             },
             error => {
                 this.showLoader = false;

@@ -12,6 +12,8 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
 
 import { GlobalResource } from '../../helpers/global-resource';
 import { Configuration } from '../../helpers/Configuration';
+import { ToastService } from '../../helpers/services/toast.service';
+import { AppMessages } from '../../helpers/app-messages';
 
 @Component({
     selector: 'app-notes',
@@ -74,7 +76,7 @@ export class NotesComponent implements OnInit {
 
     public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
 
-    constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private purchaseInquiryService: PurchaseInquiryService) {
+    constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private purchaseInquiryService: PurchaseInquiryService,private toast:ToastService) {
     }
 
     @HostListener('window:resize', ['$event'])
@@ -186,9 +188,10 @@ export class NotesComponent implements OnInit {
         // Add Notes Data in model. when comes from inquiry        
         this.noteModel.NoteType = this.selectedNoteItem.value;
         this.addnotessub = this.sharedComponentService.AddNote(this.noteModel).subscribe(
-            resp => {
+            resp => { 
                 //this method is updating the status if notes updated then update inquiry status.
                 this.callPurchaseInquiryStatusUpdateAPI();
+                this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
                // console.log("record added:")
             },
             error => {
@@ -328,8 +331,10 @@ export class NotesComponent implements OnInit {
         this.selectedNote.NoteType = this.selectedNoteItem.value;
         this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
             resp => {
+                 
                 //this method is updating the status if notes updated then update inquiry status.
                 this.callPurchaseInquiryStatusUpdateAPI();
+                 this.toast.showSuccess(AppMessages.NoteUpdateSuccessMsg);
                // console.log("record updated:")
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },

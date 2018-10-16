@@ -11,6 +11,8 @@ import { HttpClient, HttpEventType } from '../../../../node_modules/@angular/com
 import { CustomerPurchaseOrderModel } from '../../tempmodels/customer-purchase-order-model';
 import { CustomerEntityType } from '../../enums/enums';
 import { AttachmentDetail } from '../../models/AttchmentDetail';
+import { AppMessages } from '../../helpers/app-messages';
+import { ToastService } from '../../helpers/services/toast.service';
 
 @Component({
   selector: 'app-customer-purchase-order-attachment',
@@ -42,7 +44,7 @@ export class CustomerPurchaseOrderAttachmentComponent implements OnInit {
   getAttachmentsub: ISubscription;
   uploadAttachmentsub: ISubscription;
   updatePIStatussub: ISubscription;
-  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService) { }
+  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService,private toast:ToastService) { }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -208,6 +210,7 @@ export class CustomerPurchaseOrderAttachmentComponent implements OnInit {
           this.getAttchmentList(this.purchaseOrderID); 
           //this method is updating the status if notes updated then update inquiry status.
           this.back();
+          this.toast.showSuccess(AppMessages.AttachmentAddedSuccessMsg);
         }
       },
       error => {

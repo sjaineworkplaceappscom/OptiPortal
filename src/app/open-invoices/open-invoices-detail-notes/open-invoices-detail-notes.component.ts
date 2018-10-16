@@ -8,6 +8,8 @@ import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { CustomerEntityType } from '../../enums/enums';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { AppMessages } from '../../helpers/app-messages';
+import { ToastService } from '../../helpers/services/toast.service';
 
 
 @Component({
@@ -17,7 +19,7 @@ import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 })
 export class OpenInvoicesDetailNotesComponent implements OnInit {
   
-  constructor(private sharedComponentService: SharedComponentService) { }
+  constructor(private sharedComponentService: SharedComponentService, private toast:ToastService) { }
 
  /**
   * global variable
@@ -147,6 +149,7 @@ public getOpenInvoicesAllNotesList1() {
       let OpenInvoiceNumber: number = this.openInvoiceListModel.InvoiceNumber;
       this.getOpenInvoiceNoteList(OpenInvoiceId.toString(), CustomerEntityType.OpenInvoice);
       this.showLoader = false;
+      this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
     },
     error => {
       this.showLoader = false;
@@ -224,6 +227,7 @@ public getOpenInvoicesAllNotesList1() {
       let OpenInvoiceId: number = this.openInvoiceListModel.InvoiceId;
       let OpenInvoiceNumber: number = this.openInvoiceListModel.InvoiceNumber;
       this.getOpenInvoiceNoteList(OpenInvoiceId.toString(), CustomerEntityType.OpenInvoice);
+      this.toast.showSuccess(AppMessages.NoteUpdateSuccessMsg);
     },
     error => {
       this.showLoader = false;

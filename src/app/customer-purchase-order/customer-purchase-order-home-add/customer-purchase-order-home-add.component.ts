@@ -7,6 +7,8 @@ import { CustomerPurchaseOrderModel } from '../../tempmodels/customer-purchase-o
 import { CPOReferenceType, ModuleName, ComponentName } from '../../enums/enums';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
+import { AppMessages } from '../../helpers/app-messages';
+import { ToastService } from '../../helpers/services/toast.service';
 
 @Component({
   selector: 'app-customer-purchase-order-home-add',
@@ -14,6 +16,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
   styleUrls: ['./customer-purchase-order-home-add.component.scss']
 })
 export class CustomerPurchaseOrderHomeAddComponent implements OnInit {
+ 
 
   custmerName;
   custmerCompanyName:string='BizChat';
@@ -37,7 +40,7 @@ export class CustomerPurchaseOrderHomeAddComponent implements OnInit {
   public PODate:Date = new Date();;
   public minPODate: Date = new Date();
   
-  constructor(private customerPurchaseOrderService: CustomerPurchaseOrderService, private commonService: Commonservice) { }
+  constructor(private customerPurchaseOrderService: CustomerPurchaseOrderService, private commonService: Commonservice, private toast: ToastService) { }
 
   ngOnInit() {
     
@@ -90,6 +93,7 @@ public AddCustomerPurchaseOrder() {
       localStorage.setItem("SelectedCustomerPurchaseOrder",JSON.stringify(data));         
       this.openUpdateSideBar(data); 
       this.showLoader=false;
+      this.toast.showSuccess(AppMessages.PurchaseOrderAddedSuccessMsg); 
     },
     error => {
       alert("Something went wrong");
@@ -123,4 +127,4 @@ closeRightSidebar() {
   this.commonService.setCurrentSideBar(currentSidebarInfo);
 }
 
-}
+} 

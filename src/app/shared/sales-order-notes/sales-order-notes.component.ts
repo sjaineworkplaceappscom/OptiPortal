@@ -9,6 +9,8 @@ import { CustomerEntityType } from '../../enums/enums';
 
 import { GlobalResource } from '../../helpers/global-resource';
 import { Configuration } from '../../helpers/Configuration';
+import { ToastService } from '../../helpers/services/toast.service';
+import { AppMessages } from '../../helpers/app-messages';
 
 @Component({
   selector: 'app-sales-order-notes',
@@ -40,7 +42,7 @@ export class SalesOrderNotesComponent implements OnInit {
 
   salesOrderModel: SalesOrder = new SalesOrder();
   noteModel: SalesNoteModel = new SalesNoteModel();
-  constructor(private sharedComponentService: SharedComponentService) { }
+  constructor(private sharedComponentService: SharedComponentService,private toast:ToastService) { }
 
   public noteTypes: Array<{ text: string, value: number }> = [
     { text: "General ", value: 1 },
@@ -100,6 +102,7 @@ export class SalesOrderNotesComponent implements OnInit {
 
     this.addnotessub = this.sharedComponentService.AddSalesOrderNote(this.noteModel).subscribe(
       resp => {
+        this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
         console.log("record added:")
       },
       error => {
@@ -134,6 +137,7 @@ export class SalesOrderNotesComponent implements OnInit {
         this.salesOrderModel = JSON.parse(localStorage.getItem('SelectedSalesOrder'));
         let orderId: number = this.salesOrderModel.OrderId;
         this.getSalesNotesList(orderId.toString(), CustomerEntityType.SalesOrder);
+        this.toast.showSuccess(AppMessages.NoteUpdateSuccessMsg);
 
       },
       error => {

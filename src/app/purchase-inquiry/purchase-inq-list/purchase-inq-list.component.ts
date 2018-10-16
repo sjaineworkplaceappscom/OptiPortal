@@ -47,6 +47,7 @@ export class PurchaseInqListComponent implements OnInit {
   public gridData: any[] = [];
   public systemAdmin: any;
   public loginUserType: number;
+  public prevSelectedData:any;
 
   // Subscriber
   getPIlistSubs: ISubscription;
@@ -144,7 +145,6 @@ export class PurchaseInqListComponent implements OnInit {
         //localStorage.clear();
         // this.router.navigate(['landing']);
 
-
       },
       () => {
         this.showLoader = false;
@@ -179,13 +179,16 @@ export class PurchaseInqListComponent implements OnInit {
      let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
      console.log('after leave dialog boolean:'+a);
      console.log('selected Inq:'+JSON.stringify(selectedIinquiry));
+     debugger;
      if (a == false) {
        console.log('a== false condition and return');
-       selection.selectedRows = [];
+       selection.selectedRows =selection.deselectedRows;
+       selection.index=selection.selectedRows[0].index;
        return;
  
      }
      console.log('after dialog code complete');
+     
      //console.log('selected Inq:'+selectedIinquiry.toString());
     this.openPIDetail(selection,selectedIinquiry);
    

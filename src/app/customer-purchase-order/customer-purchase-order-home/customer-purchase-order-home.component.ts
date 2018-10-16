@@ -8,6 +8,8 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { CPOReferenceType, CustomerEntityType } from '../../enums/enums';
 import { NotesModel } from '../../models/purchaserequest/notes';
+import { AppMessages } from '../../helpers/app-messages';
+import { ToastService } from '../../helpers/services/toast.service';
 
 @Component({
   selector: 'app-customer-purchase-order-home',
@@ -38,7 +40,7 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
   public loginUserType: number;
   notesMasterData: NotesModel = new NotesModel();
 
-  constructor(private commonService: Commonservice, private customerPurchaseOrderService: CustomerPurchaseOrderService) { }
+  constructor(private commonService: Commonservice, private customerPurchaseOrderService: CustomerPurchaseOrderService, private toast: ToastService) { }
 
   public selectedItem = [ {text: "Purchase Order", value: CPOReferenceType.PurchaseOrder }];
 
@@ -88,13 +90,14 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
 
     this.showLoader = true;
     this.getPIsubs = this.customerPurchaseOrderService.getPurchaseOrderDetail(id).subscribe(
-      data => {
+      data => { 
         this.showLoader = false;
         let dataArray: any[] = JSON.parse(data);
         this.customerPurchaseOrderModel = dataArray[0];
         this.customerPurchaseOrderModel.PurchaseOrderDate = DateTimeHelper.ParseToUTC(this.customerPurchaseOrderModel.PurchaseOrderDate);
         localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(this.customerPurchaseOrderModel));
         this.setModelAndSubscribeData();
+      
 
       }, error => {
         this.showLoader = false;
@@ -142,8 +145,8 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
       data => {
         this.showLoader = false;
         this.commonService.refreshPIList(null);
-
         localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(this.customerPurchaseOrderModel));
+        this.toast.showSuccess(AppMessages.PurchaseOrderUpdateSuccessMsg); 
       },
       error => {
         alert("Something went wrong");

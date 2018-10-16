@@ -9,6 +9,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { GlobalResource } from '../../helpers/global-resource';
 import { ToastService } from '../../helpers/services/toast.service';
+import { AppMessages } from '../../helpers/app-messages';
 
 @Component({
   selector: 'app-purchase-inq-add',
@@ -112,22 +113,19 @@ public minValidDate: Date = new Date();
       let Draftstatus: any = { text: "Draft", value: PurchaseInquiryStatus.Draft };
       this.purchaseInqueryAdd.Status = Draftstatus.value;
     }
-    
-    
     //DateTimeHelper.ParseToUTC(this.purchaseInqueryAdd.ValidTillDate);
     this.purchaseInqueryAdd.ValidTillDate=DateTimeHelper.ParseToUTC(this.purchaseInqueryAdd.ValidTillDate);
-    
     this.showLoader=true;
     this.addSub=this.purchaseInquiryService.AddPurchaseInquiry(this.purchaseInqueryAdd).subscribe(
       (data: any) => {  
-        this.toast.showSuccess("Purchase inquery added successfully.");
-
+        this.showLoader=false;
+        this.toast.showSuccess(AppMessages.PurchaseInqAddedSuccessMsg);
         this.commonService.refreshPIList(null);
          
         localStorage.setItem("PurchaseinqueryId",data.PurchaseInquiryId);      
         localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(data));         
         this.openUpdateSideBar(data); 
-        this.showLoader=false;
+        
       },
       error => {
         alert("Something went wrong");

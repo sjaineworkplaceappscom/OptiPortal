@@ -9,6 +9,8 @@ import { AdvanceShipmentNotesNoteModel } from '../../tempmodels/advance-shipment
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { ToastService } from '../../helpers/services/toast.service';
+import { AppMessages } from '../../helpers/app-messages';
 
 @Component({
   selector: 'app-advance-shipment-notestab',
@@ -47,7 +49,7 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
   ];
 
   public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
-  constructor(private sharedComponentService: SharedComponentService) { }
+  constructor(private sharedComponentService: SharedComponentService, private toast:ToastService) { }
 
 
   @HostListener('window:resize', ['$event'])
@@ -159,6 +161,7 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
       resp => {
         //this method is updating the status if notes updated then update inquiry status.
         //this.callPurchaseInquiryStatusUpdateAPI();
+        this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
       },
       error => {
         alert("Something went wrong");
@@ -192,11 +195,12 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
     this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
       resp => {
        
-        // Get notes data.
+      // Get notes data.
       // Get notes data.
       this.advanceShipmentNotesListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
       this.selectedASNNoteId = this.advanceShipmentNotesListModel.ASNId;
       this.getAdvanceShipmentNotesList(this.selectedASNNoteId.toString(), CustomerEntityType.AdvanceShipmentNote);
+      this.toast.showSuccess(AppMessages.NoteUpdateSuccessMsg);
 
       },
       error => {

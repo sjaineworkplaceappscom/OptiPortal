@@ -11,6 +11,8 @@ import { debug } from 'util';
 
 import { GlobalResource } from '../../helpers/global-resource';
 import { Configuration } from '../../helpers/Configuration';
+import { AppMessages } from '../../helpers/app-messages';
+import { ToastService } from '../../helpers/services/toast.service';
 
 @Component({
   selector: 'app-sales-quotations-notes',
@@ -43,7 +45,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
   salesQuotationModel: SalesQuotation = new SalesQuotation();
   noteModel: SalesNoteModel;
 
-  constructor(private sharedComponentService: SharedComponentService) { }
+  constructor(private sharedComponentService: SharedComponentService,private toast:ToastService) { }
 
   public noteTypes: Array<{ text: string, value: number }> = [
     { text: "General ", value: 1 },
@@ -105,6 +107,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
       resp => {
         //this method is updating the status if notes updated then update inquiry status.
         //this.callPurchaseInquiryStatusUpdateAPI();
+        this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
       },
       error => {
         alert("Something went wrong");
@@ -156,6 +159,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
         let quotationId: number = this.salesQuotationModel.QuotationId;
         let quotationNumber: number = this.salesQuotationModel.QuotationNumber;
         this.getSalesNotesList(quotationId.toString(), CustomerEntityType.SalesQuotation);
+        this.toast.showSuccess(AppMessages.NoteUpdateSuccessMsg); 
 
       },
       error => {
