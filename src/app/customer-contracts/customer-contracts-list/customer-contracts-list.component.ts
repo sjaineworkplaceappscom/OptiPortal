@@ -6,6 +6,10 @@ import { GridComponent } from '@progress/kendo-angular-grid';
 
 import * as $ from "jquery";
 import { Configuration } from '../../helpers/Configuration';
+import { CustomerContractListModel } from '../../tempmodels/Customer-Contract-list-model';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { CustomerContractService } from '../../services/customer-contract.service';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 
 @Component({
@@ -26,6 +30,10 @@ export class CustomerContractsListComponent implements OnInit {
   gridHeight: number;
   showLoader: boolean = false;
   searchRequest: string = '';
+
+  getContractlistSubs: ISubscription;
+  deliveryNoteListModel: CustomerContractListModel = new CustomerContractListModel();
+  
 
   getPaginationAttributes(){
     // pagination add/remove for desktop and mobile
@@ -49,7 +57,7 @@ export class CustomerContractsListComponent implements OnInit {
 
   
 
-  constructor(private commonService:Commonservice) { }
+  constructor(private commonService:Commonservice,private customerContractService: CustomerContractService) { }
 
   public gridData: any[];
 
@@ -77,7 +85,7 @@ export class CustomerContractsListComponent implements OnInit {
   /**
    * Method to get list of inquries from server.
   */
-  public getCustomerContractsList() {
+  public getCustomerContractsList1() {
     this.showLoader = true;
     this.gridData = customerContractsList;
     setTimeout(()=>{    
@@ -85,7 +93,31 @@ export class CustomerContractsListComponent implements OnInit {
     }, 1000);
   }
 
-
+ /**
+  * Method to get list of inquries from server.
+  */
+ public getCustomerContractsList() {
+  this.showLoader = true; 
+  this.getContractlistSubs = this.customerContractService.getCustomerContractList().subscribe(
+    data => {
+      if (data != null && data != undefined) {
+          this.gridData = JSON.parse(data);
+          this.gridData.forEach(element => {
+          element.ContractDate = DateTimeHelper.ParseDate(element.ContractDate);
+          element.StartDate = DateTimeHelper.ParseDate(element.StartDate);
+          element.EndDate = DateTimeHelper.ParseDate(element.EndDate);
+        });
+        this.showLoader = false;
+      }
+    },
+    error => {
+      this.showLoader = false;
+      alert("Something went wrong");
+      console.log("Error: ", error);
+      localStorage.clear();
+    }
+  );
+}
 
   onFilterChange(checkBox:any,grid:GridComponent)
   {
@@ -109,6 +141,12 @@ export class CustomerContractsListComponent implements OnInit {
 
     
     
+  }
+
+  
+  ngOnDestroy() {
+    if (this.getContractlistSubs != undefined)
+      this.getContractlistSubs.unsubscribe();
   }
 
 }

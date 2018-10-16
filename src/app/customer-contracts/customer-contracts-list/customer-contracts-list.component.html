@@ -71,7 +71,7 @@
                         <dd>{{ dataItem.ContractId }}</dd>
 
                         <dt>Contract#</dt>
-                        <dd>{{ dataItem.Contract }}</dd>
+                        <dd>{{ dataItem.ContractNumber }}</dd>
 
                         <dt>Contract Date</dt>
                         <dd>{{ dataItem.ContractDate }}</dd>
@@ -100,7 +100,7 @@
 
            <!-- grid template end -->
            <kendo-grid-column media="(min-width: 768px)" field="ContractId" title="Contract Id" [width]="160"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="Contract" title="Contract#" [width]="180"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="ContractNumber" title="Contract#" [width]="180"></kendo-grid-column>
            <kendo-grid-column media="(min-width: 768px)" field="ContractDate" [width]="180" title="Contract Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
            <kendo-grid-column media="(min-width: 768px)" field="StartDate" [width]="180" title="Start Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
            <kendo-grid-column media="(min-width: 768px)" field="EndDate" title="End Date" [width]="180" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
