@@ -88,7 +88,7 @@ public AddCustomerPurchaseOrder() {
   this.showLoader=true;
   this.addSub=this.customerPurchaseOrderService.AddPurchaseOrder(this.customerPurchaseOrderAddModel).subscribe(
     (data: any) => {        
-      this.commonService.refreshPIList(null);
+      this.commonService.refreshCPOList(true);
       //localStorage.setItem("SelectedCustomerPurchaseOrder",data.CustomerPurchaseOrder);      
       localStorage.setItem("SelectedCustomerPurchaseOrder",JSON.stringify(data));         
       this.openUpdateSideBar(data); 
@@ -96,7 +96,7 @@ public AddCustomerPurchaseOrder() {
       this.toast.showSuccess(AppMessages.PurchaseOrderAddedSuccessMsg); 
     },
     error => {
-      alert("Something went wrong");
+      //alert("Something went wrong");
       console.log("Error: ", error)
       this.showLoader=false;
     },

@@ -2,9 +2,8 @@ import { GlobalResource } from "../global-resource";
 import { Component, Injectable } from '@angular/core';
 import {
     DialogService,
-    DialogRef,
-    DialogCloseResult,
-    DialogResult
+    DialogRef
+   
 } from '@progress/kendo-angular-dialog';
 import { Observable } from "../../../../node_modules/rxjs";
 

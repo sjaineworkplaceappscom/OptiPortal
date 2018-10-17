@@ -110,7 +110,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
         this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
       },
       error => {
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       },
       () => {
@@ -164,7 +164,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         this.salesQuotationModel = JSON.parse(localStorage.getItem('SelectedSalesQuotation'));
         let quotationId: number = this.salesQuotationModel.QuotationId;
         this.getSalesNotesList(quotationId.toString(), CustomerEntityType.SalesOrder);
@@ -197,7 +197,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       });
   }

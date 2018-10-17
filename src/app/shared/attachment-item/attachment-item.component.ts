@@ -77,7 +77,7 @@ export class AttachmentItemComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       }
     );
@@ -144,7 +144,7 @@ export class AttachmentItemComponent implements OnInit {
         }
       ),
       err => {
-        alert("Something went wrong.");
+        //alert("Something went wrong.");
         console.log(err);
         this.showLoader = false;
       }
@@ -207,7 +207,7 @@ export class AttachmentItemComponent implements OnInit {
         }
       },
       error => {
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log(error);
         this.showLoader = false;
         this.showGrid = false;
@@ -228,9 +228,9 @@ export class AttachmentItemComponent implements OnInit {
           data => {
             localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
             purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
-            this.commonService.refreshPIList(null);
+            this.commonService.refreshPIList(true);
           }, error => {
-            this.commonService.refreshPIList(null);
+            this.commonService.refreshPIList(true);
           }, () => { }
         );
       }

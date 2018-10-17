@@ -80,7 +80,7 @@ export class CustomerPurchaseOrderAttachmentComponent implements OnInit {
         }
       ),
       err => {
-        alert("Something went wrong.");
+        //alert("Something went wrong.");
         console.log(err);
         this.showLoader = false;
       }
@@ -167,6 +167,30 @@ export class CustomerPurchaseOrderAttachmentComponent implements OnInit {
     console.log(event);
   }
 
+   // download attachment file
+   download(id: string) {
+
+    let seletedAttachment = this.gridAttachmentData.filter(i => i.AttachmentId == id)[0];
+    let filepath: string = Configuration.doccumentPath + id + "\\" + seletedAttachment.AttachmentName;
+
+    var a = document.createElement('a');
+    document.body.appendChild(a);
+    a.href = filepath;// URL.createObjectURL(blob);
+    // a.target="_blank";
+    a.download = seletedAttachment.AttachmentName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    try {
+   
+    }
+    catch (err) {
+      // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
+    }
+  }
+
+
   public upload(files) {
 
     if (files.length === 0)
@@ -214,7 +238,7 @@ export class CustomerPurchaseOrderAttachmentComponent implements OnInit {
         }
       },
       error => {
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log(error);
         this.showLoader = false;
         this.showGrid = false;

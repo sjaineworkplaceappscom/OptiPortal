@@ -125,7 +125,7 @@ export class NotesComponent implements OnInit {
             },
             error => {
                 this.showLoader = false;
-                alert("Something went wrong");
+                //alert("Something went wrong");
                 console.log("Error: ", error)
             }
         );
@@ -195,7 +195,7 @@ export class NotesComponent implements OnInit {
                // console.log("record added:")
             },
             error => {
-                alert("Something went wrong");
+                //alert("Something went wrong");
                 console.log("Error: ", error)
             },
             () => {
@@ -228,9 +228,9 @@ export class NotesComponent implements OnInit {
                         // purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
                          //console.log("NOte:data Model:" + JSON.stringify(purchaseInquiryDetail));
 
-                        this.commonService.refreshPIList(null);
+                        this.commonService.refreshPIList(true);
                     }, error => {
-                        this.commonService.refreshPIList(null);
+                        this.commonService.refreshPIList(true);
                     }, () => { }
                 );
             }
@@ -286,7 +286,7 @@ export class NotesComponent implements OnInit {
             },
             error => {
                 this.showLoader = false;
-                alert("Something went wrong");
+                //alert("Something went wrong");
                 console.log("Error: ", error)
             });
     }
@@ -314,7 +314,7 @@ export class NotesComponent implements OnInit {
             },
             error => {
                 this.showLoader = false;
-                alert("Something went wrong");
+                //alert("Something went wrong");
                 console.log("Error: ", error)
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },
@@ -340,7 +340,7 @@ export class NotesComponent implements OnInit {
             },
             error => {
                 this.showLoader = false;
-                alert("Something went wrong");
+                //alert("Something went wrong");
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },
             () => {

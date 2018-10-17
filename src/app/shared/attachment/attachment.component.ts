@@ -136,7 +136,7 @@ export class AttachmentComponent implements OnInit {
         }
       ),
       err => {
-        alert("Something went wrong.");
+        //alert("Something went wrong.");
         console.log(err);
         if(selfCall)
         this.showLoader = false;
@@ -201,7 +201,7 @@ export class AttachmentComponent implements OnInit {
         }
       },
       error => {
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log(error);
         this.showLoader = false;
         this.showGrid = false;
@@ -227,9 +227,9 @@ export class AttachmentComponent implements OnInit {
           data => {
             localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
             purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
-            this.commonService.refreshPIList(null);
+            this.commonService.refreshPIList(true);
           }, error => {
-            this.commonService.refreshPIList(null);
+            this.commonService.refreshPIList(true);
           }, () => { }
         );
       }

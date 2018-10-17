@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,  
-    //assetsPath:"../assets/"
-    assetsPath:"/assets/"
+    assetsPath:"../assets/"
+    //assetsPath:"/assets/"
 };
 
 /*
