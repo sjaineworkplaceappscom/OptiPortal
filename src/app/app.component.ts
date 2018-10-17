@@ -13,7 +13,8 @@ import { ConfigurationService } from 'src/app/services/configuration.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styles: [" :host >>> .k-dialog-close { display: none; }"]
+  // styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'OptiPortals';
