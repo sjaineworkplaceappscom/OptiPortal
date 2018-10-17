@@ -24,7 +24,9 @@ export class ContactService {
   * Add Note.
   */
  public AddContact(contactModel: ContactModel): Observable<any> {
+  debugger;
   var data: any = {
+    
     "ContactName": contactModel.ContactName,
     "ContactEmail": contactModel.ContactEmail,
     "Address": contactModel.Address,

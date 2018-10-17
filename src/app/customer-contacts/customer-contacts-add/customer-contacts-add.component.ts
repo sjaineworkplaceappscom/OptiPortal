@@ -7,6 +7,7 @@ import { Commonservice } from '../../services/commonservice.service';
 import { ToastService } from '../../helpers/services/toast.service';
 import { ContactModel } from '../../tempmodels/contact-model';
 import { AppMessages } from '../../helpers/app-messages';
+import { Contact } from '../../tempmodels/contact';
 
 @Component({
   selector: 'app-customer-contacts-add',
@@ -29,10 +30,12 @@ export class CustomerContactsAddComponent implements OnInit {
   public selectedItem = [{ text: "Activate", value: 1 }];
   showLoader: boolean = false;
   @Input() currentSidebarInfo: CurrentSidebarInfo;
-  addContact:ContactModel = new ContactModel();
+  public contactModel:Contact = new Contact();
   constructor(private contactService: ContactService, private commonService: Commonservice,private toast:ToastService) { }
 
   ngOnInit() {
+
+    this.setDefaultData();
   }
 
   valueChange(value: any) {
@@ -40,18 +43,14 @@ export class CustomerContactsAddComponent implements OnInit {
     console.log('change in datepicker value');
   }
 
-  public AddPurchaseInquiry(saveAsDraft: boolean = false) {
+  public AddContact() {
     GlobalResource.dirty = false;
-
-   
-   
     this.showLoader = true;
-    this.addSub = this.contactService.AddContact(this.addContact).subscribe(
+    this.addSub = this.contactService.AddContact(this.contactModel).subscribe(
       (data: any) => {
         this.showLoader = false;
         this.toast.showSuccess(AppMessages.ContactAddedSuccessMsg);
         this.commonService.refreshPIList(null);
-
         //localStorage.setItem("SelectedContactInquery", JSON.stringify(data)); comment for abhi k lea.
         this.closeRightSidebar();
 
@@ -65,10 +64,22 @@ export class CustomerContactsAddComponent implements OnInit {
         this.showLoader = false;
         // this.closeRightSidebar();
       }
-
     );
-
   }
+
+   
+ /**
+* This method will reset the model and date object for add form.
+*/
+private setDefaultData() {
+  this.contactModel =  new Contact();
+  this.contactModel.Status = this.selectedItem[0].value;
+  this.contactModel.ContactName = '';
+  this.contactModel.ContactEmail = '';
+  this.contactModel.Address = '';
+  this.contactModel.PhoneNumber = '';
+  
+}
 
   /** 
   * 

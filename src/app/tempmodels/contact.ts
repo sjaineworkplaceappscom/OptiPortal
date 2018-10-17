@@ -1,5 +1,4 @@
-export class ContactModel{
-  
+export class Contact{
     ContactId:number;
     ContactName :string;
     ContactEmail: string;

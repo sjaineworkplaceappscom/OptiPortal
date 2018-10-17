@@ -34,7 +34,7 @@ export class CustomerContactsUpdateComponent implements OnInit {
   public sideBarsubs: ISubscription;
   public getContactsubs: ISubscription;
   public updateContactSub: ISubscription;
-  public contactModel: ContactModel = null;
+  public contactModel: ContactModel = new ContactModel();
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog) { }
