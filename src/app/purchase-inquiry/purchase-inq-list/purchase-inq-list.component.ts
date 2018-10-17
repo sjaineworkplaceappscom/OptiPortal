@@ -98,15 +98,18 @@ export class PurchaseInqListComponent implements OnInit {
 
     this.getPaginationAttributes();
 
-    this.refreshPIListSubs = this.commonService.refreshPIListSubscriber.subscribe(data => {
-      this.getInquiryList();
-    },
-      error => {
-        this.showLoader = false;
-        alert("Something went wrong");
 
-        console.log("Error: ", error)
-      });
+    this.refreshPIListSubs = this.commonService.refreshPIListSubscriber.subscribe(data => {
+      if(data!=undefined && data!=null)
+      this.getInquiryList();
+    });
+    // },
+    //   error => {
+    //     this.showLoader = false;
+    //     //alert("Something went wrong");
+
+    //     console.log("Error: ", error)
+    //   });
 
     //call method to get all inquiry data.
     this.getInquiryList();
@@ -140,8 +143,8 @@ export class PurchaseInqListComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
-        console.log("Error: ", error);
+        ////alert("Something went wrong");
+       // console.log("Error: ", error);
         //localStorage.clear();
         // this.router.navigate(['landing']);
 

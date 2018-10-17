@@ -111,7 +111,7 @@ export class CustomerPurchaseOrderNotesComponent implements OnInit {
         },
         error => {
             this.showLoader = false;
-            alert("Something went wrong");
+            //alert("Something went wrong");
             console.log("Error: ", error)
         }
     );
@@ -191,7 +191,7 @@ ngOnDestroy() {
            this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
         },
         error => {
-            alert("Something went wrong");
+            //alert("Something went wrong");
             console.log("Error: ", error)
         },
         () => {
@@ -231,7 +231,7 @@ ngOnDestroy() {
           },
           error => {
               this.showLoader = false;
-              alert("Something went wrong");
+              //alert("Something went wrong");
               console.log("Error: ", error)
           });
   }
@@ -259,7 +259,7 @@ ngOnDestroy() {
           },
           error => {
               this.showLoader = false;
-              alert("Something went wrong");
+              //alert("Something went wrong");
               console.log("Error: ", error)
               this.getNoteList(this.noteModel.ParentId, CustomerEntityType.CustomerPurchaseOrder);
           },
@@ -281,7 +281,7 @@ ngOnDestroy() {
           },
           error => {
               this.showLoader = false;
-              alert("Something went wrong");
+              //alert("Something went wrong");
               this.getNoteList(this.noteModel.ParentId, CustomerEntityType.CustomerPurchaseOrder);
           },
           () => {

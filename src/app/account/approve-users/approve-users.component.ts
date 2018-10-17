@@ -59,7 +59,7 @@ export class ApproveUsersComponent implements OnInit {
       error => {
         this.disableBtn=false;
         //this.showLoader=false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       }
     );
@@ -82,7 +82,7 @@ export class ApproveUsersComponent implements OnInit {
       error => {
         this.disableBtn=false;   
         //this.showLoader=false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       }
     );
@@ -105,7 +105,7 @@ export class ApproveUsersComponent implements OnInit {
       },
       error => {
         //this.showLoader=false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       }
     );

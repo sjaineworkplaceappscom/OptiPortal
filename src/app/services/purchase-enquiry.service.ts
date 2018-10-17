@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { HttpHelper } from '../helpers/http.helper';
 import { Observable } from 'rxjs/Observable';
-import { RequestOptions } from '@angular/http';
 import { TempPurchaseInquiryModel } from '../tempmodels/temppurchase-inquiry';
-import { Configuration } from 'src/app/helpers/Configuration';
+
 import { TempPurchaseInquiryItemModel } from '../tempmodels/temppurchase-inquiry-item';
-import { NotesModel } from '../models/purchaserequest/notes';
+import { Configuration } from '../helpers/Configuration';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PurchaseInquiryService {  
-  baseUrl = Configuration.baseServerAPIEndpoint;
+  baseUrl: string=Configuration.baseServerAPIEndpoint;
 
   constructor(private httpHelper: HttpHelper) {
-
+    this.baseUrl = Configuration.baseServerAPIEndpoint;
   }
 
   /**
@@ -118,7 +117,7 @@ export class PurchaseInquiryService {
 * Get List of users.
 */
   public getPurchaseInquiryDashboardDetail(): Observable<any> {
-    let url: string = this.baseUrl + "/purchaseinquiry/dashboarddetail";
+    let url: string = this.baseUrl + "purchaseinquiry/dashboarddetail";
     return this.httpHelper.get(url, null);
   }
 }

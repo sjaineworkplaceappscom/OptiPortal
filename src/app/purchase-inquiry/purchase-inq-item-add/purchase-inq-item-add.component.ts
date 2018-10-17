@@ -138,7 +138,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       }
     );
@@ -282,7 +282,7 @@ export class PurchaseInqItemAddComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: " + error);
       });
     () => {
@@ -472,10 +472,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
             localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
 
             purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
-            this.commonService.refreshPIList(null);
+            this.commonService.refreshPIList(true);
             // localStorage.setItem('SelectedPurchaseInquery', JSON.stringify(data));
           }, error => {
-            this.commonService.refreshPIList(null);
+            this.commonService.refreshPIList(true);
           }, () => { }
         );
       }

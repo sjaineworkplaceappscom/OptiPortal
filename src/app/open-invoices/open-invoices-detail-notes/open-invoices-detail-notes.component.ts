@@ -153,7 +153,7 @@ public getOpenInvoicesAllNotesList1() {
     },
     error => {
       this.showLoader = false;
-      alert("Something went wrong");
+      //alert("Something went wrong");
       this.resetModelValues();
       this.closeAddNote();
       // Get notes data.
@@ -200,7 +200,7 @@ public getOpenInvoicesAllNotesList1() {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       });
   }
@@ -231,7 +231,7 @@ public getOpenInvoicesAllNotesList1() {
     },
     error => {
       this.showLoader = false;
-      alert("Something went wrong"); 
+      //alert("Something went wrong"); 
       this.openInvoiceListModel = JSON.parse(localStorage.getItem('SelectedOpenInvoice'))
       let OpenInvoiceId: number = this.openInvoiceListModel.InvoiceId;
       let OpenInvoiceNumber: number = this.openInvoiceListModel.InvoiceNumber;

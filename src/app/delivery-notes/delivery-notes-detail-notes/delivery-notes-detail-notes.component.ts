@@ -144,7 +144,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
         //this.callPurchaseInquiryStatusUpdateAPI();
       },
       error => {
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       },
       () => {
@@ -174,7 +174,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
       },  
       error => {
         this.showLoader = false;
-        alert("Something went wrong"); 
+        //alert("Something went wrong"); 
         this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
         let DNId: number = this.deliveryNoteListModel.DeliveryId;
         let DNNumber: number = this.deliveryNoteListModel.DeliveryNumber;
@@ -214,7 +214,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       });
   }

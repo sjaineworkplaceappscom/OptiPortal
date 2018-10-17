@@ -120,7 +120,7 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
         },
         error => {
           this.showLoader = false;
-          alert("Something went wrong");
+          //alert("Something went wrong");
           console.log("Error: ", error)
         });
     }
@@ -164,7 +164,7 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
         this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
       },
       error => {
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       },
       () => {
@@ -205,7 +205,7 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong"); 
+        //alert("Something went wrong"); 
       // Get notes data.
       this.advanceShipmentNotesListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
       this.selectedASNNoteId = this.advanceShipmentNotesListModel.ASNId;

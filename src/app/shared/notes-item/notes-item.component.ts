@@ -88,7 +88,7 @@ export class NotesItemComponent implements OnInit {
             },
             error => {
                 this.showLoader = false;
-                alert("Something went wrong");
+                //alert("Something went wrong");
                 console.log("Error: ", error)
             }
         );
@@ -177,7 +177,7 @@ export class NotesItemComponent implements OnInit {
                // console.log("record added:")
             },
             error => {
-                alert("Something went wrong");
+                //alert("Something went wrong");
                 console.log("Error: ", error)
             },
             () => {
@@ -204,9 +204,9 @@ export class NotesItemComponent implements OnInit {
                         localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(data));
                         // console.log("NOte:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
                         purchaseInquiryDetail = JSON.parse(localStorage.getItem('SelectedPurchaseInquery'));
-                        this.commonService.refreshPIList(null);
+                        this.commonService.refreshPIList(true);
                     }, error => {
-                        this.commonService.refreshPIList(null);
+                        this.commonService.refreshPIList(true);
                     }, () => { }
                 );
             }
@@ -260,7 +260,7 @@ export class NotesItemComponent implements OnInit {
             },
             error => {
                 this.showLoader = false;
-                alert("Something went wrong");
+                //alert("Something went wrong");
                 console.log("Error: ", error)
             });
     }
@@ -287,7 +287,7 @@ export class NotesItemComponent implements OnInit {
             },
             error => {
                 this.showLoader = false;
-                alert("Something went wrong");
+                //alert("Something went wrong");
                 console.log("Error: ", error)
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiry);
             },
@@ -315,7 +315,7 @@ export class NotesItemComponent implements OnInit {
             },
             error => {
                 this.showLoader = false;
-                alert("Something went wrong");
+                //alert("Something went wrong");
                 this.getNoteList(this.noteModel.ParentId, CustomerEntityType.PurchaseInquiryItem);
             },
             () => {

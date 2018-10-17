@@ -95,12 +95,13 @@ refreshCPOListSubs: ISubscription;
     this.gridHeight = UIHelper.getMainContentHeight();
     this.systemAdmin = localStorage.getItem('SystemAdmin');
 
-    this.refreshCPOListSubs = this.commonService.refreshPIListSubscriber.subscribe(data => {
+    this.refreshCPOListSubs = this.commonService.refreshCPOListSubscriber.subscribe(data => {
+      if(data!=null && data !=undefined)
       this.getCustomerPurchaseOrderList();
     },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       });
 
@@ -138,7 +139,7 @@ refreshCPOListSubs: ISubscription;
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error);
         //localStorage.clear();
         // this.router.navigate(['landing']);

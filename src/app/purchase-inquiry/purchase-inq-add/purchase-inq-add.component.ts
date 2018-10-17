@@ -120,7 +120,7 @@ public minValidDate: Date = new Date();
       (data: any) => {  
         this.showLoader=false;
         this.toast.showSuccess(AppMessages.PurchaseInqAddedSuccessMsg);
-        this.commonService.refreshPIList(null);
+        this.commonService.refreshPIList(true);
          
         localStorage.setItem("PurchaseinqueryId",data.PurchaseInquiryId);      
         localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(data));         
@@ -128,7 +128,7 @@ public minValidDate: Date = new Date();
         
       },
       error => {
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
         this.showLoader=false;
       },

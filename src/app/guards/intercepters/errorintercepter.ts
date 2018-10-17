@@ -11,52 +11,96 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '../../../../node_modules/@angular/router';
 import { Injectable } from '../../../../node_modules/@angular/core';
-import { Alert } from '../../../../node_modules/@types/selenium-webdriver';
+
+import {
+    DialogService,
+    DialogRef
+
+} from '@progress/kendo-angular-dialog';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
-    constructor(private router: Router) {
+    public sessionExpireMsg: string = "Your session has been expired. please login again.";
+    constructor(private router: Router, private dialogService: DialogService) {
     }
+
+
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request)
             .pipe(
                 catchError((error: HttpErrorResponse) => {
                     let errMsg = '';
+
+                    if(error.status==0){
+                        this.errorMessage('Unable to reach to server.')
+                    }
+
                     // Client Side Error
                     if (error.error instanceof ErrorEvent) {
                         errMsg = `Error: ${error.error.message}`;
                     }
-                    else {  // Server Side Error
+
+                    // Server Side Error
+                    else {
+
                         errMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+                        console.log(errMsg);
 
-                        console.log("Error:"+errMsg);
-                        if(error.error!=null && error.error!=undefined){
-                       // Session expired
-                        if (error.error.PortalExceptionType==1) {
-                            alert("Your session has been expired. please login again.");
-                            // clear cache and navigate to landing
-                            localStorage.clear();
-                            this.router.navigate(['landing']);
-                            return;
+                        // Unauthorized.
+                        if (error.status == 401) {
+                            return this.errorMessage(this.sessionExpireMsg);
                         }
-
-                        if (error.error.PortalExceptionType==3) {
-                           errMsg="Given email alreday exists."                            
-                            //return;
+                        // Server error
+                        else if (error.status == 500 && error.error != null && error.error != undefined) {
+                            // Session not found.
+                            if (error.error.PortalExceptionType == 1) {
+                                return this.errorMessage(this.sessionExpireMsg);
+                            }
+                            else if (error.error.PortalExceptionType == 3) {
+                                errMsg = "Given email alreday exists."
+                                return throwError(errMsg);
+                            }
+                            else {
+                                return this.errorMessage("Server Error: \n" + error.error.Message);
+                            }
                         }
-                    }
-                    else{
-                        if(error.status==401){
-                            alert("Your session has been expired. please login again.");
-                            localStorage.clear();
-                            this.router.navigate(['landing']);
+                        else{
+                             // Exceptional case
+                            //this.errorMessage("Something went wrong");
+                            console.log(error);
+                           return  throwError(error.message);
                         }
+                
                     }
-
-                    }
-
-                    return throwError(errMsg);
                 })
-            )
+            );
+            
+    }
+
+
+    public async errorMessage(errorMessage: string): Promise<any> {
+
+        const dialog: DialogRef = this.dialogService.open({
+            title: 'Error',
+            content: errorMessage,
+            actions: [
+                { text: 'Ok', primary: true }
+
+            ],
+            width: 450,
+            height: 200,
+            minWidth: 250
+        });
+
+        let resp: any = await dialog.result.toPromise();
+
+        if (resp.text == 'Ok') {
+            // clear cache and navigate to landing
+            localStorage.clear();
+            this.router.navigate(['landing']);
+            //  return;
+        }
+
+
     }
 }  

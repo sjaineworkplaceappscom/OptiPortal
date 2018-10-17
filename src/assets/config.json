@@ -1,11 +1,11 @@
 {   
     
-    "baseServerAPIEndpoint": "http://172.16.6.139:9090/",
+    "baseServerAPIEndpoint":"http://localhost:56986/",
     "firstHomePage": "/home/dashboard",
     "dateFormat": "DD MMM YY",
     "displayDateFormat":"dd MMM yy",
     "appVersion": "1.2",
     "doccumentPath": "http://139.144.10.218:5000/Upload/",
-    "assetsRootpath": "assets",
-    "test": "http://172.16.6.139:9090/"
+    "assetsRootpath": "assets"
+   
 }

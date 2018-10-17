@@ -19,10 +19,14 @@ export class AppComponent {
   title = 'OptiPortals';
   isMobile: boolean;
 
-  constructor(private configService:ConfigurationService) { }
-
-  ngOnInit() {
-    UIHelper.deviceClass();
+  constructor(private configService: ConfigurationService) {
     this.configService.congigure();
   }
+
+  ngOnInit() {
+
+    UIHelper.deviceClass();
+  }
+
+
 }

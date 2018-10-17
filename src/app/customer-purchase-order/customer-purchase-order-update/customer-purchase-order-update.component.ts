@@ -56,7 +56,7 @@ export class CustomerPurchaseOrderUpdateComponent implements OnInit {
           
     //   }, error => {  
     //     this.showLoader = false; 
-    //     alert("Something went wrong");
+    //     //alert("Something went wrong");
     //     console.log("Error: ", error)
     //   }, () => { }
     // );
@@ -92,12 +92,12 @@ export class CustomerPurchaseOrderUpdateComponent implements OnInit {
 //     this.updatePISub = this.customerPurchaseOrderService.UpdatePurchaseOrder(this.customerPurchaseOrderModel).subscribe(
 //       data => {
 //         this.showLoader = false;
-//         this.commonService.refreshPIList(null);
+//         this.commonService.refreshPIList(true);
         
 //         localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(this.customerPurchaseOrderModel));
 //       },
 //       error => {
-//         alert("Something went wrong");
+//         //alert("Something went wrong");
 //         console.log("Error: ", error)
 //         this.showLoader = false;
 //       },

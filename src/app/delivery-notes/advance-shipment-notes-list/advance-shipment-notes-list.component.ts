@@ -103,7 +103,7 @@ export class AdvanceShipmentNotesListComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error);
         localStorage.clear();
       }

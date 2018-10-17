@@ -80,7 +80,7 @@ export class CustomerPurchaseOrderAttachmentComponent implements OnInit {
         }
       ),
       err => {
-        alert("Something went wrong.");
+        //alert("Something went wrong.");
         console.log(err);
         this.showLoader = false;
       }
@@ -214,7 +214,7 @@ export class CustomerPurchaseOrderAttachmentComponent implements OnInit {
         }
       },
       error => {
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log(error);
         this.showLoader = false;
         this.showGrid = false;

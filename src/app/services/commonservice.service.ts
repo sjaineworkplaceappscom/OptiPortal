@@ -80,6 +80,14 @@ export class Commonservice {
     this.sidebarSubject.next(currentSidebarInfoValue);
   }
 
+  // Refresh List CPO
+  private refreshCPOListSub =new BehaviorSubject<any>(null);
+  refreshCPOListSubscriber=this.refreshCPOListSub.asObservable();
+
+  public refreshCPOList(data:any){
+    this.refreshCPOListSub.next(data);
+  }
+
 
   // Refresh List
   private refreshPIListSub =new BehaviorSubject<any>(null);

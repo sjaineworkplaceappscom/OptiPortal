@@ -139,7 +139,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       }
 
@@ -186,7 +186,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
           
       }, error => {  
         this.showLoader = false; 
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       }, () => { }
     );
@@ -217,7 +217,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
       },
       error => {
         // this.showLoader=false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       }
     );
@@ -316,7 +316,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     this.updatePISub = this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
       data => {
         this.showLoader = false;
-        this.commonService.refreshPIList(null);
+        this.commonService.refreshPIList(true);
         //if after save user set status to cancelled then we have to disable all functionality.
         if (this.purchaseInquiryDetail.Status == PurchaseInquiryStatus.Cancelled) {
           this.isCancelStatus = true;
@@ -327,7 +327,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
         }
       },
       error => {
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
         this.showLoader = false;
       },

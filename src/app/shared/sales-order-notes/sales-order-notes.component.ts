@@ -106,7 +106,7 @@ export class SalesOrderNotesComponent implements OnInit {
         console.log("record added:")
       },
       error => {
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       },
       () => {
@@ -142,7 +142,7 @@ export class SalesOrderNotesComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         this.salesOrderModel = JSON.parse(localStorage.getItem('SelectedSalesOrder'));
         let orderId: number = this.salesOrderModel.OrderId;
         this.getSalesNotesList(orderId.toString(), CustomerEntityType.SalesOrder);
@@ -175,7 +175,7 @@ export class SalesOrderNotesComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-        alert("Something went wrong");
+        //alert("Something went wrong");
         console.log("Error: ", error)
       });
   }
