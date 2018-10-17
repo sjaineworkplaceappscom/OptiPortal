@@ -82,6 +82,7 @@ export class PurchaseInqListComponent implements OnInit {
   }
 
   ngOnInit() {
+
     GlobalResource.dirty = false;
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
