@@ -23,10 +23,10 @@
             <div class="card-block">
               <form class="k-form">
 
-                <label class="k-form-field">
+                <!-- <label class="k-form-field">
                     <span class="opti_form-label">Contact Id</span>
                     <input name="contactId" type="text" class="k-textbox" [(ngModel)]="contactId" />
-                </label>
+                </label> -->
 
                 <label class="k-form-field">
                     <span class="opti_form-label">Contact Name</span>
@@ -50,12 +50,14 @@
 
                 <label class="k-form-field">
                     <span class="opti_form-label">Status</span>
-                    <kendo-dropdownlist
+                    <!-- <kendo-dropdownlist
                         [data]="listItems"
                         textField="text"
                         valueField="value"
                         [(ngModel)]="selectedItem"
-                    >
+                    > 
+                    </kendo-dropdownlist>-->
+                    <kendo-dropdownlist name="status" [data]="listItems" (valueChange)="valueChange($event)"  [(ngModel)]="contactModel.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
                     </kendo-dropdownlist>
                 </label>
 

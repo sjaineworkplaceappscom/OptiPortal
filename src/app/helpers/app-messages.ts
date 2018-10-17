@@ -7,4 +7,5 @@ export class AppMessages {
     public static NoteAddedSuccessMsg:string="Note Added successfully.";
     public static PurchaseOrderAddedSuccessMsg:string="Purchase Order added successfully.";
     public static PurchaseOrderUpdateSuccessMsg:string="Purchase Order update successfully.";
+    public static ContactAddedSuccessMsg:string="Contact Added successfully.";
 }

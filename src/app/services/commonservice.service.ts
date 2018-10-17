@@ -138,4 +138,12 @@ export class Commonservice {
    }
 
 
+   // Refresh List
+  private refreshContactListSub =new BehaviorSubject<any>(null);
+  refreshContactListSubscriber=this.refreshPIListSub.asObservable();
+
+  public refreshContactList(data:any){
+    this.refreshPIListSub.next(data);
+  }
+
 }

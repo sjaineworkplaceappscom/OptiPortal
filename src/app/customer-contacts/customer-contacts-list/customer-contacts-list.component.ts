@@ -8,6 +8,9 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ModuleName, ComponentName } from '../../enums/enums';
 import * as $ from "jquery";
 import { Configuration } from '../../helpers/Configuration';
+import { ContactService } from '../../services/contact.service';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 @Component({
   selector: 'app-customer-contacts-list',
@@ -27,6 +30,7 @@ export class CustomerContactsListComponent implements OnInit {
   gridHeight: number;
   showLoader: boolean = false;
   searchRequest: string = '';
+  getContractlistSubs: ISubscription;
 
   getPaginationAttributes(){
     // pagination add/remove for desktop and mobile
@@ -50,7 +54,7 @@ export class CustomerContactsListComponent implements OnInit {
 
   
 
-  constructor(private commonService:Commonservice) { }
+  constructor(private commonService:Commonservice,private contactService: ContactService) { }
 
   public gridData: any[];
 
@@ -65,20 +69,16 @@ export class CustomerContactsListComponent implements OnInit {
 
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
-
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-
     this.getPaginationAttributes();
-
-    
     this.getCustomerContactsList();
   }
 
   /**
    * Method to get list of inquries from server.
   */
-  public getCustomerContactsList() {
+  public getCustomerContactsList1() {
     this.showLoader = true;
     this.gridData = customerContactsList;
     setTimeout(()=>{    
@@ -86,6 +86,53 @@ export class CustomerContactsListComponent implements OnInit {
     }, 1000);
   }
 
+  /**
+  * Method to get list of inquries from server.
+  */
+ public getCustomerContactsList() {
+  this.showLoader = true; 
+  this.getContractlistSubs = this.contactService.getCustomerContactList().subscribe(
+    data => {
+      
+      if (data != null && data != undefined) {
+          this.gridData = JSON.parse(data);
+          this.gridData.forEach(element => {
+        });
+        this.showLoader = false;
+      }
+    },
+    error => {
+      this.showLoader = false;
+      alert("Something went wrong");
+      console.log("Error: ", error);
+      localStorage.clear();
+    }
+  );
+}
+
+
+openContactsDetailOnSelection(selection){
+  $('#opti_HomeTabDeliveryNotesID').click(); 
+
+  let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+  currentsideBarInfo.ComponentName = ComponentName.UpdateContact;
+  currentsideBarInfo.ModuleName = ModuleName.CustomerContacts;
+  currentsideBarInfo.SideBarStatus = true;
+  // Reset Selection.
+  
+  let selectedContact = this.gridData[selection.index];
+  currentsideBarInfo.RequesterData = selectedContact;
+  localStorage.setItem("SelectedContact", JSON.stringify(selectedContact));
+  this.commonService.setCurrentSideBar(currentsideBarInfo);
+  // Reset Selection.
+  selection.selectedRows=[]; 
+}
+
+
+ngOnDestroy() {
+  if (this.getContractlistSubs != undefined)
+    this.getContractlistSubs.unsubscribe();
+}
 
 
   onFilterChange(checkBox:any,grid:GridComponent)
@@ -99,14 +146,7 @@ export class CustomerContactsListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openContactsDetailOnSelection(selection){
-    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName = ComponentName.UpdateContact;
-    currentsideBarInfo.ModuleName = ModuleName.CustomerContacts;
-    currentsideBarInfo.SideBarStatus = true;
-    this.commonService.setCurrentSideBar(currentsideBarInfo);
-  }
-
+  
   addContactsOnClick(status:boolean){
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.AddContact;

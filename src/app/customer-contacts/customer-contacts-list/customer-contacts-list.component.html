@@ -67,14 +67,14 @@
                 <ng-template kendoGridCellTemplate let-dataItem>
                     
                     <dl class="opti_mobile_grid_dl">
-                        <dt>ContactId</dt>
-                        <dd>{{ dataItem.ContactId }}</dd>
+                        <!-- <dt>ContactId</dt>
+                        <dd>{{ dataItem.ContactId }}</dd> -->
 
                         <dt>ContactName</dt>
                         <dd>{{ dataItem.ContactName }}</dd>
 
                         <dt>phone</dt>
-                        <dd>{{ dataItem.phone }}</dd>
+                        <dd>{{ dataItem.PhoneNumber }}</dd>
 
                         
                     </dl>
@@ -82,13 +82,13 @@
                     <dl class="opti_mobile_grid_dl">
 
                         <dt>email <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
-                        <dd>{{ dataItem.email }}</dd>
+                        <dd>{{ dataItem.ContactEmail }}</dd>
 
                         <dt>Address</dt>
-                        <dd>{{ dataItem.address }}</dd>
+                        <dd>{{ dataItem.Address }}</dd>
 
                         <dt>Active Status</dt>
-                        <dd>{{ dataItem.activestatus }}</dd>
+                        <dd>{{ dataItem.StatusText }}</dd>
                     </dl>
 
                 </ng-template>
@@ -96,12 +96,12 @@
             <!-- grid for mobile end -->
 
            <!-- grid template end -->
-           <kendo-grid-column media="(min-width: 768px)" field="ContactId" title="Contact Id" [width]="160"></kendo-grid-column>
+           <!-- <kendo-grid-column media="(min-width: 768px)" field="ContactId" title="Contact Id" [width]="160"></kendo-grid-column> -->
            <kendo-grid-column media="(min-width: 768px)" field="ContactName" [width]="160" title="Contact Name"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="phone" [width]="160" title="Phone"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="email" [width]="160" title="Email" ></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="address" title="Address" [width]="160"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="activestatus" title="Active Status" [width]="160"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="PhoneNumber" [width]="160" title="Phone"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="ContactEmail" [width]="160" title="Email" ></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="Address" title="Address" [width]="160"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="StatusText" title="Active Status" [width]="160"></kendo-grid-column>
            
            
            <!-- xlsx template start -->

@@ -13,9 +13,9 @@
           <div class="col-md-12">
   
               <!-- loader start -->
-              <!-- <div class="opti_loader opti_loader-header-tab">
+              <div class="opti_loader opti_loader-header-tab" *ngIf="showLoader">
                   <div class="opti_spinner"></div>
-              </div> -->
+              </div>
               <!-- loader end --> 
               
   
@@ -23,46 +23,41 @@
               <div class="card-block">
                 <form class="k-form">
   
-                  <label class="k-form-field">
+                  <!-- <label class="k-form-field">
                       <span class="opti_form-label">Contact Id</span>
                       <input name="contactId" type="text" class="k-textbox" [(ngModel)]="contactId" />
-                  </label>
+                  </label> -->
   
                   <label class="k-form-field">
                       <span class="opti_form-label">Contact Name</span>
-                      <input name="contactName" type="text" class="k-textbox" [(ngModel)]="contactName" />
+                      <input name="contactName" type="text" class="k-textbox" [(ngModel)]="contactModel.ContactName" />
                   </label>
   
                   <label class="k-form-field">
                       <span class="opti_form-label">Phone</span>
-                      <input name="phone" type="text" class="k-textbox" [ngModel]="phone"  />
+                      <input name="phone" type="text" class="k-textbox" [(ngModel)]="contactModel.PhoneNumber"  />
                   </label>
   
                   <label class="k-form-field">
                       <span class="opti_form-label">Email</span>
-                      <input name="email" type="text" class="k-textbox" [ngModel]="email" />
+                      <input name="email" type="text" class="k-textbox" [(ngModel)]="contactModel.ContactEmail" />
                   </label>
   
                   <label class="k-form-field">
                       <span class="opti_form-label">Address</span>
-                      <textarea class="k-textarea" name="address" [(ngModel)]="address" >Address</textarea>
+                      <textarea class="k-textarea" name="address" [(ngModel)]="contactModel.Address" >Address</textarea>
                   </label>
 
                   <label class="k-form-field">
                       <span class="opti_form-label">Status</span>
-                      <kendo-dropdownlist
-                          [data]="listItems"
-                          textField="text"
-                          valueField="value"
-                          [(ngModel)]="selectedItem"
-                      >
+                      
+                      <kendo-dropdownlist name="status" [data]="listItems" (valueChange)="valueChange($event)"  [(ngModel)]="contactModel.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
                       </kendo-dropdownlist>
                   </label>
 
                   <div class="text-right">
-                      <button type="button" class="k-button k-primary">Save</button>
-                      <button type="button" class="k-button">Save as draft</button>
-                      <button type="button" class="k-button">Cancel</button>
+                      <button type="button" class="k-button k-primary" (click)="UpdateContactData()">Save</button>
+                      <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
                   </div>
   
                 </form>

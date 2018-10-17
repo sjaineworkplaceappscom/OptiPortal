@@ -1,5 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
+import { GlobalResource } from '../../helpers/global-resource';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ContactService } from '../../services/contact.service';
+import { Commonservice } from '../../services/commonservice.service';
+import { ToastService } from '../../helpers/services/toast.service';
+import { ContactModel } from '../../tempmodels/contact-model';
+import { AppMessages } from '../../helpers/app-messages';
 
 @Component({
   selector: 'app-customer-contacts-add',
@@ -14,18 +21,69 @@ export class CustomerContactsAddComponent implements OnInit {
   email;
   address;
 
-
+  public addSub: ISubscription;
   public listItems = [
     { text: "Activate", value: 1 },
     { text: "Deactivate", value: 2 },
   ];
   public selectedItem = [{ text: "Activate", value: 1 }];
-
-  @Input() currentSidebarInfo:CurrentSidebarInfo;
-
-  constructor() { }
+  showLoader: boolean = false;
+  @Input() currentSidebarInfo: CurrentSidebarInfo;
+  addContact:ContactModel = new ContactModel();
+  constructor(private contactService: ContactService, private commonService: Commonservice,private toast:ToastService) { }
 
   ngOnInit() {
+  }
+
+  valueChange(value: any) {
+    GlobalResource.dirty = true;
+    console.log('change in datepicker value');
+  }
+
+  public AddPurchaseInquiry(saveAsDraft: boolean = false) {
+    GlobalResource.dirty = false;
+
+   
+   
+    this.showLoader = true;
+    this.addSub = this.contactService.AddContact(this.addContact).subscribe(
+      (data: any) => {
+        this.showLoader = false;
+        this.toast.showSuccess(AppMessages.ContactAddedSuccessMsg);
+        this.commonService.refreshPIList(null);
+
+        //localStorage.setItem("SelectedContactInquery", JSON.stringify(data)); comment for abhi k lea.
+        this.closeRightSidebar();
+
+      },
+      error => {
+        alert("Something went wrong");
+        console.log("Error: ", error)
+        this.showLoader = false;
+      },
+      () => {
+        this.showLoader = false;
+        // this.closeRightSidebar();
+      }
+
+    );
+
+  }
+
+  /** 
+  * 
+  * @param status close right content section, will pass false
+  */
+  closeRightSidebar() {
+    GlobalResource.dirty = false;
+    let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentSidebarInfo.SideBarStatus = false;
+    this.commonService.setCurrentSideBar(currentSidebarInfo);
+  }
+
+  ngOnDestroy() {
+    if (this.addSub != undefined)
+      this.addSub.unsubscribe();
   }
 
 }

@@ -32,7 +32,7 @@ export class CustomerContractsListComponent implements OnInit {
   searchRequest: string = '';
 
   getContractlistSubs: ISubscription;
-  deliveryNoteListModel: CustomerContractListModel = new CustomerContractListModel();
+  customerContactListModel: CustomerContractListModel = new CustomerContractListModel();
   
 
   getPaginationAttributes(){

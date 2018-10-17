@@ -179,7 +179,7 @@ export class PurchaseInqListComponent implements OnInit {
      let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
      console.log('after leave dialog boolean:'+a);
      console.log('selected Inq:'+JSON.stringify(selectedIinquiry));
-     debugger;
+     
      if (a == false) {
        console.log('a== false condition and return');
        selection.selectedRows =selection.deselectedRows;

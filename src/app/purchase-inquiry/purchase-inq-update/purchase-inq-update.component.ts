@@ -58,7 +58,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     { text: "Approved", value: PurchaseInquiryStatus.Approved },
     { text: "Partial Approved", value: PurchaseInquiryStatus.PartialApproved },
     { text: "Rejected", value: PurchaseInquiryStatus.Rejected },
-  { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled },
+    { text: "Cancelled", value: PurchaseInquiryStatus.Cancelled },
     { text: "Closed", value: PurchaseInquiryStatus.Closed },
     { text: "Updated", value: PurchaseInquiryStatus.Updated }
   ];
@@ -105,17 +105,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     UIHelper.getWidthOfOuterTabUpdateInq();
   }
 
-  ngOnDestroy() {
-    if (this.sideBarsubs != undefined)
-      this.sideBarsubs.unsubscribe();
-    if (this.updatePISub != undefined)
-      this.updatePISub.unsubscribe();
-    if (this.getPIsubs != undefined)
-      this.getPIsubs.unsubscribe();
-
-    if (this.updatePIStatusSub != undefined)
-      this.updatePIStatusSub.unsubscribe();
-  }
+  
 
   ngOnInit() {
     GlobalResource.dirty=false;
@@ -152,6 +142,17 @@ export class PurchaseInqUpdateComponent implements OnInit {
     }
   }
  
+  ngOnDestroy() {
+    if (this.sideBarsubs != undefined)
+      this.sideBarsubs.unsubscribe();
+    if (this.updatePISub != undefined)
+      this.updatePISub.unsubscribe();
+    if (this.getPIsubs != undefined)
+      this.getPIsubs.unsubscribe();
+
+    if (this.updatePIStatusSub != undefined)
+      this.updatePIStatusSub.unsubscribe();
+  }
   private setModelAndSubscribeData(){
     if (this.purchaseInquiryDetail != null && this.purchaseInquiryDetail != undefined) {
       this.purchaseInquiryDetail.CreatedDate = new Date(this.purchaseInquiryDetail.CreatedDate);
@@ -288,7 +289,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
     if (this.purchaseInquiryDetail.Status != PurchaseInquiryStatus.Draft) {
       this.isDisableSaveAsDraft = true;
     }
-
     //save as draft click, Draft status
     if (saveAsDraft) {
       let Draftstatus: any = { text: "Draft", value: PurchaseInquiryStatus.Draft };
@@ -310,7 +310,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
           //if status is cancelled
         }
       }
-
     }
     this.showLoader = true;
     this.updatePISub = this.purchaseInquiryService.UpdatePurchaseInquiry(this.purchaseInquiryDetail).subscribe(
@@ -322,7 +321,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
           this.isCancelStatus = true;
           this.isDisableSave = true;
           this.isDisableSaveAsDraft = true;
-          this.isDisableStatusField = true;//disable status in case of status cancelled also.
+          this.isDisableStatusField = true;// disable status in case of status cancelled also.
           localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(this.purchaseInquiryDetail));
         }
       },
