@@ -27,7 +27,7 @@ export class CustomFilterPipe implements PipeTransform {
       (items.Owner!=null && items.Owner.toLowerCase().indexOf(args) != -1 ) ||
       (items.Total!=null && items.Total.toLowerCase().indexOf(args) != -1 ) ||
       (items.Servicetype!=null && items.Servicetype.toLowerCase().indexOf(args) != -1 ) ||
-      (items.Status!=null && items.Status.toLowerCase().indexOf(args) != -1 ) ||
+      (items.Status!=null && items.Status.toString().toLowerCase().indexOf(args) != -1 ) ||
       (items.Branch!=null && items.Branch.toLowerCase().indexOf(args) != -1 ) ||
       (items.DeliveryDate!=null && items.DeliveryDate.toString().toLowerCase().indexOf(args) != -1 ) ||
       (items.DocumentDate!=null && items.DocumentDate.toString().toLowerCase().indexOf(args) != -1 ) ||
@@ -39,7 +39,7 @@ export class CustomFilterPipe implements PipeTransform {
       (items.Owner!=null && items.Owner.toLowerCase().indexOf(args) != -1 ) ||
       (items.Total!=null && items.Total.toLowerCase().indexOf(args) != -1 ) ||
       (items.Servicetype!=null && items.Servicetype.toLowerCase().indexOf(args) != -1 ) ||
-      (items.Status!=null && items.Status.toLowerCase().indexOf(args) != -1 ) ||
+      (items.Status!=null && items.Status.toString().toLowerCase().indexOf(args) != -1 ) ||
       (items.Branch!=null && items.Branch.toLowerCase().indexOf(args) != -1 ) ||
       (items.QuotationDate!=null && items.QuotationDate.toString().toLowerCase().indexOf(args) != -1 ) ||
       (items.Duedate!=null && items.Duedate.toString().toLowerCase().indexOf(args) != -1 ) ||
@@ -85,9 +85,14 @@ export class CustomFilterPipe implements PipeTransform {
       (items.PurchaseOrderNumber!=null && items.PurchaseOrderNumber.toString().toLowerCase().indexOf(args) != -1 ) ||
       (items.RefrenceTypeText!=null && items.RefrenceTypeText.toLowerCase().indexOf(args) != -1 ) ||
       (items.PurchaseOrderDate!=null && items.PurchaseOrderDate.toString().toLowerCase().indexOf(args) != -1 ) ||
-      (items.RefrenceNumber!=null && items.RefrenceNumber.toLowerCase().indexOf(args) != -1 )
+      (items.RefrenceNumber!=null && items.RefrenceNumber.toLowerCase().indexOf(args) != -1 ) ||
       
-      
+      // contact       
+      (items.ContactName!=null && items.ContactName.toString().toLowerCase().indexOf(args) != -1 ) ||
+      (items.PhoneNumber!=null && items.PhoneNumber.toString().toLowerCase().indexOf(args) != -1 ) ||
+      (items.ContactEmail!=null && items.ContactEmail.toString().toLowerCase().indexOf(args) != -1 ) ||
+      (items.Address!=null && items.Address.toLowerCase().indexOf(args) != -1 ) ||
+      (items.StatusText!=null && items.StatusText.toString().toLowerCase().indexOf(args) != -1 )
     });
 
   }

@@ -22,7 +22,7 @@ export class CustomerContactsListComponent implements OnInit {
   imgPath = Configuration.imagePath;
 
   pageLimit;
-  pagination:boolean;
+  pagination: boolean;
 
   isMobile: boolean;
   isColumnFilter: boolean = false;
@@ -31,14 +31,14 @@ export class CustomerContactsListComponent implements OnInit {
   showLoader: boolean = false;
   searchRequest: string = '';
   getContractlistSubs: ISubscription;
-
-  getPaginationAttributes(){
+  public addSub: ISubscription;
+  getPaginationAttributes() {
     // pagination add/remove for desktop and mobile
     let paginationAttributesArray = UIHelper.paginationAttributes();
     this.pageLimit = paginationAttributesArray[0];
     this.pagination = paginationAttributesArray[1];
   }
-  
+
   // UI Section
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -52,14 +52,14 @@ export class CustomerContactsListComponent implements OnInit {
   }
   // End UI Section
 
-  
 
-  constructor(private commonService:Commonservice,private contactService: ContactService) { }
+
+  constructor(private commonService: Commonservice, private contactService: ContactService) { }
 
   public gridData: any[];
-
+  refreshContactListSubs: ISubscription;
   ngOnInit() {
-
+    console.log('list on init');
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
@@ -72,6 +72,14 @@ export class CustomerContactsListComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
     this.getPaginationAttributes();
+
+    this.refreshContactListSubs = this.commonService.refreshContactListSubscriber.subscribe(
+      data => {
+        
+        console.log('refresh list');
+        if (data != undefined && data != null)
+          this.getCustomerContactsList();
+      });
     this.getCustomerContactsList();
   }
 
@@ -81,7 +89,7 @@ export class CustomerContactsListComponent implements OnInit {
   public getCustomerContactsList1() {
     this.showLoader = true;
     this.gridData = customerContactsList;
-    setTimeout(()=>{    
+    setTimeout(() => {
       this.showLoader = false;
     }, 1000);
   }
@@ -89,65 +97,64 @@ export class CustomerContactsListComponent implements OnInit {
   /**
   * Method to get list of inquries from server.
   */
- public getCustomerContactsList() {
-  this.showLoader = true; 
-  this.getContractlistSubs = this.contactService.getCustomerContactList().subscribe(
-    data => {
-      
-      if (data != null && data != undefined) {
+  public getCustomerContactsList() {
+    console.log('get cust list');
+    this.showLoader = true;
+    this.getContractlistSubs = this.contactService.getCustomerContactList().subscribe(
+      data => {
+
+        if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
           this.gridData.forEach(element => {
-        });
+          });
+          this.showLoader = false;
+        }
+      },
+      error => {
         this.showLoader = false;
+        alert("Something went wrong");
+        console.log("Error: ", error);
+        localStorage.clear();
       }
-    },
-    error => {
-      this.showLoader = false;
-      alert("Something went wrong");
-      console.log("Error: ", error);
-      localStorage.clear();
-    }
-  );
-}
+    );
+  }
 
 
-openContactsDetailOnSelection(selection){
-  $('#opti_HomeTabDeliveryNotesID').click(); 
+  openContactsDetailOnSelection(selection) {
+    $('#opti_HomeTabDeliveryNotesID').click();
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName = ComponentName.UpdateContact;
+    currentsideBarInfo.ModuleName = ModuleName.CustomerContacts;
+    currentsideBarInfo.SideBarStatus = true;
+    // Reset Selection.
 
-  let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
-  currentsideBarInfo.ComponentName = ComponentName.UpdateContact;
-  currentsideBarInfo.ModuleName = ModuleName.CustomerContacts;
-  currentsideBarInfo.SideBarStatus = true;
-  // Reset Selection.
-  
-  let selectedContact = this.gridData[selection.index];
-  currentsideBarInfo.RequesterData = selectedContact;
-  localStorage.setItem("SelectedContact", JSON.stringify(selectedContact));
-  this.commonService.setCurrentSideBar(currentsideBarInfo);
-  // Reset Selection.
-  selection.selectedRows=[]; 
-}
-
-
-ngOnDestroy() {
-  if (this.getContractlistSubs != undefined)
-    this.getContractlistSubs.unsubscribe();
-}
+    let selectedContact = this.gridData[selection.index];
+    currentsideBarInfo.RequesterData = selectedContact;
+    localStorage.setItem("SelectedContact", JSON.stringify(selectedContact));
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
+    // Reset Selection.
+    selection.selectedRows = [];
+  }
 
 
-  onFilterChange(checkBox:any,grid:GridComponent)
-  {
-    if(checkBox.checked==false){
+  ngOnDestroy() {
+    if (this.getContractlistSubs != undefined)
+      this.getContractlistSubs.unsubscribe();
+  }
+
+
+  onFilterChange(checkBox: any, grid: GridComponent) {
+    if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
 
-  clearFilter(grid:GridComponent){      
+  clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
   }
 
-  
-  addContactsOnClick(status:boolean){
+
+  addContactsOnClick(status: boolean) {
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.AddContact;
     currentsideBarInfo.ModuleName = ModuleName.CustomerContacts;

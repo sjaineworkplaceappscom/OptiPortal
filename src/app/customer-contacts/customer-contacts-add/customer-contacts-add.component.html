@@ -21,7 +21,7 @@
 
           <div class="card">
             <div class="card-block">
-              <form class="k-form">
+              <form class="k-form" #contactForm="ngForm">
 
                 <!-- <label class="k-form-field">
                     <span class="opti_form-label">Contact Id</span>
@@ -29,23 +29,36 @@
                 </label> -->
 
                 <label class="k-form-field">
-                    <span class="opti_form-label">Contact Name</span>
-                    <input name="contactName" type="text" class="k-textbox" [(ngModel)]="contactName" />
+                    <span class="opti_form-label">Contact Name
+                        <span *ngIf="contactName.errors && (contactName.dirty || contactName.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter contact name.</span>
+                    </span>
+                    <input name="contactName" required #contactName=ngModel  placeholder="e.g. Kevin Peter" type="text" class="k-textbox" [(ngModel)]="contactModel.ContactName" />
                 </label>
 
                 <label class="k-form-field">
-                    <span class="opti_form-label">Phone</span>
-                    <input name="phone" type="text" class="k-textbox" [ngModel]="phone"  />
+                    <span class="opti_form-label">Phone
+                        <span *ngIf="phone.errors && (phone.dirty || phone.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter phone number.</span>
+                    </span> 
+                    <input name="phone" type="text"  placeholder="e.g. +01 321 856 5478" class="k-textbox" required #phone=ngModel [(ngModel)]="contactModel.PhoneNumber"  />
+                </label>
+                <label class="k-form-field">
+                    <span class="opti_form-label">Email
+                        <span *ngIf="RequesterEmail.errors?.required && (RequesterEmail.dirty || RequesterEmail.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter emailId.</span>
+                        <span *ngIf="RequesterEmail.errors?.email && RequesterEmail.touched && !RequesterEmail.errors?.required" class="float-right opti_signup-validation-top-side opti_error-msg">
+                            Please enter valid emailId. 
+                        </span>  
+                    </span>
+                    <!-- <input name="email" type="text"  placeholder="e.g. kevin@gmail.com"  value="email" required type="email" #RequesterEmail=ngModel class="k-textbox" [(ngModel)]="contactModel.ContactEmail" /> -->
+                    <input name="RequesterEmail" required email #RequesterEmail=ngModel [(ngModel)]="contactModel.ContactEmail" type="email"
+                    class="k-textbox" value="email" placeholder="e.g. kevin@gmail.com"
+                    placement="right" container="body" autocomplete="off"/>
                 </label>
 
                 <label class="k-form-field">
-                    <span class="opti_form-label">Email</span>
-                    <input name="email" type="text" class="k-textbox" [ngModel]="email" />
-                </label>
-
-                <label class="k-form-field">
-                    <span class="opti_form-label">Address</span>
-                    <textarea class="k-textarea" name="address" [(ngModel)]="address" >Address</textarea>
+                    <span class="opti_form-label">Address
+                            <span *ngIf="Address.errors && (Address.dirty || Address.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter address.</span>
+                    </span>
+                    <textarea class="k-textarea" required #Address=ngModel name="address" [(ngModel)]="contactModel.Address" >Address</textarea>
                 </label>
 
                 <label class="k-form-field">
@@ -62,9 +75,9 @@
                 </label>
 
                 <div class="text-right">
-                    <button type="button" class="k-button k-primary">Save</button>
-                    <button type="button" class="k-button">Save as draft</button>
-                    <button type="button" class="k-button">Cancel</button>
+                    <button type="button" class="k-button k-primary" [disabled]="!contactForm.form.valid"  (click)="AddContact()">Save</button>
+                    
+                    <button type="button" class="k-button" (click)="closeRightSidebar()">Cancel</button>
                 </div>
 
               </form>

@@ -10,7 +10,7 @@
        <!-- <div *ngIf="systemAdmin!='true'"> -->
        <div>
            <kendo-grid 
-           [kendoGridBinding]="gridData" 
+           [kendoGridBinding]="gridData | customFilter:searchRequest" 
            [resizable]="false" 
            [pageSize]=pageLimit 
            [pageable]=pagination 

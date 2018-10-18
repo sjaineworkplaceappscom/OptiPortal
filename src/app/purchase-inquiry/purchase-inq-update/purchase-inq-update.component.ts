@@ -179,8 +179,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
         this.showLoader = false;
         let dataArray: any[] = JSON.parse(data);
         this.purchaseInquiryDetail = dataArray[0];
-       
-       
         this.purchaseInquiryDetail.ValidTillDate=DateTimeHelper.ParseToUTC(this.purchaseInquiryDetail.ValidTillDate);
         localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(this.purchaseInquiryDetail));
         this.setModelAndSubscribeData();

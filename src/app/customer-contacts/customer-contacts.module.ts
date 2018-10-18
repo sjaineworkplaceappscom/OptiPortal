@@ -12,6 +12,8 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { CustomerContactsComponent } from './customer-contacts.component';
 import { CustomerContactsAddComponent } from './customer-contacts-add/customer-contacts-add.component';
 import { CustomerContactsUpdateComponent } from './customer-contacts-update/customer-contacts-update.component';
+import { SharedComponent } from '../shared/shared.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -23,7 +25,8 @@ import { CustomerContactsUpdateComponent } from './customer-contacts-update/cust
     AngularSvgIconModule,
     PerfectScrollbarModule,
     FileDropModule,
-    DropDownsModule
+    DropDownsModule,
+    SharedModule
   ],
   declarations: [CustomerContactsListComponent, CustomerContactsComponent, CustomerContactsAddComponent, CustomerContactsUpdateComponent],
   exports:[CustomerContactsListComponent, CustomerContactsComponent, CustomerContactsAddComponent, CustomerContactsUpdateComponent]

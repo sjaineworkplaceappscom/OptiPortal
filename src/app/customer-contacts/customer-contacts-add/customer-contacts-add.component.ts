@@ -50,7 +50,7 @@ export class CustomerContactsAddComponent implements OnInit {
       (data: any) => {
         this.showLoader = false;
         this.toast.showSuccess(AppMessages.ContactAddedSuccessMsg);
-        this.commonService.refreshPIList(null);
+        this.commonService.refreshContactList(true);
         //localStorage.setItem("SelectedContactInquery", JSON.stringify(data)); comment for abhi k lea.
         this.closeRightSidebar();
 

@@ -6,6 +6,7 @@ import { ContactService } from '../../services/contact.service';
 import { Commonservice } from '../../services/commonservice.service';
 import { ContactModel } from '../../tempmodels/contact-model';
 import { GlobalResource } from '../../helpers/global-resource';
+import { Contact } from '../../tempmodels/contact';
 
 @Component({
   selector: 'app-customer-contacts-update',
@@ -34,7 +35,7 @@ export class CustomerContactsUpdateComponent implements OnInit {
   public sideBarsubs: ISubscription;
   public getContactsubs: ISubscription;
   public updateContactSub: ISubscription;
-  public contactModel: ContactModel = new ContactModel();
+  public contactModel: Contact = new Contact();
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog) { }
@@ -42,6 +43,7 @@ export class CustomerContactsUpdateComponent implements OnInit {
   ngOnInit() {
     // Set sidebar data;
     console.log('ccu');
+    
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
         
@@ -60,21 +62,23 @@ export class CustomerContactsUpdateComponent implements OnInit {
         console.log("Error: ", error)
       }
     );
-    this.setDefaultData(); 
+    //this.setDefaultData(); 
   }
 
   /** 
     * call api for contact detail.
     */
   callContactDetailAPI(id: string) {
+    
     // console.log("Update:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
     this.showLoader = true;
     this.getContactsubs = this.contactService.getContactDetail(id).subscribe(
       data => {
+        debugger;
         this.showLoader = false;
         let dataArray: any[] = JSON.parse(data);
         this.contactModel = dataArray[0];
-        //this.contactModel.=DateTimeHelper.ParseToUTC(this.purchaseInquiryDetail.ValidTillDate);
+       // this.contactModel.=DateTimeHelper.ParseToUTC(this.purchaseInquiryDetail.ValidTillDate);
         localStorage.setItem("SelectedContact", JSON.stringify(this.contactModel));
       }, error => {
         this.showLoader = false;
@@ -85,11 +89,12 @@ export class CustomerContactsUpdateComponent implements OnInit {
   }
 
   UpdateContactData() {
+    debugger; 
     this.showLoader = true;
     this.updateContactSub = this.contactService.UpdateContact(this.contactModel).subscribe(
       data => {
         this.showLoader = false;
-        this.commonService.refreshContactList(null);
+        this.commonService.refreshContactList(true);
         //if after save user set status to cancelled then we have to disable all functionality.
         localStorage.setItem("SelectedContact", JSON.stringify(this.contactModel));
       },
@@ -107,7 +112,7 @@ export class CustomerContactsUpdateComponent implements OnInit {
 * This method will reset the model and date object for add form.
 */
 private setDefaultData() {
-  this.contactModel = new ContactModel();
+  this.contactModel = new Contact();
   this.contactModel.Status = this.selectedItem[0].value;
 }
 

@@ -24,7 +24,7 @@ export class ContactService {
   * Add Note.
   */
  public AddContact(contactModel: ContactModel): Observable<any> {
-  debugger;
+  
   var data: any = {
     
     "ContactName": contactModel.ContactName,
@@ -41,7 +41,7 @@ export class ContactService {
 * Get List of users.
 */
   public getContactDetail(contactId: string): Observable<any> {
-    let url: string = this.baseUrl + "contact/" + contactId;
+    let url: string = this.baseUrl + "contact/detail/" + contactId;
     return this.httpHelper.get(url, null);
   }
 
@@ -49,7 +49,7 @@ export class ContactService {
   * UpdateContact
   */
  public UpdateContact(contactModel: ContactModel) {
-  var purchaseInquiryUpdate: any = {
+  var contactUpdate: any = {
     "ContactId": contactModel.ContactId,
     "ContactName": contactModel.ContactName,
     "ContactEmail": contactModel.ContactEmail,
@@ -57,6 +57,6 @@ export class ContactService {
     "Status": contactModel.Status,
     "PhoneNumber": contactModel.PhoneNumber,
   }
-  return this.httpHelper.put(this.baseUrl + 'purchaseinquiry/update', purchaseInquiryUpdate, null);
+  return this.httpHelper.put(this.baseUrl + 'contact/update', contactUpdate, null);
 }
-}
+} 
