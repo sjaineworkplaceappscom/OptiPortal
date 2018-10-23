@@ -11,6 +11,7 @@ import { Configuration } from '../../helpers/Configuration';
 import { ContactService } from '../../services/contact.service';
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { ConfirmDialog } from '../../helpers/services/dialog.service';
 
 @Component({
   selector: 'app-customer-contacts-list',
@@ -54,7 +55,7 @@ export class CustomerContactsListComponent implements OnInit {
 
 
 
-  constructor(private commonService: Commonservice, private contactService: ContactService) { }
+  constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog) { }
 
   public gridData: any[];
   refreshContactListSubs: ISubscription;
@@ -120,8 +121,17 @@ export class CustomerContactsListComponent implements OnInit {
   }
 
 
-  openContactsDetailOnSelection(selection) {
+  async openContactsDetailOnSelection(selection) {
     $('#opti_HomeTabDeliveryNotesID').click();
+    let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
+    if (a == false) {
+
+      selection.selectedRows =selection.deselectedRows;
+      selection.index=selection.selectedRows[0].index;
+      return;
+
+    }
+
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.UpdateContact;
     currentsideBarInfo.ModuleName = ModuleName.CustomerContacts;

@@ -30,21 +30,22 @@ export class CustomerContactsAddComponent implements OnInit {
   public selectedItem = [{ text: "Activate", value: 1 }];
   showLoader: boolean = false;
   @Input() currentSidebarInfo: CurrentSidebarInfo;
-  public contactModel:Contact = new Contact();
-  constructor(private contactService: ContactService, private commonService: Commonservice,private toast:ToastService) { }
+  public contactModel: Contact = new Contact();
+  constructor(private contactService: ContactService, private commonService: Commonservice, private toast: ToastService) { }
 
   ngOnInit() {
-
     this.setDefaultData();
   }
 
   valueChange(value: any) {
     GlobalResource.dirty = true;
-    console.log('change in datepicker value');
+    
+  }
+  changeDiv(e) {
+    GlobalResource.dirty = true;
   }
 
   public AddContact() {
-    GlobalResource.dirty = false;
     this.showLoader = true;
     this.addSub = this.contactService.AddContact(this.contactModel).subscribe(
       (data: any) => {
@@ -67,26 +68,24 @@ export class CustomerContactsAddComponent implements OnInit {
     );
   }
 
-   
- /**
-* This method will reset the model and date object for add form.
-*/
-private setDefaultData() {
-  this.contactModel =  new Contact();
-  this.contactModel.Status = this.selectedItem[0].value;
-  this.contactModel.ContactName = '';
-  this.contactModel.ContactEmail = '';
-  this.contactModel.Address = '';
-  this.contactModel.PhoneNumber = '';
-  
-}
+
+  /**
+ * This method will reset the model and date object for add form.
+ */  
+  private setDefaultData() {
+    this.contactModel = new Contact();
+    this.contactModel.Status = this.selectedItem[0].value;
+    this.contactModel.ContactName = '';
+    this.contactModel.ContactEmail = '';
+    this.contactModel.Address = '';
+    this.contactModel.PhoneNumber = '';
+  }
 
   /** 
   * 
   * @param status close right content section, will pass false
   */
   closeRightSidebar() {
-    GlobalResource.dirty = false;
     let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentSidebarInfo.SideBarStatus = false;
     this.commonService.setCurrentSideBar(currentSidebarInfo);

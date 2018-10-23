@@ -87,8 +87,8 @@ public AddCustomerPurchaseOrder() {
   this.customerPurchaseOrderAddModel.PurchaseOrderDate=DateTimeHelper.ParseToUTC(this.customerPurchaseOrderAddModel.PurchaseOrderDate);
   this.showLoader=true;
   this.addSub=this.customerPurchaseOrderService.AddPurchaseOrder(this.customerPurchaseOrderAddModel).subscribe(
-    (data: any) => {        
-      this.commonService.refreshCPOList(true);
+    (data: any) => {         
+      this.commonService.refreshCPOList(true); 
       //localStorage.setItem("SelectedCustomerPurchaseOrder",data.CustomerPurchaseOrder);      
       localStorage.setItem("SelectedCustomerPurchaseOrder",JSON.stringify(data));         
       this.openUpdateSideBar(data); 

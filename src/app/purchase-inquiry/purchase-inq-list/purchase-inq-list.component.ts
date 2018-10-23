@@ -178,21 +178,15 @@ export class PurchaseInqListComponent implements OnInit {
    */
   public async openInqueryDetailOnSelectInquery(selection) {
     let selectedIinquiry = this.gridData[selection.index];
-    console.log('b4 leave dialog');
-
      let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
-     console.log('after leave dialog boolean:'+a);
-     console.log('selected Inq:'+JSON.stringify(selectedIinquiry));
      
      if (a == false) {
-       console.log('a== false condition and return');
+
        selection.selectedRows =selection.deselectedRows;
        selection.index=selection.selectedRows[0].index;
        return;
  
      }
-     console.log('after dialog code complete');
-     
      //console.log('selected Inq:'+selectedIinquiry.toString());
     this.openPIDetail(selection,selectedIinquiry);
    

@@ -7,6 +7,8 @@ import { Commonservice } from '../../services/commonservice.service';
 import { ContactModel } from '../../tempmodels/contact-model';
 import { GlobalResource } from '../../helpers/global-resource';
 import { Contact } from '../../tempmodels/contact';
+import { ToastService } from '../../helpers/services/toast.service';
+import { AppMessages } from '../../helpers/app-messages';
 
 @Component({
   selector: 'app-customer-contacts-update',
@@ -38,11 +40,9 @@ export class CustomerContactsUpdateComponent implements OnInit {
   public contactModel: Contact = new Contact();
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
-  constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog) { }
+  constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog,private toast:ToastService) { }
 
   ngOnInit() {
-    // Set sidebar data;
-    console.log('ccu');
     
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
@@ -69,12 +69,9 @@ export class CustomerContactsUpdateComponent implements OnInit {
     * call api for contact detail.
     */
   callContactDetailAPI(id: string) {
-    
-    // console.log("Update:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
     this.showLoader = true;
     this.getContactsubs = this.contactService.getContactDetail(id).subscribe(
       data => {
-        debugger;
         this.showLoader = false;
         let dataArray: any[] = JSON.parse(data);
         this.contactModel = dataArray[0];
@@ -89,7 +86,6 @@ export class CustomerContactsUpdateComponent implements OnInit {
   }
 
   UpdateContactData() {
-    debugger; 
     this.showLoader = true;
     this.updateContactSub = this.contactService.UpdateContact(this.contactModel).subscribe(
       data => {
@@ -97,6 +93,7 @@ export class CustomerContactsUpdateComponent implements OnInit {
         this.commonService.refreshContactList(true);
         //if after save user set status to cancelled then we have to disable all functionality.
         localStorage.setItem("SelectedContact", JSON.stringify(this.contactModel));
+        this.toast.showSuccess(AppMessages.ContactUpdateSuccessMsg);
       },
       error => {
         //alert("Something went wrong");
@@ -104,7 +101,6 @@ export class CustomerContactsUpdateComponent implements OnInit {
         this.showLoader = false;
       },
       () => { this.showLoader = false; }
-
     );
   }
 
@@ -123,14 +119,21 @@ private setDefaultData() {
   * @param status close right content section, will pass false
   */
     closeRightSidebar() {
-      GlobalResource.dirty = false;
+      
       let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
       currentSidebarInfo.SideBarStatus = false;
       this.commonService.setCurrentSideBar(currentSidebarInfo);
     }
 
+  
   valueChange(value: any) {
     GlobalResource.dirty = true;
+    console.log('change in datepicker value');
+
+  }
+  changeDiv(e) {
+    GlobalResource.dirty = true;
+    console.log('change in div value');
   }
 
 
