@@ -518,30 +518,32 @@ body{
     //////////////////////////////////////////////////
     // Disable form using overrite div on form end
     //////////////////////////////////////////////////
-
-    .k-notification-info {
-        border-color: #bee5eb;
-        color: #0c5460;
-        background-color: #d1ecf1; 
+    .k-notification-container{
+        .k-notification-info {
+            border-color: #bee5eb;
+            color: #0c5460;
+            background-color: #d1ecf1; 
+        }
+          
+        .k-notification-success {
+            border-color: #28a745;
+            background-color: #28a745; 
+        }
+          
+        .k-notification-warning {
+            border-color: #ffc107;
+            background-color: #ffc107; 
+        }
+          
+        .k-notification-error {
+            border-color: #dc3545;
+            background-color: #dc3545; 
+        }
+    
+        .k-notification-content, .k-icon{
+            color: white
+        }
     }
-      
-    .k-notification-success {
-        border-color: #28a745;
-        background-color: #28a745; 
-    }
-      
-    .k-notification-warning {
-        border-color: #ffc107;
-        background-color: #ffc107; 
-    }
-      
-    .k-notification-error {
-        border-color: #dc3545;
-        background-color: #dc3545; 
-    }
-
-    .k-notification-content, .k-icon{
-        color: white
-    }
+    
         
 }
