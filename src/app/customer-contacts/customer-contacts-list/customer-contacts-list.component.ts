@@ -127,7 +127,7 @@ export class CustomerContactsListComponent implements OnInit {
     if (a == false) {
 
       selection.selectedRows =selection.deselectedRows;
-      selection.index=selection.selectedRows[0].index;
+      selection.index=selection.selectedRows[0];
       return;
 
     }

@@ -41,12 +41,13 @@ export class CustomerContactsAddComponent implements OnInit {
     GlobalResource.dirty = true;
     
   }
-  changeDiv(e) {
+  changeDiv(e) { 
     GlobalResource.dirty = true;
   }
 
   public AddContact() {
     this.showLoader = true;
+    GlobalResource.dirty = false;
     this.addSub = this.contactService.AddContact(this.contactModel).subscribe(
       (data: any) => {
         this.showLoader = false;

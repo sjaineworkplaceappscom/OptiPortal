@@ -9,6 +9,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { AppMessages } from '../../helpers/app-messages';
 import { ToastService } from '../../helpers/services/toast.service';
+import { GlobalResource } from '../../helpers/global-resource';
 
 @Component({
   selector: 'app-customer-purchase-order-home-add',
@@ -71,8 +72,12 @@ private setDefaultData() {
 }
 
 valueChange(value:any){    
- // GlobalResource.dirty=true;
+  GlobalResource.dirty=true;
   console.log('change in datepicker value'); 
+}
+
+changeDiv(e) {
+  GlobalResource.dirty = true;
 }
 
 
@@ -83,7 +88,7 @@ ngOnDestroy(){
 
 
 public AddCustomerPurchaseOrder() {
-  
+  GlobalResource.dirty = false;
   this.customerPurchaseOrderAddModel.PurchaseOrderDate=DateTimeHelper.ParseToUTC(this.customerPurchaseOrderAddModel.PurchaseOrderDate);
   this.showLoader=true;
   this.addSub=this.customerPurchaseOrderService.AddPurchaseOrder(this.customerPurchaseOrderAddModel).subscribe(

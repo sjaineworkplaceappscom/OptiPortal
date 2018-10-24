@@ -13,6 +13,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { CustomerPurchaseOrderService } from '../../services/customer-purchase-order.service';
 import { DatePipe } from '../../../../node_modules/@angular/common';
 import { Router } from '../../../../node_modules/@angular/router';
+import { ConfirmDialog } from '../../helpers/services/dialog.service';
 
 
 
@@ -58,7 +59,7 @@ refreshCPOListSubs: ISubscription;
 
   
 
-  constructor(private customerPurchaseOrderService: CustomerPurchaseOrderService, private commonService: Commonservice, public datepipe: DatePipe, private router: Router) {
+  constructor(private customerPurchaseOrderService: CustomerPurchaseOrderService, private commonService: Commonservice, public datepipe: DatePipe, private router: Router, private confirmService: ConfirmDialog) {
   
   }
 
@@ -160,7 +161,17 @@ refreshCPOListSubs: ISubscription;
     //grid.filter.filters=[];
   }
 
-  openInqueryDetailOnSelectInquery(selection){
+ async openInqueryDetailOnSelectInquery(selection){
+    let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
+     
+    if (a == false) {
+
+      selection.selectedRows =selection.deselectedRows;
+      selection.index=selection.selectedRows[0].index;
+      return;
+
+    }
+
     $('#opti_HomeTabCustomerPurchaseOrderID').click();
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.CPOUpdate;
