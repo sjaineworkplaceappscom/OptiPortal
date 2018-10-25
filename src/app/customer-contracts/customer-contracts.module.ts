@@ -9,6 +9,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FileDropModule } from 'ngx-file-drop';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { CustomerContractsAttachmentComponent } from './customer-contracts-attachment/customer-contracts-attachment.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
     FileDropModule,
     DropDownsModule
   ],
-  declarations: [CustomerContractsListComponent]
+  declarations: [CustomerContractsListComponent, CustomerContractsAttachmentComponent],
+  exports:[CustomerContractsListComponent, CustomerContractsAttachmentComponent]
 })
 export class CustomerContractsModule { }

@@ -10,6 +10,8 @@ import { CustomerContractListModel } from '../../tempmodels/Customer-Contract-li
 import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
 import { CustomerContractService } from '../../services/customer-contract.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
+import { ComponentName, ModuleName } from '../../enums/enums';
 
 
 @Component({
@@ -131,16 +133,11 @@ export class CustomerContractsListComponent implements OnInit {
   }
 
   openContractsDetailOnSelection(selection){
-    //$('#opti_OpenInvoicesID').click(); 
-
-    // let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
-    // currentsideBarInfo.ComponentName = ComponentName.OpenInvoices;
-    // currentsideBarInfo.ModuleName = ModuleName.OpenInvoices;
-    // currentsideBarInfo.SideBarStatus = true;
-    // this.commonService.setCurrentSideBar(currentsideBarInfo);
-
-    
-    
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName = ComponentName.ContractsAttachment;
+    currentsideBarInfo.ModuleName = ModuleName.CustomerContracts;
+    currentsideBarInfo.SideBarStatus = true;
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
   

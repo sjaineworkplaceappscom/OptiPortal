@@ -29,7 +29,7 @@
            <ng-template kendoGridToolbarTemplate>
                <!-- show hide column start show hide -->
                <kendo-grid-column-chooser class="float-left opti_hide-in-mobile"></kendo-grid-column-chooser>
-
+                <button (click)="openContractsDetailOnSelection($event)">Attachment</button>
                <!-- checkbox -->
                <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
                    <div class="k-form-field float-left">
