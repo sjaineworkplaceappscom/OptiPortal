@@ -136,10 +136,32 @@ export class CustomerContractsListComponent implements OnInit {
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.ContractsAttachment;
     currentsideBarInfo.ModuleName = ModuleName.CustomerContracts;
+
+    // set selected contract in local storage
+    let SelectedContract = this.gridData[selection.index];
+    localStorage.setItem("SelectedContract", JSON.stringify(SelectedContract));
+
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+
+    selection.selectedRows=[]; 
   }
 
+
+  openContractsAttchmentOnSelection(index){
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName = ComponentName.ContractsAttachment;
+    currentsideBarInfo.ModuleName = ModuleName.CustomerContracts;
+
+    // set selected contract in local storage
+    let SelectedContract = this.gridData[index];
+    localStorage.setItem("SelectedContract", JSON.stringify(SelectedContract));
+
+    currentsideBarInfo.SideBarStatus = true;
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
+
+    //selection.selectedRows=[]; 
+  }
   
   ngOnDestroy() {
     if (this.getContractlistSubs != undefined)

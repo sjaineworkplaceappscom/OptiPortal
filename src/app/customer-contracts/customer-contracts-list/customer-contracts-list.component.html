@@ -19,8 +19,8 @@
            [groupable]=isColumnGroup 
            [columnMenu]="{ columnChooser: false }" 
            [height]=gridHeight 
-           [selectable]="true" 
-           (selectionChange)="openContractsDetailOnSelection($event)"
+           [selectable]="false"            
+           
            #gridItem>
            <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
            <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
@@ -29,7 +29,7 @@
            <ng-template kendoGridToolbarTemplate>
                <!-- show hide column start show hide -->
                <kendo-grid-column-chooser class="float-left opti_hide-in-mobile"></kendo-grid-column-chooser>
-                <button (click)="openContractsDetailOnSelection($event)">Attachment</button>
+                <!-- <button (click)="openContractsDetailOnSelection($event)">Attachment</button> -->
                <!-- checkbox -->
                <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
                    <div class="k-form-field float-left">
@@ -67,8 +67,8 @@
                 <ng-template kendoGridCellTemplate let-dataItem>
                     
                     <dl class="opti_mobile_grid_dl">
-                        <dt>Contract Id</dt>
-                        <dd>{{ dataItem.ContractId }}</dd>
+                        <!-- <dt>Contract Id</dt>
+                        <dd>{{ dataItem.ContractId }}</dd> -->
 
                         <dt>Contract#</dt>
                         <dd>{{ dataItem.ContractNumber }}</dd>
@@ -90,8 +90,8 @@
                         <dt>Contact Person</dt>
                         <dd>{{ dataItem.ContactPerson }}</dd>
                         
-                        <dt>Download link</dt>
-                        <dd>{{ dataItem.Downloadlink }}</dd>
+                        <!-- <dt>Download link</dt>
+                        <dd>{{ dataItem.Downloadlink }}</dd> -->
                     </dl>
 
                 </ng-template>
@@ -99,15 +99,20 @@
             <!-- grid for mobile end -->
 
            <!-- grid template end -->
-           <kendo-grid-column media="(min-width: 768px)" field="ContractId" title="Contract Id" [width]="160"></kendo-grid-column>
+           <!-- <kendo-grid-column media="(min-width: 768px)" field="ContractId" title="Contract Id" [width]="160"></kendo-grid-column> -->
            <kendo-grid-column media="(min-width: 768px)" field="ContractNumber" title="Contract#" [width]="180"></kendo-grid-column>
            <kendo-grid-column media="(min-width: 768px)" field="ContractDate" [width]="180" title="Contract Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
            <kendo-grid-column media="(min-width: 768px)" field="StartDate" [width]="180" title="Start Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
            <kendo-grid-column media="(min-width: 768px)" field="EndDate" title="End Date" [width]="180" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
            <kendo-grid-column media="(min-width: 768px)" field="Status" title="Status" [width]="160"></kendo-grid-column>
            <kendo-grid-column media="(min-width: 768px)" field="ContactPerson" title="Contact Person" [width]="160"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="Downloadlink" title="Download link" [width]="160" ></kendo-grid-column>
-           
+           <!-- <kendo-grid-column media="(min-width: 768px)" field="Downloadlink" title="Download link" [width]="160" ></kendo-grid-column> -->
+             <!-- <button (click)="openContractsDetailOnSelection($event)">Attachment</button> -->
+             <kendo-grid-column field="ContractNumber" title="Attachments" [width]="100" [filterable]="false" [sortable]="false" class="text-center">
+                    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex"> 
+                         <button (click)="openContractsAttchmentOnSelection(rowIndex)">Attachment</button>
+                    </ng-template>
+            </kendo-grid-column>
            <!-- xlsx template start -->
            <kendo-grid-excel fileName="customer-contracts.xlsx"></kendo-grid-excel>
            <!-- xlsx template end -->

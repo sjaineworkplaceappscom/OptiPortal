@@ -4,6 +4,11 @@ import { Configuration } from '../../helpers/Configuration';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { GridComponent } from '../../../../node_modules/@progress/kendo-angular-grid';
 import { salesOrderAttachment } from '../../DemoData/sales-order';
+import { CustomerContractListModel } from '../../tempmodels/Customer-Contract-list-model';
+import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { CustomerContractService } from '../../services/customer-contract.service';
+import { SharedComponentService } from '../../services/shared-component.service';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 @Component({
   selector: 'app-customer-contracts-attachment',
@@ -26,9 +31,12 @@ export class CustomerContractsAttachmentComponent implements OnInit {
   gridHeight: number;
   showLoader: boolean = false;
 
+  contractModel: CustomerContractListModel = new CustomerContractListModel();
+  public getAttachmentubs: ISubscription;
+
   public gridData: any[];
 
-  constructor() { }
+  constructor(private contractService: CustomerContractService, private sharedComponentService: SharedComponentService) { }
 
    // UI Section
    @HostListener('window:resize', ['$event'])
@@ -48,13 +56,18 @@ export class CustomerContractsAttachmentComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
 
-    this.getSalesOrderAttachmentList();
+
+    this.contractModel = JSON.parse(localStorage.getItem('SelectedContract'))
+    let orderNumber: number = this.contractModel.ContractNumber;
+    this.getContractAttachmentList(orderNumber);
+
+    // this.getSalesOrderAttachmentList();
   }
 
    /**
    * Method to get list of inquries from server.
   */
- public getSalesOrderAttachmentList() {
+ public getContractAttachmentList1() {
   this.showLoader = true;
   this.gridData = salesOrderAttachment;
   setTimeout(()=>{    
@@ -73,6 +86,72 @@ clearFilter(grid:GridComponent){
   //grid.filter.filters=[];
 }
 
+ /** 
+ * call api for Sales quotation detail attachment .
+ */
+getContractAttachmentList(id: number) {
+  this.showLoader = true;
+  this.getAttachmentubs = this.contractService.getContractDetail(id).subscribe(
+    data => {
 
+      this.showLoader = false;
+      if (data != null && data != undefined) {
+        this.gridData = JSON.parse(data);
+        this.gridData.forEach(element => {
+          element.AttachementDate = DateTimeHelper.ParseDate(element.AttachementDate);
+        });
+
+        this.showLoader = false;
+      }
+    }, error => {
+      this.showLoader = false;
+      //alert("Something went wrong");
+      console.log("Error: ", error)
+    }, () => { }
+  );
+}
+
+download(fileName: string) {
+
+  let seletedAttachment = this.gridData.filter(i => i.FileName == fileName)[0];
+
+  try {
+    // Create file path from response
+    let filePath: string = seletedAttachment.FullPath;//"\\\\172.16.6.20\\People\\Vaibhav\\ListofFilesRequiredForSetup.xlsx";
+    if (filePath == undefined) {
+      return;
+    }
+    this.sharedComponentService.getAtachmentFromPath(filePath)
+      .subscribe(
+        res => {
+          if (res != undefined && res != null) {
+            let fileName = res.Item1;
+            let tempAttachmentId = res.Item2;
+
+            let filepath: string = Configuration.doccumentPath + "Temp/" + tempAttachmentId + "/" + fileName;
+
+            var a = document.createElement('a');
+            document.body.appendChild(a);
+            a.href = filepath;
+            a.download = fileName;
+            // a.target = "_blank";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          }
+        }
+
+
+      );
+  }
+  catch (err) {
+    // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
+  }
+}
+
+ngOnDestroy() {
+  if (this.getAttachmentubs != undefined)
+    this.getAttachmentubs.unsubscribe();
+}
 
 }

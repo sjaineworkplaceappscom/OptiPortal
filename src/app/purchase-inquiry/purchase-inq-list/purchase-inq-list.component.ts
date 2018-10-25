@@ -216,6 +216,7 @@ export class PurchaseInqListComponent implements OnInit {
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     console.log('b4 reset selection');
     // Reset Selection.
+    selectedIinquiry='';
     selection.selectedRows = [];
     console.log('after reset selection');
   }

@@ -19,4 +19,13 @@ export class CustomerContractService {
     return this.httpHelper.get(url, null);
     //return null;
   }
+
+  /**
+   * sales order attachment from server.
+   */
+  public getContractDetail(id:number): Observable<any> {
+    
+    let url: string = this.baseUrl + "customercontract/detail/"+id;  //1 for header tab.
+    return this.httpHelper.get(url, null);
+  }
 }
