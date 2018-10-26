@@ -16,7 +16,7 @@ import { AppMessages } from '../../helpers/app-messages';
   styleUrls: ['./customer-contacts-update.component.scss']
 })
 export class CustomerContactsUpdateComponent implements OnInit {
-
+  isDisableStatusField:boolean=false;
   contactId;
   contactName;
   phone;

@@ -21,7 +21,7 @@ export class CustomerContactsAddComponent implements OnInit {
   phone;
   email;
   address;
-
+  isDisableStatusField:boolean=false;
   public addSub: ISubscription;
   public listItems = [
     { text: "Activate", value: 1 },
