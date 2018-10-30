@@ -76,8 +76,6 @@ export class CustomerContactsListComponent implements OnInit {
 
     this.refreshContactListSubs = this.commonService.refreshContactListSubscriber.subscribe(
       data => {
-        
-        console.log('refresh list');
         if (data != undefined && data != null)
           this.getCustomerContactsList();
       });

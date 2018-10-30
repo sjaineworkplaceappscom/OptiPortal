@@ -56,8 +56,8 @@ export enum ComponentName {
 
     // Customer Contacts
     AddContact = 801,
+    
     UpdateContact = 802,
-
     // Contracts Attachment
     ContractsAttachment = 701,
 

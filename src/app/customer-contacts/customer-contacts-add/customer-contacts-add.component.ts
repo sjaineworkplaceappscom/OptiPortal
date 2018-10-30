@@ -64,7 +64,7 @@ export class CustomerContactsAddComponent implements OnInit {
       },
       () => {
         this.showLoader = false;
-        // this.closeRightSidebar();
+        
       }
     );
   }

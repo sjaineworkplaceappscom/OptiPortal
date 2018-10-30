@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { VendorRoutingModule } from './vendor-routing.module';
 
-@NgModule({
+
+@NgModule({ 
   imports: [
     CommonModule,
-    VendorRoutingModule
+    VendorRoutingModule 
   ],
-  declarations: []
 })
 export class VendorModule { }

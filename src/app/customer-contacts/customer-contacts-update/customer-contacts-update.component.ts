@@ -46,7 +46,7 @@ export class CustomerContactsUpdateComponent implements OnInit {
     
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        
+        console.log('contact updatesubs subs');
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           this.contactModel = currentSidebarData.RequesterData;
@@ -136,5 +136,10 @@ private setDefaultData() {
     console.log('change in div value');
   }
 
+  ngOnDestroy() {
+    if (this.sideBarsubs != undefined)
+      this.sideBarsubs.unsubscribe();
+   
+  }
 
 }

@@ -116,7 +116,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     // Set sidebar data;
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        
+        console.log('piu subs');
         this.setInquiryStatusFlag();
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
