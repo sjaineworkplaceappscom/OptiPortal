@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',component:VendorPiDetailComponent,    
     children: [      
-      {path: 'vpi',loadChildren:"./vendor-pi/vendor-pi.module#VendorPiModule"}
+      {path: 'vpi',loadChildren:"./vendor-pi/vendor-pi.module#VendorPiModule"}      
     ],
     canActivate:[AuthGuard]
   }

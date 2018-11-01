@@ -9,13 +9,8 @@ import { RouterModule, Routes } from '../../../../node_modules/@angular/router';
 import { VendorPiDetailComponent } from './vendor-pi-detail/vendor-pi-detail.component';
 
 const routes: Routes = [
-  {
-    path: '',component:VendorPiListComponent,
-    children: [      
-      { path: 'list', component: VendorPiListComponent }      
-    ],
-    canActivate:[AuthGuard]
-  }
+  { path: '',redirectTo:'list',pathMatch:'full'  },
+  {path: 'list', component: VendorPiListComponent,canActivate:[AuthGuard]}
 ];
 
 
