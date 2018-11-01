@@ -6,7 +6,6 @@
 
 import { Component, HostListener } from '@angular/core';
 import { UIHelper } from './helpers/ui.helpers';
-import { GlobalResource } from './helpers/global-resource';
 import { ConfigurationService } from 'src/app/services/configuration.service';
 
 
@@ -25,7 +24,6 @@ export class AppComponent {
   }
 
   ngOnInit() {
-
     UIHelper.deviceClass();
   }
 

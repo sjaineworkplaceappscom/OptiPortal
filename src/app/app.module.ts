@@ -59,8 +59,7 @@ const routes: Routes = [
   { path: '', redirectTo:'home',pathMatch: 'full'},
   { path:'landing',component:LandingComponent},  
   { path: 'account', loadChildren: "./account/account.module#AccountModule" },
-  { path: 'home', loadChildren: "./portal-home/portal-home.module#PortalHomeModule" },
-  { path: 'vendor', loadChildren: "./vendor/vendor.module#VendorModule" },
+  { path: 'home', loadChildren: "./portal-home/portal-home.module#PortalHomeModule" },  
   { path: '**', component: LandingComponent}
  ];
 

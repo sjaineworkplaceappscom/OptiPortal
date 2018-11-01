@@ -1,9 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
+
+import { VendorPiDetailComponent } from './vendor-pi/vendor-pi-detail/vendor-pi-detail.component';
+import { VendorPiModule } from './vendor-pi/vendor-pi.module';
 
 const routes: Routes = [
-  {path:'',redirectTo:'purchasequotation', pathMatch:'full'},
-  {path:'purchasequotation', loadChildren:'./purchase-quotation/purchase-quotation.module#PurchaseQuotationModule'}
+  {
+    path: '',component:VendorPiDetailComponent,    
+    children: [      
+      {path: 'vpi',loadChildren:"./vendor-pi/vendor-pi.module#VendorPiModule"}
+    ],
+    canActivate:[AuthGuard]
+  }
 ];
 
 @NgModule({

@@ -11,6 +11,7 @@ import { CustomerPurchaseOrderListComponent } from '../customer-purchase-order/c
 import { OpenInvoicesListComponent } from '../open-invoices/open-invoices-list/open-invoices-list.component';
 import { CustomerContactsListComponent } from '../customer-contacts/customer-contacts-list/customer-contacts-list.component';
 import { CustomerContractsListComponent } from '../customer-contracts/customer-contracts-list/customer-contracts-list.component';
+import { VendorModule } from '../vendor/vendor.module';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'purchaseinquiry', loadChildren: '../purchase-inquiry/purchase-inquiry.module#PurchaseInquiryModule' },      
+      
       { path: 'shared', loadChildren: '../shared/shared.module#SharedModule' },
       { path: 'sales', component:SalesQuotationsListComponent },
       { path:'dashboard', component:DashboardComponent },
@@ -28,7 +30,9 @@ const routes: Routes = [
       { path: 'advanceshipmentnotes', component:AdvanceShipmentNotesListComponent },
       { path: 'openinvoices', component:OpenInvoicesListComponent },
       { path: 'customercontacts', component:CustomerContactsListComponent },
-      { path: 'customercontracts', component:CustomerContractsListComponent }
+      { path: 'customercontracts', component:CustomerContractsListComponent },
+      { path: 'vendor', loadChildren: '../vendor/vendor.module#VendorModule' },      
+
       
 
       // { path: 'list', component: PurchaseInqListComponent },
@@ -45,4 +49,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PortalHomeRoutingModule { }
+export class PortalHomeRoutingModule { 
+  
+}

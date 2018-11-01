@@ -35,6 +35,7 @@ import { CustomerPurchaseOrderModule } from '../customer-purchase-order/customer
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import 'hammerjs';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { VendorModule } from '../vendor/vendor.module';
 
 
 
@@ -75,7 +76,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     OpenInvoicesModule,
     CustomerContactsModule,
     CustomerContractsModule,
-    CustomerPurchaseOrderModule
+    CustomerPurchaseOrderModule,
+    VendorModule
 
   ],
   declarations: [

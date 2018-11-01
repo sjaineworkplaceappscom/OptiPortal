@@ -4,7 +4,7 @@ import { PurchaseInqListComponent } from './purchase-inq-list/purchase-inq-list.
 import { PurchaseInqAddComponent } from './purchase-inq-add/purchase-inq-add.component';
 import { PurchaseInqUpdateComponent } from './purchase-inq-update/purchase-inq-update.component';
 
-import { PurchaseInquiryComponent } from './purchase-inquiry.component';
+
 import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
