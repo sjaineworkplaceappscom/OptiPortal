@@ -14,13 +14,8 @@ import { PerfectScrollbarModule } from '../../../../node_modules/ngx-perfect-scr
 import { VendorPiContentComponent } from './vendor-pi-content/vendor-pi-content.component';
 
 const routes: Routes = [
-  {
-    path: '',component:VendorPiListComponent,
-    children: [      
-      { path: 'list', component: VendorPiListComponent }      
-    ],
-    canActivate:[AuthGuard]
-  }
+  { path: '',redirectTo:'list',pathMatch:'full'  },
+  {path: 'list', component: VendorPiListComponent,canActivate:[AuthGuard]}
 ];
 
 
