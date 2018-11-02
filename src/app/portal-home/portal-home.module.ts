@@ -36,6 +36,7 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
 import 'hammerjs';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { VendorModule } from '../vendor/vendor.module';
+import { VendorPiModule } from '../vendor/vendor-pi/vendor-pi.module';
 
 
 
@@ -77,9 +78,9 @@ import { VendorModule } from '../vendor/vendor.module';
     CustomerContactsModule,
     CustomerContractsModule,
     CustomerPurchaseOrderModule,
-    VendorModule
-
-  ],
+    VendorModule,
+    VendorPiModule    
+    ],
   declarations: [
     PortalHomeComponent, PortalLeftComponent, PortalTopComponent, PortalRightComponent, DashboardComponent,ThemeManagerComponent 
   ],

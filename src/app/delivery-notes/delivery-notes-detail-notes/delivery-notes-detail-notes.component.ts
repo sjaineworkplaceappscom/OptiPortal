@@ -18,7 +18,6 @@ import { ToastService } from '../../helpers/services/toast.service';
   styleUrls: ['./delivery-notes-detail-notes.component.scss']
 })
 export class DeliveryNotesDetailNotesComponent implements OnInit {
-
   /**
    * global variable
   */

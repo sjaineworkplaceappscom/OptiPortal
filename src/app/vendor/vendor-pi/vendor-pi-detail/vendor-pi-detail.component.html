@@ -1,3 +1,38 @@
-<p>
-  vendor-pi-detail works!
-</p>
+<div class="opti_vpi-detail" id="opti_vpiDetailID">
+  <!-- tab start heading start -->
+  <div class="opti_position-relative opti_tab-outer">
+    <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
+        <li class="opti_tablinks active" (click)="openTab($event, 'home')">
+          <a href="javascript:void('0');">Header</a>
+        </li>
+        <li class="opti_tablinks" (click)="openTab($event, 'content')">
+          <a href="javascript:void('0');">Content</a>
+        </li>
+        <li class="opti_tablinks" (click)="openTab($event, 'attachement')">
+          <a href="javascript:void('0');">Attachements</a>
+        </li>
+        <li class="opti_tablinks" (click)="openTab($event, 'notes')">
+          <a href="javascript:void('0');">Notes</a>
+        </li>
+    </ul>
+  </div>
+  <!-- tab start heading end -->
+
+  <!-- tab content start -->
+  <div id="" *ngIf="tabName=='home'" class="opti_tabcontent">
+    <app-vendor-pi-header></app-vendor-pi-header>
+  </div>
+
+  <div id="" *ngIf="tabName=='content'" class="opti_tabcontent">
+    <app-vendor-pi-content></app-vendor-pi-content>
+  </div>
+
+  <div id="" *ngIf="tabName=='attachement'" class="opti_tabcontent">
+    Attachements
+  </div>
+
+  <div id="" *ngIf="tabName=='notes'" class="opti_tabcontent">
+    Notes
+  </div>
+  <!-- tab content end -->
+</div>  

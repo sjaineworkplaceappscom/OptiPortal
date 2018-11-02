@@ -131,10 +131,10 @@ export class AdvanceShipmentNotesListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     //Reset Selection.
-    let selectedSalesOrder = this.gridData[selection.index];
-    currentsideBarInfo.RequesterData = selectedSalesOrder;
+    let selectedDN = this.gridData[selection.index];
+    currentsideBarInfo.RequesterData = selectedDN;
     //we will put in delivery note local storage for ASN because it will show same record of DN in respect to ASN.
-    localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedSalesOrder));
+    localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedDN));
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     selection.selectedRows=[];  
   }

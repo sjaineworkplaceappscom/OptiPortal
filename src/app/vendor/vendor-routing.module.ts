@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
-
-import { VendorPiDetailComponent } from './vendor-pi/vendor-pi-detail/vendor-pi-detail.component';
-import { VendorPiModule } from './vendor-pi/vendor-pi.module';
+import { VendorPiListComponent } from './vendor-pi/vendor-pi-list/vendor-pi-list.component';
 
 const routes: Routes = [
   {
-    path: '',component:VendorPiDetailComponent,    
+    path: '',component:VendorPiListComponent,    
     children: [      
       {path: 'vpi',loadChildren:"./vendor-pi/vendor-pi.module#VendorPiModule"}
     ],

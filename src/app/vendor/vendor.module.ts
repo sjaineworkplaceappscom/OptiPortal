@@ -9,7 +9,9 @@ import { VendorPiModule } from './vendor-pi/vendor-pi.module';
     CommonModule,
     VendorRoutingModule,
     VendorPiModule
+    
   ],
-  declarations: []
+  declarations: [],
+  exports:[VendorPiModule]
 })
 export class VendorModule { }

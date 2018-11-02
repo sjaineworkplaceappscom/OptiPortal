@@ -31,7 +31,9 @@ export  enum ModuleName {
     OpenInvoices = 6,
     CustomerContracts=7,
     CustomerContacts=8,
-    CustomerPurchaseOrder=9
+    CustomerPurchaseOrder=9,
+
+    VendorPurchaseInquery = 101
 
 }
 
@@ -63,7 +65,9 @@ export enum ComponentName {
 
     
     CPOUpdate=901,
-    CPOAdd=902    
+    CPOAdd=902,
+    
+    VendorPurchaseInqueryDetail = 1001
 }
 
 

@@ -7,6 +7,11 @@ import { VendorPiNotesComponent } from './vendor-pi-notes/vendor-pi-notes.compon
 import { AuthGuard } from '../../guards/auth.guard';
 import { RouterModule, Routes } from '../../../../node_modules/@angular/router';
 import { VendorPiDetailComponent } from './vendor-pi-detail/vendor-pi-detail.component';
+import { GridModule, ExcelModule } from '../../../../node_modules/@progress/kendo-angular-grid';
+import { AngularSvgIconModule } from '../../../../node_modules/angular-svg-icon';
+import { FormsModule } from '../../../../node_modules/@angular/forms';
+import { PerfectScrollbarModule } from '../../../../node_modules/ngx-perfect-scrollbar';
+import { VendorPiContentComponent } from './vendor-pi-content/vendor-pi-content.component';
 
 const routes: Routes = [
   {
@@ -20,8 +25,16 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [CommonModule,RouterModule.forChild(routes)],
-  exports: [RouterModule],
-  declarations: [VendorPiListComponent, VendorPiHeaderComponent, VendorPiAttchmentsComponent, VendorPiNotesComponent, VendorPiDetailComponent]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    GridModule,
+    ExcelModule,
+    FormsModule,
+    AngularSvgIconModule,
+    PerfectScrollbarModule
+  ],
+  exports: [RouterModule,VendorPiListComponent,VendorPiDetailComponent],
+  declarations: [VendorPiListComponent, VendorPiHeaderComponent, VendorPiAttchmentsComponent, VendorPiNotesComponent, VendorPiDetailComponent, VendorPiContentComponent]
 })
 export class VendorPiModule { }
