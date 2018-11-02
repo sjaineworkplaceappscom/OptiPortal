@@ -52,8 +52,6 @@ import { PurchaseInquiryModule } from './purchase-inquiry/purchase-inquiry.modul
 import { HttpErrorInterceptor } from 'src/app/guards/intercepters/errorintercepter'
 import { NotificationModule } from '@progress/kendo-angular-notification'
 import { DialogsModule } from '@progress/kendo-angular-dialog';
-import { VendorModule } from './vendor/vendor.module';
-import { VendorPiModule } from './vendor/vendor-pi/vendor-pi.module';
 
 
 // for new Routing for Lazy load
@@ -90,7 +88,8 @@ const routes: Routes = [
     TopComponent,
     MainContentComponent,
     RightComponent,
-    HomeComponent  ,
+    HomeComponent
+    
          
   ],
   imports: [

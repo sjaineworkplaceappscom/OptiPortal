@@ -6,6 +6,7 @@ import { VendorContactModule } from './vendor-contact/vendor-contact.module';
 import { VendorAsnModule } from './vendor-asn/vendor-asn.module';
 import { VendorPInvoiceModule } from './vendor-p-invoice/vendor-p-invoice.module';
 import { VendorPoModule } from './vendor-po/vendor-po.module';
+import { VendorDashboardComponent } from './vendor-dashboard/vendor-dashboard.component';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { VendorPoModule } from './vendor-po/vendor-po.module';
     VendorPInvoiceModule,
     VendorPoModule
   ],
-  declarations: [],
+  declarations: [VendorDashboardComponent],
   exports:[VendorPiModule]
 })
 export class VendorModule { }
