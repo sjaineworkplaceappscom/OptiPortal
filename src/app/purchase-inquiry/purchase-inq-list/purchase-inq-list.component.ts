@@ -213,7 +213,7 @@ export class PurchaseInqListComponent implements OnInit {
     selectedIinquiry='';
     selection.selectedRows = [];
     console.log('after reset selection');
-  }
+  } 
 
   onFilterChange(checkBox: any, grid: GridComponent) {
     if (checkBox.checked == false) {
