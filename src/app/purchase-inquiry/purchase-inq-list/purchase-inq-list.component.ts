@@ -191,7 +191,7 @@ export class PurchaseInqListComponent implements OnInit {
     this.openPIDetail(selection,selectedIinquiry);
    
   }
-
+  
    openPIDetail(selection,selectedInq) {
     console.log('in openPIDetail');
      // Check for dirty confirmation from
