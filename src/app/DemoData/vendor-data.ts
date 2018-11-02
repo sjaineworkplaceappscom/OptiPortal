@@ -94,3 +94,25 @@ export const vpiNotes = [
         "Notes":"This is note"
     }
 ]
+
+
+///////////////////////vendor purchase order list////////////////
+export const vpoList = [  
+    {  
+        "POID":"V0001",
+        "Vendor":"Samsung",
+        "PODate":"01/07/2018",
+        "DUEDate":"01/07/2018",
+        "Ack":"New",
+        "Buyer":"Shashank Jain"
+    }
+ ,  
+    {  
+        "POID":"V0002",
+        "Vendor":"Samsung",
+        "PODate":"01/07/2018",
+        "DUEDate":"01/07/2018",
+        "Ack":"New",
+        "Buyer":"Shashank Jain"
+    }
+]

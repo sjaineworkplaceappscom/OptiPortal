@@ -89,8 +89,6 @@ const routes: Routes = [
     MainContentComponent,
     RightComponent,
     HomeComponent
-    
-         
   ],
   imports: [
     CommonModule, 
