@@ -104,13 +104,7 @@ export class PurchaseInqListComponent implements OnInit {
       if(data!=undefined && data!=null)
       this.getInquiryList();
     });
-    // },
-    //   error => {
-    //     this.showLoader = false;
-    //     //alert("Something went wrong");
-
-    //     console.log("Error: ", error)
-    //   });
+    
 
     //call method to get all inquiry data.
     this.getInquiryList();

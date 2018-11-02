@@ -6,6 +6,7 @@ import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info
 import { ModuleName, ComponentName } from '../../../enums/enums';
 import { vpiList } from '../../../DemoData/vendor-data';
 import { ISubscription } from '../../../../../node_modules/rxjs/Subscription';
+import { VendorService } from '../../../services/vendor/vendor.service';
 
 @Component({
   selector: 'app-vendor-pi-list',
@@ -37,9 +38,9 @@ export class VendorPiListComponent implements OnInit {
   public systemAdmin: any;
   // Subscriber
   getPIlistSubs: ISubscription;
-  refreshPIListSubs: ISubscription;
+  refreshVPIListSubs: ISubscription;
 
-  constructor(private commonService: Commonservice) { }
+  constructor(private commonService: Commonservice,private vendorService: VendorService) { }
 
 
   ngOnInit() {
@@ -61,10 +62,12 @@ export class VendorPiListComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     this.systemAdmin = localStorage.getItem('SystemAdmin');
 
-    this.refreshPIListSubs = this.commonService.refreshVPIListSubscriber.subscribe(data => {
+    this.refreshVPIListSubs = this.commonService.refreshVPIListSubscriber.subscribe(data => {
       if (data != undefined && data != null)
         this.vpiList();
     });
+
+    this.vpiList();
   }
   /**
    * Method to get list of inquries from server.
@@ -75,6 +78,33 @@ export class VendorPiListComponent implements OnInit {
     setTimeout(() => {
       this.showLoader = false;
     }, 1000);
+  }
+
+
+ /**
+   * Method to get list of inquries from server.
+   */
+  public getInquiryList() {
+    this.showLoader = true;
+    // this.getPIlistSubs = this.purchaseInquiryService.getInquiryList().subscribe(
+    //   inquiryData => {
+    //     if (inquiryData != null && inquiryData != undefined) {
+    //       this.gridData = JSON.parse(inquiryData);
+
+    //       this.gridData.forEach(element => {
+    //         element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate);
+    //         element.ValidTillDate = DateTimeHelper.ParseDate(element.ValidTillDate);
+    //       });
+    //       this.showLoader = false;
+    //     }
+    //   },
+    //   error => {
+    //     this.showLoader = false;
+    //   },
+    //   () => {
+    //     this.showLoader = false;
+    //   }
+    // );
   }
 
   onFilterChange(checkBox: any, grid: GridComponent) {
