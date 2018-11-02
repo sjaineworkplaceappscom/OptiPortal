@@ -7,6 +7,7 @@ import { ModuleName, ComponentName } from '../../../enums/enums';
 import { vpiList } from '../../../DemoData/vendor-data';
 import { ISubscription } from '../../../../../node_modules/rxjs/Subscription';
 import { VendorService } from '../../../services/vendor/vendor.service';
+import { DateTimeHelper } from '../../../helpers/datetime.helper';
 
 @Component({
   selector: 'app-vendor-pi-list',
@@ -64,15 +65,15 @@ export class VendorPiListComponent implements OnInit {
 
     this.refreshVPIListSubs = this.commonService.refreshVPIListSubscriber.subscribe(data => {
       if (data != undefined && data != null)
-        this.vpiList();
+        this.getVpiList();
     });
 
-    this.vpiList();
+    this.getVpiList();
   }
   /**
    * Method to get list of inquries from server.
   */
-  public vpiList() {
+  public vpiList1() {
     this.showLoader = true;
     this.gridData = vpiList;
     setTimeout(() => {
@@ -84,27 +85,28 @@ export class VendorPiListComponent implements OnInit {
  /**
    * Method to get list of inquries from server.
    */
-  public getInquiryList() {
+  public getVpiList() {
+    debugger;
     this.showLoader = true;
-    // this.getPIlistSubs = this.purchaseInquiryService.getInquiryList().subscribe(
-    //   inquiryData => {
-    //     if (inquiryData != null && inquiryData != undefined) {
-    //       this.gridData = JSON.parse(inquiryData);
+    this.getPIlistSubs = this.vendorService.getVendorInquiryList().subscribe(
+      inquiryData => {
+        if (inquiryData != null && inquiryData != undefined) {
+          this.gridData = JSON.parse(inquiryData);
 
-    //       this.gridData.forEach(element => {
-    //         element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate);
-    //         element.ValidTillDate = DateTimeHelper.ParseDate(element.ValidTillDate);
-    //       });
-    //       this.showLoader = false;
-    //     }
-    //   },
-    //   error => {
-    //     this.showLoader = false;
-    //   },
-    //   () => {
-    //     this.showLoader = false;
-    //   }
-    // );
+          this.gridData.forEach(element => {
+            element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate);
+            element.ValidTillDate = DateTimeHelper.ParseDate(element.ValidTillDate);
+          });
+          this.showLoader = false;
+        }
+      },
+      error => {
+        this.showLoader = false;
+      },
+      () => {
+        this.showLoader = false;
+      }
+    );
   }
 
   onFilterChange(checkBox: any, grid: GridComponent) {
