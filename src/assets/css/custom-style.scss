@@ -3,6 +3,9 @@
 @import '_custom-kendo';
 @import '_common';
 
+@import '_customer-portal';
+@import '_vendor-portal';
+
 
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////Start Account CSS///////////////////////
@@ -33,19 +36,19 @@
 /////////////////////////////Start Add Item CSS//////////////////////
 /////////////////////////////////////////////////////////////////////
 
-#opti_AddItemFormSectionID{
-  kendo-datepicker{
-      kendo-dateinput{
-        width: calc(100% - 30px);
-      }
-      .k-dateinput-wrap, .k-select {
-          border: none ;
-      }
-      .k-picker-wrap {
-          border-color: $input-border-color;
-      }
-  }
-}
+// #opti_AddItemFormSectionID{
+//   kendo-datepicker{
+//       kendo-dateinput{
+//         width: calc(100% - 30px);
+//       }
+//       .k-dateinput-wrap, .k-select {
+//           border: none ;
+//       }
+//       .k-picker-wrap {
+//           border-color: $input-border-color;
+//       }
+//   }
+// }
 
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////end Add Item CSS////////////////////////
@@ -60,14 +63,6 @@ kendo-grid tr:hover dl span strong {
   color: white;
 }
 
-// app-attachment, 
-// file-drop {
-//   height: 100%;
-//   display: flex;
-// }
-
-
-
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////end Purchase Inquiry//////////////////
 /////////////////////////////////////////////////////////////////////
@@ -79,25 +74,25 @@ kendo-grid tr:hover dl span strong {
 /////////////////////////////some common css start///////////////////
 /////////////////////////////////////////////////////////////////////
 
-app-attachment, 
-app-attachment-item, 
-app-sales-order-detail-attachment, 
-app-sales-quotations-detail-attchment,
-app-delivery-notes-detail-attachment,
-app-customer-purchase-order-attachment{
-  kendo-grid{
-    table{
-      tbody{
-        tr td:first-child{
-          text-align: center;
-          svg-icon{
-            cursor: pointer;
-          }  
-        }
-      }
-    }
-  }
-}
+// app-attachment, 
+// app-attachment-item, 
+// app-sales-order-detail-attachment, 
+// app-sales-quotations-detail-attchment,
+// app-delivery-notes-detail-attachment,
+// app-customer-purchase-order-attachment{
+//   kendo-grid{
+//     table{
+//       tbody{
+//         tr td:first-child{
+//           text-align: center;
+//           svg-icon{
+//             cursor: pointer;
+//           }  
+//         }
+//       }
+//     }
+//   }
+// }
 
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////some common css end/////////////////////
