@@ -154,4 +154,13 @@ export class Commonservice {
     this.refreshContactListSub.next(data);
   }
 
+
+   // Refresh List
+   private refreshVPIListSub =new BehaviorSubject<any>(null);
+   refreshVPIListSubscriber=this.refreshPIListSub.asObservable();
+ 
+   public refreshVPIList(data:any){
+     this.refreshPIListSub.next(data);
+   }
+
 }

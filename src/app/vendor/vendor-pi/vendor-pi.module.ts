@@ -12,6 +12,7 @@ import { AngularSvgIconModule } from '../../../../node_modules/angular-svg-icon'
 import { FormsModule } from '../../../../node_modules/@angular/forms';
 import { PerfectScrollbarModule } from '../../../../node_modules/ngx-perfect-scrollbar';
 import { VendorPiContentComponent } from './vendor-pi-content/vendor-pi-content.component';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 const routes: Routes = [
   { path: '',component: VendorPiListComponent,canActivate:[AuthGuard]  },
@@ -27,7 +28,8 @@ const routes: Routes = [
     ExcelModule,
     FormsModule,
     AngularSvgIconModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    DropDownsModule
   ],
   exports: [RouterModule,VendorPiListComponent,VendorPiDetailComponent],
   declarations: [VendorPiListComponent, VendorPiHeaderComponent, VendorPiAttchmentsComponent, VendorPiNotesComponent, VendorPiDetailComponent, VendorPiContentComponent]

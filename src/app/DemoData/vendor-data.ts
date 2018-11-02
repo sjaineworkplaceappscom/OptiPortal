@@ -65,13 +65,17 @@ export const vpiContent = [
 // Attchement tab
 export const vpiAttachment = [  
     {  
-        "FileName":"Report01.doc",
-        "AttachmentDate":"05/07/2018"
+        "AttachmentName":"Report1.png",
+        "SizeInKb":"10KB",
+        "AttachmentTypeText":"PNG",
+        "CreatedByName":"Prashant"
     }
  ,  
     {  
-        "FileName":"Report-final01.doc",
-        "AttachmentDate":"06/07/2018"
+        "AttachmentName":"Report2.png",
+        "SizeInKb":"15KB",
+        "AttachmentTypeText":"PNG",
+        "CreatedByName":"Prashant"
     }
 ]
 
