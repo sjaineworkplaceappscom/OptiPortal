@@ -16,8 +16,8 @@ import { PerfectScrollbarModule } from '../../../../node_modules/ngx-perfect-scr
 import { DropDownsModule } from '../../../../node_modules/@progress/kendo-angular-dropdowns';
 
 const routes: Routes = [
-  { path: '',redirectTo:'list',pathMatch:'full'  },
-  {path: 'list', component: VendorPoListComponent,canActivate:[AuthGuard]}
+  { path: '',component:VendorPoListComponent  },
+  {path: 'list', component: VendorPoListComponent}
 ];
 
 @NgModule({

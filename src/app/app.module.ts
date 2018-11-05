@@ -63,15 +63,6 @@ const routes: Routes = [
   { path: '**', component: LandingComponent}
  ];
 
-//  const routes: Routes = [
-//   { path: '', redirectTo: 'landing',pathMatch: 'full' },
-//   {path:'landing',component:LandingComponent}, 
-//   { path: 'account', loadChildren: "./account/account.module#AccountModule" },
-//   { path: 'home', component: HomeComponent},
-
-//   {path: '**', component: LandingComponent}
-//   ];
-
 
 @NgModule({
   declarations: [
