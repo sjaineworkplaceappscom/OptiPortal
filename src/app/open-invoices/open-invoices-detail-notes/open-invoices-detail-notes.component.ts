@@ -4,10 +4,10 @@ import { openInvoicesNotes } from '../../demodata/open-invoices';
 import { Configuration } from '../../helpers/Configuration';
 import { OpenInvoiceNoteModel } from '../../tempmodels/open-invoice-note-model';
 import { OpenInvoiceListModel } from '../../tempmodels/open-invoice-list-model';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { CustomerEntityType } from '../../enums/enums';
-import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { AppMessages } from '../../helpers/app-messages';
 import { ToastService } from '../../helpers/services/toast.service';
 

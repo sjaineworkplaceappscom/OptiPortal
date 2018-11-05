@@ -9,7 +9,7 @@ import { ModuleName, ComponentName } from '../../enums/enums';
 import * as $ from "jquery";
 import { Configuration } from '../../helpers/Configuration';
 import { ContactService } from '../../services/contact.service';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ConfirmDialog } from '../../helpers/services/dialog.service';
 

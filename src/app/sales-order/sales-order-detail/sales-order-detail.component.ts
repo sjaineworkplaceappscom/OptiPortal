@@ -2,7 +2,7 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { GlobalResource } from '../../helpers/global-resource';
-import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
+import { ConfirmDialog } from '../../helpers/services/dialog.service';
 
 @Component({
   selector: 'app-sales-order-detail',

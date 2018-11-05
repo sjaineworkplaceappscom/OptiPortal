@@ -5,7 +5,7 @@ import { GridComponent } from '@progress/kendo-angular-grid';
 import { Configuration } from '../../helpers/Configuration';
 
 
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { OpenInvoiceListModel } from '../../tempmodels/open-invoice-list-model';
 import { OpenInvoiceService } from '../../services/open-invoice.service';
 

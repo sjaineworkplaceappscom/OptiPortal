@@ -8,8 +8,8 @@ import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType, PurchaseInquiryStatus, OperationType } from '../../enums/enums';
 import { ISubscription } from 'rxjs-compat/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
-import { GlobalResource } from 'src/app/helpers/global-resource';
-import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
+import { GlobalResource } from '../../helpers/global-resource';
+import { ConfirmDialog } from '../../helpers/services/dialog.service';
 import { Configuration } from '../../helpers/Configuration';
 
 @Component({

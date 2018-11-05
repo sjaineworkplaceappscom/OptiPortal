@@ -7,7 +7,7 @@ import { ModuleName, ComponentName } from '../../enums/enums';
 import { salesOrderList } from '../../DemoData/sales-order';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import * as $ from "jquery";
 import { Configuration } from '../../helpers/Configuration';
 

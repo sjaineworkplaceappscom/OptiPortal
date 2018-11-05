@@ -10,8 +10,8 @@ import { Commonservice } from '../../services/commonservice.service';
 
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { Configuration } from '../../helpers/Configuration';
-import { DialogService } from '../../../../node_modules/@progress/kendo-angular-dialog';
-import { DialogContainerService } from '../../../../node_modules/@progress/kendo-angular-dialog/dist/es2015/dialog/dialog-container.service';
+import { DialogService } from '@progress/kendo-angular-dialog';
+import { DialogContainerService } from '@progress/kendo-angular-dialog/dist/es2015/dialog/dialog-container.service';
 
 
 

@@ -3,7 +3,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { deliveryNotesAttachment } from '../../demodata/delivery-notes';
 import { GridComponent } from '@progress/kendo-angular-grid';
 import { DeliveryNoteListModel } from '../../tempmodels/delivery-note-list-model';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { DeliveryNotesService } from '../../services/delivery-notes.service';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';

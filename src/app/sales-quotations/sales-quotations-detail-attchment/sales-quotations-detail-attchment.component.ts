@@ -3,11 +3,11 @@ import { salesQuotationsAttachment } from '../../DemoData/sales-quotations';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { GridComponent } from '@progress/kendo-angular-grid';
 import { SalesQuotation } from '../../tempmodels/sales-quotation';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
-import { SharedComponentService } from 'src/app/services/shared-component.service';
-import { Path } from '../../../../node_modules/@progress/kendo-drawing';
+import { SharedComponentService } from '../../services/shared-component.service';
+import { Path } from '@progress/kendo-drawing';
 import { Configuration } from '../../helpers/Configuration';
 
 

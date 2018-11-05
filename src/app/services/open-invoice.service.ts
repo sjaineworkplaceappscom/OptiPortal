@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 import { HttpHelper } from '../helpers/http.helper';
 import { Configuration } from '../helpers/Configuration';
 

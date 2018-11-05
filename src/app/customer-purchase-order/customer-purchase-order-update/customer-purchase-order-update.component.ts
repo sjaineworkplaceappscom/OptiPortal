@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { UIHelper } from '../../helpers/ui.helpers';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { Commonservice } from '../../services/commonservice.service';
 import { CustomerPurchaseOrderService } from '../../services/customer-purchase-order.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { CustomerPurchaseOrderModel } from '../../tempmodels/customer-purchase-order-model';
-import { CPOReferenceType } from 'src/app/enums/enums';
+import { CPOReferenceType } from '../../enums/enums';
 
 @Component({
   selector: 'app-customer-purchase-order-update',

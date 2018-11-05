@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../../helpers/ui.helpers';
-import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
+import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 
 
 @Component({
