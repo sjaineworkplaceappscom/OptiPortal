@@ -10,7 +10,6 @@ import { VendorPiModule } from './vendor-pi/vendor-pi.module';
 
 const routes: Routes = [
   {
-<<<<<<< HEAD
     path: '',component:VendorDashboardComponent  ,
     //  children: [      
     //    {path: 'vpinquery',component: VendorPiListComponent},//,loadChildren:"./vendor-pi/vendor-pi.module#VendorPiModule"} ,
@@ -21,16 +20,6 @@ const routes: Routes = [
   {path: 'dashboard',component:VendorDashboardComponent } ,
   {path: 'vpinquery',loadChildren:"./vendor-pi/vendor-pi.module#VendorPiModule"} ,
   {path: 'vporder',loadChildren:"./vendor-po/vendor-po.module#VendorPoModule"}   
-=======
-    path: '',component:VendorPoListComponent,    
-    
-    children: [      
-      {path: 'vpinquery',loadChildren:"./vendor-pi/vendor-pi.module#VendorPiModule"} ,
-      {path: 'vporder',loadChildren:"./vendor-po/vendor-po.module#VendorPoModule"}   
-    ],
-    canActivate:[AuthGuard]
-  }
->>>>>>> 6a8703082937c4476fb6ef9446c65b90d7f5d6b1
 ];
 
 @NgModule({
