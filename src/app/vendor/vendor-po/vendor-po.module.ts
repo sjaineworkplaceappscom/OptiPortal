@@ -31,6 +31,7 @@ const routes: Routes = [
     PerfectScrollbarModule,
     DropDownsModule
   ],
-  declarations: [ VendorPoHeaderComponent, VendorPoAttchmentsComponent,VendorPoListComponent, VendorPoDetailComponent, VendorPoContentComponent, VendorPoNotesComponent]
+  declarations: [ VendorPoHeaderComponent, VendorPoAttchmentsComponent,VendorPoListComponent, VendorPoDetailComponent, VendorPoContentComponent, VendorPoNotesComponent],
+  exports:[VendorPoListComponent, VendorPoDetailComponent]
 })
 export class VendorPoModule { }

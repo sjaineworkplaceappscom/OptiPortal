@@ -20,6 +20,6 @@ import { VendorDashboardComponent } from './vendor-dashboard/vendor-dashboard.co
     VendorPoModule
   ],
   declarations: [VendorDashboardComponent],
-  exports:[VendorPiModule]
+  exports:[VendorPiModule, VendorPoModule]
 })
 export class VendorModule { }
