@@ -160,7 +160,7 @@ export const vpoContent = [
         "TaxCode":"Code1",
         "ShipToAddress":"Indore",
         "BillToAddress":"Indore" ,
-        "RequestedDate":"01/07/2018",
+        "RequestedDate":"01/07/2018", 
     }
  ,  
     {  
