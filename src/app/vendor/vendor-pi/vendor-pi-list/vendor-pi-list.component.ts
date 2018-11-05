@@ -86,7 +86,7 @@ export class VendorPiListComponent implements OnInit {
    * Method to get list of inquries from server.
    */
   public getVpiList() {
-    debugger;
+    
     this.showLoader = true;
     this.getPIlistSubs = this.vendorService.getVendorInquiryList().subscribe(
       inquiryData => {

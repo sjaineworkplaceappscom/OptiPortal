@@ -32,8 +32,8 @@ export class VendorPiHeaderComponent implements OnInit {
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           this.VPIModel = currentSidebarData.RequesterData;
-          if(this.VPIModel!=null){
-          this.callPurchaseInquiryDetailAPI(this.VPIModel.);
+        if(this.VPIModel!=null){
+        //  this.callPurchaseInquiryDetailAPI(this.VPIModel.);
           }else{}
        
         }
@@ -43,6 +43,7 @@ export class VendorPiHeaderComponent implements OnInit {
         //alert("Something went wrong");
         console.log("Error: ", error)
       }
+  
+    );
   }
-}
 }
