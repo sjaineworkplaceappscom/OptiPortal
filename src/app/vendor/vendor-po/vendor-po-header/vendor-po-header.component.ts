@@ -25,4 +25,11 @@ export class VendorPoHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  acknowledge(e){
+
+  }
+  createasn(e){
+    
+  }
+
 }
