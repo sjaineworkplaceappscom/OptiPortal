@@ -9,7 +9,7 @@ import { ModuleName, ComponentName } from '../../enums/enums';
 import * as $ from "jquery";
 import { AdvanceShipmentNoteService } from '../../services/advance-shipment-note.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { Configuration } from '../../helpers/Configuration';
 import { GlobalResource } from '../../helpers/global-resource';
 

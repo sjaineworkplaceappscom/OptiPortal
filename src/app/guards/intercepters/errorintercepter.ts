@@ -9,8 +9,8 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Router } from '../../../../node_modules/@angular/router';
-import { Injectable } from '../../../../node_modules/@angular/core';
+import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 
 import {
     DialogService,

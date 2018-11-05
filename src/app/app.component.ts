@@ -6,7 +6,7 @@
 
 import { Component, HostListener } from '@angular/core';
 import { UIHelper } from './helpers/ui.helpers';
-import { ConfigurationService } from 'src/app/services/configuration.service';
+import { ConfigurationService } from './services/configuration.service';
 
 
 @Component({

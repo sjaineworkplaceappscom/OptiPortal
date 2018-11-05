@@ -3,7 +3,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { deliveryNotesTabNotes } from '../../demodata/delivery-notes';
 import { CustomerEntityType } from '../../enums/enums';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { DeliveryNoteNoteModel } from '../../tempmodels/delivery-note-note-model';

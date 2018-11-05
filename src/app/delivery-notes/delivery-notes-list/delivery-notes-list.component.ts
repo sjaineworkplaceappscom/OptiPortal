@@ -8,7 +8,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ModuleName, ComponentName } from '../../enums/enums';
 import * as $ from "jquery";
 import { DeliveryNotesService } from '../../services/delivery-notes.service';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { DeliveryNoteListModel } from '../../tempmodels/delivery-note-list-model';
 import { Configuration } from '../../helpers/Configuration';

@@ -3,7 +3,7 @@ import { salesQuotationsContent } from '../../DemoData/sales-quotations';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { GridComponent } from '@progress/kendo-angular-grid';
 import { SalesQuotation } from '../../tempmodels/sales-quotation';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { SalesQuotationDetailContent } from '../../tempmodels/sales-quotation-detail-content';
 import { DateTimeHelper } from '../../helpers/datetime.helper';

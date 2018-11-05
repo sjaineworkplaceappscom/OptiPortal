@@ -14,7 +14,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import * as $ from "jquery";
 import { AttachmentDetail } from '../../models/AttchmentDetail';
 import { GlobalResource } from '../../helpers/global-resource';
-import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
+import { ConfirmDialog } from '../../helpers/services/dialog.service';
 import { Configuration } from '../../helpers/Configuration';
 import { ToastService } from '../../helpers/services/toast.service';
 import { AppMessages } from '../../helpers/app-messages';

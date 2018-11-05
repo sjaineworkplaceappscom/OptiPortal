@@ -5,7 +5,7 @@ import {
     DialogRef
    
 } from '@progress/kendo-angular-dialog';
-import { Observable } from "../../../../node_modules/rxjs";
+import { Observable } from "rxjs";
 
 
 @Injectable({

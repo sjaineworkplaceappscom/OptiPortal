@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { DeliveryNoteListModel } from '../../tempmodels/delivery-note-list-model';
 import { DeliveryNoteHeaderModel } from '../../tempmodels/delivery-note-header-model';
 import { DeliveryNotesService } from '../../services/delivery-notes.service';

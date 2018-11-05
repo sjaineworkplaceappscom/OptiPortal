@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { GlobalResource } from '../../helpers/global-resource';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { ContactService } from '../../services/contact.service';
 import { Commonservice } from '../../services/commonservice.service';
 import { ToastService } from '../../helpers/services/toast.service';

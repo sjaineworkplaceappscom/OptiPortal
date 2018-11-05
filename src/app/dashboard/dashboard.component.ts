@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../helpers/ui.helpers';
 import { PurchaseInquiryService } from '../services/purchase-enquiry.service';
-import { ISubscription } from '../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-dashboard',

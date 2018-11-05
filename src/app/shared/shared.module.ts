@@ -22,8 +22,8 @@ import { NotesItemComponent } from './notes-item/notes-item.component';
 import { AttachmentItemComponent } from './attachment-item/attachment-item.component';
 //import { AttachmentUploadComponent } from './attachment-upload/attachment-upload.component';
 import { CustomFilterPipe } from '../custom-filter.pipe';
-import { SalesQuotationsNotesComponent } from 'src/app/shared/sales-quotations-notes/sales-quotations-notes.component';
-import { SalesOrderNotesComponent } from 'src/app/shared/sales-order-notes/sales-order-notes.component';
+import { SalesQuotationsNotesComponent } from './sales-quotations-notes/sales-quotations-notes.component';
+import { SalesOrderNotesComponent } from './sales-order-notes/sales-order-notes.component';
 import { FileDropModule } from 'ngx-file-drop';
 import { SharedComponent } from './shared.component';
 
