@@ -1,3 +1,80 @@
-<p>
-  vendor-po-header works!
-</p>
+<div class="opti_vpo-detail-home opti_position-relative opti_fullheight" id="opti_vpoDetailHomeID" [perfectScrollbar]="">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-block">
+            <form class="k-form">
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">PO#</span>
+                  <input name="POID" type="text" class="k-textbox" [(ngModel)]="POID" readonly />
+              </label>
+
+              <label class="k-form-field">
+                <span class="opti_form-label">Vendor</span>
+                <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="Vendor" readonly />
+              </label>
+
+              <label class="k-form-field">
+                <span class="opti_form-label">PO Date</span>
+                <input name="PODate" type="text" class="k-textbox" [(ngModel)]="PODate" readonly />
+              </label>
+
+              <label class="k-form-field">
+                <span class="opti_form-label">Due Date</span>
+                <input name="DUEDate" type="text" class="k-textbox" [(ngModel)]="DUEDate" readonly />
+              </label>
+
+              <label class="k-form-field">
+                <span class="opti_form-label">Status</span>
+                <input name="Status" type="text" class="k-textbox" [(ngModel)]="Status" readonly />
+              </label>
+
+              <label class="k-form-field">
+                <span class="opti_form-label">Ack Yes/No</span>
+                <input name="Ack" type="text" class="k-textbox" [(ngModel)]="Ack" readonly />
+              </label>
+
+              <label class="k-form-field">
+                <span class="opti_form-label">Buyer</span>
+                <input name="Buyer" type="text" class="k-textbox" [(ngModel)]="Buyer" readonly />
+              </label>
+
+              <label class="k-form-field">
+                <span class="opti_form-label">Price</span>
+                <input name="Price" type="text" class="k-textbox" [(ngModel)]="Price" readonly />
+              </label>
+
+              <label class="k-form-field">
+                <span class="opti_form-label">Tax</span>
+                <input name="Tax" type="text" class="k-textbox" [(ngModel)]="Tax" readonly />
+              </label>
+
+              <label class="k-form-field">
+                <span class="opti_form-label">Freight</span>
+                <input name="Freight" type="text" class="k-textbox" [(ngModel)]="Freight" readonly />
+              </label>
+
+              <label class="k-form-field">
+                <span class="opti_form-label">Discount</span>
+                <input name="Discount" type="text" class="k-textbox" [(ngModel)]="Discount" readonly />
+              </label>
+
+              <label class="k-form-field">
+                <span class="opti_form-label">Total Price</span>
+                <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="TotalPrice" readonly />
+              </label>
+
+              <div class="text-right">
+                  <button type="button" class="k-button k-primary" (click)="acknowledge($event);" >Acknowledge</button>
+                  <button type="button" class="k-button k-primary" (click)="createasn($event);">Create ASN</button>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+      </div> 
+    </div> 
+  </div>  
+</div>

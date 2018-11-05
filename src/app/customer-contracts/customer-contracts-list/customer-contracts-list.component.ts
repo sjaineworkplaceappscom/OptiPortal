@@ -7,7 +7,7 @@ import { GridComponent } from '@progress/kendo-angular-grid';
 import * as $ from "jquery";
 import { Configuration } from '../../helpers/Configuration';
 import { CustomerContractListModel } from '../../tempmodels/Customer-Contract-list-model';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { CustomerContractService } from '../../services/customer-contract.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';

@@ -1,4 +1,4 @@
-export class AdvanceShipmentNotesListModel{
+export class VendorPIModel{
 VendorId: number;
 VendorName:	string;
 PrimaryContactId:	string;

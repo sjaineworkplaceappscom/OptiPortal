@@ -6,7 +6,7 @@ import { GridComponent } from '@progress/kendo-angular-grid';
 import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { Configuration } from '../../helpers/Configuration';
 import { OpenInvoiceListModel } from '../../tempmodels/open-invoice-list-model';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { OpenInvoiceService } from '../../services/open-invoice.service';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';

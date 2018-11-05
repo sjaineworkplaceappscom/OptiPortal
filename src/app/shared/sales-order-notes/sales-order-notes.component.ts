@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { SalesOrder } from '../../tempmodels/sales-order';
 import { SalesNoteModel } from '../../tempmodels/SalesNoteModel';
 import { DateTimeHelper } from '../../helpers/datetime.helper';

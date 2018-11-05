@@ -49,7 +49,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { PortalHomeModule } from './portal-home/portal-home.module';
 import { PurchaseInquiryModule } from './purchase-inquiry/purchase-inquiry.module';
 
-import { HttpErrorInterceptor } from 'src/app/guards/intercepters/errorintercepter'
+import { HttpErrorInterceptor } from './guards/intercepters/errorintercepter'
 import { NotificationModule } from '@progress/kendo-angular-notification'
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 

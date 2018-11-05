@@ -1,10 +1,10 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ComponentName, ModuleName } from '../../../enums/enums';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
-import { GridComponent } from '../../../../../node_modules/@progress/kendo-angular-grid';
+import { GridComponent } from '@progress/kendo-angular-grid';
 import { UIHelper } from '../../../helpers/ui.helpers';
 import { Commonservice } from '../../../services/commonservice.service';
-import { ISubscription } from '../../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { vpoList } from '../../../DemoData/vendor-data';
 import { VendorService } from '../../../services/vendor/vendor.service';
 

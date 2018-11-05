@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpHelper } from '../helpers/http.helper';
 import { Observable } from 'rxjs';
 import { CustomerPurchaseOrderModel } from '../tempmodels/customer-purchase-order-model';
-import { Configuration } from 'src/app/helpers/Configuration';
+import { Configuration } from '../helpers/Configuration';
 
 @Injectable({
   providedIn: 'root'

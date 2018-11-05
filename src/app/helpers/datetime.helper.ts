@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 import * as momentTZ from 'moment-timezone';
 import { DatePipe } from '@angular/common';
-import { Configuration } from '../../app/helpers/Configuration';
+import { Configuration } from './Configuration';
 export class DateTimeHelper{
     constructor(private datepipe:DatePipe){}
 

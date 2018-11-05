@@ -9,7 +9,7 @@ import { ModuleName, ComponentName } from '../../enums/enums';
 import * as $ from "jquery";
 import { Configuration } from '../../helpers/Configuration';
 import { OpenInvoiceService } from '../../services/open-invoice.service';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 
 @Component({

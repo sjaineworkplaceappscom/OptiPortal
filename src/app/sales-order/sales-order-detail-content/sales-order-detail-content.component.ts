@@ -5,7 +5,7 @@ import { salesOrderContent } from '../../DemoData/sales-order';
 import { SalesOrder } from '../../tempmodels/sales-order';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { SalesOrderService } from '../../services/sales-order.service';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { Configuration } from '../../helpers/Configuration';
 

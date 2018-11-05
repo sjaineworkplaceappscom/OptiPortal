@@ -116,3 +116,63 @@ export const vpoList = [
         "Buyer":"Shashank Jain"
     }
 ]
+
+export const vpoHome = [  
+    {  
+        "POID":"V0001",
+        "Vendor":"Samsung",
+        "PODate":"01/07/2018",
+        "DUEDate":"01/07/2018",
+        "Status":"New",
+        "Ack":"Yes",
+        "Buyer":"Shashank Jain",
+        "Price":4000,
+        "Tax":10,
+        "Freight":10,
+        "Discount":400,
+        "TotalPrice":3600
+    }
+ ,  
+    {  
+        "POID":"V0002",
+        "Vendor":"Samsung",
+        "PODate":"01/07/2018",
+        "DUEDate":"01/07/2018",
+        "Status":"New",
+        "Ack":"Yes",
+        "Buyer":"Shashank Jain",
+        "Price":4000,
+        "Tax":10,
+        "Freight":10,
+        "Discount":400,
+        "TotalPrice":3600
+    }
+]
+
+export const vpoContent = [  
+    {  
+        "LineNumber":"V0001",
+        "Item":"Samsung",
+        "Quantity":10,
+        "UnitPrice":4000,
+        "UOM":"UOM",
+        "TotalPrice":4000,
+        "TaxCode":"Code1",
+        "ShipToAddress":"Indore",
+        "BillToAddress":"Indore" ,
+        "RequestedDate":"01/07/2018", 
+    }
+ ,  
+    {  
+        "LineNumber":"V0002",
+        "Item":"Samsung",
+        "Quantity":10,
+        "UnitPrice":4000,
+        "UOM":"UOM",
+        "TotalPrice":4000,
+        "TaxCode":"Code1",
+        "ShipToAddress":"Indore",
+        "BillToAddress":"Indore" ,
+        "RequestedDate":"01/07/2018",
+    }
+]

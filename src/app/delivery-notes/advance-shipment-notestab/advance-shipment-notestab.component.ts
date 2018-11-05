@@ -6,7 +6,7 @@ import { NotesModel } from '../../models/purchaserequest/notes';
 import { CustomerEntityType } from '../../enums/enums';
 import { AdvanceShipmentNotesListModel } from '../../tempmodels/advance-shipment-notes-list-model';
 import { AdvanceShipmentNotesNoteModel } from '../../tempmodels/advance-shipment-notes-note-model';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ToastService } from '../../helpers/services/toast.service';

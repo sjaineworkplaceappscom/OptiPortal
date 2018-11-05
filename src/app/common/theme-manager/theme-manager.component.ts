@@ -4,7 +4,7 @@ import { opticonstants } from '../../constants';
 
 
 import * as $ from "jquery";
-import { Configuration } from 'src/app/helpers/Configuration';
+import { Configuration } from '../../helpers/Configuration';
 
 @Component({
   selector: 'app-theme-manager',

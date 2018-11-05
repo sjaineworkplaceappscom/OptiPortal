@@ -20,8 +20,8 @@ import { ISubscription } from 'rxjs/Subscription';
 
 import * as $ from "jquery";
 import { Router } from '@angular/router';
-import { GlobalResource } from 'src/app/helpers/global-resource';
-import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
+import { GlobalResource } from '../../helpers/global-resource';
+import { ConfirmDialog } from '../../helpers/services/dialog.service';
 import { Configuration } from '../../helpers/Configuration';
 
 @Component({
@@ -82,7 +82,6 @@ export class PurchaseInqListComponent implements OnInit {
   }
 
   ngOnInit() {
-
     GlobalResource.dirty = false;
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
@@ -90,7 +89,6 @@ export class PurchaseInqListComponent implements OnInit {
     element.classList.add("opti_body-purchase-inquiries");
     element.classList.add("opti_body-main-module");
     // Apply class on body end
-
     let userDetail: string = localStorage.getItem("LoginUserDetail");
     let userData: any[] = JSON.parse(userDetail);
     this.loginUserType = userData[0].LoginUserType;
@@ -105,7 +103,6 @@ export class PurchaseInqListComponent implements OnInit {
       this.getInquiryList();
     });
     
-
     //call method to get all inquiry data.
     this.getInquiryList();
 

@@ -14,7 +14,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FileDropModule } from 'ngx-file-drop';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-import { CustomFilterPipe } from 'src/app/custom-filter.pipe';
+import { CustomFilterPipe } from '../custom-filter.pipe';
 import { SharedModule } from '../shared/shared.module';
 
 

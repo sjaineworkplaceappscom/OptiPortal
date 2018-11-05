@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { GridComponent } from '../../../../../node_modules/@progress/kendo-angular-grid';
+import { GridComponent } from '@progress/kendo-angular-grid';
 import { UIHelper } from '../../../helpers/ui.helpers';
 import { Configuration } from '../../../helpers/Configuration';
 import { vpiAttachment } from '../../../DemoData/vendor-data';

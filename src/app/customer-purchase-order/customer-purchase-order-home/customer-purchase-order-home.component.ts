@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { CustomerPurchaseOrderModel } from '../../tempmodels/customer-purchase-order-model';
 import { Commonservice } from '../../services/commonservice.service';
 import { CustomerPurchaseOrderService } from '../../services/customer-purchase-order.service';

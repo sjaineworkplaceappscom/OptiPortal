@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
+import { ISubscription } from 'rxjs/Subscription';
 import { ConfirmDialog } from '../../helpers/services/dialog.service';
 import { ContactService } from '../../services/contact.service';
 import { Commonservice } from '../../services/commonservice.service';

@@ -5,12 +5,12 @@ import { VendorPiHeaderComponent } from './vendor-pi-header/vendor-pi-header.com
 import { VendorPiAttchmentsComponent } from './vendor-pi-attchments/vendor-pi-attchments.component';
 import { VendorPiNotesComponent } from './vendor-pi-notes/vendor-pi-notes.component';
 import { AuthGuard } from '../../guards/auth.guard';
-import { RouterModule, Routes } from '../../../../node_modules/@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { VendorPiDetailComponent } from './vendor-pi-detail/vendor-pi-detail.component';
-import { GridModule, ExcelModule } from '../../../../node_modules/@progress/kendo-angular-grid';
-import { AngularSvgIconModule } from '../../../../node_modules/angular-svg-icon';
-import { FormsModule } from '../../../../node_modules/@angular/forms';
-import { PerfectScrollbarModule } from '../../../../node_modules/ngx-perfect-scrollbar';
+import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { FormsModule } from '@angular/forms';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { VendorPiContentComponent } from './vendor-pi-content/vendor-pi-content.component';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 

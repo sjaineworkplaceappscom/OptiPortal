@@ -5,14 +5,14 @@ import { customerPurchaseOrderList } from '../../demodata/customer-purchase-orde
 import { GridComponent } from '@progress/kendo-angular-grid';
 
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
-import { ComponentName, ModuleName } from 'src/app/enums/enums';
+import { ComponentName, ModuleName } from '../../enums/enums';
 import * as $ from "jquery";
 import { Configuration } from '../../helpers/Configuration';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { CustomerPurchaseOrderService } from '../../services/customer-purchase-order.service';
-import { DatePipe } from '../../../../node_modules/@angular/common';
-import { Router } from '../../../../node_modules/@angular/router';
+import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 import { ConfirmDialog } from '../../helpers/services/dialog.service';
 
 

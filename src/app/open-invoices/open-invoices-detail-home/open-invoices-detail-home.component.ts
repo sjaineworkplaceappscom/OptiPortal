@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Commonservice } from '../../services/commonservice.service';
 import { OpenInvoiceService } from '../../services/open-invoice.service';
-import { ISubscription } from '../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { OpenInvoiceHeaderModel } from '../../tempmodels/open-invoice-header-model';
 import { OpenInvoiceListModel } from '../../tempmodels/open-invoice-list-model';
 import { DateTimeHelper } from '../../helpers/datetime.helper';

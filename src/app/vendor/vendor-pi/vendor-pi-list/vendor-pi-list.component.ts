@@ -5,7 +5,7 @@ import { GridComponent } from '@progress/kendo-angular-grid';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 import { ModuleName, ComponentName } from '../../../enums/enums';
 import { vpiList } from '../../../DemoData/vendor-data';
-import { ISubscription } from '../../../../../node_modules/rxjs/Subscription';
+import { ISubscription } from 'rxjs/Subscription';
 import { VendorService } from '../../../services/vendor/vendor.service';
 import { DateTimeHelper } from '../../../helpers/datetime.helper';
 
@@ -46,6 +46,7 @@ export class VendorPiListComponent implements OnInit {
 
   ngOnInit() {
     // Apply class on body start
+    console.log('vpil ');
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
     element.classList.add("opti_body-vendor");
@@ -86,7 +87,7 @@ export class VendorPiListComponent implements OnInit {
    * Method to get list of inquries from server.
    */
   public getVpiList() {
-    debugger;
+    
     this.showLoader = true;
     this.getPIlistSubs = this.vendorService.getVendorInquiryList().subscribe(
       inquiryData => {
@@ -94,8 +95,7 @@ export class VendorPiListComponent implements OnInit {
           this.gridData = JSON.parse(inquiryData);
 
           this.gridData.forEach(element => {
-            element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate);
-            element.ValidTillDate = DateTimeHelper.ParseDate(element.ValidTillDate);
+            element.InquiryDate = DateTimeHelper.ParseDate(element.InquiryDate);
           });
           this.showLoader = false;
         }
@@ -119,12 +119,18 @@ export class VendorPiListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openVPIDetailOnSelectVPIOrder(e) {
+  openVPIDetailOnSelectVPIOrder(selection) {
+    
+    let SelectedInquiry = this.gridData[selection.index];
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.VendorPurchaseInqueryDetail;
     currentsideBarInfo.ModuleName = ModuleName.VendorPurchaseInquery;
     currentsideBarInfo.SideBarStatus = true;
+    localStorage.setItem("SelectedVPI", JSON.stringify(SelectedInquiry));
+    currentsideBarInfo.RequesterData = SelectedInquiry;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+    SelectedInquiry='';
+    selection.selectedRows = [];
   }
 
 }

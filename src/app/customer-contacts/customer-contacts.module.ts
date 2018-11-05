@@ -13,7 +13,7 @@ import { CustomerContactsComponent } from './customer-contacts.component';
 import { CustomerContactsAddComponent } from './customer-contacts-add/customer-contacts-add.component';
 import { CustomerContactsUpdateComponent } from './customer-contacts-update/customer-contacts-update.component';
 import { SharedComponent } from '../shared/shared.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [

@@ -6,7 +6,7 @@ import { opticonstants } from '../../constants';
 import { AccountService } from '../../services/account.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http/http';
+import { HttpErrorResponse } from '@angular/common/http/http';
 import { Configuration } from '../../helpers/Configuration';
 
 @Component({

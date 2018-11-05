@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { opticonstants } from '../../constants';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 
-import { GlobalResource } from 'src/app/helpers/global-resource';
+import { GlobalResource } from '../../helpers/global-resource';
 import { ConfirmDialog } from '../../helpers/services/dialog.service';
 import { Configuration } from '../../helpers/Configuration';
 // import { UIHelper } from '../../helpers/ui.helpers';
