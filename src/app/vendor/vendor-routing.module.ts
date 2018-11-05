@@ -9,7 +9,7 @@ import { VendorPiListComponent } from './vendor-pi/vendor-pi-list/vendor-pi-list
 
 const routes: Routes = [
   {
-    path: '',component:VendorPoListComponent,    
+    path: '',component:VendorPiListComponent,    
     
     children: [      
       {path: 'vpinquery',loadChildren:"./vendor-pi/vendor-pi.module#VendorPiModule"} ,

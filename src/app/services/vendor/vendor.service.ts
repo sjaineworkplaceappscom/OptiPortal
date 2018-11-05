@@ -22,4 +22,15 @@ export class VendorService {
     return this.httpHelper.get(url, null);
   }
 
+
+
+  /**
+   * get Vendor Detail of Vendor Purchase Inquiries.
+   */
+  public getVendorDetailById(id: string): Observable<any> {
+    let url: string = this.baseUrl + "vendor/"+id;
+    //let reqOption: RequestOptions = new RequestOptions({ method: RequestMethod.Get, headers: headers });
+    return this.httpHelper.get(url, null);
+  }
+
 }
