@@ -134,7 +134,7 @@ export class SignupComponent implements OnInit {
   }
   // Click on Login button.
   submit() {
-
+    
     if (this.capchaText != this.randomstring) {
       this.invalidCapcha = true;
       return;
@@ -202,9 +202,10 @@ export class SignupComponent implements OnInit {
 
     if (this.userType == 2) {
       this.showLoader = true;
+      
       this.accountService.getCustomerByCode(this.companyId).subscribe(
         (req: any) => {
-
+         
           req = JSON.parse(req, null);
           this.showLoader = false;
           this.companyDetail = req.CustomerInfo[0];

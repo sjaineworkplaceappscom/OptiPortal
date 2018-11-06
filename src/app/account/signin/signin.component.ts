@@ -117,7 +117,7 @@ export class SigninComponent implements OnInit {
     this.showLoader = true;
     await this.accountService.getUserDetails(this.userName).subscribe(
       userData => {
-
+       
           if (userData != undefined && userData != null && userData!='') {
             let resUserData = JSON.parse(userData);
             let resUserDataPermissions = resUserData.Permissions
