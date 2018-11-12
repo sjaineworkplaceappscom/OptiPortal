@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { VendorPouListComponent } from './vendor-pou-list/vendor-pou-list.component';
 
 const routes: Routes = [
   { path: '',component:VendorPoListComponent  },
@@ -31,7 +32,7 @@ const routes: Routes = [
     PerfectScrollbarModule,
     DropDownsModule
   ],
-  declarations: [ VendorPoHeaderComponent, VendorPoAttchmentsComponent,VendorPoListComponent, VendorPoDetailComponent, VendorPoContentComponent, VendorPoNotesComponent],
+  declarations: [ VendorPoHeaderComponent, VendorPoAttchmentsComponent,VendorPoListComponent, VendorPoDetailComponent, VendorPoContentComponent, VendorPoNotesComponent, VendorPouListComponent],
   exports:[VendorPoListComponent, VendorPoDetailComponent]
 })
 export class VendorPoModule { }
