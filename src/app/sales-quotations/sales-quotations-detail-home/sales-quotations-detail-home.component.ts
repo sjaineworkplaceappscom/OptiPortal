@@ -23,10 +23,14 @@ export class SalesQuotationsDetailHomeComponent implements OnInit {
   ngOnInit() {
     this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        
         this.salesQuotationModel = currentSidebarData.RequesterData;
-        let quotationId: number = this.salesQuotationModel.QuotationId;
-        this.getSalesQuotationDetail(quotationId);
+        if(this.salesQuotationModel!=null){
+         
+          
+          let quotationId: number = this.salesQuotationModel.QuotationId;
+          this.getSalesQuotationDetail(quotationId);
+        }
+       
       }
     );
   }
