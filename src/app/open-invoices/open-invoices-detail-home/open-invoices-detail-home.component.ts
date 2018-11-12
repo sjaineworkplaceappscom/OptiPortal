@@ -32,7 +32,7 @@ export class OpenInvoicesDetailHomeComponent implements OnInit {
         if(currentSidebarData.RequesterData!=null && currentSidebarData.RequesterData != undefined){
         console.log('side bar data'+currentSidebarData.RequesterData);
         this.openInvoiceListModel = currentSidebarData.RequesterData;
-        let invoiceNumber: number = this.openInvoiceListModel.InvoiceNumber;
+        let invoiceNumber: number = this.openInvoiceListModel.InvoiceId;
        this.getOpenInvoiceDetail(invoiceNumber);
       }
       }

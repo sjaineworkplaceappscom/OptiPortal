@@ -108,10 +108,10 @@ export class SharedComponentService {
   var data: any = {
     "Notes": note.Notes,
     "NoteType": note.NoteType,
-    "SalesNumber": note.SaleNumber,    
+    "EntityNumber": note.SaleNumber,    
     "ParentId": note.ParentId,
     "ParentType": note.ParentType,
-    "SalesOptiId": note.SalesOptiId
+    "EntityOptiId": note.SalesOptiId
   }
   return this.httpHelper.post(this.baseUrl + 'salesquotation/addnotes', data, null);
 }
@@ -132,10 +132,10 @@ export class SharedComponentService {
   var data: any = {
     "Notes": note.Notes,
     "NoteType": note.NoteType,
-    "SalesNumber": note.SaleNumber,    
+    "EntityNumber": note.SaleNumber,    
     "ParentId": note.ParentId,
     "ParentType": note.ParentType,
-    "SalesOptiId": note.SalesOptiId
+    "EntityOptiId": note.SalesOptiId
   }
   return this.httpHelper.post(this.baseUrl + 'salesorder/addnotes', data, null);
 }
@@ -160,10 +160,10 @@ public getDeliveryNoteNotesList(id:string,type:string): Observable<any>{
   var data: any = {
     "Notes": note.Notes,
     "NoteType": note.NoteType,
-    "SalesNumber": note.DeliveryNoteNumber,    
+    "EntityNumber": note.DeliveryNoteNumber,    
     "ParentId": note.ParentId,
     "ParentType": note.ParentType,
-    "SalesOptiId": note.DeliveryNoteOptiId
+    "EntityOptiId": note.DeliveryNoteOptiId
   }
   return this.httpHelper.post(this.baseUrl + 'deliverynotes/addnotes', data, null);
 }
@@ -181,10 +181,10 @@ public getOpenInvoiceNotesList(id:string,type:string): Observable<any>{
   var data: any = {
     "Notes": note.Notes,
     "NoteType": note.NoteType,
-    "SalesNumber": note.OpenInvoiceNoteNumber,    
+    "EntityNumber": note.OpenInvoiceNoteNumber,    
     "ParentId": note.ParentId,
     "ParentType": note.ParentType,
-    "SalesOptiId": note.OpenInvoiceNoteOptiId
+    "EntityOptiId": note.OpenInvoiceNoteOptiId
   }
   return this.httpHelper.post(this.baseUrl + 'openinvoice/addnotes', data, null);
 }
@@ -202,10 +202,10 @@ public getASNNotesList(id:string,type:string): Observable<any>{
   var data: any = {
     "Notes": note.Notes,
     "NoteType": note.NoteType,
-    "SalesNumber": note.ASNNoteNumber,    
+    "EntityNumber": note.ASNNoteNumber,    
     "ParentId": note.ParentId,
     "ParentType": note.ParentType,
-    "SalesOptiId": note.ASNNoteOptiId
+    "EntityOptiId": note.ASNNoteOptiId
   }
   return this.httpHelper.post(this.baseUrl + 'advanceshipment/addnotes', data, null);
 }
