@@ -38,13 +38,14 @@ export class DeliveryNotesDetailHomeComponent implements OnInit {
   tax;
   discAmt;
 
-  ngOnInit() {
+  ngOnInit() {debugger;
 
     this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
+        debugger;
         this.deliveryNoteListModel = currentSidebarData.RequesterData;
         if(this.deliveryNoteListModel!=null){
-          let deliveryNoteId: number = this.deliveryNoteListModel.DeliveryNumber;
+          let deliveryNoteId: number = this.deliveryNoteListModel.DeliveryId;
           
           this.getDeliveryNotesDetail(deliveryNoteId);
         }
