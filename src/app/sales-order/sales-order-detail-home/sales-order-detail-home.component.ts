@@ -40,7 +40,7 @@ export class SalesOrderDetailHomeComponent implements OnInit {
     this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
         this.salesOrderDetailModel = currentSidebarData.RequesterData;
-        let orderNo: number = this.salesOrderDetailModel.OrderNumber;
+        let orderNo: number = this.salesOrderDetailModel.OrderId;
         this.getSalesOrderDetail(orderNo);  
       }
     );
