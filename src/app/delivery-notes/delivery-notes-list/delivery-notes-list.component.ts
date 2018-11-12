@@ -126,7 +126,7 @@ export class DeliveryNotesListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openDeliveryNotesDetailOnSelection(selection){debugger; 
+  openDeliveryNotesDetailOnSelection(selection){ 
     $('#opti_HomeTabDeliveryNotesID').click(); 
 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();

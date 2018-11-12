@@ -87,6 +87,7 @@ export class CustomerContactsUpdateComponent implements OnInit {
 
   UpdateContactData() {
     this.showLoader = true;
+    GlobalResource.dirty = false;
     this.updateContactSub = this.contactService.UpdateContact(this.contactModel).subscribe(
       data => {
         this.showLoader = false;
