@@ -2,8 +2,8 @@
 
 export class CompanyDetail{
     CustomerCode:string ="";
-    CustomerName:string="";
-    CustomerWebsite:string="";
+    BusinessName:string="";
+    BusinessWebsite:string="";
     PrimaryContactName:string="";
     PrimaryContactEmail:string="";   
     PrimaryContactPhone:string; 

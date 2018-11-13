@@ -148,8 +148,8 @@ export class SignupComponent implements OnInit {
       this.invalidRole = false;
     }
     this.registerReq.CustomerCode = this.companyDetail.CustomerCode;
-    this.registerReq.CustomerName = this.companyDetail.CustomerName;
-    this.registerReq.CustomerWebsite = this.companyDetail.CustomerWebsite;
+    this.registerReq.CustomerName = this.companyDetail.BusinessName;
+    this.registerReq.CustomerWebsite = this.companyDetail.BusinessWebsite;
     this.registerReq.PrimaryContactEmail = this.companyDetail.PrimaryContactEmail;
     this.registerReq.PrimaryContactPhone = this.companyDetail.PrimaryContactPhone;
     this.registerReq.PrimaryContactName = this.companyDetail.PrimaryContactName;
@@ -244,13 +244,32 @@ export class SignupComponent implements OnInit {
       this.showLoader = true;
       this.accountService.getVendorByCode(this.companyId).subscribe(
         (req: any) => {
+         
           req = JSON.parse(req, null);
           this.showLoader = false;
-          this.companyDetail = req[0];
-          this.invalidCompanyId = false;
+          
+
+          this.companyDetail = req.VendorInfo[0];
+          console.log(this.companyDetail);
           if (this.companyDetail == null || this.companyDetail == undefined) {
             this.invalidCompanyId = true;
-            this.compId.nativeElement.focus();
+            this.companyDetail = new CompanyDetail();
+            this.focusID.nativeElement.focus();
+
+          } else {
+
+            this.companyDetail.CustomerCode = this.companyId;
+            this.invalidCompanyId = false;
+
+            let rolesArray: any[] = req.VendorRoles;
+            this.roles = [{ text: "Please Select Role", value: '0' }]
+            for (var v in rolesArray) // for acts as a foreach  
+            {
+              this.roles.push({ text: rolesArray[v].Roles, value: rolesArray[v].Roles });
+            }
+            if (this.roles.length > 1) {
+              this.isEnableRole = true;
+            }
           }
         }
         ,
