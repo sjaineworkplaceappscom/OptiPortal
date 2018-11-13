@@ -48,7 +48,7 @@ export class VendorPoListComponent implements OnInit {
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
     element.classList.add("opti_body-vendor");
-    element.classList.add("opti_body-vendor-pilist");
+    element.classList.add("opti_body-vendor-polist");
     element.classList.add("opti_body-main-module");
     // Apply class on body end
     // apply grid height

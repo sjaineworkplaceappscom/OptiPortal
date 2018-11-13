@@ -15,8 +15,8 @@ import { VendorPiContentComponent } from './vendor-pi-content/vendor-pi-content.
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 const routes: Routes = [
-  { path: '',component: VendorPiListComponent,canActivate:[AuthGuard]  },
-  {path: 'list', component: VendorPiListComponent,canActivate:[AuthGuard]}
+  { path: '',component: VendorPiListComponent  },
+  {path: 'list', component: VendorPiListComponent}
 ];
 
 

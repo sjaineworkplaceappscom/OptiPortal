@@ -17,8 +17,9 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { VendorPouListComponent } from './vendor-pou-list/vendor-pou-list.component';
 
 const routes: Routes = [
-  { path: '',redirectTo:'list',pathMatch:'full'  },
-  {path: 'list', component: VendorPoListComponent,canActivate:[AuthGuard]}
+  { path: '', redirectTo:'vpoulist', pathMatch:'full'  },
+  {path: 'vpoulist', component: VendorPouListComponent},
+  {path: 'vpolist', component: VendorPoListComponent}
 ];
 
 @NgModule({
