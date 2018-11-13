@@ -157,10 +157,18 @@ export class Commonservice {
 
    // Refresh List
    private refreshVPIListSub =new BehaviorSubject<any>(null);
-   refreshVPIListSubscriber=this.refreshPIListSub.asObservable();
+   refreshVPIListSubscriber=this.refreshVPIListSub.asObservable();
  
    public refreshVPIList(data:any){
-     this.refreshPIListSub.next(data);
+     this.refreshVPIListSub.next(data);
+   }
+
+   // Refresh List
+   private refreshVPOUpdatedListSub =new BehaviorSubject<any>(null);
+   refreshVPOUpdatedListSubscriber=this.refreshVPOUpdatedListSub.asObservable();
+ 
+   public refreshVPOUpdatedList(data:any){
+     this.refreshVPOUpdatedListSub.next(data);
    }
 
 }

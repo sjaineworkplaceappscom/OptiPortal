@@ -7,6 +7,7 @@ import { Commonservice } from '../../../services/commonservice.service';
 import { ISubscription } from 'rxjs/Subscription';
 import { vpoList } from '../../../DemoData/vendor-data';
 import { VendorService } from '../../../services/vendor/vendor.service';
+import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 
 @Component({
   selector: 'app-vendor-pou-list',
@@ -72,7 +73,7 @@ export class VendorPouListComponent implements OnInit {
   /**
    * Method to get list of inquries from server.
   */
-  public getvpouList() {
+  public getvpouList1() {
     this.showLoader = true;
     this.gridData = vpoList;
     setTimeout(() => {
@@ -80,31 +81,31 @@ export class VendorPouListComponent implements OnInit {
     }, 1000);
   }
 
-
- /**
+  /**
    * Method to get list of inquries from server.
    */
-  public getInquiryList() {
-    this.showLoader = true;
-    // this.getPIlistSubs = this.purchaseInquiryService.getInquiryList().subscribe(
-    //   inquiryData => {
-    //     if (inquiryData != null && inquiryData != undefined) {
-    //       this.gridData = JSON.parse(inquiryData);
+  public getvpouList() {
+    
+    //this.showLoader = true;
+    this.getPIlistSubs = this.vendorService.getVendorPOUpdateList().subscribe(
+      orderData => {
+        if (orderData != null && orderData != undefined) {
+          this.gridData = JSON.parse(orderData);
 
-    //       this.gridData.forEach(element => {
-    //         element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate);
-    //         element.ValidTillDate = DateTimeHelper.ParseDate(element.ValidTillDate);
-    //       });
-    //       this.showLoader = false;
-    //     }
-    //   },
-    //   error => {
-    //     this.showLoader = false;
-    //   },
-    //   () => {
-    //     this.showLoader = false;
-    //   }
-    // );
+          this.gridData.forEach(element => {
+            element.PODate = DateTimeHelper.ParseDate(element.PODate);
+            element.DueDate = DateTimeHelper.ParseDate(element.DueDate);
+          });
+          this.showLoader = false;
+        }
+      },
+      error => {
+        this.showLoader = false;
+      },
+      () => {
+        this.showLoader = false;
+      }
+    );
   }
 
   onFilterChange(checkBox: any, grid: GridComponent) {
@@ -117,12 +118,17 @@ export class VendorPouListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openVPOUDetailOnSelectVPIOrder(e) {
+  openVPOUDetailOnSelectVPIOrder(selection) {
+    let SelectedOrder = this.gridData[selection.index];
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.VendorPurchaseOrderDetail;
     currentsideBarInfo.ModuleName = ModuleName.VendorPurchaseOrder;
     currentsideBarInfo.SideBarStatus = true;
+    localStorage.setItem("SelectedVPOUpdated", JSON.stringify(SelectedOrder));
+    currentsideBarInfo.RequesterData = SelectedOrder;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+    SelectedOrder='';
+    selection.selectedRows = [];
   }
 
 

@@ -66,7 +66,7 @@
                           
                           <dl class="opti_mobile_grid_dl">
                               <dt>PO#</dt>
-                              <dd>{{ dataItem.POID }}</dd>
+                              <dd>{{ dataItem.PONumber }}</dd>
   
                               <dt>Vendor</dt>
                               <dd>{{ dataItem.Vendor }}</dd>
@@ -91,13 +91,12 @@
               <!-- grid for mobile end -->
   
   
-                  <kendo-grid-column media="(min-width: 768px)" field="POID" title="PO#" [width]="160"></kendo-grid-column>
+                  <kendo-grid-column media="(min-width: 768px)" field="PONumber" title="PO#" [width]="160"></kendo-grid-column>
                   <kendo-grid-column media="(min-width: 768px)" field="Vendor" title="Vendor" [width]="180" ></kendo-grid-column>
-                  <kendo-grid-column media="(min-width: 768px)" field="PODate" [width]="160" title="PO Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-                  <kendo-grid-column media="(min-width: 768px)" field="DUEDate" [width]="160" title="Due Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+                  <kendo-grid-column media="(min-width: 768px)" field="PODate" title="PO Date" [width]="180" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+                  <kendo-grid-column media="(min-width: 768px)" field="DueDate" title="Due Date" [width]="180" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
                   <kendo-grid-column media="(min-width: 768px)" field="Ack" [width]="160" title="Ack Yes/No"></kendo-grid-column>
                   <kendo-grid-column media="(min-width: 768px)" field="Buyer" title="Buyer" [width]="160"></kendo-grid-column>
-  
                   <!-- xlsx template start -->
                   <kendo-grid-excel fileName="vendor-purchase-inquiry.xlsx"></kendo-grid-excel>
                   <!-- xlsx template end -->
