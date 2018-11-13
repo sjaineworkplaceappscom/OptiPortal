@@ -45,8 +45,10 @@ export class VendorPiListComponent implements OnInit {
 
 
   ngOnInit() {
+     
+
     // Apply class on body start
-    console.log('vpil ');
+    console.log('vpil');
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
     element.classList.add("opti_body-vendor");
