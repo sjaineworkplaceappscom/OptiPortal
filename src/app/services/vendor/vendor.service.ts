@@ -33,4 +33,25 @@ export class VendorService {
     return this.httpHelper.get(url, null);
   }
 
+
+ /**
+   * get List of Vendor Purchase Order.
+   */
+  public getVendorPOList(): Observable<any> {
+    let url: string = this.baseUrl + "vendorpurchaseorder/list";
+    //let reqOption: RequestOptions = new RequestOptions({ method: RequestMethod.Get, headers: headers });
+    return this.httpHelper.get(url, null);
+  }
+
+
+
+  /**
+   * get Vendor Detail of Vendor Purchase Inquiries.
+   */
+  public getVendorPODetailById(id: string,type:string): Observable<any> {
+    let url: string = this.baseUrl + "vendorpurchaseorder/detail/"+id+"/"+type;
+    //let reqOption: RequestOptions = new RequestOptions({ method: RequestMethod.Get, headers: headers });
+    return this.httpHelper.get(url, null);
+  }
+
 }

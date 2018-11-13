@@ -121,6 +121,7 @@ export class VendorPiNotesComponent implements OnInit {
   }
 
   openEditNoteView(e, note) {
+    debugger;
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
     this.selectedNote = note;

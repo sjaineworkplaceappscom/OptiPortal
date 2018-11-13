@@ -2,6 +2,12 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
+               <!-- loader start -->
+               <div class="opti_loader opti_loader-header-tab" *ngIf="showLoader==true">
+                  <div class="opti_spinner"></div>
+              </div>
+              <!-- loader end --> 
+         <ng-container *ngIf="showLoader==false">  
         <div class="card">
           <div class="card-block">
             <form class="k-form">
@@ -13,7 +19,7 @@
 
               <label class="k-form-field">
                 <span class="opti_form-label">Requested Date</span>
-                <input name="RequestedDate" type="text" class="k-textbox" [(ngModel)]="VPIContentModel.RequestedDate"  placeholder="Requested Date" readonly />
+                <input name="RequestedDate" type="text" class="k-textbox" (ngModelChange)="VPIContentModel.RequestedDate " [ngModel]="VPIContentModel.RequestedDate | date:'dd MMM yy'"  placeholder="Requested Date" readonly />
               </label>
 
               <label class="k-form-field">
@@ -43,6 +49,7 @@
             </form>
           </div>
         </div>
+        </ng-container>
       </div> 
     </div> 
   </div>  

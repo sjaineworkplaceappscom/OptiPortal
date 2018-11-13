@@ -2,6 +2,12 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
+            <!-- loader start -->
+            <div class="opti_loader opti_loader-header-tab" *ngIf="showLoader==true">
+                <div class="opti_spinner"></div>
+            </div>
+            <!-- loader end --> 
+       <ng-container *ngIf="showLoader==false">    
         <div class="card">
           <div class="card-block">
             <form class="k-form">
@@ -13,7 +19,7 @@
 
               <label class="k-form-field">
                 <span class="opti_form-label">Inquiry Date</span>
-                <input name="InquiryDate" type="text" class="k-textbox" [(ngModel)]="VPIModel.InquiryDate" readonly />
+                <input name="InquiryDate" type="text" class="k-textbox" (ngModelChange)="VPIModel.InquiryDate" [ngModel]="VPIModel.InquiryDate | date:'dd MMM yy'" readonly />
               </label>
 
               <label class="k-form-field">
@@ -30,17 +36,16 @@
                 <span class="opti_form-label">Buyer</span>
                 <input name="Buyer" type="text" class="k-textbox" [(ngModel)]="VPIModel.Buyer" readonly />
               </label>
-
+  
               <label class="k-form-field">
                 <span class="opti_form-label">Valid Until</span>
-                <input name="ValidUntil" type="text" class="k-textbox" [(ngModel)]="VPIModel.ValidUntil" readonly />
+                <input name="ValidUntil" type="text" class="k-textbox" (ngModelChange)="VPIModel.ValidUntil" [ngModel]="VPIModel.ValidUntil | date:'dd MMM yy'" readonly />
               </label>
-
-              
               
             </form>
           </div>
         </div>
+        </ng-container>
       </div> 
     </div> 
   </div>  

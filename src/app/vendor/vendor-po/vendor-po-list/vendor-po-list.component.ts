@@ -7,6 +7,7 @@ import { Commonservice } from '../../../services/commonservice.service';
 import { ISubscription } from 'rxjs/Subscription';
 import { vpoList } from '../../../DemoData/vendor-data';
 import { VendorService } from '../../../services/vendor/vendor.service';
+import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 
 @Component({
   selector: 'app-vendor-po-list',
@@ -37,13 +38,14 @@ export class VendorPoListComponent implements OnInit {
   public gridData: any[];
   public systemAdmin: any;
   // Subscriber
-  getPIlistSubs: ISubscription;
+  getPOlistSubs: ISubscription; 
   refreshVPIListSubs: ISubscription;
 
   constructor(private commonService: Commonservice,private vendorService: VendorService) { }
 
 
   ngOnInit() {
+    debugger;
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
@@ -62,17 +64,17 @@ export class VendorPoListComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     this.systemAdmin = localStorage.getItem('SystemAdmin');
 
-    this.refreshVPIListSubs = this.commonService.refreshVPIListSubscriber.subscribe(data => {
-      if (data != undefined && data != null)
-        this.getvpoList();
-    });
+    // this.refreshVPIListSubs = this.commonService.refreshVPIListSubscriber.subscribe(data => {
+    //   if (data != undefined && data != null)
+    //     this.getVpoList();
+    // });
 
-    this.getvpoList();
+    this.getVpoList();
   }
   /**
    * Method to get list of inquries from server.
   */
-  public getvpoList() {
+  public getvpoList1() {
     this.showLoader = true;
     this.gridData = vpoList;
     setTimeout(() => {
@@ -84,28 +86,30 @@ export class VendorPoListComponent implements OnInit {
  /**
    * Method to get list of inquries from server.
    */
-  public getInquiryList() {
+  public getVpoList() {
+    debugger;
     this.showLoader = true;
-    // this.getPIlistSubs = this.purchaseInquiryService.getInquiryList().subscribe(
-    //   inquiryData => {
-    //     if (inquiryData != null && inquiryData != undefined) {
-    //       this.gridData = JSON.parse(inquiryData);
+    this.getPOlistSubs = this.vendorService.getVendorPOList().subscribe(
+      poData => {
+        debugger;
+        if (poData != null && poData != undefined) {
+          this.gridData = JSON.parse(poData);
 
-    //       this.gridData.forEach(element => {
-    //         element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate);
-    //         element.ValidTillDate = DateTimeHelper.ParseDate(element.ValidTillDate);
-    //       });
-    //       this.showLoader = false;
-    //     }
-    //   },
-    //   error => {
-    //     this.showLoader = false;
-    //   },
-    //   () => {
-    //     this.showLoader = false;
-    //   }
-    // );
+          this.gridData.forEach(element => {
+            element.InquiryDate = DateTimeHelper.ParseDate(element.InquiryDate);
+          });
+          this.showLoader = false;
+        }
+      },
+      error => {
+        this.showLoader = false;
+      },
+      () => {
+        this.showLoader = false;
+      }
+    );
   }
+
 
   onFilterChange(checkBox: any, grid: GridComponent) {
     if (checkBox.checked == false) {
@@ -117,12 +121,23 @@ export class VendorPoListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openVPIDetailOnSelectVPIOrder(e) {
+  openVPIDetailOnSelectVPOrder(selection) {
+   
+    let SelectedInquiry = this.gridData[selection.index];
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.VendorPurchaseOrderDetail;
     currentsideBarInfo.ModuleName = ModuleName.VendorPurchaseOrder;
     currentsideBarInfo.SideBarStatus = true;
+    localStorage.setItem("SelectedVPO", JSON.stringify(SelectedInquiry));
+    currentsideBarInfo.RequesterData = SelectedInquiry;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+    SelectedInquiry='';
+    selection.selectedRows = [];
+  }
+
+  ngOnDestroy() {
+    if (this.getPOlistSubs != undefined)
+      this.getPOlistSubs.unsubscribe();
   }
 
 
