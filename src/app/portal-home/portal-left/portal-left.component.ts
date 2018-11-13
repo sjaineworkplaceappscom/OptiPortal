@@ -19,7 +19,7 @@ export class PortalLeftComponent implements OnInit {
   systemAdmin: string;
   constructor(private commonService: Commonservice, private router: Router,private confirmService:ConfirmDialog) { }
   selectedThemeColor: string = 'opticonstants.DEFAULTTHEMECOLOR';
-
+  userType: number = 2;
   //Already selected list in left panel
   // selectedItem:string='item2';
   selectedItem: string;
@@ -31,14 +31,29 @@ export class PortalLeftComponent implements OnInit {
 
     if (typeof (Storage) !== "undefined") {
       let arr = localStorage.getItem('LoginUserPermissions');
-      this.userPermission = arr.split(','); // split, convert string into array string and return new array
+      this.userPermission = arr.split(','); 
+      // split, convert string into array string and return new array
     }
+
+    
+    this.commonService.currentNavigatedFromValue.subscribe(
+      data => {
+        this.userType = data;       
+      },
+      error => {       
+        console.log("Error: ", error)
+      }
+    );
+
 
     // get current url with last word
     let partsOfUrl = this.router.url.split('/');
     this.selectedItem = partsOfUrl[partsOfUrl.length - 1];
 
     this.systemAdmin = localStorage.getItem('SystemAdmin');
+    let userDetails:any=JSON.parse(localStorage.getItem('LoginUserDetail'));
+
+    this.userType =userDetails[0].LoginUserType;
 
     this.commonService.themeCurrentData.subscribe(
       data => {
@@ -78,7 +93,18 @@ export class PortalLeftComponent implements OnInit {
 
     this.resetLocalStorage(module);
     //}
-    this.router.navigate(['home/' + module]);
+    
+
+    if(this.userType==2){
+      this.router.navigate(['home/' + module]);
+
+    }else if(this.userType==3){
+      this.router.navigate(['home/vendor/' + module]);
+    }else{
+
+    }
+
+    
   }
 
   closeRightSidebar() {
