@@ -1,4 +1,4 @@
-export class VendorPIModel{
+export class VendorModel{
 VendorId: number;
 VendorName:	string;
 PrimaryContactId:	string;
@@ -11,3 +11,4 @@ ModifiedBy:	string;
 ModifiedDate:	string;
 TenantId:string;
 }
+ 

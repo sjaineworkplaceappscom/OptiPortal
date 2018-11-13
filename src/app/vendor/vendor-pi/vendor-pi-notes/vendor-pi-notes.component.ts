@@ -3,6 +3,15 @@ import { UIHelper } from '../../../helpers/ui.helpers';
 import { Configuration } from '../../../helpers/Configuration';
 import { vpiNotes } from '../../../DemoData/vendor-data';
 import { SalesNoteModel } from '../../../tempmodels/SalesNoteModel';
+import { VendorService } from 'src/app/services/vendor/vendor.service';
+import { VendorPurchaseInquiryModel } from 'src/app/tempmodels/vendor/vendor-purchase-inquiry-model';
+import { ISubscription } from 'rxjs/Subscription';
+import { SharedComponentService } from 'src/app/services/shared-component.service';
+import { ToastService } from 'src/app/helpers/services/toast.service';
+import { VendorNoteModel } from 'src/app/tempmodels/vendor/vendor-note-model';
+import { VendorEntityType } from 'src/app/enums/enums';
+import { AppMessages } from 'src/app/helpers/app-messages';
+import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 
 @Component({
   selector: 'app-vendor-pi-notes',
@@ -11,7 +20,15 @@ import { SalesNoteModel } from '../../../tempmodels/SalesNoteModel';
 })
 export class VendorPiNotesComponent implements OnInit {
 
-  constructor() { }
+  
+  public gridData: any[];
+
+  VPIModel: VendorPurchaseInquiryModel = new VendorPurchaseInquiryModel();
+  public getVPIsubs: ISubscription;
+  getnotessub: ISubscription;
+  addnotessub: ISubscription;
+  updatenotessub: ISubscription;
+  constructor(private vendorService:VendorService,private sharedComponentService: SharedComponentService,private toast:ToastService) { }
 
   /**
   * global variable
@@ -29,8 +46,8 @@ export class VendorPiNotesComponent implements OnInit {
   notesSearchValue: string = ""
 
   public noteItemsData: any[];
-
-  noteModel:SalesNoteModel = new SalesNoteModel();
+  noteModel: VendorNoteModel = new VendorNoteModel();
+  
   public noteTypes: Array<{ text: string, value: number }> = [
     { text: "General ", value: 1 },
     { text: "Rejected", value: 2 },
@@ -38,6 +55,21 @@ export class VendorPiNotesComponent implements OnInit {
   ];
 
   public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
+
+  ngOnInit() {
+    //Apply Grid Height
+    this.gridHeight = UIHelper.getMainContentHeight();
+    // Check Mobile device
+    this.isMobile = UIHelper.isMobile();
+
+    //this.getvpiNotesList();
+    let VPI: string = localStorage.getItem("SelectedVPI");
+    let vpiData: any = JSON.parse(VPI);
+    this.VPIModel = vpiData;
+    if(this.VPIModel!=null && this.VPIModel != undefined){
+      this.getVPINoteList(this.VPIModel.InquiryId+"",VendorEntityType.VendorPI);
+    }
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -58,17 +90,29 @@ export class VendorPiNotesComponent implements OnInit {
     }, 1000);
   }
 
+  
 
+   /** 
+    * call api for purchase inquiry detail.
+    */
+   getVPINoteList(parentId: string, parentType: number) {
+     debugger;
+    this.showLoader = true;
+    this.getnotessub = this.sharedComponentService.getVendorNotesList(parentId, parentType).subscribe(
+      notesData => {
+        if (notesData != null && notesData != undefined) {
+          this.noteItemsData = JSON.parse(notesData);
+          this.formatNotesDate();
+        }
+        this.showLoader = false;
+      },
+      error => {
+        this.showLoader = false;
+        //alert("Something went wrong");
+        console.log("Error: ", error)
+      });
+   }
 
-  ngOnInit() {
-    //Apply Grid Height
-    this.gridHeight = UIHelper.getMainContentHeight();
-    // Check Mobile device
-    this.isMobile = UIHelper.isMobile();
-
-    this.getvpiNotesList();
-    
-  }
 
   public openNewNote() {
     this.TabNotesGridStatus = this.TabEditNotesFormStatus = false;
@@ -113,8 +157,39 @@ export class VendorPiNotesComponent implements OnInit {
   }
 
   submitNote(e) {
-    
+    debugger;
+    let VPIOptiId: number = this.VPIModel.InquiryId;
+    let VPINumber: number = this.VPIModel.InquiryNumber;
+    this.noteModel.NoteType = this.selectedNoteItem.value;
+    this.noteModel.ParentId = undefined;
+    this.noteModel.ParentType = VendorEntityType.VendorPI;
+    this.noteModel.VPINumber = VPINumber;
+    this.noteModel.VPIOptiId = VPIOptiId.toString();
+
+    this.addnotessub = this.sharedComponentService.AddVendorNote(this.noteModel).subscribe(
+      resp => {
+        this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
+        //this method is updating the status if notes updated then update inquiry status.
+        //this.callPurchaseInquiryStatusUpdateAPI();
+      },
+      error => {
+        //alert("Something went wrong");
+        console.log("Error: ", error)
+      },
+      () => {
+        this.resetModelValues();
+        this.closeAddNote();
+        // Get notes data.
+        let VPI: string = localStorage.getItem("SelectedVPI");
+        let vpiData: any = JSON.parse(VPI);
+        this.VPIModel = vpiData;
+        if(this.VPIModel!=null && this.VPIModel != undefined){
+          this.getVPINoteList(this.VPIModel.InquiryId+"",VendorEntityType.VendorPI);
+        }
+      });
+    this.closeAddNote();
   }
+
 
   /**
    * close note add form
@@ -136,12 +211,53 @@ export class VendorPiNotesComponent implements OnInit {
 
   // Format dates.
   private formatNotesDate() {
-  
-
+    this.noteItemsData.forEach(element => {
+      element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate); //new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
+      element.ModifiedDate = DateTimeHelper.ParseDate(element.ModifiedDate);//new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
+    });
   }
 
-  public updateNote(e){
 
+  updateNote(e) {
+    //GlobalResource.dirty=false;
+    this.selectedNote;
+    //selected note object : this.selectedNote
+    this.selectedNote.NoteType = this.selectedNoteItem.value;
+    this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
+      resp => {
+        //this method is updating the status if notes updated then update inquiry status.
+    
+        let VPI: string = localStorage.getItem("SelectedVPI");
+        let vpiData: any = JSON.parse(VPI);
+        this.VPIModel = vpiData;
+        if(this.VPIModel!=null && this.VPIModel != undefined){
+          this.getVPINoteList(this.VPIModel.InquiryId+"",VendorEntityType.VendorPI);
+        }
+        this.toast.showSuccess(AppMessages.NoteUpdateSuccessMsg); 
+
+      },
+      error => {
+        this.showLoader = false;
+        //alert("Something went wrong");
+        let VPI: string = localStorage.getItem("SelectedVPI");
+        let vpiData: any = JSON.parse(VPI);
+        this.VPIModel = vpiData;
+        if(this.VPIModel!=null && this.VPIModel != undefined){
+          this.getVPINoteList(this.VPIModel.InquiryId+"",VendorEntityType.VendorPI);
+        }
+      },
+      () => {
+        this.closeUpdateNote(e);
+      });
+  }
+
+  ngOnDestroy() {
+    if (this.addnotessub != undefined)
+      this.addnotessub.unsubscribe();
+    if (this.getnotessub != undefined)
+      this.getnotessub.unsubscribe();
+    if (this.updatenotessub != undefined)
+      this.updatenotessub.unsubscribe();
   }
 
 }

@@ -10,7 +10,7 @@ import { VendorPiModule } from './vendor-pi/vendor-pi.module';
 
 const routes: Routes = [
   {
-    path: '',component:VendorDashboardComponent  ,
+    path: '',component:VendorPiListComponent  ,
     //  children: [      
     //    {path: 'vpinquery',component: VendorPiListComponent},//,loadChildren:"./vendor-pi/vendor-pi.module#VendorPiModule"} ,
     //    {path: 'vporder',component: VendorPoListComponent}//,loadChildren:"./vendor-po/vendor-po.module#VendorPoModule"}   

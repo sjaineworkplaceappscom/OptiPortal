@@ -64,15 +64,15 @@ export class VendorPouListComponent implements OnInit {
 
     this.refreshVPIListSubs = this.commonService.refreshVPIListSubscriber.subscribe(data => {
       if (data != undefined && data != null)
-        this.getvpoList();
+        this.getvpouList();
     });
 
-    this.getvpoList();
+    this.getvpouList();
   }
   /**
    * Method to get list of inquries from server.
   */
-  public getvpoList() {
+  public getvpouList() {
     this.showLoader = true;
     this.gridData = vpoList;
     setTimeout(() => {
@@ -117,7 +117,7 @@ export class VendorPouListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openVPIDetailOnSelectVPIOrder(e) {
+  openVPOUDetailOnSelectVPIOrder(e) {
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.VendorPurchaseOrderDetail;
     currentsideBarInfo.ModuleName = ModuleName.VendorPurchaseOrder;
