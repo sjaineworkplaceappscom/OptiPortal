@@ -27,8 +27,8 @@ export class VendorService {
   /**
    * get Vendor Detail of Vendor Purchase Inquiries.
    */
-  public getVendorDetailById(id: string): Observable<any> {
-    let url: string = this.baseUrl + "vendor/"+id;
+  public getVendorDetailById(id: string,type:string): Observable<any> {
+    let url: string = this.baseUrl + "vendorpurchaseinquiry/detail/"+id+"/"+type;
     //let reqOption: RequestOptions = new RequestOptions({ method: RequestMethod.Get, headers: headers });
     return this.httpHelper.get(url, null);
   }

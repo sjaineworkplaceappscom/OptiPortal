@@ -9,6 +9,7 @@ import { DeliveryNoteNoteModel } from '../tempmodels/delivery-note-note-model';
 import { OpenInvoicesModule } from '../open-invoices/open-invoices.module';
 import { OpenInvoiceNoteModel } from '../tempmodels/open-invoice-note-model';
 import { AdvanceShipmentNotesNoteModel } from '../tempmodels/advance-shipment-notes-note-model';
+import { VendorNoteModel } from '../tempmodels/vendor/vendor-note-model';
 
 
 
@@ -208,6 +209,28 @@ public getASNNotesList(id:string,type:string): Observable<any>{
     "EntityOptiId": note.ASNNoteOptiId
   }
   return this.httpHelper.post(this.baseUrl + 'advanceshipment/addnotes', data, null);
+}
+
+ /**
+  * Get List of users.
+  */
+ public getVendorNotesList(id: string, type: number): Observable<any> {
+  let url: string = this.baseUrl + "vendorpurchaseinquiry/notelist/"+id+"/"+type;
+  return this.httpHelper.get(url, null);
+}
+/**
+* Add Note.
+*/
+public AddVendorNote(note: VendorNoteModel): Observable<any> {
+  var data: any = {
+    "Notes": note.Notes,
+    "NoteType": note.NoteType,
+    "EntityNumber": note.VPINumber,    
+    "ParentId": note.ParentId,
+    "ParentType": note.ParentType,
+    "EntityOptiId": note.VPIOptiId
+  }
+  return this.httpHelper.post(this.baseUrl + 'vendorpurchaseinquiry/addnotes', data, null);
 }
 }
 
