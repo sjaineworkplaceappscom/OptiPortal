@@ -22,9 +22,10 @@ export class VendorPiHeaderComponent implements OnInit {
   // Buyer = "Shashank Jain";
   // ValidUntil = "01/07/2018";
   public sideBarsubs: ISubscription;
+  public getVPIsubs: ISubscription;
   VPIModel: VendorPurchaseInquiryModel = new VendorPurchaseInquiryModel();
   showLoader: boolean = false;
-  public getVPIsubs: ISubscription;
+  
   constructor(private commonService: Commonservice, private vendorService:VendorService) { }
 
   ngOnInit() {
@@ -69,8 +70,7 @@ export class VendorPiHeaderComponent implements OnInit {
          this.VPIModel = dataArray[0];
          this.VPIModel.ValidUntil = DateTimeHelper.ParseToUTC(this.VPIModel.ValidUntil);
          this.VPIModel.InquiryDate = DateTimeHelper.ParseToUTC(this.VPIModel.InquiryDate);
-        // localStorage.setItem("SelectedPurchaseInquery",JSON.stringify(this.purchaseInquiryDetail));
-        //this.setModelAndSubscribeData();
+    
            
        }, error => {  
          this.showLoader = false; 
@@ -79,4 +79,12 @@ export class VendorPiHeaderComponent implements OnInit {
        }, () => { }
      );
    }
+
+   ngOnDestroy() {
+    if (this.sideBarsubs != undefined)
+      this.sideBarsubs.unsubscribe();
+    if (this.getVPIsubs != undefined)
+      this.getVPIsubs.unsubscribe();
+  }
+
 }

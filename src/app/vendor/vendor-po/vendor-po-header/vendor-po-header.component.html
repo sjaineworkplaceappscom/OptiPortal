@@ -8,62 +8,62 @@
 
               <label class="k-form-field">
                   <span class="opti_form-label">PO#</span>
-                  <input name="POID" type="text" class="k-textbox" [(ngModel)]="POID" readonly />
+                  <input name="POID" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.PONumber" readonly />
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">Vendor</span>
-                <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="Vendor" readonly />
+                <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Vendor" readonly />
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">PO Date</span>
-                <input name="PODate" type="text" class="k-textbox" [(ngModel)]="PODate" readonly />
+                <input name="PODate" type="text" class="k-textbox" (ngModelChange)="VPOHeaderModel.PODate" [ngModel]="VPOHeaderModel.PODate | date:'dd MMM yy'" readonly />
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">Due Date</span>
-                <input name="DUEDate" type="text" class="k-textbox" [(ngModel)]="DUEDate" readonly />
+                <input name="DUEDate" type="text" class="k-textbox" (ngModelChange)="VPOHeaderModel.DueDate" [ngModel]="VPOHeaderModel.DueDate | date:'dd MMM yy'" readonly />
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">Status</span>
-                <input name="Status" type="text" class="k-textbox" [(ngModel)]="Status" readonly />
+                <input name="Status" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Status" readonly />
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">Ack Yes/No</span>
-                <input name="Ack" type="text" class="k-textbox" [(ngModel)]="Ack" readonly />
+                <input name="Ack" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Ack" readonly />
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">Buyer</span>
-                <input name="Buyer" type="text" class="k-textbox" [(ngModel)]="Buyer" readonly />
+                <input name="Buyer" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Buyer" readonly />
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">Price</span>
-                <input name="Price" type="text" class="k-textbox" [(ngModel)]="Price" readonly />
+                <input name="Price" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Price" readonly />
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">Tax</span>
-                <input name="Tax" type="text" class="k-textbox" [(ngModel)]="Tax" readonly />
+                <input name="Tax" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Tax" readonly />
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">Freight</span>
-                <input name="Freight" type="text" class="k-textbox" [(ngModel)]="Freight" readonly />
+                <input name="Freight" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Freight" readonly />
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">Discount</span>
-                <input name="Discount" type="text" class="k-textbox" [(ngModel)]="Discount" readonly />
+                <input name="Discount" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Discount" readonly />
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">Total Price</span>
-                <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="TotalPrice" readonly />
+                <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.TotalPrice" readonly />
               </label>
 
               <div class="text-right">

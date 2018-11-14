@@ -12,14 +12,6 @@ import { VendorPurchaseInquiryContentModel } from 'src/app/tempmodels/vendor/ven
 })
 export class VendorPiContentComponent implements OnInit {
 
-  LineNumber = "V0002";
-  RequestedDate = "01/07/2018";
-  Item = "Samsung";
-  Quantity = 10;
-  UOM = "UOM";
-  ShipToAddress = "Indore";
-  BillToAddress = "Indore"; 
-
 
   VPIModel: VendorPurchaseInquiryModel = new VendorPurchaseInquiryModel();
   VPIContentModel:VendorPurchaseInquiryContentModel = new VendorPurchaseInquiryContentModel();
@@ -66,6 +58,12 @@ export class VendorPiContentComponent implements OnInit {
        }, () => { }
      );
    }
+
+   ngOnDestroy() {
+    if (this.getVPIsubs != undefined)
+      this.getVPIsubs.unsubscribe();
+   
+  }
 }
 
 

@@ -91,8 +91,7 @@ export class VendorPiAttchmentsComponent implements OnInit {
      
          this.showLoader = false;
          if(data!=null && data!=undefined && data != ""){
-          let dataArray: any[] = JSON.parse(data);
-          this.VPIModel = dataArray[0];
+          this.gridData = JSON.parse(data);
          // this.VPIModel.RequestedDate = VPIModel.ParseToUTC(this.VPIModel.RequestedDate);
          }
          else{
@@ -103,5 +102,11 @@ export class VendorPiAttchmentsComponent implements OnInit {
        }, () => { }
      );
    }
+
+   ngOnDestroy() {
+    if (this.getVPIsubs != undefined)
+      this.getVPIsubs.unsubscribe();
+   
+  }
 
 }

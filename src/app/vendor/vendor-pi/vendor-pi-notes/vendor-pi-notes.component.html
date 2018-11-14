@@ -104,7 +104,7 @@
                   <div class="card" >
                       <div class="card-block">
                           <form class="k-form" #editnoteform = "ngForm">
-                              <label class="k-form-field">
+                            <label class="k-form-field">
                                   <span class="opti_form-label">Update Note
                                           <span *ngIf="noteEdit.errors?.required && (noteEdit.dirty || noteEdit.touched)" class="float-right opti_error-msg" >Note is required.</span>
                                   </span>
@@ -112,11 +112,11 @@
                                   <textarea id="" name="note"  #noteEdit = ngModel class="k-textarea" [(ngModel)]="selectedNote.Notes" required></textarea>
                               </label>
 
-                              <label class="k-form-field">
+                              <!-- <label class="k-form-field">
                                   <span class="opti_form-label">Note Type</span>
                                   <kendo-dropdownlist name="role" [data]="noteTypes" [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedNoteItem">
                                   </kendo-dropdownlist>
-                              </label>
+                              </label> -->
 
                               <div class="text-right">
                                   <button type="button" id="" class="k-button k-primary" (click)="updateNote($event)"  [disabled] = "!editnoteform.form.valid">Save</button>

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { VendorService } from 'src/app/services/vendor/vendor.service';
+import { VendorPOModel } from 'src/app/tempmodels/vendor/vendor-po-model';
+import { ISubscription } from 'rxjs/Subscription';
+import { VendorPOContentModel } from 'src/app/tempmodels/vendor/vendor-po-content-model';
+import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 
 @Component({
   selector: 'app-vendor-po-content',
@@ -7,20 +12,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VendorPoContentComponent implements OnInit {
 
-  LineNumber = "V0001";
-  Item = "Samsung";
-  Quantity = 10;
-  UnitPrice = 4000;
-  UOM = "UOM";
-  TotalPrice = 4000;
-  TaxCode = "Code1";
-  ShipToAddress = "Indore";
-  BillToAddress = "Indore";
-  RequestedDate = "01/07/2018";
 
-  constructor() { }
+
+
+  VPOModel: VendorPOModel = new VendorPOModel();
+  VPOContentModel:VendorPOContentModel = new VendorPOContentModel();
+  showLoader: boolean = false;
+  public getVPIsubs: ISubscription;
+  constructor(private vendorService:VendorService) { }
 
   ngOnInit() {
+    //get status of selected order for disabling or enabling  forms
+    let VPI: string = localStorage.getItem("SelectedVPO");
+    let vpiData: any = JSON.parse(VPI);
+    this.VPOModel = vpiData;
+    
+    if(this.VPOModel!=null && this.VPOModel != undefined){
+      this.callVendorPurchaseOrderDetailAPI(this.VPOModel.POId+"");
+    }
   }
+
+   /** 
+    * call api for purchase inquiry detail.
+    */
+   callVendorPurchaseOrderDetailAPI(id: string) {
+     
+    // console.log("Update:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
+     this.showLoader = true;
+     this.getVPIsubs = this.vendorService.getVendorPODetailById(id,2+"").subscribe(
+       data => { 
+         
+         this.showLoader = false;
+         if(data!=null && data!=undefined && data != ""){
+          let dataArray: any[] = JSON.parse(data);
+          this.VPOContentModel = dataArray[0];
+          this.VPOContentModel.RequestedDate = DateTimeHelper.ParseToUTC(this.VPOContentModel.RequestedDate);
+         // this.VPOContentModel.RequestedDate = DateTimeHelper.ParseToUTC(this.VPOContentModel.RequestedDate);
+         }
+         else{
+         }
+       }, error => {  
+         this.showLoader = false; 
+         console.log("Error: ", error)
+       }, () => { }
+     );
+   }
 
 }

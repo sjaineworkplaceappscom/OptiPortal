@@ -135,4 +135,13 @@ export class VendorPiListComponent implements OnInit {
     selection.selectedRows = [];
   }
 
+  ngOnDestroy() {
+    if (this.refreshVPIListSubs != undefined)
+      this.refreshVPIListSubs.unsubscribe();
+    if (this.getPIlistSubs != undefined)
+      this.getPIlistSubs.unsubscribe();
+   
+  }
+
+
 }

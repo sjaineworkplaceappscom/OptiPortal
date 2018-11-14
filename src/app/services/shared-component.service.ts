@@ -232,6 +232,30 @@ public AddVendorNote(note: VendorNoteModel): Observable<any> {
   }
   return this.httpHelper.post(this.baseUrl + 'vendorpurchaseinquiry/addnotes', data, null);
 }
+
+
+
+/**
+  * Get List of users.
+  */
+ public getVendorPONotesList(id: string, type: number): Observable<any> {
+  let url: string = this.baseUrl + "vendorpurchaseorder/notelist/"+id+"/"+type;
+  return this.httpHelper.get(url, null);
+}
+/**
+* Add Note.
+*/
+public AddVendorPONote(note: VendorNoteModel): Observable<any> {
+  var data: any = {
+    "Notes": note.Notes,
+    "NoteType": note.NoteType,
+    "EntityNumber": note.VPINumber,    
+    "ParentId": note.ParentId,
+    "ParentType": note.ParentType,
+    "EntityOptiId": note.VPIOptiId
+  }
+  return this.httpHelper.post(this.baseUrl + 'vendorpurchaseorder/addnotes', data, null);
+}
 }
 
 

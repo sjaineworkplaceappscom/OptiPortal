@@ -8,6 +8,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { vpoList } from '../../../DemoData/vendor-data';
 import { VendorService } from '../../../services/vendor/vendor.service';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { Configuration } from 'src/app/helpers/Configuration';
 
 @Component({
   selector: 'app-vendor-po-list',
@@ -39,13 +40,13 @@ export class VendorPoListComponent implements OnInit {
   public systemAdmin: any;
   // Subscriber
   getPOlistSubs: ISubscription; 
-  refreshVPIListSubs: ISubscription;
 
+  displayDateformat:string=Configuration.getDisplayDateFormat(true);
   constructor(private commonService: Commonservice,private vendorService: VendorService) { }
 
 
   ngOnInit() {
-    debugger;
+    
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
@@ -63,11 +64,6 @@ export class VendorPoListComponent implements OnInit {
     this.loginUserType = userData[0].LoginUserType;
     this.gridHeight = UIHelper.getMainContentHeight();
     this.systemAdmin = localStorage.getItem('SystemAdmin');
-
-    // this.refreshVPIListSubs = this.commonService.refreshVPIListSubscriber.subscribe(data => {
-    //   if (data != undefined && data != null)
-    //     this.getVpoList();
-    // });
 
     this.getVpoList();
   }
@@ -87,7 +83,7 @@ export class VendorPoListComponent implements OnInit {
    * Method to get list of inquries from server.
    */
   public getVpoList() {
-    debugger;
+    
     this.showLoader = true;
     this.getPOlistSubs = this.vendorService.getVendorPOList().subscribe(
       poData => {
@@ -96,7 +92,9 @@ export class VendorPoListComponent implements OnInit {
           this.gridData = JSON.parse(poData);
 
           this.gridData.forEach(element => {
-            element.InquiryDate = DateTimeHelper.ParseDate(element.InquiryDate);
+              element.PODate = DateTimeHelper.ParseDate(element.PODate);
+              element.DueDate = DateTimeHelper.ParseDate(element.DueDate);
+            
           });
           this.showLoader = false;
         }
