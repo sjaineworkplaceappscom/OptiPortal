@@ -96,7 +96,7 @@ export class VendorPiNotesComponent implements OnInit {
     * call api for purchase inquiry detail.
     */
    getVPINoteList(parentId: string, parentType: number) {
-     debugger;
+     
     this.showLoader = true;
     this.getnotessub = this.sharedComponentService.getVendorNotesList(parentId, parentType).subscribe(
       notesData => {
@@ -121,7 +121,7 @@ export class VendorPiNotesComponent implements OnInit {
   }
 
   openEditNoteView(e, note) {
-    debugger;
+    
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
     this.selectedNote = note;
@@ -158,7 +158,7 @@ export class VendorPiNotesComponent implements OnInit {
   }
 
   submitNote(e) {
-    debugger;
+    
     let VPIOptiId: number = this.VPIModel.InquiryId;
     let VPINumber: number = this.VPIModel.InquiryNumber;
     this.noteModel.NoteType = this.selectedNoteItem.value;

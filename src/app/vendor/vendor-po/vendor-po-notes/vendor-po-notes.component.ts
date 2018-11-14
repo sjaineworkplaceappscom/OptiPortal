@@ -110,7 +110,7 @@ export class VendorPoNotesComponent implements OnInit {
   }
 
   submitNote(e) {
-    debugger;
+    
     let VPIOptiId: number = this.VPOModel.POId;
     let VPINumber: number = this.VPOModel.PONumber;
     this.noteModel.NoteType = this.selectedNoteItem.value;

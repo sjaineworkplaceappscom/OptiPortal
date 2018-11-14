@@ -87,7 +87,7 @@ export class VendorPoListComponent implements OnInit {
     this.showLoader = true;
     this.getPOlistSubs = this.vendorService.getVendorPOList().subscribe(
       poData => {
-        debugger;
+        
         if (poData != null && poData != undefined) {
           this.gridData = JSON.parse(poData);
 

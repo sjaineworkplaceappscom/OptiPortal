@@ -86,7 +86,7 @@ export class VendorPouListComponent implements OnInit {
    */
   public getvpouList() {
     
-    //this.showLoader = true;
+    this.showLoader = true;
     this.getPIlistSubs = this.vendorService.getVendorPOUpdateList().subscribe(
       orderData => {
         if (orderData != null && orderData != undefined) {
@@ -119,12 +119,13 @@ export class VendorPouListComponent implements OnInit {
   }
 
   openVPOUDetailOnSelectVPIOrder(selection) {
+    
     let SelectedOrder = this.gridData[selection.index];
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.VendorPurchaseOrderDetail;
     currentsideBarInfo.ModuleName = ModuleName.VendorPurchaseOrder;
     currentsideBarInfo.SideBarStatus = true;
-    localStorage.setItem("SelectedVPOUpdated", JSON.stringify(SelectedOrder));
+    localStorage.setItem("SelectedVPO", JSON.stringify(SelectedOrder));
     currentsideBarInfo.RequesterData = SelectedOrder;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     SelectedOrder='';
