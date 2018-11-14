@@ -34,7 +34,7 @@ export class SigninComponent implements OnInit {
   invalidCapcha: boolean = false;
 
   isRemember: boolean = false;
-
+  userType:number=2;
   constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: Commonservice) { }
 
   @ViewChild('myCanvas') myCanvas;
@@ -143,7 +143,7 @@ export class SigninComponent implements OnInit {
             }
 
             var systemAdmin: any = false;
-
+            this.userType=data.LoginUserType;
             if (data != null && data.LoginUserType == 4) {
               systemAdmin = true;
               //this.router.navigateByUrl('/approveusers')
@@ -182,7 +182,16 @@ export class SigninComponent implements OnInit {
         localStorage.setItem('LoginUserId', userId)
         // Cloase side bar.
         this.closeRightSidebar();
+        if(this.userType==2){
         this.router.navigateByUrl(Configuration.firstHomePage);
+        }
+        if(this.userType==3){
+          this.router.navigateByUrl(Configuration.firstHomePageVendor);
+        }
+        else 
+        {
+          this.router.navigateByUrl(Configuration.firstHomePage);
+        }
       }
     ).catch(
       (err: HttpErrorResponse) => {

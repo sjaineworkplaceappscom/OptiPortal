@@ -24,6 +24,7 @@ export class ConfigurationService {
     Configuration.firstHomePage = res.firstHomePage;
     Configuration.assetsRootpath = res.assetsRootpath;
     Configuration.displayDateFormat=res.displayDateFormat;
+    Configuration.firstHomePageVendor=res.firstHomePageVendor;
   }
 
 
