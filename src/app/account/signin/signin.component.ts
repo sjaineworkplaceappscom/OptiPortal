@@ -182,10 +182,11 @@ export class SigninComponent implements OnInit {
         localStorage.setItem('LoginUserId', userId)
         // Cloase side bar.
         this.closeRightSidebar();
+        
         if(this.userType==2){
         this.router.navigateByUrl(Configuration.firstHomePage);
         }
-        if(this.userType==3){
+        else if(this.userType==3){
           this.router.navigateByUrl(Configuration.firstHomePageVendor);
         }
         else 
