@@ -73,17 +73,6 @@ export class VendorPiListComponent implements OnInit {
 
     this.getVpiList();
   }
-  /**
-   * Method to get list of inquries from server.
-  */
-  public vpiList1() {
-    this.showLoader = true;
-    this.gridData = vpiList;
-    setTimeout(() => {
-      this.showLoader = false;
-    }, 1000);
-  }
-
 
  /**
    * Method to get list of inquries from server.
@@ -99,6 +88,8 @@ export class VendorPiListComponent implements OnInit {
           this.gridData.forEach(element => {
             element.InquiryDate = DateTimeHelper.ParseDate(element.InquiryDate);
           });
+
+          console.log('vpi',this.gridData);
           this.showLoader = false;
         }
       },
@@ -145,3 +136,4 @@ export class VendorPiListComponent implements OnInit {
 
 
 }
+ 

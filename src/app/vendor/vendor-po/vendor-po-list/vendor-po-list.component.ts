@@ -67,16 +67,7 @@ export class VendorPoListComponent implements OnInit {
 
     this.getVpoList();
   }
-  /**
-   * Method to get list of inquries from server.
-  */
-  public getvpoList1() {
-    this.showLoader = true;
-    this.gridData = vpoList;
-    setTimeout(() => {
-      this.showLoader = false;
-    }, 1000);
-  }
+  
 
 
  /**
@@ -93,9 +84,10 @@ export class VendorPoListComponent implements OnInit {
 
           this.gridData.forEach(element => {
               element.PODate = DateTimeHelper.ParseDate(element.PODate);
-              element.DueDate = DateTimeHelper.ParseDate(element.DueDate);
-            
+              element.DueDate = DateTimeHelper.ParseDate(element.DueDate);   
+              element.PONumber=element.PONumber.toString()        
           });
+          console.log(this.gridData);
           this.showLoader = false;
         }
       },

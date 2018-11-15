@@ -112,19 +112,6 @@ refreshCPOListSubs: ISubscription;
 
   /**
    * Method to get list of inquries from server.
-  */
-  public getCustomerPurchaseOrderList1() {
-    this.showLoader = true;
-    this.gridData = customerPurchaseOrderList;
-    setTimeout(()=>{    
-      this.showLoader = false;
-    }, 1000);
-  }
-
-
-
-  /**
-   * Method to get list of inquries from server.
    */
   public getCustomerPurchaseOrderList() {
     this.showLoader = true;
@@ -140,10 +127,7 @@ refreshCPOListSubs: ISubscription;
       },
       error => {
         this.showLoader = false;
-        //alert("Something went wrong");
         console.log("Error: ", error);
-        //localStorage.clear();
-        // this.router.navigate(['landing']);
       },
       () => {
         this.showLoader = false;
