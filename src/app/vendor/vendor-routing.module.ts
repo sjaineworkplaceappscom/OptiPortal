@@ -14,10 +14,9 @@ const routes: Routes = [
   },
   {path: 'dashboard',component:VendorDashboardComponent } ,
   {path: 'vpinquery',loadChildren:"./vendor-pi/vendor-pi.module#VendorPiModule"} ,
-  {path: 'vporder',loadChildren:"./vendor-po/vendor-po.module#VendorPoModule"},
-  
+  {path: 'vporder',loadChildren:"./vendor-po/vendor-po.module#VendorPoModule"},  
   {path: 'vasn',loadChildren:"./vendor-asn/vendor-asn.module#VendorAsnModule"} ,  
-  {path: 'vcontect',loadChildren:"./vendor-contact/vendor-contact.module#VendorAsnModule"} , 
+  {path: 'vcontect',loadChildren:"./vendor-contact/vendor-contact.module#VendorContactModule"} , 
   {path: 'vpinvoice',loadChildren:"./vendor-p-invoice/vendor-p-invoice.module#VendorPInvoiceModule"} ,  
   {path: 'vpayment',loadChildren:"./vendor-payment/vendor-payment.module#VendorPaymentModule"} 
 
