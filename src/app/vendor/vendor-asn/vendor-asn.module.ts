@@ -11,7 +11,7 @@ import { RouterModule, Routes } from '../../../../node_modules/@angular/router';
 
 
 const routes: Routes = [
-  { path: '',component: VasnListComponent  },
+  { path: '',redirectTo:'list', pathMatch:'full'},
   {path: 'list', component: VasnListComponent}
 ];
 
