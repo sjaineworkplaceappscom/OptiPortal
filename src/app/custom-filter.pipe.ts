@@ -93,7 +93,15 @@ export class CustomFilterPipe implements PipeTransform {
       (items.ContactEmail!=null && items.ContactEmail.toString().toLowerCase().indexOf(args) != -1 ) ||
       (items.Address!=null && items.Address.toLowerCase().indexOf(args) != -1 ) ||
       (items.StatusText!=null && items.StatusText.toString().toLowerCase().indexOf(args) != -1 )
+
+        //VPI list    
+      //  (items.InquiryNumber!=null && items.InquiryNumber.toString().toLowerCase().indexOf(args) != -1 ) ||
+      //  (items.InquiryDate!=null && items.InquiryDate.toString().toLowerCase().indexOf(args) != -1 ) ||
+      //  (items.Vendor!=null && items.Vendor.toString().toLowerCase().indexOf(args) != -1 ) ||
+      //  (items.Status!=null && items.Status.toLowerCase().indexOf(args) != -1 ) ||
+      //  (items.Buyer!=null && items.Buyer.toString().toLowerCase().indexOf(args) != -1 )
     });
+   
 
   }
 

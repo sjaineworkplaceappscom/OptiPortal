@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { VendorPiContentComponent } from './vendor-pi-content/vendor-pi-content.component';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   { path: '',component: VendorPiListComponent  },
