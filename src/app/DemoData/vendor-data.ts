@@ -369,17 +369,13 @@ export const vendorInvoiceHeader = [
 
 export const invoiceAttachment = [  
     {  
-        "AttachmentName":"Report1.png",
-        "SizeInKb":"10KB",
-        "AttachmentTypeText":"PNG",
-        "CreatedByName":"Prashant"
+        "FileName":"Report1.png",
+        'AttachementDate':"05/07/2018"
     }
  ,  
     {  
-        "AttachmentName":"Report2.png",
-        "SizeInKb":"15KB",
-        "AttachmentTypeText":"PNG",
-        "CreatedByName":"Prashant"
+        "FileName":"Report2.png",
+        'AttachementDate':"05/07/2018"
     }
 ]
 

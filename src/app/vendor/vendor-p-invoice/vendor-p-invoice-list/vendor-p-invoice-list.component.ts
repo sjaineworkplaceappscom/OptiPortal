@@ -6,6 +6,7 @@ import { vendorInvoiceList } from '../../../DemoData/vendor-data';
 import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from 'src/app/enums/enums';
 import { Configuration } from '../../../helpers/Configuration';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-vendor-p-invoice-list',
@@ -82,7 +83,13 @@ export class VendorPInvoiceListComponent implements OnInit {
   }
 
   openInvoiceDetailOnSelectInvoiceOrder(e){
-    
+    $('#opti_HomeTabInvoiceID').click();
+    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName=ComponentName.VendorInvoiceUpdate;
+    currentsideBarInfo.ModuleName=ModuleName.VendorInvoice;
+    currentsideBarInfo.SideBarStatus=true;    
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
+    console.log(currentsideBarInfo.ComponentName);
   }
 
 }

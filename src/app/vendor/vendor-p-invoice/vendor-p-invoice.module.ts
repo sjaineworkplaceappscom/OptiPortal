@@ -18,6 +18,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { FormsModule } from '@angular/forms';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { VendorPInvoiceHomeUpdateComponent } from './vendor-p-invoice-home-update/vendor-p-invoice-home-update.component';
+import { FileDropModule } from 'ngx-file-drop';
 
 const routes: Routes = [
   { path: '',component: VendorPInvoiceListComponent  },
@@ -34,7 +35,8 @@ const routes: Routes = [
     AngularSvgIconModule,
     PerfectScrollbarModule,
     DropDownsModule,
-    DateInputsModule
+    DateInputsModule,
+    FileDropModule
   ],
   declarations: [ VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent, VendorPInvoiceHomeUpdateComponent],
   exports:[VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent]

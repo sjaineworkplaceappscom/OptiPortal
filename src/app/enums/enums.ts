@@ -73,6 +73,7 @@ export enum ComponentName {
     VendorPurchaseInqueryDetail = 1001,
     VendorPurchaseOrderDetail = 1101,
     VendorInvoiceAdd = 1601,
+    VendorInvoiceUpdate = 1602,
     VendorPaymentDetail = 1701
 }
 

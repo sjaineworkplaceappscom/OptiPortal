@@ -1,3 +1,60 @@
-<p>
-  vendor-p-invoice-home-update works!
-</p>
+<div class="opti_add-invoice-update-home opti_position-relative opti_fullheight" id="opti_UpdateInvoiceHomeID" [perfectScrollbar]="">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-block">
+            <form class="k-form">
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Invoice</span>
+                  <input name="Invoice" type="text" class="k-textbox" [(ngModel)]="Invoice" />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">PO Ref.#</span>
+                  <input name="PORef" type="text" class="k-textbox" [(ngModel)]="PORef"  />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Vendor</span>
+                  <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="Vendor"  />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Invoice Date</span>
+                  <kendo-datepicker (valueChange)="valueChange($event)" name="ValidTillDate" [format]="'dd MMM yy'" [(ngModel)]="ValidTillDate" required [min]="minValidDate">
+                  </kendo-datepicker>
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Invoice Amount</span>
+                  <input name="InvoiceAmount" type="text" class="k-textbox" [(ngModel)]="InvoiceAmount"  />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Payment Due Date</span>
+                  <kendo-datepicker (valueChange)="valueChange($event)" name="ValidTillDate" [format]="'dd MMM yy'" [(ngModel)]="ValidTillDate" required [min]="minValidDate">
+                  </kendo-datepicker>
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Status</span>
+                  <kendo-dropdownlist class="form-control form-control-sm" [data]="listItems" [value]="'Activate'"></kendo-dropdownlist>
+              </label>
+
+              
+
+              <div class="text-right">
+                  <button type="button" class="k-button k-primary" (click)="AddInvoice(false)">Save</button>
+                  <button type="button" class="k-button" (click)="AddInvoice(true)">Save as draft</button>
+                  <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+      </div> 
+    </div> 
+  </div>  
+</div>

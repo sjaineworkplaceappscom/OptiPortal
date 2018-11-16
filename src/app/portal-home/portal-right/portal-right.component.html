@@ -23,9 +23,13 @@
     
     <app-vendor-po-detail *ngIf="currentSidebarInfo.ModuleName==201" [currentSidebarInfo]="currentSidebarInfo"> </app-vendor-po-detail>
 
-    <app-vendor-p-invoice-add *ngIf="currentSidebarInfo.ModuleName==601" [currentSidebarInfo]="currentSidebarInfo"></app-vendor-p-invoice-add>
+    <app-vendor-p-invoice-add *ngIf="currentSidebarInfo.ModuleName==601 && currentSidebarInfo.ComponentName==1601" [currentSidebarInfo]="currentSidebarInfo"></app-vendor-p-invoice-add>
     
-    <app-vpayment-detail *ngIf="currentSidebarInfo.ModuleName==701" [currentSidebarInfo]="currentSidebarInfo"></app-vpayment-detail>
+    <app-vendor-p-invoice-update *ngIf="currentSidebarInfo.ModuleName==601 && currentSidebarInfo.ComponentName==1602" [currentSidebarInfo]="currentSidebarInfo"></app-vendor-p-invoice-update>
+
+    <app-vpayment-detail *ngIf="currentSidebarInfo.ModuleName==701 " [currentSidebarInfo]="currentSidebarInfo"></app-vpayment-detail>
+
+    
 
     
     
