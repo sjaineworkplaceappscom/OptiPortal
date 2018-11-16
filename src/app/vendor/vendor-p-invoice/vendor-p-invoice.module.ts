@@ -17,6 +17,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { FormsModule } from '@angular/forms';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { VendorPInvoiceHomeUpdateComponent } from './vendor-p-invoice-home-update/vendor-p-invoice-home-update.component';
 
 const routes: Routes = [
   { path: '',component: VendorPInvoiceListComponent  },
@@ -35,7 +36,7 @@ const routes: Routes = [
     DropDownsModule,
     DateInputsModule
   ],
-  declarations: [ VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent],
+  declarations: [ VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent, VendorPInvoiceHomeUpdateComponent],
   exports:[VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent]
 })
 export class VendorPInvoiceModule { }

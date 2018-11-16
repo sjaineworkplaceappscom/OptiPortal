@@ -63,16 +63,6 @@ export class VendorPoNotesComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
   }
 
-  /**
-  * Method to get list of inquries from server.
-  */
-  public getvpiNotesList() {
-    this.showLoader = true;
-    this.noteItemsData = vpiNotes;
-    setTimeout(() => {
-      this.showLoader = false;
-    }, 1000);
-  }
 
 
   ngOnInit() {

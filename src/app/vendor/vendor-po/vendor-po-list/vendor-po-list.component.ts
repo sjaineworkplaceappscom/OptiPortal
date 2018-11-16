@@ -9,7 +9,8 @@ import { vpoList } from '../../../DemoData/vendor-data';
 import { VendorService } from '../../../services/vendor/vendor.service';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { Configuration } from 'src/app/helpers/Configuration';
-
+import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
+import * as $ from "jquery";
 @Component({
   selector: 'app-vendor-po-list',
   templateUrl: './vendor-po-list.component.html',
@@ -42,7 +43,7 @@ export class VendorPoListComponent implements OnInit {
   getPOlistSubs: ISubscription; 
 
   displayDateformat:string=Configuration.getDisplayDateFormat(true);
-  constructor(private commonService: Commonservice,private vendorService: VendorService) { }
+  constructor(private commonService: Commonservice,private vendorService: VendorService, private confirmService: ConfirmDialog) { }
 
 
   ngOnInit() {
@@ -111,8 +112,15 @@ export class VendorPoListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openVPIDetailOnSelectVPOrder(selection) {
-   
+ async openVPIDetailOnSelectVPOrder(selection) {
+  $('#opti_HomeTabVPOID').click(); 
+    let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
+     
+    if (a == false) {
+      selection.selectedRows =selection.deselectedRows;
+      selection.index=selection.selectedRows[0].index;
+      return;
+    }
     let SelectedInquiry = this.gridData[selection.index];
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.VendorPurchaseOrderDetail;

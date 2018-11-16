@@ -8,7 +8,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { vpoList } from '../../../DemoData/vendor-data';
 import { VendorService } from '../../../services/vendor/vendor.service';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
-
+import * as $ from "jquery";
 @Component({
   selector: 'app-vendor-pou-list',
   templateUrl: './vendor-pou-list.component.html',
@@ -119,7 +119,7 @@ export class VendorPouListComponent implements OnInit {
   }
 
   openVPOUDetailOnSelectVPIOrder(selection) {
-    
+    $('#opti_HomeTabVPOID').click(); 
     let SelectedOrder = this.gridData[selection.index];
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.VendorPurchaseOrderDetail;

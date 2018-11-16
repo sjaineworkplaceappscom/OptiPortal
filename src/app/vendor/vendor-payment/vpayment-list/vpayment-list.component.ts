@@ -73,6 +73,7 @@ export class VpaymentListComponent implements OnInit {
   }
 
   openSalesOrderDetailOnSelectSalesOrder(e){
+    $('opti_HomeTabPaymentDetailID').click();
     let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName=ComponentName.VendorPaymentDetail;
     currentsideBarInfo.ModuleName=ModuleName.VendorPayments;

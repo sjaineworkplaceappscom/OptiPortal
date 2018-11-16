@@ -12,6 +12,7 @@ import { VendorNoteModel } from 'src/app/tempmodels/vendor/vendor-note-model';
 import { VendorEntityType } from 'src/app/enums/enums';
 import { AppMessages } from 'src/app/helpers/app-messages';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { GlobalResource } from 'src/app/helpers/global-resource';
 
 @Component({
   selector: 'app-vendor-pi-notes',
@@ -157,6 +158,11 @@ export class VendorPiNotesComponent implements OnInit {
 
   }
 
+  changeDiv(e){
+    GlobalResource.dirty=true;
+      console.log('notes div changes');
+  }
+  
   submitNote(e) {
     
     let VPIOptiId: number = this.VPIModel.InquiryId;
