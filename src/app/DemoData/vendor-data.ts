@@ -176,3 +176,149 @@ export const vpoContent = [
         "RequestedDate":"01/07/2018",
     }
 ]
+
+/////////////////////////////
+// vendor payments
+/////////////////////////////
+export const paymentsList = [
+    {
+        'PaymentRef':'1', 
+        'PaymentMode':'Cheque', 
+        'PaymentType': 'Advance', 
+        'PaymentDetails': 'Bank', 
+        'Amount':5000, 
+        'PaymentDate':'01/07/2018', 
+        'Status':'Status'  
+    },
+    {
+        'PaymentRef':'2', 
+        'PaymentMode':'Cheque', 
+        'PaymentType': 'Advance', 
+        'PaymentDetails': 'Bank', 
+        'Amount':5000, 
+        'PaymentDate':'01/07/2018', 
+        'Status':'Status'  
+    },
+    {
+        'PaymentRef':'3', 
+        'PaymentMode':'Cheque', 
+        'PaymentType': 'Advance', 
+        'PaymentDetails': 'Bank', 
+        'Amount':5000, 
+        'PaymentDate':'01/07/2018', 
+        'Status':'Status'  
+    },
+    {
+        'PaymentRef':'4', 
+        'PaymentMode':'Cheque', 
+        'PaymentType': 'Advance', 
+        'PaymentDetails': 'Bank', 
+        'Amount':5000, 
+        'PaymentDate':'01/07/2018', 
+        'Status':'Status'  
+    }
+]
+
+export const paymentsHeader = [
+    {
+        'PaymentRef':'1', 
+        'PaymentMode':'Cheque', 
+        'PaymentType': 'Advance', 
+        'PaymentDetails': 'Bank', 
+        'Amount':5000, 
+        'PaymentDate':'01/07/2018', 
+        'Status':'Status'  
+    },
+    {
+        'PaymentRef':'2', 
+        'PaymentMode':'Cheque', 
+        'PaymentType': 'Advance', 
+        'PaymentDetails': 'Bank', 
+        'Amount':5000, 
+        'PaymentDate':'01/07/2018', 
+        'Status':'Status'  
+    },
+    {
+        'PaymentRef':'3', 
+        'PaymentMode':'Cheque', 
+        'PaymentType': 'Advance', 
+        'PaymentDetails': 'Bank', 
+        'Amount':5000, 
+        'PaymentDate':'01/07/2018', 
+        'Status':'Status'  
+    },
+    {
+        'PaymentRef':'4', 
+        'PaymentMode':'Cheque', 
+        'PaymentType': 'Advance', 
+        'PaymentDetails': 'Bank', 
+        'Amount':5000, 
+        'PaymentDate':'01/07/2018', 
+        'Status':'Status'  
+    }
+]
+
+export const paymentAttachment = [  
+    {  
+        "AttachmentName":"Report1.png",
+        "SizeInKb":"10KB",
+        "AttachmentTypeText":"PNG",
+        "CreatedByName":"Prashant"
+    }
+ ,  
+    {  
+        "AttachmentName":"Report2.png",
+        "SizeInKb":"15KB",
+        "AttachmentTypeText":"PNG",
+        "CreatedByName":"Prashant"
+    }
+]
+
+export const paymentNotes = [  
+    {  
+        "CreatedByName":"prashant",
+        "CreatedDate":"05/07/2018",
+        "Notes":"This is note"
+    }
+ ,  
+    {  
+        "CreatedByName":"Ankur",
+        "CreatedDate":"05/07/2018",
+        "Notes":"This is note"
+    }
+]
+
+export const paymentsContents = [
+    {
+        'Line':"1", 
+        'PORef':"2", 
+        'Invoice':"3", 
+        'InvoiceLine':"4", 
+        'Item':"item1", 
+        'Quantity':"10", 
+        'UnitPrice':"1500", 
+        'UOM':"UOM", 
+        'TotalPrice':"5000", 
+        'TaxCode':"Tax1", 
+        'ShipToAddress':"Indore", 
+        'BillToAddress':"Indore", 
+        'Shipment':"1", 
+        'DeliveryDate':"05/07/2018"
+    },
+    {
+        'Line':"2", 
+        'PORef':"2", 
+        'Invoice':"3", 
+        'InvoiceLine':"4", 
+        'Item':"item1", 
+        'Quantity':"10", 
+        'UnitPrice':"1500", 
+        'UOM':"UOM", 
+        'TotalPrice':"5000", 
+        'TaxCode':"Tax1", 
+        'ShipToAddress':"Indore", 
+        'BillToAddress':"Indore", 
+        'Shipment':"1", 
+        'DeliveryDate':"05/07/2018"
+    }
+]

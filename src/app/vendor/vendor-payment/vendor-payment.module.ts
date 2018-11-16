@@ -6,6 +6,12 @@ import { VpaymentAttachmentComponent } from './vpayment-attachment/vpayment-atta
 import { VpaymentNotesComponent } from './vpayment-notes/vpayment-notes.component';
 import { Routes, RouterModule } from '../../../../node_modules/@angular/router';
 import { VpaymentListComponent } from './vpayment-list/vpayment-list.component';
+import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
+import { FormsModule } from '@angular/forms';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { VpaymentDetailComponent } from './vpayment-detail/vpayment-detail.component';
 
 const routes: Routes = [
   { path: '',component:VpaymentListComponent  },
@@ -15,8 +21,15 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    GridModule,
+    ExcelModule,
+    FormsModule,
+    AngularSvgIconModule,
+    PerfectScrollbarModule,
+    DropDownsModule
   ],
-  declarations: [VpaymentListComponent,VpaymentHomeComponent, VpaymentContentComponent, VpaymentAttachmentComponent, VpaymentNotesComponent]
+  declarations: [VpaymentListComponent,VpaymentHomeComponent, VpaymentContentComponent, VpaymentAttachmentComponent, VpaymentNotesComponent, VpaymentDetailComponent],
+  exports:[VpaymentListComponent,VpaymentHomeComponent, VpaymentContentComponent, VpaymentAttachmentComponent, VpaymentNotesComponent, VpaymentDetailComponent]
 })
 export class VendorPaymentModule { }
