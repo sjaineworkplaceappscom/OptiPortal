@@ -322,3 +322,77 @@ export const paymentsContents = [
         'DeliveryDate':"05/07/2018"
     }
 ]
+
+
+/////////////////vendor Invoices/////////////
+export const vendorInvoiceList = [
+    {
+        'Invoice':"1", 
+        'PORef':"2", 
+        'Vendor':"3", 
+        'InvoiceDate':"05/07/2018", 
+        'InvoiceAmount':"item1", 
+        'PaymentDueDate':"05/07/2018", 
+        'Status':"1500"
+    },
+    {
+        'Invoice':"1", 
+        'PORef':"2", 
+        'Vendor':"3", 
+        'InvoiceDate':"05/07/2018", 
+        'InvoiceAmount':"item1", 
+        'PaymentDueDate':"05/07/2018", 
+        'Status':"1500"
+    }
+]
+
+export const vendorInvoiceHeader = [
+    {
+        'Invoice':"1", 
+        'PORef':"2", 
+        'Vendor':"3", 
+        'InvoiceDate':"05/07/2018", 
+        'InvoiceAmount':"item1", 
+        'PaymentDueDate':"05/07/2018", 
+        'Status':"1500"
+    },
+    {
+        'Invoice':"1", 
+        'PORef':"2", 
+        'Vendor':"3", 
+        'InvoiceDate':"05/07/2018", 
+        'InvoiceAmount':"item1", 
+        'PaymentDueDate':"05/07/2018", 
+        'Status':"1500"
+    }
+]
+
+export const invoiceAttachment = [  
+    {  
+        "AttachmentName":"Report1.png",
+        "SizeInKb":"10KB",
+        "AttachmentTypeText":"PNG",
+        "CreatedByName":"Prashant"
+    }
+ ,  
+    {  
+        "AttachmentName":"Report2.png",
+        "SizeInKb":"15KB",
+        "AttachmentTypeText":"PNG",
+        "CreatedByName":"Prashant"
+    }
+]
+
+export const invoiceNotes = [  
+    {  
+        "CreatedByName":"prashant",
+        "CreatedDate":"05/07/2018",
+        "Notes":"This is note"
+    }
+ ,  
+    {  
+        "CreatedByName":"Ankur",
+        "CreatedDate":"05/07/2018",
+        "Notes":"This is note"
+    }
+]

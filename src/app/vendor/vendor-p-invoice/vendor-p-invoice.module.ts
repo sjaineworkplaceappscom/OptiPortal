@@ -11,6 +11,11 @@ import { VendorPInvoiceUpdateComponent } from './vendor-p-invoice-update/vendor-
 import { VendorPInvoiceAddComponent } from './vendor-p-invoice-add/vendor-p-invoice-add.component';
 import { VendorPInvoiceDetailComponent } from './vendor-p-invoice-detail/vendor-p-invoice-detail.component';
 import { RouterModule, Routes } from '../../../../node_modules/@angular/router';
+import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '',component: VendorPInvoiceListComponent  },
@@ -20,7 +25,13 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    GridModule,
+    ExcelModule,
+    FormsModule,
+    AngularSvgIconModule,
+    PerfectScrollbarModule,
+    DropDownsModule
   ],
   declarations: [ VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent]
 })
