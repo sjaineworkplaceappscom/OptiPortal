@@ -35,7 +35,8 @@ export enum ModuleName {
 
     VendorPurchaseInquery = 101,
     VendorPurchaseOrder = 201,
-    VendorPayments = 701,
+    VendorInvoice = 601,
+    VendorPayments = 701
 
 }
 
@@ -71,7 +72,8 @@ export enum ComponentName {
 
     VendorPurchaseInqueryDetail = 1001,
     VendorPurchaseOrderDetail = 1101,
-    VendorPaymentDetail = 1701,
+    VendorInvoiceAdd = 1601,
+    VendorPaymentDetail = 1701
 }
 
 

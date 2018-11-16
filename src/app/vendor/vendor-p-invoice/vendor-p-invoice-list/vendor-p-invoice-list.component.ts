@@ -73,12 +73,16 @@ export class VendorPInvoiceListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openSalesOrderDetailOnSelectSalesOrder(e){
+  addInvoiceOnClickAdd(){
     let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName=ComponentName.VendorPaymentDetail;
-    currentsideBarInfo.ModuleName=ModuleName.VendorPayments;
+    currentsideBarInfo.ComponentName=ComponentName.VendorInvoiceAdd;
+    currentsideBarInfo.ModuleName=ModuleName.VendorInvoice;
     currentsideBarInfo.SideBarStatus=true;    
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+  }
+
+  openInvoiceDetailOnSelectInvoiceOrder(e){
+    
   }
 
 }

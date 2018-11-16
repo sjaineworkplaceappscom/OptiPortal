@@ -1,3 +1,38 @@
-<p>
-  vendor-p-invoice-add works!
-</p>
+<div class="opti_invoiceadd-detail" id="opti_vInvoiceAddID">
+  <!-- tab start heading start -->
+  <div class="opti_position-relative opti_tab-outer">
+    <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
+        <li class="opti_tablinks active" (click)="openTab($event, 'home')">
+          <a href="javascript:void('0');">Header</a>
+        </li>
+        <li class="opti_tablinks opti_disable-tab" >
+          <a href="javascript:void('0');">Content</a>
+        </li>
+        <li class="opti_tablinks opti_disable-tab" >
+          <a href="javascript:void('0');">Attachements</a>
+        </li>
+        <li class="opti_tablinks opti_disable-tab" >
+          <a href="javascript:void('0');">Notes</a>
+        </li>
+    </ul>
+  </div>
+  <!-- tab start heading end -->
+
+  <!-- tab content start -->
+  <div id="" *ngIf="tabName=='home'" class="opti_tabcontent">
+    Home
+  </div>
+
+  <div id="" *ngIf="tabName=='content'" class="opti_tabcontent">
+    Content
+  </div>
+
+  <div id="" *ngIf="tabName=='attachement'" class="opti_tabcontent">
+    Attachment
+  </div>
+
+  <div id="" *ngIf="tabName=='notes'" class="opti_tabcontent">
+    Notes
+  </div>
+  <!-- tab content end -->
+</div>  

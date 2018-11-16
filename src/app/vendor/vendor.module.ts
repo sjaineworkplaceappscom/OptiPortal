@@ -21,6 +21,6 @@ import { VendorPaymentModule } from './vendor-payment/vendor-payment.module';
     VendorPoModule
   ],
   declarations: [VendorDashboardComponent],
-  exports:[VendorPiModule, VendorPoModule, VendorPaymentModule]
+  exports:[VendorPiModule, VendorPoModule, VendorPaymentModule, VendorPInvoiceModule]
 })
 export class VendorModule { }
