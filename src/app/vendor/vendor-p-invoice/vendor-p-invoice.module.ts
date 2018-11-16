@@ -16,6 +16,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { FormsModule } from '@angular/forms';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 
 const routes: Routes = [
   { path: '',component: VendorPInvoiceListComponent  },
@@ -31,7 +32,8 @@ const routes: Routes = [
     FormsModule,
     AngularSvgIconModule,
     PerfectScrollbarModule,
-    DropDownsModule
+    DropDownsModule,
+    DateInputsModule
   ],
   declarations: [ VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent],
   exports:[VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent]
