@@ -9,4 +9,5 @@ export class AppMessages {
     public static PurchaseOrderUpdateSuccessMsg:string="Purchase Order update successfully.";
     public static ContactAddedSuccessMsg:string="Contact Added successfully.";
     public static ContactUpdateSuccessMsg:string="Contact Updated successfully."; 
+    public static VendorPOAck: string = "Purchase Order Acknowledged Successfully";
 }
