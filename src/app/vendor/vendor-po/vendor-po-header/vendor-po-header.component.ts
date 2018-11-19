@@ -16,6 +16,7 @@ export class VendorPoHeaderComponent implements OnInit {
 
   public sideBarsubs: ISubscription;
   public getVPOsubs: ISubscription;
+  public sendVPOack: ISubscription;
   showLoader: boolean = false;
   VPOModel: VendorPOModel = new VendorPOModel();
   VPOHeaderModel: VendorPOHeaderModel = new VendorPOHeaderModel();
@@ -70,7 +71,13 @@ export class VendorPoHeaderComponent implements OnInit {
     );
   }
 
-  acknowledge(e) {
+  acknowledge() {debugger;
+    this.showLoader = true;
+    this.sendVPOack = this.vendorService.SendAck(this.VPOHeaderModel.POId).subscribe(
+     data => {
+       this.showLoader= false; 
+     }
+    )
 
   }
   createasn(e) {
