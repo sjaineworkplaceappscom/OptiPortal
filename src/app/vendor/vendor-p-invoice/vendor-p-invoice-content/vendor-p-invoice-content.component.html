@@ -1,3 +1,273 @@
-<p>
-  vendor-p-invoice-content works!
-</p>
+<div class="opti_invoice-content opti_position-relative opti_fullheight" id="opti_InvoiceContentID" [perfectScrollbar]="">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+          
+          <!-- Start Add Content section start -->
+          <ng-container *ngIf="showGrid==false && addContent==true">
+                  
+            <!-- loader start -->
+              <div class="opti_loader opti_loader-content-tab" *ngIf="showLoader==true">
+                  <div class="opti_spinner"></div>
+              </div>
+              <!-- loader end -->
+
+              <ng-container *ngIf="showLoader==false">
+
+                <!-- start form -->
+                <div class="card opti_position-relative" >
+                  <div class="card-block">
+                    <form class="k-form">
+        
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Line#</span>
+                          <input name="Line" type="text" class="k-textbox" [(ngModel)]="Line" />
+                      </label>
+        
+                      <label class="k-form-field">
+                          <span class="opti_form-label">PO Ref.#</span>
+                          <input name="PORef" type="text" class="k-textbox" [(ngModel)]="PORef"  />
+                      </label>
+        
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Item</span>
+                          <input name="Item" type="text" class="k-textbox" [(ngModel)]="Item"  />
+                      </label>
+        
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Quantity</span>
+                          <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="Quantity"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Unit Price</span>
+                          <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="UnitPrice"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">UOM</span>
+                          <input name="UOM" type="text" class="k-textbox" [(ngModel)]="UOM"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Total Price</span>
+                          <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="TotalPrice"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Tax Code</span>
+                          <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="TaxCode"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Ship-To Address</span>
+                          <input name="ShipToAddress" type="text" class="k-textbox" [(ngModel)]="ShipToAddress"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Bill-To Address</span>
+                          <input name="BillToAddress" type="text" class="k-textbox" [(ngModel)]="BillToAddress"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Shipment#</span>
+                          <input name="Shipment" type="text" class="k-textbox" [(ngModel)]="Shipment"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Delivery Date</span>
+                          <kendo-datepicker (valueChange)="valueChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="DeliveryDate" required [min]="minValidDate">
+                          </kendo-datepicker>
+                      </label>
+        
+                      <div class="text-right">
+                          <button type="button" class="k-button k-primary" (click)="AddContent()">Save</button>
+                          <button type="button" class="k-button" (click)="back()">Cancel</button>
+                      </div>
+                      
+                    </form>
+                  </div>
+                </div>
+                <!-- end form -->
+
+              </ng-container>
+          </ng-container>
+          <!-- End Add Content section start -->
+
+          <!-- Start edit Content section start -->
+          <ng-container *ngIf="showGrid==false && editContent==true">
+            <!-- loader start -->
+              <div class="opti_loader opti_loader-content-tab" *ngIf="showLoader==true">
+                  <div class="opti_spinner"></div>
+              </div>
+              <!-- loader end -->
+
+              <ng-container *ngIf="showLoader==false">
+
+                <!-- start form -->
+                <div class="card opti_position-relative" >
+                  <div class="card-block">
+                    <form class="k-form">
+        
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Line#</span>
+                          <input name="Line" type="text" class="k-textbox" [(ngModel)]="Line" />
+                      </label>
+        
+                      <label class="k-form-field">
+                          <span class="opti_form-label">PO Ref.#</span>
+                          <input name="PORef" type="text" class="k-textbox" [(ngModel)]="PORef"  />
+                      </label>
+        
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Item</span>
+                          <input name="Item" type="text" class="k-textbox" [(ngModel)]="Item"  />
+                      </label>
+        
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Quantity</span>
+                          <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="Quantity"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Unit Price</span>
+                          <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="UnitPrice"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">UOM</span>
+                          <input name="UOM" type="text" class="k-textbox" [(ngModel)]="UOM"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Total Price</span>
+                          <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="TotalPrice"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Tax Code</span>
+                          <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="TaxCode"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Ship-To Address</span>
+                          <input name="ShipToAddress" type="text" class="k-textbox" [(ngModel)]="ShipToAddress"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Bill-To Address</span>
+                          <input name="BillToAddress" type="text" class="k-textbox" [(ngModel)]="BillToAddress"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Shipment#</span>
+                          <input name="Shipment" type="text" class="k-textbox" [(ngModel)]="Shipment"  />
+                      </label>
+
+                      <label class="k-form-field">
+                          <span class="opti_form-label">Delivery Date</span>
+                          <kendo-datepicker (valueChange)="valueChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="DeliveryDate" required [min]="minValidDate">
+                          </kendo-datepicker>
+                      </label>
+        
+                      <div class="text-right">
+                          <button type="button" class="k-button k-primary" (click)="updateContent()">Save</button>
+                          <button type="button" class="k-button" (click)="back()">Cancel</button>
+                      </div>
+                      
+                    </form>
+                  </div>
+                </div>
+                <!-- end form -->
+
+              </ng-container>
+          </ng-container>
+            <!-- End edit Content section start -->
+
+
+          <!-- start attachement grid -->
+          <ng-container *ngIf="showGrid==true">
+
+              <!-- loader start -->
+              <div class="opti_loader opti_loader-content-tab" *ngIf="showLoader==true">
+                  <div class="opti_spinner"></div>
+              </div>
+              <!-- loader end -->
+
+              <ng-container *ngIf="showLoader==false">
+                <kendo-grid 
+                [kendoGridBinding]="gridData" 
+                [resizable]="false" 
+                [pageSize]="50" 
+                [pageable]="true" 
+                [sortable]="true"
+                [filterable]=isColumnFilterContentGrid 
+                [groupable]="false" 
+                [columnMenu]="{ columnChooser: false }"
+                [height]=gridHeight-67 
+                [selectable]="true" 
+                name="gridAttachmentData" 
+                #ContentTab>
+
+                    <!-- grid template start -->
+                    <ng-template kendoGridToolbarTemplate>
+                        <!-- show hide column start show hide -->
+                        <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
+
+                        <!-- checkbox -->
+                        <form class="k-form opti_show-hide-grid-column-filter float-left">
+                            <div class="k-form-field">
+                                <input type="checkbox" id="opti_ColumnFilterContentID" [(ngModel)]="isColumnFilterContentGrid" class="k-checkbox"
+                                    name="columnfilter" />
+                                <label class="k-checkbox-label" for="opti_ColumnFilterContentID">Enable Filter</label>
+                            </div>
+                        </form>
+
+                        <!-- xlsx button start -->
+                        <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
+                            <svg-icon src="{{imgPath}}/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+                        </button>
+
+                        <!-- add items -->
+                        <div class="float-right">
+                            <svg-icon #showAddContentRecord src="{{imgPath}}/common/add.svg" (click)="showContentForm()" [svgStyle]="{ 'width.px':16, 'height.px':16}"
+                                class="opti_vertical-align" style="height: 30px;cursor: pointer;display: inline-flex;"></svg-icon>
+                        </div>
+                    </ng-template>
+                    <!-- grid template end -->
+
+                    <kendo-grid-column field="Line" title="Line#" [width]="160"></kendo-grid-column>
+                    <kendo-grid-column field="PORef" title="PO Ref.#" [width]="140" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column field="Item" title="Item" [width]="140"></kendo-grid-column>
+                    <kendo-grid-column field="Quantity" title="Quantity" [width]="150" filter="numeric" class="text-right"></kendo-grid-column>
+
+                    <kendo-grid-column field="UnitPrice" title="Unit Price" [width]="150" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column field="UOM" title="UOM" [width]="150"></kendo-grid-column>
+                    <kendo-grid-column field="TotalPrice" title="Total Price" [width]="150" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column field="TaxCode" title="Tax Code" [width]="150"></kendo-grid-column>
+                    <kendo-grid-column field="ShipToAddress" title="Ship-To Address" [width]="150"></kendo-grid-column>
+                    <kendo-grid-column field="BillToAddress" title="Bill-To Address" [width]="150"></kendo-grid-column>
+                    <kendo-grid-column field="Shipment" title="Shipment#" [width]="150" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column field="DeliveryDate" title="Delivery Date" [width]="150" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+
+                    <kendo-grid-column field="" title="Action" [width]="50" [filterable]="false" [sortable]="false" class="text-center">
+                            <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex"> 
+                                <svg-icon  src="{{imgPath}}/common/download.svg" (click)="edit(event)" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+                            </ng-template>
+                    </kendo-grid-column>
+                                                  
+                    <!-- xlsx template start -->
+                    <kendo-grid-excel fileName="invoice-content.xlsx"></kendo-grid-excel>
+                    <!-- xlsx template end -->
+
+                </kendo-grid>
+              </ng-container>
+
+          </ng-container>
+          <!-- end attachement grid -->
+         
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -392,3 +392,36 @@ export const invoiceNotes = [
         "Notes":"This is note"
     }
 ]
+
+
+
+export const invoiceContent = [
+    {
+        'Line': 1,
+        'PORef': 2,
+        'Item': 'item1',
+        'Quantity': 5,
+        'UnitPrice': 5,
+        'UOM': 5,
+        'TotalPrice': 5,
+        'TaxCode': 'tax code 1',
+        'ShipToAddress':'Indore',
+        'BillToAddress':'Indore',
+        'Shipment': 10,
+        'DeliveryDate':'05/07/2018'
+    },
+    {
+        'Line': 2,
+        'PORef': 2,
+        'Item': 'item1',
+        'Quantity': 5,
+        'UnitPrice': 5,
+        'UOM': 5,
+        'TotalPrice': 5,
+        'TaxCode': 'tax code 1',
+        'ShipToAddress':'Indore',
+        'BillToAddress':'Indore',
+        'Shipment': 10,
+        'DeliveryDate':'05/07/2018'
+    }
+]
