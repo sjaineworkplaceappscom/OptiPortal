@@ -22,6 +22,7 @@ export class VendorPoHeaderComponent implements OnInit {
   showLoader: boolean = false;
   VPOModel: VendorPOModel = new VendorPOModel();
   VPOHeaderModel: VendorPOHeaderModel = new VendorPOHeaderModel();
+  IsAck: boolean = false;
 
   constructor(private commonService: Commonservice, private vendorService: VendorService,private toast:ToastService) { }
 
@@ -77,8 +78,11 @@ export class VendorPoHeaderComponent implements OnInit {
     this.showLoader = true;
     this.sendVPOack = this.vendorService.SendAck(this.VPOHeaderModel.POId).subscribe(
      data => {
-       this.showLoader= false; 
+       this.showLoader= false;
+       if (data == true) { 
        this.toast.showSuccess(AppMessages.VendorPOAck);
+       this.IsAck = true;
+       }
      }
     )
 
