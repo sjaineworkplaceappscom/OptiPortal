@@ -63,4 +63,10 @@ export class VendorService {
     return this.httpHelper.get(url, null);
   }
 
+  public SendAck(orderId): Observable<any> {
+    let url: string = this.baseUrl + "vendorpurchaseorder/sendack";
+    //let reqOption: RequestOptions = new RequestOptions({ method: RequestMethod.Get, headers: headers });
+    return this.httpHelper.post(url, orderId,null);
+  }
+
 }
