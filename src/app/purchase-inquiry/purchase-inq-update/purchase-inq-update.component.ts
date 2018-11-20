@@ -79,7 +79,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
     // }
 
     let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
-     console.log('after leave dialog boolean:'+a);
+    console.log('after leave dialog boolean:'+a);
 
     if(a==false){
       return;
@@ -116,26 +116,22 @@ export class PurchaseInqUpdateComponent implements OnInit {
     // Set sidebar data;
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        console.log('piu subs');
         this.setInquiryStatusFlag();
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           this.purchaseInquiryDetail = currentSidebarData.RequesterData;
           if(this.purchaseInquiryDetail!=null){
-          this.callPurchaseInquiryDetailAPI(this.purchaseInquiryDetail.PurchaseInquiryId);
+           this.callPurchaseInquiryDetailAPI(this.purchaseInquiryDetail.PurchaseInquiryId);
           }else{}
-       
         }
-      },
-      error => {
+      },error => {
         this.showLoader = false;
         //alert("Something went wrong");
         console.log("Error: ", error)
       }
-
     );
-
   }
+
   checkChanges(){
     if(this.isDirty==true){
       confirm('move?')
@@ -164,7 +160,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
       this.notesMasterData.ParentType = CustomerEntityType.PurchaseInquiry;
       // Set items data for inquiry items.
       this.inquiryModelForItems.PurchaseInquiryId = this.purchaseInquiryDetail.PurchaseInquiryId;
-
     }
   }
 

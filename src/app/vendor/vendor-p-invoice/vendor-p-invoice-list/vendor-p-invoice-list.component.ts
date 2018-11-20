@@ -7,6 +7,9 @@ import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info'
 import { ComponentName, ModuleName } from 'src/app/enums/enums';
 import { Configuration } from '../../../helpers/Configuration';
 import * as $ from "jquery";
+import { VendorOIService } from 'src/app/services/vendor/vendor-o-i.service';
+import { ISubscription } from 'rxjs/Subscription';
+import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 
 @Component({
   selector: 'app-vendor-p-invoice-list',
@@ -15,7 +18,7 @@ import * as $ from "jquery";
 })
 export class VendorPInvoiceListComponent implements OnInit {
 
-  constructor(private commonService:Commonservice) { }
+  constructor(private commonService:Commonservice, private vendorOIService:VendorOIService) { }
   imgPath = Configuration.imagePath;
   isMobile: boolean;
   isColumnFilter: boolean = false;
@@ -24,13 +27,13 @@ export class VendorPInvoiceListComponent implements OnInit {
   showLoader: boolean = false;
   searchRequest: string = '';
   public gridData: any[];
-  
+  getOIlistSubs: ISubscription;
+
   // UI Section
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
-
     // check mobile device
     this.isMobile = UIHelper.isMobile();
   }
@@ -44,19 +47,19 @@ export class VendorPInvoiceListComponent implements OnInit {
     element.classList.add("opti_body-invoice-list");
     element.classList.add("opti_body-main-module");
     // Apply class on body end
- 
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
  
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-    this.getInvoiceList();
+    //this.getOpenInvoiceList();
+    this.getInvoiceList1();
   }
 
   /**
    * Method to get list of inquries from server.
   */
-  public getInvoiceList() {
+  public getInvoiceList1() {
     this.showLoader = true;
     this.gridData = vendorInvoiceList;
     setTimeout(()=>{    
@@ -90,6 +93,31 @@ export class VendorPInvoiceListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus=true;    
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     console.log(currentsideBarInfo.ComponentName);
+  }
+
+   /**
+   * Method to get list of inquries from server.
+   */
+  public getOpenInvoiceList() {
+    this.showLoader = true;
+    this.getOIlistSubs =this.vendorOIService.getVendorOIList().subscribe(
+      OIData => {
+        if (OIData != null && OIData != undefined) {
+          this.gridData = JSON.parse(OIData);
+          this.gridData.forEach(element => {
+            element.InvoiceDate = DateTimeHelper.ParseDate(element.InvoiceDate);
+            element.PaymentDueDate = DateTimeHelper.ParseDate(element.PaymentDueDate);
+          });
+          this.showLoader = false;
+        }
+      },
+      error => {
+        this.showLoader = false;
+       },
+      () => {
+        this.showLoader = false;
+      }
+    );
   }
 
 }

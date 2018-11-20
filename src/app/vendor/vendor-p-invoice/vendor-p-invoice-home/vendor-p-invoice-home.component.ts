@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalResource } from '../../../helpers/global-resource';
+import { VendorOIModel } from 'src/app/tempmodels/vendor/vendor-OI-model';
+import { ISubscription } from 'rxjs/Subscription';
+import { VendorOpenInvoiceStatus, ModuleName, ComponentName } from 'src/app/enums/enums';
+import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { VendorService } from 'src/app/services/vendor/vendor.service';
+import { VendorOIService } from 'src/app/services/vendor/vendor-o-i.service';
+import { ToastService } from 'src/app/helpers/services/toast.service';
+import { AppMessages } from 'src/app/helpers/app-messages';
+import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
+import { Commonservice } from 'src/app/services/commonservice.service';
 
 @Component({
   selector: 'app-vendor-p-invoice-home',
@@ -9,29 +19,79 @@ import { GlobalResource } from '../../../helpers/global-resource';
 export class VendorPInvoiceHomeComponent implements OnInit {
 
   public ValidTillDate;
-  Invoice = "1"; 
-  PORef = "2"; 
-  Vendor = "3"; 
-  InvoiceDate = "05/07/2018"; 
-  InvoiceAmount = "400"; 
-  PaymentDueDate = "05/07/2018"; 
-  Status = "true";
 
-  constructor() { }
+  public defaultStatus: Array<{ text: string, value: number }> = [{ text: "Activated", value: VendorOpenInvoiceStatus.Activate }];
+  vendorOIModel:VendorOIModel = new VendorOIModel();
+  public addSub:ISubscription;
+  showLoader:boolean=false;
+  constructor(private commonService: Commonservice, private vendorOpenInvoiceService: VendorOIService,private toast:ToastService) { }
 
   ngOnInit() {
-    this.ValidTillDate = new Date();
+    this.setDefaultData();
   }
 
   valueChange(value:any){    
     GlobalResource.dirty=true;
-    console.log('change in datepicker value'); 
+    
   }
-
-  public listItems: Array<string> = [
-    'Deactivate', 'Activate'
+  
+  public listItems: Array<{text: string,value: number}> = [
+    {text:'Activate',value:VendorOpenInvoiceStatus.Activate}
+    
   ];
 
-  public value = [ 'Activate']
+  //public value = [ 'Activate']
+
+    /**
+* This method will reset the model and date object for add form.
+*/
+private setDefaultData() {
+  this.vendorOIModel = new VendorOIModel();
+  this.vendorOIModel.InvoiceDate = new Date();
+  this.vendorOIModel.PaymentDueDate = new Date();
+  this.vendorOIModel.InvoiceAmount ='';
+  this.vendorOIModel.InvoiceId= undefined;
+  this.vendorOIModel.PORefrenceNumber = '';
+  this.vendorOIModel.Status = this.listItems[0].value;
+  this.vendorOIModel.Vendor = '';
+}
+
+public AddOpenInvoice() {
+
+  this.vendorOIModel.InvoiceDate = DateTimeHelper.ParseToUTC(this.vendorOIModel.InvoiceDate);
+  this.vendorOIModel.PaymentDueDate = DateTimeHelper.ParseToUTC(this.vendorOIModel.PaymentDueDate);
+  this.showLoader=true;
+  debugger;
+  this.addSub=this.vendorOpenInvoiceService.AddOpenInvoice(this.vendorOIModel).subscribe(
+    (data: any) => {  
+      this.showLoader=false;
+      this.toast.showSuccess(AppMessages.PurchaseInqAddedSuccessMsg);
+      //this.commonService.refreshPIList(true);
+      localStorage.setItem("SelectedVOI",JSON.stringify(data));         
+      this.openUpdateSideBar(data); 
+      
+    },
+    error => {
+      //alert("Something went wrong");
+      console.log("Error: ", error)
+      this.showLoader=false;
+    },
+    () => {
+      this.showLoader=false;
+     // this.closeRightSidebar();
+    }
+  );
+}
+
+openUpdateSideBar(data: any){
+  let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+  currentSidebarInfo.SideBarStatus = true,
+  currentSidebarInfo.ModuleName = ModuleName.VendorInvoice;
+  currentSidebarInfo.ComponentName=ComponentName.VendorInvoiceUpdate;
+  currentSidebarInfo.RequesterData=data
+  this.commonService.setCurrentSideBar(currentSidebarInfo);
+}
+
+
 
 }

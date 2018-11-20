@@ -49,7 +49,7 @@ export class VendorPiListComponent implements OnInit {
   ngOnInit() {
      
     // Apply class on body start
-    console.log('vpil');
+    
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
     element.classList.add("opti_body-vendor");
@@ -115,6 +115,17 @@ export class VendorPiListComponent implements OnInit {
 
   async  openVPIDetailOnSelectVPIOrder(selection) {
   
+    let selectedIinquiry = this.gridData[selection.index];
+    let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
+    
+    if (a == false) {
+
+      selection.selectedRows =selection.deselectedRows;
+      selection.index = selection.selectedRows[0].index;
+      return;
+
+    }
+
     $('#opti_HomeTabVPIID').click(); 
     let SelectedInquiry = this.gridData[selection.index];
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();

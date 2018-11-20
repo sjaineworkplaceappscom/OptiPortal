@@ -218,3 +218,11 @@ export enum OperationType {
     Update = 2,
 
 }
+
+
+export enum VendorOpenInvoiceStatus {
+
+    Activate = 1,
+    DeActivate = 2,
+
+}

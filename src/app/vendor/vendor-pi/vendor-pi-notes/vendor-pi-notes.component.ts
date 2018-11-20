@@ -159,7 +159,7 @@ export class VendorPiNotesComponent implements OnInit {
   }
 
   changeDiv(e){
-    GlobalResource.dirty=true;
+      GlobalResource.dirty = true;
       console.log('notes div changes');
   }
   
@@ -173,6 +173,7 @@ export class VendorPiNotesComponent implements OnInit {
     this.noteModel.VPINumber = VPINumber;
     this.noteModel.VPIOptiId = VPIOptiId.toString();
 
+    GlobalResource.dirty = false;
     this.addnotessub = this.sharedComponentService.AddVendorNote(this.noteModel).subscribe(
       resp => {
         this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
@@ -203,6 +204,7 @@ export class VendorPiNotesComponent implements OnInit {
    * @param e
    */
   public closeAddNoteWindow(e) {
+    GlobalResource.dirty = false;
     this.TabNotesGridStatus = true;
     this.TabAddNotesFormStatus = false;
     this.resetModelValues();
@@ -226,7 +228,7 @@ export class VendorPiNotesComponent implements OnInit {
 
 
   updateNote(e) {
-    //GlobalResource.dirty=false;
+    GlobalResource.dirty=false;
     this.selectedNote;
     //selected note object : this.selectedNote
     this.selectedNote.NoteType = this.selectedNoteItem.value;
