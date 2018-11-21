@@ -260,17 +260,15 @@ export const paymentsHeader = [
 
 export const paymentAttachment = [  
     {  
-        "AttachmentName":"Report1.png",
-        "SizeInKb":"10KB",
-        "AttachmentTypeText":"PNG",
-        "CreatedByName":"Prashant"
+        "FileName":"Report1.doc",
+        "AttachmentDate":"05/07/2018",
+        "AttachmentId":1
     }
  ,  
     {  
-        "AttachmentName":"Report2.png",
-        "SizeInKb":"15KB",
-        "AttachmentTypeText":"PNG",
-        "CreatedByName":"Prashant"
+        "FileName":"Report2.doc",
+        "AttachmentDate":"05/07/2018",
+        "AttachmentId":2
     }
 ]
 

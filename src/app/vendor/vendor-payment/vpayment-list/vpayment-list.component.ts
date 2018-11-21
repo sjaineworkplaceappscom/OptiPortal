@@ -5,6 +5,7 @@ import { GridComponent } from '@progress/kendo-angular-grid';
 import { paymentsList } from '../../../DemoData/vendor-data';
 import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from 'src/app/enums/enums';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-vpayment-list',
