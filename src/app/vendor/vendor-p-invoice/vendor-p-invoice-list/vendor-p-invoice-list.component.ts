@@ -99,9 +99,10 @@ export class VendorPInvoiceListComponent implements OnInit {
     currentsideBarInfo.ComponentName = ComponentName.VendorInvoiceUpdate;
     currentsideBarInfo.ModuleName = ModuleName.VendorInvoice;
     currentsideBarInfo.SideBarStatus = true;
-    let selectedIinquiry = this.gridData[selection.index];
-    currentsideBarInfo.RequesterData = selectedIinquiry;
+    let selectedOI = this.gridData[selection.index];
+    currentsideBarInfo.RequesterData = selectedOI;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
+    localStorage.setItem("SelectedVOI", JSON.stringify(selectedOI));
     console.log(currentsideBarInfo.ComponentName);
   }
 

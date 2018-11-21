@@ -15,6 +15,7 @@ import { VendorPurchaseInquiryModel } from 'src/app/tempmodels/vendor/vendor-pur
 export class VendorPiHeaderComponent implements OnInit {
 
   
+  
   // InquiryID = "V0002";
   // InquiryDate = "01/07/2018";
   // Vendor = "Samsung";
