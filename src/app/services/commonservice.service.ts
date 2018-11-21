@@ -171,4 +171,12 @@ export class Commonservice {
      this.refreshVPOUpdatedListSub.next(data);
    }
 
+   // Refresh List
+  private refreshVOIListSub =new BehaviorSubject<any>(null);
+  refreshVOIListSubscriber=this.refreshVOIListSub.asObservable();
+
+  public refreshVOIList(data:any){
+    this.refreshVOIListSub.next(data);
+  }
+
 }

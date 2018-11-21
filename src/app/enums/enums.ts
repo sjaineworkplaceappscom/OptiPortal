@@ -222,7 +222,7 @@ export enum OperationType {
 
 export enum VendorOpenInvoiceStatus {
 
-    Activate = 1,
-    DeActivate = 2,
+    Open = 1,
+    Closed = 2,
 
 }
