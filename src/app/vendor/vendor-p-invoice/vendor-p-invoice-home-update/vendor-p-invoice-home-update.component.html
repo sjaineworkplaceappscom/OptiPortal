@@ -8,49 +8,46 @@
 
               <label class="k-form-field">
                   <span class="opti_form-label">Invoice</span>
-                  <input name="Invoice" type="text" class="k-textbox" [(ngModel)]="Invoice" />
+                  <input name="Invoice" type="text" class="k-textbox" [(ngModel)]="vendorOIModel.InvoiceNumber" />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">PO Ref.#</span>
-                  <input name="PORef" type="text" class="k-textbox" [(ngModel)]="PORef"  />
+                  <input name="PORef" type="text" class="k-textbox" [(ngModel)]="vendorOIModel.POReferenceNumber"  />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Vendor</span>
-                  <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="Vendor"  />
+                  <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="vendorOIModel.Vendor"  />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Invoice Date</span>
-                  <kendo-datepicker (valueChange)="valueChange($event)" name="ValidTillDate" [format]="'dd MMM yy'" [(ngModel)]="ValidTillDate" required [min]="minValidDate">
+                  <kendo-datepicker (valueChange)="valueChange($event)" name="invoiceDate" [format]="'dd MMM yy'" [(ngModel)]="vendorOIModel.InvoiceDate" required [min]="minValidDate">
                   </kendo-datepicker>
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Invoice Amount</span>
-                  <input name="InvoiceAmount" type="text" class="k-textbox" [(ngModel)]="InvoiceAmount"  />
+                  <input name="InvoiceAmount" type="text" class="k-textbox" [(ngModel)]="vendorOIModel.InvoiceAmount"  />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Payment Due Date</span>
-                  <kendo-datepicker (valueChange)="valueChange($event)" name="ValidTillDate" [format]="'dd MMM yy'" [(ngModel)]="ValidTillDate" required [min]="minValidDate">
+                  <kendo-datepicker (valueChange)="valueChange($event)" name="PaymentDueDate" [format]="'dd MMM yy'" [(ngModel)]="vendorOIModel.PaymentDueDate" required [min]="minValidDate">
                   </kendo-datepicker>
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Status</span>
-                  <kendo-dropdownlist class="form-control form-control-sm" [data]="listItems" [value]="'Activate'"></kendo-dropdownlist>
+                  <kendo-dropdownlist  name="status" class="form-control form-control-sm"   [valuePrimitive]="true"  [(ngModel)]="vendorOIModel.Status" [data]="listItems" [textField]="'text'" [valueField]="'value'"></kendo-dropdownlist>
+                  
               </label>
 
-              
-
               <div class="text-right">
-                  <button type="button" class="k-button k-primary" (click)="AddInvoice(false)">Save</button>
-                  <button type="button" class="k-button" (click)="AddInvoice(true)">Save as draft</button>
+                  <button type="button" class="k-button k-primary" (click)="UpdateInvoice()">Save</button>
                   <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
               </div>
-              
             </form>
           </div>
         </div>

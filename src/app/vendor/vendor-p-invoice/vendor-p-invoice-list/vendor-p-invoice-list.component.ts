@@ -18,7 +18,7 @@ import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 })
 export class VendorPInvoiceListComponent implements OnInit {
 
-  constructor(private commonService:Commonservice, private vendorOIService:VendorOIService) { }
+  constructor(private commonService: Commonservice, private vendorOIService: VendorOIService) { }
   imgPath = Configuration.imagePath;
   isMobile: boolean;
   isColumnFilter: boolean = false;
@@ -28,6 +28,7 @@ export class VendorPInvoiceListComponent implements OnInit {
   searchRequest: string = '';
   public gridData: any[];
   getOIlistSubs: ISubscription;
+  refreshOIlistSubs: ISubscription;
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -49,11 +50,18 @@ export class VendorPInvoiceListComponent implements OnInit {
     // Apply class on body end
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
- 
+
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-    //this.getOpenInvoiceList();
-    this.getInvoiceList1();
+
+    this.refreshOIlistSubs = this.commonService.refreshVOIListSubscriber.subscribe(
+      data => {
+        if (data != undefined && data != null)
+          this.getOpenInvoiceList();
+      });
+
+    this.getOpenInvoiceList();
+    //this.getInvoiceList1();
   }
 
   /**
@@ -62,45 +70,47 @@ export class VendorPInvoiceListComponent implements OnInit {
   public getInvoiceList1() {
     this.showLoader = true;
     this.gridData = vendorInvoiceList;
-    setTimeout(()=>{    
+    setTimeout(() => {
       this.showLoader = false;
     }, 1000);
   }
 
-  onFilterChange(checkBox:any,grid:GridComponent) {
-    if(checkBox.checked==false){
+  onFilterChange(checkBox: any, grid: GridComponent) {
+    if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
 
-  clearFilter(grid:GridComponent){      
+  clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
   }
 
-  addInvoiceOnClickAdd(){
-    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName=ComponentName.VendorInvoiceAdd;
-    currentsideBarInfo.ModuleName=ModuleName.VendorInvoice;
-    currentsideBarInfo.SideBarStatus=true;    
+  addInvoiceOnClickAdd() {
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName = ComponentName.VendorInvoiceAdd;
+    currentsideBarInfo.ModuleName = ModuleName.VendorInvoice;
+    currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
-
-  openInvoiceDetailOnSelectInvoiceOrder(e){
+ 
+  openInvoiceDetailOnSelectInvoiceOrder(selection) {
     $('#opti_HomeTabInvoiceID').click();
-    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName=ComponentName.VendorInvoiceUpdate;
-    currentsideBarInfo.ModuleName=ModuleName.VendorInvoice;
-    currentsideBarInfo.SideBarStatus=true;    
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName = ComponentName.VendorInvoiceUpdate;
+    currentsideBarInfo.ModuleName = ModuleName.VendorInvoice;
+    currentsideBarInfo.SideBarStatus = true;
+    let selectedIinquiry = this.gridData[selection.index];
+    currentsideBarInfo.RequesterData = selectedIinquiry;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     console.log(currentsideBarInfo.ComponentName);
   }
 
-   /**
-   * Method to get list of inquries from server.
-   */
+  /**
+  * Method to get list of inquries from server.
+  */
   public getOpenInvoiceList() {
     this.showLoader = true;
-    this.getOIlistSubs =this.vendorOIService.getVendorOIList().subscribe(
+    this.getOIlistSubs = this.vendorOIService.getVendorOIList().subscribe(
       OIData => {
         if (OIData != null && OIData != undefined) {
           this.gridData = JSON.parse(OIData);
@@ -113,7 +123,7 @@ export class VendorPInvoiceListComponent implements OnInit {
       },
       error => {
         this.showLoader = false;
-       },
+      },
       () => {
         this.showLoader = false;
       }

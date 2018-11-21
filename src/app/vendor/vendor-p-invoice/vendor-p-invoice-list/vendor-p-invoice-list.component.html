@@ -67,10 +67,10 @@
                     <ng-template kendoGridCellTemplate let-dataItem>
                         <dl class="opti_mobile_grid_dl">
                             <dt>Invoice#</dt>
-                            <dd>{{ dataItem.Invoice }}</dd>
+                            <dd>{{ dataItem.InvoiceNumber }}</dd>
 
                             <dt>PO Ref.#</dt>
-                            <dd>{{ dataItem.PORef }}</dd>
+                            <dd>{{ dataItem.POReferenceNumber }}</dd>
 
                             <dt>Vendor</dt>
                             <dd>{{ dataItem.Vendor }}</dd>
@@ -94,8 +94,8 @@
                 <!-- grid for mobile end -->
 
 
-                <kendo-grid-column media="(min-width: 768px)" field="Invoice"  title="Invoice#" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="PORef" title="PO Ref.#" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="InvoiceNumber"  title="Invoice#" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="POReferenceNumber" title="PO Ref.#" [width]="160"></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="Vendor" title="Vendor" [width]="160" ></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="InvoiceDate" title="Invoice Date" [width]="160" filter="date" type=date format="{0:dd MMM yy}" ></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="InvoiceAmount" title="Invoice Amount" [width]="160"></kendo-grid-column>

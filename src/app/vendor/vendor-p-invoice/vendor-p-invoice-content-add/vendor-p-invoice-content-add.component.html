@@ -1,0 +1,77 @@
+<!-- start form -->
+<div class="card opti_position-relative" >
+  <div class="card-block">
+    <form class="k-form">
+
+      <label class="k-form-field">
+          <span class="opti_form-label">Line#</span>
+          <input name="Line" type="text" class="k-textbox" [(ngModel)]="Line" />
+      </label>
+
+      <label class="k-form-field">
+          <span class="opti_form-label">PO Ref.#</span>
+          <input name="PORef" type="text" class="k-textbox" [(ngModel)]="PORef"  />
+      </label>
+
+      <label class="k-form-field">
+          <span class="opti_form-label">Item</span>
+          <input name="Item" type="text" class="k-textbox" [(ngModel)]="Item"  />
+      </label>
+
+      <label class="k-form-field">
+          <span class="opti_form-label">Quantity</span>
+          <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="Quantity"  />
+      </label>
+
+      <label class="k-form-field">
+          <span class="opti_form-label">Unit Price</span>
+          <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="UnitPrice"  />
+      </label>
+
+      <label class="k-form-field">
+          <span class="opti_form-label">UOM</span>
+          <input name="UOM" type="text" class="k-textbox" [(ngModel)]="UOM"  />
+      </label>
+
+      <label class="k-form-field">
+          <span class="opti_form-label">Total Price</span>
+          <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="TotalPrice"  />
+      </label>
+
+      <label class="k-form-field">
+          <span class="opti_form-label">Tax Code</span>
+          <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="TaxCode"  />
+      </label>
+
+        <label class="k-form-field">
+            <span class="opti_form-label">Ship-To Address</span>
+            <!-- <input name="ShipToAddress" type="text" class="k-textbox" [(ngModel)]="ShipToAddress"  /> -->
+            <textarea class="k-textarea" name="addShipToAddress" [(ngModel)]="ShipToAddress" required>Please enter your Shipping Address</textarea>
+        </label>
+
+    <label class="k-form-field">
+        <span class="opti_form-label">Bill-To Address</span>
+        <!-- <input name="BillToAddress" type="text" class="k-textbox" [(ngModel)]="BillToAddress"  /> -->
+        <textarea class="k-textarea" name="BillToAddress" [(ngModel)]="BillToAddress" required>Please enter your Billing Address</textarea>
+    </label>
+
+      <label class="k-form-field">
+          <span class="opti_form-label">Shipment#</span>
+          <input name="Shipment" type="text" class="k-textbox" [(ngModel)]="Shipment"  />
+      </label>
+
+      <label class="k-form-field">
+          <span class="opti_form-label">Delivery Date</span>
+          <kendo-datepicker (valueChange)="valueChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="DeliveryDate" required [min]="minValidDate">
+          </kendo-datepicker>
+      </label>
+
+      <div class="text-right">
+          <button type="button" class="k-button k-primary" (click)="AddContent()">Save</button>
+          <button type="button" class="k-button" (click)="back()">Cancel</button>
+      </div>
+      
+    </form>
+  </div>
+</div>
+<!-- end form -->

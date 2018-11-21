@@ -11,20 +11,6 @@ import { Configuration } from '../../../helpers/Configuration';
 })
 export class VendorPInvoiceContentComponent implements OnInit {
 
-  // Add form property
-  Line:number;
-  PORef;
-  Item;
-  Quantity:number;
-  UnitPrice;
-  UOM;
-  TotalPrice:number;
-  TaxCode;
-  ShipToAddress;
-  BillToAddress;
-  Shipment;
-  DeliveryDate;
-  // end form property 
 
   showGrid:boolean=true;
   addContent:boolean = false;

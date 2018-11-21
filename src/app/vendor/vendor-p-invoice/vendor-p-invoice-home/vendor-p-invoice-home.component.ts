@@ -19,8 +19,8 @@ import { Commonservice } from 'src/app/services/commonservice.service';
 export class VendorPInvoiceHomeComponent implements OnInit {
 
   public ValidTillDate;
-
-  public defaultStatus: Array<{ text: string, value: number }> = [{ text: "Activated", value: VendorOpenInvoiceStatus.Activate }];
+  public minValidDate: Date = new Date();
+  public defaultStatus: Array<{ text: string, value: number }> = [{ text: "Open", value: VendorOpenInvoiceStatus.Open }];
   vendorOIModel:VendorOIModel = new VendorOIModel();
   public addSub:ISubscription;
   showLoader:boolean=false;
@@ -36,7 +36,7 @@ export class VendorPInvoiceHomeComponent implements OnInit {
   }
   
   public listItems: Array<{text: string,value: number}> = [
-    {text:'Activate',value:VendorOpenInvoiceStatus.Activate}
+    {text:'Open',value:VendorOpenInvoiceStatus.Open}
     
   ];
 
@@ -51,7 +51,7 @@ private setDefaultData() {
   this.vendorOIModel.PaymentDueDate = new Date();
   this.vendorOIModel.InvoiceAmount ='';
   this.vendorOIModel.InvoiceId= undefined;
-  this.vendorOIModel.PORefrenceNumber = '';
+  this.vendorOIModel.POReferenceNumber = '';
   this.vendorOIModel.Status = this.listItems[0].value;
   this.vendorOIModel.Vendor = '';
 }
@@ -66,7 +66,7 @@ public AddOpenInvoice() {
     (data: any) => {  
       this.showLoader=false;
       this.toast.showSuccess(AppMessages.PurchaseInqAddedSuccessMsg);
-      //this.commonService.refreshPIList(true);
+      this.commonService.refreshVOIList(true);
       localStorage.setItem("SelectedVOI",JSON.stringify(data));         
       this.openUpdateSideBar(data); 
       
