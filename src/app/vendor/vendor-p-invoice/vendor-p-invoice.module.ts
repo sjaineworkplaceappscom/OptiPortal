@@ -19,7 +19,6 @@ import { FormsModule } from '@angular/forms';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { VendorPInvoiceHomeUpdateComponent } from './vendor-p-invoice-home-update/vendor-p-invoice-home-update.component';
 import { FileDropModule } from 'ngx-file-drop';
-import { VendorPInvoiceContentListComponent } from './vendor-p-invoice-content-list/vendor-p-invoice-content-list.component';
 import { VendorPInvoiceContentAddComponent } from './vendor-p-invoice-content-add/vendor-p-invoice-content-add.component';
 import { VendorPInvoiceContentUpdateComponent } from './vendor-p-invoice-content-update/vendor-p-invoice-content-update.component';
 
@@ -41,7 +40,7 @@ const routes: Routes = [
     DateInputsModule,
     FileDropModule
   ],
-  declarations: [ VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent, VendorPInvoiceHomeUpdateComponent, VendorPInvoiceContentListComponent, VendorPInvoiceContentAddComponent, VendorPInvoiceContentUpdateComponent],
+  declarations: [ VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent, VendorPInvoiceHomeUpdateComponent,  VendorPInvoiceContentAddComponent, VendorPInvoiceContentUpdateComponent],
   exports:[VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent]
 })
 export class VendorPInvoiceModule { }

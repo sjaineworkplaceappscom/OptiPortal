@@ -3,6 +3,7 @@ import { Configuration } from 'src/app/helpers/Configuration';
 import { HttpHelper } from 'src/app/helpers/http.helper';
 import { Observable } from 'rxjs';
 import { VendorOIModel } from 'src/app/tempmodels/vendor/vendor-OI-model';
+import { OpenInvoiceContentModel } from 'src/app/tempmodels/vendor/vendor-content-model';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +64,30 @@ export class VendorOIService {
       "Status": request.Status,
     }
     return this.httpHelper.put(this.baseUrl + "vendoropeninvoice/update", data, null);
+  }
+
+  /**
+   * Add Purchase Inquiry. 
+   */
+  public AddVendorOIContent(request: OpenInvoiceContentModel): Observable<any> {
+    var data: any = { 
+      "ItemId": request.ItemId,
+      "ItemNumber": request.ItemNumber,
+      "InvoiceId": request.InvoiceId,
+      "PORefrenceNumber": request.PORefrenceNumber,
+      "LineNumber": request.LineNumber,
+      "Item": request.Item,
+      "DeliveryDate": request.DeliveryDate,
+      "UnitPrice":request.UnitPrice,
+      "TotalPrice":request.TotalPrice,
+      "Quantity":request.Quantity,
+      "ShipmentNumber":request.ShipmentNumber,
+      "UOM":request.UOM,
+      "TaxCode":request.TaxCode,
+      "ShipToAddress":request.ShipToAddress,
+      "BillToAdress":request.BillToAdress
+    }
+    return this.httpHelper.post(this.baseUrl + "vendorinvoicecontent/add", data, null);
   }
   
 
