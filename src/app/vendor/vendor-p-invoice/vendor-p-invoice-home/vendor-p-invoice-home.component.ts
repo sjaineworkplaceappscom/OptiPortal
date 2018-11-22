@@ -60,7 +60,12 @@ public AddOpenInvoice() {
 
   this.vendorOIModel.InvoiceDate = DateTimeHelper.ParseToUTC(this.vendorOIModel.InvoiceDate);
   this.vendorOIModel.PaymentDueDate = DateTimeHelper.ParseToUTC(this.vendorOIModel.PaymentDueDate);
+<<<<<<< HEAD
   this.showLoader=true;  
+=======
+  this.showLoader=true;
+  
+>>>>>>> f179a776044241c5ec20cc67a3f6e302f21f441a
   this.addSub=this.vendorOpenInvoiceService.AddOpenInvoice(this.vendorOIModel).subscribe(
     (data: any) => {  
       this.showLoader=false;
