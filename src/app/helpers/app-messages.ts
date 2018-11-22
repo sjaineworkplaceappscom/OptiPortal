@@ -4,10 +4,12 @@ export class AppMessages {
     public static PurchaseInqItemUpdateSuccessMsg:string="Purchase inquire item updated successfully.";
     public static AttachmentAddedSuccessMsg:string="Attachment added successfully.";
     public static NoteUpdateSuccessMsg:string="Note updated successfully.";
-    public static NoteAddedSuccessMsg:string="Note Added successfully.";
+    public static NoteAddedSuccessMsg:string="Note added successfully.";
     public static PurchaseOrderAddedSuccessMsg:string="Purchase Order added successfully.";
     public static PurchaseOrderUpdateSuccessMsg:string="Purchase Order update successfully.";
-    public static ContactAddedSuccessMsg:string="Contact Added successfully.";
-    public static ContactUpdateSuccessMsg:string="Contact Updated successfully."; 
-    public static VendorPOAck: string = "Purchase Order Acknowledged Successfully";
+    public static ContactAddedSuccessMsg:string="Contact added successfully.";
+    public static ContactUpdateSuccessMsg:string="Contact updated successfully."; 
+    public static VendorPOAck: string = "Purchase Order acknowledged successfully";
+    public static VendorInvoice: string = "Invoice added successfully";
+    public static VendorInvContent: string = "Invoice content added successfully";
 }

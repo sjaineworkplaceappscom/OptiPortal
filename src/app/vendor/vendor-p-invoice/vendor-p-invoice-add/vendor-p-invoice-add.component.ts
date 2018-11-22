@@ -47,7 +47,6 @@ export class VendorPInvoiceAddComponent implements OnInit {
      if (selectedVOI != null && selectedVOI != undefined) {
       let vOIData: VendorOIModel = JSON.parse(selectedVOI);
        var id = vOIData.InvoiceId;
-       
      }
   }
  }

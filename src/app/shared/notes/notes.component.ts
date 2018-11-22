@@ -119,9 +119,7 @@ export class NotesComponent implements OnInit {
                 if (this.noteModel.ParentType == CustomerEntityType.PurchaseInquiry) {
                     // Get notes data.
                     this.getNoteList(this.noteModel.ParentId, data.ParentType);
-
                 }
-
             },
             error => {
                 this.showLoader = false;

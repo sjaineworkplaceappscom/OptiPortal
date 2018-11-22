@@ -1,11 +1,11 @@
-export class OpenInvoiceContentModel {
+export class VOIContentModel {
     ItemId: string;
     ItemNumber: string;
     InvoiceId: string;
     PORefrenceNumber: string;
     LineNumber: string;
     Item: string;
-    DeliveryDate: string;
+    DeliveryDate: Date;
     UnitPrice: string;
     TotalPrice: string;
     Quantity: string;
