@@ -125,6 +125,11 @@ export enum VendorEntityType {
     /// </summary>
     VendorPO = 103,
 
+    /// <summary>
+    /// Vendor Open Invoice Type entity.
+    /// </summary>
+    VendorOI=104
+
 }
 
 

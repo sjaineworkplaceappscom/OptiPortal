@@ -22,6 +22,7 @@ import { FileDropModule } from 'ngx-file-drop';
 import { VendorPInvoiceContentListComponent } from './vendor-p-invoice-content-list/vendor-p-invoice-content-list.component';
 import { VendorPInvoiceContentAddComponent } from './vendor-p-invoice-content-add/vendor-p-invoice-content-add.component';
 import { VendorPInvoiceContentUpdateComponent } from './vendor-p-invoice-content-update/vendor-p-invoice-content-update.component';
+import { SharedModule } from '../../shared/shared.module';
 
 const routes: Routes = [
   { path: '',component: VendorPInvoiceListComponent  },
@@ -39,7 +40,8 @@ const routes: Routes = [
     PerfectScrollbarModule,
     DropDownsModule,
     DateInputsModule,
-    FileDropModule
+    FileDropModule,
+    SharedModule
   ],
   declarations: [ VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent, VendorPInvoiceHomeUpdateComponent, VendorPInvoiceContentListComponent, VendorPInvoiceContentAddComponent, VendorPInvoiceContentUpdateComponent],
   exports:[VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent]
