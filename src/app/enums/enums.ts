@@ -128,7 +128,17 @@ export enum VendorEntityType {
     /// <summary>
     /// Vendor Open Invoice Type entity.
     /// </summary>
-    VendorOI=104
+    VendorOI=104,
+    
+    /// <summary>
+    /// Vendor purchase order Type entity.
+    /// </summary>
+    VendorOIContent = 105,
+
+    /// <summary>
+    /// vendor payment Type entity.
+    /// </summary>
+    Payment = 106
 
 }
 

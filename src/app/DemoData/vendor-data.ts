@@ -275,7 +275,7 @@ export const paymentAttachment = [
 export const paymentNotes = [  
     {  
         "CreatedByName":"prashant",
-        "CreatedDate":"05/07/2018",
+        "CreatedDate":"05/07/2018", 
         "Notes":"This is note"
     }
  ,  

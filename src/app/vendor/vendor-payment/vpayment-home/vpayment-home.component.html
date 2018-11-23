@@ -8,37 +8,41 @@
 
               <label class="k-form-field">
                   <span class="opti_form-label">Payment Ref#</span>
-                  <input name="PaymentRef" type="text" class="k-textbox" [(ngModel)]="PaymentRef" readonly />
+                  <input name="PaymentRef" type="text" class="k-textbox" [(ngModel)]="paymentModel.PaymentRefNumber" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Payment Mode</span>
-                  <input name="PaymentMode" type="text" class="k-textbox" [(ngModel)]="PaymentMode" readonly />
+                  <input name="PaymentMode" type="text" class="k-textbox" [(ngModel)]="paymentModel.PaymentMode" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Payment Type</span>
-                  <input name="PaymentType" type="text" class="k-textbox" [(ngModel)]="PaymentType" readonly />
+                  <input name="PaymentType" type="text" class="k-textbox" [(ngModel)]="paymentModel.PaymentType" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Payment Details</span>
-                  <input name="PaymentDetails" type="text" class="k-textbox" [(ngModel)]="PaymentDetails" readonly />
+                  <input name="PaymentDetails" type="text" class="k-textbox" [(ngModel)]="paymentModel.PaymentDetails" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Amount</span>
-                  <input name="Amount" type="text" class="k-textbox" [(ngModel)]="Amount" readonly />
+                  <input name="Amount" type="text" class="k-textbox" [(ngModel)]="paymentModel.Amount" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Payment Date</span>
-                  <input name="PaymentDate" type="text" class="k-textbox" [(ngModel)]="PaymentDate" readonly />
+                  <input name="PaymentDate" type="text" class="k-textbox" (ngModelChange)="paymentModel.PaymentDate" [ngModel]="paymentModel.PaymentDate | date:'dd MMM yy'" readonly />
               </label>
+              <!-- <label class="k-form-field">
+                <span class="opti_form-label">Due Date</span>
+                <input name="DUEDate" type="text" class="k-textbox" (ngModelChange)="VPOHeaderModel.DueDate" [ngModel]="VPOHeaderModel.DueDate | date:'dd MMM yy'" readonly />
+              </label> -->
 
               <label class="k-form-field">
                   <span class="opti_form-label">Status</span>
-                  <input name="Status" type="text" class="k-textbox" [(ngModel)]="Status" readonly />
+                  <input name="Status" type="text" class="k-textbox" [(ngModel)]="paymentModel.Status" readonly />
               </label>
               
             </form>

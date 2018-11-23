@@ -225,10 +225,10 @@ public AddVendorNote(note: VendorNoteModel): Observable<any> {
   var data: any = {
     "Notes": note.Notes,
     "NoteType": note.NoteType,
-    "EntityNumber": note.VPINumber,    
+    "EntityNumber": note.VEntityNumber,    
     "ParentId": note.ParentId,
     "ParentType": note.ParentType,
-    "EntityOptiId": note.VPIOptiId
+    "EntityOptiId": note.VEntityOptiId
   }
   return this.httpHelper.post(this.baseUrl + 'vendorpurchaseinquiry/addnotes', data, null);
 }
@@ -249,12 +249,35 @@ public AddVendorPONote(note: VendorNoteModel): Observable<any> {
   var data: any = {
     "Notes": note.Notes,
     "NoteType": note.NoteType,
-    "EntityNumber": note.VPINumber,    
+    "EntityNumber": note.VEntityNumber,    
     "ParentId": note.ParentId,
     "ParentType": note.ParentType,
-    "EntityOptiId": note.VPIOptiId
+    "EntityOptiId": note.VEntityOptiId
   }
   return this.httpHelper.post(this.baseUrl + 'vendorpurchaseorder/addnotes', data, null);
+}
+
+/**
+* Add Note.
+*/
+public AddPaymentNote(note: VendorNoteModel): Observable<any> {
+  var data: any = {
+    "Notes": note.Notes,
+    "NoteType": note.NoteType,
+    "EntityNumber": note.VEntityNumber,    
+    "ParentId": note.ParentId,
+    "ParentType": note.ParentType,
+    "EntityOptiId": note.VEntityOptiId
+  }
+  return this.httpHelper.post(this.baseUrl + 'payment/addnotes', data, null);
+  }
+
+  /**
+  * Get List of users.
+  */
+ public getPaymentNotesList(id: string, type: number): Observable<any> {
+  let url: string = this.baseUrl + "payment/notelist/"+id+"/"+type;
+  return this.httpHelper.get(url, null);
 }
 }
 

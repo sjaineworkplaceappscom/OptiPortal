@@ -20,7 +20,7 @@
               [columnMenu]="{ columnChooser: false }" 
               [height]=gridHeight 
               [selectable]="true" 
-              (selectionChange)="openSalesOrderDetailOnSelectSalesOrder($event)"
+              (selectionChange)="openPaymentDetailOnSelectPayment($event)"
               #gridItem>
                   <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
                   <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
@@ -64,7 +64,7 @@
                       <ng-template kendoGridCellTemplate let-dataItem>
                           <dl class="opti_mobile_grid_dl">
                               <dt>Payment Ref#</dt>
-                              <dd>{{ dataItem.PaymentRef }}</dd>
+                              <dd>{{ dataItem.PaymentRefNumber }}</dd>
   
                               <dt>Payment Mode</dt>
                               <dd>{{ dataItem.PaymentMode }}</dd>
@@ -91,7 +91,7 @@
                   <!-- grid for mobile end -->
   
   
-                  <kendo-grid-column media="(min-width: 768px)" field="PaymentRef"  title="Payment Ref#" [width]="160"></kendo-grid-column>
+                  <kendo-grid-column media="(min-width: 768px)" field="PaymentRefNumber"  title="Payment Ref#" [width]="160"></kendo-grid-column>
                   <kendo-grid-column media="(min-width: 768px)" field="PaymentMode" title="Payment Mode" [width]="160"></kendo-grid-column>
                   <kendo-grid-column media="(min-width: 768px)" field="PaymentType" title="Payment Type" [width]="160" ></kendo-grid-column>
                   <kendo-grid-column media="(min-width: 768px)" field="PaymentDetails" title="Payment Details" [width]="160"  ></kendo-grid-column>

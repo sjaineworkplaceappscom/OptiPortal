@@ -3,6 +3,9 @@ import { GridComponent } from '../../../../../node_modules/@progress/kendo-angul
 import { UIHelper } from '../../../helpers/ui.helpers';
 import { Configuration } from '../../../helpers/Configuration';
 import { paymentAttachment } from '../../../DemoData/vendor-data';
+import { PaymentContentModel } from '../../../tempmodels/vendor/payment-content-model';
+import { ISubscription } from '../../../../../node_modules/rxjs/Subscription';
+import { VendorService } from '../../../services/vendor/vendor.service';
 
 @Component({
   selector: 'app-vpayment-attachment',
@@ -24,8 +27,10 @@ export class VpaymentAttachmentComponent implements OnInit {
   showLoader: boolean = false;
 
   public gridData: any[];
+  paymentModel: PaymentContentModel = new PaymentContentModel();
+  public getVPIsubs: ISubscription;
 
-  constructor() { }
+  constructor(private vendorService: VendorService) { }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -45,13 +50,42 @@ export class VpaymentAttachmentComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
 
-    this.getPaymentAttachmentList();
+    let VPayment: string = localStorage.getItem("SelectedPayment");
+    let vpaymentData: any = JSON.parse(VPayment);
+    this.paymentModel = vpaymentData;
+    if (this.paymentModel != null && this.paymentModel != undefined) {
+      this.getPaymentAttachmentList(this.paymentModel.PaymentId + "");
+    }
   }
+
+  /** 
+    * call api for purchase inquiry detail.
+    */
+   getPaymentAttachmentList(id: string) {
+     
+    // console.log("Update:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
+     this.showLoader = true;
+     this.getVPIsubs = this.vendorService.getVendorDetailById(id,3+"").subscribe(
+       data => { 
+     
+         this.showLoader = false;
+         if(data!=null && data!=undefined && data != ""){
+          this.gridData = JSON.parse(data);
+       
+         }
+         else{
+         }
+       }, error => {  
+         this.showLoader = false; 
+         console.log("Error: ", error)
+       }, () => { }
+     );
+   }
 
    /**
    * Method to get list of inquries from server.
   */
-  public getPaymentAttachmentList() {
+  public getPaymentAttachmentList1() {
     this.showLoader = true;
     this.gridData = paymentAttachment;
     setTimeout(()=>{    

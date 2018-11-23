@@ -170,8 +170,8 @@ export class VendorPiNotesComponent implements OnInit {
     this.noteModel.NoteType = this.selectedNoteItem.value;
     this.noteModel.ParentId = undefined;
     this.noteModel.ParentType = VendorEntityType.VendorPI;
-    this.noteModel.VPINumber = VPINumber;
-    this.noteModel.VPIOptiId = VPIOptiId.toString();
+    this.noteModel.VEntityNumber = VPINumber;
+    this.noteModel.VEntityOptiId = VPIOptiId.toString();
 
     GlobalResource.dirty = false;
     this.addnotessub = this.sharedComponentService.AddVendorNote(this.noteModel).subscribe(

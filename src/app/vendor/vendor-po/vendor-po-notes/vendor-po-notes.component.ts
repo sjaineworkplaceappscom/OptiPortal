@@ -106,8 +106,8 @@ export class VendorPoNotesComponent implements OnInit {
     this.noteModel.NoteType = this.selectedNoteItem.value;
     this.noteModel.ParentId = undefined;
     this.noteModel.ParentType = VendorEntityType.VendorPO;
-    this.noteModel.VPINumber = VPINumber;
-    this.noteModel.VPIOptiId = VPIOptiId+"";
+    this.noteModel.VEntityNumber = VPINumber;
+    this.noteModel.VEntityOptiId = VPIOptiId+"";
 
     this.addnotessub = this.sharedComponentService.AddVendorPONote(this.noteModel).subscribe(
       resp => {

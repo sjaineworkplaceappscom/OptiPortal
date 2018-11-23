@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentContentModel } from '../../../tempmodels/vendor/payment-content-model';
+import { PaymentModel } from '../../../tempmodels/vendor/payment-model';
+import { ISubscription } from '../../../../../node_modules/rxjs/Subscription';
+import { VendorService } from '../../../services/vendor/vendor.service';
+import { DateTimeHelper } from '../../../helpers/datetime.helper';
 
 @Component({
   selector: 'app-vpayment-content',
@@ -7,24 +12,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VpaymentContentComponent implements OnInit {
 
-  Line = 1; 
-  PORef = 2; 
-  Invoice = 3;
-  InvoiceLine = 4;
-  Item = "item1"; 
-  Quantity = "10";
-  UnitPrice = "1500"; 
-  UOM = "UOM"; 
-  TotalPrice = "5000";
-  TaxCode = "Tax1"; 
-  ShipToAddress = "Indore"; 
-  BillToAddress = "Indore";
-  Shipment = 1;
-  DeliveryDate = "05/07/2018";
+  contentModel: PaymentContentModel = new PaymentContentModel();
+  paymentModel: PaymentModel = new PaymentModel();
+  showLoader: boolean = false;
+  public getpaymentsubs: ISubscription;
 
-  constructor() { }
+  constructor(private vendorService:VendorService) { }
 
   ngOnInit() {
+    //get status of selected order for disabling or enabling  forms
+    let Payment: string = localStorage.getItem("SelectedPayment");
+    let paymentData: any = JSON.parse(Payment);
+    this.contentModel = paymentData;
+    
+    if(this.contentModel!=null && this.contentModel != undefined){
+      this.PaymentContents(this.contentModel.PaymentId+"");
   }
+}
 
+ /** 
+    * call api for payment content detail.
+    */
+   PaymentContents(id: string) {
+     this.showLoader = true;
+     this.getpaymentsubs = this.vendorService.getPaymentDetailById(id,2+"").subscribe(
+       data => { 
+         
+         this.showLoader = false;
+         if(data!=null && data!=undefined && data != ""){
+          let dataArray: any[] = JSON.parse(data);
+          this.contentModel = dataArray[0];
+          this.contentModel.DeliveryDate = DateTimeHelper.ParseToUTC(this.contentModel.DeliveryDate);
+         }
+         else{
+         }
+       }, error => {  
+         this.showLoader = false; 
+         console.log("Error: ", error)
+       }, () => { }
+     );
+   }
+
+   ngOnDestroy() {
+    if (this.getpaymentsubs != undefined)
+      this.getpaymentsubs.unsubscribe();
+   }
 }

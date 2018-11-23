@@ -69,4 +69,23 @@ export class VendorService {
     return this.httpHelper.post(url, orderId,null);
   }
 
+  /**
+   * get List of Vendor Purchase Order.
+   */
+  public getPaymentList(): Observable<any> {
+    let url: string = this.baseUrl + "payment/list";
+    //let reqOption: RequestOptions = new RequestOptions({ method: RequestMethod.Get, headers: headers });
+    return this.httpHelper.get(url, null);
+  }
+
+
+
+  /**
+   * get Vendor Detail of Vendor Payment.
+   */
+  public getPaymentDetailById(id: string,type:string): Observable<any> {
+    let url: string = this.baseUrl + "payment/detail/"+id+"/"+type;
+    //let reqOption: RequestOptions = new RequestOptions({ method: RequestMethod.Get, headers: headers });
+    return this.httpHelper.get(url, null);
+  }
 }

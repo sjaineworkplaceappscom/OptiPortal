@@ -1,8 +1,8 @@
 export class VendorNoteModel{
     Notes :string;
     NoteType :number;
-    VPINumber :number;
+    VEntityNumber :number;
     ParentId :string;
     ParentType :number;
-    VPIOptiId :string;
+    VEntityOptiId :string;
   }

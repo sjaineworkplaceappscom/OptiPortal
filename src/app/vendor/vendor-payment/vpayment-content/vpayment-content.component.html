@@ -8,72 +8,72 @@
 
               <label class="k-form-field">
                   <span class="opti_form-label">Line#</span>
-                  <input name="Line" type="text" class="k-textbox" [(ngModel)]="Line" readonly />
+                  <input name="Line" type="text" class="k-textbox" [(ngModel)]="contentModel.LineNumber" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">PO Ref.#</span>
-                  <input name="PORef" type="text" class="k-textbox" [(ngModel)]="PORef" readonly />
+                  <input name="PORef" type="text" class="k-textbox" [(ngModel)]="contentModel.PORefNumber" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Invoice#</span>
-                  <input name="Invoice" type="text" class="k-textbox" [(ngModel)]="Invoice" readonly />
+                  <input name="Invoice" type="text" class="k-textbox" [(ngModel)]="contentModel.InvoiceNumber" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Invoice Line#</span>
-                  <input name="InvoiceLine" type="text" class="k-textbox" [(ngModel)]="InvoiceLine" readonly />
+                  <input name="InvoiceLine" type="text" class="k-textbox" [(ngModel)]="contentModel.InvoiceLineNumber" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Item</span>
-                  <input name="Item" type="text" class="k-textbox" [(ngModel)]="Item" readonly />
+                  <input name="Item" type="text" class="k-textbox" [(ngModel)]="contentModel.Item" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Quantity</span>
-                  <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="Quantity" readonly />
+                  <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="contentModel.Quantity" readonly />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Unit Price</span>
-                  <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="UnitPrice" readonly />
+                  <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="contentModel.UnitPrice" readonly />
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">UOM</span>
-                <input name="UOM" type="text" class="k-textbox" [(ngModel)]="UOM" readonly />
+                <input name="UOM" type="text" class="k-textbox" [(ngModel)]="contentModel.UOM" readonly />
             </label>
 
             <label class="k-form-field">
                 <span class="opti_form-label">Total Price</span>
-                <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="TotalPrice" readonly />
+                <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="contentModel.TotalPrice" readonly />
             </label>
 
             <label class="k-form-field">
                 <span class="opti_form-label">Tax Code</span>
-                <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="TaxCode" readonly />
+                <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="contentModel.TaxCode" readonly />
             </label>
 
             <label class="k-form-field">
                 <span class="opti_form-label">Ship-To Address</span>
-                <textarea name="ShipToAddress" class="k-textarea" [(ngModel)]="ShipToAddress" readonly >text area</textarea>
+                <textarea name="ShipToAddress" class="k-textarea" [(ngModel)]="contentModel.ShipToAddress" readonly >text area</textarea>
             </label>
 
             <label class="k-form-field">
                 <span class="opti_form-label">Bill-To Address</span>
-                <textarea name="BillToAddress" class="k-textarea" [(ngModel)]="BillToAddress" readonly >text area</textarea>
+                <textarea name="BillToAddress" class="k-textarea" [(ngModel)]="contentModel.BillToAddress" readonly >text area</textarea>
             </label>
 
             <label class="k-form-field">
                 <span class="opti_form-label">Shipment#</span>
-                <input name="Shipment" type="text" class="k-textbox" [(ngModel)]="Shipment" readonly />
+                <input name="Shipment" type="text" class="k-textbox" [(ngModel)]="contentModel.ShipmentNumber" readonly />
             </label>
 
             <label class="k-form-field">
                 <span class="opti_form-label">Delivery Date</span>
-                <input name="DeliveryDate" type="text" class="k-textbox" [(ngModel)]="DeliveryDate" readonly />
+                <input name="DeliveryDate" type="text" class="k-textbox" (ngModelChange)="VPOContentModel.RequestedDate" [ngModel]="contentModel.DeliveryDate | date:'dd MMM yy'" readonly />
             </label>
               
             </form>
