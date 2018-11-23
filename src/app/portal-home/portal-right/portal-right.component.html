@@ -29,8 +29,12 @@
 
     <app-vpayment-detail *ngIf="currentSidebarInfo.ModuleName==701 " [currentSidebarInfo]="currentSidebarInfo"></app-vpayment-detail>
 
-    
+    <app-vcontact-add *ngIf="currentSidebarInfo.ModuleName==801 && currentSidebarInfo.ComponentName==1801" [currentSidebarInfo]="currentSidebarInfo"></app-vcontact-add>
+    <app-vcontact-update *ngIf="currentSidebarInfo.ModuleName==801 && currentSidebarInfo.ComponentName==1802" [currentSidebarInfo]="currentSidebarInfo"></app-vcontact-update>
 
+    
+MN:{{currentSidebarInfo.ModuleName}}
+CN:{{currentSidebarInfo.ComponentName}}
     
     
 </div>        

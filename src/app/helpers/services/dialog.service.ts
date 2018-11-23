@@ -9,7 +9,8 @@ import { Observable } from "rxjs";
 
 
 @Injectable({
-    providedIn: "root"
+    providedIn: "root",
+    
 })
 export class ConfirmDialog {
     constructor(private dialogService: DialogService) {

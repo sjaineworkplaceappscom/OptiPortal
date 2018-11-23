@@ -8,6 +8,7 @@ import { ToastService } from '../../helpers/services/toast.service';
 import { ContactModel } from '../../tempmodels/contact-model';
 import { AppMessages } from '../../helpers/app-messages';
 import { Contact } from '../../tempmodels/contact';
+import { EntityType, UserType } from '../../enums/enums';
 
 @Component({
   selector: 'app-customer-contacts-add',
@@ -48,6 +49,7 @@ export class CustomerContactsAddComponent implements OnInit {
   public AddContact() {
     this.showLoader = true;
     GlobalResource.dirty = false;
+    this.contactModel.ContactType=UserType.Customer;
     this.addSub = this.contactService.AddContact(this.contactModel).subscribe(
       (data: any) => {
         this.showLoader = false;

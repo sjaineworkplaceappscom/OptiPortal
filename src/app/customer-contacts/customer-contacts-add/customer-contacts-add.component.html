@@ -23,10 +23,12 @@
             <div class="card-block">
               <form class="k-form" #contactForm="ngForm">
 
-                <!-- <label class="k-form-field">
-                    <span class="opti_form-label">Contact Id</span>
-                    <input name="contactId" type="text" class="k-textbox" [(ngModel)]="contactId" />
-                </label> -->
+                <label class="k-form-field">
+                    <span class="opti_form-label">Contact Id
+                        <span *ngIf="ContactOptiId.errors && (ContactOptiId.dirty || ContactOptiId.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter contact Id.</span>
+                    </span>
+                    <input name="contactOptiId" required type="text" #ContactOptiId=ngModel placeholder="e.g. Contact@info.com" class="k-textbox" [(ngModel)]="contactModel.ContactOptiId" />
+                </label>
 
                 <label class="k-form-field">
                     <span class="opti_form-label">Contact Name

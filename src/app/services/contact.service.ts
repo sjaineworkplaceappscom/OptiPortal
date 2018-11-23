@@ -25,16 +25,17 @@ export class ContactService {
   */
  public AddContact(contactModel: ContactModel): Observable<any> {
   
-  var data: any = {
+  // var data: any = {
     
-    "ContactName": contactModel.ContactName,
-    "ContactEmail": contactModel.ContactEmail,
-    "Address": contactModel.Address,
-    "Status": contactModel.Status,
-    "PhoneNumber": contactModel.PhoneNumber,
+  //   "ContactName": contactModel.ContactName,
+  //   "ContactEmail": contactModel.ContactEmail,
+  //   "Address": contactModel.Address,
+  //   "Status": contactModel.Status,
+  //   "PhoneNumber": contactModel.PhoneNumber,
+  //   "ContactOptiId":cont
     
-  }
-  return this.httpHelper.post(this.baseUrl + 'contact/add', data, null);
+  // }
+  return this.httpHelper.post(this.baseUrl + 'contact/add', contactModel, null);
 }
 
  /**
@@ -49,14 +50,14 @@ export class ContactService {
   * UpdateContact
   */
  public UpdateContact(contactModel: ContactModel) {
-  var contactUpdate: any = {
-    "ContactId": contactModel.ContactId,
-    "ContactName": contactModel.ContactName,
-    "ContactEmail": contactModel.ContactEmail,
-    "Address": contactModel.Address,
-    "Status": contactModel.Status,
-    "PhoneNumber": contactModel.PhoneNumber,
-  }
-  return this.httpHelper.put(this.baseUrl + 'contact/update', contactUpdate, null);
+  // var contactUpdate: any = {
+  //   "ContactId": contactModel.ContactId,
+  //   "ContactName": contactModel.ContactName,
+  //   "ContactEmail": contactModel.ContactEmail,
+  //   "Address": contactModel.Address,
+  //   "Status": contactModel.Status,
+  //   "PhoneNumber": contactModel.PhoneNumber,
+  // }
+  return this.httpHelper.put(this.baseUrl + 'contact/update', contactModel, null);
 }
 } 
