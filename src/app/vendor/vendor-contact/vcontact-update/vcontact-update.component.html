@@ -1,3 +1,80 @@
-<p>
-  vcontact-update works!
-</p>
+<div class="opti_position-relative opti_tab-outer">
+  <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
+      <li class="opti_tablinks active">
+          <a href="javascript:void('0');">Update Contact </a>
+      </li>
+  </ul>
+</div>
+
+<div class="opti_tabcontent">
+  <div class="opti_vendor-contact-update opti_position-relative opti_fullheight" id="opti_vendorContactUpdateID" [perfectScrollbar]="">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+
+            <!-- loader start -->
+            <div class="opti_loader opti_loader-header-tab" *ngIf="showLoader">
+                <div class="opti_spinner"></div>
+            </div>
+            <!-- loader end --> 
+            
+
+          <div class="card"  (change)="changeDiv($event)">
+            <div class="card-block">
+              <form class="k-form"  #contactForm="ngForm">
+
+                <!-- <label class="k-form-field">
+                    <span class="opti_form-label">Contact Id</span>
+                    <input name="contactId" type="text" class="k-textbox" [(ngModel)]="contactId" />
+                </label> -->
+
+                <label class="k-form-field">
+                    <span class="opti_form-label">Contact Name
+                          <span *ngIf="contactName.errors && (contactName.dirty || contactName.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter contact name.</span>
+                    </span>
+                    <input name="contactName" required #contactName=ngModel type="text" class="k-textbox" [(ngModel)]="contactModel.ContactName" />
+                </label>
+
+                <label class="k-form-field">
+                    <span class="opti_form-label">Phone
+                          <span *ngIf="phone.errors && (phone.dirty || phone.touched)"  class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter phone number.</span>
+                    </span>
+                    <input name="phone" type="text" class="k-textbox" required #phone=ngModel [(ngModel)]="contactModel.PhoneNumber"  />
+                </label>
+
+                <label class="k-form-field">
+                    <span class="opti_form-label">Email
+                          <span *ngIf="RequesterEmail.errors?.required && (RequesterEmail.dirty || RequesterEmail.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter emailId.</span>
+                          <span *ngIf="RequesterEmail.errors?.email && RequesterEmail.touched && !RequesterEmail.errors?.required" class="float-right opti_signup-validation-top-side opti_error-msg">
+                              Please enter valid emailId. 
+                          </span>  
+                    </span>
+                    <input name="email" type="text" required email #RequesterEmail=ngModel  class="k-textbox" [(ngModel)]="contactModel.ContactEmail" />
+                </label>
+
+                <label class="k-form-field">
+                    <span class="opti_form-label">Address
+                          <span *ngIf="Address.errors && (Address.dirty || Address.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter address.</span>
+                    </span>
+                    <textarea class="k-textarea" required #Address=ngModel name="address" [(ngModel)]="contactModel.Address" >Address</textarea>
+                </label>
+
+                <label class="k-form-field">
+                    <span class="opti_form-label">Status</span>
+                    
+                    <kendo-dropdownlist name="status" [data]="listItems" (valueChange)="valueChange($event)"  [(ngModel)]="contactModel.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
+                    </kendo-dropdownlist>
+                </label>
+
+                <div class="text-right">
+                    <button type="button" class="k-button k-primary" [disabled]="!contactForm.form.valid"  (click)="UpdateContactData()">Save</button>
+                    <button type="button" class="k-button" (click)="closeRightSidebar()">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div> 
+      </div> 
+    </div>  
+  </div>
+</div>  

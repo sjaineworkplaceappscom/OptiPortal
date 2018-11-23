@@ -37,6 +37,7 @@ import 'hammerjs';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { VendorModule } from '../vendor/vendor.module';
 import { VendorPiModule } from '../vendor/vendor-pi/vendor-pi.module';
+import { VendorContactModule } from '../vendor/vendor-contact/vendor-contact.module';
 
 
 
@@ -79,7 +80,8 @@ import { VendorPiModule } from '../vendor/vendor-pi/vendor-pi.module';
     CustomerContractsModule,
     CustomerPurchaseOrderModule,
     VendorModule,
-    VendorPiModule    
+    VendorPiModule,
+    VendorContactModule    
     ],
   declarations: [
     PortalHomeComponent, PortalLeftComponent, PortalTopComponent, PortalRightComponent, DashboardComponent,ThemeManagerComponent 

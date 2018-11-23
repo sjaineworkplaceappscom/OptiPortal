@@ -1,5 +1,6 @@
 export class Contact{
     ContactId:number;
+    ContactOptiId:string;
     ContactName :string;
     ContactEmail: string;
     Address: string;
@@ -10,4 +11,5 @@ export class Contact{
     ModifiedBy:string;
     ModifiedDate:Date;
     TenantId:string;
+    ContactType:number;
 }

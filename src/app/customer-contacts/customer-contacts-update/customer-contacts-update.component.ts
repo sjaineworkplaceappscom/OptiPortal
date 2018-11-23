@@ -9,6 +9,7 @@ import { GlobalResource } from '../../helpers/global-resource';
 import { Contact } from '../../tempmodels/contact';
 import { ToastService } from '../../helpers/services/toast.service';
 import { AppMessages } from '../../helpers/app-messages';
+import { UserType } from '../../enums/enums';
 
 @Component({
   selector: 'app-customer-contacts-update',
@@ -88,6 +89,7 @@ export class CustomerContactsUpdateComponent implements OnInit {
   UpdateContactData() {
     this.showLoader = true;
     GlobalResource.dirty = false;
+    this.contactModel.ContactType=UserType.Customer;
     this.updateContactSub = this.contactService.UpdateContact(this.contactModel).subscribe(
       data => {
         this.showLoader = false;
