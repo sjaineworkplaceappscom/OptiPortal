@@ -41,6 +41,7 @@ export class VendorPInvoiceListComponent implements OnInit {
   // End UI Section
 
   ngOnInit() {
+ 
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
