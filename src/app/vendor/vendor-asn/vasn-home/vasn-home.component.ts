@@ -7,9 +7,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VasnHomeComponent implements OnInit {
 
+  ASN;
+  PORef;
+  Vendor; 
+  ShipmentDate;
+  DeliveryDate; 
+  WayBill1; 
+  Tracking;
+  Price; 
+  Tax; 
+  Freight;
+  Discount; 
+  TotalPrice;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  valueShipmentChange(e){
+
+  }
+
+  valueDeliveryChange(e){
+
+  }
+
+  UpdateASN(status){
+
+  }
+
+  closeRightSidebar(status){
+    
   }
 
 }

@@ -16,6 +16,8 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { FormsModule } from '@angular/forms';
 import { ExcelModule, GridModule } from '@progress/kendo-angular-grid';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { FileDropModule } from 'ngx-file-drop';
 
 
 const routes: Routes = [
@@ -33,7 +35,10 @@ const routes: Routes = [
     FormsModule,
     AngularSvgIconModule,
     PerfectScrollbarModule,
-    DateInputsModule
+    DateInputsModule,
+    DateInputsModule,
+    DropDownsModule,
+    FileDropModule
   ],
   declarations: [VasnListComponent, VasnDetailComponent, VasnHomeComponent, VasnContentComponent, VasnAttatchmentComponent, VasnNotesComponent, VasnAddComponent, VasnUpdateComponent, HomeAddComponent],
   exports:[VasnListComponent, VasnDetailComponent, VasnHomeComponent, VasnContentComponent, VasnAttatchmentComponent, VasnNotesComponent, VasnAddComponent, VasnUpdateComponent, HomeAddComponent]

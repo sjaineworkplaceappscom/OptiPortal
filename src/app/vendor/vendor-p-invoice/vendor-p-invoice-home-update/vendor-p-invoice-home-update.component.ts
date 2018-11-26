@@ -8,6 +8,7 @@ import { VendorOIModel } from 'src/app/tempmodels/vendor/vendor-OI-model';
 import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { AppMessages } from 'src/app/helpers/app-messages';
+import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 
 @Component({
   selector: 'app-vendor-p-invoice-home-update',
@@ -57,7 +58,7 @@ export class VendorPInvoiceHomeUpdateComponent implements OnInit {
   this.vendorOIModel.InvoiceDate = DateTimeHelper.ParseToUTC(this.vendorOIModel.InvoiceDate);
   this.vendorOIModel.PaymentDueDate = DateTimeHelper.ParseToUTC(this.vendorOIModel.PaymentDueDate);
   this.showLoader=true;
-  debugger;
+  
   this.updateSub=this.vendorOpenInvoiceService.UdpateOpenInvoice(this.vendorOIModel).subscribe(
     (data: any) => {  
       this.showLoader=false;
@@ -104,5 +105,16 @@ export class VendorPInvoiceHomeUpdateComponent implements OnInit {
     GlobalResource.dirty=true;
     console.log('change in datepicker value'); 
   }
+
+  /** 
+* 
+* @param status close right content section, will pass false
+*/
+closeRightSidebar() {
+  GlobalResource.dirty=false;
+  let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+  currentSidebarInfo.SideBarStatus = false;
+  this.commonService.setCurrentSideBar(currentSidebarInfo);
+}
 
 }

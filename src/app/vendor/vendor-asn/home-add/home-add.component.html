@@ -1,3 +1,82 @@
-<p>
-  home-add works!
-</p>
+<div class="opti_add-asn-home opti_position-relative opti_fullheight" id="opti_AddASNHomeID" [perfectScrollbar]="">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-block">
+            <form class="k-form">
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">ASN#</span>
+                  <input name="ASN" type="text" [(ngModel)]="vendorASNModel.ASNId" class="k-textbox" disabled/>
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">PO Ref.#</span>
+                  <input name="PORef" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.PORefrenceNumber"  />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Vendor</span>
+                  <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.Vendor"  />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Shipment Date</span>
+                  <kendo-datepicker (valueChange)="valueShipmentChange($event)" name="ShipmentDate" [format]="'dd MMM yy'" [(ngModel)]="vendorASNModel.ShipmentDate" required [min]="minValidDate">
+                  </kendo-datepicker>
+              </label>
+
+              <label class="k-form-field">
+                <span class="opti_form-label">Delivery Date</span>
+                <kendo-datepicker (valueChange)="valueDeliveryChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="vendorASNModel.DeliveryDate" required [min]="minValidDate">
+                </kendo-datepicker>
+            </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Way-Bill#</span>
+                  <input name="WayBill" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.WayBillNumber"  />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Tracking#</span>
+                  <input name="Tracking" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.TrackingNumber"  />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Price</span>
+                  <input name="Price" type="text" class="k-textbox" [(ngModel)]="Price"  />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Tax</span>
+                  <input name="Tax" type="text" class="k-textbox" [(ngModel)]="Tax"  />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Freight</span>
+                  <input name="Freight" type="text" class="k-textbox" [(ngModel)]="Freight"  />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Discount</span>
+                  <input name="Discount" type="text" class="k-textbox" [(ngModel)]="Discount"  />
+              </label>
+
+              <label class="k-form-field">
+                  <span class="opti_form-label">Total Price</span>
+                  <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="TotalPrice"  />
+              </label>
+
+              <div class="text-right">
+                  <button type="button" class="k-button k-primary" (click)="AddASN(false)">Save</button>
+                  <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+      </div> 
+    </div> 
+  </div>  
+</div>
