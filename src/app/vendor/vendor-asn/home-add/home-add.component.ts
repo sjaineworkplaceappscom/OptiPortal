@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 
 @Component({
   selector: 'app-home-add',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-add.component.scss']
 })
 export class HomeAddComponent implements OnInit {
-
+  @Input() currentSidebarInfo:CurrentSidebarInfo;
   ASN;
   PORef;
   Vendor; 
@@ -23,6 +24,8 @@ export class HomeAddComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if(this.currentSidebarInfo!=undefined)
+    console.log("POData: "+ this.currentSidebarInfo.RequesterData);
   }
 
   valueShipmentChange(e){
@@ -39,6 +42,10 @@ export class HomeAddComponent implements OnInit {
 
   closeRightSidebar(status){
     
+  }
+
+  ngOnChange(){
+  
   }
 
 }

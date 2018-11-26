@@ -7,6 +7,9 @@ import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { VendorPOHeaderModel } from 'src/app/tempmodels/vendor/vendor-po-header-model';
 import { AppMessages } from '../../../helpers/app-messages';
 import { ToastService } from '../../../helpers/services/toast.service';
+import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
+import { ComponentName, ModuleName } from '../../../enums/enums';
+import { Router } from '../../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-vendor-po-header',
@@ -24,7 +27,7 @@ export class VendorPoHeaderComponent implements OnInit {
   VPOHeaderModel: VendorPOHeaderModel = new VendorPOHeaderModel();
   IsAck: boolean = false;
 
-  constructor(private commonService: Commonservice, private vendorService: VendorService,private toast:ToastService) { }
+  constructor(private commonService: Commonservice, private vendorService: VendorService,private toast:ToastService,private router: Router) { }
 
   ngOnInit() {
 
@@ -88,7 +91,16 @@ export class VendorPoHeaderComponent implements OnInit {
 
   }
   createasn(e) {
+    this.showLoader=true;
+    this.router.navigate(['home/vendor/vasn/list']);
 
+    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName=ComponentName.VendorASNAdd;
+    currentsideBarInfo.ModuleName=ModuleName.VendorASN;
+    currentsideBarInfo.SideBarStatus=true;    
+    currentsideBarInfo.RequesterData=this.VPOModel;
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
+    this.showLoader=false;
   }
 
   ngOnDestroy() {
