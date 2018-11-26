@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
+import { VendorASNModel } from '../../../tempmodels/vendor/vendor-asn-model';
 
 @Component({
   selector: 'app-home-add',
@@ -21,6 +22,7 @@ export class HomeAddComponent implements OnInit {
   Discount; 
   TotalPrice;
 
+  vendorASNModel:VendorASNModel;
   constructor() { }
 
   ngOnInit() {

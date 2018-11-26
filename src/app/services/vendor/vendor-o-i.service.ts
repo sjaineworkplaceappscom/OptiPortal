@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Configuration } from 'src/app/helpers/Configuration';
 import { HttpHelper } from 'src/app/helpers/http.helper';
 import { Observable } from 'rxjs';
 import { VendorOIModel } from 'src/app/tempmodels/vendor/vendor-OI-model';
 import { OpenInvoiceContentModel } from 'src/app/tempmodels/open-invoice-content-model';
 import { VOIContentModel } from 'src/app/tempmodels/vendor/vendor-oi-content-model';
+import { Configuration } from 'src/app/helpers/Configuration';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class VendorOIService {
 
   baseUrl = Configuration.baseServerAPIEndpoint;
   constructor(private httpHelper: HttpHelper) { 
-    this.baseUrl = Configuration.baseServerAPIEndpoint;
+    
   }
 
    /**
@@ -75,7 +75,7 @@ export class VendorOIService {
       "ItemId": request.ItemId,
       "ItemNumber": request.ItemNumber,
       "InvoiceId": request.InvoiceId,
-      "PORefrenceNumber": request.PORefrenceNumber,
+      "PORefrenceNumber": request.POReferenceNumber,
       "LineNumber": request.LineNumber,
       "Item": request.Item,
       "DeliveryDate": request.DeliveryDate,
@@ -108,7 +108,7 @@ export class VendorOIService {
       "ItemId": request.ItemId,
       "ItemNumber": request.ItemNumber,
       "InvoiceId": request.InvoiceId,
-      "PORefrenceNumber": request.PORefrenceNumber,
+      "PORefrenceNumber": request.POReferenceNumber,
       "LineNumber": request.LineNumber,
       "Item": request.Item,
       "DeliveryDate": request.DeliveryDate,

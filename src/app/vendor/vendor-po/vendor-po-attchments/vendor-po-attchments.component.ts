@@ -43,7 +43,6 @@ export class VendorPoAttchmentsComponent implements OnInit {
   ngOnInit() {
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
-
     // check mobile device
     this.isMobile = UIHelper.isMobile();
     //get status of selected order for disabling or enabling  forms
@@ -59,20 +58,17 @@ export class VendorPoAttchmentsComponent implements OnInit {
 
 
 
-/** 
+    /** 
     * call api for purchase inquiry detail.
     */
    getVPIAttachmentList(id: string) {
-     
     // console.log("Update:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
      this.showLoader = true;
      this.getVPIsubs = this.vendorService.getVendorDetailById(id,3+"").subscribe(
        data => { 
-     
          this.showLoader = false;
          if(data!=null && data!=undefined && data != ""){
           this.gridData = JSON.parse(data);
-       
          }
          else{
          }
@@ -92,7 +88,7 @@ export class VendorPoAttchmentsComponent implements OnInit {
       this.showLoader = false;
     }, 1000);
   }
-
+  
   onFilterChange(checkBox: any, grid: GridComponent) {
     if (checkBox.checked == false) {
       this.clearFilter(grid);

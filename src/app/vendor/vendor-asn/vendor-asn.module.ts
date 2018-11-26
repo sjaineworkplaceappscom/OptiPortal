@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { ExcelModule, GridModule } from '@progress/kendo-angular-grid';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { FileDropModule } from 'ngx-file-drop';
+import { VasnContentAddComponent } from './vasn-content-add/vasn-content-add.component';
 
 
 const routes: Routes = [
@@ -40,7 +41,7 @@ const routes: Routes = [
     DropDownsModule,
     FileDropModule
   ],
-  declarations: [VasnListComponent, VasnDetailComponent, VasnHomeComponent, VasnContentComponent, VasnAttatchmentComponent, VasnNotesComponent, VasnAddComponent, VasnUpdateComponent, HomeAddComponent],
+  declarations: [VasnListComponent, VasnDetailComponent, VasnHomeComponent, VasnContentComponent, VasnAttatchmentComponent, VasnNotesComponent, VasnAddComponent, VasnUpdateComponent, HomeAddComponent, VasnContentAddComponent],
   exports:[VasnListComponent, VasnDetailComponent, VasnHomeComponent, VasnContentComponent, VasnAttatchmentComponent, VasnNotesComponent, VasnAddComponent, VasnUpdateComponent, HomeAddComponent]
 })
 export class VendorAsnModule { }

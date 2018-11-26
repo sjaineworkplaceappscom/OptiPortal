@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 import { UIHelper } from '../../../helpers/ui.helpers';
+import { VendorAsnModule } from '../vendor-asn.module';
 
 @Component({
   selector: 'app-vasn-add',
@@ -11,6 +12,7 @@ export class VasnAddComponent implements OnInit {
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
 
+ 
   constructor() {}
   
   showLoader: boolean = false;

@@ -179,4 +179,13 @@ export class Commonservice {
     this.refreshVOIListSub.next(data);
   }
 
+
+   // Refresh List
+   private closeAddFormShowGridSub =new BehaviorSubject<any>(null);
+   closeAddFormShowGridSubscriber=this.closeAddFormShowGridSub.asObservable();
+ 
+   public closeAddShowGridEvent(data:any){
+     this.closeAddFormShowGridSub.next(data);
+   }
+ 
 }
