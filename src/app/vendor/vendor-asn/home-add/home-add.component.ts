@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VendorASNModel } from 'src/app/tempmodels/vendor/vendor-asn-model';
 
 @Component({
   selector: 'app-home-add',
@@ -15,6 +16,7 @@ export class HomeAddComponent implements OnInit {
   WayBill1; 
   Tracking;
 
+  vendorASNModel:VendorASNModel;
   constructor() { }
 
   ngOnInit() {

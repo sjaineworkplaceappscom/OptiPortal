@@ -47,8 +47,8 @@ export class VendorPInvoiceHomeComponent implements OnInit {
 */
 private setDefaultData() {
   this.vendorOIModel = new VendorOIModel();
-  this.vendorOIModel.InvoiceDate = new Date();
-  this.vendorOIModel.PaymentDueDate = new Date();
+  this.vendorOIModel.InvoiceDate = new Date();//DateTimeHelper.ParseToUTC(new Date());
+  this.vendorOIModel.PaymentDueDate =new Date();  //DateTimeHelper.ParseToUTC(new Date());;
   this.vendorOIModel.InvoiceAmount ='';
   this.vendorOIModel.InvoiceId= undefined;
   this.vendorOIModel.POReferenceNumber = '';
@@ -58,8 +58,8 @@ private setDefaultData() {
 
 public AddOpenInvoice() {
 
-  this.vendorOIModel.InvoiceDate = DateTimeHelper.ParseToUTC(this.vendorOIModel.InvoiceDate);
-  this.vendorOIModel.PaymentDueDate = DateTimeHelper.ParseToUTC(this.vendorOIModel.PaymentDueDate);
+ // this.vendorOIModel.InvoiceDate = DateTimeHelper.ParseToUTC(this.vendorOIModel.InvoiceDate);
+ // this.vendorOIModel.PaymentDueDate = DateTimeHelper.ParseToUTC(this.vendorOIModel.PaymentDueDate);
   this.showLoader=true;  
   this.addSub=this.vendorOpenInvoiceService.AddOpenInvoice(this.vendorOIModel).subscribe(
     (data: any) => {  
@@ -88,6 +88,17 @@ openUpdateSideBar(data: any){
   currentSidebarInfo.ModuleName = ModuleName.VendorInvoice;
   currentSidebarInfo.ComponentName=ComponentName.VendorInvoiceUpdate;
   currentSidebarInfo.RequesterData=data
+  this.commonService.setCurrentSideBar(currentSidebarInfo);
+}
+
+/** 
+* 
+* @param status close right content section, will pass false
+*/
+closeRightSidebar() {
+
+  let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+  currentSidebarInfo.SideBarStatus = false;
   this.commonService.setCurrentSideBar(currentSidebarInfo);
 }
 
