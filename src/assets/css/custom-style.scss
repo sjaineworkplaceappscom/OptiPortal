@@ -106,7 +106,8 @@ kendo-grid tr:hover dl span strong {
 #opti_purchaseInquiryAttachementSectionID,
 #opti_purchaseInquiryItemAttachementSectionID,
 #opti_CustomerPurchaseOrderAttachmentID,
-#opti_InvoiceAttchmentID{
+#opti_InvoiceAttchmentID,
+#opti_ASNDetailAttchment{
   file-drop #dropZone{
     margin: 0;
     height: auto;
@@ -120,7 +121,8 @@ kendo-grid tr:hover dl span strong {
 #opti_purchaseInquiryAttachementSectionID,
 #opti_purchaseInquiryItemAttachementSectionID,
 #opti_CustomerPurchaseOrderAttachmentID,
-#opti_InvoiceAttchmentID{
+#opti_InvoiceAttchmentID,
+#opti_ASNDetailAttchment{
   .drop-zone{
     width: 100%;
     kendo-grid{

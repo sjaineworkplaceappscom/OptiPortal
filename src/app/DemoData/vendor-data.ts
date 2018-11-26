@@ -451,3 +451,21 @@ export const asnList = [
         'Tracking':1
     }
 ]
+
+export const asnAttachment = [  
+    {  
+        "FileName":"Report1.png",
+        "FileSize":"10KB",
+        "AttachmentType":"Document",
+        "CreatedBy":"CVP test user",
+        "Reference":"item1" 
+    }
+ ,  
+    {  
+        "FileName":"Report2.png",
+        "FileSize":"10KB",
+        "AttachmentType":"Document",
+        "CreatedBy":"CVP test user",
+        "Reference":"item1" 
+    }
+]

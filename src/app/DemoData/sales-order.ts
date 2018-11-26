@@ -74,3 +74,18 @@ export const salesOrderAttachment = [
         "AttachmentDate":"06/07/2018"
     }
 ]
+
+
+export const salesOrderNotes = [  
+    {  
+        "CreatedByName":"Ankur",
+        "CreatedDate":"05/07/2018",
+        "Notes":"This is note"
+    }
+ ,  
+    {  
+        "CreatedByName":"Aryan",
+        "CreatedDate":"05/07/2018",
+        "Notes":"This is note"
+    }
+]
