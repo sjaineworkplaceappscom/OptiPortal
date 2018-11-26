@@ -15,6 +15,11 @@ export class HomeAddComponent implements OnInit {
   DeliveryDate; 
   WayBill1; 
   Tracking;
+  Price; 
+  Tax; 
+  Freight;
+  Discount; 
+  TotalPrice;
 
   vendorASNModel:VendorASNModel;
   constructor() { }

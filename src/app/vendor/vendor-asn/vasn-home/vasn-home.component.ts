@@ -14,6 +14,11 @@ export class VasnHomeComponent implements OnInit {
   DeliveryDate; 
   WayBill1; 
   Tracking;
+  Price; 
+  Tax; 
+  Freight;
+  Discount; 
+  TotalPrice;
 
   constructor() { }
 
