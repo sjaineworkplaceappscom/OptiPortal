@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VendorASNModel } from 'src/app/tempmodels/vendor/vendor-asn-model';
 
 @Component({
   selector: 'app-home-add',
@@ -20,6 +21,7 @@ export class HomeAddComponent implements OnInit {
   Discount; 
   TotalPrice;
 
+  vendorASNModel:VendorASNModel;
   constructor() { }
 
   ngOnInit() {

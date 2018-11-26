@@ -39,12 +39,11 @@ export class VendorPInvoiceContentAddComponent implements OnInit {
   }
   
   setDefaultValues(){
-    
     this.voiContentModel.InvoiceId = this.vOIModel.InvoiceId;
     this.voiContentModel.BillToAdress = '';
     this.voiContentModel.Item = '';
     this.voiContentModel.LineNumber = '';
-    this.voiContentModel.PORefrenceNumber = '';
+    this.voiContentModel.POReferenceNumber = '';
     this.voiContentModel.BillToAdress = '';
     this.voiContentModel.Quantity = '';
     this.voiContentModel.ShipmentNumber = '';
@@ -56,16 +55,14 @@ export class VendorPInvoiceContentAddComponent implements OnInit {
   }
 
   AddContent() {
-    
     this.voiContentModel.DeliveryDate = DateTimeHelper.ParseToUTC(this.voiContentModel.DeliveryDate);
     this.showLoader = true;
     this.addSub = this.vendorOIService.AddVendorOIContent(this.voiContentModel).subscribe(
       (data: any) => {
         this.showLoader = false;
         this.toast.showSuccess(AppMessages.VendorInvContent);
-        //this.commonService.refreshPIList(true);
         localStorage.setItem("SelectedVOIContent", JSON.stringify(data));
-
+        this.commonService.closeAddShowGridEvent(true);
 
       },
       error => {
@@ -75,21 +72,17 @@ export class VendorPInvoiceContentAddComponent implements OnInit {
       },
       () => {
         this.showLoader = false;
-        // this.closeRightSidebar();
+       
       }
 
     );
   }
-
-  /** 
-  * 
-  *@param status close right content section, will pass false
-  */
-  closeRightSidebar() {
-    let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
-    currentSidebarInfo.SideBarStatus = false;
-    this.commonService.setCurrentSideBar(currentSidebarInfo);
+ 
+  closeAddForm(){
+    this.commonService.closeAddShowGridEvent(false);
   }
+
+
 
 
 }

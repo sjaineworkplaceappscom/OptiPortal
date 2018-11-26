@@ -2,7 +2,7 @@ export class VOIContentModel {
     ItemId: string;
     ItemNumber: string;
     InvoiceId: string;
-    PORefrenceNumber: string;
+    POReferenceNumber: string;
     LineNumber: string;
     Item: string;
     DeliveryDate: Date;

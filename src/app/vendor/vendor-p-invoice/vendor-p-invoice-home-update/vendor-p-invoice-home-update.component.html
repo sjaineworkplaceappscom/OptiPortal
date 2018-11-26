@@ -1,57 +1,74 @@
-<div class="opti_add-invoice-update-home opti_position-relative opti_fullheight" id="opti_UpdateInvoiceHomeID" [perfectScrollbar]="">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-block">
-            <form class="k-form">
+<div class="opti_add-invoice-update-home opti_position-relative opti_fullheight" id="opti_UpdateInvoiceHomeID"
+    [perfectScrollbar]="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-block">
+                        <form class="k-form" #openInvoiceForm="ngForm">
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Invoice</span>
-                  <input name="Invoice" type="text" class="k-textbox" [(ngModel)]="vendorOIModel.InvoiceNumber" />
-              </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Invoice</span>
+                                <input name="Invoice" type="text" class="k-textbox" [(ngModel)]="vendorOIModel.InvoiceNumber" />
+                            </label>
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">PO Ref.#</span>
-                  <input name="PORef" type="text" class="k-textbox" [(ngModel)]="vendorOIModel.POReferenceNumber"  />
-              </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">PO Ref.#
+                                    <span *ngIf="PORef.errors?.required && PORef.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
+                                        Please enter PO Ref number.
+                                    </span></span>
+                                <input name="PORef" type="text" #PORef=ngModel required class="k-textbox" [(ngModel)]="vendorOIModel.POReferenceNumber" />
+                            </label>
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Vendor</span>
-                  <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="vendorOIModel.Vendor"  />
-              </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Vendor
+                                    <span *ngIf="Vendor.errors?.required && Vendor.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
+                                        Please enter Vandor.
+                                    </span>
+                                </span>
+                                <input name="Vendor" type="text" #Vendor=ngModel required class="k-textbox" [(ngModel)]="vendorOIModel.Vendor" />
+                            </label>
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Invoice Date</span>
-                  <kendo-datepicker (valueChange)="valueChange($event)" name="invoiceDate" [format]="'dd MMM yy'" [(ngModel)]="vendorOIModel.InvoiceDate" required [min]="minValidDate">
-                  </kendo-datepicker>
-              </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Invoice Date</span>
+                                <kendo-datepicker (valueChange)="valueChange($event)" name="invoiceDate" [format]="'dd MMM yy'"
+                                    [(ngModel)]="vendorOIModel.InvoiceDate" required [min]="minValidDate">
+                                </kendo-datepicker>
+                            </label>
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Invoice Amount</span>
-                  <input name="InvoiceAmount" type="text" class="k-textbox" [(ngModel)]="vendorOIModel.InvoiceAmount"  />
-              </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Invoice Amount
+                                    <span *ngIf="InvoiceAmount.errors?.required && InvoiceAmount.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
+                                        Please enter Invoice amount.
+                                    </span>
+                                </span>
+                                <input name="InvoiceAmount" type="text" #InvoiceAmount=ngModel required class="k-textbox"
+                                    [(ngModel)]="vendorOIModel.InvoiceAmount" />
+                            </label>
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Payment Due Date</span>
-                  <kendo-datepicker (valueChange)="valueChange($event)" name="PaymentDueDate" [format]="'dd MMM yy'" [(ngModel)]="vendorOIModel.PaymentDueDate" required [min]="minValidDate">
-                  </kendo-datepicker>
-              </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Payment Due Date</span>
+                                <kendo-datepicker (valueChange)="valueChange($event)" name="PaymentDueDate" [format]="'dd MMM yy'"
+                                    [(ngModel)]="vendorOIModel.PaymentDueDate" required [min]="minValidDate">
+                                </kendo-datepicker>
+                            </label>
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Status</span>
-                  <kendo-dropdownlist  name="status" class="form-control form-control-sm"   [valuePrimitive]="true"  [(ngModel)]="vendorOIModel.Status" [data]="listItems" [textField]="'text'" [valueField]="'value'"></kendo-dropdownlist>
-                  
-              </label>
+                            <label class="k-form-field">
+                                <span class="opti_form-label">Status</span>
+                                <kendo-dropdownlist name="status" class="form-control form-control-sm" [valuePrimitive]="true"
+                                    [(ngModel)]="vendorOIModel.Status" [data]="listItems" [textField]="'text'"
+                                    [valueField]="'value'"></kendo-dropdownlist>
 
-              <div class="text-right">
-                  <button type="button" class="k-button k-primary" (click)="UpdateInvoice()">Save</button>
-                  <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
-              </div>
-            </form>
-          </div>
+                            </label>
+                             
+                            <div class="text-right">
+                                <button type="button" class="k-button k-primary"  (click)="UpdateInvoice()">Save</button>
+                                <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div> 
-    </div> 
-  </div>  
+    </div>
 </div>
