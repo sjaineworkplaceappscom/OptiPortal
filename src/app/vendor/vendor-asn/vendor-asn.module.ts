@@ -33,7 +33,8 @@ const routes: Routes = [
     FormsModule,
     AngularSvgIconModule,
     PerfectScrollbarModule,
-    DateInputsModule
+    DateInputsModule,
+    DateInputsModule,
   ],
   declarations: [VasnListComponent, VasnDetailComponent, VasnHomeComponent, VasnContentComponent, VasnAttatchmentComponent, VasnNotesComponent, VasnAddComponent, VasnUpdateComponent, HomeAddComponent],
   exports:[VasnListComponent, VasnDetailComponent, VasnHomeComponent, VasnContentComponent, VasnAttatchmentComponent, VasnNotesComponent, VasnAddComponent, VasnUpdateComponent, HomeAddComponent]
