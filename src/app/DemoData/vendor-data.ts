@@ -429,3 +429,25 @@ export const invoiceContent = [
         'DeliveryDate':'05/07/2018'
     }
 ]
+
+// Advance shipment notes
+export const asnList = [
+    {
+        'ASN':1, 
+        'PORef':1, 
+        'Vendor':'vendor', 
+        'ShipmentDate':'05/07/2018', 
+        'DeliveryDate':'05/07/2018', 
+        'WayBill':1, 
+        'Tracking':1
+    },
+    {
+        'ASN':2, 
+        'PORef':1, 
+        'Vendor':'vendor', 
+        'ShipmentDate':'05/07/2018', 
+        'DeliveryDate':'05/07/2018', 
+        'WayBill':1, 
+        'Tracking':1
+    }
+]

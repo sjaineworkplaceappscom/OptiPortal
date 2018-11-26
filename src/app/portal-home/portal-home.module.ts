@@ -38,6 +38,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { VendorModule } from '../vendor/vendor.module';
 import { VendorPiModule } from '../vendor/vendor-pi/vendor-pi.module';
 import { VendorContactModule } from '../vendor/vendor-contact/vendor-contact.module';
+import { VendorAsnModule } from '../vendor/vendor-asn/vendor-asn.module';
 
 
 
@@ -81,7 +82,8 @@ import { VendorContactModule } from '../vendor/vendor-contact/vendor-contact.mod
     CustomerPurchaseOrderModule,
     VendorModule,
     VendorPiModule,
-    VendorContactModule    
+    VendorContactModule,
+    VendorAsnModule    
     ],
   declarations: [
     PortalHomeComponent, PortalLeftComponent, PortalTopComponent, PortalRightComponent, DashboardComponent,ThemeManagerComponent 
