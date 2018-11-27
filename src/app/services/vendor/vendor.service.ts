@@ -96,7 +96,7 @@ export class VendorService {
   public AddVendorASN(request: VendorASNModel): Observable<any> {
     var data: any = { 
       "ASNId": request.ASNId,
-      "PORefrenceNumber": request.PORefrenceNumber,
+      "PORefrenceNumber": request.POReferenceNumber,
       "Vendor": request.Vendor,
       "DeliveryDate": request.DeliveryDate,
       "ShipmentDate": request.ShipmentDate,
@@ -106,8 +106,27 @@ export class VendorService {
       "WayBillNumber":request.WayBillNumber,
       "TrackingNumber":request.TrackingNumber,
       "Tax":request.Tax,
-      "Frieght":request.Frieght
+      "Frieght":request.Freight
     }
     return this.httpHelper.post(this.baseUrl + "vendorinvoicecontent/add", data, null);
+  }
+
+
+  /**
+   * get Vendor Detail of Vendor Payment.
+   */
+  public getVendorASNList(): Observable<any> {
+    let url: string = this.baseUrl + "vendorasn/list";
+    //let reqOption: RequestOptions = new RequestOptions({ method: RequestMethod.Get, headers: headers });
+    return this.httpHelper.get(url, null);
+  }
+
+  /**
+   * get Vendor Detail of Vendor Payment.
+   */
+  public getVendorASNDetail(asnId:string): Observable<any> {
+    let url: string = this.baseUrl + "vendorasn/detail/"+ asnId;
+    //let reqOption: RequestOptions = new RequestOptions({ method: RequestMethod.Get, headers: headers });
+    return this.httpHelper.get(url, null);
   }
 }

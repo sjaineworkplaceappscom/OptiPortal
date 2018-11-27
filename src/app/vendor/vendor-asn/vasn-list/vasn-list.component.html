@@ -67,10 +67,10 @@
                     <ng-template kendoGridCellTemplate let-dataItem>
                         <dl class="opti_mobile_grid_dl">
                             <dt>ASN#</dt>
-                            <dd>{{ dataItem.ASN }}</dd>
+                            <dd>{{ dataItem.ASNNumber }}</dd>
 
                             <dt>PO Ref.#</dt>
-                            <dd>{{ dataItem.PORef }}</dd>
+                            <dd>{{ dataItem.PORefrenceNumber }}</dd>
 
                             <dt>Vendor</dt>
                             <dd>{{ dataItem.Vendor }}</dd>
@@ -84,23 +84,23 @@
                             <dd>{{ dataItem.DeliveryDate }}</dd>
 
                             <dt>Way-Bill#</dt>
-                            <dd>{{ dataItem.WayBill }}</dd>
+                            <dd>{{ dataItem.WayBillNumber }}</dd>
 
                             <dt>Tracking#</dt>
-                            <dd>{{ dataItem.Tracking }}</dd>
+                            <dd>{{ dataItem.TrackingNumber }}</dd>
                         </dl>
                     </ng-template>
                 </kendo-grid-column>
                 <!-- grid for mobile end -->
 
 
-                <kendo-grid-column media="(min-width: 768px)" field="ASN"  title="ASN#" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="PORef" title="PO Ref.#" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="ASNNumber"  title="ASN#" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="POReferenceNumber" title="PO Ref.#" [width]="160"></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="Vendor" title="Vendor" [width]="160" ></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="ShipmentDate" title="Shipment Date" [width]="160" filter="date" type=date format="{0:dd MMM yy}" ></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="DeliveryDate" title="Delivery Date" [width]="160" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="WayBill" title="Way-Bill#" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="Tracking" title="Tracking#" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="WayBillNumber" title="Way-Bill#" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="TrackingNumber" title="Tracking#" [width]="160"></kendo-grid-column>
                 
                 <!-- xlsx template start -->
                 <kendo-grid-excel fileName="vendor-invoice-list.xlsx"></kendo-grid-excel>

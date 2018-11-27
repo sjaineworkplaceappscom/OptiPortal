@@ -37,18 +37,17 @@ export class VendorPInvoiceHomeComponent implements OnInit {
   
   public listItems: Array<{text: string,value: number}> = [
     {text:'Open',value:VendorOpenInvoiceStatus.Open}
-    
   ];
 
   //public value = [ 'Activate']
 
-    /**
+/**
 * This method will reset the model and date object for add form.
 */
 private setDefaultData() {
   this.vendorOIModel = new VendorOIModel();
   this.vendorOIModel.InvoiceDate = new Date();//DateTimeHelper.ParseToUTC(new Date());
-  this.vendorOIModel.PaymentDueDate =new Date();  //DateTimeHelper.ParseToUTC(new Date());;
+  this.vendorOIModel.PaymentDueDate = new Date();  //DateTimeHelper.ParseToUTC(new Date());;
   this.vendorOIModel.InvoiceAmount ='';
   this.vendorOIModel.InvoiceId= undefined;
   this.vendorOIModel.POReferenceNumber = '';

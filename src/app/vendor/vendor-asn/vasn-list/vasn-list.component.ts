@@ -7,6 +7,9 @@ import * as $ from "jquery";
 import { GridComponent } from '@progress/kendo-angular-grid';
 import { UIHelper } from '../../../helpers/ui.helpers';
 import { Commonservice } from '../../../services/commonservice.service';
+import { ISubscription } from 'rxjs/Subscription';
+import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { VendorService } from 'src/app/services/vendor/vendor.service';
 
 @Component({
   selector: 'app-vasn-list',
@@ -15,7 +18,7 @@ import { Commonservice } from '../../../services/commonservice.service';
 })
 export class VasnListComponent implements OnInit {
 
-  constructor(private commonService:Commonservice) { }
+  constructor(private commonService:Commonservice,  private vendorService:VendorService) { }
   imgPath = Configuration.imagePath;
   isMobile: boolean;
   isColumnFilter: boolean = false;
@@ -24,7 +27,8 @@ export class VasnListComponent implements OnInit {
   showLoader: boolean = false;
   searchRequest: string = '';
   public gridData: any[];
-  
+  getOIlistSubs: ISubscription;
+  refreshOIlistSubs: ISubscription;
   // UI Section
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -44,13 +48,17 @@ export class VasnListComponent implements OnInit {
     element.classList.add("opti_body-asn-list");
     element.classList.add("opti_body-main-module");
     // Apply class on body end
- 
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
- 
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-    this.getInvoiceList();
+    this.refreshOIlistSubs = this.commonService.refreshVOIListSubscriber.subscribe(
+      data => {
+         if (data != undefined && data != null)
+         this.getVASNList();
+        });
+
+    this.getVASNList();
   }
 
   /**
@@ -74,11 +82,13 @@ export class VasnListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openASNDetailOnSelectASN(e){
+  openASNDetailOnSelectASN(selection){
     let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName=ComponentName.VendorASNUpdate;
     currentsideBarInfo.ModuleName=ModuleName.VendorASN;
     currentsideBarInfo.SideBarStatus=true;    
+    let SelectedASN = this.gridData[selection.index];
+    currentsideBarInfo.RequesterData = SelectedASN;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
@@ -89,5 +99,32 @@ export class VasnListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus=true;    
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
+
+
+  /**
+  * Method to get list of inquries from server.
+  */
+ public getVASNList() {
+   debugger;
+  this.showLoader = true;
+  this.getOIlistSubs = this.vendorService.getVendorASNList().subscribe(
+    ASNData => {
+      if (ASNData != null && ASNData != undefined) {
+        this.gridData = JSON.parse(ASNData);
+        this.gridData.forEach(element => {
+          element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
+          element.ShipmentDate = DateTimeHelper.ParseDate(element.ShipmentDate);
+        });
+        this.showLoader = false;
+      }
+    },
+    error => {
+      this.showLoader = false;
+    },
+    () => {
+      this.showLoader = false;
+    }
+  );
+}
 
 }
