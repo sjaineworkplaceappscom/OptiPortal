@@ -93,9 +93,7 @@ export class VendorPoHeaderComponent implements OnInit {
   }
   createasn(e) {
     this.showLoader = true;
-    // $('#VASN').click();
-
-
+    $('#VASN').addClass('active');
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.VendorASNAdd;
     currentsideBarInfo.ModuleName = ModuleName.VendorASN;
@@ -106,7 +104,6 @@ export class VendorPoHeaderComponent implements OnInit {
     $('#opti_vpoID').removeClass('active'); 
     this.router.navigate(['home/vendor/vasnlist']);
     this.showLoader = false;
-    // $('#vasn').addClass('active');
   }
 
   ngOnDestroy() {
