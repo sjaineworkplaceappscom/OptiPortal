@@ -15,7 +15,7 @@ import { VpaymentDetailComponent } from './vpayment-detail/vpayment-detail.compo
 
 const routes: Routes = [
   { path: '',component:VpaymentListComponent  },
-  {path: 'list', component: VpaymentListComponent}
+  {path: 'vpaymentlist', component: VpaymentListComponent}
 ];
 
 @NgModule({

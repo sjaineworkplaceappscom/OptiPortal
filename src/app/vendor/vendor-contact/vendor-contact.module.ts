@@ -13,7 +13,7 @@ import { DropDownsModule } from '../../../../node_modules/@progress/kendo-angula
 
 const routes: Routes = [
   { path: '',component: VcontactListComponent  },
-  {path: 'list', component: VcontactListComponent}
+  {path: 'vcontectlist', component: VcontactListComponent}
 ];
 @NgModule({
   imports: [

@@ -20,7 +20,7 @@
 
   <!-- tab content start -->
   <div id="" *ngIf="tabName=='home'" class="opti_tabcontent">
-    <app-home-add></app-home-add>
+    <app-home-add [currentSidebarInfo]="currentSidebarInfo"></app-home-add>
   </div>
 
   <div id="" *ngIf="tabName=='content'" class="opti_tabcontent">

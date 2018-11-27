@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 import { VendorASNModel } from '../../../tempmodels/vendor/vendor-asn-model';
+import { markParentViewsForCheckProjectedViews } from '../../../../../node_modules/@angular/core/src/view/util';
+import { DateTimeHelper } from '../../../helpers/datetime.helper';
 
 @Component({
   selector: 'app-home-add',
@@ -8,46 +10,62 @@ import { VendorASNModel } from '../../../tempmodels/vendor/vendor-asn-model';
   styleUrls: ['./home-add.component.scss']
 })
 export class HomeAddComponent implements OnInit {
-  @Input() currentSidebarInfo:CurrentSidebarInfo;
+  @Input() currentSidebarInfo: CurrentSidebarInfo;
   ASN;
   PORef;
-  Vendor; 
+  Vendor;
   ShipmentDate;
-  DeliveryDate; 
-  WayBill1; 
+  DeliveryDate;
+  WayBill1;
   Tracking;
-  Price; 
-  Tax; 
+  Price;
+  Tax;
   Freight;
-  Discount; 
+  Discount;
   TotalPrice;
 
-  vendorASNModel:VendorASNModel;
+  vendorASNModel: VendorASNModel=new VendorASNModel();
   constructor() { }
 
   ngOnInit() {
-    if(this.currentSidebarInfo!=undefined)
-    console.log("POData: "+ this.currentSidebarInfo.RequesterData);
-  }
-
-  valueShipmentChange(e){
+    if (this.currentSidebarInfo != undefined){      
+      this.mapASN(this.currentSidebarInfo.RequesterData);
+    }
 
   }
 
-  valueDeliveryChange(e){
-
-  }
-
-  AddASN(status){
-
-  }
-
-  closeRightSidebar(status){
+  mapASN(podata: any) {    
+    this.vendorASNModel=new VendorASNModel();
     
+    this.vendorASNModel.DeliveryDate = DateTimeHelper.ParseDate(Date.now());
+    this.vendorASNModel.ShipmentDate = DateTimeHelper.ParseDate(Date.now());    
+    this.vendorASNModel.Vendor=podata.Vendor;    
+    this.vendorASNModel.VendorCode=podata.VendorCode;    
+    
+    
+    this.vendorASNModel.PORefrenceNumber=podata.PONumber;
+    
+
   }
 
-  ngOnChange(){
-  
+  valueShipmentChange(e) {
+
+  }
+
+  valueDeliveryChange(e) {
+
+  }
+
+  AddASN(status) {
+
+  }
+
+  closeRightSidebar(status) {
+
+  }
+
+  ngOnChange() {
+
   }
 
 }

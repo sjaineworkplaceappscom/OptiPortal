@@ -3,6 +3,7 @@ export class VendorASNModel
     ASNId :string;
     PORefrenceNumber :string;
     Vendor :string;
+    VendorCode:string;
     DeliveryDate :Date;
     ShipmentDate :Date;
     Price :string;

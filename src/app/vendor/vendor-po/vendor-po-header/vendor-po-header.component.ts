@@ -10,7 +10,7 @@ import { ToastService } from '../../../helpers/services/toast.service';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from '../../../enums/enums';
 import { Router } from '../../../../../node_modules/@angular/router';
-
+import * as $ from "jquery";
 @Component({
   selector: 'app-vendor-po-header',
   templateUrl: './vendor-po-header.component.html',
@@ -27,13 +27,13 @@ export class VendorPoHeaderComponent implements OnInit {
   VPOHeaderModel: VendorPOHeaderModel = new VendorPOHeaderModel();
   IsAck: boolean = false;
 
-  constructor(private commonService: Commonservice, private vendorService: VendorService,private toast:ToastService,private router: Router) { }
+  constructor(private commonService: Commonservice, private vendorService: VendorService, private toast: ToastService, private router: Router) { }
 
   ngOnInit() {
 
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        
+
         console.log('vpou subs');
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
@@ -77,30 +77,36 @@ export class VendorPoHeaderComponent implements OnInit {
     );
   }
 
-  acknowledge() {debugger;
+  acknowledge() {
+    debugger;
     this.showLoader = true;
     this.sendVPOack = this.vendorService.SendAck(this.VPOHeaderModel.POId).subscribe(
-     data => {
-       this.showLoader= false;
-       if (data == true) { 
-       this.toast.showSuccess(AppMessages.VendorPOAck);
-       this.IsAck = true;
-       }
-     }
+      data => {
+        this.showLoader = false;
+        if (data == true) {
+          this.toast.showSuccess(AppMessages.VendorPOAck);
+          this.IsAck = true;
+        }
+      }
     )
 
   }
   createasn(e) {
-    this.showLoader=true;
-    this.router.navigate(['home/vendor/vasn/list']);
+    this.showLoader = true;
+    // $('#VASN').click();
 
-    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName=ComponentName.VendorASNAdd;
-    currentsideBarInfo.ModuleName=ModuleName.VendorASN;
-    currentsideBarInfo.SideBarStatus=true;    
-    currentsideBarInfo.RequesterData=this.VPOModel;
+
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName = ComponentName.VendorASNAdd;
+    currentsideBarInfo.ModuleName = ModuleName.VendorASN;
+    currentsideBarInfo.SideBarStatus = true;
+    currentsideBarInfo.RequesterData = this.VPOModel;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
-    this.showLoader=false;
+
+    $('#opti_vpoID').removeClass('active'); 
+    this.router.navigate(['home/vendor/vasnlist']);
+    this.showLoader = false;
+    // $('#vasn').addClass('active');
   }
 
   ngOnDestroy() {

@@ -22,8 +22,8 @@ import { VasnContentAddComponent } from './vasn-content-add/vasn-content-add.com
 
 
 const routes: Routes = [
-  { path: '',redirectTo:'list', pathMatch:'full'},
-  {path: 'list', component: VasnListComponent}
+  { path: '',redirectTo:'vasnlist', pathMatch:'full'},
+  {path: 'vasnlist', component: VasnListComponent}
 ];
 
 
