@@ -50,7 +50,7 @@
 
             <ng-container *ngIf="showLoader==false">
 
-            <file-drop headertext="" (onFileDrop)="dropped($event)">
+            <file-drop headertext ="" (onFileDrop)="dropped($event)">
 
                 <kendo-grid [kendoGridBinding]="gridAttachmentData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true"
                     [filterable]=isColumnFilterAttachementsGrid [groupable]="false" [columnMenu]="{ columnChooser: false }"

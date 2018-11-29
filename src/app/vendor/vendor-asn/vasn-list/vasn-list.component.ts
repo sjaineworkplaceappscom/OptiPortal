@@ -91,6 +91,7 @@ export class VasnListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus=true;    
     let SelectedASN = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = SelectedASN;
+    localStorage.setItem("SelectedVASN", JSON.stringify(SelectedASN));
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
@@ -107,7 +108,7 @@ export class VasnListComponent implements OnInit {
   * Method to get list of inquries from server.
   */
  public getVASNList() {
-   debugger;
+   
   this.showLoader = true;
   this.getOIlistSubs = this.vendorService.getVendorASNList().subscribe(
     ASNData => {

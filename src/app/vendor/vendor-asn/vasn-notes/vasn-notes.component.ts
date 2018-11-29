@@ -3,6 +3,17 @@ import { UIHelper } from '../../../helpers/ui.helpers';
 import { SalesNoteModel } from '../../../tempmodels/SalesNoteModel';
 import { Configuration } from '../../../helpers/Configuration';
 import { salesOrderNotes } from '../../../DemoData/sales-order';
+import { VendorASNModel } from 'src/app/tempmodels/vendor/vendor-asn-model';
+import { NotesModel } from 'src/app/models/purchaserequest/notes';
+import { ISubscription } from 'rxjs/Subscription';
+import { VendorEntityType } from 'src/app/enums/enums';
+import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { DatePipe } from '@angular/common';
+import { Commonservice } from 'src/app/services/commonservice.service';
+import { ToastService } from 'src/app/helpers/services/toast.service';
+import { SharedComponentService } from 'src/app/services/shared-component.service';
+import { GlobalResource } from 'src/app/helpers/global-resource';
+import { AppMessages } from 'src/app/helpers/app-messages';
 
 @Component({
   selector: 'app-vasn-notes',
@@ -11,7 +22,7 @@ import { salesOrderNotes } from '../../../DemoData/sales-order';
 })
 export class VasnNotesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private toast: ToastService) { }
 
   /**
   * global variable
@@ -30,13 +41,22 @@ export class VasnNotesComponent implements OnInit {
 
   public noteItemsData: any[];
 
-  noteModel:SalesNoteModel = new SalesNoteModel();
+  
   public noteTypes: Array<{ text: string, value: number }> = [
     { text: "General ", value: 1 },
     { text: "Rejected", value: 2 },
     { text: "Partial accepted", value: 3 }
   ];
 
+  noteModel: NotesModel;
+  notessub: ISubscription;
+  getnotessub: ISubscription;
+  addnotessub: ISubscription;
+  updatenotessub: ISubscription;
+  deletenotessub: ISubscription;
+  updatePIStatussub: ISubscription;
+
+  vendorASNModel:VendorASNModel;
   public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
 
   @HostListener('window:resize', ['$event'])
@@ -47,18 +67,7 @@ export class VasnNotesComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
   }
 
-  /**
-   * Method to get list of inquries from server.
-  */
-  public getOpenInvoicesAllNotesList() {
-    this.showLoader = true;
-    this.noteItemsData = salesOrderNotes;
-    setTimeout(()=>{    
-      this.showLoader = false;
-    }, 1000);
-  }
-
-
+ 
 
   ngOnInit() {
     //Apply Grid Height
@@ -66,7 +75,18 @@ export class VasnNotesComponent implements OnInit {
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
 
-    this.getOpenInvoicesAllNotesList();
+     //get status of selected inquiry for disabling or enabling  forms
+     let vendorDetail: string = localStorage.getItem("SelectedVASN");
+     this.vendorASNModel=JSON.parse(vendorDetail);
+     debugger;
+     if (this.vendorASNModel != null && this.vendorASNModel != undefined) {
+     }
+    
+     this.noteModel = new NotesModel();
+     this.noteModel.ParentId=this.noteModel.GrantParentId=this.vendorASNModel.ASNId;
+     this.noteModel.ParentType=this.noteModel.GrandParentType=VendorEntityType.VendorASN;
+ 
+     this.getNoteList(this.noteModel.ParentId, this.noteModel.ParentType);
     
   }
 
@@ -74,7 +94,7 @@ export class VasnNotesComponent implements OnInit {
     this.TabNotesGridStatus = this.TabEditNotesFormStatus = false;
     this.TabAddNotesFormStatus = true;
     this.resetModelValues();
-  }
+  }         
 
   openEditNoteView(e, note) {
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
@@ -98,6 +118,30 @@ export class VasnNotesComponent implements OnInit {
       this.resetModelValues();
   }
 
+  public updateNote(e) {
+    GlobalResource.dirty = false;
+    this.selectedNote;
+    //selected note object : this.selectedNote
+    this.selectedNote.NoteType = this.selectedNoteItem.value;
+    this.updatenotessub = this.sharedComponentService.updateNote(this.selectedNote).subscribe(
+      resp => {
+
+
+        this.toast.showSuccess(AppMessages.NoteUpdateSuccessMsg);
+        // console.log("record updated:")
+        this.getNoteList(this.noteModel.ParentId, VendorEntityType.VendorOI);
+      },
+      error => {
+        this.showLoader = false;
+        //alert("Something went wrong");
+        this.getNoteList(this.noteModel.ParentId, VendorEntityType.VendorOI);
+      },
+      () => {
+        this.closeUpdateNote(e);
+      });
+
+  }
+
   /**
    * method will close add note form and reset model.
    */
@@ -113,7 +157,29 @@ export class VasnNotesComponent implements OnInit {
   }
 
   submitNote(e) {
-    
+
+    GlobalResource.dirty = false;
+    // Add Notes Data in model. when comes from inquiry        
+    this.noteModel.NoteType = this.selectedNoteItem.value;
+    this.noteModel.ParentId=this.vendorASNModel.ASNId;
+    this.noteModel.GrantParentId=this.vendorASNModel.ASNId;
+    this.addnotessub = this.sharedComponentService.AddNote(this.noteModel).subscribe(
+      resp => {
+        //this method is updating the status if notes updated then update inquiry status.
+        //this.callPurchaseInquiryStatusUpdateAPI();
+        this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
+        // console.log("record added:")
+      },
+      error => {
+        //alert("Something went wrong");
+        console.log("Error: ", error)
+      },
+      () => {
+        this.resetModelValues();
+        this.closeAddNote();
+        // Get notes data.
+        this.getNoteList(this.noteModel.ParentId, this.noteModel.ParentType);
+      });
   }
 
   /**
@@ -125,24 +191,58 @@ export class VasnNotesComponent implements OnInit {
     this.TabAddNotesFormStatus = false;
     this.resetModelValues();
   }
-
-
+  
+  //All API calling methods
   /**
    * Method to get list of inquries from server.
-   */ 
-  private getDeliveryNotesNoteList(salesId: string, parentType: number) {
-   
+   */
+  private getNoteList(parentId: string, parentType: number) {
+    this.showLoader = true;
+    this.getnotessub = this.sharedComponentService.getNotesList(parentId, parentType).subscribe(
+      notesData => {
+        if (notesData != null && notesData != undefined) {
+          this.noteItemsData = JSON.parse(notesData);
+          this.formatNotesDate();
+        }
+        this.showLoader = false;
+      },
+      error => {
+        this.showLoader = false;
+        console.log("Error: ", error)
+      });
   }
 
   // Format dates.
   private formatNotesDate() {
-  
+    this.noteItemsData.forEach(element => {
+      element.CreatedDate = DateTimeHelper.ParseDate(element.CreatedDate); //new Date(this.datepipe.transform(element.CreatedDate, Configuration.dateFormat))
+      element.ModifiedDate = DateTimeHelper.ParseDate(element.ModifiedDate);//new Date(this.datepipe.transform(element.ModifiedDate, Configuration.dateFormat))
+    });
 
   }
 
-  public updateNote(e){
+  ngOnDestroy() {
+    if (this.notessub != undefined)
+      this.notessub.unsubscribe();
 
+    if (this.addnotessub != undefined)
+      this.addnotessub.unsubscribe();
+
+    if (this.getnotessub != undefined)
+      this.getnotessub.unsubscribe();
+
+    if (this.updatenotessub != undefined)
+      this.updatenotessub.unsubscribe();
+
+    if (this.deletenotessub != undefined)
+      this.deletenotessub.unsubscribe();
+
+    if (this.updatePIStatussub != undefined)
+      this.updatePIStatussub.unsubscribe();
   }
+
+
+ 
 
 
 }

@@ -145,7 +145,17 @@ export enum VendorEntityType {
     /// <summary>
     /// vendor payment Type entity.
     /// </summary>
-    Payment = 106
+    Payment = 106,
+    /// <summary>
+    /// vendor asn entity.
+    /// </summary>
+    VendorASN = 107,
+    
+    /// <summary>
+    /// vendor asn entity.
+    /// </summary>
+    VendorASNContent = 108,
+    
 
 }
 

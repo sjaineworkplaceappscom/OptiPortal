@@ -8,7 +8,7 @@
               
               <label class="k-form-field">
                   <span class="opti_form-label">ASN#</span>
-                  <input name="ASN" type="text" [(ngModel)]="vendorASNModel.ASNNumber" class="k-textbox" />
+                  <input name="ASN" type="text" [(ngModel)]="vendorASNModel.ASNNumber" class="k-textbox"  disabled/>
               </label>
 
               <label class="k-form-field">
@@ -54,7 +54,7 @@
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Freight</span>
+                  <span class="opti_form-label">Freight</span> 
                   <input name="Freight" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.Freight"  />
               </label>
 
@@ -69,7 +69,7 @@
               </label>
 
               <div class="text-right">
-                  <button type="button" class="k-button k-primary" (click)="UpdateASN(false)">Save</button>
+                  <button type="button" class="k-button k-primary" (click)="UpdateASN()">Save</button>
                   <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
               </div>
               

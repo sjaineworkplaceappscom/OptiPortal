@@ -48,10 +48,10 @@ export class VasnUpdateComponent implements OnInit {
     * call api for purchase inquiry detail.
     */
    getASNDetailAPI(id: string) {
-     debugger;
+     
      this.showLoader = true;
      this.getSub = this.vendorService.getVendorASNDetail(id).subscribe(
-       data => { 
+       data => {
          this.showLoader = false;
          let dataArray: any[] = JSON.parse(data);
          this.vendorASNModel = dataArray[0];

@@ -5,6 +5,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { VendorASNModel } from 'src/app/tempmodels/vendor/vendor-asn-model';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { VendorService } from 'src/app/services/vendor/vendor.service';
+import { AppMessages } from 'src/app/helpers/app-messages';
 
 @Component({
   selector: 'app-vasn-home',
@@ -13,33 +14,23 @@ import { VendorService } from 'src/app/services/vendor/vendor.service';
 })
 export class VasnHomeComponent implements OnInit {
 
-  ASN;
-  PORef;
-  Vendor; 
-  ShipmentDate;
-  DeliveryDate; 
-  WayBill1; 
-  Tracking;
-  Price; 
-  Tax; 
-  Freight;
-  Discount; 
-  TotalPrice;
-
+ 
   public sideBarsubs:ISubscription;
-  showLoader:boolean=false;
+  public updateSubs:ISubscription;
 
+
+  showLoader:boolean=false;
   
   public getSub: ISubscription;
   vendorASNModel:VendorASNModel;
   constructor(private commonService: Commonservice, private toast:ToastService,private vendorService:VendorService ) { }
 
   ngOnInit() {
-    console.log('vasn update');
+    
     // Set sidebar data;
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
      currentSidebarData => {
-       debugger;
+       
        if (currentSidebarData != null && currentSidebarData != undefined) {
          this.showLoader = true;
          this.vendorASNModel = currentSidebarData.RequesterData;
@@ -63,9 +54,7 @@ export class VasnHomeComponent implements OnInit {
 
   }
 
-  UpdateASN(status){
-
-  }
+ 
 
   closeRightSidebar(status){
     
@@ -75,7 +64,6 @@ export class VasnHomeComponent implements OnInit {
     * call api for purchase inquiry detail.
     */
    getASNDetailAPI(id: string) {
-    debugger;
     this.showLoader = true;
     this.getSub = this.vendorService.getVendorASNDetail(id).subscribe(
       data => { 
@@ -89,6 +77,27 @@ export class VasnHomeComponent implements OnInit {
         //alert("Something went wrong");
         console.log("Error: ", error)
       }, () => { }
+    );
+  }
+
+  
+  public UpdateASN() {
+     
+    this.showLoader=true;  
+    this.updateSubs=this.vendorService.UpdateVASN(this.vendorASNModel).subscribe(
+      (data: any) => {  
+        this.showLoader=false;
+        this.toast.showSuccess(AppMessages.VendorInvASNUpdate);
+        this.commonService.refreshVASNList(true);
+        localStorage.setItem("SelectedVASN",JSON.stringify(data));         
+      },
+      error => {
+        console.log("Error: ", error)
+        this.showLoader=false;
+      },
+      () => {
+        this.showLoader=false;
+      }
     );
   }
 

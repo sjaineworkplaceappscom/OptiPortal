@@ -204,4 +204,15 @@ export class Commonservice {
   public refreshVASNList(data: any) {
     this.refreshVOIListSub.next(data);
   }
+  
+
+   // Refresh List
+   private refreshVASNContentListSub = new BehaviorSubject<any>(null);
+   refreshVASNContentListSubscriber = this.refreshVASNContentListSub.asObservable();
+ 
+   public refreshVASNContentList(data: any) {
+     this.refreshVOIListSub.next(data);
+   }
+
+
 }

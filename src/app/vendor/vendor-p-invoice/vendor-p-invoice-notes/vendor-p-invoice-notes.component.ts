@@ -85,19 +85,15 @@ export class VendorPInvoiceNotesComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
   }
 
-
-
   ngOnInit() {
 
     // UI Start        
     this.getTabParent = this.tabparent;
     //Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
-
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
     // UI End
-
     //get status of selected inquiry for disabling or enabling  forms
     //get status of selected inquiry for disabling or enabling  forms
     let vendorDetail: string = localStorage.getItem("SelectedVOI");
@@ -112,7 +108,6 @@ export class VendorPInvoiceNotesComponent implements OnInit {
     this.noteModel = new NotesModel();
     this.noteModel.ParentId=this.noteModel.GrantParentId=this.vendorModel.InvoiceId;
     this.noteModel.ParentType=this.noteModel.GrandParentType=VendorEntityType.VendorOI;
-
     this.getNoteList(this.noteModel.ParentId, this.noteModel.ParentType);
 
   }

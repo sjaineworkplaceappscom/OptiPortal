@@ -17,110 +17,90 @@ import { ModuleName, ComponentName } from 'src/app/enums/enums';
 })
 export class HomeAddComponent implements OnInit {
 
- 
 
-  showLoader:boolean=false;
+
+  showLoader: boolean = false;
   minValidDate = new Date();
-  vendorASNModel:VendorASNModel=new VendorASNModel();;
-  public addSub:ISubscription;
-  constructor(private commonService: Commonservice, private vendorOpenInvoiceService: VendorOIService,private toast:ToastService) { }
+  vendorASNModel: VendorASNModel = new VendorASNModel();;
+  public addSub: ISubscription;
+  constructor(private commonService: Commonservice, private vendorOpenInvoiceService: VendorOIService, private toast: ToastService) { }
   @Input() currentSidebarInfo: CurrentSidebarInfo;
-  ASN;
-  PORef;
-  Vendor;
-  ShipmentDate;
-  DeliveryDate;
-  WayBill1;
-  Tracking;
-  Price;
-  Tax;
-  Freight;
-  Discount;
-  TotalPrice;
-  
+
   ngOnInit() {
-    if (this.currentSidebarInfo != undefined){      
+    if (this.currentSidebarInfo != undefined) {
       this.mapASN(this.currentSidebarInfo.RequesterData);
     }
     this.setDefaultData();
   }
-/**
-* This method will reset the model and date object for add form.
-*/
-private setDefaultData() {
-  this.vendorASNModel = new VendorASNModel();
-  this.vendorASNModel.DeliveryDate = new Date();//DateTimeHelper.ParseToUTC(new Date());
-  this.vendorASNModel.ShipmentDate =new Date();  //DateTimeHelper.ParseToUTC(new Date());;
-  this.vendorASNModel.Discount ='';
-  this.vendorASNModel.ASNId= undefined;
-  this.vendorASNModel.Freight = '';
-  this.vendorASNModel.POReferenceNumber = '';
-  this.vendorASNModel.Price = '';
-  this.vendorASNModel.Tax = '';
-  this.vendorASNModel.TotalPrice = '';
-  this.vendorASNModel.TrackingNumber = '';
-  this.vendorASNModel.Vendor = '';
-  this.vendorASNModel.WayBillNumber = '';
-}
+  /**
+  * This method will reset the model and date object for add form.
+  */
+  private setDefaultData() {
+    this.vendorASNModel = new VendorASNModel();
+    this.vendorASNModel.DeliveryDate = new Date();//DateTimeHelper.ParseToUTC(new Date());
+    this.vendorASNModel.ShipmentDate = new Date();  //DateTimeHelper.ParseToUTC(new Date());;
+    this.vendorASNModel.Discount = '';
+    this.vendorASNModel.ASNId = undefined;
+    this.vendorASNModel.Freight = '';
+    this.vendorASNModel.POReferenceNumber = '';
+    this.vendorASNModel.Price = '';
+    this.vendorASNModel.Tax = '';
+    this.vendorASNModel.TotalPrice = '';
+    this.vendorASNModel.TrackingNumber = '';
+    this.vendorASNModel.Vendor = '';
+    this.vendorASNModel.WayBillNumber = '';
+  }
 
-  mapASN(podata: any) {    
-    this.vendorASNModel=new VendorASNModel();
-    
+  mapASN(podata: any) {
+    this.vendorASNModel = new VendorASNModel();
     this.vendorASNModel.DeliveryDate = DateTimeHelper.ParseDate(Date.now());
-    this.vendorASNModel.ShipmentDate = DateTimeHelper.ParseDate(Date.now());    
-    this.vendorASNModel.Vendor=podata.Vendor;    
-    this.vendorASNModel.VendorCode=podata.VendorCode;    
-    
-    
-    this.vendorASNModel.POReferenceNumber=podata.PONumber;
-    
+    this.vendorASNModel.ShipmentDate = DateTimeHelper.ParseDate(Date.now());
+    this.vendorASNModel.Vendor = podata.Vendor;
+    this.vendorASNModel.VendorCode = podata.VendorCode;
+    this.vendorASNModel.POReferenceNumber = podata.PONumber;
 
   }
 
   valueShipmentChange(e) {
-
   }
 
   valueDeliveryChange(e) {
-
   }
 
-
   closeRightSidebar(status) {
-
   }
 
   ngOnChange() {
-
   }
 
   public AddASN() {
-     debugger;
-     this.showLoader=true;  
-     this.addSub=this.vendorOpenInvoiceService.AddASN(this.vendorASNModel).subscribe(
-       (data: any) => {  
-         this.showLoader=false;
-         this.toast.showSuccess(AppMessages.PurchaseInqAddedSuccessMsg);
-         this.commonService.refreshVASNList(true);
-         localStorage.setItem("SelectedVASN",JSON.stringify(data));         
-         this.openUpdateSideBar(data); 
-       },
-       error => {
-         console.log("Error: ", error)
-         this.showLoader=false;
-       },
-       () => {
-         this.showLoader=false;
-       }
-     );
-   }
-   
-   openUpdateSideBar(data: any){
+    this.showLoader = true;
+    this.addSub = this.vendorOpenInvoiceService.AddASN(this.vendorASNModel).subscribe(
+      (data: any) => {
+        this.showLoader = false;
+        this.toast.showSuccess(AppMessages.VendorInvASNAdd);
+        this.commonService.refreshVASNList(true);
+        localStorage.setItem("SelectedVASN", JSON.stringify(data));
+        this.openUpdateSideBar(data);
+      },
+      error => {
+        console.log("Error: ", error)
+        this.showLoader = false;
+      },
+      () => {
+        this.showLoader = false;
+      }
+    );
+  }
+
+  openUpdateSideBar(data: any) {
     let currentSidebarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentSidebarInfo.SideBarStatus = true,
     currentSidebarInfo.ModuleName = ModuleName.VendorASN;
-    currentSidebarInfo.ComponentName=ComponentName.VendorASNUpdate;
-    currentSidebarInfo.RequesterData=data
+    currentSidebarInfo.ComponentName = ComponentName.VendorASNUpdate;
+    currentSidebarInfo.RequesterData = data
     this.commonService.setCurrentSideBar(currentSidebarInfo);
   }
+
+
 }

@@ -1,59 +1,60 @@
 <div class="card opti_position-relative" >
   <div class="card-block">
     <form class="k-form">
+     dsfsafsdf
       <label class="k-form-field">
           <span class="opti_form-label">Line#</span>
-          <input name="Line" type="text" class="k-textbox" [(ngModel)]="Line" />
-      </label>
-
+          <input name="Line" type="text" class="k-textbox" [(ngModel)]="vendorASNContentModel.LineNumber" />
+      </label> 
+     
       <label class="k-form-field">
           <span class="opti_form-label">Item</span>
-          <input name="Item" type="text" class="k-textbox" [(ngModel)]="Item"  />
+          <input name="Item" type="text" class="k-textbox" [(ngModel)]="vendorASNContentModel.Item"  />
       </label>
 
       <label class="k-form-field">
           <span class="opti_form-label">Quantity</span>
-          <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="Quantity"  />
+          <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="vendorASNContentModel.Quantity"  />
       </label>
 
       <label class="k-form-field">
           <span class="opti_form-label">Unit Price</span>
-          <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="UnitPrice"  />
+          <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="vendorASNContentModel.UnitPrice"  />
       </label>
 
       <label class="k-form-field">
           <span class="opti_form-label">UOM</span>
-          <input name="UOM" type="text" class="k-textbox" [(ngModel)]="UOM"  />
+          <input name="UOM" type="text" class="k-textbox" [(ngModel)]="vendorASNContentModel.UOM"  />
       </label>
 
       <label class="k-form-field">
           <span class="opti_form-label">Total Price</span>
-          <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="TotalPrice"  />
+          <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="vendorASNContentModel.TotalPrice"  />
       </label>
 
       <label class="k-form-field">
           <span class="opti_form-label">Tax Code</span>
-          <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="TaxCode"  />
+          <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="vendorASNContentModel.TaxCode"  />
       </label>
 
       <label class="k-form-field">
           <span class="opti_form-label">Ship-To Address</span>
-          <textarea class="k-textarea" name="ShipToAddress"  [(ngModel)]="ShipToAddress" required>Please enter your Shipping Address</textarea>
+          <textarea class="k-textarea" name="ShipToAddress"  [(ngModel)]="vendorASNContentModel.ShipToAddress" required>Please enter your Shipping Address</textarea>
       </label>
 
       <label class="k-form-field">
           <span class="opti_form-label">Bill-To Address</span>
-          <textarea class="k-textarea" name="BillToAddress" [(ngModel)]="BillToAddress" required>Please enter your Billing Address</textarea>
+          <textarea class="k-textarea" name="BillToAddress" [(ngModel)]="vendorASNContentModel.BillToAddress" required>Please enter your Billing Address</textarea>
       </label>
 
       <label class="k-form-field">
           <span class="opti_form-label">Delivery Date</span>
-          <kendo-datepicker (valueChange)="valueChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="DeliveryDate" required [min]="minValidDate">
+          <kendo-datepicker (valueChange)="valueChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="vendorASNContentModel.DeliveryDate" required [min]="minValidDate">
           </kendo-datepicker>
       </label>
 
       <div class="text-right">
-          <button type="button" class="k-button k-primary" (click)="updateContent()">Save</button>
+          <button type="button" class="k-button k-primary" (click)="addContent()">Save</button>
           <button type="button" class="k-button" (click)="back()">Cancel</button>
       </div>
       
