@@ -83,6 +83,7 @@ export class PortalLeftComponent implements OnInit {
 
 
  async listClick(event, module) {
+  if(this.selectedItem != module){
     $('.opti_left-nav-ul li').removeClass('active');
 
     // Check for unsaved data.
@@ -115,6 +116,7 @@ export class PortalLeftComponent implements OnInit {
 
     }
 
+  }
     
   }
 

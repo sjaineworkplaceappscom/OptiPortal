@@ -31,7 +31,6 @@
                 <li *ngIf="userPermission.includes('309');" (click)="listClick($event, 'customercontacts')" [ngClass]="{'active': selectedItem == 'customercontacts'}"><a roterLink=""> <svg-icon src="{{imgPath}}/left-panel/Customer-Contacts.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Customer Contacts</span></a></li>
             </ng-container>    
             <ng-container *ngIf="userType==3">     
-                          
                     <li (click)="listClick($event, 'dashboard')" [ngClass]="{'active': selectedItem == 'dashboard'}"><a roterLink="dashboard" > <svg-icon src="{{imgPath}}/left-panel/dashboard.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Dashboard</span></a></li>
                     <li (click)="listClick($event, 'vpinquery')" [ngClass]="{'active': selectedItem == 'vpinquery'}"><a roterLink="vpinquery" > <svg-icon src="{{imgPath}}/left-panel/Purchase-Inquiries.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Purchase Inqueries</span></a></li>
                     <li id="opti_vpoID" (click)="listClick($event, 'vpolist')" [ngClass]="{'active': selectedItem == 'vpolist'}"><a roterLink="vporder" > <svg-icon src="{{imgPath}}/left-panel/Customer-Purchase-Order.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Purchase Orders</span></a></li>
