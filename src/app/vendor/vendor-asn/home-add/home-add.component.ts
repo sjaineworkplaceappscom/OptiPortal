@@ -72,7 +72,7 @@ private setDefaultData() {
     this.vendorASNModel.VendorCode=podata.VendorCode;    
     
     
-    this.vendorASNModel.PORefrenceNumber=podata.PONumber;
+    this.vendorASNModel.POReferenceNumber=podata.PONumber;
     
 
   }

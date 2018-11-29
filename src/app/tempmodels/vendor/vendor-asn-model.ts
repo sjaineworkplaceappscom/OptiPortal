@@ -1,6 +1,7 @@
 export class VendorASNModel
 {
     ASNId :string;
+    
     POReferenceNumber :string;
     Vendor :string;
     VendorCode:string;
@@ -13,4 +14,5 @@ export class VendorASNModel
     TrackingNumber :string;
     Tax :string;
     Freight :string;
+    
 }
