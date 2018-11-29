@@ -70,6 +70,13 @@ export class Commonservice {
     this.isRigntSideBarOpenData.next(open);
   }
 
+  private selectedItemObserver=new BehaviorSubject<string>('');
+  currentSelectedItem=this.selectedItemObserver.asObservable();
+
+  public setSelectedItem(selectedItem:string){
+    this.selectedItemObserver.next(selectedItem);
+  }
+
 
   // SideBar Observer
   private sidebarSubject =new BehaviorSubject<CurrentSidebarInfo>(null);
