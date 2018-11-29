@@ -39,10 +39,11 @@ export class HomeAddComponent implements OnInit {
   TotalPrice;
   
   ngOnInit() {
+   
+    this.setDefaultData();
     if (this.currentSidebarInfo != undefined){      
       this.mapASN(this.currentSidebarInfo.RequesterData);
     }
-    this.setDefaultData();
   }
 /**
 * This method will reset the model and date object for add form.
@@ -66,8 +67,8 @@ private setDefaultData() {
   mapASN(podata: any) {    
     this.vendorASNModel=new VendorASNModel();
     
-    this.vendorASNModel.DeliveryDate = DateTimeHelper.ParseDate(Date.now());
-    this.vendorASNModel.ShipmentDate = DateTimeHelper.ParseDate(Date.now());    
+    // this.vendorASNModel.DeliveryDate = DateTimeHelper.ParseDate(Date.now());
+    // this.vendorASNModel.ShipmentDate = DateTimeHelper.ParseDate(Date.now());    
     this.vendorASNModel.Vendor=podata.Vendor;    
     this.vendorASNModel.VendorCode=podata.VendorCode;    
     
