@@ -75,7 +75,7 @@ export class VpaymentNotesComponent implements OnInit {
 
 
 
-  ngOnInit() {debugger;
+  ngOnInit() {
     //Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
     // Check Mobile device

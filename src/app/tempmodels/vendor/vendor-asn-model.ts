@@ -1,16 +1,18 @@
 export class VendorASNModel
 {
     ASNId :string;
-    PORefrenceNumber :string;
+    
+    POReferenceNumber :string;
     Vendor :string;
     VendorCode:string;
-    DeliveryDate :Date;
+    DeliveryDate :Date;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
     ShipmentDate :Date;
-    Price :string;
+    Price :string; 
     TotalPrice :string;
     Discount :string;
     WayBillNumber :string;
     TrackingNumber :string;
     Tax :string;
-    Frieght :string;
+    Freight :string;
+    
 }

@@ -13,7 +13,7 @@ import { AttachmentDetail } from '../models/AttchmentDetail';
 })
 export class Commonservice {
 
-  constructor() { } 
+  constructor() { }
   // Declaration
   private commonData = new Subject<any>();
   commonData$ = this.commonData.asObservable();
@@ -63,10 +63,10 @@ export class Commonservice {
   }
 
   // sidebar code
-  private isRigntSideBarOpenData=new BehaviorSubject<boolean>(false);
-  currentSideBarOpenStatus=this.isRigntSideBarOpenData.asObservable();
+  private isRigntSideBarOpenData = new BehaviorSubject<boolean>(false);
+  currentSideBarOpenStatus = this.isRigntSideBarOpenData.asObservable();
 
-  public setRightSidebarStatus(open:boolean){
+  public setRightSidebarStatus(open: boolean) {
     this.isRigntSideBarOpenData.next(open);
   }
 
@@ -79,120 +79,136 @@ export class Commonservice {
 
 
   // SideBar Observer
-  private sidebarSubject =new BehaviorSubject<CurrentSidebarInfo>(null);
-  currentSidebarInfo=this.sidebarSubject.asObservable();
+  private sidebarSubject = new BehaviorSubject<CurrentSidebarInfo>(null);
+  currentSidebarInfo = this.sidebarSubject.asObservable();
 
 
-  public setCurrentSideBar(currentSidebarInfoValue:CurrentSidebarInfo){
+  public setCurrentSideBar(currentSidebarInfoValue: CurrentSidebarInfo) {
     this.sidebarSubject.next(currentSidebarInfoValue);
   }
 
   // Refresh List CPO
-  private refreshCPOListSub =new BehaviorSubject<any>(null);
-  refreshCPOListSubscriber=this.refreshCPOListSub.asObservable();
+  private refreshCPOListSub = new BehaviorSubject<any>(null);
+  refreshCPOListSubscriber = this.refreshCPOListSub.asObservable();
 
-  public refreshCPOList(data:any){
+  public refreshCPOList(data: any) {
     this.refreshCPOListSub.next(data);
   }
 
 
   // Refresh List
-  private refreshPIListSub =new BehaviorSubject<any>(null);
-  refreshPIListSubscriber=this.refreshPIListSub.asObservable();
+  private refreshPIListSub = new BehaviorSubject<any>(null);
+  refreshPIListSubscriber = this.refreshPIListSub.asObservable();
 
-  public refreshPIList(data:any){
+  public refreshPIList(data: any) {
     this.refreshPIListSub.next(data);
   }
 
-   // Refresh List
-   private notesDataSub =new BehaviorSubject<NotesModel>(null);
-   currentNotesData=this.notesDataSub.asObservable();
- 
-   public setNotesData(data:NotesModel){
-     this.notesDataSub.next(data);
-   }
+  // Refresh List
+  private notesDataSub = new BehaviorSubject<NotesModel>(null);
+  currentNotesData = this.notesDataSub.asObservable();
 
-   private notesItemDataSub =new BehaviorSubject<NotesModel>(null);
-   currentNotesItemData=this.notesItemDataSub.asObservable();
- 
-   public setNotesItemData(data:NotesModel){
-     this.notesItemDataSub.next(data);
-   }
-   
-   // send inquiry id to item list.
-   private itemDataSub =new BehaviorSubject<TempPurchaseInquiryModel>(null);
-   currentItemData=this.itemDataSub.asObservable();
- 
-   public setItemsData(data:TempPurchaseInquiryModel){
-     this.itemDataSub.next(data);
-   }
+  public setNotesData(data: NotesModel) {
+    this.notesDataSub.next(data);
+  }
 
-   // for Seeting color of theme.
-   private purchaseInquiryAttachmentGrid = new BehaviorSubject<any>(true);
-   purchaseInquiryAttachmentGridStatus = this.purchaseInquiryAttachmentGrid.asObservable();
+  private notesItemDataSub = new BehaviorSubject<NotesModel>(null);
+  currentNotesItemData = this.notesItemDataSub.asObservable();
 
-   public setPurchaseInquiryAttachmentGrid(data: any) {
-      this.purchaseInquiryAttachmentGrid.next(data);
-   }
+  public setNotesItemData(data: NotesModel) {
+    this.notesItemDataSub.next(data);
+  }
+
+  // send inquiry id to item list.
+  private itemDataSub = new BehaviorSubject<TempPurchaseInquiryModel>(null);
+  currentItemData = this.itemDataSub.asObservable();
+
+  public setItemsData(data: TempPurchaseInquiryModel) {
+    this.itemDataSub.next(data);
+  }
+
+  // for Seeting color of theme.
+  private purchaseInquiryAttachmentGrid = new BehaviorSubject<any>(true);
+  purchaseInquiryAttachmentGridStatus = this.purchaseInquiryAttachmentGrid.asObservable();
+
+  public setPurchaseInquiryAttachmentGrid(data: any) {
+    this.purchaseInquiryAttachmentGrid.next(data);
+  }
 
 
 
-   private attachmentItemDataSub =new BehaviorSubject<AttachmentDetail>(null);
-   currentAttachmentItemData=this.attachmentItemDataSub.asObservable();
- 
-   public setAttachementItemData(data:AttachmentDetail){
-     this.attachmentItemDataSub.next(data);
-   }
+  private attachmentItemDataSub = new BehaviorSubject<AttachmentDetail>(null);
+  currentAttachmentItemData = this.attachmentItemDataSub.asObservable();
+
+  public setAttachementItemData(data: AttachmentDetail) {
+    this.attachmentItemDataSub.next(data);
+  }
 
   //  share data between landing and signup page
-   private customerUserDataSub =new BehaviorSubject<any>(null);
-   getcustomerUserDataSub=this.customerUserDataSub.asObservable();
- 
-   public passCustomerUserDataToSignup(data:any){
-     this.customerUserDataSub.next(data);
-   }
+  private customerUserDataSub = new BehaviorSubject<any>(null);
+  getcustomerUserDataSub = this.customerUserDataSub.asObservable();
+
+  public passCustomerUserDataToSignup(data: any) {
+    this.customerUserDataSub.next(data);
+  }
 
 
-   // Refresh List
-  private refreshContactListSub =new BehaviorSubject<any>(null);
-  refreshContactListSubscriber=this.refreshContactListSub.asObservable();
+  // Refresh List
+  private refreshContactListSub = new BehaviorSubject<any>(null);
+  refreshContactListSubscriber = this.refreshContactListSub.asObservable();
 
-  public refreshContactList(data:any){
+  public refreshContactList(data: any) {
     this.refreshContactListSub.next(data);
   }
 
 
-   // Refresh List
-   private refreshVPIListSub =new BehaviorSubject<any>(null);
-   refreshVPIListSubscriber=this.refreshVPIListSub.asObservable();
- 
-   public refreshVPIList(data:any){
-     this.refreshVPIListSub.next(data);
-   }
+  // Refresh List
+  private refreshVPIListSub = new BehaviorSubject<any>(null);
+  refreshVPIListSubscriber = this.refreshVPIListSub.asObservable();
 
-   // Refresh List
-   private refreshVPOUpdatedListSub =new BehaviorSubject<any>(null);
-   refreshVPOUpdatedListSubscriber=this.refreshVPOUpdatedListSub.asObservable();
- 
-   public refreshVPOUpdatedList(data:any){
-     this.refreshVPOUpdatedListSub.next(data);
-   }
+  public refreshVPIList(data: any) {
+    this.refreshVPIListSub.next(data);
+  }
 
-   // Refresh List
-  private refreshVOIListSub =new BehaviorSubject<any>(null);
-  refreshVOIListSubscriber=this.refreshVOIListSub.asObservable();
+  // Refresh List
+  private refreshVPOUpdatedListSub = new BehaviorSubject<any>(null);
+  refreshVPOUpdatedListSubscriber = this.refreshVPOUpdatedListSub.asObservable();
 
-  public refreshVOIList(data:any){
+  public refreshVPOUpdatedList(data: any) {
+    this.refreshVPOUpdatedListSub.next(data);
+  }
+
+  // Refresh List
+  private refreshVOIListSub = new BehaviorSubject<any>(null);
+  refreshVOIListSubscriber = this.refreshVOIListSub.asObservable();
+
+  public refreshVOIList(data: any) {
     this.refreshVOIListSub.next(data);
   }
 
 
-   // Refresh List
-   private closeAddFormShowGridSub =new BehaviorSubject<any>(null);
-   closeAddFormShowGridSubscriber=this.closeAddFormShowGridSub.asObservable();
- 
-   public closeAddShowGridEvent(data:any){
-     this.closeAddFormShowGridSub.next(data);
-   }
- 
+  //for invoice content
+  private closeAddFormShowGridSub = new BehaviorSubject<any>(null);
+  closeAddFormShowGridSubscriber = this.closeAddFormShowGridSub.asObservable();
+  //for invoice content
+  public closeAddShowGridEvent(data: any) {
+    this.closeAddFormShowGridSub.next(data);
+  }
+
+  // Refresh List
+  private closeAddASNFormSub = new BehaviorSubject<any>(null);
+  closeAddFormShowGridASNSubscriber = this.closeAddASNFormSub.asObservable();
+
+  public closeAddASNShowGridEvent(data: any) {
+    this.closeAddASNFormSub.next(data);
+  }
+
+
+  // Refresh List
+  private refreshVASNListSub = new BehaviorSubject<any>(null);
+  refreshVASNListSubscriber = this.refreshVASNListSub.asObservable();
+
+  public refreshVASNList(data: any) {
+    this.refreshVOIListSub.next(data);
+  }
 }

@@ -5,6 +5,7 @@ import { VendorOIModel } from 'src/app/tempmodels/vendor/vendor-OI-model';
 import { OpenInvoiceContentModel } from 'src/app/tempmodels/open-invoice-content-model';
 import { VOIContentModel } from 'src/app/tempmodels/vendor/vendor-oi-content-model';
 import { Configuration } from 'src/app/helpers/Configuration';
+import { VendorASNModel } from 'src/app/tempmodels/vendor/vendor-asn-model';
 
 @Injectable({
   providedIn: 'root'
@@ -122,5 +123,20 @@ export class VendorOIService {
       "BillToAdress": request.BillToAdress,
     }
     return this.httpHelper.put(this.baseUrl + "vendorinvoicecontent/update", data, null);
+  }
+  
+  /**
+   * Add ASN Inquiry. 
+   */
+  public AddASN(request: VendorASNModel): Observable<any> {
+    return this.httpHelper.post(this.baseUrl + "vendorasn/add", request, null);
+  }
+
+  /**
+   * get List of Vendor Open Invoice.
+   */
+  public getVASNList(id:string): Observable<any> {
+    let url: string = this.baseUrl + "vendorasn/list"+id;
+    return this.httpHelper.get(url, null);
   }
 }

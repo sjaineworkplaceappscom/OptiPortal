@@ -5,67 +5,67 @@
         <div class="card">
           <div class="card-block">
             <form class="k-form">
-
+              
               <label class="k-form-field">
                   <span class="opti_form-label">ASN#</span>
-                  <input name="ASN" type="text" [(ngModel)]="ASN" class="k-textbox" />
+                  <input name="ASN" type="text" [(ngModel)]="vendorASNModel.ASNNumber" class="k-textbox" />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">PO Ref.#</span>
-                  <input name="PORef" type="text" class="k-textbox" [(ngModel)]="PORef"  />
+                  <input name="PORef" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.POReferenceNumber"  />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Vendor</span>
-                  <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="Vendor"  />
+                  <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.Vendor"  />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Shipment Date</span>
-                  <kendo-datepicker (valueChange)="valueShipmentChange($event)" name="ShipmentDate" [format]="'dd MMM yy'" [(ngModel)]="ShipmentDate" required [min]="minValidDate">
+                  <kendo-datepicker (valueChange)="valueShipmentChange($event)" name="ShipmentDate" [format]="'dd MMM yy'" [(ngModel)]="vendorASNModel.ShipmentDate" required [min]="minValidDate">
                   </kendo-datepicker>
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">Delivery Date</span>
-                <kendo-datepicker (valueChange)="valueDeliveryChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="DeliveryDate" required [min]="minValidDate">
+                <kendo-datepicker (valueChange)="valueDeliveryChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="vendorASNModel.DeliveryDate" required [min]="minValidDate">
                 </kendo-datepicker>
             </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Way-Bill#</span>
-                  <input name="WayBill" type="text" class="k-textbox" [(ngModel)]="WayBill"  />
+                  <input name="WayBill" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.WayBillNumber"  />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Tracking#</span>
-                  <input name="Tracking" type="text" class="k-textbox" [(ngModel)]="Tracking"  />
+                  <input name="Tracking" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.TrackingNumber"  />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Price</span>
-                  <input name="Price" type="text" class="k-textbox" [(ngModel)]="Price"  />
+                  <input name="Price" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.Price"  />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Tax</span>
-                  <input name="Tax" type="text" class="k-textbox" [(ngModel)]="Tax"  />
+                  <input name="Tax" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.Tax"  />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Freight</span>
-                  <input name="Freight" type="text" class="k-textbox" [(ngModel)]="Freight"  />
+                  <input name="Freight" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.Freight"  />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Discount</span>
-                  <input name="Discount" type="text" class="k-textbox" [(ngModel)]="Discount"  />
+                  <input name="Discount" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.Discount"  />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Total Price</span>
-                  <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="TotalPrice"  />
+                  <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.TotalPrice"  />
               </label>
 
               <div class="text-right">

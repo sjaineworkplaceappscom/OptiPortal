@@ -79,7 +79,6 @@ export class VendorPoHeaderComponent implements OnInit {
   }
 
   acknowledge() {
-    debugger;
     this.showLoader = true;
     this.sendVPOack = this.vendorService.SendAck(this.VPOHeaderModel.POId).subscribe(
       data => {
