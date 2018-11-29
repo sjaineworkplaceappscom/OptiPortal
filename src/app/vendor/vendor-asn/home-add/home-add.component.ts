@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { VendorASNModel } from 'src/app/tempmodels/vendor/vendor-asn-model';
+import { Component, OnInit, Input } from '@angular/core';
+import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
+import { VendorASNModel } from '../../../tempmodels/vendor/vendor-asn-model';
+import { markParentViewsForCheckProjectedViews } from '../../../../../node_modules/@angular/core/src/view/util';
+import { DateTimeHelper } from '../../../helpers/datetime.helper';
+import { ISubscription } from 'rxjs/Subscription';
+import { Commonservice } from 'src/app/services/commonservice.service';
 import { VendorOIService } from 'src/app/services/vendor/vendor-o-i.service';
 import { ToastService } from 'src/app/helpers/services/toast.service';
-import { Commonservice } from 'src/app/services/commonservice.service';
-import { ISubscription } from 'rxjs/Subscription';
 import { AppMessages } from 'src/app/helpers/app-messages';
-import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 import { ModuleName, ComponentName } from 'src/app/enums/enums';
 
 @Component({
@@ -19,11 +21,27 @@ export class HomeAddComponent implements OnInit {
 
   showLoader:boolean=false;
   minValidDate = new Date();
-  vendorASNModel:VendorASNModel;
+  vendorASNModel:VendorASNModel=new VendorASNModel();;
   public addSub:ISubscription;
   constructor(private commonService: Commonservice, private vendorOpenInvoiceService: VendorOIService,private toast:ToastService) { }
-
+  @Input() currentSidebarInfo: CurrentSidebarInfo;
+  ASN;
+  PORef;
+  Vendor;
+  ShipmentDate;
+  DeliveryDate;
+  WayBill1;
+  Tracking;
+  Price;
+  Tax;
+  Freight;
+  Discount;
+  TotalPrice;
+  
   ngOnInit() {
+    if (this.currentSidebarInfo != undefined){      
+      this.mapASN(this.currentSidebarInfo.RequesterData);
+    }
     this.setDefaultData();
   }
 /**
@@ -45,18 +63,35 @@ private setDefaultData() {
   this.vendorASNModel.WayBillNumber = '';
 }
 
-  valueShipmentChange(e){
-
-  }
-
-  valueDeliveryChange(e){
-
-  }
-
-  
-
-  closeRightSidebar(status){
+  mapASN(podata: any) {    
+    this.vendorASNModel=new VendorASNModel();
     
+    this.vendorASNModel.DeliveryDate = DateTimeHelper.ParseDate(Date.now());
+    this.vendorASNModel.ShipmentDate = DateTimeHelper.ParseDate(Date.now());    
+    this.vendorASNModel.Vendor=podata.Vendor;    
+    this.vendorASNModel.VendorCode=podata.VendorCode;    
+    
+    
+    this.vendorASNModel.PORefrenceNumber=podata.PONumber;
+    
+
+  }
+
+  valueShipmentChange(e) {
+
+  }
+
+  valueDeliveryChange(e) {
+
+  }
+
+
+  closeRightSidebar(status) {
+
+  }
+
+  ngOnChange() {
+
   }
 
   public AddASN() {

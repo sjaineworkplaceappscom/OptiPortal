@@ -33,6 +33,12 @@ export class VasnAddComponent implements OnInit {
   ngOnInit() {
     // apply width on opti_TabID
     UIHelper.getWidthOfOuterTab();
+   // console.log("VSNAdd",this.currentSidebarInfo);
+    
+  }
+
+  ngOnChange(){
+    //console.log("VSNAdd",this.currentSidebarInfo);
   }
 
 }

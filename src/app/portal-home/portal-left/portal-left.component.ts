@@ -8,6 +8,7 @@ import { GlobalResource } from '../../helpers/global-resource';
 import { ConfirmDialog } from '../../helpers/services/dialog.service';
 import { Configuration } from '../../helpers/Configuration';
 // import { UIHelper } from '../../helpers/ui.helpers';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-portal-left',
@@ -76,6 +77,8 @@ export class PortalLeftComponent implements OnInit {
 
 
  async listClick(event, module) {
+    $('.opti_left-nav-ul li').removeClass('active');
+
     // Check for unsaved data.
     // if (GlobalResource.leaveUnsavedDataConfirmation() == false) {
     //   return;
@@ -88,6 +91,7 @@ export class PortalLeftComponent implements OnInit {
      }
 
     this.selectedItem = module;
+
     //if(module!='purchaseinquiry'){
     this.closeRightSidebar();
 

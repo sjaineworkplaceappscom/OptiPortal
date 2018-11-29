@@ -25,7 +25,7 @@ import { SharedModule } from '../../shared/shared.module';
 
 const routes: Routes = [
   { path: '',component: VendorPInvoiceListComponent  },
-  {path: 'list', component: VendorPInvoiceListComponent}
+  {path: 'vpinvoicelist', component: VendorPInvoiceListComponent}
 ];
 
 @NgModule({

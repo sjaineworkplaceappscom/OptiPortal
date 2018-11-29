@@ -40,7 +40,9 @@ export class VasnListComponent implements OnInit {
   }
   // End UI Section
 
+  
   ngOnInit() {
+    //$('#VASN').addClass('active');
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
