@@ -73,7 +73,7 @@
 
             <label class="k-form-field">
                 <span class="opti_form-label">Delivery Date</span>
-                <input name="DeliveryDate" type="text" class="k-textbox" (ngModelChange)="VPOContentModel.RequestedDate" [ngModel]="contentModel.DeliveryDate | date:'dd MMM yy'" readonly />
+                <input name="DeliveryDate" type="text" class="k-textbox" (ngModelChange)="contentModel.DeliveryDate" [ngModel]="contentModel.DeliveryDate | date:'dd MMM yy'" readonly />
             </label>
               
             </form>

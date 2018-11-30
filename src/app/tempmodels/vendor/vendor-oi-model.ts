@@ -1,5 +1,6 @@
 export class VendorOIModel
 {
+    InvoiceNumber:number;
     InvoiceId:string;
     POReferenceNumber:string;    
     Vendor:string;

@@ -2,7 +2,7 @@
   <div class="card-block">
     <form class="k-form">
 
-      <label class="k-form-field">
+      <!-- <label class="k-form-field">
           <span class="opti_form-label">Line#</span>
           <input name="Line" type="text" class="k-textbox" [(ngModel)]="Line" />
       </label>
@@ -44,13 +44,13 @@
 
       <label class="k-form-field">
           <span class="opti_form-label">Ship-To Address</span>
-          <!-- <input name="ShipToAddress" type="text" class="k-textbox" [(ngModel)]="ShipToAddress"  /> -->
+          <!-- <input name="ShipToAddress" type="text" class="k-textbox" [(ngModel)]="ShipToAddress"  /> 
           <textarea class="k-textarea" name="ShipToAddress"  [(ngModel)]="ShipToAddress" required>Please enter your Shipping Address</textarea>
       </label>
 
       <label class="k-form-field">
           <span class="opti_form-label">Bill-To Address</span>
-          <!-- <input name="BillToAddress" type="text" class="k-textbox" [(ngModel)]="BillToAddress"  /> -->
+          <!-- <input name="BillToAddress" type="text" class="k-textbox" [(ngModel)]="BillToAddress"  /> 
           <textarea class="k-textarea" name="BillToAddress" [(ngModel)]="BillToAddress" required>Please enter your Billing Address</textarea>
       </label>
 
@@ -63,12 +63,12 @@
           <span class="opti_form-label">Delivery Date</span>
           <kendo-datepicker (valueChange)="valueChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="DeliveryDate" required [min]="minValidDate">
           </kendo-datepicker>
-      </label>
+      </label> -->
 
-      <div class="text-right">
+      <!-- <div class="text-right">
           <button type="button" class="k-button k-primary" (click)="updateContent()">Save</button>
           <button type="button" class="k-button" (click)="back()">Cancel</button>
-      </div>
+      </div> -->
       
     </form>
   </div>

@@ -20,7 +20,7 @@ export class VasnHomeComponent implements OnInit {
 
 
   showLoader:boolean=false;
-  
+  public minValidDate: Date = new Date();
   public getSub: ISubscription;
   vendorASNModel:VendorASNModel;
   constructor(private commonService: Commonservice, private toast:ToastService,private vendorService:VendorService ) { }
@@ -56,7 +56,7 @@ export class VasnHomeComponent implements OnInit {
 
  
 
-  closeRightSidebar(status){
+  closeRightSidebar(){
     
   }
 

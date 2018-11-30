@@ -21,7 +21,7 @@ export class VendorPInvoiceContentAddComponent implements OnInit {
   showLoader: boolean = false;
   voiContentModel: VOIContentModel;
   public addSub: ISubscription;
-
+  minValidDate:Date = new Date();
   //addItem: boolean = false; 
   //itemGrid: boolean = true;
   vOIModel: VendorOIModel; 

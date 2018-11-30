@@ -8,7 +8,7 @@
               
               <label class="k-form-field">
                   <span class="opti_form-label">ASN#</span>
-                  <input name="ASN" type="text" [(ngModel)]="vendorASNModel.ASNNumber" class="k-textbox"  disabled/>
+                  <input name="ASN" type="text"  class="k-textbox"  disabled/>
               </label>
 
               <label class="k-form-field">
@@ -70,7 +70,7 @@
 
               <div class="text-right">
                   <button type="button" class="k-button k-primary" (click)="UpdateASN()">Save</button>
-                  <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
+                  <button type="button" class="k-button" (click)="closeRightSidebar()">Cancel</button>
               </div>
               
             </form>
