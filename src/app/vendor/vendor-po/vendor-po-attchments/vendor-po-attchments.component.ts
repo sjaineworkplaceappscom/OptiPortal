@@ -56,7 +56,10 @@ export class VendorPoAttchmentsComponent implements OnInit {
     this.getVPOAttachmentList();
   }
 
-
+  ngOnDestroy() {
+    if (this.getVPIsubs != undefined)
+      this.getVPIsubs.unsubscribe();
+  }
 
     /** 
     * call api for purchase inquiry detail.

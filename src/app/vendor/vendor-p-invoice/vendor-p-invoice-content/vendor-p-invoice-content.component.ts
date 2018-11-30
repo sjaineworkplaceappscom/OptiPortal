@@ -50,7 +50,6 @@ export class VendorPInvoiceContentComponent implements OnInit {
   }
   // End UI Section
   getOIlistSubs: ISubscription;
-  refreshOIlistSubs: ISubscription;
   public updateSub: ISubscription;
   showGridSubs: ISubscription;
   vOIModel: VendorOIModel;
@@ -86,6 +85,18 @@ export class VendorPInvoiceContentComponent implements OnInit {
       }
     });
 
+  }
+
+  ngOnDestroy() {
+
+    if (this.getOIlistSubs != undefined)
+      this.getOIlistSubs.unsubscribe();
+
+    if (this.updateSub != undefined)
+      this.updateSub.unsubscribe();
+
+    if (this.showGridSubs != undefined)
+      this.showGridSubs.unsubscribe();
   }
 
   /**

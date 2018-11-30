@@ -30,6 +30,11 @@ export class VendorPInvoiceHomeComponent implements OnInit {
     this.setDefaultData();
   }
 
+  ngOnDestroy() {
+    if (this.addSub != undefined)
+      this.addSub.unsubscribe();
+  }
+
   valueChange(value:any){    
     GlobalResource.dirty=true;
     

@@ -70,6 +70,15 @@ export class VendorPouListComponent implements OnInit {
 
     this.getvpouList();
   }
+
+  
+  ngOnDestroy() {
+    if (this.getPIlistSubs != undefined)
+      this.getPIlistSubs.unsubscribe();
+    if (this.refreshVPIListSubs != undefined)
+      this.refreshVPIListSubs.unsubscribe();
+  }
+
   /**
    * Method to get list of inquries from server.
   */

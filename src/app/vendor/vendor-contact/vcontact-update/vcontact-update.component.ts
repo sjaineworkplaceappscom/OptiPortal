@@ -139,7 +139,12 @@ private setDefaultData() {
   ngOnDestroy() {
     if (this.sideBarsubs != undefined)
       this.sideBarsubs.unsubscribe();
-   
+
+    if (this.updateContactSub != undefined)
+    this.updateContactSub.unsubscribe();
+
+    if (this.getContactsubs != undefined)
+    this.getContactsubs.unsubscribe();
   }
 
 }
