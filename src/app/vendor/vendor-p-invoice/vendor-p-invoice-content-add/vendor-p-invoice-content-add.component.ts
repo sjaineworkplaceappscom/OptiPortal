@@ -18,7 +18,6 @@ import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info'
 export class VendorPInvoiceContentAddComponent implements OnInit {
 
   constructor(private vendorOIService: VendorOIService, private commonService: Commonservice, private confirmService: ConfirmDialog, private toast: ToastService) { }
-  addContentSub: ISubscription;
   showLoader: boolean = false;
   voiContentModel: VOIContentModel;
   public addSub: ISubscription;
@@ -36,6 +35,11 @@ export class VendorPInvoiceContentAddComponent implements OnInit {
       var id = this.vOIModel.InvoiceId;
     }
     this.setDefaultValues();
+  }
+
+  ngOnDestroy() {
+    if (this.addSub != undefined)
+      this.addSub.unsubscribe();
   }
   
   setDefaultValues(){

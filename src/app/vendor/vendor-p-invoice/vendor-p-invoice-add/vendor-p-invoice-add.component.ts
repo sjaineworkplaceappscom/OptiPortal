@@ -20,7 +20,6 @@ export class VendorPInvoiceAddComponent implements OnInit {
 
 
   }
-  addContentSub: ISubscription;
   showLoader: boolean = false;
   tabName: string = 'home';
   // tab function

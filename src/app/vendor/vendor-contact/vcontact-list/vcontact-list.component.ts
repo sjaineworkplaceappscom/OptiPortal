@@ -31,8 +31,7 @@ export class VcontactListComponent implements OnInit {
   gridHeight: number;
   showLoader: boolean = false;
   searchRequest: string = '';
-  getContractlistSubs: ISubscription;
-  public addSub: ISubscription;
+  getContactlistSubs: ISubscription;
   getPaginationAttributes() {
     // pagination add/remove for desktop and mobile
     let paginationAttributesArray = UIHelper.paginationAttributes();
@@ -99,7 +98,7 @@ export class VcontactListComponent implements OnInit {
   public getCustomerContactsList() {
     console.log('get cust list');
     this.showLoader = true;
-    this.getContractlistSubs = this.contactService.getCustomerContactList().subscribe(
+    this.getContactlistSubs = this.contactService.getCustomerContactList().subscribe(
       data => {
 
         if (data != null && data != undefined) {
@@ -146,12 +145,12 @@ export class VcontactListComponent implements OnInit {
 
 
   ngOnDestroy() {
-    if (this.getContractlistSubs != undefined) {
-      this.getContractlistSubs.unsubscribe();
-    }
-    if (this.addSub != undefined) {
-      this.addSub.unsubscribe();
-    }
+   
+    if (this.getContactlistSubs != undefined)
+      this.getContactlistSubs.unsubscribe();
+
+    if (this.refreshContactListSubs != undefined)
+    this.refreshContactListSubs.unsubscribe();
   }
 
 

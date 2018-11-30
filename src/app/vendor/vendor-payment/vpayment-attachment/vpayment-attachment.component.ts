@@ -58,6 +58,11 @@ export class VpaymentAttachmentComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    if (this.getVPIsubs != undefined)
+      this.getVPIsubs.unsubscribe();
+  }
+
   /** 
     * call api for purchase inquiry detail.
     */

@@ -65,6 +65,13 @@ export class VendorPInvoiceListComponent implements OnInit {
     //this.getInvoiceList1();
   }
 
+  ngOnDestroy() {
+    if (this.refreshOIlistSubs != undefined)
+      this.refreshOIlistSubs.unsubscribe();
+    if (this.getOIlistSubs != undefined)
+      this.getOIlistSubs.unsubscribe();
+  }
+
   /**
    * Method to get list of inquries from server.
   */
