@@ -19,7 +19,7 @@ export class VendorPInvoiceAddComponent implements OnInit {
   constructor(private vendorOIService: VendorOIService, private commonService: Commonservice, private confirmService: ConfirmDialog,private toast:ToastService) { 
 
 
-  }
+  }  
   showLoader: boolean = false;
   tabName: string = 'home';
   // tab function

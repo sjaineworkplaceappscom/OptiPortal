@@ -50,6 +50,7 @@ export class VendorPInvoiceContentComponent implements OnInit {
   }
   // End UI Section
   getOIlistSubs: ISubscription;
+  refreshOIlistSubs: ISubscription;
   public updateSub: ISubscription;
   showGridSubs: ISubscription;
   vOIModel: VendorOIModel;
@@ -85,18 +86,6 @@ export class VendorPInvoiceContentComponent implements OnInit {
       }
     });
 
-  }
-
-  ngOnDestroy() {
-
-    if (this.getOIlistSubs != undefined)
-      this.getOIlistSubs.unsubscribe();
-
-    if (this.updateSub != undefined)
-      this.updateSub.unsubscribe();
-
-    if (this.showGridSubs != undefined)
-      this.showGridSubs.unsubscribe();
   }
 
   /**
@@ -187,9 +176,22 @@ export class VendorPInvoiceContentComponent implements OnInit {
       () => {
         this.showLoader = false;
         // this.closeRightSidebar();
-      }
+      } );
+  }
 
-    );
+  ngOnDestroy() {
+    if (this.getOIlistSubs != undefined){
+      this.getOIlistSubs.unsubscribe();
+    }
+    if (this.refreshOIlistSubs != undefined){
+      this.refreshOIlistSubs.unsubscribe();
+    }
+    if (this.updateSub != undefined){
+      this.updateSub.unsubscribe();
+    }
+    if (this.showGridSubs != undefined){
+      this.showGridSubs.unsubscribe();
+    }
   }
 
 
