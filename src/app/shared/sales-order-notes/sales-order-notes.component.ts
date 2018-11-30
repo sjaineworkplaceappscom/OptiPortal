@@ -39,7 +39,7 @@ export class SalesOrderNotesComponent implements OnInit {
   getnotessub: ISubscription;
   addnotessub: ISubscription;
   updatenotessub: ISubscription; 
-
+  lastnoteText:string;
   salesOrderModel: SalesOrder = new SalesOrder();
   noteModel: SalesNoteModel = new SalesNoteModel();
   constructor(private sharedComponentService: SharedComponentService,private toast:ToastService) { }
@@ -85,6 +85,7 @@ export class SalesOrderNotesComponent implements OnInit {
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
     this.selectedNote = note;
+    this.lastnoteText = this.selectedNote.Notes;
     this.selectedNoteItem = this.noteTypes[0];
   }
 
@@ -189,6 +190,7 @@ export class SalesOrderNotesComponent implements OnInit {
   }
 
   closeUpdateNote(e) {
+    this.selectedNote.Notes = this.lastnoteText;
     GlobalResource.dirty=false;
     this.TabNotesGridStatus = true;
     this.TabEditNotesFormStatus = false;

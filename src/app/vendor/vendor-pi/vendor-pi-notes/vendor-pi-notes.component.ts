@@ -45,10 +45,10 @@ export class VendorPiNotesComponent implements OnInit {
   selectedNote: any = {};
   showLoader: boolean = false;
   notesSearchValue: string = ""
-
+  
   public noteItemsData: any[];
   noteModel: VendorNoteModel = new VendorNoteModel();
-  
+  lastnoteText:string;
   public noteTypes: Array<{ text: string, value: number }> = [
     { text: "General ", value: 1 },
     { text: "Rejected", value: 2 },
@@ -56,7 +56,8 @@ export class VendorPiNotesComponent implements OnInit {
   ];
 
   public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
-
+  public oldSelectedNoteItem: { text: string, value: number } = this.noteTypes[0];
+  
   ngOnInit() {
     //Apply Grid Height
     this.gridHeight = UIHelper.getMainContentHeight();
@@ -120,14 +121,7 @@ export class VendorPiNotesComponent implements OnInit {
     this.TabAddNotesFormStatus = true;
     this.resetModelValues();
   }
-
-  openEditNoteView(e, note) {
-    
-    this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
-    this.TabEditNotesFormStatus = true;
-    this.selectedNote = note;
-    this.selectedNoteItem = { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
-  }
+  
 
   public closeAddNote() {
     //close add note component
@@ -142,6 +136,28 @@ export class VendorPiNotesComponent implements OnInit {
       this.TabEditNotesFormStatus = false;
       //reset model after close edit form.
       this.resetModelValues();
+  }
+
+  lastSelectedNote:any;
+  openEditNoteView(e, note) {debugger;
+    
+    this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
+    this.TabEditNotesFormStatus = true;
+
+    this.selectedNote = note;
+    this.lastnoteText=this.selectedNote.Notes;    
+    this.selectedNoteItem = { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
+    
+  }
+
+  cancelEditNoteWindow(){debugger;
+    this.selectedNote.Notes=this.lastnoteText;
+  
+    this.TabNotesGridStatus = true;
+    // this.editnoteform.nativeElement.style.display = 'none';
+    this.TabEditNotesFormStatus = false;
+    //reset model after close edit form.
+    this.resetModelValues();
   }
 
   /**
@@ -226,7 +242,7 @@ export class VendorPiNotesComponent implements OnInit {
     });
   }
 
-
+    
   updateNote(e) {
     GlobalResource.dirty=false;
     this.selectedNote;

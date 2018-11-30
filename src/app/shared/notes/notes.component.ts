@@ -44,7 +44,7 @@ export class NotesComponent implements OnInit {
     addnotestring = '';
     selectedNote: any = {};
     showLoader: boolean = false;
-
+    lastnoteText:string;
     @ViewChild('notesgrid') notesgrid;
     @ViewChild('noteform') noteform;
     @ViewChild('editnoteform') editnoteform;
@@ -164,6 +164,7 @@ export class NotesComponent implements OnInit {
         this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
         this.TabEditNotesFormStatus = true;
         this.selectedNote = note;
+        this.lastnoteText = this.selectedNote.Notes;
         this.selectedNoteItem = { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
     }
 
@@ -348,7 +349,8 @@ export class NotesComponent implements OnInit {
     }
 
     closeUpdateNote(e) {
-        GlobalResource.dirty=false;
+        this.selectedNote.Notes = this.lastnoteText;
+                GlobalResource.dirty=false;
         // this.notesgrid.nativeElement.style.display = 'block';
         this.TabNotesGridStatus = true;
         // this.editnoteform.nativeElement.style.display = 'none';

@@ -36,7 +36,7 @@ export class VpaymentNotesComponent implements OnInit {
   selectedNote: any = {};
   showLoader: boolean = false;
   notesSearchValue: string = ""
-
+  lastnoteText:string;
   public noteItemsData: any[];
 
   paymentModel: PaymentModel = new PaymentModel();
@@ -154,6 +154,7 @@ export class VpaymentNotesComponent implements OnInit {
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
     this.selectedNote = note;
+    this.lastnoteText = this.selectedNote.Notes;
     this.selectedNoteItem = { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
   }
 
@@ -164,6 +165,7 @@ export class VpaymentNotesComponent implements OnInit {
   }
 
   closeUpdateNote(e) {
+    this.selectedNote.Notes = this.lastnoteText;
       // this.notesgrid.nativeElement.style.display = 'block';
       this.TabNotesGridStatus = true;
       // this.editnoteform.nativeElement.style.display = 'none';

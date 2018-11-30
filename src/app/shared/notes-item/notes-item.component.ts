@@ -30,7 +30,7 @@ export class NotesItemComponent implements OnInit {
     imgPath = Configuration.imagePath;
     isMobile: boolean;
     gridHeight: number;
-
+    lastnoteText:string;
     /**
      * NOTES TAB VARIABLE
     */
@@ -158,6 +158,7 @@ export class NotesItemComponent implements OnInit {
         this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
         this.TabEditNotesFormStatus = true;
         this.selectedNote = note;
+        this.lastnoteText = this.selectedNote.Notes;
         this.selectedNoteItem = { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
     }
 
@@ -326,6 +327,7 @@ export class NotesItemComponent implements OnInit {
     }
 
     closeUpdateNote(e) {
+        this.selectedNote = this.lastnoteText;
         // this.notesgrid.nativeElement.style.display = 'block';
         this.TabNotesGridStatus = true;
         // this.editnoteform.nativeElement.style.display = 'none';

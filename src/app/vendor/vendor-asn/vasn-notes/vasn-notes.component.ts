@@ -38,7 +38,7 @@ export class VasnNotesComponent implements OnInit {
   selectedNote: any = {};
   showLoader: boolean = false;
   notesSearchValue: string = ""
-
+  lastnoteText:string;
   public noteItemsData: any[];
 
   
@@ -95,11 +95,12 @@ export class VasnNotesComponent implements OnInit {
     this.TabAddNotesFormStatus = true;
     this.resetModelValues();
   }         
-
+  
   openEditNoteView(e, note) {
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
     this.selectedNote = note;
+    this.lastnoteText = this.selectedNote.NoteText;
     this.selectedNoteItem = { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
   }
 
@@ -110,6 +111,7 @@ export class VasnNotesComponent implements OnInit {
   }
 
   closeUpdateNote(e) {
+    this.selectedNote.Notes = this.lastnoteText;
       // this.notesgrid.nativeElement.style.display = 'block';
       this.TabNotesGridStatus = true;
       // this.editnoteform.nativeElement.style.display = 'none';

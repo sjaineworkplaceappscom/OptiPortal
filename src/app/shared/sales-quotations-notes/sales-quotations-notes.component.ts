@@ -41,7 +41,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
   getnotessub: ISubscription;
   addnotessub: ISubscription;
   updatenotessub: ISubscription;
-
+  lastnoteText:string;
   salesQuotationModel: SalesQuotation = new SalesQuotation();
   noteModel: SalesNoteModel;
 
@@ -84,9 +84,11 @@ export class SalesQuotationsNotesComponent implements OnInit {
   }
 
   openEditNoteView(e, note) {
+    
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
     this.selectedNote = note;
+    this.lastnoteText = this.selectedNote.Notes;
     this.selectedNoteItem = this.noteTypes[0];
   }
 
@@ -176,6 +178,7 @@ export class SalesQuotationsNotesComponent implements OnInit {
   }
 
   closeUpdateNote(e) {
+    this.selectedNote.Notes=this.lastnoteText;
     GlobalResource.dirty=false;
     this.TabNotesGridStatus = true;
     this.TabEditNotesFormStatus = false;
@@ -183,8 +186,8 @@ export class SalesQuotationsNotesComponent implements OnInit {
   }
 
   /**
-     * Method to get list of inquries from server.
-     */
+   * Method to get list of inquries from server.
+   */
   private getSalesNotesList(salesId: string, parentType: number) {
     this.showLoader = true;
     this.getnotessub = this.sharedComponentService.getSalesQuotationNotesList(salesId, parentType).subscribe(

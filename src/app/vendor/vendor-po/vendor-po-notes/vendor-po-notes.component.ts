@@ -39,7 +39,7 @@ export class VendorPoNotesComponent implements OnInit {
 
   public noteItemsData: any[];
 
-
+  lastnoteText:string;
   VPOModel: VendorPOModel = new VendorPOModel();
   public getVPIsubs: ISubscription;
   getnotessub: ISubscription;
@@ -144,6 +144,7 @@ export class VendorPoNotesComponent implements OnInit {
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
     this.selectedNote = note;
+    this.lastnoteText = this.selectedNote.Notes;
     this.selectedNoteItem = { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
   }
 
@@ -154,6 +155,7 @@ export class VendorPoNotesComponent implements OnInit {
   }
 
   closeUpdateNote(e) {
+    this.selectedNote.Notes = this.lastnoteText;
     // this.notesgrid.nativeElement.style.display = 'block';
     this.TabNotesGridStatus = true;
     // this.editnoteform.nativeElement.style.display = 'none';

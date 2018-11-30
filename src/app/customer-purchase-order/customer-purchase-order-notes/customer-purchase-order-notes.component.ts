@@ -35,7 +35,7 @@ export class CustomerPurchaseOrderNotesComponent implements OnInit {
   selectedNote: any = {};
   showLoader: boolean = false;
   notesSearchValue: string = ""
-
+  lastnoteText:string;
   public noteItemsData: any[];
 
   noteModel: NotesModel = new NotesModel();
@@ -147,6 +147,7 @@ ngOnDestroy() {
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
     this.selectedNote = note;
+    this.lastnoteText = this.selectedNote.Notes;
     this.selectedNoteItem = { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
   }
 
@@ -161,6 +162,7 @@ ngOnDestroy() {
       this.TabNotesGridStatus = true;
       // this.editnoteform.nativeElement.style.display = 'none';
       this.TabEditNotesFormStatus = false;
+      this.selectedNote.Notes = this.lastnoteText; 
       //reset model after close edit form.
       this.resetModelValues();
   }

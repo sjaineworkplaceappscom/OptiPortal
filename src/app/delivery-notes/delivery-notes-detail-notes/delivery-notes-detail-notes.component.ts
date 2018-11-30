@@ -32,7 +32,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
   selectedNote: any = {};
   showLoader: boolean = false;
   notesSearchValue: string = ""
-
+  lastnoteText:string;
   public noteItemsData: any[];
 
   deliveryNoteListModel: DeliveryNoteListModel = new DeliveryNoteListModel();
@@ -93,6 +93,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
     this.selectedNote = note;
+    this.lastnoteText = this.selectedNote.Notes;
     this.selectedNoteItem = this.noteTypes[0];// { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
   }
 
@@ -103,6 +104,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
   }
 
   closeUpdateNote(e) {
+    this.selectedNote.Notes = this.lastnoteText;
     // this.notesgrid.nativeElement.style.display = 'block';
     this.TabNotesGridStatus = true;
     // this.editnoteform.nativeElement.style.display = 'none';

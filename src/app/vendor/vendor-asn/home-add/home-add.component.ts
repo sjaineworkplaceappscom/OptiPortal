@@ -17,11 +17,9 @@ import { ModuleName, ComponentName } from 'src/app/enums/enums';
 })
 export class HomeAddComponent implements OnInit {
 
-
-
   showLoader: boolean = false;
   minValidDate = new Date();
-  vendorASNModel: VendorASNModel = new VendorASNModel();;
+  vendorASNModel: VendorASNModel = new VendorASNModel();
   public addSub: ISubscription;
   constructor(private commonService: Commonservice, private vendorOpenInvoiceService: VendorOIService, private toast: ToastService) { }
   @Input() currentSidebarInfo: CurrentSidebarInfo;
@@ -53,12 +51,11 @@ export class HomeAddComponent implements OnInit {
 
   mapASN(podata: any) {    
     this.vendorASNModel=new VendorASNModel();
-    
-    // this.vendorASNModel.DeliveryDate = DateTimeHelper.ParseDate(Date.now());
-    // this.vendorASNModel.ShipmentDate = DateTimeHelper.ParseDate(Date.now());    
+    if(podata!=null && podata != undefined){
     this.vendorASNModel.Vendor=podata.Vendor;    
     this.vendorASNModel.VendorCode=podata.VendorCode;    
     this.vendorASNModel.POReferenceNumber=podata.PONumber;
+  }  
 
   }
 

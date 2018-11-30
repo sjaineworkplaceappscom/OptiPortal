@@ -73,7 +73,7 @@ export class VendorPInvoiceNotesComponent implements OnInit {
   ];
 
   public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
-
+  lastnoteText:string;
   constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private toast: ToastService) {
   }
 
@@ -146,6 +146,7 @@ export class VendorPInvoiceNotesComponent implements OnInit {
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
     this.selectedNote = note;
+    this.lastnoteText = this.selectedNote.Notes;
     this.selectedNoteItem = { text: this.selectedNote.NoteText, value: this.selectedNote.NoteType };
   }
 
@@ -306,6 +307,7 @@ export class VendorPInvoiceNotesComponent implements OnInit {
   }
 
   closeUpdateNote(e) {
+    this.selectedNote.Notes = this.lastnoteText;
     GlobalResource.dirty = false;
     // this.notesgrid.nativeElement.style.display = 'block';
     this.TabNotesGridStatus = true;
