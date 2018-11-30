@@ -187,7 +187,7 @@ export class VendorService {
    */
   public UpdateVASNContent(request: VendorASNContentModel): Observable<any> {
     var data: any = {
-     // "ASNContentId": request.ASNContentId,
+      "ASNContentId": request.ASNContentId,
       "ASNId": request.ASNId,
       "LineNumber": request.LineNumber,
       "Item": request.Item,
