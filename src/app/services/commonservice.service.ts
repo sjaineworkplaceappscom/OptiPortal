@@ -70,6 +70,13 @@ export class Commonservice {
     this.isRigntSideBarOpenData.next(open);
   }
 
+  private selectedItemObserver=new BehaviorSubject<string>('');
+  currentSelectedItem=this.selectedItemObserver.asObservable();
+
+  public setSelectedItem(selectedItem:string){
+    this.selectedItemObserver.next(selectedItem);
+  }
+
 
   // SideBar Observer
   private sidebarSubject = new BehaviorSubject<CurrentSidebarInfo>(null);
@@ -202,7 +209,7 @@ export class Commonservice {
   refreshVASNListSubscriber = this.refreshVASNListSub.asObservable();
 
   public refreshVASNList(data: any) {
-    this.refreshVOIListSub.next(data);
+    this.refreshVASNListSub.next(data);
   }
   
 
@@ -211,8 +218,8 @@ export class Commonservice {
    refreshVASNContentListSubscriber = this.refreshVASNContentListSub.asObservable();
  
    public refreshVASNContentList(data: any) {
-     this.refreshVOIListSub.next(data);
+     this.refreshVASNContentListSub.next(data);
    }
-
+  
 
 }

@@ -11,6 +11,7 @@ import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info
 import { ComponentName, ModuleName } from '../../../enums/enums';
 import { Router } from '../../../../../node_modules/@angular/router';
 import * as $ from "jquery";
+import { GlobalResource } from '../../../helpers/global-resource';
 @Component({
   selector: 'app-vendor-po-header',
   templateUrl: './vendor-po-header.component.html',
@@ -92,7 +93,9 @@ export class VendorPoHeaderComponent implements OnInit {
   }
   createasn(e) {
     this.showLoader = true;
+
     $('#VASN').addClass('active');
+
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.VendorASNAdd;
     currentsideBarInfo.ModuleName = ModuleName.VendorASN;
@@ -100,8 +103,11 @@ export class VendorPoHeaderComponent implements OnInit {
     currentsideBarInfo.RequesterData = this.VPOModel;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
 
-    $('#opti_vpoID').removeClass('active'); 
+    $('#opti_vpoID').removeClass('active');
+    
+    this.commonService.setSelectedItem('vasnlist');
     this.router.navigate(['home/vendor/vasnlist']);
+    
     this.showLoader = false;
   }
 

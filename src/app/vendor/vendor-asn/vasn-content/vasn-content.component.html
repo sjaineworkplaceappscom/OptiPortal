@@ -35,57 +35,57 @@
                       <form class="k-form">
                         <label class="k-form-field">
                             <span class="opti_form-label">Line#</span>
-                            <input name="Line" type="text" class="k-textbox" [(ngModel)]="Line" />
+                            <input name="Line" type="text" class="k-textbox" [(ngModel)]="selectedVendorContentASNModel.LineNumber" />
                         </label>
 
                         <label class="k-form-field">
                             <span class="opti_form-label">Item</span>
-                            <input name="Item" type="text" class="k-textbox" [(ngModel)]="Item"  />
+                            <input name="Item" type="text" class="k-textbox" [(ngModel)]="selectedVendorContentASNModel.Item"  />
                         </label>
                 
                         <label class="k-form-field">
                             <span class="opti_form-label">Quantity</span>
-                            <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="Quantity"  />
+                            <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="selectedVendorContentASNModel.Quantity"  />
                         </label>
                   
                         <label class="k-form-field">
                             <span class="opti_form-label">Unit Price</span>
-                            <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="UnitPrice"  />
+                            <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="selectedVendorContentASNModel.UnitPrice"  />
                         </label>
                   
                         <label class="k-form-field">
                             <span class="opti_form-label">UOM</span>
-                            <input name="UOM" type="text" class="k-textbox" [(ngModel)]="UOM"  />
+                            <input name="UOM" type="text" class="k-textbox" [(ngModel)]="selectedVendorContentASNModel.UOM"  />
                         </label>
                   
                         <label class="k-form-field">
                             <span class="opti_form-label">Total Price</span>
-                            <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="TotalPrice"  />
+                            <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="selectedVendorContentASNModel.TotalPrice"  />
                         </label>
                   
                         <label class="k-form-field">
                             <span class="opti_form-label">Tax Code</span>
-                            <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="TaxCode"  />
+                            <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="selectedVendorContentASNModel.TaxCode"  />
                         </label>
                   
                         <label class="k-form-field">
                             <span class="opti_form-label">Ship-To Address</span>
-                            <textarea class="k-textarea" name="ShipToAddress"  [(ngModel)]="ShipToAddress" required>Please enter your Shipping Address</textarea>
+                            <textarea class="k-textarea" name="ShipToAddress"  [(ngModel)]="selectedVendorContentASNModel.ShipToAddress" required>Please enter your Shipping Address</textarea>
                         </label>
                   
                         <label class="k-form-field">
                             <span class="opti_form-label">Bill-To Address</span>
-                            <textarea class="k-textarea" name="BillToAddress" [(ngModel)]="BillToAddress" required>Please enter your Billing Address</textarea>
+                            <textarea class="k-textarea" name="BillToAddress" [(ngModel)]="selectedVendorContentASNModel.BillToAddress" required>Please enter your Billing Address</textarea>
                         </label>
                   
                         <label class="k-form-field">
                             <span class="opti_form-label">Delivery Date</span>
-                            <kendo-datepicker (valueChange)="valueChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="DeliveryDate" required [min]="minValidDate">
+                            <kendo-datepicker (valueChange)="valueChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="selectedVendorContentASNModel.DeliveryDate" required [min]="minValidDate">
                             </kendo-datepicker>
                         </label>
                   
                         <div class="text-right">
-                            <button type="button" class="k-button k-primary" (click)="updateContent()">Save</button>
+                            <button type="button" class="k-button k-primary" (click)="updateVASNContent()">Save</button>
                             <button type="button" class="k-button" (click)="back()">Cancel</button>
                         </div>
                         
@@ -151,9 +151,9 @@
                     </ng-template>
                     <!-- grid template end -->
 
-                    <kendo-grid-column field="Line" title="Line#" [width]="160" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column field="LineNumber" title="Line#" [width]="160" filter="numeric"></kendo-grid-column>
                     <kendo-grid-column field="Item" title="Item" [width]="140" ></kendo-grid-column>
-                    <kendo-grid-column field="Quantity" title="Quantity" [width]="150" filter="numeric" class="text-right"></kendo-grid-column>
+                    <kendo-grid-column field="Quantity" title="Quantity" [width]="150" filter="numeric" ></kendo-grid-column>
                     <kendo-grid-column field="UnitPrice" title="Unit Price" [width]="150" filter="numeric"></kendo-grid-column>
                     <kendo-grid-column field="UOM" title="UOM" [width]="150"></kendo-grid-column>
                     <kendo-grid-column field="TotalPrice" title="Total Price" [width]="150" filter="numeric"></kendo-grid-column>

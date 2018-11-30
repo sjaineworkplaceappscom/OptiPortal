@@ -180,4 +180,27 @@ export class VendorService {
     }
     return this.httpHelper.post(this.baseUrl + "vendorasncontent/add", data, null);
   }
+
+
+   /**
+   * Add Vendor ASN. need to change parameters
+   */
+  public UpdateVASNContent(request: VendorASNContentModel): Observable<any> {
+    var data: any = {
+     // "ASNContentId": request.ASNContentId,
+      "ASNId": request.ASNId,
+      "LineNumber": request.LineNumber,
+      "Item": request.Item,
+      "DeliveryDate": request.DeliveryDate,
+      "UnitPrice": request.UnitPrice,
+      "TotalPrice": request.TotalPrice,
+      "Quantity": request.Quantity,
+      "UOM": request.UOM,
+      "TaxCode": request.TaxCode,
+      "ShipToAddress": request.ShipToAddress,
+      "BillToAddress": request.BillToAddress,
+    }
+    debugger;
+    return this.httpHelper.put(this.baseUrl + "vendorasn/update", data, null);
+  }
 }

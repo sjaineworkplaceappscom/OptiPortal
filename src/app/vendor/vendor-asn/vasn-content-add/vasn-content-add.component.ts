@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { VendorService } from 'src/app/services/vendor/vendor.service';
 import { ToastService } from 'src/app/helpers/services/toast.service';
 import { VendorASNModel } from 'src/app/tempmodels/vendor/vendor-asn-model';
@@ -21,11 +21,13 @@ export class VasnContentAddComponent implements OnInit {
   vendorASNModel: VendorASNModel;
   public addSub:ISubscription;
   vendorASNContentModel: VendorASNContentModel;
+  showGridSubs: ISubscription;
+
   constructor(private commonService: Commonservice, private vendorService: VendorService, private toast: ToastService) { }
 
-  ngOnInit() {
-    debugger;
 
+  ngOnInit() {
+    console.log('ngon init');
     //get status of selected inquiry for disabling or enabling  forms
     let vendorDetail: string = localStorage.getItem("SelectedVASN");
     this.vendorASNModel = JSON.parse(vendorDetail);
@@ -33,7 +35,7 @@ export class VasnContentAddComponent implements OnInit {
     }
     this.setDefaultData();
   }
-
+ 
   /**
   * This method will reset the model and date object for add form.
   */
@@ -58,16 +60,14 @@ export class VasnContentAddComponent implements OnInit {
     this.vendorASNContentModel.UnitPrice = '';
   }
 
-  addContent(){
-    debugger;
+  addContentData(){
     this.showLoader = true;
     this.addSub = this.vendorService.AddVendorASNContent(this.vendorASNContentModel).subscribe(
       (data: any) => {
         this.showLoader = false;
         this.toast.showSuccess(AppMessages.VendorInvASNAdd);
-        //this.commonService.refreshVASNContentList(true);
+        this.commonService.refreshVASNContentList(true);
         localStorage.setItem("SelectedVASNContent", JSON.stringify(data));
-        this.openUpdateSideBar(data);
       },
       error => {
         console.log("Error: ", error)
@@ -86,5 +86,9 @@ export class VasnContentAddComponent implements OnInit {
     currentSidebarInfo.ComponentName = ComponentName.VendorASNUpdate;
     currentSidebarInfo.RequesterData = data
     this.commonService.setCurrentSideBar(currentSidebarInfo);
+  }
+
+  back(){
+    this.commonService.refreshVASNContentList(false);
   }
 }

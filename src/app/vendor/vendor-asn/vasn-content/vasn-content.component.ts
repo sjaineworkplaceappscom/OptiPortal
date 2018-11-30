@@ -10,6 +10,8 @@ import { Commonservice } from 'src/app/services/commonservice.service';
 import { VendorService } from 'src/app/services/vendor/vendor.service';
 import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { VendorASNContentModel } from 'src/app/tempmodels/vendor/vendor-asn-content-model';
+import { AppMessages } from 'src/app/helpers/app-messages';
 
 @Component({
   selector: 'app-vasn-content',
@@ -18,23 +20,25 @@ import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 })
 export class VasnContentComponent implements OnInit {
 
-  showGrid:boolean=true;
-  addContent:boolean = false;
-  editContent:boolean = false;
+  showGrid: boolean = true;
+  addContent: boolean = false;
+  editContent: boolean = false;
 
   imgPath = Configuration.imagePath;
   pageLimit;
-  pagination:boolean;
+  pagination: boolean;
 
   isMobile: boolean;
   isColumnFilterContentGrid: boolean = false;
   isColumnGroup: boolean = false;
   gridHeight: number;
   showLoader: boolean = false;
-  vendorASNModel:VendorASNModel;
+  vendorASNModel: VendorASNModel;
   public gridData: any[];
   getContentsub: ISubscription;
   refreshVASNContentlistSubs: ISubscription;
+  updateSub:ISubscription;
+  minValidDate:Date = new Date();
   constructor(private commonService: Commonservice, private vendorService: VendorService, private toast: ToastService) { }
 
 
@@ -49,64 +53,69 @@ export class VasnContentComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
   }
   // End UI Section
-  
+
 
   ngOnInit() {
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
-  
     // check mobile device
     this.isMobile = UIHelper.isMobile();
     //get status of selected inquiry for disabling or enabling  forms
     let vendorDetail: string = localStorage.getItem("SelectedVASN");
-    this.vendorASNModel=JSON.parse(vendorDetail);
+    this.vendorASNModel = JSON.parse(vendorDetail);
     
-    if (this.vendorASNModel != null && this.vendorASNModel != undefined) {
-    }
-
-    this.refreshVASNContentlistSubs = this.commonService.refreshVOIListSubscriber.subscribe(
+    this.refreshVASNContentlistSubs = this.commonService.refreshVASNContentListSubscriber.subscribe(
       data => {
-         if (data != undefined && data != null)
-        // this.getVASNList();
-        this.getVASNContentList(data);
-        });
-
-    // this.getContentList(id);
-    
+         if (!data) {
+          this.addContent = false;
+          this.editContent = false;
+          this.showGrid = true;
+        }
+        else {
+          this.addContent = false;
+          this.showGrid = true;
+          let vendorDetail: string = localStorage.getItem("SelectedVASN");
+          if (vendorDetail != null && vendorDetail != undefined) {
+            this.vendorASNModel = JSON.parse(vendorDetail);
+            var id = this.vendorASNModel.ASNId;
+            this.getVASNContentList(id);
+          }
+        }
+      });
+    this.getVASNContentList(this.vendorASNModel.ASNId);
   }
 
-   /**
-  * Method to get list of inquries from server.
-  */
- public getVASNContentList(id: string) {
-
-  this.showLoader = true;
-  this.getContentsub = this.vendorService.getVendorASNContentList(id).subscribe(
-    VASNContentData => {
-      if (VASNContentData != null && VASNContentData != undefined) {
-        this.gridData = JSON.parse(VASNContentData);
-        this.gridData.forEach(element => {
-          element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
-        });
+  /**
+ * Method to get list of inquries from server.
+ */
+  public getVASNContentList(id: string) {
+    this.showLoader = true;
+    this.getContentsub = this.vendorService.getVendorASNContentList(id).subscribe(
+      VASNContentData => {
+        if (VASNContentData != null && VASNContentData != undefined) {
+          this.gridData = JSON.parse(VASNContentData);
+          this.gridData.forEach(element => {
+            element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
+          });
+          this.showLoader = false;
+        }
+      },
+      error => {
+        this.showLoader = false;
+      },
+      () => {
         this.showLoader = false;
       }
-    },
-    error => {
-      this.showLoader = false;
-    },
-    () => {
-      this.showLoader = false;
-    }
-  );
-}
+    );
+  }
 
-  onFilterChange(checkBox:any,grid:GridComponent){
-    if(checkBox.checked==false){
+  onFilterChange(checkBox: any, grid: GridComponent) {
+    if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
 
-  clearFilter(grid:GridComponent){      
+  clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
   }
 
@@ -116,24 +125,55 @@ export class VasnContentComponent implements OnInit {
     this.showGrid = true;
   }
 
-  showContentForm(){
+  showContentForm() {
     this.showGrid = false;
     this.editContent = false;
     this.addContent = true;
   }
 
-  edit(e){
+  edit(e) {
     this.showGrid = false;
     this.addContent = false;
     this.editContent = true;
   }
-  
+
+  selectedVendorContentASNModel: VendorASNContentModel;
   openContentDetailOnSelection(selection) {
+    debugger;
     this.showGrid = false;
     this.addContent = false;
     this.editContent = true;
+    let selectedVASNContentItem = this.gridData[selection.index];
+    this.selectedVendorContentASNModel = selectedVASNContentItem;
     // Reset Selection.
-    selection.selectedRows=[];  
+    selection.selectedRows = [];
+  }
+
+  updateVASNContent() {
+    debugger; 
+  //  this.selectedVendorContentASNModel.DeliveryDate = DateTimeHelper.ParseToUTC(this.selectedVendorContentASNModel.DeliveryDate);
+    this.showLoader = true;
+    this.updateSub = this.vendorService.UpdateVASNContent(this.selectedVendorContentASNModel).subscribe(
+      (data: any) => {
+        //need to change
+        this.showLoader = false;
+        this.toast.showSuccess(AppMessages.VendorInvASNContentUpdated);
+        localStorage.setItem("SelectedVASNContent", JSON.stringify(data));
+        this.showGrid = true;
+        this.addContent = false;
+        this.editContent = false;
+      },
+      error => {
+        //alert("Something went wrong");
+        console.log("Error: ", error)
+        this.showLoader = false;
+      },
+      () => {
+        this.showLoader = false;
+        // this.closeRightSidebar();
+      }
+
+    );
   }
 
 }

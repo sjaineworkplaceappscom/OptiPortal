@@ -90,7 +90,7 @@ export class VasnHomeComponent implements OnInit {
         this.toast.showSuccess(AppMessages.VendorInvASNUpdate);
         this.commonService.refreshVASNList(true);
         localStorage.setItem("SelectedVASN",JSON.stringify(data));         
-      },
+    },
       error => {
         console.log("Error: ", error)
         this.showLoader=false;

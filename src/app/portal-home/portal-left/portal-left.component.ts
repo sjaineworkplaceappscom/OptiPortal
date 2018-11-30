@@ -21,8 +21,7 @@ export class PortalLeftComponent implements OnInit {
   constructor(private commonService: Commonservice, private router: Router,private confirmService:ConfirmDialog) { }
   selectedThemeColor: string = 'opticonstants.DEFAULTTHEMECOLOR';
   userType: number = 2;
-  //Already selected list in left panel
-  // selectedItem:string='item2';
+
   selectedItem: string;
 
   fruits = ["Banana", "Orange", "Apple", "Mango"];
@@ -36,6 +35,13 @@ export class PortalLeftComponent implements OnInit {
       // split, convert string into array string and return new array
     }
 
+    this.commonService.currentSelectedItem.subscribe(
+      data=> {
+        if(data!=null && data!=undefined){
+            this.selectedItem=data;
+        }
+      }
+    )
     
     this.commonService.currentNavigatedFromValue.subscribe(
       data => {
@@ -77,6 +83,7 @@ export class PortalLeftComponent implements OnInit {
 
 
  async listClick(event, module) {
+  if(this.selectedItem != module){
     $('.opti_left-nav-ul li').removeClass('active');
 
     // Check for unsaved data.
@@ -91,6 +98,7 @@ export class PortalLeftComponent implements OnInit {
      }
 
     this.selectedItem = module;
+     
 
     //if(module!='purchaseinquiry'){
     this.closeRightSidebar();
@@ -108,6 +116,7 @@ export class PortalLeftComponent implements OnInit {
 
     }
 
+  }
     
   }
 

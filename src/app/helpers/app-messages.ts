@@ -15,4 +15,6 @@ export class AppMessages {
     public static VendorInvContentUpdate: string = "Invoice content updated successfully";
     public static VendorInvASNUpdate: string = "ASN updated successfully";
     public static VendorInvASNAdd: string = "ASN added successfully";
+    public static VendorInvASNContentAdd: string = "ASN Content added successfully";
+    public static VendorInvASNContentUpdated: string = "ASN Content updated successfully";
 }
