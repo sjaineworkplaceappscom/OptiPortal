@@ -91,4 +91,14 @@ export class VasnContentAddComponent implements OnInit {
   back(){
     this.commonService.refreshVASNContentList(false);
   }
+
+   // unsubscribe all subscribers.
+   ngOnDestroy() {
+    if (this.addSub != undefined){
+      this.addSub.unsubscribe();
+    }
+    if (this.showGridSubs != undefined){
+      this.showGridSubs.unsubscribe();
+    }
+  }
 }

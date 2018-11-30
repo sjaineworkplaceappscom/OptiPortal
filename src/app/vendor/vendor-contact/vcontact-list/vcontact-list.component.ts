@@ -18,7 +18,7 @@ import { GridComponent } from '../../../../../node_modules/@progress/kendo-angul
 })
 export class VcontactListComponent implements OnInit {
 
-  
+
 
   imgPath = Configuration.imagePath;
 
@@ -124,8 +124,8 @@ export class VcontactListComponent implements OnInit {
     let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
     if (a == false) {
 
-      selection.selectedRows =selection.deselectedRows;
-      selection.index=selection.selectedRows[0];
+      selection.selectedRows = selection.deselectedRows;
+      selection.index = selection.selectedRows[0];
       return;
 
     }
@@ -146,8 +146,12 @@ export class VcontactListComponent implements OnInit {
 
 
   ngOnDestroy() {
-    if (this.getContractlistSubs != undefined)
+    if (this.getContractlistSubs != undefined) {
       this.getContractlistSubs.unsubscribe();
+    }
+    if (this.addSub != undefined) {
+      this.addSub.unsubscribe();
+    }
   }
 
 

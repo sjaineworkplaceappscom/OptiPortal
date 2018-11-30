@@ -18,7 +18,7 @@ import { VendorService } from 'src/app/services/vendor/vendor.service';
 })
 export class VasnListComponent implements OnInit {
 
-  constructor(private commonService:Commonservice,  private vendorService:VendorService) { }
+  constructor(private commonService: Commonservice, private vendorService: VendorService) { }
   imgPath = Configuration.imagePath;
   isMobile: boolean;
   isColumnFilter: boolean = false;
@@ -40,7 +40,7 @@ export class VasnListComponent implements OnInit {
   }
   // End UI Section
 
-  
+
   ngOnInit() {
     //$('#VASN').addClass('active');
     // Apply class on body start
@@ -56,9 +56,9 @@ export class VasnListComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
     this.refreshOIlistSubs = this.commonService.refreshVOIListSubscriber.subscribe(
       data => {
-         if (data != undefined && data != null)
-         this.getVASNList();
-        });
+        if (data != undefined && data != null)
+          this.getVASNList();
+      });
 
     this.getVASNList();
   }
@@ -69,37 +69,40 @@ export class VasnListComponent implements OnInit {
   public getInvoiceList() {
     this.showLoader = true;
     this.gridData = asnList;
-    setTimeout(()=>{    
+    setTimeout(() => {
       this.showLoader = false;
     }, 1000);
   }
 
-  onFilterChange(checkBox:any,grid:GridComponent) {
-    if(checkBox.checked==false){
+  onFilterChange(checkBox: any, grid: GridComponent) {
+    if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
 
-  clearFilter(grid:GridComponent){      
+  clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
   }
 
-  openASNDetailOnSelectASN(selection){
-    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName=ComponentName.VendorASNUpdate;
-    currentsideBarInfo.ModuleName=ModuleName.VendorASN;
-    currentsideBarInfo.SideBarStatus=true;    
+  openASNDetailOnSelectASN(selection) {
+
+    $('#opti_HomeTabASNID').click();
+
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName = ComponentName.VendorASNUpdate;
+    currentsideBarInfo.ModuleName = ModuleName.VendorASN;
+    currentsideBarInfo.SideBarStatus = true;
     let SelectedASN = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = SelectedASN;
     localStorage.setItem("SelectedVASN", JSON.stringify(SelectedASN));
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
-  addASNOnClickAdd(){
-    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName=ComponentName.VendorASNAdd;
-    currentsideBarInfo.ModuleName=ModuleName.VendorASN;
-    currentsideBarInfo.SideBarStatus=true;    
+  addASNOnClickAdd() {
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName = ComponentName.VendorASNAdd;
+    currentsideBarInfo.ModuleName = ModuleName.VendorASN;
+    currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
@@ -107,27 +110,35 @@ export class VasnListComponent implements OnInit {
   /**
   * Method to get list of inquries from server.
   */
- public getVASNList() {
-   
-  this.showLoader = true;
-  this.getOIlistSubs = this.vendorService.getVendorASNList().subscribe(
-    ASNData => {
-      if (ASNData != null && ASNData != undefined) {
-        this.gridData = JSON.parse(ASNData);
-        this.gridData.forEach(element => {
-          element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
-          element.ShipmentDate = DateTimeHelper.ParseDate(element.ShipmentDate);
-        });
+  public getVASNList() {
+
+    this.showLoader = true;
+    this.getOIlistSubs = this.vendorService.getVendorASNList().subscribe(
+      ASNData => {
+        if (ASNData != null && ASNData != undefined) {
+          this.gridData = JSON.parse(ASNData);
+          this.gridData.forEach(element => {
+            element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
+            element.ShipmentDate = DateTimeHelper.ParseDate(element.ShipmentDate);
+          });
+          this.showLoader = false;
+        }
+      },
+      error => {
         this.showLoader = false;
-      }
-    },
-    error => {
-      this.showLoader = false;
-    },
-    () => {
-      this.showLoader = false;
+      },
+      () => {
+        this.showLoader = false;
+      });
+  }
+  // unsubscribe all subscribers.
+  ngOnDestroy() {
+    if (this.getOIlistSubs != undefined) {
+      this.getOIlistSubs.unsubscribe();
     }
-  );
-}
+    if (this.refreshOIlistSubs != undefined) {
+      this.refreshOIlistSubs.unsubscribe();
+    }
+  }
 
 }

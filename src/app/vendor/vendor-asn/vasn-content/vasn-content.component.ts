@@ -150,7 +150,7 @@ export class VasnContentComponent implements OnInit {
   }
 
   updateVASNContent() {
-    debugger; 
+    
   //  this.selectedVendorContentASNModel.DeliveryDate = DateTimeHelper.ParseToUTC(this.selectedVendorContentASNModel.DeliveryDate);
     this.showLoader = true;
     this.updateSub = this.vendorService.UpdateVASNContent(this.selectedVendorContentASNModel).subscribe(
@@ -171,9 +171,20 @@ export class VasnContentComponent implements OnInit {
       () => {
         this.showLoader = false;
         // this.closeRightSidebar();
-      }
-
-    );
+      });
+  }
+  // unsubscribe all subscribers.
+  ngOnDestroy() {
+    if (this.getContentsub != undefined){
+      this.getContentsub.unsubscribe();
+    }
+    if (this.refreshVASNContentlistSubs != undefined){
+      this.refreshVASNContentlistSubs.unsubscribe();
+    }
+    if (this.updateSub != undefined){
+      this.updateSub.unsubscribe();
+    }
+      
   }
 
 }

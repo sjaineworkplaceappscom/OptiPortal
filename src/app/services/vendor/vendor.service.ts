@@ -200,7 +200,7 @@ export class VendorService {
       "ShipToAddress": request.ShipToAddress,
       "BillToAddress": request.BillToAddress,
     }
-    debugger;
-    return this.httpHelper.put(this.baseUrl + "vendorasn/update", data, null);
+     
+    return this.httpHelper.put(this.baseUrl + "vendorasncontent/update", data, null);
   }
 }
