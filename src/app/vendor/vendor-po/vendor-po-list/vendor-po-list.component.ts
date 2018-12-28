@@ -88,7 +88,6 @@ export class VendorPoListComponent implements OnInit {
               element.DueDate = DateTimeHelper.ParseDate(element.DueDate);   
               element.PONumber=element.PONumber.toString()        
           });
-          console.log(this.gridData);
           this.showLoader = false;
         }
       },

@@ -134,7 +134,6 @@ export class SalesQuotationsNotesComponent implements OnInit {
   }
   changeDiv(e){
     GlobalResource.dirty=true;
-      console.log('notes div changes');
   }
 
   /**

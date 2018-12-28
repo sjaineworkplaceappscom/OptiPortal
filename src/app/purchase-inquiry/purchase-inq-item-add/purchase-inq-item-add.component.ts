@@ -162,7 +162,6 @@ export class PurchaseInqItemAddComponent implements OnInit {
   showItemForm() {
     this.addItem = true;
     this.itemGrid = false;
-    console.log('show add item section');
     // this.addOperationInProgress=true;
   }
 

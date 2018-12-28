@@ -34,8 +34,6 @@ export class VendorPoHeaderComponent implements OnInit {
 
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-
-        console.log('vpou subs');
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           this.VPOModel = currentSidebarData.RequesterData;

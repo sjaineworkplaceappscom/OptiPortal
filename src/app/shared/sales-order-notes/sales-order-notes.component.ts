@@ -104,7 +104,6 @@ export class SalesOrderNotesComponent implements OnInit {
     this.addnotessub = this.sharedComponentService.AddSalesOrderNote(this.noteModel).subscribe(
       resp => {
         this.toast.showSuccess(AppMessages.NoteAddedSuccessMsg);
-        console.log("record added:")
       },
       error => {
         //alert("Something went wrong");
@@ -159,7 +158,6 @@ export class SalesOrderNotesComponent implements OnInit {
 
   changeDiv(e){
     GlobalResource.dirty=true;
-      console.log('notes div changes');
   }
   /**
    * Method to get list of inquries from server.

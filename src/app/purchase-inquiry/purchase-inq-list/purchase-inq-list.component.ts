@@ -185,7 +185,6 @@ export class PurchaseInqListComponent implements OnInit {
   }
   
    openPIDetail(selection,selectedInq) {
-    console.log('in openPIDetail');
      // Check for dirty confirmation from
     
  
@@ -206,11 +205,9 @@ export class PurchaseInqListComponent implements OnInit {
     localStorage.setItem("OperationType", OperationType.Update.toString());
     currentsideBarInfo.RequesterData = selectedIinquiry;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
-    console.log('b4 reset selection');
     // Reset Selection.
     selectedIinquiry='';
     selection.selectedRows = [];
-    console.log('after reset selection');
   } 
 
   onFilterChange(checkBox: any, grid: GridComponent) {

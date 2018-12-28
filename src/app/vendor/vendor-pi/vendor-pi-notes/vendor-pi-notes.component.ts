@@ -139,7 +139,7 @@ export class VendorPiNotesComponent implements OnInit {
   }
 
   lastSelectedNote:any;
-  openEditNoteView(e, note) {debugger;
+  openEditNoteView(e, note) {
     
     this.TabNotesGridStatus = this.TabAddNotesFormStatus = false;
     this.TabEditNotesFormStatus = true;
@@ -150,7 +150,7 @@ export class VendorPiNotesComponent implements OnInit {
     
   }
 
-  cancelEditNoteWindow(){debugger;
+  cancelEditNoteWindow(){
     this.selectedNote.Notes=this.lastnoteText;
   
     this.TabNotesGridStatus = true;
@@ -176,7 +176,6 @@ export class VendorPiNotesComponent implements OnInit {
 
   changeDiv(e){
       GlobalResource.dirty = true;
-      console.log('notes div changes');
   }
   
   submitNote(e) {

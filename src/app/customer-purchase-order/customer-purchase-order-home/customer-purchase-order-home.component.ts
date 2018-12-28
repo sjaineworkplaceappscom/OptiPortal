@@ -49,15 +49,12 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
     // apply width on opti_TabID
     this.getUserDetails();
     UIHelper.getWidthOfOuterTab();
-    console.log("on init cpoh");
     // Set sidebar data;
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        console.log("current side bar data:" + currentSidebarData)
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           this.customerPurchaseOrderModel = currentSidebarData.RequesterData;
-          console.log('ngOnInit'+currentSidebarData.RequesterData);
           if (this.customerPurchaseOrderModel != null) {
             this.callCustomerPurchaseOrderDetailAPI(this.customerPurchaseOrderModel.PurchaseOrderId);
           } else { }
@@ -79,9 +76,6 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
     this.customerName = userData[0].ParentName;
     this.customerCode = userData[0].ParentCode;
     this.loginUserType = userData[0].LoginUserType;    
-    console.log("customer name"+this.customerName);
-    console.log("customer code"+this.customerCode);
-    console.log("customer detail :"+userDetail);
   }
   /** 
    * call api for purchase inquiry detail.
@@ -169,6 +163,5 @@ closeRightSidebar() {
 }
 valueChange(value:any){    
   // GlobalResource.dirty=true;
-   console.log('change in datepicker value'); 
  }
 }

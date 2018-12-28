@@ -93,7 +93,6 @@ export class VpaymentListComponent implements OnInit {
               element.PaymentDate = DateTimeHelper.ParseDate(element.PaymentDate); 
               element.PaymentNumber=element.PaymentNumber.toString()        
           });
-          console.log(this.gridData);
           this.showLoader = false;
         }
       },

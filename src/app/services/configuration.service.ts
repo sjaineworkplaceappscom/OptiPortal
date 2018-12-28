@@ -13,9 +13,7 @@ export class ConfigurationService {
   public async congigure() {
 
     let configPath = environment.assetsPath+"config.json";//"../assets/config.json";
-    console.log(configPath);
     let res: any = await this.httpClient.get(configPath).toPromise();
-    console.log(res.baseServerAPIEndpoint)
     // assign values to class
     Configuration.baseServerAPIEndpoint = res.baseServerAPIEndpoint;
     Configuration.appVersion = res.appVersion;

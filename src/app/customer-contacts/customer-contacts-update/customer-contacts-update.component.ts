@@ -47,7 +47,6 @@ export class CustomerContactsUpdateComponent implements OnInit {
     
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        console.log('contact updatesubs subs');
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           this.contactModel = currentSidebarData.RequesterData;
@@ -131,12 +130,10 @@ private setDefaultData() {
   
   valueChange(value: any) {
     GlobalResource.dirty = true;
-    console.log('change in datepicker value');
 
   }
   changeDiv(e) {
     GlobalResource.dirty = true;
-    console.log('change in div value');
   }
 
   ngOnDestroy() {
