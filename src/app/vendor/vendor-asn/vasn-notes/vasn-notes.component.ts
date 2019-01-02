@@ -78,7 +78,6 @@ export class VasnNotesComponent implements OnInit {
      //get status of selected inquiry for disabling or enabling  forms
      let vendorDetail: string = localStorage.getItem("SelectedVASN");
      this.vendorASNModel=JSON.parse(vendorDetail);
-     debugger;
      if (this.vendorASNModel != null && this.vendorASNModel != undefined) {
      }
     

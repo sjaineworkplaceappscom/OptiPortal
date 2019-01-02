@@ -28,7 +28,7 @@ export class VasnListComponent implements OnInit {
   searchRequest: string = '';
   public gridData: any[];
   getOIlistSubs: ISubscription;
-  refreshOIlistSubs: ISubscription;
+  refreshVASNlistSubs: ISubscription;
   // UI Section
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -54,7 +54,7 @@ export class VasnListComponent implements OnInit {
     this.gridHeight = UIHelper.getMainContentHeight();
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-    this.refreshOIlistSubs = this.commonService.refreshVOIListSubscriber.subscribe(
+    this.refreshVASNlistSubs = this.commonService.refreshVASNListSubscriber.subscribe(
       data => {
         if (data != undefined && data != null)
           this.getVASNList();
@@ -136,8 +136,8 @@ export class VasnListComponent implements OnInit {
     if (this.getOIlistSubs != undefined) {
       this.getOIlistSubs.unsubscribe();
     }
-    if (this.refreshOIlistSubs != undefined) {
-      this.refreshOIlistSubs.unsubscribe();
+    if (this.refreshVASNlistSubs != undefined) {
+      this.refreshVASNlistSubs.unsubscribe();
     }
   }
 

@@ -139,7 +139,6 @@ export class VasnContentComponent implements OnInit {
 
   selectedVendorContentASNModel: VendorASNContentModel;
   openContentDetailOnSelection(selection) {
-    debugger;
     this.showGrid = false;
     this.addContent = false;
     this.editContent = true;

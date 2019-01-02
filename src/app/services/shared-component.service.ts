@@ -89,7 +89,6 @@ export class SharedComponentService {
 
   public getAtachmentList(id: string, type: number): Observable<any> {
     let url: string = this.baseUrl + "attachment/list/" + id + "/" + type;
-    debugger;
     return this.httpHelper.get(url, null);
   }
 

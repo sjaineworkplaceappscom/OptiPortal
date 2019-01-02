@@ -151,12 +151,10 @@ export class VendorPInvoiceNotesComponent implements OnInit {
   }
 
   valueChange(value: any) {
-    console.log('kendo dropdown changes');
     GlobalResource.dirty = true;
   }
   changeDiv(e) {
     GlobalResource.dirty = true;
-    console.log('notes div changes');
   }
 
   /**

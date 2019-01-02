@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,OnChanges } from '@angular/core';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 import { VendorASNModel } from '../../../tempmodels/vendor/vendor-asn-model';
 import { markParentViewsForCheckProjectedViews } from '../../../../../node_modules/@angular/core/src/view/util';
@@ -19,9 +19,12 @@ export class HomeAddComponent implements OnInit {
 
   showLoader: boolean = false;
   minValidDate = new Date();
+  shipmentDate = new Date();
+  deleiveryDate = new Date();
   vendorASNModel: VendorASNModel = new VendorASNModel();
   public addSub: ISubscription;
-  constructor(private commonService: Commonservice, private vendorOpenInvoiceService: VendorOIService, private toast: ToastService) { }
+  constructor(private commonService: Commonservice, private vendorOpenInvoiceService: VendorOIService, private toast: ToastService) {    
+   }
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
   ngOnInit() {
@@ -69,16 +72,19 @@ export class HomeAddComponent implements OnInit {
   }
 
   ngOnChange() {
+   
   }
 
   public AddASN() {
     this.showLoader = true;
+    this.vendorASNModel.DeliveryDate=this.deleiveryDate;
+    this.vendorASNModel.ShipmentDate=this.shipmentDate;
     this.addSub = this.vendorOpenInvoiceService.AddASN(this.vendorASNModel).subscribe(
       (data: any) => {
         this.showLoader = false;
         this.toast.showSuccess(AppMessages.VendorInvASNContentAdd);
-        this.commonService.refreshVASNContentList(true);
-        localStorage.setItem("SelectedVASNContent", JSON.stringify(data));
+        this.commonService.refreshVASNList(true);
+        localStorage.setItem("SelectedVASN", JSON.stringify(data));
         this.openUpdateSideBar(data);
       },
       error => {

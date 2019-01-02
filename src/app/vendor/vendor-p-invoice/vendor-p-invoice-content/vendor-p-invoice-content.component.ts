@@ -68,7 +68,6 @@ export class VendorPInvoiceContentComponent implements OnInit {
     }
     this.getContentList(id);
     this.showGridSubs = this.commonService.closeAddFormShowGridSubscriber.subscribe(data => {
-      console.log('event received at content list');
       if (!data) {
         this.addContent = false;
         this.showGrid = true;

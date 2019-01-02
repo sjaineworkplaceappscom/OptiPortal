@@ -73,7 +73,6 @@ private setDefaultData() {
 
 valueChange(value:any){    
   GlobalResource.dirty=true;
-  console.log('change in datepicker value'); 
 }
 
 changeDiv(e) {
