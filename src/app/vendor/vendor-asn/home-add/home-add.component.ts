@@ -35,8 +35,8 @@ export class HomeAddComponent implements OnInit {
   */
   private setDefaultData() {
     this.vendorASNModel = new VendorASNModel();
-    this.vendorASNModel.DeliveryDate = new Date();//DateTimeHelper.ParseToUTC(new Date());
-    this.vendorASNModel.ShipmentDate = new Date();  //DateTimeHelper.ParseToUTC(new Date());;
+    this.vendorASNModel.DeliveryDate = DateTimeHelper.ParseToUTC(new Date());
+    this.vendorASNModel.ShipmentDate = DateTimeHelper.ParseToUTC(new Date());;
     this.vendorASNModel.Discount = '';
     this.vendorASNModel.ASNId = undefined;
     this.vendorASNModel.Freight = '';
