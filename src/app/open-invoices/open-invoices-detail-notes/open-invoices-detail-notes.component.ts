@@ -35,7 +35,7 @@ export class OpenInvoicesDetailNotesComponent implements OnInit {
  selectedNote: any = {};
  showLoader: boolean = false;
  notesSearchValue: string = ""
-
+ lastnoteText:string;
 
  public noteItemsData: any[];
 

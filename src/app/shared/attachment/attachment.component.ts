@@ -209,9 +209,7 @@ export class AttachmentComponent implements OnInit {
       () => {
         this.showLoader = false;
       }
-
     );
-
   }
   /**
   * call api for update status of inquiry. 

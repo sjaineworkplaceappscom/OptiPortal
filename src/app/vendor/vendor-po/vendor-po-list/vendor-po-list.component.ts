@@ -120,7 +120,8 @@ export class VendorPoListComponent implements OnInit {
       selection.index=selection.selectedRows[0].index;
       return;
     }
-    let SelectedInquiry = this.gridData[selection.index];
+    let SelectedInquiry = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+    //let SelectedInquiry = this.gridData[selection.index];
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.VendorPurchaseOrderDetail;
     currentsideBarInfo.ModuleName = ModuleName.VendorPurchaseOrder;

@@ -162,8 +162,8 @@ refreshCPOListSubs: ISubscription;
     currentsideBarInfo.ModuleName = ModuleName.CustomerPurchaseOrder;
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
-
-    let selectedCustomerPurchaseOrder = this.gridData[selection.index];
+    let selectedCustomerPurchaseOrder = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+    //let selectedCustomerPurchaseOrder = this.gridData[selection.index];
     
     localStorage.setItem("SelectedCustomerPurchaseOrder", JSON.stringify(selectedCustomerPurchaseOrder));
     currentsideBarInfo.RequesterData = selectedCustomerPurchaseOrder;
