@@ -129,7 +129,8 @@ export class VendorPouListComponent implements OnInit {
 
   openVPOUDetailOnSelectVPIOrder(selection) {
     $('#opti_HomeTabVPOID').click(); 
-    let SelectedOrder = this.gridData[selection.index];
+    let SelectedOrder = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+   // let SelectedOrder = this.gridData[selection.index];
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.VendorPurchaseOrderDetail;
     currentsideBarInfo.ModuleName = ModuleName.VendorPurchaseOrder;

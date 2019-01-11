@@ -109,7 +109,8 @@ export class SalesOrderListComponent implements OnInit {
     currentsideBarInfo.ModuleName = ModuleName.SalesOrder;
     currentsideBarInfo.SideBarStatus = true;
     // Reset Selection.
-    let selectedSalesOrder = this.gridData[selection.index];
+    let selectedSalesOrder = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+    //let selectedSalesOrder = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = selectedSalesOrder;
     localStorage.setItem("SelectedSalesOrder", JSON.stringify(selectedSalesOrder));
     this.commonService.setCurrentSideBar(currentsideBarInfo);

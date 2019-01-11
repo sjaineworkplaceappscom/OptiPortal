@@ -138,7 +138,8 @@ export class CustomerContractsListComponent implements OnInit {
     currentsideBarInfo.ModuleName = ModuleName.CustomerContracts;
 
     // set selected contract in local storage
-    let SelectedContract = this.gridData[selection.index];
+    let SelectedContract = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+    //let SelectedContract = this.gridData[selection.index];
     localStorage.setItem("SelectedContract", JSON.stringify(SelectedContract));
 
     currentsideBarInfo.SideBarStatus = true;

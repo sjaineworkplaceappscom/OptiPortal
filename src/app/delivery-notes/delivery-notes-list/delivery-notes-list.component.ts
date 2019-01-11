@@ -134,8 +134,8 @@ export class DeliveryNotesListComponent implements OnInit {
     currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
     currentsideBarInfo.SideBarStatus = true;
     // Reset Selection.
-    
-    let selectedDeliveryNote = this.gridData[selection.index];
+    let selectedDeliveryNote = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+  //  let selectedDeliveryNote = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = selectedDeliveryNote;
     localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedDeliveryNote));
     this.commonService.setCurrentSideBar(currentsideBarInfo);

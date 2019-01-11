@@ -135,8 +135,8 @@ export class CustomerContactsListComponent implements OnInit {
     currentsideBarInfo.ModuleName = ModuleName.CustomerContacts;
     currentsideBarInfo.SideBarStatus = true;
     // Reset Selection.
-
-    let selectedContact = this.gridData[selection.index];
+    let selectedContact = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+   // let selectedContact = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = selectedContact;
     localStorage.setItem("SelectedContact", JSON.stringify(selectedContact));
     this.commonService.setCurrentSideBar(currentsideBarInfo);

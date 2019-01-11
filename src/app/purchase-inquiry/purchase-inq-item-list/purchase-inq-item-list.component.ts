@@ -140,6 +140,7 @@ export class PurchaseInqItemListComponent implements OnInit {
     public onItemGridDataSelection(selection, status) {
       
       //fatch and parse row value.
+      
       const selectedData = this.gridItemsData[0];
       
       this.purchaseItemsModel = JSON.parse(JSON.stringify(selectedData));

@@ -105,13 +105,14 @@ export class SalesQuotationsListComponent implements OnInit {
 
   openSalesQuotationDetailOnSelection(selection) {
     $('#opti_HomeTabSalesQuotationID').click(); 
+    
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.UpdateSales;
     currentsideBarInfo.ModuleName = ModuleName.Sales;
     currentsideBarInfo.SideBarStatus = true;
     // Reset Selection.
-    
-    let selectedSalesQuotation = this.gridData[selection.index];
+    let selectedSalesQuotation = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+    //let selectedSalesQuotation = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = selectedSalesQuotation;
     localStorage.setItem("SelectedSalesQuotation", JSON.stringify(selectedSalesQuotation));
     this.commonService.setCurrentSideBar(currentsideBarInfo);

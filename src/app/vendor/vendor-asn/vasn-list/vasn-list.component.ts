@@ -92,7 +92,8 @@ export class VasnListComponent implements OnInit {
     currentsideBarInfo.ComponentName = ComponentName.VendorASNUpdate;
     currentsideBarInfo.ModuleName = ModuleName.VendorASN;
     currentsideBarInfo.SideBarStatus = true;
-    let SelectedASN = this.gridData[selection.index];
+    let SelectedASN = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+    //let SelectedASN = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = SelectedASN;
     localStorage.setItem("SelectedVASN", JSON.stringify(SelectedASN));
     this.commonService.setCurrentSideBar(currentsideBarInfo);

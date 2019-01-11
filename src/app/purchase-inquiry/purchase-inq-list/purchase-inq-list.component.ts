@@ -168,8 +168,9 @@ export class PurchaseInqListComponent implements OnInit {
    * @param status  
    */
   public async openInqueryDetailOnSelectInquery(selection) {
-    
-    let selectedIinquiry = this.gridData[selection.index];
+   
+    let selectedIinquiry = selection.selectedRows[0].dataItem;
+    //let selectedIinquiry = this.gridData[selection.index];
      let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
      
      if (a == false) {

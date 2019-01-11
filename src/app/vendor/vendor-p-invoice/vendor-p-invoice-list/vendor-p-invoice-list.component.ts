@@ -107,7 +107,8 @@ export class VendorPInvoiceListComponent implements OnInit {
     currentsideBarInfo.ComponentName = ComponentName.VendorInvoiceUpdate;
     currentsideBarInfo.ModuleName = ModuleName.VendorInvoice;
     currentsideBarInfo.SideBarStatus = true;
-    let selectedOI = this.gridData[selection.index];
+    let selectedOI = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+    //let selectedOI = this.gridData[selection.index];
     currentsideBarInfo.RequesterData = selectedOI;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     localStorage.setItem("SelectedVOI", JSON.stringify(selectedOI));

@@ -125,7 +125,8 @@ export class VpaymentListComponent implements OnInit {
       selection.index=selection.selectedRows[0].index;
       return;
     }
-    let SelectedPayment = this.gridData[selection.index];
+    let SelectedPayment = selection.selectedRows[0].dataItem;
+    //let SelectedPayment = this.gridData[selection.index];
     let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName=ComponentName.VendorPaymentDetail;
     currentsideBarInfo.ModuleName=ModuleName.VendorPayments;

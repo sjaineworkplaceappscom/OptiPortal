@@ -139,7 +139,7 @@ export class VasnContentComponent implements OnInit {
 
   selectedVendorContentASNModel: VendorASNContentModel;
   openContentDetailOnSelection(selection) {
-    debugger;
+    
     this.showGrid = false;
     this.addContent = false;
     this.editContent = true;
@@ -163,7 +163,7 @@ export class VasnContentComponent implements OnInit {
         this.addContent = false;
         this.editContent = false;
       },
-      error => {
+      error => { 
         //alert("Something went wrong");
         console.log("Error: ", error)
         this.showLoader = false;
@@ -175,6 +175,7 @@ export class VasnContentComponent implements OnInit {
   }
   // unsubscribe all subscribers.
   ngOnDestroy() {
+
     if (this.getContentsub != undefined){
       this.getContentsub.unsubscribe();
     }

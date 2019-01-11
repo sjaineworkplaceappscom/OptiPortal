@@ -113,7 +113,8 @@ export class OpenInvoicesListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus = true;
     
     // Reset Selection.
-     let selectedOpenInvoice = this.gridData[selection.index];
+    let selectedOpenInvoice = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+    // let selectedOpenInvoice = this.gridData[selection.index];
      currentsideBarInfo.RequesterData = selectedOpenInvoice;
      localStorage.setItem("SelectedOpenInvoice", JSON.stringify(selectedOpenInvoice));
      this.commonService.setCurrentSideBar(currentsideBarInfo);
