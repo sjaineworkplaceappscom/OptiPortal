@@ -112,7 +112,6 @@ export class VendorPInvoiceListComponent implements OnInit {
     currentsideBarInfo.RequesterData = selectedOI;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     localStorage.setItem("SelectedVOI", JSON.stringify(selectedOI));
-    console.log(currentsideBarInfo.ComponentName);
   }
 
   /**

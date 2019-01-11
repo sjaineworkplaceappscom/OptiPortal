@@ -79,7 +79,6 @@ export class PurchaseInqUpdateComponent implements OnInit {
     // }
 
     let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
-    console.log('after leave dialog boolean:'+a);
 
     if(a==false){
       return;

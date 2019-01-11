@@ -19,7 +19,6 @@ export class VendorPiDetailComponent implements OnInit {
   // tab function
  async openTab(evt, tabName) {
     let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
-    console.log('after leave dialog boolean:'+a);
 
    if(a==false){
      return;

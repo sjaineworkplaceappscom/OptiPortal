@@ -59,7 +59,6 @@ export class VcontactListComponent implements OnInit {
   public gridData: any[];
   refreshContactListSubs: ISubscription;
   ngOnInit() {
-    console.log('list on init');
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
@@ -96,7 +95,6 @@ export class VcontactListComponent implements OnInit {
   * Method to get list of inquries from server.
   */
   public getCustomerContactsList() {
-    console.log('get cust list');
     this.showLoader = true;
     this.getContactlistSubs = this.contactService.getCustomerContactList().subscribe(
       data => {

@@ -168,7 +168,6 @@ refreshCPOListSubs: ISubscription;
     localStorage.setItem("SelectedCustomerPurchaseOrder", JSON.stringify(selectedCustomerPurchaseOrder));
     currentsideBarInfo.RequesterData = selectedCustomerPurchaseOrder;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
-    console.log('b4 reset selection');
     // Reset Selection.
     selection.selectedRows = [];
 

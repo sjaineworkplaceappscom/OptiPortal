@@ -27,7 +27,6 @@ export class VasnContentAddComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log('ngon init');
     //get status of selected inquiry for disabling or enabling  forms
     let vendorDetail: string = localStorage.getItem("SelectedVASN");
     this.vendorASNModel = JSON.parse(vendorDetail);

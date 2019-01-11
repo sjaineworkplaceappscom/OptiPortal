@@ -4,69 +4,96 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-block">
-            <form class="k-form">
-
+            <form class="k-form"  #addASNForm="ngForm">
               <label class="k-form-field">
                   <span class="opti_form-label">ASN#</span>
                   <input name="ASN" type="text" [(ngModel)]="vendorASNModel.ASNId" class="k-textbox" disabled/>
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">PO Ref.#</span>
-                  <input name="PORef" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.POReferenceNumber"  />
+                  <span class="opti_form-label">PO Ref.#  
+                      <span *ngIf="PORef.errors && (PORef.dirty || PORef.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter PO refrence number.
+                </span></span>
+                  <input name="PORef" type="text" required #PORef=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.POReferenceNumber"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Vendor</span>
-                  <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.Vendor"  />
+                  <span class="opti_form-label">Vendor
+                        <span *ngIf="Vendor.errors && (Vendor.dirty || Vendor.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your vendor name.
+                            </span>
+                  </span>
+                  <input name="Vendor" type="text" required #Vendor=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.Vendor"  />
               </label>
 
               <label class="k-form-field">
                   <span class="opti_form-label">Shipment Date</span>
-                  <kendo-datepicker (valueChange)="valueShipmentChange($event)" name="ShipmentDate" [format]="'dd MMM yy'" [(ngModel)]="vendorASNModel.ShipmentDate" required [min]="minValidDate">
-                  </kendo-datepicker>
-     
+                  <!-- <kendo-datepicker (valueChange)="valueShipmentChange($event)" name="ShipmentDate" [format]="'dd MMM yy'" [(ngModel)]="vendorASNModel.ShipmentDate" required [min]="minValidDate"> -->
+
+                    <kendo-datepicker  name="ShipmentDate" [format]="'dd MMM yy'" [(ngModel)]="shipmentDate" required [min]="minValidDate">  
+                        
+                </kendo-datepicker>
               </label>
 
               <label class="k-form-field">
                 <span class="opti_form-label">Delivery Date</span>
-                <kendo-datepicker (valueChange)="valueDeliveryChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="vendorASNModel.DeliveryDate" required [min]="minValidDate">
+                <kendo-datepicker (valueChange)="valueDeliveryChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="deleiveryDate" required [min]="minValidDate">
                 </kendo-datepicker>
             </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Way-Bill#</span>
-                  <input name="WayBill" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.WayBillNumber"  />
+                  <span class="opti_form-label">Way-Bill#
+                        <span *ngIf="WayBill.errors && (WayBill.dirty || WayBill.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your way bill number.
+                            </span>
+                  </span>
+                  <input name="WayBill" type="text" required #WayBill=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.WayBillNumber"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Tracking#</span>
-                  <input name="Tracking" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.TrackingNumber"  />
+                  <span class="opti_form-label">Tracking#
+                        <span *ngIf="Tracking.errors && (Tracking.dirty || Tracking.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your tracking number.
+                            </span>
+                  </span>
+                  <input name="Tracking" type="text"  required #Tracking=ngModel  class="k-textbox" [(ngModel)]="vendorASNModel.TrackingNumber"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Price</span>
-                  <input name="Price" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.Price"  />
+                  <span class="opti_form-label">Price
+                        <span *ngIf="Price.errors && (Price.dirty || Price.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your price.
+                            </span>
+                  </span>
+                  <input name="Price" type="text" required #Price=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.Price"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Tax</span>
-                  <input name="Tax" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.Tax"  />
+                  <span class="opti_form-label">Tax
+                        <span *ngIf="Tax.errors && (Tax.dirty || Tax .touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your tax.
+                            </span>
+                  </span>
+                  <input name="Tax" type="text" required  #Tax=ngModel  class="k-textbox" [(ngModel)]="vendorASNModel.Tax"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Freight</span>
-                  <input name="Freight" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.Freight"  />
+                  <span class="opti_form-label">Freight
+                        <span *ngIf="Freight.errors && (Freight.dirty || Freight.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your freight.
+                            </span>
+                  </span>
+                  <input name="Freight" type="text" required  #Freight=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.Freight"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Discount</span>
-                  <input name="Discount" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.Discount"  />
+                  <span class="opti_form-label">Discount
+                        <span *ngIf="Discount.errors && (Discount.dirty || Discount.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your discount.
+                            </span>
+                  </span>
+                  <input name="Discount" type="text"  required  #Discount=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.Discount"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Total Price</span>
-                  <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="vendorASNModel.TotalPrice"  />
+                  <span class="opti_form-label">Total Price
+                        <span *ngIf="TotalPrice.errors && (TotalPrice.dirty || TotalPrice.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your total price.
+                            </span>
+                  </span>
+                  <input name="TotalPrice" type="text"  required  #TotalPrice=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.TotalPrice"  />
               </label>
 
               <div class="text-right">

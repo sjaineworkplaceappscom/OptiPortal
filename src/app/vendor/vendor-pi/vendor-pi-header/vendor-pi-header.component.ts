@@ -30,12 +30,9 @@ export class VendorPiHeaderComponent implements OnInit {
   constructor(private commonService: Commonservice, private vendorService:VendorService) { }
 
   ngOnInit() {
-     console.log("vendor pi header init");
      
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        
-        console.log('vpiu subs');
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           this.VPIModel = currentSidebarData.RequesterData;
