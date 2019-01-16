@@ -79,7 +79,7 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
     // Check Mobile device
     this.isMobile = UIHelper.isMobile();
      this.advanceShipmentNotesListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'))
-     this.selectedASNNoteId = this.advanceShipmentNotesListModel.DeliveryNumber;
+     this.selectedASNNoteId = this.advanceShipmentNotesListModel.ASNId;
      this.getAdvanceShipmentNotesList(this.selectedASNNoteId.toString(), CustomerEntityType.AdvanceShipmentNote);
     
      //this.getAdvanceShipmentNotesList1();
