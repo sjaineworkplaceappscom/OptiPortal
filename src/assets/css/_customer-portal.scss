@@ -44,6 +44,26 @@ app-customer-purchase-order-attachment{
   }
 }
 
+body.opti_body-sales-order{
+  #opti_DeliveryNotesListID kendo-grid{
+      margin-top: 8px;
+  }
+  
+  app-delivery-notes-list {
+    kendo-grid-toolbar{
+      .opti_common-search-form,
+      .opti_show-hide-grid-column-filter .k-form-field.float-left:last-child{
+        display: none;
+      }
+    }
+    .opti_loader.opti_loader-module-grid-list{
+      height: calc(100vh - 140px) !important;
+      width: calc(100% - 30px) !important;
+    } 
+  } 
+  
+}
+
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////some common css end/////////////////////
 /////////////////////////////////////////////////////////////////////

@@ -10,7 +10,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { OpenInvoiceService } from '../../services/open-invoice.service';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
-
+import * as $ from "jquery";
 @Component({
   selector: 'app-open-invoices-detail-attachment',
   templateUrl: './open-invoices-detail-attachment.component.html',

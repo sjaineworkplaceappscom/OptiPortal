@@ -8,7 +8,10 @@ body.opti_body-vendor{
     #opti_InvoiceContentID kendo-grid,
     #opti_PaymentDetailAttchment kendo-grid,
     #opti_PaymentNotesID kendo-grid,
-    #opti_vASNUpdateID kendo-grid{
+    #opti_vASNUpdateID kendo-grid,
+    #opti_vpiDetailContentID kendo-grid,
+    #opti_vpoDetailContentID kendo-grid,
+    #opti_vpiDetailNoteID kendo-grid{
         margin-top: 8px;
     }
 }

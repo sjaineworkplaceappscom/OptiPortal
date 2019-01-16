@@ -13,6 +13,9 @@ import { Configuration } from 'src/app/helpers/Configuration';
   styleUrls: ['./vendor-pi-content.component.scss']
 })
 export class VendorPiContentComponent implements OnInit {
+
+  imgPath = Configuration.imagePath;
+
   displayDateformat:string=Configuration.getDisplayDateFormat(true);
 
   VPIModel: VendorPurchaseInquiryModel = new VendorPurchaseInquiryModel();

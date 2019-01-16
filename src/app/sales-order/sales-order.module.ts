@@ -14,6 +14,8 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 import { SharedModule } from '../shared/shared.module';
+import { SalesOrderDetailDeliveryNotesComponent } from './sales-order-detail-delivery-notes/sales-order-detail-delivery-notes.component';
+import { DeliveryNotesModule } from '../delivery-notes/delivery-notes.module';
 
 @NgModule({
   imports: [
@@ -26,10 +28,11 @@ import { SharedModule } from '../shared/shared.module';
     AngularSvgIconModule,
     PerfectScrollbarModule,
     DropDownsModule,
-    SharedModule
+    SharedModule,
+    DeliveryNotesModule
   
   ],
-  declarations: [SalesOrderListComponent, SalesOrderDetailComponent, SalesOrderDetailHomeComponent, SalesOrderDetailContentComponent, SalesOrderDetailAttachmentComponent],
+  declarations: [SalesOrderListComponent, SalesOrderDetailComponent, SalesOrderDetailHomeComponent, SalesOrderDetailContentComponent, SalesOrderDetailAttachmentComponent, SalesOrderDetailDeliveryNotesComponent],
   exports:[SalesOrderListComponent, SalesOrderDetailComponent]
 })
 export class SalesOrderModule { }

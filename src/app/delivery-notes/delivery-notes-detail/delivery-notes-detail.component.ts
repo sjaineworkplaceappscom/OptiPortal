@@ -33,7 +33,10 @@ export class DeliveryNotesDetailComponent implements OnInit {
   ngOnInit() {
     this.shipMentNotes = GlobalResource.NavigateFromAdvanseShipmentNotes ;
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
+    setTimeout(()=>{
+      UIHelper.getWidthOfOuterTab();
+    }, 500);
   }
 
 }

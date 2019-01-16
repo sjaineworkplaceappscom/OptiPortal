@@ -13,6 +13,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { DeliveryNoteListModel } from '../../tempmodels/delivery-note-list-model';
 import { Configuration } from '../../helpers/Configuration';
 import { GlobalResource } from '../../helpers/global-resource';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -46,7 +47,11 @@ export class DeliveryNotesListComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply grid height
-    this.gridHeight = UIHelper.getMainContentHeight();
+    if(this.selectedItem=='salesorder'){ //when user opens it form sales order
+      this.gridHeight = UIHelper.getMainContentHeight()-67;
+    }else{
+      this.gridHeight = UIHelper.getMainContentHeight();
+    }
     // check mobile device
     this.isMobile = UIHelper.isMobile();
     this.getPaginationAttributes();
@@ -55,22 +60,37 @@ export class DeliveryNotesListComponent implements OnInit {
 
   
 
-  constructor(private commonService:Commonservice,private deliveryNotesService: DeliveryNotesService) { }
+  constructor(private router: Router,private commonService:Commonservice,private deliveryNotesService: DeliveryNotesService) { }
 
   public gridData: any[];
+  selectedItem;
 
   ngOnInit() {
 
     GlobalResource.NavigateFromAdvanseShipmentNotes = false;
 
     // Apply class on body start
-    const element = document.getElementsByTagName("body")[0];
-    element.className = "";
-    element.classList.add("opti_body-delivery-notes");
-    element.classList.add("opti_body-main-module");
+
+    let partsOfUrl = this.router.url.split('/');
+    this.selectedItem = partsOfUrl[partsOfUrl.length - 1];
+    console.log(this.selectedItem);
+
+    if(this.selectedItem!='salesorder'){
+      const element = document.getElementsByTagName("body")[0];
+      element.className = "";
+      element.classList.add("opti_body-delivery-notes");
+      element.classList.add("opti_body-main-module");
+    }
+
+    
     // Apply class on body end
     // apply grid height
-    this.gridHeight = UIHelper.getMainContentHeight();
+    if(this.selectedItem=='salesorder'){
+      this.gridHeight = UIHelper.getMainContentHeight()-67;
+    }else{
+      this.gridHeight = UIHelper.getMainContentHeight();
+    }
+    
     // check mobile device
     this.isMobile = UIHelper.isMobile();
     this.getPaginationAttributes();
@@ -127,21 +147,42 @@ export class DeliveryNotesListComponent implements OnInit {
   }
 
   openDeliveryNotesDetailOnSelection(selection){ 
-    $('#opti_HomeTabDeliveryNotesID').click(); 
 
-    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
-    currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
-    currentsideBarInfo.SideBarStatus = true;
-    // Reset Selection.
-    let selectedDeliveryNote = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
-  //  let selectedDeliveryNote = this.gridData[selection.index];
-    currentsideBarInfo.RequesterData = selectedDeliveryNote;
-    localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedDeliveryNote));
-    this.commonService.setCurrentSideBar(currentsideBarInfo);
+    if(this.selectedItem=='salesorder'){
+     // alert('hello');$('#VASN').addClass('active');
+     $('#VASN').addClass('active');
+      let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+      currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
+      currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
+      currentsideBarInfo.SideBarStatus = true;
+      // Reset Selection.
+      let selectedDeliveryNote = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+    //  let selectedDeliveryNote = this.gridData[selection.index];
+      currentsideBarInfo.RequesterData = selectedDeliveryNote;
+      localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedDeliveryNote));
+      this.commonService.setCurrentSideBar(currentsideBarInfo);
+      $('#opti_vpoID').removeClass('active');
+      this.commonService.setSelectedItem('deliverynotes');
+    this.router.navigate(['../deliverynotes']);
+      // Reset Selection.
+      selection.selectedRows=[]; 
+    }else{
+      $('#opti_HomeTabDeliveryNotesID').click(); 
 
-    // Reset Selection.
-    selection.selectedRows=[]; 
+      let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+      currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
+      currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
+      currentsideBarInfo.SideBarStatus = true;
+      // Reset Selection.
+      let selectedDeliveryNote = selection.selectedRows[0].dataItem;//this is the correct way to get data from grid on selection.
+    //  let selectedDeliveryNote = this.gridData[selection.index];
+      currentsideBarInfo.RequesterData = selectedDeliveryNote;
+      localStorage.setItem("SelectedDeliveryNote", JSON.stringify(selectedDeliveryNote));
+      this.commonService.setCurrentSideBar(currentsideBarInfo);
+
+      // Reset Selection.
+      selection.selectedRows=[]; 
+    }
   }
 
   ngOnDestroy() {

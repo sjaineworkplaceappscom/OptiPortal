@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { VendorService } from 'src/app/services/vendor/vendor.service';
 import { VendorPOModel } from 'src/app/tempmodels/vendor/vendor-po-model';
 import { ISubscription } from 'rxjs/Subscription';
 import { VendorPOContentModel } from 'src/app/tempmodels/vendor/vendor-po-content-model';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { UIHelper } from 'src/app/helpers/ui.helpers';
+import { Configuration } from 'src/app/helpers/Configuration';
 
 @Component({
   selector: 'app-vendor-po-content',
@@ -12,7 +14,7 @@ import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 })
 export class VendorPoContentComponent implements OnInit {
 
-
+  imgPath = Configuration.imagePath;
 
 
   VPOModel: VendorPOModel = new VendorPOModel();
@@ -21,7 +23,29 @@ export class VendorPoContentComponent implements OnInit {
   public getVPIsubs: ISubscription;
   constructor(private vendorService:VendorService) { }
 
+
+  isMobile: boolean;
+  isColumnFilterVPO: boolean = false;
+  gridHeight: number;
+
+  // UI Section
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    // apply grid height
+    this.gridHeight = UIHelper.getMainContentHeight();
+
+    // check mobile device
+    this.isMobile = UIHelper.isMobile();
+  }
+  // End UI Section
+
   ngOnInit() {
+    // apply grid height
+    this.gridHeight = UIHelper.getMainContentHeight();
+
+    // check mobile device
+    this.isMobile = UIHelper.isMobile();
+
     //get status of selected order for disabling or enabling  forms
     let VPI: string = localStorage.getItem("SelectedVPO");
     let vpiData: any = JSON.parse(VPI);

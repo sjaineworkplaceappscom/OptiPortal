@@ -14,7 +14,7 @@ import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry 
 import { Configuration } from '../../helpers/Configuration';
 import { ToastService } from '../../helpers/services/toast.service';
 import { AppMessages } from '../../helpers/app-messages';
-
+import * as $ from "jquery";
 
 
 @Component({
@@ -198,6 +198,7 @@ export class AttachmentComponent implements OnInit {
           this.callPurchaseInquiryStatusUpdateAPI();
           this.back();
           this.toast.showSuccess(AppMessages.AttachmentAddedSuccessMsg);
+          $('body').trigger('click'); //jugad code to generate click event to hide loader and show grid. 
         }
       },
       error => {
@@ -278,11 +279,9 @@ export class AttachmentComponent implements OnInit {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
 
         fileEntry.file((file: File) => {
-          
           // My code
           let files: Array<any> = [file];
           this.upload(files);
-
         });
       } else {
 
@@ -302,7 +301,7 @@ export class AttachmentComponent implements OnInit {
   }
   ///////////////////////////////////////////
   // drag file code end
-  ///////////////////////////////////////////
+  /////////////////////////////////////////// 
 
 
 

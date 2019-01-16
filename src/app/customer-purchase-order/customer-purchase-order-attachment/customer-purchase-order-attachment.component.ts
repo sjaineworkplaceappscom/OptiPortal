@@ -13,6 +13,7 @@ import { CustomerEntityType } from '../../enums/enums';
 import { AttachmentDetail } from '../../models/AttchmentDetail';
 import { AppMessages } from '../../helpers/app-messages';
 import { ToastService } from '../../helpers/services/toast.service';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-customer-purchase-order-attachment',
@@ -235,6 +236,7 @@ export class CustomerPurchaseOrderAttachmentComponent implements OnInit {
           //this method is updating the status if notes updated then update inquiry status.
           this.back();
           this.toast.showSuccess(AppMessages.AttachmentAddedSuccessMsg);
+          $('body').trigger('click'); //jugad code to generate click event to hide loader and show grid. 
         }
       },
       error => {

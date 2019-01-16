@@ -17,6 +17,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { AdvanceShipmentNotesListComponent } from './advance-shipment-notes-list/advance-shipment-notes-list.component';
 import { AdvanceShipmentNotestabComponent } from './advance-shipment-notestab/advance-shipment-notestab.component';
 import { SharedModule } from '../shared/shared.module';
+import { deliveryNotesContent } from '../demodata/delivery-notes';
 
 @NgModule({
   imports: [
@@ -32,6 +33,6 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   declarations: [DeliveryNotesListComponent, DeliveryNotesDetailComponent, DeliveryNotesDetailHomeComponent, DeliveryNotesDetailContentComponent, DeliveryNotesDetailAttachmentComponent, DeliveryNotesDetailNotesComponent, AdvanceShipmentNotesListComponent, AdvanceShipmentNotestabComponent],
-  exports:[DeliveryNotesListComponent, DeliveryNotesDetailComponent]
+  exports:[DeliveryNotesListComponent, DeliveryNotesDetailComponent, DeliveryNotesDetailHomeComponent, DeliveryNotesDetailContentComponent, DeliveryNotesDetailAttachmentComponent, DeliveryNotesDetailNotesComponent, AdvanceShipmentNotesListComponent, AdvanceShipmentNotestabComponent]
 })
 export class DeliveryNotesModule { }

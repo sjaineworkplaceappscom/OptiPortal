@@ -28,7 +28,7 @@ export class PortalLeftComponent implements OnInit {
   userPermission: any = [];
 
   ngOnInit() {
-
+    
     if (typeof (Storage) !== "undefined") {
       let arr = localStorage.getItem('LoginUserPermissions');
       this.userPermission = arr.split(','); 

@@ -13,6 +13,7 @@ import { VendorEntityType, VendorOpenInvoiceStatus } from '../../../enums/enums'
 import { AttachmentDetail } from 'src/app/models/AttchmentDetail';
 import { VendorOIModel } from '../../../tempmodels/vendor/vendor-OI-model';
 
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-vendor-p-invoice-attachment',
@@ -196,6 +197,7 @@ export class VendorPInvoiceAttachmentComponent implements OnInit {
           // this.callPurchaseInquiryStatusUpdateAPI();
           this.back();
           this.toast.showSuccess(AppMessages.AttachmentAddedSuccessMsg);
+          $('body').trigger('click');
         }
       },
       error => {

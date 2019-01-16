@@ -14,7 +14,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { VendorEntityType } from 'src/app/enums/enums';
 import { AttachmentDetail } from 'src/app/models/AttchmentDetail';
 import { AppMessages } from 'src/app/helpers/app-messages';
-
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-vasn-attatchment',
@@ -103,26 +103,31 @@ export class VasnAttatchmentComponent implements OnInit {
       this.updatePIStatussub.unsubscribe();
   }
 
-  // file upload code start
+  
+  ///////////////////////////////////////////
+  // drag file code start
+  ///////////////////////////////////////////
   public files: UploadFile[] = [];
- 
+
   public dropped(event: UploadEvent) {
     this.files = event.files;
+
     for (const droppedFile of event.files) {
- 
+
       // Is it a file?
       if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+
         fileEntry.file((file: File) => {
- 
-          // Here you can access the real file
-          console.log(droppedFile.relativePath, file);
- 
+          // My code
+          let files: Array<any> = [file];
+          this.upload(files);
         });
       } else {
+
         // It was a directory (empty directories are added, otherwise only files)
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, fileEntry);
+        //console.log(droppedFile.relativePath, fileEntry);
       }
     }
   }
@@ -214,6 +219,7 @@ export class VasnAttatchmentComponent implements OnInit {
           // this.callPurchaseInquiryStatusUpdateAPI();
           this.back();
           this.toast.showSuccess(AppMessages.AttachmentAddedSuccessMsg);
+          $('body').trigger('click'); //jugad code to generate click event to hide loader and show grid. 
         }
       },
       error => {

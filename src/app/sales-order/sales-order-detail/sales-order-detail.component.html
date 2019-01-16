@@ -8,12 +8,16 @@
           <li class="opti_tablinks" (click)="openTab($event, 'content')">
             <a href="javascript:void('0');">Content</a>
           </li>
+          <li class="opti_tablinks" (click)="openTab($event, 'delivery')">
+            <a href="javascript:void('0');">Delivery Notes</a>
+          </li>
           <li class="opti_tablinks" (click)="openTab($event, 'attachement')">
             <a href="javascript:void('0');">Attachments</a>
           </li>
           <li class="opti_tablinks" (click)="openTab($event, 'notes')">
             <a href="javascript:void('0');">Notes</a>
           </li>
+          
       </ul>
     </div>
     <!-- tab start heading end -->
@@ -27,6 +31,19 @@
       <app-sales-order-detail-content></app-sales-order-detail-content>
     </div>
 
+    <div id="" *ngIf="tabName=='delivery'" class="opti_tabcontent">
+      <!-- <app-sales-order-detail-delivery-notes></app-sales-order-detail-delivery-notes> -->
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <app-delivery-notes-list></app-delivery-notes-list>
+          </div>  
+        </div> 
+      </div>     
+
+    </div>
+
     <div id="" *ngIf="tabName=='attachement'" class="opti_tabcontent">
       <app-sales-order-detail-attachment></app-sales-order-detail-attachment>
     </div>
@@ -34,5 +51,7 @@
     <div id="" *ngIf="tabName=='notes'" class="opti_tabcontent">
       <app-sales-order-notes></app-sales-order-notes>
     </div>
+
+    
     <!-- tab content end -->
 </div>  

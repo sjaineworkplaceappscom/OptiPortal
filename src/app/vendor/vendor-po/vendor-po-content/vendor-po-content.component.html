@@ -2,69 +2,81 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-          <!-- loader start -->
-          <div class="opti_loader opti_loader-header-tab" *ngIf="showLoader==true">
-              <div class="opti_spinner"></div>
-          </div>
-          <!-- loader end --> 
-        <div class="card">
-          <div class="card-block">
-            <form class="k-form">
+               <!-- loader start -->
+               <div class="opti_loader opti_loader-header-tab" *ngIf="showLoader==true">
+                  <div class="opti_spinner"></div>
+              </div>
+              <!-- loader end --> 
+         <ng-container *ngIf="showLoader==false">  
+        
+          <kendo-grid 
+          [kendoGridBinding]="gridData" 
+          [resizable]="false" 
+          [pageSize]="50" 
+          [pageable]="true" 
+          [sortable]="true"  
+          [filterable]=isColumnFilterVPO
+          [groupable]=isColumnGroup 
+          [columnMenu]="{ columnChooser: false }" 
+          [height]=gridHeight-67 
+          [selectable]="true" 
+          #gridItem>
+          
+          <!-- grid template start -->
+          <ng-template kendoGridToolbarTemplate>
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Line#</span>
-                  <input name="LineNumber" type="text" class="k-textbox" [(ngModel)]="VPOContentModel.LineNumber" readonly />
-              </label>
+              <!-- show hide column start show hide -->
+              <kendo-grid-column-chooser class="float-left"></kendo-grid-column-chooser>
 
-              <label class="k-form-field">
-                <span class="opti_form-label">Item</span>
-                <input name="Item" type="text" class="k-textbox" [(ngModel)]="VPOContentModel.Item" readonly />
-              </label>
+              <!-- filter and grouping -->
+              <form class="k-form opti_show-hide-grid-column-filter float-left">
+                  <div class="k-form-field float-left">
+                      <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_VPOContentColumnFilterID" [(ngModel)]="isColumnFilterVPO" class="k-checkbox" name="columnfilter" />
+                      <label class="k-checkbox-label" for="opti_VPOContentColumnFilterID">Enable Filter</label>
+                  </div>
 
-              <label class="k-form-field">
-                <span class="opti_form-label">Quantity</span>
-                <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="VPOContentModel.Quantity" readonly />
-              </label>
+                  <!-- <div class="k-form-field float-left">
+                      <input type="checkbox" id="opti_SalesOrderContentColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
+                      <label class="k-checkbox-label" for="opti_SalesOrderContentColumnGroupID">Enable Grouping</label>
+                  </div> -->
+              </form>
 
-              <label class="k-form-field">
-                <span class="opti_form-label">Unit Price</span>
-                <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="VPOContentModel.UnitPrice" readonly />
-              </label>
+              <!-- export -->
+              <button type="button" kendoGridExcelCommand icon="file-excel" class="float-left opti_grid-toolbar-excelbutton">
+                  <svg-icon src="{{imgPath}}/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+              </button>
 
-              <label class="k-form-field">
-                <span class="opti_form-label">UOM</span>
-                <input name="UOM" type="text" class="k-textbox" [(ngModel)]="VPOContentModel.UOM" readonly />
-              </label>
+              <!-- common search -->
+              <!-- <div class="float-right opti_right-top-sec-grid-purchase opti_right-top-sec-grid">
+                  <form class="k-form opti_common-search-form float-left opti_padding-zero">
+                      <label class="k-form-field opti_common-search-label">
+                          <input type="text" class="k-textbox" name="searchRequest" [(ngModel)]="searchRequest" />
+                          <span class="opti_vertical-align opti_mouse-pointer"><img src="{{imgPath}}/common/search-black.svg" class="" alt="Search" width="15" /></span>
+                      </label>
+                  </form>
+              </div> -->
 
-              <label class="k-form-field">
-                <span class="opti_form-label">Total Price</span>
-                <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="VPOContentModel.TotalPrice" readonly />
-              </label>
+          </ng-template>
 
-              <label class="k-form-field">
-                <span class="opti_form-label">Tax Code</span>
-                <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="VPOContentModel.TaxCode" readonly />
-              </label>
+          <kendo-grid-column field="LineNumber" title="Line#" [width]="160"></kendo-grid-column>
+          <kendo-grid-column field="Item" title="Requested Date" [width]="160" [format]="displayDateformat"></kendo-grid-column>
+          <kendo-grid-column field="Quantity" [width]="160" title="Item"></kendo-grid-column>
+          <kendo-grid-column field="UnitPrice" [width]="160" title="Quantity" ></kendo-grid-column>
+          <kendo-grid-column field="UOM" title="UOM" [width]="160"></kendo-grid-column>
+          <kendo-grid-column field="TotalPrice" title="Ship To Address" [width]="160"></kendo-grid-column>
+          <kendo-grid-column field="TaxCode" title="Bill To Address" [width]="160"></kendo-grid-column>
+          <kendo-grid-column field="ShipToAddress" title="Bill To Address" [width]="160"></kendo-grid-column>
+          <kendo-grid-column field="BillToAddress" title="Bill To Address" [width]="160"></kendo-grid-column>
+          <kendo-grid-column field="RequestedDate" title="Bill To Address" [width]="160"></kendo-grid-column>
+          
+          
+          <!-- xlsx template start -->
+          <kendo-grid-excel fileName="vpo-content.xlsx"></kendo-grid-excel>
+          <!-- xlsx template end -->
 
-              <label class="k-form-field">
-                <span class="opti_form-label">Ship To Address</span>
-                <input name="ShipToAddress" type="text" class="k-textbox" [(ngModel)]="VPOContentModel.ShipToAddress" readonly />
-              </label>
+        </kendo-grid>
 
-              <label class="k-form-field">
-                <span class="opti_form-label">Bill To Address</span>
-                <input name="BillToAddress" type="text" class="k-textbox" [(ngModel)]="VPOContentModel.BillToAddress" readonly />
-              </label>
-
-              <label class="k-form-field">
-                <span class="opti_form-label">Requested Date</span>
-                <input name="RequestedDate" type="text" class="k-textbox" (ngModelChange)="VPOContentModel.RequestedDate" [ngModel]="VPOContentModel.RequestedDate | date:'dd MMM yy'" readonly />
-              </label>
-              
-              
-            </form>
-          </div>
-        </div>
+        </ng-container>
       </div> 
     </div> 
   </div>  
