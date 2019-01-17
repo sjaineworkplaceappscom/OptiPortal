@@ -95,7 +95,7 @@ refreshCPOListSubs: ISubscription;
     this.loginUserType = userData[0].LoginUserType;
     this.gridHeight = UIHelper.getMainContentHeight();
     this.systemAdmin = localStorage.getItem('SystemAdmin');
-
+ 
     this.refreshCPOListSubs = this.commonService.refreshCPOListSubscriber.subscribe(data => {
       if(data!=null && data !=undefined)
       this.getCustomerPurchaseOrderList();

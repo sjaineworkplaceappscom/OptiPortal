@@ -138,7 +138,7 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
     this.updatePISub = this.customerPurchaseOrderService.UpdatePurchaseOrder(this.customerPurchaseOrderModel).subscribe(
       data => {
         this.showLoader = false;
-        this.commonService.refreshPIList(true);
+        this.commonService.refreshCPOList(true);
         localStorage.setItem("SelectedPurchaseInquery", JSON.stringify(this.customerPurchaseOrderModel));
         this.toast.showSuccess(AppMessages.PurchaseOrderUpdateSuccessMsg); 
       },
