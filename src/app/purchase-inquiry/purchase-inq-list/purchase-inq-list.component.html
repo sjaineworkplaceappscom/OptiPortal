@@ -41,7 +41,7 @@
                             </div>
 
                             <div class="k-form-field float-left">
-                                <input type="checkbox" id="opti_ColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
+                                <input #chkGrp type="checkbox" id="opti_ColumnGroupID" (change)="onGroupChange(chkGrp,gridItem)" [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
                                 <label class="k-checkbox-label" for="opti_ColumnGroupID">Enable Grouping</label>
                             </div>
                         </form>
