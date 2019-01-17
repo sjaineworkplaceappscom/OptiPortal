@@ -30,8 +30,8 @@ import { Configuration } from '../../helpers/Configuration';
   styleUrls: ['./purchase-inq-list.component.scss']
 })
 export class PurchaseInqListComponent implements OnInit {
-  displayDateformat:string=Configuration.getDisplayDateFormat(true);
-  dateformat:string=Configuration.getDisplayDateFormat();
+  displayDateformat: string = Configuration.getDisplayDateFormat(true);
+  dateformat: string = Configuration.getDisplayDateFormat();
   imgPath = Configuration.imagePath;
 
   isMobile: boolean;
@@ -47,7 +47,7 @@ export class PurchaseInqListComponent implements OnInit {
   public gridData: any[] = [];
   public systemAdmin: any;
   public loginUserType: number;
-  public prevSelectedData:any;
+  public prevSelectedData: any;
 
   // Subscriber
   getPIlistSubs: ISubscription;
@@ -99,10 +99,10 @@ export class PurchaseInqListComponent implements OnInit {
 
 
     this.refreshPIListSubs = this.commonService.refreshPIListSubscriber.subscribe(data => {
-      if(data!=undefined && data!=null)
-      this.getInquiryList();
+      if (data != undefined && data != null)
+        this.getInquiryList();
     });
-    
+
     //call method to get all inquiry data.
     this.getInquiryList();
 
@@ -136,7 +136,7 @@ export class PurchaseInqListComponent implements OnInit {
       error => {
         this.showLoader = false;
         ////alert("Something went wrong");
-       // console.log("Error: ", error);
+        // console.log("Error: ", error);
         //localStorage.clear();
         // this.router.navigate(['landing']);
 
@@ -168,27 +168,27 @@ export class PurchaseInqListComponent implements OnInit {
    * @param status  
    */
   public async openInqueryDetailOnSelectInquery(selection) {
-   
+
     let selectedIinquiry = selection.selectedRows[0].dataItem;
     //let selectedIinquiry = this.gridData[selection.index];
-     let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
-     
-     if (a == false) {
+    let a: boolean = await this.confirmService.leaveUnsavedDataConfirmation();
 
-       selection.selectedRows =selection.deselectedRows;
-       selection.index=selection.selectedRows[0].index;
-       return;
- 
-     }
-     //console.log('selected Inq:'+selectedIinquiry.toString());
-    this.openPIDetail(selection,selectedIinquiry);
-   
+    if (a == false) {
+
+      selection.selectedRows = selection.deselectedRows;
+      selection.index = selection.selectedRows[0].index;
+      return;
+
+    }
+    //console.log('selected Inq:'+selectedIinquiry.toString());
+    this.openPIDetail(selection, selectedIinquiry);
+
   }
-  
-   openPIDetail(selection,selectedInq) {
-     // Check for dirty confirmation from
-    
- 
+
+  openPIDetail(selection, selectedInq) {
+    // Check for dirty confirmation from
+
+
     // Set home tab active on click on any record
     $('#opti_HomeTabPurchaseInquiry').click();
 
@@ -198,7 +198,7 @@ export class PurchaseInqListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus = true;
 
     // Selected Item Data
-    let selectedIinquiry =  selectedInq //this.gridData[selection.index];
+    let selectedIinquiry = selectedInq //this.gridData[selection.index];
     //const selectedData = selection.selectedRows[0].dataItem;
 
     localStorage.setItem("PurchaseinqueryId", selectedIinquiry.PurchaseInquiryId);
@@ -207,18 +207,30 @@ export class PurchaseInqListComponent implements OnInit {
     currentsideBarInfo.RequesterData = selectedIinquiry;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
     // Reset Selection.
-    selectedIinquiry='';
+    selectedIinquiry = '';
     selection.selectedRows = [];
-  } 
+  }
 
   onFilterChange(checkBox: any, grid: GridComponent) {
     if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
+  onGroupChange(checkBox: any, grid: GridComponent){
+    if (checkBox.checked == false) {
+      this.clearGroup(grid);
+    }      
+  }
+
+  clearGroup(grid:GridComponent){
+    grid.data=this.gridData; 
+    if(grid!=null)
+    grid.group.splice(0,grid.group.length);  
+  }
 
   clearFilter(grid: GridComponent) {
-    //grid.filter.filters=[];
-    //this.gridData=process(this.gridData,null);
+    grid.data=this.gridData; 
+    if(grid.filter!=null)
+    grid.filter.filters.splice(0,grid.filter.filters.length);
   }
 }
