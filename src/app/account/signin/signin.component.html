@@ -32,7 +32,7 @@
                         <span class="opti_form-label">Email * 
                         <span *ngIf="emailId.errors?.email && emailId.touched" class="float-right opti_error-msg"> Invalid emailId. </span>
                         <span *ngIf="emailId.errors?.required && (emailId.dirty || emailId.touched)" class="float-right opti_error-msg" >Email is required.</span>
-                        <span  *ngIf="this.userNotExist==true && (emailId.dirty || emailId.touched) && (pwd.dirty || pwd.touched) && !emailId.errors?.required && !emailId.errors?.valid " class="float-right opti_error-msg">User does not exists.</span>
+                        <span  *ngIf="this.userNotExist==true && (emailId.dirty || emailId.touched)  && !emailId.errors?.required && !emailId.errors?.valid " class="float-right opti_error-msg">User does not exists.</span>                        
                         </span>
                         <input type="email"  email name = "email" required [(ngModel)]="userName" (input)="changeEmailValue()" #emailId = ngModel class="k-textbox" value="" placeholder="e.g. test@gmail.com" />
                     </label>

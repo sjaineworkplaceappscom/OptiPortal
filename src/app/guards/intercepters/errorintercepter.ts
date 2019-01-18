@@ -21,6 +21,7 @@ import {
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
     public sessionExpireMsg: string = "Your session has been expired. please login again.";
+    public invalidCredentials:string="Invalid username or password.please try again."
     constructor(private router: Router, private dialogService: DialogService) {
     }
 
@@ -48,7 +49,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
                         // Unauthorized.
                         if (error.status == 401) {
-                            return this.errorMessage(this.sessionExpireMsg);
+                            return this.errorMessage(this.invalidCredentials);
                         }
                         // Server error
                         else if (error.status == 500 && error.error != null && error.error != undefined) {
