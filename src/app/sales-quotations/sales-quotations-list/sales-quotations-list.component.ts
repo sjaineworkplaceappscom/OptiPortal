@@ -99,8 +99,22 @@ export class SalesQuotationsListComponent implements OnInit {
     }
   }
 
+  onGroupChange(checkBox: any, grid: GridComponent){
+    if (checkBox.checked == false) {
+      this.clearGroup(grid);
+    }      
+  }
+
+  clearGroup(grid:GridComponent){
+    grid.data=this.gridData; 
+    if(grid!=null)
+    grid.group.splice(0,grid.group.length);  
+  }
+
   clearFilter(grid: GridComponent) {
-    //grid.filter.filters=[];
+    grid.data=this.gridData; 
+    if(grid.filter!=null)
+    grid.filter.filters.splice(0,grid.filter.filters.length);
   }
 
   openSalesQuotationDetailOnSelection(selection) {

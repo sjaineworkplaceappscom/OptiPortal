@@ -134,6 +134,7 @@ refreshCPOListSubs: ISubscription;
       }
     );
   }
+ 
   onFilterChange(checkBox:any,grid:GridComponent)
   {
     if(checkBox.checked==false){
@@ -141,8 +142,23 @@ refreshCPOListSubs: ISubscription;
     }
   }
 
-  clearFilter(grid:GridComponent){      
-    //grid.filter.filters=[];
+
+  onGroupChange(checkBox: any, grid: GridComponent){
+    if (checkBox.checked == false) {
+      this.clearGroup(grid);
+    }      
+  }
+
+  clearGroup(grid:GridComponent){
+    grid.data=this.gridData; 
+    if(grid!=null)
+    grid.group.splice(0,grid.group.length);  
+  }
+
+  clearFilter(grid: GridComponent) {
+    grid.data=this.gridData; 
+    if(grid.filter!=null)
+    grid.filter.filters.splice(0,grid.filter.filters.length);
   }
 
  async openInqueryDetailOnSelectInquery(selection){
