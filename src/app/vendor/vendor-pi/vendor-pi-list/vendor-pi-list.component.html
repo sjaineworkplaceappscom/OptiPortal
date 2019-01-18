@@ -39,7 +39,7 @@
                         </div>
  
                         <div class="k-form-field float-left">
-                            <input type="checkbox" id="opti_SalesOrderColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
+                            <input type="checkbox" #chkGrp id="opti_SalesOrderColumnGroupID"  (change)="onGroupChange(chkGrp,gridItem)"   [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
                             <label class="k-checkbox-label" for="opti_SalesOrderColumnGroupID">Enable Grouping</label>
                         </div>
                     </form>

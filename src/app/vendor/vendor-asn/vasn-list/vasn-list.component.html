@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="k-form-field float-left">
-                            <input type="checkbox" id="opti_PaymentColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
+                            <input type="checkbox" #chkGrp id="opti_PaymentColumnGroupID" (change)="onGroupChange(chkGrp,gridItem)"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
                             <label class="k-checkbox-label" for="opti_PaymentColumnGroupID">Enable Grouping</label>
                         </div>
                     </form>
@@ -94,7 +94,7 @@
                 <!-- grid for mobile end -->
 
 
-                <kendo-grid-column media="(min-width: 768px)" field="ASNNumber"  title="ASN#" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="ASNNumber" filter="numeric"  title="ASN#" [width]="160"></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="POReferenceNumber" title="PO Ref.#" [width]="160"></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="Vendor" title="Vendor" [width]="160" ></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="ShipmentDate" title="Shipment Date" [width]="160" filter="date" type=date format="{0:dd MMM yy}" ></kendo-grid-column>
