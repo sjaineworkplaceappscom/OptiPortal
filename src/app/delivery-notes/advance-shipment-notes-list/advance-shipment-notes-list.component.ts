@@ -110,20 +110,9 @@ export class AdvanceShipmentNotesListComponent implements OnInit {
     );
   }
 
-  onFilterChange(checkBox: any, grid: GridComponent) {
-    if (checkBox.checked == false) {
-      this.clearFilter(grid);
-    }
-  }
-
-  clearFilter(grid: GridComponent) {
-    //grid.filter.filters=[];
-  }
 
   openAdvanceShipmentNotesDetailOnSelection(selection) {
     $('#opti_HomeTabDeliveryNotesID').click();
-
-    
 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
@@ -143,6 +132,35 @@ export class AdvanceShipmentNotesListComponent implements OnInit {
   ngOnDestroy() {
     if (this.getASNlistSubs != undefined)
       this.getASNlistSubs.unsubscribe();
+  }
+
+
+
+  
+  onFilterChange(checkBox:any,grid:GridComponent)
+  {
+    if(checkBox.checked==false){
+      this.clearFilter(grid);
+    }
+  }
+
+
+  onGroupChange(checkBox: any, grid: GridComponent){
+    if (checkBox.checked == false) {
+      this.clearGroup(grid);
+    }      
+  }
+
+  clearGroup(grid:GridComponent){
+    grid.data=this.gridData; 
+    if(grid!=null)
+    grid.group.splice(0,grid.group.length);  
+  }
+
+  clearFilter(grid: GridComponent) {
+    grid.data=this.gridData; 
+    if(grid.filter!=null)
+    grid.filter.filters.splice(0,grid.filter.filters.length);
   }
 
 }
