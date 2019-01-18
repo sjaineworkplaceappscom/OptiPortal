@@ -38,7 +38,7 @@
                           </div>
   
                           <div class="k-form-field float-left">
-                              <input type="checkbox" id="opti_PaymentColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
+                              <input #chkGrp type="checkbox" id="opti_PaymentColumnGroupID" (change)="onGroupChange(chkGrp,gridItem)" [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
                               <label class="k-checkbox-label" for="opti_PaymentColumnGroupID">Enable Grouping</label>
                           </div>
                       </form>
@@ -91,7 +91,7 @@
                   <!-- grid for mobile end -->
   
   
-                  <kendo-grid-column media="(min-width: 768px)" field="PaymentRefNumber"  title="Payment Ref#" [width]="160"></kendo-grid-column>
+                  <kendo-grid-column media="(min-width: 768px)" field="PaymentRefNumber" filter="numeric"  title="Payment Ref#" [width]="160"></kendo-grid-column>
                   <kendo-grid-column media="(min-width: 768px)" field="PaymentMode" title="Payment Mode" [width]="160"></kendo-grid-column>
                   <kendo-grid-column media="(min-width: 768px)" field="PaymentType" title="Payment Type" [width]="160" ></kendo-grid-column>
                   <kendo-grid-column media="(min-width: 768px)" field="PaymentDetails" title="Payment Details" [width]="160"  ></kendo-grid-column>

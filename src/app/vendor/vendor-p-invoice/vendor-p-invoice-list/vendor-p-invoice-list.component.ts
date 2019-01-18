@@ -83,15 +83,6 @@ export class VendorPInvoiceListComponent implements OnInit {
     }, 1000);
   }
 
-  onFilterChange(checkBox: any, grid: GridComponent) {
-    if (checkBox.checked == false) {
-      this.clearFilter(grid);
-    }
-  }
-
-  clearFilter(grid: GridComponent) {
-    //grid.filter.filters=[];
-  }
 
   addInvoiceOnClickAdd() {
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
@@ -137,6 +128,34 @@ export class VendorPInvoiceListComponent implements OnInit {
         this.showLoader = false;
       }
     );
+  }
+
+
+  
+  onFilterChange(checkBox:any,grid:GridComponent)
+  {
+    if(checkBox.checked==false){
+      this.clearFilter(grid);
+    }
+  }
+
+
+  onGroupChange(checkBox: any, grid: GridComponent){
+    if (checkBox.checked == false) {
+      this.clearGroup(grid);
+    }      
+  }
+
+  clearGroup(grid:GridComponent){
+    grid.data=this.gridData; 
+    if(grid!=null)
+    grid.group.splice(0,grid.group.length);  
+  }
+
+  clearFilter(grid: GridComponent) {
+    grid.data=this.gridData; 
+    if(grid.filter!=null)
+    grid.filter.filters.splice(0,grid.filter.filters.length);
   }
 
 }
