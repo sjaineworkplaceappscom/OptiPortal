@@ -21,6 +21,6 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
     DropDownsModule,
   ],
   declarations: [ConsignInventoryListComponent, ConsignInventorySRBatchDetailComponent, ConsignInventoryDetailComponent],
-  exports:[ConsignInventoryListComponent]
+  exports:[ConsignInventoryListComponent,ConsignInventorySRBatchDetailComponent, ConsignInventoryDetailComponent]
 })
 export class ConsignInventoryModule { }

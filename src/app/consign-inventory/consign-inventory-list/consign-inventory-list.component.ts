@@ -3,6 +3,8 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { Commonservice } from '../../services/commonservice.service';
 import { GridComponent } from '@progress/kendo-angular-grid';
 import { consignList } from '../../DemoData/consign';
+import { ComponentName, ModuleName } from 'src/app/enums/enums';
+import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 
 @Component({
   selector: 'app-consign-inventory-list',
@@ -86,14 +88,22 @@ export class ConsignInventoryListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openSalesOrderDetailOnSelectSalesOrder(e){
-    // let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
-    // currentsideBarInfo.ComponentName=ComponentName.SalesOrderDetail;
-    // currentsideBarInfo.ModuleName=ModuleName.SalesOrder;
-    // currentsideBarInfo.SideBarStatus=true;    
-    
-    // this.commonService.setCurrentSideBar(currentsideBarInfo);
+  openSBDetail(e){
+    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName=ComponentName.CISBDetail;
+    currentsideBarInfo.ModuleName=ModuleName.ConsignInventory;
+    currentsideBarInfo.SideBarStatus=true;        
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
+
+  openDetail(e){
+    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName=ComponentName.CIDetail;
+    currentsideBarInfo.ModuleName=ModuleName.ConsignInventory;
+    currentsideBarInfo.SideBarStatus=true;        
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
+  }
+
 
   openDetailGrid(e:any){
     this.gridData[e.index].ItemsDetail=this.getItems();           
