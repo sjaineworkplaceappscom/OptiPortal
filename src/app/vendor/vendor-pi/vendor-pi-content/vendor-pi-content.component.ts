@@ -68,11 +68,10 @@ export class VendorPiContentComponent implements OnInit {
      this.showLoader = true;
      this.getVPIsubs = this.vendorService.getVendorDetailById(id,2+"").subscribe(
        data => { 
-         
-         this.showLoader = false;
+          
+         this.showLoader = false; 
          if(data!=null && data!=undefined && data != ""){
           let dataArray: any[] = JSON.parse(data);
-          debugger;
           this.gridData = JSON.parse(data);
           this.gridData.forEach(element => {
             element.RequestedDate = DateTimeHelper.ParseDate(element.RequestedDate);

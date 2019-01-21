@@ -95,6 +95,8 @@ export class SalesOrderDetailDeliveryNotesComponent implements OnInit {
 }
 
 
+
+
 openDeliveryNotesDetailOnSelection(selection){ 
   $('#opti_HomeTabDeliveryNotesID').click(); 
   console.log('soddn selection');

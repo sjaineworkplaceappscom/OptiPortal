@@ -16,7 +16,7 @@ export class VendorService {
   }
 
   /**
-   * get List of Vendor Purchase Inquiries.
+   * get List of vendor purchase inquiries.
    */
   public getVendorInquiryList(): Observable<any> {
     let url: string = this.baseUrl + "vendorpurchaseinquiry/list";
@@ -37,7 +37,7 @@ export class VendorService {
 
 
  /**
-   * get List of Vendor Purchase Order.
+   * get List of vendor purchase order.
    */
   public getVendorPOList(): Observable<any> {
     let url: string = this.baseUrl + "vendorpurchaseorder/list";
@@ -48,7 +48,7 @@ export class VendorService {
 
 
   /**
-   * get Vendor Detail of Vendor Purchase Inquiries.
+   * get Vendor detail of vendor purchase order .
    */
   public getVendorPODetailById(id: string,type:string): Observable<any> {
     let url: string = this.baseUrl + "vendorpurchaseorder/detail/"+id+"/"+type;
@@ -57,7 +57,7 @@ export class VendorService {
   }
 
    /**
-   * get Vendor Detail of Vendor Purchase Inquiries.
+   * get Vendor detail of Vendor updated purchase order .
    */
   public getVendorPOUpdateList(): Observable<any> {
     let url: string = this.baseUrl + "vendorpurchaseorder/updatedlist";
@@ -130,7 +130,7 @@ export class VendorService {
     //let reqOption: RequestOptions = new RequestOptions({ method: RequestMethod.Get, headers: headers });
     return this.httpHelper.get(url, null);
   }
- /**
+  /**
    * Add Vendor ASN. 
    */
   public UpdateVASN(request: VendorASNModel): Observable<any> {
@@ -153,7 +153,7 @@ export class VendorService {
   
 
    /**
-   * get Vendor ASN Detail.
+   * get Vendor ASN content list.
    */
   public getVendorASNContentList(asnId:string): Observable<any> {
     let url: string = this.baseUrl + "vendorasncontent/list/"+ asnId;
@@ -183,7 +183,7 @@ export class VendorService {
 
 
    /**
-   * Add Vendor ASN. need to change parameters
+   * Update Vendor ASN. need to change parameters
    */
   public UpdateVASNContent(request: VendorASNContentModel): Observable<any> {
     var data: any = {

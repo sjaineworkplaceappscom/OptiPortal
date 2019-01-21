@@ -73,7 +73,7 @@ export class AccountService {
   }
 
 
-  // Login/Generat euser token.
+  // Login/Generate user token.
   public async generateToken(userName: string, password: string, errobj: ErrorObject): Promise<any> {
     let error: boolean = false;
     //let data: string = "username=" + userName + "&password=" + password + "&grant_type=password";
