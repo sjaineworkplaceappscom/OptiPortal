@@ -21,6 +21,7 @@
             [height]=gridHeight 
             [selectable]="true" 
             (selectionChange)="openSalesOrderDetailOnSelectSalesOrder($event)"
+            (detailExpand)="openDetailGrid($event)"
             #gridItem>
                 <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
                 <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
@@ -118,7 +119,7 @@
                 <ng-template kendoGridDetailTemplate let-dataItem let-column let-columnIndex="columnIndex">
                   <kendo-grid 
                     class="opti_detail-child-row" 
-                    [data]="dataItem.ItemsDetail">
+                    [kendoGridBinding]="dataItem.ItemsDetail">
                       <kendo-grid-column media="(min-width: 768px)" field="Item" title="Item" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="ItemDescription" title="Item Description" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="SerialAndBatch" title="Serial and Batch" ></kendo-grid-column>

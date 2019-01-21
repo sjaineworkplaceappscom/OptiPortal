@@ -95,4 +95,38 @@ export class ConsignInventoryListComponent implements OnInit {
     // this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
+  openDetailGrid(e:any){
+    this.gridData[e.index].ItemsDetail=this.getItems();           
+  }
+
+  getItems():any{
+   return [{
+      "Item": "childX1",
+      "ItemDescription": "Headphone",
+      "SerialAndBatch": "Batch",
+      "WareHouse": "Main WH",
+      "Bin": "1",
+      "ToWH": "",
+      "ToBin": "",
+      "TransectionDate": "8/1/2019",
+      "TransactionType": "Delivery",
+      "QunatityTransacted": "10",
+      "TransactionDocumentNumber": "Delivery # 12",
+  },
+  {
+      "Item": "childX11",
+      "ItemDescription": "Headphone",
+      "SerialAndBatch": "Batch",
+      "WareHouse": "Main WH",
+      "Bin": "1",
+      "ToWH": "",
+      "ToBin": "",
+      "TransectionDate": "8/1/2019",
+      "TransactionType": "Delivery",
+      "QunatityTransacted": "10",
+      "TransactionDocumentNumber": "Delivery # 12",
+  }]
+  }
+
+
 }

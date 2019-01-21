@@ -10,32 +10,7 @@ export const consignList = [
         "Stock":245,
         "SerialorBatch":"1",
         "ItemsDetail": [
-            {
-                "Item": "childX1",
-                "ItemDescription": "Headphone",
-                "SerialAndBatch": "Batch",
-                "WareHouse": "Main WH",
-                "Bin": "1",
-                "ToWH": "",
-                "ToBin": "",
-                "TransectionDate": "8/1/2019",
-                "TransactionType": "Delivery",
-                "QunatityTransacted": "10",
-                "TransactionDocumentNumber": "Delivery # 12",
-            },
-            {
-                "Item": "childX11",
-                "ItemDescription": "Headphone",
-                "SerialAndBatch": "Batch",
-                "WareHouse": "Main WH",
-                "Bin": "1",
-                "ToWH": "",
-                "ToBin": "",
-                "TransectionDate": "8/1/2019",
-                "TransactionType": "Delivery",
-                "QunatityTransacted": "10",
-                "TransactionDocumentNumber": "Delivery # 12",
-            }
+            
         ],
     }
  ,  
@@ -49,19 +24,7 @@ export const consignList = [
         "Stock":245,
         "SerialorBatch":"1",
         "ItemsDetail": [
-            {
-                "Item": "chilsX2",
-                "ItemDescription": "Headphone",
-                "SerialAndBatch": "Batch",
-                "WareHouse": "Main WH",
-                "Bin": "1",
-                "ToWH": "",
-                "ToBin": "",
-                "TransectionDate": "8/1/2019",
-                "TransactionType": "Delivery",
-                "QunatityTransacted": "10",
-                "TransactionDocumentNumber": "Delivery # 12",
-            }
+           
         ],
     }
 ]
