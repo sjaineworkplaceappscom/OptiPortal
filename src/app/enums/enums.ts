@@ -38,7 +38,10 @@ export enum ModuleName {
     VendorASN = 401,
     VendorInvoice = 601,
     VendorPayments = 701,
-    VendorContact=801
+    VendorContact=801,
+
+    
+    ConsignInventory=901
 
 }
 
@@ -81,7 +84,11 @@ export enum ComponentName {
     VendorPaymentDetail = 1701,
 
     VendorContactAdd=1801,
-    VendorContactUpdate=1802
+    VendorContactUpdate=1802,
+
+    CIDetail=1901,
+    CISBDetail=1902
+
 }
 
 
