@@ -39,6 +39,7 @@ import { VendorModule } from '../vendor/vendor.module';
 import { VendorPiModule } from '../vendor/vendor-pi/vendor-pi.module';
 import { VendorContactModule } from '../vendor/vendor-contact/vendor-contact.module';
 import { VendorAsnModule } from '../vendor/vendor-asn/vendor-asn.module';
+import { ConsignInventoryModule } from '../consign-inventory/consign-inventory.module';
 
 
 
@@ -83,7 +84,8 @@ import { VendorAsnModule } from '../vendor/vendor-asn/vendor-asn.module';
     VendorModule,
     VendorPiModule,
     VendorContactModule,
-    VendorAsnModule    
+    VendorAsnModule ,
+    ConsignInventoryModule  
     ],
   declarations: [
     PortalHomeComponent, PortalLeftComponent, PortalTopComponent, PortalRightComponent, DashboardComponent,ThemeManagerComponent 

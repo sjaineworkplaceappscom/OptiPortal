@@ -8,6 +8,7 @@ import { ConsignInventoryDetailComponent } from './consign-inventory-detail/cons
   imports: [
     CommonModule
   ],
-  declarations: [ConsignInventoryListComponent, ConsignInventorySRBatchDetailComponent, ConsignInventoryDetailComponent]
+  declarations: [ConsignInventoryListComponent, ConsignInventorySRBatchDetailComponent, ConsignInventoryDetailComponent],
+  exports:[ConsignInventoryListComponent]
 })
 export class ConsignInventoryModule { }
