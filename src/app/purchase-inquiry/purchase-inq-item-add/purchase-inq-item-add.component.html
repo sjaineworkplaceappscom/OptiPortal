@@ -15,7 +15,7 @@
 
                     <!-- Tab title start -->
                     <div class="opti_position-relative opti_vertical-tab-outer" id="opti_verticalTabTitleID">
-                        <ul #optiTabvertical class="opti_tab tabs clearfix" id="opti_VerticalTabID">
+                        <ul #optiTabvertical class="opti_tab opti_position-relative tabs clearfix" id="opti_VerticalTabID" [perfectScrollbar]="configX">
                             <li class="opti_tablinks-vertical active" id="opti_ItemHomeTabID" (click)="openTab($event, 'home')">
                                 <a href="javascript:void('0');">
                                     <svg-icon src="{{imgPath}}/purchase-inquiries/home.svg" [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':selectedThemeColor }"></svg-icon>

@@ -7,6 +7,7 @@ import { CustomerPurchaseOrderService } from '../../services/customer-purchase-o
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { CustomerPurchaseOrderModel } from '../../tempmodels/customer-purchase-order-model';
 import { CPOReferenceType } from '../../enums/enums';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-customer-purchase-order-update',
@@ -15,6 +16,9 @@ import { CPOReferenceType } from '../../enums/enums';
 })
 export class CustomerPurchaseOrderUpdateComponent implements OnInit {
 
+  public configX: PerfectScrollbarConfigInterface = {
+      suppressScrollY:true
+  };
  
   @Input() currentSidebarInfo:CurrentSidebarInfo;
 
@@ -29,11 +33,11 @@ export class CustomerPurchaseOrderUpdateComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTabCPO();
+    //UIHelper.getWidthOfOuterTabCPO();
   }
 
   ngOnInit() {
-    UIHelper.getWidthOfOuterTabCPO();
+    //UIHelper.getWidthOfOuterTabCPO();
   }
 
  

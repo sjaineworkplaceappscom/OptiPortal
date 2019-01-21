@@ -29,6 +29,7 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
 import { FileInfo } from '@progress/kendo-angular-upload';
 import { debug } from 'util';
 import { invokeQuery } from '@angular/animations/browser/src/render/shared';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 //declare var $: any;
 
@@ -38,6 +39,11 @@ import { invokeQuery } from '@angular/animations/browser/src/render/shared';
     styleUrls: ['./main-content.component.scss']
 })
 export class MainContentComponent implements OnInit {
+
+    public configX: PerfectScrollbarConfigInterface = {
+        suppressScrollY:true
+    };
+
     approveUser: boolean;
     isMobile: boolean;
     isColumnFilter: boolean = false;
@@ -114,7 +120,7 @@ export class MainContentComponent implements OnInit {
         // apply grid height
         this.gridHeight = UIHelper.getMainContentHeight();
         // apply width on opti_TabID
-        UIHelper.getWidthOfOuterTab();
+        //UIHelper.getWidthOfOuterTab();
         // apply grid height
         this.gridHeight = UIHelper.getMainContentHeight();
         // check mobile device
@@ -138,7 +144,7 @@ export class MainContentComponent implements OnInit {
             
           // localStorage.setItem("AttachmentData",JSON.stringify(this.gridAttachmentData));
         // apply width on opti_TabID
-        UIHelper.getWidthOfOuterTab();
+        //UIHelper.getWidthOfOuterTab();
         // apply grid height
         this.gridHeight = UIHelper.getMainContentHeight();
         // check mobile device

@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-vendor-p-invoice-update',
@@ -14,6 +15,10 @@ export class VendorPInvoiceUpdateComponent implements OnInit {
 
   tabName: string = 'home';
 
+  public configX: PerfectScrollbarConfigInterface = {
+      suppressScrollY:true
+  };
+
   // tab function
   openTab(evt, tabName) {
     this.tabName = tabName;
@@ -23,12 +28,12 @@ export class VendorPInvoiceUpdateComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
   }
 
   ngOnInit() {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
   }
 
 }

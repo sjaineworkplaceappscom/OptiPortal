@@ -3,6 +3,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { GlobalResource } from '../../helpers/global-resource';
 import { ConfirmDialog } from '../../helpers/services/dialog.service';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-sales-quotations-detail',
@@ -10,6 +11,10 @@ import { ConfirmDialog } from '../../helpers/services/dialog.service';
   styleUrls: ['./sales-quotations-detail.component.scss']
 })
 export class SalesQuotationsDetailComponent implements OnInit {
+
+  public configX: PerfectScrollbarConfigInterface = {
+      suppressScrollY:true
+  };
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
 
@@ -36,12 +41,12 @@ export class SalesQuotationsDetailComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
   }
 
   ngOnInit() {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
   }
 
 }

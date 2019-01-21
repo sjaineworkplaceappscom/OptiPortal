@@ -11,6 +11,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { GlobalResource } from '../../helpers/global-resource';
 import { ConfirmDialog } from '../../helpers/services/dialog.service';
 import { Configuration } from '../../helpers/Configuration';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-purchase-inq-update', 
@@ -18,6 +19,10 @@ import { Configuration } from '../../helpers/Configuration';
   styleUrls: ['./purchase-inq-update.component.scss']
 })
 export class PurchaseInqUpdateComponent implements OnInit {
+
+  public configX: PerfectScrollbarConfigInterface = {
+      suppressScrollY:true
+  };
   
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   constructor(private commonService: Commonservice, private purchaseInquiryService: PurchaseInquiryService, private confirmService: ConfirmDialog) { }
@@ -101,7 +106,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTabUpdateInq();
+    //UIHelper.getWidthOfOuterTabUpdateInq();
   }
 
   
@@ -109,7 +114,7 @@ export class PurchaseInqUpdateComponent implements OnInit {
   ngOnInit() {
     GlobalResource.dirty=false;
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTabUpdateInq();
+    //UIHelper.getWidthOfOuterTabUpdateInq();
     // Add active class on tab title 
     this.optiTab.nativeElement.children[0].classList.add('active');
     // Set sidebar data;

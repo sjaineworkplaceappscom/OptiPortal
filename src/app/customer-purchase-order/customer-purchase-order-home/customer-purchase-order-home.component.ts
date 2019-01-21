@@ -48,7 +48,7 @@ export class CustomerPurchaseOrderHomeComponent implements OnInit {
   ngOnInit() {
     // apply width on opti_TabID
     this.getUserDetails();
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
     // Set sidebar data;
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {

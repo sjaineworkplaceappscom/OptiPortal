@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 
 @Component({
@@ -10,6 +11,10 @@ import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
   styleUrls: ['./vendor-pi-detail.component.scss']
 })
 export class VendorPiDetailComponent implements OnInit {
+
+  public configX: PerfectScrollbarConfigInterface = {
+      suppressScrollY:true
+  };
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
   constructor(private confirmService: ConfirmDialog) { }
@@ -30,12 +35,12 @@ export class VendorPiDetailComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
   }
 
   ngOnInit() {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
   }
 
 }

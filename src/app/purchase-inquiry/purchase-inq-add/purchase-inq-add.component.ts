@@ -10,6 +10,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { GlobalResource } from '../../helpers/global-resource';
 import { ToastService } from '../../helpers/services/toast.service';
 import { AppMessages } from '../../helpers/app-messages';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-purchase-inq-add',
@@ -17,6 +18,11 @@ import { AppMessages } from '../../helpers/app-messages';
   styleUrls: ['./purchase-inq-add.component.scss']
 })
 export class PurchaseInqAddComponent implements OnInit {
+
+  public configX: PerfectScrollbarConfigInterface = {
+      suppressScrollY:true
+  };
+
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice,private toast:ToastService) { }
 
@@ -56,7 +62,7 @@ public minValidDate: Date = new Date();
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
   }
 
   valueChange(value:any){    
@@ -65,7 +71,7 @@ public minValidDate: Date = new Date();
 
   ngOnInit() {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
     // Add active class on tab title 
     this.optiTab.nativeElement.children[0].classList.add('active');
     this.setDefaultData();

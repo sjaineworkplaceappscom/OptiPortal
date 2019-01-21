@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { GlobalResource } from '../../helpers/global-resource';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 
 @Component({
@@ -12,6 +13,10 @@ import { GlobalResource } from '../../helpers/global-resource';
 export class DeliveryNotesDetailComponent implements OnInit {
 
   constructor() { }
+
+  public configX: PerfectScrollbarConfigInterface = {
+    suppressScrollY:true
+  };
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
 
@@ -27,16 +32,16 @@ export class DeliveryNotesDetailComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
   }
 
   ngOnInit() {
     this.shipMentNotes = GlobalResource.NavigateFromAdvanseShipmentNotes ;
     // apply width on opti_TabID
     //UIHelper.getWidthOfOuterTab();
-    setTimeout(()=>{
-      UIHelper.getWidthOfOuterTab();
-    }, 500);
+    // setTimeout(()=>{
+    //   UIHelper.getWidthOfOuterTab();
+    // }, 500);
   }
 
 }

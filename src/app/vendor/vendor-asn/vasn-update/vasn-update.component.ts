@@ -7,6 +7,7 @@ import { VendorASNModel } from 'src/app/tempmodels/vendor/vendor-asn-model';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { VendorService } from 'src/app/services/vendor/vendor.service';
 import { ToastService } from 'src/app/helpers/services/toast.service';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-vasn-update',
@@ -14,6 +15,10 @@ import { ToastService } from 'src/app/helpers/services/toast.service';
   styleUrls: ['./vasn-update.component.scss']
 })
 export class VasnUpdateComponent implements OnInit {
+
+  public configX: PerfectScrollbarConfigInterface = {
+      suppressScrollY:true
+  };
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
 
@@ -33,14 +38,14 @@ export class VasnUpdateComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
   }
 
   ngOnInit() {
    
 
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
   }
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 import { UIHelper } from '../../../helpers/ui.helpers';
 import { VendorAsnModule } from '../vendor-asn.module';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-vasn-add',
@@ -12,6 +13,9 @@ export class VasnAddComponent implements OnInit {
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
 
+  public configX: PerfectScrollbarConfigInterface = {
+      suppressScrollY:true
+  };
  
   constructor() {}
   
@@ -27,12 +31,12 @@ export class VasnAddComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
   }
 
   ngOnInit() {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
    // console.log("VSNAdd",this.currentSidebarInfo);
     
   }

@@ -1,8 +1,8 @@
 <div #optiRightAddInquiry (blur)="checkChanges()" id="opti_purchaseInqUpdate">    
     <!-- tab start -->
     
-    <div class="opti_position-relative opti_tab-outer" [perfectScrollbar]="">
-        <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
+    <div class="opti_position-relative opti_tab-outer" >
+        <ul #optiTab class="opti_tab opti_position-relative tabs clearfix" id="opti_TabID" [perfectScrollbar]="configX">
             <li class="opti_tablinks" id="opti_HomeTabPurchaseInquiry" (click)="openTab($event, 'home')">
                 <a href="javascript:void('0');">Header</a>
             </li> 

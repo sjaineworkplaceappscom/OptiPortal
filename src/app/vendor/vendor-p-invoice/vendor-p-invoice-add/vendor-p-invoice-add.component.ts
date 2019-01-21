@@ -7,6 +7,7 @@ import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
 import { ToastService } from 'src/app/helpers/services/toast.service';
 import { VendorOIModel } from 'src/app/tempmodels/vendor/vendor-OI-model';
 import { ISubscription } from 'rxjs/Subscription';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-vendor-p-invoice-add',
@@ -14,6 +15,10 @@ import { ISubscription } from 'rxjs/Subscription';
   styleUrls: ['./vendor-p-invoice-add.component.scss']
 })
 export class VendorPInvoiceAddComponent implements OnInit {
+
+  public configX: PerfectScrollbarConfigInterface = {
+      suppressScrollY:true
+  };
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
   constructor(private vendorOIService: VendorOIService, private commonService: Commonservice, private confirmService: ConfirmDialog,private toast:ToastService) { 
@@ -31,12 +36,12 @@ export class VendorPInvoiceAddComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
   }
 
   ngOnInit() {
     // apply width on opti_TabID
-    UIHelper.getWidthOfOuterTab();
+    //UIHelper.getWidthOfOuterTab();
 
      //get status of selected inquiry for disabling or enabling  forms
      let selectedVOI: string = localStorage.getItem("SelectedVOI");

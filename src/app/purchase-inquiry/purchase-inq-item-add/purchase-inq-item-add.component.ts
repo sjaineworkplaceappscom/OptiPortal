@@ -18,6 +18,7 @@ import { ConfirmDialog } from '../../helpers/services/dialog.service';
 import { Configuration } from '../../helpers/Configuration';
 import { ToastService } from '../../helpers/services/toast.service';
 import { AppMessages } from '../../helpers/app-messages';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-purchase-inq-item-add',
@@ -25,6 +26,10 @@ import { AppMessages } from '../../helpers/app-messages';
   styleUrls: ['./purchase-inq-item-add.component.scss']
 })
 export class PurchaseInqItemAddComponent implements OnInit {
+
+  public configX: PerfectScrollbarConfigInterface = {
+      suppressScrollY:true
+  };
 
   /**
    * global variable
