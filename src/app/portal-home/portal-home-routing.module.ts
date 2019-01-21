@@ -12,6 +12,7 @@ import { OpenInvoicesListComponent } from '../open-invoices/open-invoices-list/o
 import { CustomerContactsListComponent } from '../customer-contacts/customer-contacts-list/customer-contacts-list.component';
 import { CustomerContractsListComponent } from '../customer-contracts/customer-contracts-list/customer-contracts-list.component';
 import { VendorModule } from '../vendor/vendor.module';
+import { ConsignInventoryListComponent } from '../consign-inventory/consign-inventory-list/consign-inventory-list.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
       { path: 'openinvoices', component:OpenInvoicesListComponent },
       { path: 'customercontacts', component:CustomerContactsListComponent },
       { path: 'customercontracts', component:CustomerContractsListComponent },
-      { path: 'vendor', loadChildren: '../vendor/vendor.module#VendorModule' },      
+      { path: 'vendor', loadChildren: '../vendor/vendor.module#VendorModule' },     
+      { path: 'consigninventory', component:ConsignInventoryListComponent },       
 
       
 
