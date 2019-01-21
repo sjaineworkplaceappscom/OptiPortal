@@ -69,7 +69,7 @@ export class VendorPiContentComponent implements OnInit {
      this.getVPIsubs = this.vendorService.getVendorDetailById(id,2+"").subscribe(
        data => { 
           
-         this.showLoader = false;
+         this.showLoader = false; 
          if(data!=null && data!=undefined && data != ""){
           let dataArray: any[] = JSON.parse(data);
           this.gridData = JSON.parse(data);
