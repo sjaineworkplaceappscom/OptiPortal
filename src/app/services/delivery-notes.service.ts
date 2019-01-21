@@ -20,6 +20,16 @@ export class DeliveryNotesService {
     //return null;
   }
 
+
+   /**
+   * get Sales Quotation list data from server.
+   */
+  public getDeliveryNotesListBySO(soNumber:string,soID:number): Observable<any> {
+    let url: string = this.baseUrl + "salesorder/deliverybyso/"+soNumber+"/"+soID;
+    return this.httpHelper.get(url, null);
+    //return null;
+  }
+
   /**
    * getSalesQuotationDetail from server.
    */

@@ -14,6 +14,7 @@ import { DeliveryNoteListModel } from '../../tempmodels/delivery-note-list-model
 import { Configuration } from '../../helpers/Configuration';
 import { GlobalResource } from '../../helpers/global-resource';
 import { Router } from '@angular/router';
+import { SalesOrder } from 'src/app/tempmodels/sales-order';
 
 
 @Component({
@@ -61,7 +62,7 @@ export class DeliveryNotesListComponent implements OnInit {
   
 
   constructor(private router: Router,private commonService:Commonservice,private deliveryNotesService: DeliveryNotesService) { }
-
+  salesOrderModel: SalesOrder = new SalesOrder();
   public gridData: any[];
   selectedItem;
 
@@ -96,7 +97,15 @@ export class DeliveryNotesListComponent implements OnInit {
     this.getPaginationAttributes();
     //call api for delivery note list.
     //this.getDeliveryNotesList1();
-    this.getDeliveryNotesList();
+    debugger;
+    if(this.selectedItem=='salesorder'){
+      this.salesOrderModel = JSON.parse(localStorage.getItem('SelectedSalesOrder'))
+    let orderNumber: string = this.salesOrderModel.OrderNumber.toString();
+    let orderId: number = this.salesOrderModel.OrderId;
+      this.getDeliveryNotesListBySO(orderNumber,orderId);
+    }else{
+      this.getDeliveryNotesList();
+    }
   }
 
   /**
@@ -134,6 +143,33 @@ export class DeliveryNotesListComponent implements OnInit {
     }
   );
 }
+
+ /**
+  * Method to get list of inquries from server.
+  */
+ public getDeliveryNotesListBySO(soNumber:string,soId: number) {
+  this.showLoader = true; 
+  
+  this.getDeliverylistSubs = this.deliveryNotesService.getDeliveryNotesListBySO(soNumber,soId).subscribe(
+    data => {
+      if (data != null && data != undefined) {
+          this.gridData = JSON.parse(data);
+          this.gridData.forEach(element => {
+          element.DeliveredDate = DateTimeHelper.ParseDate(element.DeliveredDate);
+          element.ShipDate = DateTimeHelper.ParseDate(element.ShipDate);
+        });
+        this.showLoader = false;
+      }
+    },
+    error => {
+      this.showLoader = false;
+      //alert("Something went wrong");
+      console.log("Error: ", error);
+      localStorage.clear();
+    }
+  );
+}
+
 
 
   openDeliveryNotesDetailOnSelection(selection){ 
