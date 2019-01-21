@@ -13,7 +13,7 @@ export class AdvanceShipmentNoteService {
   constructor(private httpHelper: HttpHelper) { }
 
    /**
-   * get Sales Quotation list data from server.
+   * get advance shipment list data from server.
    */
   public getAdvanceShipmentNotesList(): Observable<any> {
     let url: string = this.baseUrl + "advanceshipment/list";
@@ -21,27 +21,5 @@ export class AdvanceShipmentNoteService {
     //return null;
   } 
 
-  /** 
-   * getSalesQuotationDetail from server.
-   */
-  public getAdvanceShipmentNotesDetail(id:number,type:number): Observable<any> {
-    let url: string = this.baseUrl + "salesquotation/detail/"+id+"/"+type;
-    return this.httpHelper.get(url, null);
-  }
-
-  /**
-   * getSalesQuotationDetail from server.
-   */
-  public getAdvanceShipmentNotesContentDetail(id:number): Observable<any> {
-    let url: string = this.baseUrl + "salesquotation/contentdetail/"+id;
-    return this.httpHelper.get(url, null);
-  }
-
-    /**
-   * getSalesQuotationDetail from server.
-   */
-  public getAdvanceShipmentNotesAttachmentDetail(id:number): Observable<any> {
-    let url: string = this.baseUrl + "salesquotation/attachmentdetail/"+id;
-    return this.httpHelper.get(url, null);
-  }
+ 
 }

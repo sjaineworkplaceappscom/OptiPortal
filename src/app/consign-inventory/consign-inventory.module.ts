@@ -20,6 +20,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
     PerfectScrollbarModule,
     DropDownsModule,
   ],
-  declarations: [ConsignInventoryListComponent, ConsignInventorySRBatchDetailComponent, ConsignInventoryDetailComponent]
+  declarations: [ConsignInventoryListComponent, ConsignInventorySRBatchDetailComponent, ConsignInventoryDetailComponent],
+  exports:[ConsignInventoryListComponent]
 })
 export class ConsignInventoryModule { }
