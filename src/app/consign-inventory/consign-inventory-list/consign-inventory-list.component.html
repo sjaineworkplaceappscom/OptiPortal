@@ -9,6 +9,8 @@
        <!-- for normal user   -->
        <!-- <div *ngIf="systemAdmin!='true'"> -->
         <div>
+            <button (click)="openSBDetail($event);">Open SB Detail</button>
+            <button (click)="openDetail($event);">Open Detail</button>
             <kendo-grid 
             [kendoGridBinding]="gridData" 
             [resizable]="false" 

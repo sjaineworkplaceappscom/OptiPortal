@@ -1,9 +1,12 @@
 <div #optirightfixedsection class="opti_right-fix-section" id="opti_optirightfixedsectionID">
-    <svg-icon src="{{imgPath}}/common/back-opposite.svg" (click)="closeRightSidebar(false)" [svgStyle]="{ 'width.px':20, 'height.px':20 }" class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon>    
-    
-    <app-purchase-inquiry *ngIf="currentSidebarInfo.ModuleName==1" [currentSidebarInfo]="currentSidebarInfo"> </app-purchase-inquiry>
-    
-    <app-sales-quotations-detail *ngIf="currentSidebarInfo.ModuleName==2" [currentSidebarInfo]="currentSidebarInfo"> </app-sales-quotations-detail>
+    <svg-icon src="{{imgPath}}/common/back-opposite.svg" (click)="closeRightSidebar(false)" [svgStyle]="{ 'width.px':20, 'height.px':20 }"
+        class="float-right opti_vertical-align opti_close-icon-right-section"></svg-icon>
+
+    <app-purchase-inquiry *ngIf="currentSidebarInfo.ModuleName==1" [currentSidebarInfo]="currentSidebarInfo">
+    </app-purchase-inquiry>
+
+    <app-sales-quotations-detail *ngIf="currentSidebarInfo.ModuleName==2" [currentSidebarInfo]="currentSidebarInfo">
+    </app-sales-quotations-detail>
 
     <app-sales-order-detail *ngIf="currentSidebarInfo.ModuleName==4" [currentSidebarInfo]="currentSidebarInfo"></app-sales-order-detail>
 
@@ -13,31 +16,43 @@
 
     <app-customer-contacts *ngIf="currentSidebarInfo.ModuleName==8" [currentSidebarInfo]="currentSidebarInfo"></app-customer-contacts>
 
-    <app-customer-purchase-order-update *ngIf="currentSidebarInfo.ModuleName==9 && currentSidebarInfo.ComponentName==901" [currentSidebarInfo]="currentSidebarInfo"></app-customer-purchase-order-update>
+    <app-customer-purchase-order-update *ngIf="currentSidebarInfo.ModuleName==9 && currentSidebarInfo.ComponentName==901"
+        [currentSidebarInfo]="currentSidebarInfo"></app-customer-purchase-order-update>
 
-    <app-customer-purchase-order-add *ngIf="currentSidebarInfo.ModuleName==9 && currentSidebarInfo.ComponentName==902" [currentSidebarInfo]="currentSidebarInfo"></app-customer-purchase-order-add>
+    <app-customer-purchase-order-add *ngIf="currentSidebarInfo.ModuleName==9 && currentSidebarInfo.ComponentName==902"
+        [currentSidebarInfo]="currentSidebarInfo"></app-customer-purchase-order-add>
 
     <app-customer-contracts-attachment *ngIf="currentSidebarInfo.ModuleName==7" [currentSidebarInfo]="currentSidebarInfo"></app-customer-contracts-attachment>
-    
-    <app-vendor-pi-detail *ngIf="currentSidebarInfo.ModuleName==101" [currentSidebarInfo]="currentSidebarInfo"></app-vendor-pi-detail>
-    
-    <app-vendor-po-detail *ngIf="currentSidebarInfo.ModuleName==201" [currentSidebarInfo]="currentSidebarInfo"> </app-vendor-po-detail>
 
-    <app-vendor-p-invoice-add *ngIf="currentSidebarInfo.ModuleName==601 && currentSidebarInfo.ComponentName==1601" [currentSidebarInfo]="currentSidebarInfo"></app-vendor-p-invoice-add>
-    
-    <app-vendor-p-invoice-update *ngIf="currentSidebarInfo.ModuleName==601 && currentSidebarInfo.ComponentName==1602" [currentSidebarInfo]="currentSidebarInfo"></app-vendor-p-invoice-update>
+    <app-vendor-pi-detail *ngIf="currentSidebarInfo.ModuleName==101" [currentSidebarInfo]="currentSidebarInfo"></app-vendor-pi-detail>
+
+    <app-vendor-po-detail *ngIf="currentSidebarInfo.ModuleName==201" [currentSidebarInfo]="currentSidebarInfo">
+    </app-vendor-po-detail>
+
+    <app-vendor-p-invoice-add *ngIf="currentSidebarInfo.ModuleName==601 && currentSidebarInfo.ComponentName==1601"
+        [currentSidebarInfo]="currentSidebarInfo"></app-vendor-p-invoice-add>
+
+    <app-vendor-p-invoice-update *ngIf="currentSidebarInfo.ModuleName==601 && currentSidebarInfo.ComponentName==1602"
+        [currentSidebarInfo]="currentSidebarInfo"></app-vendor-p-invoice-update>
 
     <app-vpayment-detail *ngIf="currentSidebarInfo.ModuleName==701 " [currentSidebarInfo]="currentSidebarInfo"></app-vpayment-detail>
 
-    <app-vcontact-add *ngIf="currentSidebarInfo.ModuleName==801 && currentSidebarInfo.ComponentName==1801" [currentSidebarInfo]="currentSidebarInfo"></app-vcontact-add>
-    <app-vcontact-update *ngIf="currentSidebarInfo.ModuleName==801 && currentSidebarInfo.ComponentName==1802" [currentSidebarInfo]="currentSidebarInfo"></app-vcontact-update>
+    <app-vcontact-add *ngIf="currentSidebarInfo.ModuleName==801 && currentSidebarInfo.ComponentName==1801"
+        [currentSidebarInfo]="currentSidebarInfo"></app-vcontact-add>
+    <app-vcontact-update *ngIf="currentSidebarInfo.ModuleName==801 && currentSidebarInfo.ComponentName==1802"
+        [currentSidebarInfo]="currentSidebarInfo"></app-vcontact-update>
 
-    <app-vasn-add *ngIf="currentSidebarInfo.ModuleName==401 && currentSidebarInfo.ComponentName==1401" [currentSidebarInfo]="currentSidebarInfo"></app-vasn-add>
-    <app-vasn-update *ngIf="currentSidebarInfo.ModuleName==401 && currentSidebarInfo.ComponentName==1451" [currentSidebarInfo]="currentSidebarInfo"></app-vasn-update>
+    <app-vasn-add *ngIf="currentSidebarInfo.ModuleName==401 && currentSidebarInfo.ComponentName==1401"
+        [currentSidebarInfo]="currentSidebarInfo"></app-vasn-add>
+    <app-vasn-update *ngIf="currentSidebarInfo.ModuleName==401 && currentSidebarInfo.ComponentName==1451"
+        [currentSidebarInfo]="currentSidebarInfo"></app-vasn-update>
 
-    
-MN:{{currentSidebarInfo.ModuleName}}
-CN:{{currentSidebarInfo.ComponentName}}
-    
-    
-</div>        
+     <!-- Consign Inventoty -->
+    <app-consign-inventory-detail *ngIf="currentSidebarInfo.ModuleName==901 && currentSidebarInfo.ComponentName==1901"
+        [currentSidebarInfo]="currentSidebarInfo"></app-consign-inventory-detail>
+    <app-consign-inventory-sr-batch-detail *ngIf="currentSidebarInfo.ModuleName==901 && currentSidebarInfo.ComponentName==1902"
+        [currentSidebarInfo]="currentSidebarInfo"></app-consign-inventory-sr-batch-detail>
+
+
+
+</div>

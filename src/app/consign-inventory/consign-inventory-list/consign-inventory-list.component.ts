@@ -7,6 +7,8 @@ import { ConsignedInventoryService } from 'src/app/services/consigned-inventory.
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { ISubscription } from 'rxjs/Subscription';
 import { data } from 'src/app/DemoData/Data';
+import { ComponentName, ModuleName } from 'src/app/enums/enums';
+import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 
 @Component({
   selector: 'app-consign-inventory-list',
@@ -149,14 +151,22 @@ export class ConsignInventoryListComponent implements OnInit {
     //grid.filter.filters=[];
   }
 
-  openSalesOrderDetailOnSelectSalesOrder(e){
-    // let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
-    // currentsideBarInfo.ComponentName=ComponentName.SalesOrderDetail;
-    // currentsideBarInfo.ModuleName=ModuleName.SalesOrder;
-    // currentsideBarInfo.SideBarStatus=true;    
-    
-    // this.commonService.setCurrentSideBar(currentsideBarInfo);
+  openSBDetail(e){
+    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName=ComponentName.CISBDetail;
+    currentsideBarInfo.ModuleName=ModuleName.ConsignInventory;
+    currentsideBarInfo.SideBarStatus=true;        
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
+
+  openDetail(e){
+    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
+    currentsideBarInfo.ComponentName=ComponentName.CIDetail;
+    currentsideBarInfo.ModuleName=ModuleName.ConsignInventory;
+    currentsideBarInfo.SideBarStatus=true;        
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
+  }
+
 
   openDetailGrid(e:any){
     
