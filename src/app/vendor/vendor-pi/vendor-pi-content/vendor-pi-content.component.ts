@@ -72,7 +72,6 @@ export class VendorPiContentComponent implements OnInit {
          this.showLoader = false;
          if(data!=null && data!=undefined && data != ""){
           let dataArray: any[] = JSON.parse(data);
-          
           this.gridData = JSON.parse(data);
           this.gridData.forEach(element => {
             element.RequestedDate = DateTimeHelper.ParseDate(element.RequestedDate);
