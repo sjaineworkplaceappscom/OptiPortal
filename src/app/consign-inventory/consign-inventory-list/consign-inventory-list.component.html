@@ -1,3 +1,183 @@
-<p>
-  consign-inventory-list works!
-</p>
+<div id="opti_ConsignInventoryListID">   
+  <!-- loader start -->
+   <div class="opti_loader opti_loader-module-grid-list" *ngIf="showLoader">
+       <div class="opti_spinner"></div>
+   </div>
+   <!-- loader end -->  
+
+   <ng-container *ngIf="showLoader==false">
+       <!-- for normal user   -->
+       <!-- <div *ngIf="systemAdmin!='true'"> -->
+        <div>
+            <kendo-grid 
+            [kendoGridBinding]="gridData" 
+            [resizable]="false" 
+            [pageSize]="selectedValue" 
+            [pageable]="true" 
+            [sortable]="true"  
+            [filterable]=isColumnFilter
+            [groupable]=isColumnGroup 
+            [columnMenu]="{ columnChooser: false }" 
+            [height]=gridHeight 
+            [selectable]="true" 
+            (selectionChange)="openSalesOrderDetailOnSelectSalesOrder($event)"
+            #gridItem>
+                <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
+                <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
+
+                <!-- grid template start -->
+                <ng-template kendoGridToolbarTemplate>
+                    <!-- show hide column start show hide -->
+                    <kendo-grid-column-chooser class="float-left opti_hide-in-mobile"></kendo-grid-column-chooser>
+
+                    <!-- checkbox -->
+                    <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
+                        <div class="k-form-field float-left">
+                            <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_SalesOrderListColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
+                            <label class="k-checkbox-label" for="opti_SalesOrderListColumnFilterID">Enable Filter</label>
+                        </div>
+
+                        <div class="k-form-field float-left">
+                            <input type="checkbox" id="opti_SalesOrderColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
+                            <label class="k-checkbox-label" for="opti_SalesOrderColumnGroupID">Enable Grouping</label>
+                        </div>
+                    </form>
+
+                    <!-- export -->
+                    <button type="button" kendoGridExcelCommand icon="file-excel" class="opti_hide-in-mobile float-left opti_grid-toolbar-excelbutton">
+                        <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
+                    </button>
+
+                    <!-- <div class="float-left">
+                    <kendo-dropdownlist [data]="listItems" [(ngModel)]="selectedValue"></kendo-dropdownlist>
+                    </div> -->
+
+
+                    <div class="float-right opti_grid-mainlist-mobile-search opti_right-top-sec-grid">
+                        <form class="k-form opti_common-search-form float-left p-0">
+                            <label class="k-form-field opti_common-search-label">
+                                <input type="text" class="k-textbox" name="searchRequest" [(ngModel)]="searchRequest" />
+                                <span class="opti_vertical-align opti_mouse-pointer"><img src="assets/images/common/search-black.svg" class="" alt="Search" width="15" /></span>
+                            </label>
+                        </form>
+                    </div>
+
+                    
+
+                </ng-template>
+
+                
+                <!-- grid for mobile start -->
+                <kendo-grid-column media="(max-width: 767px)" title="Consigned Inventory" class="opti_mobile-grid-td">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                        <dl class="opti_mobile_grid_dl">
+                            <dt>Item</dt>
+                            <dd>{{ dataItem.Item }}</dd>
+
+                            <dt>Item Description</dt>
+                            <dd>{{ dataItem.ItemDescription }}</dd>
+
+                            <dt>WareHouse</dt>
+                            <dd>{{ dataItem.WareHouse }}</dd>
+
+                            <dt>Bin</dt>
+                            <dd>{{ dataItem.Bin }}</dd>
+                        </dl>
+
+                        <dl class="opti_mobile_grid_dl">
+                            <dt>Commited <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
+                            <dd>{{ dataItem.Commited }}</dd>
+
+                            <dt>Available</dt>
+                            <dd>{{ dataItem.Available }}</dd>
+
+                            <dt>Stock</dt>
+                            <dd>{{ dataItem.Stock }}</dd>
+
+                            <dt>Serial or Batch</dt>
+                            <dd>{{ dataItem.SerialorBatch }}</dd>
+                        </dl>
+                    </ng-template>
+                </kendo-grid-column>
+                <!-- grid for mobile end -->
+
+
+
+                <kendo-grid-column media="(min-width: 768px)" field="Item" title="Item" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="ItemDescription" title="Item Description" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="WareHouse" [width]="160" title="WareHouse"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="Bin" [width]="160" title="Bin"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="Commited" title="Commited" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="Available" title="Available" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="Stock" title="Stock" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="SerialorBatch" [width]="160" title="Serial or Batch"></kendo-grid-column>
+                
+                
+
+
+                <ng-template kendoGridDetailTemplate let-dataItem let-column let-columnIndex="columnIndex">
+                  <kendo-grid 
+                    class="opti_detail-child-row" 
+                    [data]="dataItem.ItemsDetail">
+                      <kendo-grid-column media="(min-width: 768px)" field="Item" title="Item" ></kendo-grid-column>
+                      <kendo-grid-column media="(min-width: 768px)" field="ItemDescription" title="Item Description" ></kendo-grid-column>
+                      <kendo-grid-column media="(min-width: 768px)" field="SerialAndBatch" title="Serial and Batch" ></kendo-grid-column>
+                      <kendo-grid-column media="(min-width: 768px)" field="WareHouse" title="Ware House" ></kendo-grid-column>
+                      <kendo-grid-column media="(min-width: 768px)" field="Bin" title="Bin" ></kendo-grid-column>
+                      <kendo-grid-column media="(min-width: 768px)" field="ToWH" title="To WH" ></kendo-grid-column>
+                      <kendo-grid-column media="(min-width: 768px)" field="ToBin" title="To Bin" ></kendo-grid-column>
+                      <kendo-grid-column media="(min-width: 768px)" field="TransectionDate" title="Transection Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+                      <kendo-grid-column media="(min-width: 768px)" field="TransactionType" title="Transaction Type" ></kendo-grid-column>
+                      <kendo-grid-column media="(min-width: 768px)" field="QunatityTransacted" title="Qunatity Transacted" ></kendo-grid-column>
+                      <kendo-grid-column media="(min-width: 768px)" field="TransactionDocumentNumber" title="Transaction Document Number" ></kendo-grid-column>
+
+                      <kendo-grid-column media="(max-width: 767px)" title="Inventory Details" class="opti_mobile-grid-td">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            <dl class="opti_mobile_grid_dl">
+                                <dt>Item</dt>
+                                <dd>{{ dataItem.Item }}</dd>
+    
+                                <dt>Item Description</dt>
+                                <dd>{{ dataItem.ItemDescription }}</dd>
+
+                                <dt>Serial And Batch</dt>
+                                <dd>{{ dataItem.SerialAndBatch }}</dd>
+
+                                <dt>WareHouse</dt>
+                                <dd>{{ dataItem.WareHouse }}</dd>
+    
+                                <dt>Bin</dt>
+                                <dd>{{ dataItem.Bin }}</dd>
+                                <dt>To WH </dt>
+                                <dd>{{ dataItem.ToWH }}</dd>
+                            </dl>
+    
+                            <dl class="opti_mobile_grid_dl">
+                                <dt>To Bin <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
+                                <dd>{{ dataItem.ToBin }}</dd>
+    
+                                <dt>Transection Date</dt>
+                                <dd>{{ dataItem.TransectionDate }}</dd>
+    
+                                <dt>Transaction Type</dt>
+                                <dd>{{ dataItem.TransactionType }}</dd>
+
+                                <dt>Qunatity Transacted</dt>
+                                <dd>{{ dataItem.QunatityTransacted }}</dd>
+    
+                                <dt>Transaction Document Number</dt>
+                                <dd>{{ dataItem.TransactionDocumentNumber }}</dd>
+                            </dl>
+                        </ng-template>
+                    </kendo-grid-column>
+                    </kendo-grid>
+                </ng-template>    
+
+
+                <!-- xlsx template start -->
+                <kendo-grid-excel fileName="Consigned-Inventory-List.xlsx"></kendo-grid-excel>
+                <!-- xlsx template end -->
+            </kendo-grid>
+        </div>
+   </ng-container>
+</div>
