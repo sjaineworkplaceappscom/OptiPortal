@@ -3,6 +3,10 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { Commonservice } from '../../services/commonservice.service';
 import { GridComponent } from '@progress/kendo-angular-grid';
 import { consignList } from '../../DemoData/consign';
+import { ConsignedInventoryService } from 'src/app/services/consigned-inventory.service';
+import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { ISubscription } from 'rxjs/Subscription';
+import { data } from 'src/app/DemoData/Data';
 
 @Component({
   selector: 'app-consign-inventory-list',
@@ -21,7 +25,7 @@ export class ConsignInventoryListComponent implements OnInit {
   gridHeight: number;
   showLoader: boolean = false;
   searchRequest: string = '';
-  
+  getSaleslistSubs: ISubscription;
   incr(num){
     this.pageSizeNumber = num;
   }
@@ -38,8 +42,8 @@ export class ConsignInventoryListComponent implements OnInit {
   // End UI Section
 
   
-
-  constructor(private commonService:Commonservice) { }
+  
+  constructor(private commonService:Commonservice,private consignedInventoryService: ConsignedInventoryService) { }
 
   public gridData: any[];
 
@@ -59,19 +63,78 @@ export class ConsignInventoryListComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
 
     
-    this.getConsignList();
+    this.getConsignedItemMasterList();
   }
 
   /**
    * Method to get list of inquries from server.
   */
-  public getConsignList() {
+  public getConsignedItemMasterList() {
+    // this.showLoader = true;
+    // this.gridData = consignList;
+    // setTimeout(()=>{    
+    //   this.showLoader = false;
+    // }, 1000);
+
+
+      
     this.showLoader = true;
-    this.gridData = consignList;
-    setTimeout(()=>{    
-      this.showLoader = false;
-    }, 1000);
+    this.getSaleslistSubs = this.consignedInventoryService.getConsignedInventoryMasterList().subscribe(
+      data => {
+       // console.log("orderlist:"+data);
+        if (data != null && data != undefined) {
+          this.gridData = JSON.parse(data);
+          this.gridData.forEach(element => {
+          //  element.OrderDate = DateTimeHelper.ParseDate(element.OrderDate);
+          //  element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
+          //  element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
+          });
+          this.showLoader = false;
+        }
+      },
+      error => {
+        this.showLoader = false;
+        //alert("Something went wrong");
+        console.log("Error: ", error);
+        localStorage.clear();
+      }
+    );
   }
+
+
+   /**
+   * Method to get list of inquries from server.
+  */
+ public getConsignedItemChildList(index: number): any {
+  // this.showLoader = true;
+  // this.gridData = consignList;
+  // setTimeout(()=>{    
+  //   this.showLoader = false;
+  // }, 1000); 
+ // this.showLoader = true;
+  this.getSaleslistSubs = this.consignedInventoryService.getConsignedInventoryChildList().subscribe(
+    (data: any) => {
+     // console.log("orderlist:"+data);
+      if (data != null && data != undefined) {
+        this.gridData[index].ItemsDetail = JSON.parse(data);
+        this.gridData[index].ItemsDetail.forEach(element => {
+        //  element.OrderDate = DateTimeHelper.ParseDate(element.OrderDate);
+        //  element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
+        //  element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
+        });
+       // this.showLoader = false;
+      }
+      return data;
+    },
+    error => {
+    //  this.showLoader = false;
+      //alert("Something went wrong");
+      console.log("Error: ", error);
+      localStorage.clear();
+    }
+  );
+}
+
 
 
 
@@ -96,7 +159,14 @@ export class ConsignInventoryListComponent implements OnInit {
   }
 
   openDetailGrid(e:any){
-    this.gridData[e.index].ItemsDetail=this.getItems();           
+    
+
+  let data =  this.getConsignedItemChildList(e.index); //JSON.parse();            
+console.log("Mdata",data)
+  if(data!=null && data!=undefined){    
+    this.gridData[e.index].ItemsDetail= JSON.parse(data);
+  }
+    
   }
 
   getItems():any{
@@ -128,5 +198,9 @@ export class ConsignInventoryListComponent implements OnInit {
   }]
   }
 
+  ngOnDestroy() {
+    if (this.getSaleslistSubs != undefined)
+      this.getSaleslistSubs.unsubscribe();
+  }
 
 }

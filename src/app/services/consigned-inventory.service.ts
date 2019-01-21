@@ -15,8 +15,16 @@ export class ConsignedInventoryService {
   /**
    * get Consigned Inventory list data from server.
    */
-  public getConsignedInventoryList(): Observable<any> {
-    let url: string = this.baseUrl + "consignedInventory/list";
+  public getConsignedInventoryMasterList(): Observable<any> {
+    let url: string = this.baseUrl + "consignedinventory/master/list";
+    return this.httpHelper.get(url, null);
+  } 
+
+  /**
+   * get Consigned Inventory list data from server.
+   */
+  public getConsignedInventoryChildList(): Observable<any> {
+    let url: string = this.baseUrl + "consignedinventory/child/list";
     return this.httpHelper.get(url, null);
   } 
 
