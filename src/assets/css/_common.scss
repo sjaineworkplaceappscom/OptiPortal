@@ -378,6 +378,9 @@ body{
                 border: 1px solid #ccc;
                 .opti_tablinks{
                     cursor: pointer;
+                    &.opti_tablinksExtraWidth{
+                        max-width: initial;
+                    }
                 }
             }
 

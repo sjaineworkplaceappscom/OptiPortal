@@ -170,13 +170,12 @@ export class ConsignInventoryListComponent implements OnInit {
 
 
   openDetailGrid(e:any){
-    
-
-  let data =  this.getConsignedItemChildList(e.index); //JSON.parse();            
-console.log("Mdata",data)
-  if(data!=null && data!=undefined){    
-    this.gridData[e.index].ItemsDetail= JSON.parse(data);
-  }
+     
+    let data =  this.getConsignedItemChildList(e.index); //JSON.parse();            
+    console.log("Mdata",data)
+    if(data!=null && data!=undefined){    
+      this.gridData[e.index].ItemsDetail= JSON.parse(data);
+    }
     
   }
 

@@ -89,3 +89,15 @@ export const salesOrderNotes = [
         "Notes":"This is note"
     }
 ]
+
+export const serialAndBatchList = [  
+    {  
+        "SBNO":"Ankur",
+        "Quantity":"05/07/2018",
+    }
+ ,  
+    {  
+        "SBNO":"Aryan",
+        "Quantity":"05/07/2018",
+    }
+]

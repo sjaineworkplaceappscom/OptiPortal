@@ -9,8 +9,6 @@
        <!-- for normal user   -->
        <!-- <div *ngIf="systemAdmin!='true'"> -->
         <div>
-            <button (click)="openSBDetail($event);">Open SB Detail</button>
-            <button (click)="openDetail($event);">Open Detail</button>
             <kendo-grid 
             [kendoGridBinding]="gridData" 
             [resizable]="false" 
@@ -97,7 +95,7 @@
                             <dd>{{ dataItem.Stock }}</dd>
 
                             <dt>Serial or Batch</dt>
-                            <dd><a href="javascript:void('0')" (click)="openSBDetail($event)" class="btn btn-link"> {{ dataItem.SerialorBatch }}</a></dd>
+                            <dd><a href="javascript:void('0')" (click)="openSBDetail($event)" class="btn btn-link  pl-0 pr-0"> {{ dataItem.SerialorBatch }}</a></dd>
                         </dl>
                     </ng-template>
                 </kendo-grid-column>
@@ -135,9 +133,9 @@
                       <kendo-grid-column media="(min-width: 768px)" field="TransactionDate" title="Transection Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="TransactionType" title="Transaction Type" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="QuantityTransacted" title="Qunatity Transacted" ></kendo-grid-column>
-                      <kendo-grid-column media="(min-width: 768px)" field="TransactionDocumentNumber" title="Transaction Document Number" >                        
+                      <kendo-grid-column media="(min-width: 768px)"  title="Transaction Document Number" >                        
                         <ng-template kendoGridCellTemplate let-row let-childDataItem>
-                            <a (click)="openDetail($event);" href="javascript:void('0')" class="btn btn-link"> {{childDataItem.TransactionDocumentNumber}} </a>
+                            <a (click)="openDetail($event);" href="javascript:void('0')" class="btn btn-link"> {{childDataItem.ItemOptiId}} </a>
                         </ng-template>
                       </kendo-grid-column>
 
@@ -176,7 +174,7 @@
                                 <dd>{{ dataItem.QunatityTransacted }}</dd>
     
                                 <dt>Transaction Document Number</dt>
-                                <dd><a (click)="openDetail($event);" href="javascript:void('0')" class="btn btn-link">{{ dataItem.TransactionDocumentNumber }}</a></dd>
+                                <dd><a (click)="openDetail($event);" href="javascript:void('0')" class="btn btn-link  pl-0 pr-0">{{ dataItem.ItemOptiId }}</a></dd>
                             </dl>
                         </ng-template>
                     </kendo-grid-column>
