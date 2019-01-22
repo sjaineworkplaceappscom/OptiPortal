@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 
 @Component({
   selector: 'app-consign-inventory-detail',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./consign-inventory-detail.component.scss']
 })
 export class ConsignInventoryDetailComponent implements OnInit {
+
+  @Input() currentSidebarInfo:CurrentSidebarInfo;
 
   constructor() { }
 
