@@ -26,8 +26,10 @@ export class ConsignInventoryListComponent implements OnInit {
   isColumnGroup: boolean = false;
   gridHeight: number;
   showLoader: boolean = false;
+  showLoaderForChild : boolean = false;
   searchRequest: string = '';
-  getSaleslistSubs: ISubscription;
+  getConsignedInventoryMasterlistSubs: ISubscription;
+  getConsignedInventoryChildlistSubs: ISubscription;
   incr(num){
     this.pageSizeNumber = num;
   }
@@ -77,12 +79,10 @@ export class ConsignInventoryListComponent implements OnInit {
     // setTimeout(()=>{    
     //   this.showLoader = false;
     // }, 1000);
-
-
       
     this.showLoader = true;
-    this.getSaleslistSubs = this.consignedInventoryService.getConsignedInventoryMasterList().subscribe(
-      data => {
+    this.getConsignedInventoryMasterlistSubs = this.consignedInventoryService.getConsignedInventoryMasterList().subscribe(
+      data => { 
        // console.log("orderlist:"+data);
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
@@ -108,13 +108,13 @@ export class ConsignInventoryListComponent implements OnInit {
    * Method to get list of inquries from server.
   */
  public getConsignedItemChildList(index: number): any {
-  // this.showLoader = true;
+   this.showLoaderForChild = true;
   // this.gridData = consignList;
   // setTimeout(()=>{    
   //   this.showLoader = false;
   // }, 1000); 
- // this.showLoader = true;
-  this.getSaleslistSubs = this.consignedInventoryService.getConsignedInventoryChildList().subscribe(
+  //this.showLoader = true;
+  this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList().subscribe(
     (data: any) => {
      // console.log("orderlist:"+data);
       if (data != null && data != undefined) {
@@ -124,21 +124,18 @@ export class ConsignInventoryListComponent implements OnInit {
         //  element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
         //  element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
         });
-       // this.showLoader = false;
+        this.showLoaderForChild = false;
       }
       return data;
     },
     error => {
-    //  this.showLoader = false;
+      this.showLoaderForChild = false;
       //alert("Something went wrong");
       console.log("Error: ", error);
       localStorage.clear();
     }
   );
 }
-
-
-
 
   onFilterChange(checkBox:any,grid:GridComponent)
   {
@@ -209,8 +206,11 @@ console.log("Mdata",data)
   }
 
   ngOnDestroy() {
-    if (this.getSaleslistSubs != undefined)
-      this.getSaleslistSubs.unsubscribe();
+    if (this.getConsignedInventoryChildlistSubs != undefined)
+      this.getConsignedInventoryChildlistSubs.unsubscribe();
+
+      if (this.getConsignedInventoryMasterlistSubs != undefined)
+      this.getConsignedInventoryMasterlistSubs.unsubscribe();
   }
 
 }

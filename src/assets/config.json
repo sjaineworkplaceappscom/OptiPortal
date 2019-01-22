@@ -4,7 +4,7 @@
     "firstHomePageVendor":"/home/vendor/vpinquery",
     "dateFormat": "DD MMM YY",
     "displayDateFormat":"dd MMM yy",
-    "appVersion": "1.5",
+    "appVersion": "1.5", 
     "doccumentPath": "http://139.144.10.218:5000/Upload/",
     "assetsRootpath": "assets"   
 } 
