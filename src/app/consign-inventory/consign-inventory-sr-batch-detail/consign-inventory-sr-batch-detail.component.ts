@@ -5,6 +5,9 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { serialAndBatchList } from '../../DemoData/consign';
 import { Configuration } from '../../helpers/Configuration';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { ISubscription } from 'rxjs/Subscription';
+import { ConsignedInventoryService } from 'src/app/services/consigned-inventory.service';
 
 @Component({
   selector: 'app-consign-inventory-sr-batch-detail',
@@ -20,13 +23,14 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
   gridHeight: number;
   showLoader: boolean = false;
   searchRequest: string = '';
+  getSerialBatchlistSubs: ISubscription;
   
   public configX: PerfectScrollbarConfigInterface = {
       suppressScrollY:true
   };
 
   tabName: string = 'home';
-  constructor() { }
+  constructor(private consignedInventoryService: ConsignedInventoryService) { }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -45,8 +49,9 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
 
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-
-    this.getSrBatchList();
+    console.log('called sr batch component');
+    //this.getSrBatchList();
+    this.getSerialBatchList();
   }
 
   // tab function
@@ -75,6 +80,38 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
   clearFilter(grid:GridComponent){      
     //grid.filter.filters=[];
   }
+
+
+  /**
+   * Method to get list of inquries from server.
+  */
+ public getSerialBatchList(): any {
+  this.showLoader = true;
+
+ this.getSerialBatchlistSubs = this.consignedInventoryService.getSerialBatchDetail().subscribe(
+   (data: any) => {
+     if (data != null && data != undefined) {
+       this.gridData = JSON.parse(data);
+       this.showLoader = false;
+     }
+     return data;
+   },
+   error => {
+     this.showLoader = false;
+     //alert("Something went wrong");
+     console.log("Error: ", error);
+     localStorage.clear();
+   }
+ );
+}
+
+
+ngOnDestroy() {
+
+  if (this.getSerialBatchlistSubs != undefined)
+    this.getSerialBatchlistSubs.unsubscribe();
+
+}
 
 
 }

@@ -125,7 +125,11 @@
                     [kendoGridBinding]="dataItem.ItemsDetail">
                       <kendo-grid-column media="(min-width: 768px)" field="Item" title="Item" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="ItemDescription" title="Item Description" ></kendo-grid-column>
-                      <kendo-grid-column media="(min-width: 768px)" field="SerialorBatch" title="Serial and Batch" ></kendo-grid-column>
+                      <kendo-grid-column media="(min-width: 768px)" field="SerialorBatch" title="Serial and Batch" >
+                            <ng-template kendoGridCellTemplate let-row let-childDataItem>
+                                    <a href="javascript:void('0')" (click)="openSBDetail($event)" class="btn btn-link"> {{childDataItem.SerialorBatch}} </a>
+                                  </ng-template>
+                      </kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="WareHouse" title="Ware House" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="Bin" title="Bin" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="ToWH" title="To WH" ></kendo-grid-column>

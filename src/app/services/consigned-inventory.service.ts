@@ -32,7 +32,7 @@ export class ConsignedInventoryService {
    * get serial batch detail data from server.
    */
   public getSerialBatchDetail(): Observable<any> {
-    let url: string = this.baseUrl + "getserialbatch/list";
+    let url: string = this.baseUrl + "consignedinventory/serialbatch";
     return this.httpHelper.get(url, null);
   } 
   /**

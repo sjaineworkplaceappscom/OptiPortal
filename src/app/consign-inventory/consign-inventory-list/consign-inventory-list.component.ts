@@ -74,11 +74,6 @@ export class ConsignInventoryListComponent implements OnInit {
    * Method to get list of inquries from server.
   */
   public getConsignedItemMasterList() {
-    // this.showLoader = true;
-    // this.gridData = consignList;
-    // setTimeout(()=>{    
-    //   this.showLoader = false;
-    // }, 1000);
       
     this.showLoader = true;
     this.getConsignedInventoryMasterlistSubs = this.consignedInventoryService.getConsignedInventoryMasterList().subscribe(
@@ -87,9 +82,7 @@ export class ConsignInventoryListComponent implements OnInit {
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
           this.gridData.forEach(element => {
-          //  element.OrderDate = DateTimeHelper.ParseDate(element.OrderDate);
-          //  element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
-          //  element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
+        
           });
           this.showLoader = false;
         }
@@ -109,20 +102,14 @@ export class ConsignInventoryListComponent implements OnInit {
   */
  public getConsignedItemChildList(index: number): any {
    this.showLoaderForChild = true;
-  // this.gridData = consignList;
-  // setTimeout(()=>{    
-  //   this.showLoader = false;
-  // }, 1000); 
-  //this.showLoader = true;
+ 
   this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList().subscribe(
     (data: any) => {
-     // console.log("orderlist:"+data);
       if (data != null && data != undefined) {
         this.gridData[index].ItemsDetail = JSON.parse(data);
         this.gridData[index].ItemsDetail.forEach(element => {
-        //  element.OrderDate = DateTimeHelper.ParseDate(element.OrderDate);
-        //  element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
-        //  element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
+          element.TransactionDate = DateTimeHelper.ParseDate(element.TransactionDate);
+     
         });
         this.showLoaderForChild = false;
       }
@@ -149,6 +136,8 @@ export class ConsignInventoryListComponent implements OnInit {
   }
 
   openSBDetail(e){
+    debugger;
+    console.log('changes');
     let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName=ComponentName.CISBDetail;
     currentsideBarInfo.ModuleName=ModuleName.ConsignInventory;
@@ -157,7 +146,8 @@ export class ConsignInventoryListComponent implements OnInit {
   }
  
 
-  openDetail(e){
+  openDetail(e){ 
+  debugger;
     let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName=ComponentName.CIDetail;
     currentsideBarInfo.ModuleName=ModuleName.ConsignInventory;
