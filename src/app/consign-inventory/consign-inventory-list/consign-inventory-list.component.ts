@@ -158,6 +158,7 @@ export class ConsignInventoryListComponent implements OnInit {
     currentsideBarInfo.SideBarStatus=true;        
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
+ 
 
   openDetail(e){
     let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
