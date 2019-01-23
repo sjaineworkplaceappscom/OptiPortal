@@ -26,6 +26,7 @@ export class ConsignInventoryListComponent implements OnInit {
   isColumnGroup: boolean = false;
   gridHeight: number;
   showLoader: boolean = false;
+  showLoader1: boolean = false;
   showLoaderForChild : boolean = false;
   searchRequest: string = '';
   getConsignedInventoryMasterlistSubs: ISubscription;
@@ -50,7 +51,7 @@ export class ConsignInventoryListComponent implements OnInit {
   constructor(private commonService:Commonservice,private consignedInventoryService: ConsignedInventoryService) { }
 
   public gridData: any[];
-
+  public showLoaderChild:boolean[]
   ngOnInit() {
 
     // Apply class on body start
@@ -101,8 +102,8 @@ export class ConsignInventoryListComponent implements OnInit {
    * Method to get list of inquries from server.
   */
  public getConsignedItemChildList(index: number): any {
-   this.showLoaderForChild = true;
- 
+   //this.showLoaderForChild[index] = true;
+   this.showLoader1 =true;
   this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList().subscribe(
     (data: any) => {
       if (data != null && data != undefined) {
@@ -111,12 +112,14 @@ export class ConsignInventoryListComponent implements OnInit {
           element.TransactionDate = DateTimeHelper.ParseDate(element.TransactionDate);
      
         });
-        this.showLoaderForChild = false;
+        //this.showLoaderForChild[index] = false;
+        this.showLoader1 =false;
       }
       return data;
     },
     error => {
-      this.showLoaderForChild = false;
+      //this.showLoaderForChild[index] = false;
+      this.showLoader1 =false;
       //alert("Something went wrong");
       console.log("Error: ", error);
       localStorage.clear();
@@ -136,7 +139,7 @@ export class ConsignInventoryListComponent implements OnInit {
   }
 
   openSBDetail(e){
-    debugger;
+    
     console.log('changes');
     let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName=ComponentName.CISBDetail;
@@ -146,18 +149,55 @@ export class ConsignInventoryListComponent implements OnInit {
   }
  
 
-  openDetail(e){ 
-  debugger;
+  openDetail(parent,index){ 
+    console.log("Parent",parent);    
+    console.log("index",index);
+    let val =parent.ItemsDetail[index];
+     console.log("value",val);
+ 
+     this.openRightSideBarByType(1,val);
+  }
+
+  openRightSideBarByType( type:number,requesterData:any){
     let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName=ComponentName.CIDetail;
-    currentsideBarInfo.ModuleName=ModuleName.ConsignInventory;
+    if(requesterData!=null){
+      switch(requesterData.TransactionType) { 
+        case 1: { 
+           console.log("Excellent"); 
+           currentsideBarInfo.ComponentName=ComponentName.DeliveryNotes;
+           currentsideBarInfo.ModuleName=ModuleName.DeliveryNotes;
+           break; 
+        } 
+        case 2: { 
+           console.log("Good"); 
+           currentsideBarInfo.ComponentName=ComponentName.DeliveryNotes;
+           currentsideBarInfo.ModuleName=ModuleName.DeliveryNotes;
+           break; 
+        } 
+        case 3: { 
+          console.log("Good"); 
+          currentsideBarInfo.ComponentName=ComponentName.DeliveryNotes;
+          currentsideBarInfo.ModuleName=ModuleName.DeliveryNotes;
+          break; 
+       } 
+       case 4: { 
+        console.log("Good"); 
+        currentsideBarInfo.ComponentName=ComponentName.DeliveryNotes;
+        currentsideBarInfo.ModuleName=ModuleName.DeliveryNotes;
+        break; 
+     } 
+      
+     }
+    }
+    currentsideBarInfo.RequesterData = requesterData;
     currentsideBarInfo.SideBarStatus=true;        
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
-
+   
+ 
   openDetailGrid(e:any){
-     
+    
     let data =  this.getConsignedItemChildList(e.index); //JSON.parse();            
     console.log("Mdata",data)
     if(data!=null && data!=undefined){    
