@@ -9,6 +9,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FormsModule } from '@angular/forms';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { DeliveryNotesModule } from '../delivery-notes/delivery-notes.module';
+import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { DeliveryNotesModule } from '../delivery-notes/delivery-notes.module';
     AngularSvgIconModule,
     PerfectScrollbarModule,
     DropDownsModule,
-    DeliveryNotesModule
+    DeliveryNotesModule,
+    BsDatepickerModule.forRoot()
   ],
   declarations: [ConsignInventoryListComponent, ConsignInventorySRBatchDetailComponent, ConsignInventoryDetailComponent],
   exports:[ConsignInventoryListComponent,ConsignInventorySRBatchDetailComponent, ConsignInventoryDetailComponent]

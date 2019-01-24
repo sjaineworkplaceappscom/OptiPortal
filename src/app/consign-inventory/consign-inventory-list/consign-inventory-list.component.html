@@ -135,6 +135,14 @@
                   <kendo-grid  
                     class="opti_detail-child-row"  
                     [kendoGridBinding]="dataItem.ItemsDetail">
+
+                    <ng-template kendoGridToolbarTemplate>
+                        <div class="row">
+                            <div class="col-xs-12 col-12 col-md-2 form-group">
+                                <input class="form-control" #drp="bsDaterangepicker" bsDaterangepicker [(ngModel)]="bsRangeValue">
+                            </div>
+                        </div> 
+                    </ng-template>
                     
                       <kendo-grid-column media="(min-width: 768px)" field="Item" title="Item" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="ItemDescription" title="Item Description" ></kendo-grid-column>

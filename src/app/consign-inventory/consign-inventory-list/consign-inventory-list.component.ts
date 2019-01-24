@@ -22,6 +22,12 @@ import { DeliveryNoteHeaderModel } from 'src/app/tempmodels/delivery-note-header
 })
 export class ConsignInventoryListComponent implements OnInit {
 
+
+  bsValue = new Date();
+  bsRangeValue: Date[];
+  maxDate = new Date();
+
+
   // 
   pageSizeNumber: number = 5;
   isMobile: boolean;
@@ -58,7 +64,12 @@ export class ConsignInventoryListComponent implements OnInit {
 
 
 
-  constructor(private commonService: Commonservice, private consignedInventoryService: ConsignedInventoryService, private salseOrderService: SalesOrderService,private deliveryNotesService: DeliveryNotesService) { }
+  constructor(private commonService: Commonservice, private consignedInventoryService: ConsignedInventoryService, private salseOrderService: SalesOrderService,private deliveryNotesService: DeliveryNotesService) {
+
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+    this.bsRangeValue = [this.bsValue, this.maxDate];
+
+  }
 
   public gridData: any[];
   public showLoaderChild: boolean[]
