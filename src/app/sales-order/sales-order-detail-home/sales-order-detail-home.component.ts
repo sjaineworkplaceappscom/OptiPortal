@@ -14,20 +14,7 @@ import { SalesOrderDetail } from '../../tempmodels/sales-order-detail';
 })
 export class SalesOrderDetailHomeComponent implements OnInit {
 
-  // quotationNumber = 'Cust002';
-  // Status = 'New';
-  // validUntil = '02/08/2018';
-  // documentDate = '02/08/2018';
-  // salesEmployee = 'Ankur';
-  // Owner = 'Sameer Sharma';
-  // Remark = 'Apple';
-  // placeOfSupply = 'Indore';
-  // totalBeforeDiscount = '5%';
-  // discountPercantage = '4%';
-  // Discount = '52401';
-  // Freight = '12';
-  // Tax = '8521';
-  // Total = '2514556';
+
 
   showLoader: boolean = false;
   public getSidebarsubs: ISubscription;
@@ -37,8 +24,11 @@ export class SalesOrderDetailHomeComponent implements OnInit {
   constructor(private commonService: Commonservice, private salseOrderService: SalesOrderService) { }
 
   ngOnInit() { 
+    debugger;
+    console.log("item","sodhome component");
     this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
+        console.log("item","in subscriber code");
         this.salesOrderDetailModel = currentSidebarData.RequesterData;
         if(this.salesOrderDetailModel!=null){
           let orderNo: number = this.salesOrderDetailModel.OrderId;
