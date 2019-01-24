@@ -24,7 +24,7 @@ export class SalesOrderDetailHomeComponent implements OnInit {
   constructor(private commonService: Commonservice, private salseOrderService: SalesOrderService) { }
 
   ngOnInit() { 
-    debugger;
+    
     console.log("item","sodhome component");
     this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {

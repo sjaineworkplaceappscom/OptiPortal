@@ -26,8 +26,8 @@
             [columnMenu]="{ columnChooser: false }" 
             [height]=gridHeight 
             [selectable]="true" 
-            (detailExpand)="openDetailGrid($event)"
-            #gridItem>
+            #gridItem  (detailExpand)="openDetailGrid($event)">
+           
                 <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
                 <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
 
@@ -36,13 +36,19 @@
                     <!-- show hide column start show hide -->
                     <kendo-grid-column-chooser class="float-left opti_hide-in-mobile"></kendo-grid-column-chooser>
 
+                    
+                        <div class="row">
+                            
+                        </div> 
+                    
+
                     <!-- checkbox -->
                     <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
                         <div class="k-form-field float-left">
                             <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_SalesOrderListColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
                             <label class="k-checkbox-label" for="opti_SalesOrderListColumnFilterID">Enable Filter</label>
                         </div>
-
+                        
                         <div class="k-form-field float-left">
                             <input type="checkbox" id="opti_SalesOrderColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
                             <label class="k-checkbox-label" for="opti_SalesOrderColumnGroupID">Enable Grouping</label>
@@ -57,7 +63,9 @@
                     <!-- <div class="float-left">
                     <kendo-dropdownlist [data]="listItems" [(ngModel)]="selectedValue"></kendo-dropdownlist>
                     </div> -->
-
+                    <div class="col-xs-12 col-12 col-md-2 float-left">
+                        <input class="k-textbox w-100" #drp="bsDaterangepicker" bsDaterangepicker [(ngModel)]="bsRangeValue">
+                    </div>
 
                     <div class="float-right opti_grid-mainlist-mobile-search opti_right-top-sec-grid">
                         <form class="k-form opti_common-search-form float-left p-0">
@@ -136,13 +144,7 @@
                     class="opti_detail-child-row"  
                     [kendoGridBinding]="dataItem.ItemsDetail">
 
-                    <ng-template kendoGridToolbarTemplate>
-                        <div class="row">
-                            <div class="col-xs-12 col-12 col-md-2 form-group">
-                                <input class="form-control" #drp="bsDaterangepicker" bsDaterangepicker [(ngModel)]="bsRangeValue">
-                            </div>
-                        </div> 
-                    </ng-template>
+                    
                     
                       <kendo-grid-column media="(min-width: 768px)" field="Item" title="Item" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="ItemDescription" title="Item Description" ></kendo-grid-column>

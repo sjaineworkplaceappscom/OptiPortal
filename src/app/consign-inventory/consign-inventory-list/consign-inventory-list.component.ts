@@ -115,10 +115,10 @@ export class ConsignInventoryListComponent implements OnInit {
   /**
   * Method to get list of inquries from server.
  */
-  public getConsignedItemChildList(index: number): any {
+  public getConsignedItemChildList(item:string,warehouse:string,bin :string, type:string,index:number): any {
 
     this.showLoader1 = true;
-    this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList().subscribe(
+    this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(item,warehouse,bin,type).subscribe(
       (data: any) => {
         if (data != null && data != undefined) {
           this.gridData[index].ItemsDetail = JSON.parse(data);
@@ -145,7 +145,7 @@ export class ConsignInventoryListComponent implements OnInit {
     if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
-  }
+  } 
 
   clearFilter(grid: GridComponent) {
     grid.filter.filters = [];
@@ -153,6 +153,7 @@ export class ConsignInventoryListComponent implements OnInit {
 
   // Open Serial And Batch detail sidebar
   public openSBDetail(e) {
+    debugger;
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.ComponentName = ComponentName.CISBDetail;
     currentsideBarInfo.ModuleName = ModuleName.ConsignInventory;
@@ -161,7 +162,7 @@ export class ConsignInventoryListComponent implements OnInit {
   }
 
   public  openDetail(parent, index) {
-    
+    debugger;
     let item = parent.ItemsDetail[index];
     if (item != null) {
        let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
@@ -263,7 +264,10 @@ public  SetComponentTypeAndData(transactionType: number, currentsideBarInfo: Cur
 
 
   openDetailGrid(e: any) {
-    let data = this.getConsignedItemChildList(e.index);
+    
+    debugger; 
+    console.log("detail grid:",e.dataItem);
+    let data = this.getConsignedItemChildList(e.dataItem.Item,e.dataItem.WareHouse,e.dataItem.Bin,1,e.index);//type is 1 for child grid.
     if (data != null && data != undefined) {
       this.gridData[e.index].ItemsDetail = JSON.parse(data);
     }

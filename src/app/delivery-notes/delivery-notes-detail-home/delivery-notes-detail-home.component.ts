@@ -23,20 +23,6 @@ export class DeliveryNotesDetailHomeComponent implements OnInit {
   constructor(private commonService: Commonservice, private deliveryNotesService: DeliveryNotesService) { }
 
 
-  delivery;
-  shipdate;
-  deliveredDate;
-  customerName;
-  wayBill;
-  tracking;
-  packingSlip;
-  modeOfShipment;
-  shippingMethod;
-  shipToLocation;
-  totalPrice;
-  freight;
-  tax;
-  discAmt;
 
   ngOnInit() {
 
