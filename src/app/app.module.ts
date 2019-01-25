@@ -43,7 +43,7 @@ import { UploadModule } from '@progress/kendo-angular-upload'
 
 import { InputsModule } from '@progress/kendo-angular-inputs';
 
- 
+import { DateRangeModule } from '@progress/kendo-angular-dateinputs';
 
 import { CommonModule, DatePipe } from '@angular/common';
 import { PortalHomeModule } from './portal-home/portal-home.module';
@@ -103,6 +103,7 @@ const routes: Routes = [
     PDFExportModule,
     ExcelModule,
     DateInputsModule,
+    DateRangeModule,
     UploadModule,
     InputsModule,
 
