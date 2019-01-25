@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { DeliveryNotesModule } from '../delivery-notes/delivery-notes.module';
 import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     PerfectScrollbarModule,
     DropDownsModule,
     DeliveryNotesModule,
+    DateInputsModule ,
     BsDatepickerModule.forRoot()
   ],
   declarations: [ConsignInventoryListComponent, ConsignInventorySRBatchDetailComponent, ConsignInventoryDetailComponent],
