@@ -44,7 +44,7 @@ export class ConsignInventoryListComponent implements OnInit {
   getConsignedInventoryChildlistSubs: ISubscription;
   public getSalsesubs: ISubscription;
   public getDeliveryNsubs: ISubscription;
-
+  public range = { start: null, end: null };
   salesOrderDetailModel: SalesOrderDetail = new SalesOrderDetail();
   deliveryNoteHeaderModel: DeliveryNoteHeaderModel = new DeliveryNoteHeaderModel();
   incr(num) {
@@ -90,6 +90,9 @@ export class ConsignInventoryListComponent implements OnInit {
     this.getConsignedItemMasterList();
   }
 
+  filterDate(){
+    console.log("DateRange",this.range.start,this.range.end);
+  }
   /**
    * Method to get list of inquries from server.
   */

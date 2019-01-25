@@ -109,7 +109,8 @@ const routes: Routes = [
     PortalHomeModule,
     PurchaseInquiryModule,
     NotificationModule,
-    DialogsModule   
+    DialogsModule   ,
+    
 
   ],
   providers: [ {

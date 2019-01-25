@@ -64,12 +64,24 @@
                     <kendo-dropdownlist [data]="listItems" [(ngModel)]="selectedValue"></kendo-dropdownlist>
                     </div> -->
                     <div class="col-xs-12 col-12 col-md-2 float-left">
-                        <input class="k-textbox w-100" #drp="bsDaterangepicker" bsDaterangepicker
+                        <!-- <input class="k-textbox w-100" #drp="bsDaterangepicker" bsDaterangepicker
                          [(ngModel)]="bsRangeValue" 
                           [bsValue]="bsValue" 
                           [(ngModel)]="bsRangeValue"
-                          [bsConfig]="{showWeekNumbers:false, containerClass:'theme-default'}">
+                          [bsConfig]="{showWeekNumbers:false, containerClass:'theme-default'}"> -->
+                          <kendo-daterange>
+                            <label>
+                                <span class="label">Start</span>
+                                <kendo-dateinput kendoDateRangeStartInput [(value)]="range.start"></kendo-dateinput>
+                            </label>
+                            <label>
+                                <span class="label">End</span>
+                                <kendo-dateinput kendoDateRangeEndInput [(value)]="range.end"></kendo-dateinput>
+                            </label>
+                        </kendo-daterange>
+                        <button (click)="filterDate()">Filter</button>
                     </div>
+                   
 
                     <div class="float-right opti_grid-mainlist-mobile-search opti_right-top-sec-grid">
                         <form class="k-form opti_common-search-form float-left p-0">
