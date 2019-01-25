@@ -82,7 +82,7 @@ export class ConsignInventoryListComponent implements OnInit {
       
     this.showLoader = true;
     this.getSaleslistSubs = this.consignedInventoryService.getConsignedInventoryMasterList().subscribe(
-      data => {
+      data => {debugger;
        // console.log("orderlist:"+data);
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
