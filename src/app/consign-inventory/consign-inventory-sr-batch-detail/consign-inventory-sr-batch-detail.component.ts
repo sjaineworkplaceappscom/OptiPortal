@@ -8,6 +8,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { ISubscription } from 'rxjs/Subscription';
 import { ConsignedInventoryService } from 'src/app/services/consigned-inventory.service';
+import { Commonservice } from 'src/app/services/commonservice.service';
 
 @Component({
   selector: 'app-consign-inventory-sr-batch-detail',
@@ -28,9 +29,9 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
   public configX: PerfectScrollbarConfigInterface = {
       suppressScrollY:true
   };
-
+  public BatchSerialSideBarsubs: ISubscription;
   tabName: string = 'home';
-  constructor(private consignedInventoryService: ConsignedInventoryService) { }
+  constructor(private consignedInventoryService: ConsignedInventoryService,private commonService: Commonservice) { }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -49,9 +50,24 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
 
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-    console.log('called sr batch component');
-    //this.getSrBatchList();
-    this.getSerialBatchList();
+    
+
+    this.BatchSerialSideBarsubs = this.commonService.currentSidebarInfo.subscribe(
+      currentSidebarData => {
+        
+        if (currentSidebarData != null && currentSidebarData != undefined) {
+          this.showLoader = true;
+          var serialbatchdetail:any = currentSidebarData.RequesterData;
+         
+          this.getSerialBatchList(serialbatchdetail.Item,serialbatchdetail.WareHouse,serialbatchdetail.Bin,2+"");//type 2 for serial batch value    
+        }
+      },error => {
+        this.showLoader = false;
+        //alert("Something went wrong");
+        console.log("Error: ", error)
+      }
+    );
+    
   }
 
   // tab function
@@ -85,10 +101,10 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
   /**
    * Method to get list of inquries from server.
   */
- public getSerialBatchList(): any {
+ public getSerialBatchList(item:string,warehouse:string,bin:string,type:string): any {
   this.showLoader = true;
-
- this.getSerialBatchlistSubs = this.consignedInventoryService.getSerialBatchDetail().subscribe(
+  
+ this.getSerialBatchlistSubs = this.consignedInventoryService.getSerialBatchDetails(item,warehouse,bin,type).subscribe(
    (data: any) => {
      if (data != null && data != undefined) {
        this.gridData = JSON.parse(data);

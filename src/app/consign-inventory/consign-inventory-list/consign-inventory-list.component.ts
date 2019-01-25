@@ -43,7 +43,7 @@ export class ConsignInventoryListComponent implements OnInit {
   getConsignedInventoryMasterlistSubs: ISubscription;
   getConsignedInventoryChildlistSubs: ISubscription;
   public getSalsesubs: ISubscription;
-  public getDeliverysubs: ISubscription;
+  public getDeliveryNsubs: ISubscription;
 
   salesOrderDetailModel: SalesOrderDetail = new SalesOrderDetail();
   deliveryNoteHeaderModel: DeliveryNoteHeaderModel = new DeliveryNoteHeaderModel();
@@ -98,6 +98,7 @@ export class ConsignInventoryListComponent implements OnInit {
     this.showLoader = true;
     this.getConsignedInventoryMasterlistSubs = this.consignedInventoryService.getConsignedInventoryMasterList().subscribe(
       data => {
+        
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
           this.showLoader = false;
@@ -115,10 +116,10 @@ export class ConsignInventoryListComponent implements OnInit {
   /**
   * Method to get list of inquries from server.
  */
-  public getConsignedItemChildList(item:string,warehouse:string,bin :string, type:string,index:number): any {
+  public getConsignedItemChildList(item: string, warehouse: string, bin: string, type: string, index: number): any {
 
     this.showLoader1 = true;
-    this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(item,warehouse,bin,type).subscribe(
+    this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(item, warehouse, bin, type).subscribe(
       (data: any) => {
         if (data != null && data != undefined) {
           this.gridData[index].ItemsDetail = JSON.parse(data);
@@ -145,74 +146,80 @@ export class ConsignInventoryListComponent implements OnInit {
     if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
-  } 
+  }
 
   clearFilter(grid: GridComponent) {
     grid.filter.filters = [];
   }
 
   // Open Serial And Batch detail sidebar
-  public openSBDetail(e) {
-    debugger;
+  public openSBDetail(e, index,collection:any) {
+
+    let data: any= collection[index];;
+
+    console.log("Collection",collection);
+    console.log("Collection-data",data);
+
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.RequesterData = data;
     currentsideBarInfo.ComponentName = ComponentName.CISBDetail;
     currentsideBarInfo.ModuleName = ModuleName.ConsignInventory;
     currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
-  public  openDetail(parent, index) {
-    debugger;
+  public openDetail(parent, index) {
+    
     let item = parent.ItemsDetail[index];
     if (item != null) {
-       let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
-       this.SetComponentTypeAndData(item.TransactionType, currentsideBarInfo, item);
+      let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+      this.SetComponentTypeAndData(item.TransactionType, currentsideBarInfo, item);
     }
   }
 
   // Set CurrentSidebar component by transactionType
-public  SetComponentTypeAndData(transactionType: number, currentsideBarInfo: CurrentSidebarInfo, requesterData){
-    
+  public SetComponentTypeAndData(transactionType: number, currentsideBarInfo: CurrentSidebarInfo, requesterData) {
+
     switch (transactionType) {
-       case 1: {
+      case 1: {
         currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
         currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
-        this.getSalesOrder(requesterData,currentsideBarInfo);
-        currentsideBarInfo.SideBarStatus = true;
-        this.commonService.setCurrentSideBar(currentsideBarInfo);
+        this.getSalesOrder(requesterData, currentsideBarInfo);
+        //currentsideBarInfo.SideBarStatus = true;
+        //this.commonService.setCurrentSideBar(currentsideBarInfo);
         break;
       }
       case 2: {
         currentsideBarInfo.ComponentName = ComponentName.SalesOrderDetail;
         currentsideBarInfo.ModuleName = ModuleName.SalesOrder;
-        this.getSalesOrder(requesterData,currentsideBarInfo);
-        currentsideBarInfo.SideBarStatus = true;
-        this.commonService.setCurrentSideBar(currentsideBarInfo);
+        this.getSalesOrder(requesterData, currentsideBarInfo);
+        //currentsideBarInfo.SideBarStatus = true;
+       // this.commonService.setCurrentSideBar(currentsideBarInfo);
         break;
       }
       case 3: {
         currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
         currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
-        this.getDeliveryNotesDetail(requesterData,currentsideBarInfo);
-        currentsideBarInfo.SideBarStatus = true;
-        this.commonService.setCurrentSideBar(currentsideBarInfo);
+        this.getDeliveryNotesDetail(requesterData, currentsideBarInfo);
+       // currentsideBarInfo.SideBarStatus = true;
+        //this.commonService.setCurrentSideBar(currentsideBarInfo);
         break;
       }
       case 4: {
         currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
         currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
-        this.getDeliveryNotesDetail(requesterData,currentsideBarInfo);
-        currentsideBarInfo.SideBarStatus = true;
-        this.commonService.setCurrentSideBar(currentsideBarInfo);
+        this.getDeliveryNotesDetail(requesterData, currentsideBarInfo);
+        //currentsideBarInfo.SideBarStatus = true;
+       // this.commonService.setCurrentSideBar(currentsideBarInfo);
         break;
       }
     }
   }
 
-  private  getSalesOrder(requesterData: any,currentsideBarInfo:CurrentSidebarInfo) {
+  private getSalesOrder(requesterData: any, currentsideBarInfo: CurrentSidebarInfo) {
     let dataitem: any = null;
-    
-    this.getSalsesubs =   this.salseOrderService.getSalesOrderDetail(requesterData.ItemOptiId, 1).subscribe(
+
+    this.getSalsesubs = this.salseOrderService.getSalesOrderDetail(requesterData.ItemOptiId, 1).subscribe(
       data => {
         if (data != null) {
           let dataArray: any[] = JSON.parse(data);
@@ -224,7 +231,7 @@ public  SetComponentTypeAndData(transactionType: number, currentsideBarInfo: Cur
           currentsideBarInfo.RequesterData = this.salesOrderDetailModel;//dataitem;
           currentsideBarInfo.SideBarStatus = true;
           this.commonService.setCurrentSideBar(currentsideBarInfo);
-          
+
           //this.sidebarData=data;
         }
       }, error => {
@@ -232,42 +239,40 @@ public  SetComponentTypeAndData(transactionType: number, currentsideBarInfo: Cur
         console.log("Error: ", error);
       }, () => { }
     );
-    
+
     return data;
   }
 
-   /** 
-     * call api for Sales quotation detail .
-     */
-    getDeliveryNotesDetail(requesterData: any,currentsideBarInfo:CurrentSidebarInfo) {
-      this.showLoader = true;
-      this.getDeliverysubs = this.deliveryNotesService.getDeliveryNotesDetail(requesterData.ItemOptiId,1).subscribe(
-        data => {
-          this.showLoader = false;
-          let dataArray: any[] = JSON.parse(data);
-          this.deliveryNoteHeaderModel = dataArray[0];
-          this.deliveryNoteHeaderModel.DeliveredDate = DateTimeHelper.ParseDate(this.deliveryNoteHeaderModel.DeliveredDate);
-          this.deliveryNoteHeaderModel.ShipDate = DateTimeHelper.ParseDate(this.deliveryNoteHeaderModel.ShipDate);
-          currentsideBarInfo.RequesterData = this.deliveryNoteHeaderModel;//dataitem;
-          currentsideBarInfo.SideBarStatus = true;
-          this.commonService.setCurrentSideBar(currentsideBarInfo);
-          localStorage.setItem("SelectedDeliveryNote", JSON.stringify(this.deliveryNoteHeaderModel));
-           
-        }, error => {
-          this.showLoader = false;
-          //alert("Something went wrong");
-          console.log("Error: ", error)
-        }, () => { }
-      );
-    }
+  /** 
+    * call api for Sales quotation detail .
+    */
+  getDeliveryNotesDetail(requesterData: any, currentsideBarInfo: CurrentSidebarInfo) {
+    
+    this.getDeliveryNsubs = this.deliveryNotesService.getDeliveryNotesDetail(requesterData.ItemOptiId, 1).subscribe(
+      data => { 
+        this.showLoader = false;
+        let dataArray: any[] = JSON.parse(data);
+        this.deliveryNoteHeaderModel = dataArray[0];
+        this.deliveryNoteHeaderModel.DeliveredDate = DateTimeHelper.ParseDate(this.deliveryNoteHeaderModel.DeliveredDate);
+        this.deliveryNoteHeaderModel.ShipDate = DateTimeHelper.ParseDate(this.deliveryNoteHeaderModel.ShipDate);
 
+        currentsideBarInfo.RequesterData = this.deliveryNoteHeaderModel;//dataitem;
+        currentsideBarInfo.SideBarStatus = true;
+        this.commonService.setCurrentSideBar(currentsideBarInfo);
 
+        localStorage.setItem("SelectedDeliveryNote", JSON.stringify(this.deliveryNoteHeaderModel));
+
+      }, error => {
+    
+        //alert("Something went wrong");
+        console.log("Error: ", error)
+      }, () => { }
+    );
+  }
 
   openDetailGrid(e: any) {
-    
-    debugger; 
-    console.log("detail grid:",e.dataItem);
-    let data = this.getConsignedItemChildList(e.dataItem.Item,e.dataItem.WareHouse,e.dataItem.Bin,1,e.index);//type is 1 for child grid.
+
+    let data = this.getConsignedItemChildList(e.dataItem.Item, e.dataItem.WareHouse, e.dataItem.Bin, 1 + "", e.index);//type is 1 for child grid.
     if (data != null && data != undefined) {
       this.gridData[e.index].ItemsDetail = JSON.parse(data);
     }
@@ -308,6 +313,11 @@ public  SetComponentTypeAndData(transactionType: number, currentsideBarInfo: Cur
 
     if (this.getConsignedInventoryMasterlistSubs != undefined)
       this.getConsignedInventoryMasterlistSubs.unsubscribe();
+    if (this.getDeliveryNsubs != undefined)
+      this.getDeliveryNsubs.unsubscribe();
+      if (this.getSalsesubs != undefined)
+      this.getSalsesubs.unsubscribe();
+      
   }
 
 }

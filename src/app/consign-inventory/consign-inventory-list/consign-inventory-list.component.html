@@ -64,7 +64,11 @@
                     <kendo-dropdownlist [data]="listItems" [(ngModel)]="selectedValue"></kendo-dropdownlist>
                     </div> -->
                     <div class="col-xs-12 col-12 col-md-2 float-left">
-                        <input class="k-textbox w-100" #drp="bsDaterangepicker" bsDaterangepicker [(ngModel)]="bsRangeValue">
+                        <input class="k-textbox w-100" #drp="bsDaterangepicker" bsDaterangepicker
+                         [(ngModel)]="bsRangeValue" 
+                          [bsValue]="bsValue" 
+                          [(ngModel)]="bsRangeValue"
+                          [bsConfig]="{showWeekNumbers:false, containerClass:'theme-default'}">
                     </div>
 
                     <div class="float-right opti_grid-mainlist-mobile-search opti_right-top-sec-grid">
@@ -125,8 +129,8 @@
                 <kendo-grid-column media="(min-width: 768px)" field="Available" title="Available" [width]="160"></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="Stock" title="Stock" [width]="160"></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="SerialorBatch" [width]="160" title="Serial or Batch" >
-                  <ng-template kendoGridCellTemplate let-row let-childDataItem>
-                    <a href="javascript:void('0')" (click)="openSBDetail($event)" class="btn btn-link"> {{childDataItem.SerialorBatch}} </a>
+                  <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex" >
+                    <a href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData)" class="btn btn-link"> {{childDataItem.SerialorBatch}} </a>
                   </ng-template>
                 </kendo-grid-column>
                 
@@ -143,14 +147,12 @@
                   <kendo-grid  
                     class="opti_detail-child-row"  
                     [kendoGridBinding]="dataItem.ItemsDetail">
-
-                    
                     
                       <kendo-grid-column media="(min-width: 768px)" field="Item" title="Item" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="ItemDescription" title="Item Description" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="SerialorBatch" title="Serial and Batch" >
-                            <ng-template kendoGridCellTemplate let-row let-childDataItem>
-                                    <a href="javascript:void('0')" (click)="openSBDetail($event)" class="btn btn-link"> {{childDataItem.SerialorBatch}} </a>
+                            <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex">
+                                    <a href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,dataItem.ItemsDetail)" class="btn btn-link"> {{childDataItem.SerialorBatch}} </a>
                                   </ng-template>
                       </kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="WareHouse" title="Ware House" ></kendo-grid-column>
@@ -201,7 +203,7 @@
                                 <dd>{{ dataItem.QunatityTransacted }}</dd>
     
                                 <dt>Transaction Document Number</dt>
-                                <dd><a (click)="openDetail($event);" href="javascript:void('0')" class="btn btn-link  pl-0 pr-0">{{ dataItem.ItemOptiId }}</a></dd>
+                                <dd><a (click)="openDetail(dataItem,rowIndex);" href="javascript:void('0')" class="btn btn-link  pl-0 pr-0">{{ dataItem.ItemOptiId }}</a></dd>
                             </dl>
                         </ng-template>
                     </kendo-grid-column>
