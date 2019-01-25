@@ -9,6 +9,11 @@ import { ISubscription } from 'rxjs/Subscription';
 import { data } from 'src/app/DemoData/Data';
 import { ComponentName, ModuleName } from 'src/app/enums/enums';
 import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
+import { SalesOrderService } from 'src/app/services/sales-order.service';
+import { SalesOrderDetail } from 'src/app/tempmodels/sales-order-detail';
+import { Observable } from 'rxjs';
+import { DeliveryNotesService } from 'src/app/services/delivery-notes.service';
+import { DeliveryNoteHeaderModel } from 'src/app/tempmodels/delivery-note-header-model';
 
 @Component({
   selector: 'app-consign-inventory-list',
@@ -17,40 +22,58 @@ import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info'
 })
 export class ConsignInventoryListComponent implements OnInit {
 
-  pageSizeNumber:number = 5;
-  public listItems: Array<string> = [ "5", "10", "15" ];
-  public selectedValue: string = "5";
 
+  bsValue = new Date();
+  bsRangeValue: Date[];
+  maxDate = new Date();
+
+
+  // 
+  pageSizeNumber: number = 5;
   isMobile: boolean;
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;
   gridHeight: number;
   showLoader: boolean = false;
+  showLoader1: boolean = false;
+  showLoaderForChild: boolean = false;
   searchRequest: string = '';
-  getSaleslistSubs: ISubscription;
-  incr(num){
+  sidebarData: any = null;
+
+  getConsignedInventoryMasterlistSubs: ISubscription;
+  getConsignedInventoryChildlistSubs: ISubscription;
+  public getSalsesubs: ISubscription;
+  public getDeliveryNsubs: ISubscription;
+
+  salesOrderDetailModel: SalesOrderDetail = new SalesOrderDetail();
+  deliveryNoteHeaderModel: DeliveryNoteHeaderModel = new DeliveryNoteHeaderModel();
+  incr(num) {
     this.pageSizeNumber = num;
   }
 
   // UI Section
-    @HostListener('window:resize', ['$event'])
-    onResize(event) {
-      // apply grid height
-      this.gridHeight = UIHelper.getMainContentHeight();
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    // apply grid height
+    this.gridHeight = UIHelper.getMainContentHeight();
 
-      // check mobile device
-      this.isMobile = UIHelper.isMobile();
-    }
+    // check mobile device
+    this.isMobile = UIHelper.isMobile();
+  }
   // End UI Section
 
-  
-  
-  constructor(private commonService:Commonservice,private consignedInventoryService: ConsignedInventoryService) { }
+
+
+  constructor(private commonService: Commonservice, private consignedInventoryService: ConsignedInventoryService, private salseOrderService: SalesOrderService,private deliveryNotesService: DeliveryNotesService) {
+
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+    this.bsRangeValue = [this.bsValue, this.maxDate];
+
+  }
 
   public gridData: any[];
-
+  public showLoaderChild: boolean[]
   ngOnInit() {
-
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
@@ -64,7 +87,6 @@ export class ConsignInventoryListComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
 
-    
     this.getConsignedItemMasterList();
   }
 
@@ -72,31 +94,18 @@ export class ConsignInventoryListComponent implements OnInit {
    * Method to get list of inquries from server.
   */
   public getConsignedItemMasterList() {
-    // this.showLoader = true;
-    // this.gridData = consignList;
-    // setTimeout(()=>{    
-    //   this.showLoader = false;
-    // }, 1000);
 
-
-      
     this.showLoader = true;
-    this.getSaleslistSubs = this.consignedInventoryService.getConsignedInventoryMasterList().subscribe(
-      data => {debugger;
-       // console.log("orderlist:"+data);
+    this.getConsignedInventoryMasterlistSubs = this.consignedInventoryService.getConsignedInventoryMasterList().subscribe(
+      data => {
+        
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
-          this.gridData.forEach(element => {
-          //  element.OrderDate = DateTimeHelper.ParseDate(element.OrderDate);
-          //  element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
-          //  element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
-          });
           this.showLoader = false;
         }
       },
       error => {
         this.showLoader = false;
-        //alert("Something went wrong");
         console.log("Error: ", error);
         localStorage.clear();
       }
@@ -104,83 +113,173 @@ export class ConsignInventoryListComponent implements OnInit {
   }
 
 
-   /**
-   * Method to get list of inquries from server.
-  */
- public getConsignedItemChildList(index: number): any {
-  // this.showLoader = true;
-  // this.gridData = consignList;
-  // setTimeout(()=>{    
-  //   this.showLoader = false;
-  // }, 1000); 
- // this.showLoader = true;
-  this.getSaleslistSubs = this.consignedInventoryService.getConsignedInventoryChildList().subscribe(
-    (data: any) => {
-     // console.log("orderlist:"+data);
-      if (data != null && data != undefined) {
-        this.gridData[index].ItemsDetail = JSON.parse(data);
-        this.gridData[index].ItemsDetail.forEach(element => {
-        //  element.OrderDate = DateTimeHelper.ParseDate(element.OrderDate);
-        //  element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
-        //  element.DocumentDate = DateTimeHelper.ParseDate(element.DocumentDate);
-        });
-       // this.showLoader = false;
+  /**
+  * Method to get list of inquries from server.
+ */
+  public getConsignedItemChildList(item: string, warehouse: string, bin: string, type: string, index: number): any {
+
+    this.showLoader1 = true;
+    this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(item, warehouse, bin, type).subscribe(
+      (data: any) => {
+        if (data != null && data != undefined) {
+          this.gridData[index].ItemsDetail = JSON.parse(data);
+          this.gridData[index].ItemsDetail.forEach(element => {
+            element.TransactionDate = DateTimeHelper.ParseDate(element.TransactionDate);
+          });
+          //this.showLoaderForChild[index] = false;
+          this.showLoader1 = false;
+        }
+        return data;
+      },
+      error => {
+        //this.showLoaderForChild[index] = false;
+        this.showLoader1 = false;
+        //alert("Something went wrong");
+        console.log("Error: ", error);
+        localStorage.clear();
       }
-      return data;
-    },
-    error => {
-    //  this.showLoader = false;
-      //alert("Something went wrong");
-      console.log("Error: ", error);
-      localStorage.clear();
-    }
-  );
-}
+    );
+  }
 
-
-
-
-  onFilterChange(checkBox:any,grid:GridComponent)
-  {
-    if(checkBox.checked==false){
+  // on filter change
+  public onFilterChange(checkBox: any, grid: GridComponent) {
+    if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
 
-  clearFilter(grid:GridComponent){      
-    //grid.filter.filters=[];
+  clearFilter(grid: GridComponent) {
+    grid.filter.filters = [];
   }
 
-  openSBDetail(e){
-    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName=ComponentName.CISBDetail;
-    currentsideBarInfo.ModuleName=ModuleName.ConsignInventory;
-    currentsideBarInfo.SideBarStatus=true;        
+  // Open Serial And Batch detail sidebar
+  public openSBDetail(e, index,collection:any) {
+
+    let data: any= collection[index];;
+
+    console.log("Collection",collection);
+    console.log("Collection-data",data);
+
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.RequesterData = data;
+    currentsideBarInfo.ComponentName = ComponentName.CISBDetail;
+    currentsideBarInfo.ModuleName = ModuleName.ConsignInventory;
+    currentsideBarInfo.SideBarStatus = true;
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
- 
 
-  openDetail(e){
-    let currentsideBarInfo: CurrentSidebarInfo=new CurrentSidebarInfo();
-    currentsideBarInfo.ComponentName=ComponentName.CIDetail;
-    currentsideBarInfo.ModuleName=ModuleName.ConsignInventory;
-    currentsideBarInfo.SideBarStatus=true;        
-    this.commonService.setCurrentSideBar(currentsideBarInfo);
-  }
-
-
-  openDetailGrid(e:any){
-     
-    let data =  this.getConsignedItemChildList(e.index); //JSON.parse();            
-    console.log("Mdata",data)
-    if(data!=null && data!=undefined){    
-      this.gridData[e.index].ItemsDetail= JSON.parse(data);
-    }
+  public openDetail(parent, index) {
     
+    let item = parent.ItemsDetail[index];
+    if (item != null) {
+      let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+      this.SetComponentTypeAndData(item.TransactionType, currentsideBarInfo, item);
+    }
   }
 
-  getItems():any{
-   return [{
+  // Set CurrentSidebar component by transactionType
+  public SetComponentTypeAndData(transactionType: number, currentsideBarInfo: CurrentSidebarInfo, requesterData) {
+
+    switch (transactionType) {
+      case 1: {
+        currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
+        currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
+        this.getSalesOrder(requesterData, currentsideBarInfo);
+        //currentsideBarInfo.SideBarStatus = true;
+        //this.commonService.setCurrentSideBar(currentsideBarInfo);
+        break;
+      }
+      case 2: {
+        currentsideBarInfo.ComponentName = ComponentName.SalesOrderDetail;
+        currentsideBarInfo.ModuleName = ModuleName.SalesOrder;
+        this.getSalesOrder(requesterData, currentsideBarInfo);
+        //currentsideBarInfo.SideBarStatus = true;
+       // this.commonService.setCurrentSideBar(currentsideBarInfo);
+        break;
+      }
+      case 3: {
+        currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
+        currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
+        this.getDeliveryNotesDetail(requesterData, currentsideBarInfo);
+       // currentsideBarInfo.SideBarStatus = true;
+        //this.commonService.setCurrentSideBar(currentsideBarInfo);
+        break;
+      }
+      case 4: {
+        currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
+        currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
+        this.getDeliveryNotesDetail(requesterData, currentsideBarInfo);
+        //currentsideBarInfo.SideBarStatus = true;
+       // this.commonService.setCurrentSideBar(currentsideBarInfo);
+        break;
+      }
+    }
+  }
+
+  private getSalesOrder(requesterData: any, currentsideBarInfo: CurrentSidebarInfo) {
+    let dataitem: any = null;
+
+    this.getSalsesubs = this.salseOrderService.getSalesOrderDetail(requesterData.ItemOptiId, 1).subscribe(
+      data => {
+        if (data != null) {
+          let dataArray: any[] = JSON.parse(data);
+          this.salesOrderDetailModel = dataArray[0];
+          this.salesOrderDetailModel.DocumentDate = DateTimeHelper.ParseDate(this.salesOrderDetailModel.DocumentDate);
+          this.salesOrderDetailModel.DeliveryDate = DateTimeHelper.ParseDate(this.salesOrderDetailModel.DeliveryDate);
+          localStorage.setItem("SelectedSalesOrder", JSON.stringify(this.salesOrderDetailModel));
+          dataitem = data;
+          currentsideBarInfo.RequesterData = this.salesOrderDetailModel;//dataitem;
+          currentsideBarInfo.SideBarStatus = true;
+          this.commonService.setCurrentSideBar(currentsideBarInfo);
+
+          //this.sidebarData=data;
+        }
+      }, error => {
+        this.showLoader = false;
+        console.log("Error: ", error);
+      }, () => { }
+    );
+
+    return data;
+  }
+
+  /** 
+    * call api for Sales quotation detail .
+    */
+  getDeliveryNotesDetail(requesterData: any, currentsideBarInfo: CurrentSidebarInfo) {
+    
+    this.getDeliveryNsubs = this.deliveryNotesService.getDeliveryNotesDetail(requesterData.ItemOptiId, 1).subscribe(
+      data => { 
+        this.showLoader = false;
+        let dataArray: any[] = JSON.parse(data);
+        this.deliveryNoteHeaderModel = dataArray[0];
+        this.deliveryNoteHeaderModel.DeliveredDate = DateTimeHelper.ParseDate(this.deliveryNoteHeaderModel.DeliveredDate);
+        this.deliveryNoteHeaderModel.ShipDate = DateTimeHelper.ParseDate(this.deliveryNoteHeaderModel.ShipDate);
+
+        currentsideBarInfo.RequesterData = this.deliveryNoteHeaderModel;//dataitem;
+        currentsideBarInfo.SideBarStatus = true;
+        this.commonService.setCurrentSideBar(currentsideBarInfo);
+
+        localStorage.setItem("SelectedDeliveryNote", JSON.stringify(this.deliveryNoteHeaderModel));
+
+      }, error => {
+    
+        //alert("Something went wrong");
+        console.log("Error: ", error)
+      }, () => { }
+    );
+  }
+
+  openDetailGrid(e: any) {
+
+    let data = this.getConsignedItemChildList(e.dataItem.Item, e.dataItem.WareHouse, e.dataItem.Bin, 1 + "", e.index);//type is 1 for child grid.
+    if (data != null && data != undefined) {
+      this.gridData[e.index].ItemsDetail = JSON.parse(data);
+    }
+  }
+
+  getItems(): any {
+    return [{
       "Item": "childX1",
       "ItemDescription": "Headphone",
       "SerialAndBatch": "Batch",
@@ -192,8 +291,8 @@ export class ConsignInventoryListComponent implements OnInit {
       "TransactionType": "Delivery",
       "QunatityTransacted": "10",
       "TransactionDocumentNumber": "Delivery # 12",
-  },
-  {
+    },
+    {
       "Item": "childX11",
       "ItemDescription": "Headphone",
       "SerialAndBatch": "Batch",
@@ -205,12 +304,20 @@ export class ConsignInventoryListComponent implements OnInit {
       "TransactionType": "Delivery",
       "QunatityTransacted": "10",
       "TransactionDocumentNumber": "Delivery # 12",
-  }]
+    }]
   }
 
   ngOnDestroy() {
-    if (this.getSaleslistSubs != undefined)
-      this.getSaleslistSubs.unsubscribe();
+    if (this.getConsignedInventoryChildlistSubs != undefined)
+      this.getConsignedInventoryChildlistSubs.unsubscribe();
+
+    if (this.getConsignedInventoryMasterlistSubs != undefined)
+      this.getConsignedInventoryMasterlistSubs.unsubscribe();
+    if (this.getDeliveryNsubs != undefined)
+      this.getDeliveryNsubs.unsubscribe();
+      if (this.getSalsesubs != undefined)
+      this.getSalsesubs.unsubscribe();
+      
   }
 
 }

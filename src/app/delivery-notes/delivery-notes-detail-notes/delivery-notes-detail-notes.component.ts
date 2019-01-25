@@ -39,7 +39,7 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
   noteModel: DeliveryNoteNoteModel = new DeliveryNoteNoteModel();
   addnotessub: ISubscription;
   getDeliveryNotesNoteSubs: ISubscription;
-  updatenotessub: ISubscription;
+  updatenotessub: ISubscription;  
   selectedDeliveryNoteId:number;
   public noteTypes: Array<{ text: string, value: number }> = [
     { text: "General ", value: 1 },

@@ -265,3 +265,32 @@ export enum VendorOpenInvoiceStatus {
     Closed = 2,
 
 }
+
+
+export enum ModulesForRightSideBar {
+    
+    // PurchaseInquery = 10001,
+    // SalesQuotation = 10002,
+    // CustomerPurchaseOrder = 10003,
+    // SalesOrder = 10004,
+    // DeliveryNotes = 10005,
+    // AdvanceShipmentNote =10006,
+    // OpenInvoice=10007,
+    // CustomerContracts = 10008,
+    // CustomerContacts = 10009,
+    // ConsignInventory =10010,
+
+    PurchaseInquery = 1,
+    SalesQuotation = 2,
+    CustomerPurchaseOrder = 3,
+    SalesOrder = 4,
+    DeliveryNotes = 5,
+    AdvanceShipmentNote = 6,
+    OpenInvoice= 7,
+    CustomerContracts = 8,
+    CustomerContacts = 9,
+    ConsignInventory =10
+
+
+
+}

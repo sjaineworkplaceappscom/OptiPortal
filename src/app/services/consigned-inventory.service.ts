@@ -23,8 +23,8 @@ export class ConsignedInventoryService {
   /**
    * get Consigned Inventory list data from server.
    */
-  public getConsignedInventoryChildList(): Observable<any> {
-    let url: string = this.baseUrl + "consignedinventory/child/list";
+  public getConsignedInventoryChildList(item:string,warehouse:string,bin:string,type:string): Observable<any> {
+    let url: string = this.baseUrl + "consignedinventory/child/list/"+item+"/"+warehouse+"/"+bin+"/"+type;
     return this.httpHelper.get(url, null);
   } 
 
@@ -32,7 +32,15 @@ export class ConsignedInventoryService {
    * get serial batch detail data from server.
    */
   public getSerialBatchDetail(): Observable<any> {
-    let url: string = this.baseUrl + "getserialbatch/list";
+    let url: string = this.baseUrl + "consignedinventory/serialbatch";
+    return this.httpHelper.get(url, null);
+  } 
+
+  /**
+   * get serial batch detail data from server.
+   */
+  public getSerialBatchDetails(item:string,warehouse:string,bin:string,type:string): Observable<any> {
+    let url: string = this.baseUrl +"consignedinventory/child/list/"+item+"/"+warehouse+"/"+bin+"/"+type;
     return this.httpHelper.get(url, null);
   } 
   /**

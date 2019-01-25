@@ -1,9 +1,15 @@
 <div id="opti_ConsignInventoryListID">   
+         <!-- loader start -->
+         <div class="opti_loader opti_loader-module-grid-list" *ngIf="showLoader1">
+                <div class="opti_spinner"></div>
+            </div>
+            <!-- loader end -->  
   <!-- loader start -->
    <div class="opti_loader opti_loader-module-grid-list" *ngIf="showLoader">
        <div class="opti_spinner"></div>
    </div>
    <!-- loader end -->  
+
 
    <ng-container *ngIf="showLoader==false">
        <!-- for normal user   -->
@@ -20,8 +26,8 @@
             [columnMenu]="{ columnChooser: false }" 
             [height]=gridHeight 
             [selectable]="true" 
-            (detailExpand)="openDetailGrid($event)"
-            #gridItem>
+            #gridItem  (detailExpand)="openDetailGrid($event)">
+           
                 <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
                 <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
 
@@ -30,13 +36,19 @@
                     <!-- show hide column start show hide -->
                     <kendo-grid-column-chooser class="float-left opti_hide-in-mobile"></kendo-grid-column-chooser>
 
+                    
+                        <div class="row">
+                            
+                        </div> 
+                    
+
                     <!-- checkbox -->
                     <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
                         <div class="k-form-field float-left">
                             <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_SalesOrderListColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
                             <label class="k-checkbox-label" for="opti_SalesOrderListColumnFilterID">Enable Filter</label>
                         </div>
-
+                        
                         <div class="k-form-field float-left">
                             <input type="checkbox" id="opti_SalesOrderColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
                             <label class="k-checkbox-label" for="opti_SalesOrderColumnGroupID">Enable Grouping</label>
@@ -51,7 +63,13 @@
                     <!-- <div class="float-left">
                     <kendo-dropdownlist [data]="listItems" [(ngModel)]="selectedValue"></kendo-dropdownlist>
                     </div> -->
-
+                    <div class="col-xs-12 col-12 col-md-2 float-left">
+                        <input class="k-textbox w-100" #drp="bsDaterangepicker" bsDaterangepicker
+                         [(ngModel)]="bsRangeValue" 
+                          [bsValue]="bsValue" 
+                          [(ngModel)]="bsRangeValue"
+                          [bsConfig]="{showWeekNumbers:false, containerClass:'theme-default'}">
+                    </div>
 
                     <div class="float-right opti_grid-mainlist-mobile-search opti_right-top-sec-grid">
                         <form class="k-form opti_common-search-form float-left p-0">
@@ -111,8 +129,8 @@
                 <kendo-grid-column media="(min-width: 768px)" field="Available" title="Available" [width]="160"></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="Stock" title="Stock" [width]="160"></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="ItemType" [width]="160" title="Serial or Batch" >
-                  <ng-template kendoGridCellTemplate let-row let-childDataItem>
-                    <a href="javascript:void('0')" (click)="openSBDetail($event)" class="btn btn-link"> {{childDataItem.ItemType}} </a>
+                  <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex" >
+                    <a href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData)" class="btn btn-link"> {{childDataItem.ItemType}} </a>
                   </ng-template>
                 </kendo-grid-column>
                 
@@ -121,17 +139,22 @@
 
                 <ng-template kendoGridDetailTemplate let-dataItem let-column let-columnIndex="columnIndex">
                     <!-- loader start -->
-                    <div class="opti_loader opti_loader-child-grid-list">
+                    <!-- <div class="opti_loader opti_loader-child-grid-list"  >
                         <div class="opti_spinner"></div>
-                    </div>
+                    </div> -->
                     <!-- loader end -->
                     
-                  <kendo-grid 
-                    class="opti_detail-child-row" 
+                  <kendo-grid  
+                    class="opti_detail-child-row"  
                     [kendoGridBinding]="dataItem.ItemsDetail">
+                    
                       <kendo-grid-column media="(min-width: 768px)" field="Item" title="Item" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="ItemDescription" title="Item Description" ></kendo-grid-column>
-                      <kendo-grid-column media="(min-width: 768px)" field="SerialorBatch" title="Serial and Batch" ></kendo-grid-column>
+                      <kendo-grid-column media="(min-width: 768px)" field="SerialorBatch" title="Serial and Batch" >
+                            <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex">
+                                    <a href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,dataItem.ItemsDetail)" class="btn btn-link"> {{childDataItem.SerialorBatch}} </a>
+                                  </ng-template>
+                      </kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="WareHouse" title="Ware House" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="Bin" title="Bin" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="ToWH" title="To WH" ></kendo-grid-column>
@@ -140,8 +163,8 @@
                       <kendo-grid-column media="(min-width: 768px)" field="TransactionType" title="Transaction Type" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="QuantityTransacted" title="Qunatity Transacted" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)"  title="Transaction Document Number" >                        
-                        <ng-template kendoGridCellTemplate let-row let-childDataItem>
-                            <a (click)="openDetail($event);" href="javascript:void('0')" class="btn btn-link"> {{childDataItem.ItemOptiId}} </a>
+                        <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex">
+                            <a (click)="openDetail(dataItem,rowIndex);" href="javascript:void('0')" class="btn btn-link"> {{childDataItem.ItemOptiId}} </a>
                         </ng-template>
                       </kendo-grid-column>
 
@@ -180,7 +203,7 @@
                                 <dd>{{ dataItem.QunatityTransacted }}</dd>
     
                                 <dt>Transaction Document Number</dt>
-                                <dd><a (click)="openDetail($event);" href="javascript:void('0')" class="btn btn-link  pl-0 pr-0">{{ dataItem.ItemOptiId }}</a></dd>
+                                <dd><a (click)="openDetail(dataItem,rowIndex);" href="javascript:void('0')" class="btn btn-link  pl-0 pr-0">{{ dataItem.ItemOptiId }}</a></dd>
                             </dl>
                         </ng-template>
                     </kendo-grid-column>
