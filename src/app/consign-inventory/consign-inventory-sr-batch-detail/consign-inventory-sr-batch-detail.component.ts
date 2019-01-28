@@ -9,6 +9,7 @@ import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { ISubscription } from 'rxjs/Subscription';
 import { ConsignedInventoryService } from 'src/app/services/consigned-inventory.service';
 import { Commonservice } from 'src/app/services/commonservice.service';
+import { ConsignedInventoryModel } from 'src/app/models/ConsignedInventoryModel';
 
 @Component({
   selector: 'app-consign-inventory-sr-batch-detail',
@@ -52,7 +53,7 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
     
-    console.log('ngoninit');
+    console.log('current side bar info');
     this.BatchSerialSideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
         console.log('current side bar info');
@@ -60,7 +61,7 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
           this.showLoader = true;
           var serialbatchdetail:any = currentSidebarData.RequesterData;
           if(serialbatchdetail!=null)
-          this.getSerialBatchList(serialbatchdetail.Item,serialbatchdetail.WareHouse,serialbatchdetail.Bin,2+"");//type 2 for serial batch value    
+          this.getSerialBatchList(serialbatchdetail,2+"");//type 2 for serial batch value    
         }
       },error => {
         this.showLoader = false;
@@ -102,10 +103,11 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
   /**
    * Method to get list of inquries from server.
   */
- public getSerialBatchList(item:string,warehouse:string,bin:string,type:string): any {
+ public getSerialBatchList(model:ConsignedInventoryModel,type:string): any {
   this.showLoader = true;
+  model.Type = 2;
   debugger;
- this.getSerialBatchlistSubs = this.consignedInventoryService.getSerialBatchDetails(item,warehouse,bin,type).subscribe(
+ this.getSerialBatchlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(model,type).subscribe(
    (data: any) => {
      if (data != null && data != undefined) {
        this.gridData = JSON.parse(data);

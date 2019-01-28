@@ -181,8 +181,9 @@ export class ConsignInventoryListComponent implements OnInit {
   // Open Serial And Batch detail sidebar
   public openSBDetail(e, index, collection: any) {
     //console.log(" on sb detail DateRange:", this.range.start, this.range.end);
-    let data: any = collection[index];;
-
+    
+    let data: any = collection[index];
+    let model:ConsignedInventoryModel = collection[index];
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.RequesterData = data;
     currentsideBarInfo.ComponentName = ComponentName.CISBDetail;
@@ -215,7 +216,7 @@ export class ConsignInventoryListComponent implements OnInit {
         //this.commonService.setCurrentSideBar(currentsideBarInfo);
         break;
       }
-      case 2: {
+      case 17: {
         currentsideBarInfo.ComponentName = ComponentName.SalesOrderDetail;
         currentsideBarInfo.ModuleName = ModuleName.SalesOrder;
         this.getSalesOrder(requesterData, currentsideBarInfo);
@@ -232,7 +233,7 @@ export class ConsignInventoryListComponent implements OnInit {
         //this.commonService.setCurrentSideBar(currentsideBarInfo);
         break;
       }
-      case 4: {
+      case 15: {
         currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
         currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
         this.getDeliveryNotesDetail(requesterData, currentsideBarInfo);
@@ -300,11 +301,20 @@ export class ConsignInventoryListComponent implements OnInit {
   openDetailGrid(e: any) {
     let consignedInventoryItemModel: ConsignedInventoryModel = new ConsignedInventoryModel();
  
-    consignedInventoryItemModel.Item = e.dataItem.Item;
-    consignedInventoryItemModel.WareHouse = e.dataItem.WareHouse;
-    consignedInventoryItemModel.Bin = e.dataItem.Bin; 
-    consignedInventoryItemModel.FromDate = this.fromDate;
-    consignedInventoryItemModel.ToDate = this.toDate;
+     consignedInventoryItemModel.Item = e.dataItem.Item;
+     consignedInventoryItemModel.WareHouse = e.dataItem.WareHouse;
+     consignedInventoryItemModel.Bin = e.dataItem.Bin; 
+     consignedInventoryItemModel.FromDate = this.fromDate;
+     consignedInventoryItemModel.ToDate = this.toDate;
+     consignedInventoryItemModel.Type=1;
+
+    //consignedInventoryItemModel.Item ="Chld-Seri";
+    //consignedInventoryItemModel.WareHouse = "01";
+    //consignedInventoryItemModel.Bin = "01-SYSTEM-BIN-LOCATION"; 
+    //consignedInventoryItemModel.FromDate = new Date("2018-12-13");
+    //consignedInventoryItemModel.ToDate = new Date("2018-12-13");
+    //consignedInventoryItemModel.Type=1;
+
     //console.log("At child api call to date, from date"+consignedInventoryItemModel.ToDate+","+consignedInventoryItemModel.FromDate);
     let data = this.getConsignedItemChildList(consignedInventoryItemModel, 1 + "", e.index);//type is 1 for child grid.
     if (data != null && data != undefined) {

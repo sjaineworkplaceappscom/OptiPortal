@@ -29,6 +29,8 @@ export class ConsignedInventoryService {
     return this.httpHelper.put(url,model, null);
   } 
 
+
+  
   /**
    * get serial batch detail data from server.
    */
