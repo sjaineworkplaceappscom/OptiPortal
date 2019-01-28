@@ -16,6 +16,8 @@ import { DeliveryNotesService } from 'src/app/services/delivery-notes.service';
 import { DeliveryNoteHeaderModel } from 'src/app/tempmodels/delivery-note-header-model';
 import { DatePipe } from '@angular/common';
 import { ConsignedInventoryModel } from 'src/app/models/ConsignedInventoryModel';
+import { AppMessages } from 'src/app/helpers/app-messages';
+import { ToastService } from 'src/app/helpers/services/toast.service';
 
 @Component({
   selector: 'app-consign-inventory-list',
@@ -68,7 +70,7 @@ export class ConsignInventoryListComponent implements OnInit {
 
 
 
-  constructor(private commonService: Commonservice, private consignedInventoryService: ConsignedInventoryService, private salseOrderService: SalesOrderService, private deliveryNotesService: DeliveryNotesService, public datepipe: DatePipe) {
+  constructor(private commonService: Commonservice, private consignedInventoryService: ConsignedInventoryService, private salseOrderService: SalesOrderService, private deliveryNotesService: DeliveryNotesService, public datepipe: DatePipe, private toast: ToastService) {
     this.maxDate.setDate(this.maxDate.getDate() + 30);
     this.bsRangeValue = [this.bsValue, this.maxDate];
     //this.displayDateRange = DateTimeHelper.ParseDate(this.range.start) + ' to '+ DateTimeHelper.ParseDate(this.range.end);
@@ -87,12 +89,12 @@ export class ConsignInventoryListComponent implements OnInit {
     // Apply class on body end
     //this.displayDateRange = this.datepipe.transform(DateTimeHelper.ParseDate(this.range.end), 'yyyy-MM-dd') +
     //  ' to ' + this.datepipe.transform(DateTimeHelper.ParseDate(this.range.end), 'yyyy-MM-dd');
-      this.displayDateRange = DateTimeHelper.ParseDate(this.range.start).toLocaleDateString() +
+      this.displayDateRange = 'from '+DateTimeHelper.ParseDate(this.range.start).toLocaleDateString() +
       ' to ' + DateTimeHelper.ParseDate(this.range.end).toLocaleDateString();
       this.fromDate = DateTimeHelper.ParseDate(this.range.start);
       this.toDate = DateTimeHelper.ParseDate(this.range.end);
-      console.log("from date ngoninit():"+this.fromDate);
-      console.log("to date ngoninit():"+this.toDate);
+    //  console.log("from date ngoninit():"+this.fromDate);
+    //  console.log("to date ngoninit():"+this.toDate);
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
 
@@ -105,13 +107,13 @@ export class ConsignInventoryListComponent implements OnInit {
 
 
   filterDate() {
-    this.displayDateRange = DateTimeHelper.ParseDate(this.range.start).toLocaleDateString() +
+    this.displayDateRange = 'from '+DateTimeHelper.ParseDate(this.range.start).toLocaleDateString() +
       ' to ' + DateTimeHelper.ParseDate(this.range.end).toLocaleDateString();
   
     this.fromDate = DateTimeHelper.ParseDate(this.range.start);
     this.toDate = DateTimeHelper.ParseDate(this.range.end);
-    console.log("from date at filterDate():"+this.fromDate);
-    console.log("to date at filterDate():"+this.toDate);
+   // console.log("from date at filterDate():"+this.fromDate);
+   // console.log("to date at filterDate():"+this.toDate);
     this.getConsignedItemMasterList();
   }
   /** 
@@ -178,7 +180,7 @@ export class ConsignInventoryListComponent implements OnInit {
 
   // Open Serial And Batch detail sidebar
   public openSBDetail(e, index, collection: any) {
-    console.log(" on sb detail DateRange:", this.range.start, this.range.end);
+    //console.log(" on sb detail DateRange:", this.range.start, this.range.end);
     let data: any = collection[index];;
 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
@@ -191,6 +193,7 @@ export class ConsignInventoryListComponent implements OnInit {
 
   public openDetail(parent, index) {
 
+    //check here if 2 or 4 then only open other wise show message under developement mode.
     let item = parent.ItemsDetail[index];
     if (item != null) {
       let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
@@ -203,9 +206,11 @@ export class ConsignInventoryListComponent implements OnInit {
 
     switch (transactionType) {
       case 1: {
-        currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
-        currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
-        this.getSalesOrder(requesterData, currentsideBarInfo);
+        this.toast.showSuccess(AppMessages.UnderDevelopementMode);
+        
+        //currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
+        //currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
+        //this.getSalesOrder(requesterData, currentsideBarInfo);
         //currentsideBarInfo.SideBarStatus = true;
         //this.commonService.setCurrentSideBar(currentsideBarInfo);
         break;
@@ -219,9 +224,10 @@ export class ConsignInventoryListComponent implements OnInit {
         break;
       }
       case 3: {
-        currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
-        currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
-        this.getDeliveryNotesDetail(requesterData, currentsideBarInfo);
+        this.toast.showSuccess(AppMessages.UnderDevelopementMode);
+        //currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
+      //  currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
+      //  this.getDeliveryNotesDetail(requesterData, currentsideBarInfo);
         // currentsideBarInfo.SideBarStatus = true;
         //this.commonService.setCurrentSideBar(currentsideBarInfo);
         break;
@@ -296,10 +302,10 @@ export class ConsignInventoryListComponent implements OnInit {
  
     consignedInventoryItemModel.Item = e.dataItem.Item;
     consignedInventoryItemModel.WareHouse = e.dataItem.WareHouse;
-    consignedInventoryItemModel.Bin = e.dataItem.Bin;
+    consignedInventoryItemModel.Bin = e.dataItem.Bin; 
     consignedInventoryItemModel.FromDate = this.fromDate;
     consignedInventoryItemModel.ToDate = this.toDate;
-    console.log("At child api call to date, from date"+consignedInventoryItemModel.ToDate+","+consignedInventoryItemModel.FromDate);
+    //console.log("At child api call to date, from date"+consignedInventoryItemModel.ToDate+","+consignedInventoryItemModel.FromDate);
     let data = this.getConsignedItemChildList(consignedInventoryItemModel, 1 + "", e.index);//type is 1 for child grid.
     if (data != null && data != undefined) {
       this.gridData[e.index].ItemsDetail = JSON.parse(data);

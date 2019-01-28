@@ -26,77 +26,73 @@
             [columnMenu]="{ columnChooser: false }" 
             [height]=gridHeight 
             [selectable]="true" 
+            class="kendoGrid_Toolbar--flex kendoGrid_Collaps--smallBtn"
             #gridItem  (detailExpand)="openDetailGrid($event)">
            
                 <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
                 <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
 
                 <!-- grid template start -->
-                <ng-template kendoGridToolbarTemplate>
+                <ng-template kendoGridToolbarTemplate class="d-inline-flex align-items-center">
                     <!-- show hide column start show hide -->
-                    <kendo-grid-column-chooser class="float-left opti_hide-in-mobile"></kendo-grid-column-chooser>
-
-                    
-                        <div class="row">
-                            
-                        </div> 
-                    
-
+                    <kendo-grid-column-chooser class="opti_hide-in-mobile align-self-start d-inline-flex align-items-start"></kendo-grid-column-chooser>
                     <!-- checkbox -->
-                    <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
-                        <div class="k-form-field float-left">
+                    <form class="k-form p-0 opti_show-hide-grid-column-filter opti_hide-in-mobile d-inline-flex align-items-center">
+                        <div class="k-form-field">
                             <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_SalesOrderListColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
-                            <label class="k-checkbox-label" for="opti_SalesOrderListColumnFilterID">Enable Filter</label>
+                            <label class="k-checkbox-label word-wrap-nowrap mr-2" for="opti_SalesOrderListColumnFilterID">Enable Filter</label>
                         </div>
                         
-                        <div class="k-form-field float-left">
+                        <div class="k-form-field">
                             <input type="checkbox" id="opti_SalesOrderColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
-                            <label class="k-checkbox-label" for="opti_SalesOrderColumnGroupID">Enable Grouping</label>
+                            <label class="k-checkbox-label word-wrap-nowrap mr-2" for="opti_SalesOrderColumnGroupID">Enable Grouping</label>
                         </div>
                     </form>
 
                     <!-- export -->
-                    <button type="button" kendoGridExcelCommand icon="file-excel" class="opti_hide-in-mobile float-left opti_grid-toolbar-excelbutton">
+                    <button type="button" kendoGridExcelCommand icon="file-excel" class="opti_hide-in-mobile opti_grid-toolbar-excelbutton p-y-0 mt-0">
                         <svg-icon src="assets/images/common/download.svg" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
                     </button>
 
                     <!-- <div class="float-left">
                     <kendo-dropdownlist [data]="listItems" [(ngModel)]="selectedValue"></kendo-dropdownlist>
                     </div> -->
-                    {{displayDateRange}}
-                    <div class="pl-0 col-xs-12 col-12 col-md-8 col-lg-8 col-xl-4 float-left d-flex">
+                    <!-- {{displayDateRange}} -->
+                    <div class="d-block d-sm-flex d-md-flex d-lg-flex d-xl-none pt-2 w-100"></div>
+                    <div class="ml-auto col-xl-auto ml-xl-auto ml-lg-0 ml-md-0 ml-sm-0 mb-lg-1 mb-md-1 pr-2 pl-0 col-sm-8 col-xs-12 col-12 col-md-12 col-lg-6 col-xl-4 d-inline-flex">
                         <!-- <input class="k-textbox w-100" #drp="bsDaterangepicker" bsDaterangepicker
                          [(ngModel)]="bsRangeValue" 
                           [bsValue]="bsValue" 
                           [(ngModel)]="bsRangeValue"
                           [bsConfig]="{showWeekNumbers:false, containerClass:'theme-default'}"> -->
-                   
-                          <kendo-daterange class="d-flex">                        
+                        <kendo-daterange class="d-flex">                        
                             <label class="d-flex mb-0 align-items-center">
-                                <span class="label mr-2">Start</span>
+                                <span class="label mr-2 alpha">Start</span>
                                 <kendo-dateinput class="mr-2 w-100" kendoDateRangeStartInput [(value)]="range.start"></kendo-dateinput>
                             </label>
                             <label class="d-flex mb-0 align-items-center">
-                                <span class="label mr-2">End</span>
+                                <span class="label mr-2 alpha">End</span>
                                 <kendo-dateinput class="mr-2 w-100" kendoDateRangeEndInput [(value)]="range.end"></kendo-dateinput>
                             </label>     
                         </kendo-daterange>
-                        <button (click)="filterDate()">Filter</button>
-                       
+                        <button (click)="filterDate()" class="word-wrap-nowrap">Set Filter</button>
                     </div>
-                   
-                    <div class="d-block d-sm-flex d-md-none pt-2 w-100"></div>
-                    <div class="px-0 float-right col-xl-2 opti_grid-mainlist-mobile-search opti_right-top-sec-grid col-md-4 col-lg-4">
-                        <form class="k-form opti_common-search-form float-right p-0">
+                    <div class="d-block d-sm-none d-md-flex d-lg-none d-xl-none pt-2 w-100"></div>
+                    <div class="datePlaceHolder mb-lg-1 mb-md-1 d-inline-flex alpha align-items-center pr-1">
+                        <span class="mr-1">From</span>
+                        <label class="mb-0 mr-1"><b>12/28/2018</b></label>                        
+                        <span class="mr-1">To</span>
+                        <label class="mb-0 mr-1"><b>1/28/2019</b></label>
+                    </div>
+                    <div class="px-0 ml-xl-auto mb-lg-1 mt-2 mt-xl-0 mt-lg-0 mt-md-0 mb-md-1 col-xl-2 ml-lg-auto ml-md-auto opti_grid-mainlist-mobile-search opti_right-top-sec-grid col-md-4 col-lg-2">
+                        <form class="k-form opti_common-search-form p-0">
                             <label class="k-form-field opti_common-search-label d-flex w-100">
                                 <input type="text" class="k-textbox w-100" name="searchRequest" [(ngModel)]="searchRequest" />
                                 <span class="opti_vertical-align opti_mouse-pointer"><img src="assets/images/common/search-black.svg" class="" alt="Search" width="15" /></span>
                             </label>
                         </form> 
                     </div>
-
-                    
-
+                    <div class="clearfix col-12 d-lg-none d-xl-none"></div>
                 </ng-template>
 
                 
@@ -128,7 +124,7 @@
                             <dd>{{ dataItem.Stock }}</dd>
 
                             <dt>Serial or Batch</dt>
-                            <dd><a href="javascript:void('0')" (click)="openSBDetail($event)" class="btn btn-link  pl-0 pr-0"> {{ dataItem.SerialorBatch }}</a></dd>
+                            <dd><a href="javascript:void('0')" (click)="openSBDetail($event)" class=" pl-0 pr-0"> <u>{{ dataItem.SerialorBatch }}</u></a></dd>
                         </dl>
                     </ng-template>
                 </kendo-grid-column>
@@ -145,10 +141,9 @@
                 <kendo-grid-column media="(min-width: 768px)" field="Stock" title="Stock" [width]="160"></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="SerialorBatch" [width]="160" title="Serial or Batch" >
                   <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex" >
-                    <a href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData)" class="btn btn-link"> {{childDataItem.SerialorBatch}} </a>
+                    <a href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData)" class="text-underline alpha"> <u>{{childDataItem.SerialorBatch}}</u> </a>
                   </ng-template>
                 </kendo-grid-column>
-                
                 
 
 
@@ -167,7 +162,7 @@
                       <kendo-grid-column media="(min-width: 768px)" field="ItemDescription" title="Item Description" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="SerialorBatch" title="Serial and Batch" >
                             <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex">
-                                    <a href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,dataItem.ItemsDetail)" class="btn btn-link"> {{childDataItem.SerialorBatch}} </a>
+                                    <a href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,dataItem.ItemsDetail)" class="alpha"> <u>{{childDataItem.SerialorBatch}}</u> </a>
                                   </ng-template> 
                       </kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="WareHouse" title="Ware House" ></kendo-grid-column>
@@ -179,7 +174,7 @@
                       <kendo-grid-column media="(min-width: 768px)" field="QuantityTransacted" title="Qunatity Transacted" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)"  title="Transaction Document Number" >                        
                         <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex">
-                            <a (click)="openDetail(dataItem,rowIndex);" href="javascript:void('0')" class="btn btn-link"> {{childDataItem.ItemOptiId}} </a>
+                            <a (click)="openDetail(dataItem,rowIndex);" href="javascript:void('0')" class="text-underline alpha"> <u>{{childDataItem.ItemOptiId}}</u> </a>
                         </ng-template>
                       </kendo-grid-column>
 
@@ -193,7 +188,7 @@
                                 <dd>{{ dataItem.ItemDescription }}</dd>
 
                                 <dt>Serial And Batch</dt>
-                                <dd>{{ dataItem.SerialorBatch }}</dd>
+                                <dd><u>{{ dataItem.SerialorBatch }}</u></dd>
 
                                 <dt>WareHouse</dt>
                                 <dd>{{ dataItem.WareHouse }}</dd>

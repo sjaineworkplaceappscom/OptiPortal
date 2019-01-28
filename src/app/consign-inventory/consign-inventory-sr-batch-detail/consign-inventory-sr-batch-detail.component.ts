@@ -52,10 +52,10 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
     // check mobile device
     this.isMobile = UIHelper.isMobile();
     
-
+    console.log('ngoninit');
     this.BatchSerialSideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
-        
+        console.log('current side bar info');
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           var serialbatchdetail:any = currentSidebarData.RequesterData;
@@ -104,7 +104,7 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
   */
  public getSerialBatchList(item:string,warehouse:string,bin:string,type:string): any {
   this.showLoader = true;
-  
+  debugger;
  this.getSerialBatchlistSubs = this.consignedInventoryService.getSerialBatchDetails(item,warehouse,bin,type).subscribe(
    (data: any) => {
      if (data != null && data != undefined) {

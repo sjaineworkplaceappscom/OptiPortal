@@ -141,3 +141,19 @@ kendo-grid tr:hover dl span strong {
 .opti_tabcontent .k-header.k-grid-toolbar .opti_common-search-form .k-textbox {
   height: calc(1.5em + (0.375rem * 2) + (1px * 1));
 }
+.kendoGrid_Toolbar--flex kendo-grid-toolbar{
+  display: inline-flex;
+  align-items: center;
+  @media screen and (max-width:1199px){
+    flex-wrap: wrap;
+    height: auto;
+    min-height: fit-content;
+  }
+}
+.kendoGrid_Collaps--smallBtn{
+  .k-hierarchy-cell{
+    .k-icon{
+      padding: 0 !important;
+    }
+  }
+}

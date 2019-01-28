@@ -73,4 +73,16 @@ h6{
         box-shadow: 0 0 0 0.2rem transparent;
     }
 }
+.word-wrap-nowrap{
+    white-space: nowrap;
+}
 
+.alpha{
+    font-size: $font-size-small;
+}
+.beta{
+    font-size: $font-size-regular;
+}
+.gamma{
+    font-size: $font-size-regular + 3;
+}
