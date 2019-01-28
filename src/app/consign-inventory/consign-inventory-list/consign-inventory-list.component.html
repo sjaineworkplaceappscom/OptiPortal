@@ -63,34 +63,36 @@
                     <!-- <div class="float-left">
                     <kendo-dropdownlist [data]="listItems" [(ngModel)]="selectedValue"></kendo-dropdownlist>
                     </div> -->
-                 
-                    <div class="col-xs-12 col-12 col-md-2 float-left">
+                    {{displayDateRange}}
+                    <div class="pl-0 col-xs-12 col-12 col-md-8 col-lg-8 col-xl-4 float-left d-flex">
                         <!-- <input class="k-textbox w-100" #drp="bsDaterangepicker" bsDaterangepicker
                          [(ngModel)]="bsRangeValue" 
                           [bsValue]="bsValue" 
                           [(ngModel)]="bsRangeValue"
                           [bsConfig]="{showWeekNumbers:false, containerClass:'theme-default'}"> -->
-                          <kendo-daterange>
-                            <label>
-                                <span class="label">Start</span>
-                                <kendo-dateinput kendoDateRangeStartInput [(value)]="range.start"></kendo-dateinput>
+                   
+                          <kendo-daterange class="d-flex">                        
+                            <label class="d-flex mb-0 align-items-center">
+                                <span class="label mr-2">Start</span>
+                                <kendo-dateinput class="mr-2 w-100" kendoDateRangeStartInput [(value)]="range.start"></kendo-dateinput>
                             </label>
-                            <label>
-                                <span class="label">End</span>
-                                <kendo-dateinput kendoDateRangeEndInput [(value)]="range.end"></kendo-dateinput>
-                            </label>
+                            <label class="d-flex mb-0 align-items-center">
+                                <span class="label mr-2">End</span>
+                                <kendo-dateinput class="mr-2 w-100" kendoDateRangeEndInput [(value)]="range.end"></kendo-dateinput>
+                            </label>     
                         </kendo-daterange>
                         <button (click)="filterDate()">Filter</button>
+                       
                     </div>
                    
-
-                    <div class="float-right opti_grid-mainlist-mobile-search opti_right-top-sec-grid">
-                        <form class="k-form opti_common-search-form float-left p-0">
-                            <label class="k-form-field opti_common-search-label">
-                                <input type="text" class="k-textbox" name="searchRequest" [(ngModel)]="searchRequest" />
+                    <div class="d-block d-sm-flex d-md-none pt-2 w-100"></div>
+                    <div class="px-0 float-right col-xl-2 opti_grid-mainlist-mobile-search opti_right-top-sec-grid col-md-4 col-lg-4">
+                        <form class="k-form opti_common-search-form float-right p-0">
+                            <label class="k-form-field opti_common-search-label d-flex w-100">
+                                <input type="text" class="k-textbox w-100" name="searchRequest" [(ngModel)]="searchRequest" />
                                 <span class="opti_vertical-align opti_mouse-pointer"><img src="assets/images/common/search-black.svg" class="" alt="Search" width="15" /></span>
                             </label>
-                        </form>
+                        </form> 
                     </div>
 
                     
@@ -126,7 +128,7 @@
                             <dd>{{ dataItem.Stock }}</dd>
 
                             <dt>Serial or Batch</dt>
-                            <dd><a href="javascript:void('0')" (click)="openSBDetail($event)" class="btn btn-link  pl-0 pr-0"> {{ dataItem.ItemType }}</a></dd>
+                            <dd><a href="javascript:void('0')" (click)="openSBDetail($event)" class="btn btn-link  pl-0 pr-0"> {{ dataItem.SerialorBatch }}</a></dd>
                         </dl>
                     </ng-template>
                 </kendo-grid-column>
@@ -141,9 +143,9 @@
                 <kendo-grid-column media="(min-width: 768px)" field="Committed" title="Commited" [width]="160"></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="Available" title="Available" [width]="160"></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="Stock" title="Stock" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="ItemType" [width]="160" title="Serial or Batch" >
+                <kendo-grid-column media="(min-width: 768px)" field="SerialorBatch" [width]="160" title="Serial or Batch" >
                   <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex" >
-                    <a href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData)" class="btn btn-link"> {{childDataItem.ItemType}} </a>
+                    <a href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData)" class="btn btn-link"> {{childDataItem.SerialorBatch}} </a>
                   </ng-template>
                 </kendo-grid-column>
                 
@@ -166,7 +168,7 @@
                       <kendo-grid-column media="(min-width: 768px)" field="SerialorBatch" title="Serial and Batch" >
                             <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex">
                                     <a href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,dataItem.ItemsDetail)" class="btn btn-link"> {{childDataItem.SerialorBatch}} </a>
-                                  </ng-template>
+                                  </ng-template> 
                       </kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="WareHouse" title="Ware House" ></kendo-grid-column>
                       <kendo-grid-column media="(min-width: 768px)" field="Bin" title="Bin" ></kendo-grid-column>
@@ -191,7 +193,7 @@
                                 <dd>{{ dataItem.ItemDescription }}</dd>
 
                                 <dt>Serial And Batch</dt>
-                                <dd>{{ dataItem.SerialAndBatch }}</dd>
+                                <dd>{{ dataItem.SerialorBatch }}</dd>
 
                                 <dt>WareHouse</dt>
                                 <dd>{{ dataItem.WareHouse }}</dd>

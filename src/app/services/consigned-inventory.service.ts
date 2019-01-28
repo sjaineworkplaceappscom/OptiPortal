@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Configuration } from '../helpers/Configuration';
 import { HttpHelper } from '../helpers/http.helper';
 import { Observable } from 'rxjs';
+import { ConsignedInventoryModel } from '../models/ConsignedInventoryModel';
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +24,9 @@ export class ConsignedInventoryService {
   /**
    * get Consigned Inventory list data from server.
    */
-  public getConsignedInventoryChildList(item:string,warehouse:string,bin:string,type:string): Observable<any> {
-    let url: string = this.baseUrl + "consignedinventory/child/list/"+item+"/"+warehouse+"/"+bin+"/"+type;
-    return this.httpHelper.get(url, null);
+  public getConsignedInventoryChildList(model:ConsignedInventoryModel,type:string): Observable<any> {
+    let url: string = this.baseUrl + "consignedinventory/child/list";//+model.Item+"/"+model.WareHouse+"/"+model.Bin+"/"+type;
+    return this.httpHelper.put(url,model, null);
   } 
 
   /**

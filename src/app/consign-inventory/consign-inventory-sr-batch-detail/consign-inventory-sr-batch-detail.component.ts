@@ -24,6 +24,7 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
   gridHeight: number;
   showLoader: boolean = false;
   searchRequest: string = '';
+  
   getSerialBatchlistSubs: ISubscription;
   
   public configX: PerfectScrollbarConfigInterface = {
@@ -58,7 +59,7 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           var serialbatchdetail:any = currentSidebarData.RequesterData;
-         
+          if(serialbatchdetail!=null)
           this.getSerialBatchList(serialbatchdetail.Item,serialbatchdetail.WareHouse,serialbatchdetail.Bin,2+"");//type 2 for serial batch value    
         }
       },error => {
@@ -126,7 +127,9 @@ ngOnDestroy() {
 
   if (this.getSerialBatchlistSubs != undefined)
     this.getSerialBatchlistSubs.unsubscribe();
-
+    if (this.BatchSerialSideBarsubs != undefined)
+    this.BatchSerialSideBarsubs.unsubscribe();
+    
 }
 
 

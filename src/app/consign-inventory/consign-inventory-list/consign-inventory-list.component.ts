@@ -11,9 +11,11 @@ import { ComponentName, ModuleName } from 'src/app/enums/enums';
 import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 import { SalesOrderService } from 'src/app/services/sales-order.service';
 import { SalesOrderDetail } from 'src/app/tempmodels/sales-order-detail';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { DeliveryNotesService } from 'src/app/services/delivery-notes.service';
 import { DeliveryNoteHeaderModel } from 'src/app/tempmodels/delivery-note-header-model';
+import { DatePipe } from '@angular/common';
+import { ConsignedInventoryModel } from 'src/app/models/ConsignedInventoryModel';
 
 @Component({
   selector: 'app-consign-inventory-list',
@@ -39,16 +41,18 @@ export class ConsignInventoryListComponent implements OnInit {
   showLoaderForChild: boolean = false;
   searchRequest: string = '';
   sidebarData: any = null;
-
+  defaultDate: Date = new Date();
+  displayDateRange: string = '';
   getConsignedInventoryMasterlistSubs: ISubscription;
   getConsignedInventoryChildlistSubs: ISubscription;
   public getSalsesubs: ISubscription;
   public getDeliveryNsubs: ISubscription;
-  public range = { start: null, end: null };
+
+  public range = { start: this.getDateBeforeAMonth(this.getCurrentDate()), end:this.getCurrentDate() };
   salesOrderDetailModel: SalesOrderDetail = new SalesOrderDetail();
   deliveryNoteHeaderModel: DeliveryNoteHeaderModel = new DeliveryNoteHeaderModel();
   incr(num) {
-    this.pageSizeNumber = num;
+    this.pageSizeNumber = num; 
   }
 
   // UI Section
@@ -64,23 +68,31 @@ export class ConsignInventoryListComponent implements OnInit {
 
 
 
-  constructor(private commonService: Commonservice, private consignedInventoryService: ConsignedInventoryService, private salseOrderService: SalesOrderService,private deliveryNotesService: DeliveryNotesService) {
-
-    this.maxDate.setDate(this.maxDate.getDate() + 7);
+  constructor(private commonService: Commonservice, private consignedInventoryService: ConsignedInventoryService, private salseOrderService: SalesOrderService, private deliveryNotesService: DeliveryNotesService, public datepipe: DatePipe) {
+    this.maxDate.setDate(this.maxDate.getDate() + 30);
     this.bsRangeValue = [this.bsValue, this.maxDate];
-
+    //this.displayDateRange = DateTimeHelper.ParseDate(this.range.start) + ' to '+ DateTimeHelper.ParseDate(this.range.end);
   }
-
+  fromDate: Date;
+  toDate: Date;
   public gridData: any[];
   public showLoaderChild: boolean[]
   ngOnInit() {
+    this.getDateBeforeAMonth(new Date());
     // Apply class on body start
     const element = document.getElementsByTagName("body")[0];
     element.className = "";
     element.classList.add("opti_body-sales-order");
     element.classList.add("opti_body-main-module");
     // Apply class on body end
-
+    //this.displayDateRange = this.datepipe.transform(DateTimeHelper.ParseDate(this.range.end), 'yyyy-MM-dd') +
+    //  ' to ' + this.datepipe.transform(DateTimeHelper.ParseDate(this.range.end), 'yyyy-MM-dd');
+      this.displayDateRange = DateTimeHelper.ParseDate(this.range.start).toLocaleDateString() +
+      ' to ' + DateTimeHelper.ParseDate(this.range.end).toLocaleDateString();
+      this.fromDate = DateTimeHelper.ParseDate(this.range.start);
+      this.toDate = DateTimeHelper.ParseDate(this.range.end);
+      console.log("from date ngoninit():"+this.fromDate);
+      console.log("to date ngoninit():"+this.toDate);
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
 
@@ -90,10 +102,19 @@ export class ConsignInventoryListComponent implements OnInit {
     this.getConsignedItemMasterList();
   }
 
-  filterDate(){
-    console.log("DateRange",this.range.start,this.range.end);
+
+
+  filterDate() {
+    this.displayDateRange = DateTimeHelper.ParseDate(this.range.start).toLocaleDateString() +
+      ' to ' + DateTimeHelper.ParseDate(this.range.end).toLocaleDateString();
+  
+    this.fromDate = DateTimeHelper.ParseDate(this.range.start);
+    this.toDate = DateTimeHelper.ParseDate(this.range.end);
+    console.log("from date at filterDate():"+this.fromDate);
+    console.log("to date at filterDate():"+this.toDate);
+    this.getConsignedItemMasterList();
   }
-  /**
+  /** 
    * Method to get list of inquries from server.
   */
   public getConsignedItemMasterList() {
@@ -101,7 +122,7 @@ export class ConsignInventoryListComponent implements OnInit {
     this.showLoader = true;
     this.getConsignedInventoryMasterlistSubs = this.consignedInventoryService.getConsignedInventoryMasterList().subscribe(
       data => {
-        
+
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
           this.showLoader = false;
@@ -119,10 +140,10 @@ export class ConsignInventoryListComponent implements OnInit {
   /**
   * Method to get list of inquries from server.
  */
-  public getConsignedItemChildList(item: string, warehouse: string, bin: string, type: string, index: number): any {
+  public getConsignedItemChildList(model: ConsignedInventoryModel, type: string, index: number): any {
 
     this.showLoader1 = true;
-    this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(item, warehouse, bin, type).subscribe(
+    this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(model, type).subscribe(
       (data: any) => {
         if (data != null && data != undefined) {
           this.gridData[index].ItemsDetail = JSON.parse(data);
@@ -156,12 +177,9 @@ export class ConsignInventoryListComponent implements OnInit {
   }
 
   // Open Serial And Batch detail sidebar
-  public openSBDetail(e, index,collection:any) {
-
-    let data: any= collection[index];;
-
-    console.log("Collection",collection);
-    console.log("Collection-data",data);
+  public openSBDetail(e, index, collection: any) {
+    console.log(" on sb detail DateRange:", this.range.start, this.range.end);
+    let data: any = collection[index];;
 
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.RequesterData = data;
@@ -172,7 +190,7 @@ export class ConsignInventoryListComponent implements OnInit {
   }
 
   public openDetail(parent, index) {
-    
+
     let item = parent.ItemsDetail[index];
     if (item != null) {
       let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
@@ -197,14 +215,14 @@ export class ConsignInventoryListComponent implements OnInit {
         currentsideBarInfo.ModuleName = ModuleName.SalesOrder;
         this.getSalesOrder(requesterData, currentsideBarInfo);
         //currentsideBarInfo.SideBarStatus = true;
-       // this.commonService.setCurrentSideBar(currentsideBarInfo);
+        // this.commonService.setCurrentSideBar(currentsideBarInfo);
         break;
       }
       case 3: {
         currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
         currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
         this.getDeliveryNotesDetail(requesterData, currentsideBarInfo);
-       // currentsideBarInfo.SideBarStatus = true;
+        // currentsideBarInfo.SideBarStatus = true;
         //this.commonService.setCurrentSideBar(currentsideBarInfo);
         break;
       }
@@ -213,7 +231,7 @@ export class ConsignInventoryListComponent implements OnInit {
         currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
         this.getDeliveryNotesDetail(requesterData, currentsideBarInfo);
         //currentsideBarInfo.SideBarStatus = true;
-       // this.commonService.setCurrentSideBar(currentsideBarInfo);
+        // this.commonService.setCurrentSideBar(currentsideBarInfo);
         break;
       }
     }
@@ -250,9 +268,9 @@ export class ConsignInventoryListComponent implements OnInit {
     * call api for Sales quotation detail .
     */
   getDeliveryNotesDetail(requesterData: any, currentsideBarInfo: CurrentSidebarInfo) {
-    
+
     this.getDeliveryNsubs = this.deliveryNotesService.getDeliveryNotesDetail(requesterData.ItemOptiId, 1).subscribe(
-      data => { 
+      data => {
         this.showLoader = false;
         let dataArray: any[] = JSON.parse(data);
         this.deliveryNoteHeaderModel = dataArray[0];
@@ -266,7 +284,7 @@ export class ConsignInventoryListComponent implements OnInit {
         localStorage.setItem("SelectedDeliveryNote", JSON.stringify(this.deliveryNoteHeaderModel));
 
       }, error => {
-    
+
         //alert("Something went wrong");
         console.log("Error: ", error)
       }, () => { }
@@ -274,8 +292,15 @@ export class ConsignInventoryListComponent implements OnInit {
   }
 
   openDetailGrid(e: any) {
-
-    let data = this.getConsignedItemChildList(e.dataItem.Item, e.dataItem.WareHouse, e.dataItem.Bin, 1 + "", e.index);//type is 1 for child grid.
+    let consignedInventoryItemModel: ConsignedInventoryModel = new ConsignedInventoryModel();
+ 
+    consignedInventoryItemModel.Item = e.dataItem.Item;
+    consignedInventoryItemModel.WareHouse = e.dataItem.WareHouse;
+    consignedInventoryItemModel.Bin = e.dataItem.Bin;
+    consignedInventoryItemModel.FromDate = this.fromDate;
+    consignedInventoryItemModel.ToDate = this.toDate;
+    console.log("At child api call to date, from date"+consignedInventoryItemModel.ToDate+","+consignedInventoryItemModel.FromDate);
+    let data = this.getConsignedItemChildList(consignedInventoryItemModel, 1 + "", e.index);//type is 1 for child grid.
     if (data != null && data != undefined) {
       this.gridData[e.index].ItemsDetail = JSON.parse(data);
     }
@@ -318,9 +343,25 @@ export class ConsignInventoryListComponent implements OnInit {
       this.getConsignedInventoryMasterlistSubs.unsubscribe();
     if (this.getDeliveryNsubs != undefined)
       this.getDeliveryNsubs.unsubscribe();
-      if (this.getSalsesubs != undefined)
+    if (this.getSalsesubs != undefined)
       this.getSalsesubs.unsubscribe();
-      
+
+  }
+
+  // method will return date before a month from the passing date.
+  public getDateBeforeAMonth(date: Date): Date {
+    date.setMonth(date.getMonth() - 1);
+    date.setHours(0, 0, 0);
+    date.setMilliseconds(0);
+    let previousDate: Date = date;
+    return previousDate;
+  }
+  // method will return current date with 0,0,0 time value.
+  public getCurrentDate(): Date {
+    var currentDate: Date = new Date();
+    currentDate.setHours(0, 0, 0);
+    currentDate.setMilliseconds(0);
+    return currentDate;
   }
 
 }

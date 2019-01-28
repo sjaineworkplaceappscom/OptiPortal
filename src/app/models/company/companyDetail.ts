@@ -7,4 +7,4 @@ export class CompanyDetail{
     PrimaryContactName:string="";
     PrimaryContactEmail:string="";   
     PrimaryContactPhone:string; 
-}
+} 

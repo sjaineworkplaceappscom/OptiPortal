@@ -40,7 +40,7 @@ export class HttpHelper {
         if (headers == null) {
             headers = new HttpHeaders();
         }
-
+        
 
         headers = headers.set('Content-Type', 'application/json')
             .set('Accept', 'application/json');
