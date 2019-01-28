@@ -204,7 +204,7 @@ export class ConsignInventoryListComponent implements OnInit {
   // Set CurrentSidebar component by transactionType
   public SetComponentTypeAndData(transactionType: number, currentsideBarInfo: CurrentSidebarInfo, requesterData) {
 
-    switch (transactionType) {
+    switch (transactionType) { 
       case 1: {
         this.toast.showSuccess(AppMessages.UnderDevelopementMode);
         
