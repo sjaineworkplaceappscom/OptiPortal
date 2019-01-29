@@ -206,7 +206,6 @@ export class ConsignInventoryListComponent implements OnInit {
 
   // Set CurrentSidebar component by transactionType
   public SetComponentTypeAndData(transactionType: number, currentsideBarInfo: CurrentSidebarInfo, requesterData) {
-
     switch (transactionType) { 
       case 1: {
         this.toast.showSuccess(AppMessages.UnderDevelopementMode);
@@ -249,7 +248,7 @@ export class ConsignInventoryListComponent implements OnInit {
   private getSalesOrder(requesterData: any, currentsideBarInfo: CurrentSidebarInfo) {
     let dataitem: any = null;
 
-    this.getSalsesubs = this.salseOrderService.getSalesOrderDetail(requesterData.ItemOptiId, 1).subscribe(
+    this.getSalsesubs = this.salseOrderService.getSalesOrderDetail(requesterData.TransactionDocumentNumber, 1).subscribe(
       data => {
         if (data != null) {
           let dataArray: any[] = JSON.parse(data);
@@ -278,7 +277,7 @@ export class ConsignInventoryListComponent implements OnInit {
     */
   getDeliveryNotesDetail(requesterData: any, currentsideBarInfo: CurrentSidebarInfo) {
 
-    this.getDeliveryNsubs = this.deliveryNotesService.getDeliveryNotesDetail(requesterData.ItemOptiId, 1).subscribe(
+    this.getDeliveryNsubs = this.deliveryNotesService.getDeliveryNotesDetail(requesterData.TransactionDocumentNumber, 1).subscribe(
       data => {
         this.showLoader = false;
         let dataArray: any[] = JSON.parse(data);
