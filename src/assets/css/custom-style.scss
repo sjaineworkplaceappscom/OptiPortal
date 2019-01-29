@@ -144,8 +144,9 @@ kendo-grid tr:hover dl span strong {
 .kendoGrid_Toolbar--flex kendo-grid-toolbar{
   display: inline-flex;
   align-items: center;
+  min-height: fit-content;
   @media screen and (max-width:1199px){
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
     height: auto;
     min-height: fit-content;
   }
