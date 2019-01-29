@@ -93,8 +93,10 @@ export class ConsignInventoryListComponent implements OnInit {
       ' to ' + DateTimeHelper.ParseDate(this.range.end).toLocaleDateString();
       this.fromDate = DateTimeHelper.ParseDate(this.range.start);
       this.toDate = DateTimeHelper.ParseDate(this.range.end);
-    //  console.log("from date ngoninit():"+this.fromDate);
-    //  console.log("to date ngoninit():"+this.toDate);
+      //this.fromDate = this.datepipe.transform(fromDate, 'dd/MM/yyyy');
+      
+      console.log("from date ngoninit():"+this.fromDate);
+      console.log("to date ngoninit():"+this.toDate);
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
 
@@ -109,12 +111,12 @@ export class ConsignInventoryListComponent implements OnInit {
   filterDate() {
     this.displayDateRange = 'from '+DateTimeHelper.ParseDate(this.range.start).toLocaleDateString() +
       ' to ' + DateTimeHelper.ParseDate(this.range.end).toLocaleDateString();
-  
+   
     this.fromDate = DateTimeHelper.ParseDate(this.range.start);
     this.toDate = DateTimeHelper.ParseDate(this.range.end);
-   // console.log("from date at filterDate():"+this.fromDate);
-   // console.log("to date at filterDate():"+this.toDate);
-    this.getConsignedItemMasterList();
+    console.log("from date at filterDate():"+this.fromDate.toLocaleDateString());
+    console.log("to date at filterDate():"+this.toDate.toLocaleDateString());
+    this.getConsignedItemMasterList(); 
   }
   /** 
    * Method to get list of inquries from server.
