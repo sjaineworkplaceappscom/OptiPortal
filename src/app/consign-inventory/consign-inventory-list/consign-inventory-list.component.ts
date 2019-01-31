@@ -127,7 +127,7 @@ export class ConsignInventoryListComponent implements OnInit {
     this.getConsignedInventoryMasterlistSubs = this.consignedInventoryService.getConsignedInventoryMasterList().subscribe(
       data => {
 
-        if (data != null && data != undefined) {
+        if (data != null && data != undefined && data != "") {
           this.gridData = JSON.parse(data);
           this.showLoader = false;
         }
@@ -136,7 +136,10 @@ export class ConsignInventoryListComponent implements OnInit {
         this.showLoader = false;
         console.log("Error: ", error);
         localStorage.clear();
-      }
+      },
+      ()=>{
+        this.showLoader  = false;
+     }
     );
   }
 
@@ -149,7 +152,7 @@ export class ConsignInventoryListComponent implements OnInit {
     this.showLoader1 = true;
     this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(model, type).subscribe(
       (data: any) => {
-        if (data != null && data != undefined) {
+        if (data != null && data != undefined && data != "") {
           this.gridData[index].ItemsDetail = JSON.parse(data);
           this.gridData[index].ItemsDetail.forEach(element => {
             element.TransactionDate = DateTimeHelper.ParseDate(element.TransactionDate);
@@ -165,6 +168,9 @@ export class ConsignInventoryListComponent implements OnInit {
         //alert("Something went wrong");
         console.log("Error: ", error);
         localStorage.clear();
+      },
+      ()=>{
+         this.showLoader1  = false;
       }
     );
   }
