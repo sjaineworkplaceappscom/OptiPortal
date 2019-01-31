@@ -27,10 +27,10 @@ export class PortalLeftComponent implements OnInit {
   fruits = ["Banana", "Orange", "Apple", "Mango"];
   userPermission: any = [];
 
-  ngOnInit() {
-    
+  ngOnInit() {debugger;
     if (typeof (Storage) !== "undefined") {
       let arr = localStorage.getItem('LoginUserPermissions');
+      if(arr !=null && arr!= undefined && arr!= "null")
       this.userPermission = arr.split(','); 
       // split, convert string into array string and return new array
     }
