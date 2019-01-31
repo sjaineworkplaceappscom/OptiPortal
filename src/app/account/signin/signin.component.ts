@@ -96,7 +96,7 @@ export class SigninComponent implements OnInit {
 
   }
   public async login() {
-    
+
     // cookie code start
     if (this.isRemember == true) {
       this.setCookie('cookieEmail', this.userName, 365);
@@ -130,17 +130,21 @@ export class SigninComponent implements OnInit {
 
             userId = data.LoginUserId;
             this.generateLogintoken(userId, this.password, this.userName);
-            var userPermissionArray = resUserDataPermissions.split(',');
+            var userPermissionArray;
+            if(resUserDataPermissions!=null && resUserDataPermissions!=undefined)
+            userPermissionArray= resUserDataPermissions.split(',');
+            
            // console.log(userPermissionArray);
             localStorage.setItem('LoginUserDetail',JSON.stringify(resUserData));
             localStorage.setItem('LoginUserPermissions', resUserDataPermissions);
             
             //get permission array and check your according.
             var arr = localStorage.getItem('LoginUserPermissions');
-            var arrrayItems:any[] = arr.split(',');
-            for(let entry of arrrayItems){
-                  //you will get all permission here.
-            }
+            // if(resUserDataPermissions!=null && resUserDataPermissions!=undefined)
+            // var arrrayItems:any[] = arr.split(',');
+            // for(let entry of arrrayItems){
+            //       //you will get all permission here.
+            // }
 
             var systemAdmin: any = false;
             this.userType=data.LoginUserType;

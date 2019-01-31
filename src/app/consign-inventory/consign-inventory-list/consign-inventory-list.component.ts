@@ -32,7 +32,7 @@ export class ConsignInventoryListComponent implements OnInit {
   maxDate = new Date();
 
 
-  // 
+  //  
   pageSizeNumber: number = 5;
   isMobile: boolean;
   isColumnFilter: boolean = false;
@@ -95,8 +95,8 @@ export class ConsignInventoryListComponent implements OnInit {
       this.toDate = DateTimeHelper.ParseDate(this.range.end);
       //this.fromDate = this.datepipe.transform(fromDate, 'dd/MM/yyyy');
       
-      console.log("from date ngoninit():"+this.fromDate);
-      console.log("to date ngoninit():"+this.toDate);
+      //console.log("from date ngoninit():"+this.fromDate);
+      //console.log("to date ngoninit():"+this.toDate);
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
 
@@ -114,8 +114,8 @@ export class ConsignInventoryListComponent implements OnInit {
    
     this.fromDate = DateTimeHelper.ParseDate(this.range.start);
     this.toDate = DateTimeHelper.ParseDate(this.range.end);
-    console.log("from date at filterDate():"+this.fromDate.toLocaleDateString());
-    console.log("to date at filterDate():"+this.toDate.toLocaleDateString());
+    //console.log("from date at filterDate():"+this.fromDate.toLocaleDateString());
+    //console.log("to date at filterDate():"+this.toDate.toLocaleDateString());
     this.getConsignedItemMasterList(); 
   }
   /** 
@@ -309,12 +309,6 @@ export class ConsignInventoryListComponent implements OnInit {
      consignedInventoryItemModel.ToDate = this.toDate;
      consignedInventoryItemModel.Type=1;
 
-    //consignedInventoryItemModel.Item ="Chld-Seri";
-    //consignedInventoryItemModel.WareHouse = "01";
-    //consignedInventoryItemModel.Bin = "01-SYSTEM-BIN-LOCATION"; 
-    //consignedInventoryItemModel.FromDate = new Date("2018-12-13");
-    //consignedInventoryItemModel.ToDate = new Date("2018-12-13");
-    //consignedInventoryItemModel.Type=1;
 
     //console.log("At child api call to date, from date"+consignedInventoryItemModel.ToDate+","+consignedInventoryItemModel.FromDate);
     let data = this.getConsignedItemChildList(consignedInventoryItemModel, 1 + "", e.index);//type is 1 for child grid.

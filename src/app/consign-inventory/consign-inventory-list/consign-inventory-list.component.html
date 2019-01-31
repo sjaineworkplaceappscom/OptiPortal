@@ -124,7 +124,7 @@
                             <dd>{{ dataItem.Stock }}</dd>
 
                             <dt>Serial or Batch</dt>
-                            <dd><a href="javascript:void('0')" (click)="openSBDetail($event)" class=" pl-0 pr-0"> <u>{{ dataItem.SerialorBatch }}</u></a></dd>
+                            <dd><a href="javascript:void('0')" (click)="openSBDetail($event)" class=" pl-0 pr-0"> <u>{{ dataItem.ItemType }}</u></a></dd>
                         </dl>
                     </ng-template>
                 </kendo-grid-column>
@@ -207,16 +207,16 @@
                                 <dd>{{ dataItem.ToBin }}</dd>
     
                                 <dt>Transection Date</dt>
-                                <dd>{{ dataItem.TransectionDate }}</dd>
+                                <dd>{{ dataItem.TransactionDate }}</dd>
     
                                 <dt>Transaction Type</dt>
                                 <dd>{{ dataItem.TransactionType }}</dd>
 
                                 <dt>Qunatity Transacted</dt>
-                                <dd>{{ dataItem.QunatityTransacted }}</dd>
+                                <dd>{{ dataItem.QuantityTranssacted }}</dd>
     
                                 <dt>Transaction Document Number</dt>
-                                <dd><a (click)="openDetail(dataItem,rowIndex);" href="javascript:void('0')" class="btn btn-link  pl-0 pr-0">{{ dataItem.ItemOptiId }}</a></dd>
+                                <dd><a (click)="openDetail(dataItem,rowIndex);" href="javascript:void('0')" class="btn btn-link  pl-0 pr-0">{{ dataItem.TransactionDocumentNumber }}</a></dd>
                             </dl>
                         </ng-template>
                     </kendo-grid-column>

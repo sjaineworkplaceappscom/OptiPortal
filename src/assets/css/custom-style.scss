@@ -158,3 +158,94 @@ kendo-grid tr:hover dl span strong {
     }
   }
 }
+body .k-calendar.k-calendar-range > .k-button {
+  width:25px;
+}
+body .k-calendar.k-calendar-range > .k-calendar-view{
+  padding: 0 10px;
+}
+body .k-calendar.k-calendar-range .k-calendar-header{
+  padding-top: 0;
+}
+body .k-calendar.k-calendar-range table > tbody {
+  padding:0 0 5px;
+  @media screen and (max-width:575px){
+    padding:0;
+  }
+}
+body .k-calendar.k-calendar-range table > tbody + tbody {
+  margin-left: 15px;
+  @media screen and (max-width:575px) and (orientation : portrait){
+    margin-left: 0;
+  }
+  @media screen and (max-width:575px) and (orientation : landscape){
+    margin-left: 10px;
+  }
+}
+body .k-calendar.k-calendar-range table > tbody + tbody tr:first-child{
+  @media screen and (max-width:575px) and (orientation : portrait){
+    display: none;
+  }
+}
+body .k-calendar-monthview .k-content th{
+  opacity: 1;
+  text-align: center;
+  padding: 5px 0 5px;
+  @media screen and (max-width:575px) {
+    font-size: 10px;
+    padding: 0 0 5px;
+  }
+}
+body .k-calendar-monthview .k-content .k-link, 
+body .k-calendar-view .k-content .k-link{
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  @media screen and (max-width:575px){
+    line-height: 20px;
+    height: 20px;
+    width: 24px;
+    font-size: 10px;
+  }
+}
+body .k-calendar-monthview .k-content td, 
+body .k-calendar-view .k-content td{
+  width: 30px;
+  height: 30px;
+  @media screen and (max-width:575px){
+    height: 20px;
+    width: 24px;
+  }
+}
+body .k-calendar-monthview .k-calendar-header .k-title, 
+body .k-calendar-view .k-calendar-header .k-title,
+body .k-calendar-view .k-calendar-header .k-today{
+  font-size: 12px;
+  @media screen and (max-width:575px){
+    font-size: 10px;
+  }
+}
+body .k-calendar-view .k-calendar-header .k-today{
+  @media screen and (max-width:575px) and (orientation : portrait){
+    display: none;
+  }
+}
+body .k-calendar-monthview, 
+body .k-calendar-view{
+  height: auto;
+}
+body .k-calendar.k-calendar-range>.k-button{
+  margin: 0;
+}
+body .k-calendar.k-calendar-infinite{
+  margin: -8px 0;
+}
+body .k-calendar.k-calendar-infinite .k-content{
+  height: auto;
+  @media screen and (max-width:575px) and (orientation : portrait){
+    display: flex;
+    width: 167px;
+    flex-wrap: wrap;
+  }
+}
