@@ -31,7 +31,8 @@ export class ConsignInventoryListComponent implements OnInit {
   bsRangeValue: Date[];
   maxDate = new Date();
 
-
+  pageLimit;
+  pagination:boolean;
   //  
   pageSizeNumber: number = 5;
   isMobile: boolean;
@@ -99,7 +100,7 @@ export class ConsignInventoryListComponent implements OnInit {
       //console.log("to date ngoninit():"+this.toDate);
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
-
+    this.getPaginationAttributes();
     // check mobile device
     this.isMobile = UIHelper.isMobile();
 
@@ -112,10 +113,9 @@ export class ConsignInventoryListComponent implements OnInit {
     this.displayDateRange = 'from '+DateTimeHelper.ParseDate(this.range.start).toLocaleDateString() +
       ' to ' + DateTimeHelper.ParseDate(this.range.end).toLocaleDateString();
    
-    this.fromDate = DateTimeHelper.ParseDate(this.range.start);
-    this.toDate = DateTimeHelper.ParseDate(this.range.end);
-    //console.log("from date at filterDate():"+this.fromDate.toLocaleDateString());
-    //console.log("to date at filterDate():"+this.toDate.toLocaleDateString());
+    this.fromDate = this.range.start//DateTimeHelper.ParseDate(this.range.start);
+    this.toDate =this.range.end// DateTimeHelper.ParseDate(this.range.end);
+  
     this.getConsignedItemMasterList(); 
   }
   /** 
@@ -148,7 +148,7 @@ export class ConsignInventoryListComponent implements OnInit {
   * Method to get list of inquries from server.
  */
   public getConsignedItemChildList(model: ConsignedInventoryModel, type: string, index: number): any {
-
+ 
     this.showLoader1 = true;
     this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(model, type).subscribe(
       (data: any) => {
@@ -201,7 +201,7 @@ export class ConsignInventoryListComponent implements OnInit {
   }
 
   public openDetail(parent, index) {
-
+debugger;
     //check here if 2 or 4 then only open other wise show message under developement mode.
     let item = parent.ItemsDetail[index];
     if (item != null) {
@@ -282,7 +282,7 @@ export class ConsignInventoryListComponent implements OnInit {
     * call api for Sales quotation detail .
     */
   getDeliveryNotesDetail(requesterData: any, currentsideBarInfo: CurrentSidebarInfo) {
-
+debugger;
     this.getDeliveryNsubs = this.deliveryNotesService.getDeliveryNotesDetail(requesterData.TransactionDocumentNumber, 1).subscribe(
       data => {
         this.showLoader = false;
@@ -308,11 +308,14 @@ export class ConsignInventoryListComponent implements OnInit {
   openDetailGrid(e: any) {
     let consignedInventoryItemModel: ConsignedInventoryModel = new ConsignedInventoryModel();
  
+    console.log("from,to date: at set model"+this.fromDate+","+this.toDate);
      consignedInventoryItemModel.Item = e.dataItem.Item;
      consignedInventoryItemModel.WareHouse = e.dataItem.WareHouse;
      consignedInventoryItemModel.Bin = e.dataItem.Bin; 
-     consignedInventoryItemModel.FromDate = this.fromDate;
-     consignedInventoryItemModel.ToDate = this.toDate;
+     consignedInventoryItemModel.FromDate =this.fromDate;//DateTimeHelper.ParseDate(this.fromDate);
+     consignedInventoryItemModel.ToDate = this.toDate;//DateTimeHelper.ParseDate(this.toDate);
+      
+     console.log("from,to date: in model"+consignedInventoryItemModel.FromDate+","+consignedInventoryItemModel.ToDate);
      consignedInventoryItemModel.Type=1;
 
 
@@ -352,6 +355,13 @@ export class ConsignInventoryListComponent implements OnInit {
     }]
   }
 
+
+  getPaginationAttributes(){
+    // pagination add/remove for desktop and mobile
+    let paginationAttributesArray = UIHelper.paginationAttributes();
+    this.pageLimit = paginationAttributesArray[0];
+    this.pagination = paginationAttributesArray[1];
+  }
   ngOnDestroy() {
     if (this.getConsignedInventoryChildlistSubs != undefined)
       this.getConsignedInventoryChildlistSubs.unsubscribe();
