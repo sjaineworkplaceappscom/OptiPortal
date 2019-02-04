@@ -95,13 +95,13 @@
 
 
                 <kendo-grid-column media="(min-width: 768px)" field="ASNNumber" filter="numeric"  title="ASN#" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="POReferenceNumber" title="PO Ref.#" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="POReferenceNumber" class="text-right" title="PO Ref.#" [width]="160"></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="Vendor" title="Vendor" [width]="160" ></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="ShipmentDate" title="Shipment Date" [width]="160" filter="date" type=date format="{0:dd MMM yy}" ></kendo-grid-column>
                 <kendo-grid-column media="(min-width: 768px)" field="DeliveryDate" title="Delivery Date" [width]="160" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="WayBillNumber" title="Way-Bill#" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="TrackingNumber" title="Tracking#" [width]="160"></kendo-grid-column>
-                
+                <kendo-grid-column media="(min-width: 768px)" field="WayBillNumber" class="text-right" title="Way-Bill#" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="TrackingNumber"  class="text-right" title="Tracking#" [width]="160"></kendo-grid-column>
+                 
                 <!-- xlsx template start -->
                 <kendo-grid-excel fileName="vendor-invoice-list.xlsx"></kendo-grid-excel>
                 <!-- xlsx template end -->
