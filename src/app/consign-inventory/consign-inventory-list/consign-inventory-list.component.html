@@ -173,7 +173,7 @@
                         <kendo-grid-column media="(min-width: 768px)" field="ToBin" title="To Bin"></kendo-grid-column>
 
                         <!-- <kendo-grid-column media="(min-width: 768px)" field="TransactionType" title="Transaction Type" ></kendo-grid-column> -->
-                        <kendo-grid-column media="(min-width: 768px)" field="QuantityTranssacted" class="text-right" title="Qunatity Transacted"></kendo-grid-column>
+                        <kendo-grid-column media="(min-width: 768px)" field="QuantityTranssacted" class="text-right" title="Quantity Transacted"></kendo-grid-column>
                         <kendo-grid-column media="(min-width: 768px)" field="ItemType" title="Serial/Batch">
                             <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex">
                                 <a *ngIf="childDataItem.ItemType!='None'" href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData)"
