@@ -262,6 +262,7 @@ body kendo-multiviewcalendar.k-calendar.k-calendar-infinite .k-content{
     overflow: auto;
   }
 }
+@media screen and (max-width:1024px){
 body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-monthview .k-calendar-header .k-title,
 body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-monthview .k-calendar-header .k-today{
   font-size: 14px;
@@ -279,7 +280,16 @@ body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-monthview .k-conten
   max-width: 200px;
   width: 100%;
 }
-body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-navigation .k-content ul,
-body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-navigation{
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-navigation .k-content ul{
   width:4em
+}
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-navigation{
+  width:5em
+}
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-monthview .k-calendar-weekdays {
+  max-width: 200px;
+}
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-header{
+  max-width:200px;
+}
 }
