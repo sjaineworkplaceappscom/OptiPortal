@@ -158,8 +158,8 @@ kendo-grid tr:hover dl span strong {
     }
   }
 }
-body kendo-calendar .k-calendar-monthview, 
-body kendo-calendar .k-calendar-view{
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-monthview, 
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-view{
   max-height:  18em;
 }
 
@@ -180,7 +180,11 @@ body kendo-multiviewcalendar.k-calendar.k-calendar-range .k-calendar-header{
 body kendo-multiviewcalendar.k-calendar.k-calendar-range table > tbody {
   padding:0 0 5px;
   @media screen and (max-width:575px){
-    padding:0;
+    body kendo-multiviewcalendar .k-calendar.k-calendar-range > .k-calendar-view{
+        display: block;
+        max-height: 250px;
+        overflow: auto;
+    }
   }
 }
 body kendo-multiviewcalendar.k-calendar.k-calendar-range table > tbody + tbody {
@@ -252,7 +256,30 @@ body kendo-multiviewcalendar.k-calendar.k-calendar-infinite .k-content{
   height: auto;
   @media screen and (max-width:575px) and (orientation : portrait){
     display: flex;
-    width: 167px;
+    width: 170px;
     flex-wrap: wrap;
+    max-height: 256px;
+    overflow: auto;
   }
+}
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-monthview .k-calendar-header .k-title,
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-monthview .k-calendar-header .k-today{
+  font-size: 14px;
+}
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-monthview .k-content th{
+  font-size: 14px
+}
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-monthview .k-content td{
+  font-size: 12px;
+  
+}
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-monthview, 
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-view,
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-monthview .k-content>table{
+  max-width: 200px;
+  width: 100%;
+}
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-navigation .k-content ul,
+body kendo-calendar:not(kendo-multiviewcalendar) .k-calendar-navigation{
+  width:4em
 }
