@@ -201,7 +201,6 @@ export class ConsignInventoryListComponent implements OnInit {
   }
 
   public openDetail(parent, index) {
-debugger;
     //check here if 2 or 4 then only open other wise show message under developement mode.
     let item = parent.ItemsDetail[index];
     if (item != null) {
@@ -282,7 +281,6 @@ debugger;
     * call api for Sales quotation detail .
     */
   getDeliveryNotesDetail(requesterData: any, currentsideBarInfo: CurrentSidebarInfo) {
-debugger;
     this.getDeliveryNsubs = this.deliveryNotesService.getDeliveryNotesDetail(requesterData.TransactionDocumentNumber, 1).subscribe(
       data => {
         this.showLoader = false;

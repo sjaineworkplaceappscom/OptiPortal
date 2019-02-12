@@ -106,7 +106,6 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
  public getSerialBatchList(model:ConsignedInventoryModel,type:string): any {
   this.showLoader = true;
   model.Type = 2;
-  debugger;
  this.getSerialBatchlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(model,type).subscribe(
    (data: any) => {
      if (data != null && data != undefined) {
