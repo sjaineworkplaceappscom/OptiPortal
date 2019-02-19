@@ -189,6 +189,7 @@ export class ConsignInventoryListComponent implements OnInit {
   // Open Serial And Batch detail sidebar
   public openSBDetail(e, index, collection: any,childData:any) {
     //console.log(" on sb detail DateRange:", this.range.start, this.range.end);
+    debugger;
     console.log("Data",childData);
     let data: any = collection[index];
     let model:ConsignedInventoryModel = collection[index];
