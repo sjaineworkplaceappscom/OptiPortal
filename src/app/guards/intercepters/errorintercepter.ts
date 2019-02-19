@@ -21,7 +21,7 @@ import {
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
     public sessionExpireMsg: string = "Your session has been expired. please login again.";
-    public invalidCredentials:string="Invalid username or password.please try again."
+    public invalidCredentials: string = "Invalid username or password.please try again."
     constructor(private router: Router, private dialogService: DialogService) {
     }
 
@@ -32,7 +32,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                 catchError((error: HttpErrorResponse) => {
                     let errMsg = '';
 
-                    if(error.status==0){
+                    if (error.status == 0) {
                         this.errorMessage('Unable to reach to server.')
                     }
 
@@ -49,7 +49,12 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
                         // Unauthorized.
                         if (error.status == 401) {
-                            return this.errorMessage(this.invalidCredentials);
+                            let token = localStorage.getItem("AccessToken")
+                            if (token == null || token == undefined || token == '') {
+                                return this.errorMessage(this.sessionExpireMsg);
+                            }
+                            else { return this.errorMessage(this.invalidCredentials); }
+
                         }
                         // Server error
                         else if (error.status == 500 && error.error != null && error.error != undefined) {
@@ -65,17 +70,17 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                                 return this.errorMessage("Server Error: \n" + error.error.Message);
                             }
                         }
-                        else{
-                             // Exceptional case
+                        else {
+                            // Exceptional case
                             //this.errorMessage("Something went wrong");
                             console.log(error);
-                           return  throwError(error.message);
+                            return throwError(error.message);
                         }
-                
+
                     }
                 })
             );
-            
+
     }
 
 

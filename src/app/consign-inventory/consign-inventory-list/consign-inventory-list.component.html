@@ -15,7 +15,7 @@
         <!-- for normal user   -->
         <!-- <div *ngIf="systemAdmin!='true'"> -->
         <div>
-            <kendo-grid [kendoGridBinding]="gridData" [resizable]="false" [pageSize]="selectedValue" [pageable]="true"
+            <kendo-grid [kendoGridBinding]="gridData" [resizable]="true" [pageSize]="selectedValue" [pageable]="true"
                 [pageSize]=pageLimit [pageable]=pagination [sortable]="true" [filterable]=isColumnFilter [groupable]=isColumnGroup
                 [columnMenu]="{ columnChooser: false }" [height]=gridHeight [selectable]="true" class="kendoGrid_Toolbar--flex kendoGrid_Collaps--smallBtn"
                 #gridItem (detailExpand)="openDetailGrid($event)">
@@ -185,9 +185,13 @@
                         </kendo-grid-column>
                         <kendo-grid-column media="(min-width: 768px)" field="TransactionDocumentNumber" title="Transaction Document Number">
                             <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex">
-                                <a (click)="openDetail(dataItem,rowIndex);" href="javascript:void('0')" class="text-underline alpha">
+                                <a *ngIf="childDataItem.TransactionType==15 || childDataItem.TransactionType==17;else other_content " (click)="openDetail(dataItem,rowIndex);" href="javascript:void('0')" class="text-underline alpha">
                                     <u>{{childDataItem.ObjectTypeDesc}}#{{childDataItem.TransactionDocumentNumber}}</u>
                                 </a>
+                                <ng-template #other_content>
+                                    {{childDataItem.ObjectTypeDesc}}#{{childDataItem.TransactionDocumentNumber}}
+                                </ng-template>
+                                
                             </ng-template> 
                         </kendo-grid-column>
 

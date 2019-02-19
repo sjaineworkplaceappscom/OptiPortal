@@ -141,7 +141,7 @@
                     <!-- loader end -->
 
                     <ng-container *ngIf="showLoader==false">
-                    <kendo-grid [kendoGridBinding]="gridItemsData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]=isColumnFilterItemsGrid
+                    <kendo-grid [kendoGridBinding]="gridItemsData" [resizable]="true" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]=isColumnFilterItemsGrid
                         [groupable]="false" [columnMenu]="{ columnChooser: false }" [height]=gridHeight-56 [selectable]="true"
                         (selectionChange)="onItemGridDataSelection($event, true)" #gridItemsValues>
 

@@ -16,7 +16,7 @@
         <div *ngIf="systemAdmin!='true'">
                     <kendo-grid  
                     [kendoGridBinding]="gridData | customPipeItem:searchRequest" 
-                    [resizable]="false" 
+                    [resizable]="true" 
                     [pageSize]=pageLimit 
                     [pageable]=pagination 
                     [sortable]="true"  

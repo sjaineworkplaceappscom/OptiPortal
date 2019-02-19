@@ -11,7 +11,7 @@
 
                 <!-- grid start -->
                 <ng-container *ngIf="showLoader==false">
-                    <kendo-grid [kendoGridBinding]="gridData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]=isContentColumnFilter
+                    <kendo-grid [kendoGridBinding]="gridData" [resizable]="true" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]=isContentColumnFilter
                         [groupable]=isContentColumnGroup [columnMenu]="{ columnChooser: false }" [height]=gridHeight-67 [selectable]="true"
                         #gridItem>
                         <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->

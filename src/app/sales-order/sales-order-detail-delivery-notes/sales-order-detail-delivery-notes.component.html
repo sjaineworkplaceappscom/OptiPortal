@@ -13,7 +13,7 @@
             <ng-container *ngIf="showLoader==false">
                     <kendo-grid 
                     [kendoGridBinding]="gridData | customFilter:searchRequest" 
-                    [resizable]="false" 
+                    [resizable]="true" 
                     [pageSize]=pageLimit 
                     [pageable]=pagination 
                     [sortable]="true"  

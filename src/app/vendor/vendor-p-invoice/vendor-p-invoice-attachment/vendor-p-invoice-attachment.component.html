@@ -52,7 +52,7 @@
 
             <file-drop headertext ="" (onFileDrop)="dropped($event)">
 
-                <kendo-grid [kendoGridBinding]="gridAttachmentData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true"
+                <kendo-grid [kendoGridBinding]="gridAttachmentData" [resizable]="true" [pageSize]="50" [pageable]="true" [sortable]="true"
                     [filterable]=isColumnFilterAttachementsGrid [groupable]="false" [columnMenu]="{ columnChooser: false }"
                     [height]=gridHeight-56 [selectable]="true" name="gridAttachmentData" #AttachementsTab>
 
