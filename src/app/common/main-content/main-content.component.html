@@ -8,7 +8,7 @@
 
     <div *ngIf="systemAdmin!='true'">
         <div style="padding: 10px;">
-            <kendo-grid [loading]="showLoader" [kendoGridBinding]="gridData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
+            <kendo-grid [loading]="showLoader" [kendoGridBinding]="gridData" [resizable]="true" [pageSize]="50" [pageable]="true" [sortable]="true"  [filterable]=isColumnFilter
                 [groupable]=isColumnGroup [columnMenu]="{ columnChooser: false }" [height]=gridHeight [selectable]="true" (selectionChange)="onInquiryGridDataSelection(gridItem, $event, true)"
                 #gridItem>
                 
@@ -236,7 +236,7 @@
                         <!-- items attachement grid start -->
                             <kendo-grid  
                             [data]="gridAttachmentData" 
-                            [resizable]="false" 
+                            [resizable]="true" 
                             [pageSize]="50" 
                             [pageable]="true" 
                             [sortable]="true" 
@@ -291,7 +291,7 @@
                         <h5>Notes</h5>
                         <!-- item notes start -->
                         <div #notesitemgrid id="opti_ItemNotesGridID">
-                            <kendo-grid [data]="noteItemsData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
+                            <kendo-grid [data]="noteItemsData" [resizable]="true" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
                                 [groupable]="false" [height]=268 (remove)="deleteItemsNote($event)">
                                 <!-- grid toolbar start -->
                                 <ng-template kendoGridToolbarTemplate>
@@ -390,7 +390,7 @@
                     <div class="col-md-12">
                         <kendo-grid 
                         [kendoGridBinding]="gridItemsData" 
-                        [resizable]="false" 
+                        [resizable]="true" 
                         [pageSize]="50" 
                         [pageable]="true" 
                         [sortable]="true" 
@@ -475,7 +475,7 @@
                     <ng-container *ngIf="TabAttachementGridStatus==true">
                         <kendo-grid  
                         [data]="gridAttachmentData" 
-                        [resizable]="false" 
+                        [resizable]="true" 
                         [pageSize]="50" 
                         [pageable]="true" 
                         [sortable]="true" 
@@ -545,7 +545,7 @@
                     <!-- start notes grid -->
                     <ng-container *ngIf="TabNotesGridStatus == true">
                         <div #notesgrid id="opti_NotesGridID">
-                            <kendo-grid [data]="noteRequetData" [resizable]="false" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
+                            <kendo-grid [data]="noteRequetData" [resizable]="true" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]="true"
                                 [groupable]="false" [height]=gridHeight-41 (remove)="deleteNote($event)" (edit)="editNote($event)" >
                                 <!-- grid toolbar start -->
                                 <ng-template kendoGridToolbarTemplate>
