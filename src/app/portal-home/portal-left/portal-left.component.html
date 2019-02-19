@@ -41,6 +41,7 @@
                 <li *ngIf="userPermission.includes('405'); "(click)="listClick($event, 'vcontectlist')" [ngClass]="{'active': selectedItem == 'vcontectlist'}"><a roterLink="vcontectlist" > <svg-icon src="{{imgPath}}/left-panel/Customer-Contacts.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Vendor Contact </span></a></li>
                 <li *ngIf="userPermission.includes('406'); "(click)="listClick($event, 'vpinvoicelist')" [ngClass]="{'active': selectedItem == 'vpinvoicelist'}"><a roterLink="vpinvoicelist" > <svg-icon src="{{imgPath}}/left-panel/Open-Invoices.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Vendor Invoice</span></a></li>
                 <li *ngIf="userPermission.includes('407'); "(click)="listClick($event, 'vpaymentlist')" [ngClass]="{'active': selectedItem == 'vpaymentlist'}"><a roterLink="vpaymentlist" > <svg-icon src="{{imgPath}}/left-panel/Customer-Purchase-Order.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Vendor Payment</span></a></li>
+                <li  (click)="listClick($event, 'consigninventory')" [ngClass]="{'active': selectedItem == 'consigninventory'}"><a roterLink=""> <svg-icon src="{{imgPath}}/left-panel/store.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor }"></svg-icon><span>Consigned Inventory</span></a></li>
                     
             </ng-container>
         </ul>

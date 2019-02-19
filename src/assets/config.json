@@ -1,5 +1,5 @@
 {       
-    "baseServerAPIEndpoint":"http://localhost:56989/",
+    "baseServerAPIEndpoint":"http://172.16.6.139:9090/",
     "firstHomePage": "/home/dashboard",
     "firstHomePageVendor":"/home/vendor/vpinquery",
     "dateFormat": "DD MMM YY",

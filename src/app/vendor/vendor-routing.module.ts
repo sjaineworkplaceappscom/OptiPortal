@@ -4,6 +4,8 @@ import { VendorDashboardComponent } from './vendor-dashboard/vendor-dashboard.co
 import { VendorPiModule } from './vendor-pi/vendor-pi.module';
 import { VendorOIModel } from '../tempmodels/vendor/vendor-OI-model';
 import { VendorPInvoiceModule } from 'src/app/vendor/vendor-p-invoice/vendor-p-invoice.module';
+import { ConsignInventoryListComponent } from '../consign-inventory/consign-inventory-list/consign-inventory-list.component';
+import { ConsignInventoryModule } from '../consign-inventory/consign-inventory.module';
 
 
 
@@ -17,12 +19,12 @@ const routes: Routes = [
   {path: 'vasn',loadChildren:"./vendor-asn/vendor-asn.module#VendorAsnModule"} ,  
   {path: 'vcontect',loadChildren:"./vendor-contact/vendor-contact.module#VendorContactModule"} , 
   {path: 'vpinvoice',loadChildren:"src/app/vendor/vendor-p-invoice/vendor-p-invoice.module#VendorPInvoiceModule"} ,  
-  {path: 'vpayment',loadChildren:"./vendor-payment/vendor-payment.module#VendorPaymentModule"} 
-
+  {path: 'vpayment',loadChildren:"./vendor-payment/vendor-payment.module#VendorPaymentModule"} ,
+  { path: 'consigninventory', component:ConsignInventoryListComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes),VendorPiModule,VendorPInvoiceModule],
+  imports: [RouterModule.forChild(routes),VendorPiModule,VendorPInvoiceModule,ConsignInventoryModule],
   exports: [RouterModule]
 })
 export class VendorRoutingModule { }
