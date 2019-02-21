@@ -47,6 +47,7 @@ export class SetPasswordComponent implements OnInit {
         data => {
           alert('Your password set successfully.');
           this1.showLoader = false;
+          localStorage.clear();
           this.router.navigateByUrl('account/login');
         },        
         (err:HttpErrorResponse) => {
