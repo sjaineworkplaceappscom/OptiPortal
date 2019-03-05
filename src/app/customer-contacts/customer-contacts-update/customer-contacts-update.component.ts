@@ -44,14 +44,13 @@ export class CustomerContactsUpdateComponent implements OnInit {
   constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog,private toast:ToastService) { }
 
   ngOnInit() {
-    
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
           this.contactModel = currentSidebarData.RequesterData;
           if (this.contactModel != null) {
-            this.callContactDetailAPI(this.contactModel.ContactId + "");
+            this.callContactDetailAPI(this.contactModel.ContactOptiId + "");
           } else {
           }
         }
@@ -91,6 +90,7 @@ export class CustomerContactsUpdateComponent implements OnInit {
     this.contactModel.ContactType=UserType.Customer;
     this.updateContactSub = this.contactService.UpdateContact(this.contactModel).subscribe(
       data => {
+        
         this.showLoader = false;
         this.commonService.refreshContactList(true);
         //if after save user set status to cancelled then we have to disable all functionality.

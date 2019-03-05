@@ -49,7 +49,7 @@ export class VcontactUpdateComponent implements OnInit {
           this.showLoader = true;
           this.contactModel = currentSidebarData.RequesterData;
           if (this.contactModel != null) {
-            this.callContactDetailAPI(this.contactModel.ContactId + "");
+            this.callContactDetailAPI(this.contactModel.ContactOptiId + "");
           } else {
           }
         }
