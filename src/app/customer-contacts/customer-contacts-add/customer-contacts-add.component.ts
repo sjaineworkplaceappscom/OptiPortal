@@ -25,10 +25,10 @@ export class CustomerContactsAddComponent implements OnInit {
   isDisableStatusField:boolean=false;
   public addSub: ISubscription;
   public listItems = [
-    { text: "Activate", value: 1 },
-    { text: "Deactivate", value: 2 },
+    { text: "Active", value: 1 },
+    { text: "Inactive", value: 2 },
   ];
-  public selectedItem = [{ text: "Activate", value: 1 }];
+  public selectedItem = [{ text: "Active", value: 1 }];
   showLoader: boolean = false;
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   public contactModel: Contact = new Contact();
