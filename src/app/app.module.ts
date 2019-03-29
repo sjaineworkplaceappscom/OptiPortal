@@ -68,11 +68,7 @@ const routes: Routes = [
   declarations: [
     
     AppComponent,
-    LandingComponent,
-
-    // Custom Pipes
-    
-    
+    LandingComponent,    
 
     //Home Components(Need to be delete)
     LeftComponent,    
