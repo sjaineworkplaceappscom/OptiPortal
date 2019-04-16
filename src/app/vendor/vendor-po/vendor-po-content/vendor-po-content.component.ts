@@ -16,12 +16,12 @@ export class VendorPoContentComponent implements OnInit {
 
   imgPath = Configuration.imagePath;
 
-
+  gridData: any;
   VPOModel: VendorPOModel = new VendorPOModel();
-  VPOContentModel:VendorPOContentModel = new VendorPOContentModel();
+  VPOContentModel: VendorPOContentModel = new VendorPOContentModel();
   showLoader: boolean = false;
   public getVPIsubs: ISubscription;
-  constructor(private vendorService:VendorService) { }
+  constructor(private vendorService: VendorService) { }
 
 
   isMobile: boolean;
@@ -50,9 +50,9 @@ export class VendorPoContentComponent implements OnInit {
     let VPI: string = localStorage.getItem("SelectedVPO");
     let vpiData: any = JSON.parse(VPI);
     this.VPOModel = vpiData;
-    
-    if(this.VPOModel!=null && this.VPOModel != undefined){
-      this.callVendorPurchaseOrderDetailAPI(this.VPOModel.POId+"");
+
+    if (this.VPOModel != null && this.VPOModel != undefined) {
+      this.callVendorPurchaseOrderDetailAPI(this.VPOModel.POId + "");
     }
   }
 
@@ -61,30 +61,37 @@ export class VendorPoContentComponent implements OnInit {
       this.getVPIsubs.unsubscribe();
   }
 
-   /** 
-    * call api for purchase inquiry detail.
-    */
-   callVendorPurchaseOrderDetailAPI(id: string) {
-     
+  /** 
+   * call api for purchase inquiry detail.
+   */
+  callVendorPurchaseOrderDetailAPI(id: string) {
+
     // console.log("Update:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
-     this.showLoader = true;
-     this.getVPIsubs = this.vendorService.getVendorPODetailById(id,2+"").subscribe(
-       data => { 
-         
-         this.showLoader = false;
-         if(data!=null && data!=undefined && data != ""){
+    this.showLoader = true;
+    this.getVPIsubs = this.vendorService.getVendorPODetailById(id, 2 + "").subscribe(
+      data => {
+
+        this.showLoader = false;
+        if (data != null && data != undefined && data != "") {
           let dataArray: any[] = JSON.parse(data);
+
+          this.gridData = JSON.parse(data);
+          this.gridData.forEach(element => {
+            element.RequestedDate = DateTimeHelper.ParseDate(element.RequestedDate);
+          });
+          console.log(this.gridData);
           this.VPOContentModel = dataArray[0];
           this.VPOContentModel.RequestedDate = DateTimeHelper.ParseToUTC(this.VPOContentModel.RequestedDate);
-         // this.VPOContentModel.RequestedDate = DateTimeHelper.ParseToUTC(this.VPOContentModel.RequestedDate);
-         }
-         else{
-         }
-       }, error => {  
-         this.showLoader = false; 
-         console.log("Error: ", error)
-       }, () => { }
-     );
-   }
+
+
+        }
+        else {
+        }
+      }, error => {
+        this.showLoader = false;
+        console.log("Error: ", error)
+      }, () => { }
+    );
+  }
 
 }

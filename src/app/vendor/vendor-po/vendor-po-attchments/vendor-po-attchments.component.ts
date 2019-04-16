@@ -6,6 +6,7 @@ import { vpiAttachment } from '../../../DemoData/vendor-data';
 import { VendorService } from 'src/app/services/vendor/vendor.service';
 import { VendorPOContentModel } from 'src/app/tempmodels/vendor/vendor-po-content-model';
 import { ISubscription } from 'rxjs/Subscription';
+import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 
 @Component({
   selector: 'app-vendor-po-attchments',
@@ -67,11 +68,14 @@ export class VendorPoAttchmentsComponent implements OnInit {
    getVPIAttachmentList(id: string) {
     // console.log("Update:data from LocalStorage:" + JSON.stringify(localStorage.getItem('SelectedPurchaseInquery')));
      this.showLoader = true;
-     this.getVPIsubs = this.vendorService.getVendorDetailById(id,3+"").subscribe(
+     this.getVPIsubs = this.vendorService.getVendorPODetailById(id,3+"").subscribe(
        data => { 
          this.showLoader = false;
          if(data!=null && data!=undefined && data != ""){
           this.gridData = JSON.parse(data);
+          this.gridData.forEach(element => {
+            element.AttachementDate = DateTimeHelper.ParseDate(element.AttachementDate);
+          });
          }
          else{
          }
