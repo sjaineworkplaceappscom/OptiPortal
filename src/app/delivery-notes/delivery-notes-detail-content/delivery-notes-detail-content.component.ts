@@ -18,40 +18,42 @@ export class DeliveryNotesDetailContentComponent implements OnInit {
 
   imgPath = Configuration.imagePath;
   pageLimit;
-  pagination:boolean;
-
+  pagination: boolean;
+  popupTitle:string="Serial/Batch detail"
   isMobile: boolean;
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;
   gridHeight: number;
-  
+
   showLoader: boolean = false;
   public gridData: any[];
   public getDetailsubs: ISubscription;
   deliveryNoteListModel: DeliveryNoteListModel = new DeliveryNoteListModel();
-  
+
+  public dialogOpened = false;
+
   constructor(private deliveryNotesService: DeliveryNotesService) { }
 
-   // UI Section
-   @HostListener('window:resize', ['$event'])
-   onResize(event) {
-     // apply grid height
-     this.gridHeight = UIHelper.getMainContentHeight();
-     // check mobile device
-     this.isMobile = UIHelper.isMobile();
-   }
-   // End UI Section
+  // UI Section
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    // apply grid height
+    this.gridHeight = UIHelper.getMainContentHeight();
+    // check mobile device
+    this.isMobile = UIHelper.isMobile();
+  }
+  // End UI Section
 
   ngOnInit() {
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-    
+
     this.deliveryNoteListModel = JSON.parse(localStorage.getItem('SelectedDeliveryNote'));
-    if(this.deliveryNoteListModel!=null && this.deliveryNoteListModel!= undefined){
-    let deliveryId: number = this.deliveryNoteListModel.DeliveryId; 
-    this.getDeliveryNotesContentList(deliveryId);
+    if (this.deliveryNoteListModel != null && this.deliveryNoteListModel != undefined) {
+      let deliveryId: number = this.deliveryNoteListModel.DeliveryId;
+      this.getDeliveryNotesContentList(deliveryId);
     }
   }
 
@@ -61,39 +63,55 @@ export class DeliveryNotesDetailContentComponent implements OnInit {
   public getDeliveryNotesContentList1() {
     this.showLoader = true;
     this.gridData = deliveryNotesContent;
-    setTimeout(()=>{    
+    setTimeout(() => {
       this.showLoader = false;
     }, 1000);
   }
 
-  onFilterChange(checkBox:any,grid:GridComponent)
-  {
-    if(checkBox.checked==false){
+  onFilterChange(checkBox: any, grid: GridComponent) {
+    if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
 
-  clearFilter(grid:GridComponent){      
+  public close(component) {
+    this[component + 'Opened'] = false;
+  }
+
+  public open(component) {
+    this[component + 'Opened'] = true;
+  }
+
+  public action(status) {
+    console.log(`Dialog result: ${status}`);
+    this.dialogOpened = false;
+  }
+
+  openSerialBatchDetailPopup(a: any, b: any, c, d) {
+    this.dialogOpened = true;
+  }
+
+  clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
   }
 
-   /** 
-   * call api for Sales quotation detail.
-   */
-    getDeliveryNotesContentList(id: number) {
+  /** 
+  * call api for Sales quotation detail.
+  */
+  getDeliveryNotesContentList(id: number) {
     this.showLoader = true;
-    
-    this.getDetailsubs = this.deliveryNotesService.getDeliveryNotesDetail(id,2).subscribe(
+
+    this.getDetailsubs = this.deliveryNotesService.getDeliveryNotesDetail(id, 2).subscribe(
       data => {
-        
+
         this.showLoader = false;
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
           this.gridData.forEach(element => {
-        //  element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
-        });
-        this.showLoader = false;
-      }
+            //  element.DeliveryDate = DateTimeHelper.ParseDate(element.DeliveryDate);
+          });
+          this.showLoader = false;
+        }
 
       }, error => {
         this.showLoader = false;
@@ -106,5 +124,5 @@ export class DeliveryNotesDetailContentComponent implements OnInit {
   ngOnDestroy() {
     if (this.getDetailsubs != undefined)
       this.getDetailsubs.unsubscribe();
-   }
+  }
 }

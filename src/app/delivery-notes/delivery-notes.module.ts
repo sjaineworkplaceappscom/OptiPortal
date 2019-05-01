@@ -18,6 +18,7 @@ import { AdvanceShipmentNotesListComponent } from './advance-shipment-notes-list
 import { AdvanceShipmentNotestabComponent } from './advance-shipment-notestab/advance-shipment-notestab.component';
 import { SharedModule } from '../shared/shared.module';
 import { deliveryNotesContent } from '../demodata/delivery-notes';
+import { DialogsModule } from '@progress/kendo-angular-dialog';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { deliveryNotesContent } from '../demodata/delivery-notes';
     PerfectScrollbarModule,
     FileDropModule,
     DropDownsModule,
-    SharedModule
+    SharedModule,
+    DialogsModule
   ],
   declarations: [DeliveryNotesListComponent, DeliveryNotesDetailComponent, DeliveryNotesDetailHomeComponent, DeliveryNotesDetailContentComponent, DeliveryNotesDetailAttachmentComponent, DeliveryNotesDetailNotesComponent, AdvanceShipmentNotesListComponent, AdvanceShipmentNotestabComponent],
   exports:[DeliveryNotesListComponent, DeliveryNotesDetailComponent, DeliveryNotesDetailHomeComponent, DeliveryNotesDetailContentComponent, DeliveryNotesDetailAttachmentComponent, DeliveryNotesDetailNotesComponent, AdvanceShipmentNotesListComponent, AdvanceShipmentNotestabComponent]
