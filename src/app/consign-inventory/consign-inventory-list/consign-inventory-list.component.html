@@ -18,7 +18,9 @@
             <kendo-grid [kendoGridBinding]="gridData" [resizable]="true" 
                 [pageSize]=pageLimit [pageable]=pagination [sortable]="true" [filterable]=isColumnFilter [groupable]=isColumnGroup
                 [columnMenu]="{ columnChooser: false }" [height]=gridHeight [selectable]="true" class="kendoGrid_Toolbar--flex kendoGrid_Collaps--smallBtn"
-                #gridItem (detailExpand)="openDetailGrid($event)">
+                #gridItem (detailExpand)="openDetailGrid($event)" >
+                <!-- [group]="groups" -->
+
 
                 <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
                 <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
@@ -181,10 +183,13 @@
                         <kendo-grid-column media="(min-width: 768px)" field="QuantityTranssacted" class="text-right" title="Quantity Transacted"></kendo-grid-column>
                         <kendo-grid-column media="(min-width: 768px)" field="ItemType" title="Serial/Batch">
                             <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex">
-                                <a *ngIf="childDataItem.ItemType!='None'" href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData,childDataItem)"
+                                <a *ngIf="childDataItem.ItemType!='None' && childDataItem.TransactionType!==17;else other_ItemType " href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData,childDataItem)"
                                     class="text-underline alpha"> <u>{{childDataItem.ItemType}}</u> </a>
-                                <a *ngIf="childDataItem.ItemType=='None'" href="javascript:void('0')" class="alpha">
-                                    {{childDataItem.ItemType}} </a>
+
+                                <!-- <a *ngIf="childDataItem.ItemType=='None'" href="javascript:void('0')" class="alpha"> -->
+                                    <ng-template #other_ItemType>{{childDataItem.ItemType}} </ng-template>
+                                    
+                                <!-- </a> -->
                             </ng-template>
                         </kendo-grid-column>
                         <kendo-grid-column media="(min-width: 768px)" field="TransactionDocumentNumber" title="Transaction Document Number">

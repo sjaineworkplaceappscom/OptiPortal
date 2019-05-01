@@ -18,6 +18,7 @@ import { DatePipe } from '@angular/common';
 import { ConsignedInventoryModel } from 'src/app/models/ConsignedInventoryModel';
 import { AppMessages } from 'src/app/helpers/app-messages';
 import { ToastService } from 'src/app/helpers/services/toast.service';
+import { GroupDescriptor } from '@progress/kendo-data-query';
 
 @Component({
   selector: 'app-consign-inventory-list',
@@ -80,6 +81,7 @@ export class ConsignInventoryListComponent implements OnInit {
   toDate: Date;
   public gridData: any[];
   public showLoaderChild: boolean[]
+  public groups: GroupDescriptor[] = [{ field: 'Bin' }];
   ngOnInit() {
     this.getDateBeforeAMonth(new Date());
     // Apply class on body start
