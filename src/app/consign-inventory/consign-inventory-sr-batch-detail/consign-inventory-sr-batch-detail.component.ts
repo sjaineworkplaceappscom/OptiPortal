@@ -64,7 +64,7 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
           if (serialbatchdetail) {
 
             if (currentSidebarData.RequesterId === 'SBDetail')
-              this.getSerialBatchList(serialbatchdetail, 2 + "");//type 2 for serial batch value    
+              this.getSerialBatchList(serialbatchdetail,2+"");//type 2 for serial batch value    
             else if (currentSidebarData.RequesterId === 'SBTrans')
               this.getSerialBatchListForTrans(serialbatchdetail.Item,serialbatchdetail.DocNum);//type 2 for serial batch value    
 

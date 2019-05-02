@@ -8,6 +8,7 @@ import { DeliveryNoteListModel } from '../../tempmodels/delivery-note-list-model
 import { DeliveryNotesService } from '../../services/delivery-notes.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { Configuration } from '../../helpers/Configuration';
+import { ConsignedInventoryService } from 'src/app/services/consigned-inventory.service';
 
 @Component({
   selector: 'app-delivery-notes-detail-content',
@@ -19,7 +20,7 @@ export class DeliveryNotesDetailContentComponent implements OnInit {
   imgPath = Configuration.imagePath;
   pageLimit;
   pagination: boolean;
-  popupTitle:string="Serial/Batch detail"
+  popupTitle: string = "Serial/Batch detail"
   isMobile: boolean;
   isColumnFilter: boolean = false;
   isColumnGroup: boolean = false;
@@ -29,10 +30,10 @@ export class DeliveryNotesDetailContentComponent implements OnInit {
   public gridData: any[];
   public getDetailsubs: ISubscription;
   deliveryNoteListModel: DeliveryNoteListModel = new DeliveryNoteListModel();
-
+  public srBatchGridData: any[];
   public dialogOpened = false;
 
-  constructor(private deliveryNotesService: DeliveryNotesService) { }
+  constructor(private deliveryNotesService: DeliveryNotesService, private consignedService: ConsignedInventoryService) { }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -87,8 +88,25 @@ export class DeliveryNotesDetailContentComponent implements OnInit {
     this.dialogOpened = false;
   }
 
-  openSerialBatchDetailPopup(a: any, b: any, c, d) {
-    this.dialogOpened = true;
+  openSerialBatchDetailPopup(e: any, rowIndex: any, request: any) {
+    let req: any = {
+      Bin: "",
+      Item: request.ItemCode,
+      ItemType: request.ItemType,
+      Type: 3,
+      WareHouse: request.WhsCode,
+      DocEntry:request.DocEntry,
+      LineNum:request.LineNumber
+    }
+    ///let request = collection[rowIndex];    
+    this.consignedService.getConsignedInventoryChildList(req, 2 + "").subscribe(
+      data => {
+        console.log("SBData", data);
+        this.srBatchGridData =JSON.parse(data);
+        this.dialogOpened = true;
+      }
+    )
+
   }
 
   clearFilter(grid: GridComponent) {
