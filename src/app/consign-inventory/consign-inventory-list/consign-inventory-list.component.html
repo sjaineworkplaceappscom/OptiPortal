@@ -148,7 +148,7 @@
                 <kendo-grid-column media="(min-width: 768px)" field="ItemType" [width]="160" title="Serial/Batch">
                     <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex">
 
-                        <a *ngIf="childDataItem.ItemType!='None'" href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData,childDataItem)"
+                        <a *ngIf="childDataItem.ItemType!='None'" href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData,childDataItem,false)"
                             class="text-underline alpha"> <u>{{childDataItem.ItemType}}</u> </a>
                         <a *ngIf="childDataItem.ItemType=='None'" href="javascript:void('0')" class="text-underline alpha">
                             {{childDataItem.ItemType}} </a>
@@ -157,7 +157,7 @@
 
 
 
-                <ng-template kendoGridDetailTemplate let-dataItem let-column let-columnIndex="columnIndex">
+                <ng-template kendoGridDetailTemplate let-dataItem let-column let-columnIndex="columnIndex" let-trowIndex="rowIndex">
                     <!-- loader start -->
                     <!-- <div class="opti_loader opti_loader-child-grid-list"  >
                         <div class="opti_spinner"></div>
@@ -184,7 +184,7 @@
                         <kendo-grid-column media="(min-width: 768px)" field="ItemType" title="Serial/Batch">
                             <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex">
 
-                                    <a *ngIf="!(childDataItem.ItemType==='None' ||  (childDataItem.TransactionType===17 && childDataItem.ItemType==='Serial'));else other_ItemType " href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData,childDataItem)"
+                                    <a *ngIf="!(childDataItem.ItemType==='None' ||  (childDataItem.TransactionType===17 && childDataItem.ItemType==='Serial'));else other_ItemType " href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData,childDataItem,true)"
                                     class="text-underline alpha"> <u>{{childDataItem.ItemType}}</u> </a>
 
                                 <!-- <a *ngIf="childDataItem.ItemType!='None' && childDataItem.TransactionType!==17;else other_ItemType " href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData,childDataItem)"

@@ -33,7 +33,7 @@ export class ConsignInventoryListComponent implements OnInit {
   maxDate = new Date();
 
   pageLimit;
-  pagination:boolean;
+  pagination: boolean;
   //  
   pageSizeNumber: number = 5;
   isMobile: boolean;
@@ -52,11 +52,11 @@ export class ConsignInventoryListComponent implements OnInit {
   public getSalsesubs: ISubscription;
   public getDeliveryNsubs: ISubscription;
 
-  public range = { start: this.getDateBeforeAMonth(this.getCurrentDate()), end:this.getCurrentDate() };
+  public range = { start: this.getDateBeforeAMonth(this.getCurrentDate()), end: this.getCurrentDate() };
   salesOrderDetailModel: SalesOrderDetail = new SalesOrderDetail();
   deliveryNoteHeaderModel: DeliveryNoteHeaderModel = new DeliveryNoteHeaderModel();
   incr(num) {
-    this.pageSizeNumber = num; 
+    this.pageSizeNumber = num;
   }
 
   // UI Section
@@ -92,14 +92,14 @@ export class ConsignInventoryListComponent implements OnInit {
     // Apply class on body end
     //this.displayDateRange = this.datepipe.transform(DateTimeHelper.ParseDate(this.range.end), 'yyyy-MM-dd') +
     //  ' to ' + this.datepipe.transform(DateTimeHelper.ParseDate(this.range.end), 'yyyy-MM-dd');
-      this.displayDateRange = 'from '+DateTimeHelper.ParseDate(this.range.start).toLocaleDateString() +
+    this.displayDateRange = 'from ' + DateTimeHelper.ParseDate(this.range.start).toLocaleDateString() +
       ' to ' + DateTimeHelper.ParseDate(this.range.end).toLocaleDateString();
-      this.fromDate = DateTimeHelper.ParseDate(this.range.start);
-      this.toDate = DateTimeHelper.ParseDate(this.range.end);
-      //this.fromDate = this.datepipe.transform(fromDate, 'dd/MM/yyyy');
-      
-      //console.log("from date ngoninit():"+this.fromDate);
-      //console.log("to date ngoninit():"+this.toDate);
+    this.fromDate = DateTimeHelper.ParseDate(this.range.start);
+    this.toDate = DateTimeHelper.ParseDate(this.range.end);
+    //this.fromDate = this.datepipe.transform(fromDate, 'dd/MM/yyyy');
+
+    //console.log("from date ngoninit():"+this.fromDate);
+    //console.log("to date ngoninit():"+this.toDate);
     // apply grid height
     this.gridHeight = UIHelper.getMainContentHeight();
     this.getPaginationAttributes();
@@ -109,16 +109,14 @@ export class ConsignInventoryListComponent implements OnInit {
     this.getConsignedItemMasterList();
   }
 
-
-
   filterDate() {
-    this.displayDateRange = 'from '+DateTimeHelper.ParseDate(this.range.start).toLocaleDateString() +
+    this.displayDateRange = 'from ' + DateTimeHelper.ParseDate(this.range.start).toLocaleDateString() +
       ' to ' + DateTimeHelper.ParseDate(this.range.end).toLocaleDateString();
-   
+
     this.fromDate = this.range.start//DateTimeHelper.ParseDate(this.range.start);
-    this.toDate =this.range.end// DateTimeHelper.ParseDate(this.range.end);
-  
-    this.getConsignedItemMasterList(); 
+    this.toDate = this.range.end// DateTimeHelper.ParseDate(this.range.end);
+
+    this.getConsignedItemMasterList();
   }
   /** 
    * Method to get list of inquries from server.
@@ -139,9 +137,9 @@ export class ConsignInventoryListComponent implements OnInit {
         console.log("Error: ", error);
         localStorage.clear();
       },
-      ()=>{
-        this.showLoader  = false;
-     }
+      () => {
+        this.showLoader = false;
+      }
     );
   }
 
@@ -150,7 +148,7 @@ export class ConsignInventoryListComponent implements OnInit {
   * Method to get list of inquries from server.
  */
   public getConsignedItemChildList(model: ConsignedInventoryModel, type: string, index: number): any {
- 
+
     this.showLoader1 = true;
     this.getConsignedInventoryChildlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(model, type).subscribe(
       (data: any) => {
@@ -171,8 +169,8 @@ export class ConsignInventoryListComponent implements OnInit {
         console.log("Error: ", error);
         localStorage.clear();
       },
-      ()=>{
-         this.showLoader1  = false;
+      () => {
+        this.showLoader1 = false;
       }
     );
   }
@@ -188,20 +186,46 @@ export class ConsignInventoryListComponent implements OnInit {
     grid.filter.filters = [];
   }
 
+  // // Open Serial And Batch detail sidebar
+  // public openSBDetail(e, index, collection: any,childData:any) {
+  //   //console.log(" on sb detail DateRange:", this.range.start, this.range.end);
+  //   debugger;
+  //   console.log("Data",childData);
+  //   let data: any = collection[index];
+  //   let model:ConsignedInventoryModel = collection[index];
+  //   let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+  //   currentsideBarInfo.RequesterData = childData;
+  //   currentsideBarInfo.ComponentName = ComponentName.CISBDetail;
+  //   currentsideBarInfo.ModuleName = ModuleName.ConsignInventory;
+  //   currentsideBarInfo.SideBarStatus = true;
+  //   this.commonService.setCurrentSideBar(currentsideBarInfo);
+  // }
+
   // Open Serial And Batch detail sidebar
-  public openSBDetail(e, index, collection: any,childData:any) {
-    //console.log(" on sb detail DateRange:", this.range.start, this.range.end);
-    debugger;
-    console.log("Data",childData);
-    let data: any = collection[index];
-    let model:ConsignedInventoryModel = collection[index];
+  public openSBDetail(e, index, parentCollection: any, childCollection: any, childCall: boolean = false) {
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
-    currentsideBarInfo.RequesterData = childData;
+
     currentsideBarInfo.ComponentName = ComponentName.CISBDetail;
     currentsideBarInfo.ModuleName = ModuleName.ConsignInventory;
-    currentsideBarInfo.SideBarStatus = true;
+
+
+    if (childCall) {
+      
+      currentsideBarInfo.RequesterData = { "Item": childCollection.Item, "DocNum": childCollection.TransactionDocumentNumber };
+      currentsideBarInfo.SideBarStatus = true;
+      currentsideBarInfo.RequesterId = "SBTrans";
+    }
+    else {
+      let collection = parentCollection[index];
+      currentsideBarInfo.RequesterData = collection;
+      currentsideBarInfo.SideBarStatus = true;
+      currentsideBarInfo.RequesterId = "SBDetail";
+      
+    }
+
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
+
 
   public openDetail(parent, index) {
     //check here if 2 or 4 then only open other wise show message under developement mode.
@@ -214,10 +238,10 @@ export class ConsignInventoryListComponent implements OnInit {
 
   // Set CurrentSidebar component by transactionType
   public SetComponentTypeAndData(transactionType: number, currentsideBarInfo: CurrentSidebarInfo, requesterData) {
-    switch (transactionType) { 
+    switch (transactionType) {
       case 1: {
         this.toast.showSuccess(AppMessages.UnderDevelopementMode);
-        
+
         //currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
         //currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
         //this.getSalesOrder(requesterData, currentsideBarInfo);
@@ -236,8 +260,8 @@ export class ConsignInventoryListComponent implements OnInit {
       case 3: {
         this.toast.showSuccess(AppMessages.UnderDevelopementMode);
         //currentsideBarInfo.ComponentName = ComponentName.DeliveryNotes;
-      //  currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
-      //  this.getDeliveryNotesDetail(requesterData, currentsideBarInfo);
+        //  currentsideBarInfo.ModuleName = ModuleName.DeliveryNotes;
+        //  this.getDeliveryNotesDetail(requesterData, currentsideBarInfo);
         // currentsideBarInfo.SideBarStatus = true;
         //this.commonService.setCurrentSideBar(currentsideBarInfo);
         break;
@@ -308,16 +332,16 @@ export class ConsignInventoryListComponent implements OnInit {
 
   openDetailGrid(e: any) {
     let consignedInventoryItemModel: ConsignedInventoryModel = new ConsignedInventoryModel();
- 
-    console.log("from,to date: at set model"+this.fromDate+","+this.toDate);
-     consignedInventoryItemModel.Item = e.dataItem.Item;
-     consignedInventoryItemModel.WareHouse = e.dataItem.WareHouse;
-     consignedInventoryItemModel.Bin = e.dataItem.Bin; 
-     consignedInventoryItemModel.FromDate =this.fromDate;//DateTimeHelper.ParseDate(this.fromDate);
-     consignedInventoryItemModel.ToDate = this.toDate;//DateTimeHelper.ParseDate(this.toDate);
-      
-     console.log("from,to date: in model"+consignedInventoryItemModel.FromDate+","+consignedInventoryItemModel.ToDate);
-     consignedInventoryItemModel.Type=1;
+
+    console.log("from,to date: at set model" + this.fromDate + "," + this.toDate);
+    consignedInventoryItemModel.Item = e.dataItem.Item;
+    consignedInventoryItemModel.WareHouse = e.dataItem.WareHouse;
+    consignedInventoryItemModel.Bin = e.dataItem.Bin;
+    consignedInventoryItemModel.FromDate = this.fromDate;//DateTimeHelper.ParseDate(this.fromDate);
+    consignedInventoryItemModel.ToDate = this.toDate;//DateTimeHelper.ParseDate(this.toDate);
+
+    console.log("from,to date: in model" + consignedInventoryItemModel.FromDate + "," + consignedInventoryItemModel.ToDate);
+    consignedInventoryItemModel.Type = 1;
 
 
     //console.log("At child api call to date, from date"+consignedInventoryItemModel.ToDate+","+consignedInventoryItemModel.FromDate);
@@ -357,7 +381,7 @@ export class ConsignInventoryListComponent implements OnInit {
   }
 
 
-  getPaginationAttributes(){
+  getPaginationAttributes() {
     // pagination add/remove for desktop and mobile
     let paginationAttributesArray = UIHelper.paginationAttributes();
     this.pageLimit = paginationAttributesArray[0];
