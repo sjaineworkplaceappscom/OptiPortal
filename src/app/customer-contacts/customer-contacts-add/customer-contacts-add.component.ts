@@ -53,7 +53,11 @@ export class CustomerContactsAddComponent implements OnInit {
     this.addSub = this.contactService.AddContact(this.contactModel).subscribe(
       (data: any) => {
         this.showLoader = false;
-        this.toast.showSuccess(AppMessages.ContactAddedSuccessMsg);
+        if(data.Status) {
+          this.toast.showSuccess(AppMessages.ContactAddedSuccessMsg);
+        } else  {
+          this.toast.showError(AppMessages.ErrorMessage);
+        }
         this.commonService.refreshContactList(true);
         //localStorage.setItem("SelectedContactInquery", JSON.stringify(data)); comment for abhi k lea.
         this.closeRightSidebar();
