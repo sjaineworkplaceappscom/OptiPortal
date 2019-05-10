@@ -61,7 +61,9 @@
 
                                     <label class="k-form-field">
                                         <span class="opti_form-label">Status</span>
-                                        <kendo-dropdownlist name="status" [data]="status" (valueChange)="valueChange($event)"  [(ngModel)]="purchaseInquiryDetail.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
+                                        <kendo-dropdownlist name="status" [data]="status" 
+                                        (valueChange)="valueChange($event)"  
+                                        [(ngModel)]="purchaseInquiryDetail.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
                                         </kendo-dropdownlist>
                                     </label>
 

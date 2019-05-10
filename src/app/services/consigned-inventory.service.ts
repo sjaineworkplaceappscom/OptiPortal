@@ -28,7 +28,14 @@ export class ConsignedInventoryService {
     let url: string = this.baseUrl + "consignedinventory/child/list";//+model.Item+"/"+model.WareHouse+"/"+model.Bin+"/"+type;
     return this.httpHelper.put(url,model, null);
   } 
-
+  
+ /**
+   * get serial batch detail data from server.
+   */
+  public getSerialBatchDetailsForTransactions(item:string,docNum:string): Observable<any> {
+    let url: string = this.baseUrl +"consignedinventory/serialbatchbydocument/"+item+"/"+docNum;
+    return this.httpHelper.get(url, null);
+  }
 
   
   /**

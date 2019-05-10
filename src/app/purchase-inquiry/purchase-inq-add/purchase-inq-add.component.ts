@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ViewChild, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { TempPurchaseInquiryModel } from '../../tempmodels/temppurchase-inquiry';

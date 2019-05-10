@@ -17,7 +17,7 @@ import { ConsignedInventoryModel } from 'src/app/models/ConsignedInventoryModel'
   styleUrls: ['./consign-inventory-sr-batch-detail.component.scss']
 })
 export class ConsignInventorySRBatchDetailComponent implements OnInit {
-  @Input() currentSidebarInfo:CurrentSidebarInfo;
+  @Input() currentSidebarInfo: CurrentSidebarInfo;
   imgPath = Configuration.imagePath;
   public gridData: any[];
   isMobile: boolean;
@@ -25,15 +25,15 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
   gridHeight: number;
   showLoader: boolean = false;
   searchRequest: string = '';
-  
+
   getSerialBatchlistSubs: ISubscription;
-  
+
   public configX: PerfectScrollbarConfigInterface = {
-      suppressScrollY:true
+    suppressScrollY: true
   };
   public BatchSerialSideBarsubs: ISubscription;
   tabName: string = 'home';
-  constructor(private consignedInventoryService: ConsignedInventoryService,private commonService: Commonservice) { }
+  constructor(private consignedInventoryService: ConsignedInventoryService, private commonService: Commonservice) { }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -52,24 +52,52 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
 
     // check mobile device
     this.isMobile = UIHelper.isMobile();
-    
+
     console.log('current side bar info');
     this.BatchSerialSideBarsubs = this.commonService.currentSidebarInfo.subscribe(
       currentSidebarData => {
         console.log('current side bar info');
         if (currentSidebarData != null && currentSidebarData != undefined) {
           this.showLoader = true;
-          var serialbatchdetail:any = currentSidebarData.RequesterData;
-          if(serialbatchdetail!=null)
-          this.getSerialBatchList(serialbatchdetail,2+"");//type 2 for serial batch value    
+          var serialbatchdetail: any = currentSidebarData.RequesterData;
+
+          if (serialbatchdetail) {
+
+            if (currentSidebarData.RequesterId === 'SBDetail')
+              this.getSerialBatchList(serialbatchdetail,2+"");//type 2 for serial batch value    
+            else if (currentSidebarData.RequesterId === 'SBTrans')
+              this.getSerialBatchListForTrans(serialbatchdetail.Item,serialbatchdetail.DocNum);//type 2 for serial batch value    
+
+
+          }
         }
-      },error => {
+      }, error => {
         this.showLoader = false;
         //alert("Something went wrong");
         console.log("Error: ", error)
       }
     );
-    
+
+  }
+
+
+  public getSerialBatchListForTrans(itemCode: any, docEntry): any {
+    this.showLoader = true;
+    this.consignedInventoryService.getSerialBatchDetailsForTransactions(itemCode, docEntry).subscribe(
+      (data: any) => {
+        if (data != null && data != undefined) {
+          this.gridData = JSON.parse(data);
+          this.showLoader = false;
+        }
+        return data;
+      },
+      error => {
+        this.showLoader = false;
+        //alert("Something went wrong");
+        console.log("Error: ", error);
+        localStorage.clear();
+      }
+    );
   }
 
   // tab function
@@ -83,19 +111,18 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
   public getSrBatchList() {
     this.showLoader = true;
     this.gridData = serialAndBatchList;
-    setTimeout(()=>{    
+    setTimeout(() => {
       this.showLoader = false;
     }, 1000);
   }
 
-  onFilterChange(checkBox:any,grid:GridComponent)
-  {
-    if(checkBox.checked==false){
+  onFilterChange(checkBox: any, grid: GridComponent) {
+    if (checkBox.checked == false) {
       this.clearFilter(grid);
     }
   }
 
-  clearFilter(grid:GridComponent){      
+  clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
   }
 
@@ -103,35 +130,35 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
   /**
    * Method to get list of inquries from server.
   */
- public getSerialBatchList(model:ConsignedInventoryModel,type:string): any {
-  this.showLoader = true;
-  model.Type = 2;
- this.getSerialBatchlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(model,type).subscribe(
-   (data: any) => {
-     if (data != null && data != undefined) {
-       this.gridData = JSON.parse(data);
-       this.showLoader = false;
-     }
-     return data;
-   },
-   error => {
-     this.showLoader = false;
-     //alert("Something went wrong");
-     console.log("Error: ", error);
-     localStorage.clear();
-   }
- );
-}
+  public getSerialBatchList(model: ConsignedInventoryModel, type: string): any {
+    this.showLoader = true;
+    model.Type = 2;
+    this.getSerialBatchlistSubs = this.consignedInventoryService.getConsignedInventoryChildList(model, type).subscribe(
+      (data: any) => {
+        if (data != null && data != undefined) {
+          this.gridData = JSON.parse(data);
+          this.showLoader = false;
+        }
+        return data;
+      },
+      error => {
+        this.showLoader = false;
+        //alert("Something went wrong");
+        console.log("Error: ", error);
+        localStorage.clear();
+      }
+    );
+  }
 
 
-ngOnDestroy() {
+  ngOnDestroy() {
 
-  if (this.getSerialBatchlistSubs != undefined)
-    this.getSerialBatchlistSubs.unsubscribe();
+    if (this.getSerialBatchlistSubs != undefined)
+      this.getSerialBatchlistSubs.unsubscribe();
     if (this.BatchSerialSideBarsubs != undefined)
-    this.BatchSerialSideBarsubs.unsubscribe();
-    
-}
+      this.BatchSerialSideBarsubs.unsubscribe();
+
+  }
 
 
 }
