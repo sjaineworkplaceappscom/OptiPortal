@@ -7,6 +7,7 @@ import { VendorService } from 'src/app/services/vendor/vendor.service';
 import { VendorPOContentModel } from 'src/app/tempmodels/vendor/vendor-po-content-model';
 import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { SharedComponentService } from 'src/app/services/shared-component.service';
 
 @Component({
   selector: 'app-vendor-po-attchments',
@@ -29,7 +30,7 @@ export class VendorPoAttchmentsComponent implements OnInit {
   VPOModel: VendorPOContentModel = new VendorPOContentModel();
   public getVPIsubs: ISubscription;
 
-  constructor(private vendorService: VendorService) { }
+  constructor(private vendorService: VendorService, private sharedComponentService: SharedComponentService) { }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -105,5 +106,45 @@ export class VendorPoAttchmentsComponent implements OnInit {
   clearFilter(grid: GridComponent) {
     //grid.filter.filters=[];
   }
+
+ // public gridAttachmentData: any[] = [];
+ download(fileName: string) {
+
+  let seletedAttachment = this.gridData.filter(i => i.FileName == fileName)[0];
+
+  try {
+    // Create file path from response
+    let filePath: string =  seletedAttachment.FullPath; //"\\\\172.16.6.20\\People\\Vaibhav\\ListofFilesRequiredForSetup.xlsx";
+    if (filePath == undefined) {
+      return;
+    }
+    this.sharedComponentService.getAtachmentFromPath(filePath)
+      .subscribe(
+        res => {
+
+             if (res != undefined && res != null) {
+            let fileName = res.Item1;
+            let tempAttachmentId = res.Item2;
+
+            let filepath: string = Configuration.doccumentPath + "Temp/" + tempAttachmentId + "/" + fileName;
+
+            var a = document.createElement('a');
+            document.body.appendChild(a);
+            a.href = filepath;
+            a.download = fileName;
+            // a.target = "_blank";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          }
+        }
+
+
+      );
+  }
+  catch (err) {
+    // this.errorHandler.handledError(err, 'MsgInfoComponent.download');
+  }
+}
 
 }
