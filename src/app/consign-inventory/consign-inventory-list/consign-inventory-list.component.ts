@@ -211,7 +211,7 @@ export class ConsignInventoryListComponent implements OnInit {
 
     if (childCall) {
       
-      currentsideBarInfo.RequesterData = { "Item": childCollection.Item, "DocNum": childCollection.TransactionDocumentNumber };
+      currentsideBarInfo.RequesterData = { "Item": childCollection.LineNo, "DocNum": childCollection.TransactionDocumentNumber };
       currentsideBarInfo.SideBarStatus = true;
       currentsideBarInfo.RequesterId = "SBTrans";
     }
@@ -233,7 +233,7 @@ export class ConsignInventoryListComponent implements OnInit {
       console.log("Data",childData);
       let data: any = collection[index];
       let chData: any = childData[index];
-      
+      debugger
       let model:ConsignedInventoryModel = collection[index];
       let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
       currentsideBarInfo.RequesterData = childData;
