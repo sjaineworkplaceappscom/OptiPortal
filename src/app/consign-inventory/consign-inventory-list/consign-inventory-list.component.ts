@@ -211,7 +211,7 @@ export class ConsignInventoryListComponent implements OnInit {
 
     if (childCall) {
       
-      currentsideBarInfo.RequesterData = { "Item": childCollection.LineNo, "DocNum": childCollection.TransactionDocumentNumber };
+      currentsideBarInfo.RequesterData = { "ObjectType": childCollection.TransactionType,"Item": childCollection.LineNo, "DocNum": childCollection.TransactionDocumentNumber };
       currentsideBarInfo.SideBarStatus = true;
       currentsideBarInfo.RequesterId = "SBTrans";
     }

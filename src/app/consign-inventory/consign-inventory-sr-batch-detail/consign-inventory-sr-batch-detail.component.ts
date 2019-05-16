@@ -66,7 +66,7 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
             if (currentSidebarData.RequesterId === 'SBDetail')
               this.getSerialBatchList(serialbatchdetail,2+"");//type 2 for serial batch value    
             else if (currentSidebarData.RequesterId === 'SBTrans')
-              this.getSerialBatchListForTrans(serialbatchdetail.Item,serialbatchdetail.DocNum);//type 2 for serial batch value    
+              this.getSerialBatchListForTrans(serialbatchdetail.ObjectType,serialbatchdetail.Item,serialbatchdetail.DocNum);//type 2 for serial batch value    
 
 
           }
@@ -81,9 +81,9 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
   }
 
 
-  public getSerialBatchListForTrans(itemCode: any, docEntry): any {
+  public getSerialBatchListForTrans(ObjectType:any,itemCode: any, docEntry): any {
     this.showLoader = true;
-    this.consignedInventoryService.getSerialBatchDetailsForTransactions(itemCode, docEntry).subscribe(
+    this.consignedInventoryService.getSerialBatchDetailsForTransactions(ObjectType,itemCode, docEntry).subscribe(
       (data: any) => {
         if (data != null && data != undefined) {
           this.gridData = JSON.parse(data);
