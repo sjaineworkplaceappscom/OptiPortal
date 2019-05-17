@@ -1,10 +1,10 @@
 {       
-    "baseServerAPIEndpoint":"http://localhost:56989/",
+    "baseServerAPIEndpoint":"http://localhost:81",
     "firstHomePage": "/home/dashboard",
     "firstHomePageVendor":"/home/vendor/vpinquery",
     "dateFormat": "DD MMM YY",
     "displayDateFormat":"dd MMM yy",
     "appVersion": "1.6", 
-    "doccumentPath": "http://139.144.10.218:5000/Upload/",
+    "doccumentPath": "http://localhost/OptiproPortalFiles/Upload/",
     "assetsRootpath": "assets"   
 } 
