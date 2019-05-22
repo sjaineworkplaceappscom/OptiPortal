@@ -5,5 +5,6 @@ export class ConsignedInventoryModel{
     Type:number=1;
     FromDate:Date;   
     ToDate:Date;
+    CardCode:String;
 
 }

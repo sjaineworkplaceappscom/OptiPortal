@@ -210,8 +210,8 @@ export class ConsignInventoryListComponent implements OnInit {
 
 
     if (childCall) {
-      
-      currentsideBarInfo.RequesterData = { "ObjectType": childCollection.TransactionType,"Item": childCollection.LineNo, "DocNum": childCollection.TransactionDocumentNumber };
+
+      currentsideBarInfo.RequesterData = { "ObjectType": childCollection.TransactionType, "Item": childCollection.LineNo, "DocNum": childCollection.TransactionDocumentNumber };
       currentsideBarInfo.SideBarStatus = true;
       currentsideBarInfo.RequesterId = "SBTrans";
     }
@@ -220,28 +220,28 @@ export class ConsignInventoryListComponent implements OnInit {
       currentsideBarInfo.RequesterData = collection;
       currentsideBarInfo.SideBarStatus = true;
       currentsideBarInfo.RequesterId = "SBDetail";
-      
+
     }
 
     this.commonService.setCurrentSideBar(currentsideBarInfo);
   }
 
-    // Open Serial And Batch detail sidebar
-    public openSBDetailForTransaction(e, index, collection: any,childData:any) {
-      //console.log(" on sb detail DateRange:", this.range.start, this.range.end);
-      //debugger;
-      console.log("Data",childData);
-      let data: any = collection[index];
-      let chData: any = childData[index];
-      debugger
-      let model:ConsignedInventoryModel = collection[index];
-      let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
-      currentsideBarInfo.RequesterData = childData;
-      currentsideBarInfo.ComponentName = ComponentName.CISBDetail;
-      currentsideBarInfo.ModuleName = ModuleName.ConsignInventory;
-      currentsideBarInfo.SideBarStatus = true;
-      this.commonService.setCurrentSideBar(currentsideBarInfo);
-    }
+  // Open Serial And Batch detail sidebar
+  public openSBDetailForTransaction(e, index, collection: any, childData: any) {
+    //console.log(" on sb detail DateRange:", this.range.start, this.range.end);
+    //debugger;
+    console.log("Data", childData);
+    let data: any = collection[index];
+    let chData: any = childData[index];
+    debugger
+    let model: ConsignedInventoryModel = collection[index];
+    let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
+    currentsideBarInfo.RequesterData = childData;
+    currentsideBarInfo.ComponentName = ComponentName.CISBDetail;
+    currentsideBarInfo.ModuleName = ModuleName.ConsignInventory;
+    currentsideBarInfo.SideBarStatus = true;
+    this.commonService.setCurrentSideBar(currentsideBarInfo);
+  }
 
   public openDetail(parent, index) {
     //check here if 2 or 4 then only open other wise show message under developement mode.
@@ -355,6 +355,12 @@ export class ConsignInventoryListComponent implements OnInit {
     consignedInventoryItemModel.Bin = e.dataItem.Bin;
     consignedInventoryItemModel.FromDate = this.fromDate;//DateTimeHelper.ParseDate(this.fromDate);
     consignedInventoryItemModel.ToDate = this.toDate;//DateTimeHelper.ParseDate(this.toDate);
+    debugger;
+    
+    let userDetail: string = localStorage.getItem("LoginUserDetail");   
+    let userData: any[] = JSON.parse(userDetail);
+    consignedInventoryItemModel.CardCode = userData[0].ParentCode;
+
 
     console.log("from,to date: in model" + consignedInventoryItemModel.FromDate + "," + consignedInventoryItemModel.ToDate);
     consignedInventoryItemModel.Type = 1;
