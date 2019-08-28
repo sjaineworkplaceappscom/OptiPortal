@@ -97,7 +97,8 @@ export class DeliveryNotesListComponent implements OnInit {
     this.getPaginationAttributes();
     //call api for delivery note list.
     //this.getDeliveryNotesList1();
-    if(this.selectedItem=='salesorder'){
+    
+    if(this.selectedItem=='salesorder' || this.selectedItem=='consigninventory'){
       this.salesOrderModel = JSON.parse(localStorage.getItem('SelectedSalesOrder'))
     let orderNumber: string = this.salesOrderModel.OrderNumber.toString();
     let orderId: number = this.salesOrderModel.OrderId;
