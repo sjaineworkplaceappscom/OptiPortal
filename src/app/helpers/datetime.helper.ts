@@ -7,15 +7,15 @@ export class DateTimeHelper{
 
     // 
     public static  ParseDate(date:any){       
-        //return new Date(moment(date).format(Configuration.dateFormat));                       
-           //return new Date(date);          
-        return new Date(moment.utc(date).local().format(Configuration.dateFormat));
-        // momentTZ.tz(date, momentTZ.tz.guess()).format(Configuration.dateFormat);        
+        
+        // return new Date(moment.utc(date).local().format(Configuration.dateFormat));
+         return new Date(moment.utc(date).format(Configuration.dateFormat));
+        
     }
 
     public static ParseToUTC(date:any){  
        // console.log(moment.utc(date).local().format(Configuration.dateFormat));   
-      return new Date(moment.utc(date).local().format(Configuration.dateFormat));
+      return new Date(moment.utc(date).format(Configuration.dateFormat));
     }
 }
 
