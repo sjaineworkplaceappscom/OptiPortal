@@ -10,6 +10,7 @@ import { VendorService } from '../../../services/vendor/vendor.service';
 import { DateTimeHelper } from '../../../helpers/datetime.helper';
 import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
 import * as $ from "jquery";
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-pi-list',
@@ -43,7 +44,11 @@ export class VendorPiListComponent implements OnInit {
   getPIlistSubs: ISubscription;
   refreshVPIListSubs: ISubscription;
 
-  constructor(private commonService: Commonservice,private vendorService: VendorService, private confirmService: ConfirmDialog) { }
+  constructor(private commonService: Commonservice,private vendorService: VendorService, private confirmService: ConfirmDialog ,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
 
   ngOnInit() {

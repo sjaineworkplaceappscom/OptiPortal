@@ -5,6 +5,7 @@ import { Commonservice } from '../../../services/commonservice.service';
 import { VendorService } from '../../../services/vendor/vendor.service';
 import { ToastService } from '../../../helpers/services/toast.service';
 import { DateTimeHelper } from '../../../helpers/datetime.helper';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vpayment-home',
@@ -18,7 +19,11 @@ export class VpaymentHomeComponent implements OnInit {
   showLoader: boolean = false;
   paymentModel: PaymentModel = new PaymentModel();
 
-  constructor(private commonService: Commonservice, private vendorService: VendorService,private toast:ToastService) { }
+  constructor(private commonService: Commonservice, private vendorService: VendorService,private toast:ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   ngOnInit() {
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(

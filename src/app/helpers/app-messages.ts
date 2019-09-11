@@ -1,3 +1,4 @@
+
 export class AppMessages {
     public static PurchaseInqAddedSuccessMsg:string="Purchase inquire added successfully.";
     public static PurchaseInqItemAddedSuccessMsg:string="Purchase inquire item added successfully.";

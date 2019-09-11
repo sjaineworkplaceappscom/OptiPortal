@@ -12,6 +12,7 @@ import { AppMessages } from 'src/app/helpers/app-messages';
 import { Commonservice } from 'src/app/services/commonservice.service';
 import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
 import { ToastService } from 'src/app/helpers/services/toast.service';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-p-invoice-content',
@@ -37,7 +38,11 @@ export class VendorPInvoiceContentComponent implements OnInit {
 
   public gridData: any[];
 
-  constructor(private vendorOIService: VendorOIService, private commonService: Commonservice, private confirmService: ConfirmDialog, private toast: ToastService) { }
+  constructor(private vendorOIService: VendorOIService, private commonService: Commonservice, private confirmService: ConfirmDialog, private toast: ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   // UI Section
   @HostListener('window:resize', ['$event'])

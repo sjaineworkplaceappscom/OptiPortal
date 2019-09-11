@@ -10,6 +10,7 @@ import { Commonservice } from '../../../services/commonservice.service';
 import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { VendorService } from 'src/app/services/vendor/vendor.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vasn-list',
@@ -18,7 +19,13 @@ import { VendorService } from 'src/app/services/vendor/vendor.service';
 })
 export class VasnListComponent implements OnInit {
 
-  constructor(private commonService: Commonservice, private vendorService: VendorService) { }
+  constructor(private commonService: Commonservice, private vendorService: VendorService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
+  
+  
   imgPath = Configuration.imagePath;
   isMobile: boolean;
   isColumnFilter: boolean = false;

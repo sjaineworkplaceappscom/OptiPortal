@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
- assetsPath:"/OptiProPortalWeb/assets/"
+ assetsPath:"/OptiProPortalWeb/assets"
 };

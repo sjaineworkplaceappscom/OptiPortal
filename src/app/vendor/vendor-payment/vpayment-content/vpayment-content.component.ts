@@ -4,6 +4,7 @@ import { PaymentModel } from '../../../tempmodels/vendor/payment-model';
 import { ISubscription } from '../../../../../node_modules/rxjs/Subscription';
 import { VendorService } from '../../../services/vendor/vendor.service';
 import { DateTimeHelper } from '../../../helpers/datetime.helper';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vpayment-content',
@@ -17,7 +18,11 @@ export class VpaymentContentComponent implements OnInit {
   showLoader: boolean = false;
   public getpaymentsubs: ISubscription;
 
-  constructor(private vendorService:VendorService) { }
+  constructor(private vendorService:VendorService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   ngOnInit() {
     //get status of selected order for disabling or enabling  forms

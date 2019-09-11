@@ -40,71 +40,71 @@
                     <div class="card-block">
                       <form class="k-form">
                         <label class="k-form-field"> 
-                            <span class="opti_form-label">Line#</span>
+                            <span class="opti_form-label">{{'DN_LineNO'|translate}}</span>
                             <input name="Line" type="text" class="k-textbox" [(ngModel)]="voiContentModelForUpdate.LineNumber" />
                         </label> 
                   
                         <label class="k-form-field">
-                            <span class="opti_form-label">PO Ref.#</span>
+                            <span class="opti_form-label">{{'VASN_PORef'|translate}}</span>
                             <input name="PORef" type="text" class="k-textbox" [(ngModel)]="voiContentModelForUpdate.POReferenceNumber"  />
                         </label>
                   
                         <label class="k-form-field">
-                            <span class="opti_form-label">Item</span>
+                            <span class="opti_form-label">{{'Common_Item'|translate}}</span>
                             <input name="Item" type="text" class="k-textbox" [(ngModel)]="voiContentModelForUpdate.Item"  />
                         </label>
                   
                         <label class="k-form-field">
-                            <span class="opti_form-label">Quantity</span>
+                            <span class="opti_form-label">{{'PI_Quantity'|translate}}</span>
                             <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="voiContentModelForUpdate.Quantity"  />
                         </label>
                   
                         <label class="k-form-field">
-                            <span class="opti_form-label">Unit Price</span>
+                            <span class="opti_form-label">{{'SO_UnitPrice'|translate}}</span>
                             <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="voiContentModelForUpdate.UnitPrice"  />
                         </label>
                   
                         <label class="k-form-field">
-                            <span class="opti_form-label">UOM</span>
+                            <span class="opti_form-label">{{'DN_UOM'|translate}}</span>
                             <input name="UOM" type="text" class="k-textbox" [(ngModel)]="voiContentModelForUpdate.UOM"  />
                         </label>
                   
                         <label class="k-form-field">
-                            <span class="opti_form-label">Total Price</span> 
+                            <span class="opti_form-label">{{'DN_TotalPrice'|translate}}</span> 
                             <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="voiContentModelForUpdate.TotalPrice"  />
                         </label>
                   
                         <label class="k-form-field">
-                            <span class="opti_form-label">Tax Code</span>
+                            <span class="opti_form-label">{{'SO_TaxCode'|translate}}</span>
                             <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="voiContentModelForUpdate.TaxCode"  />
                         </label>
                   
                         <label class="k-form-field">
-                            <span class="opti_form-label">Ship-To Address</span>
+                            <span class="opti_form-label">{{'OP_ShipToAddress'|translate}}</span>
                             <!-- <input name="ShipToAddress" type="text" class="k-textbox" [(ngModel)]="ShipToAddress"  /> -->
-                            <textarea class="k-textarea" name="ShipToAddress"  [(ngModel)]="voiContentModelForUpdate.ShipToAddress" required>Please enter your Shipping Address</textarea>
+                            <textarea class="k-textarea" name="ShipToAddress"  [(ngModel)]="voiContentModelForUpdate.ShipToAddress" required>{{'Common_Notes'|translate}}Please enter your Shipping Address</textarea>
                         </label>
                   
                         <label class="k-form-field">
-                            <span class="opti_form-label">Bill-To Address</span>
+                            <span class="opti_form-label">{{'VASN_BillToAddressLbl'|translate}}</span>
                             <!-- <input name="BillToAddress" type="text" class="k-textbox" [(ngModel)]="BillToAddress"  /> -->
-                            <textarea class="k-textarea" name="BillToAddress" [(ngModel)]="voiContentModelForUpdate.BillToAdress" required>Please enter your Billing Address</textarea>
+                            <textarea class="k-textarea" name="BillToAddress" [(ngModel)]="voiContentModelForUpdate.BillToAdress" required>{{'VASN_EnterBillAddress'|translate}}</textarea>
                         </label>
                   
                         <label class="k-form-field">
-                            <span class="opti_form-label">Shipment#</span>
+                            <span class="opti_form-label">{{'VPay_ShipmentId'|translate}}</span>
                             <input name="Shipment" type="text" class="k-textbox" [(ngModel)]="voiContentModelForUpdate.ShipmentNumber"  />
                         </label>
                   
                         <label class="k-form-field">
-                            <span class="opti_form-label">Delivery Date</span>
+                            <span class="opti_form-label">{{'SO_DeliveryDate'|translate}}</span>
                             <kendo-datepicker (valueChange)="valueChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="voiContentModelForUpdate.DeliveryDate" required [min]="minValidDate">
                             </kendo-datepicker>
                         </label>
                   
                         <div class="text-right">
-                            <button type="button" class="k-button k-primary" (click)="updateContent()">Save</button>
-                            <button type="button" class="k-button" (click)="back()">Cancel</button>
+                            <button type="button" class="k-button k-primary" (click)="updateContent()">{{'Common_Save'|translate}}</button>
+                            <button type="button" class="k-button" (click)="back()">{{'Common_Cancel'|translate}}</button>
                         </div>
                         
                       </form>
@@ -152,7 +152,7 @@
                             <div class="k-form-field">
                                 <input type="checkbox" id="opti_ColumnFilterContentID" [(ngModel)]="isColumnFilterContentGrid" class="k-checkbox"
                                     name="columnfilter" />
-                                <label class="k-checkbox-label" for="opti_ColumnFilterContentID">Enable Filter</label>
+                                <label class="k-checkbox-label" for="opti_ColumnFilterContentID">{{'Common_EnableFilter'|translate}}</label>
                             </div>
                         </form>
 
@@ -169,21 +169,21 @@
                     </ng-template>
                     <!-- grid template end -->
 
-                    <kendo-grid-column field="LineNumber" title="Line#" [width]="160"></kendo-grid-column>
-                    <kendo-grid-column field="POReferenceNumber" title="PO Ref.#" [width]="140" filter="numeric"></kendo-grid-column>
-                    <kendo-grid-column field="Item" title="Item" [width]="140"></kendo-grid-column>
-                    <kendo-grid-column field="Quantity" title="Quantity" [width]="150" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column field="LineNumber" title="{{'DN_LineNO'|translate}}" [width]="160"></kendo-grid-column>
+                    <kendo-grid-column field="POReferenceNumber" title="{{'VASN_PORef'|translate}}" [width]="140" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column field="Item" title="{{'Common_Item'|translate}}" [width]="140"></kendo-grid-column>
+                    <kendo-grid-column field="Quantity" title="{{'PI_Quantity'|translate}}" [width]="150" filter="numeric"></kendo-grid-column>
 
-                    <kendo-grid-column field="UnitPrice" title="Unit Price" [width]="150" filter="numeric"></kendo-grid-column>
-                    <kendo-grid-column field="UOM" title="UOM" [width]="150"></kendo-grid-column>
-                    <kendo-grid-column field="TotalPrice" title="Total Price" [width]="150" filter="numeric"></kendo-grid-column>
-                    <kendo-grid-column field="TaxCode" title="Tax Code" [width]="150"></kendo-grid-column>
-                    <kendo-grid-column field="ShipToAddress" title="Ship-To Address" [width]="150"></kendo-grid-column>
-                    <kendo-grid-column field="BillToAdress" title="Bill-To Address" [width]="150"></kendo-grid-column>
-                    <kendo-grid-column field="ShipmentNumber" title="Shipment#" [width]="150" filter="numeric"></kendo-grid-column>
-                    <kendo-grid-column field="DeliveryDate" title="Delivery Date" [width]="150" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+                    <kendo-grid-column field="UnitPrice" title="{{'SO_UnitPrice'|translate}}" [width]="150" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column field="UOM" title="{{'DN_UOM'|translate}}" [width]="150"></kendo-grid-column>
+                    <kendo-grid-column field="TotalPrice" title="{{'DN_TotalPrice'|translate}}" [width]="150" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column field="TaxCode" title="{{'SO_TaxCode'|translate}}" [width]="150"></kendo-grid-column>
+                    <kendo-grid-column field="ShipToAddress" title="{{'OP_ShipToAddress'|translate}}" [width]="150"></kendo-grid-column>
+                    <kendo-grid-column field="BillToAdress" title="{{'VASN_BillToAddressLbl'|translate}}" [width]="150"></kendo-grid-column>
+                    <kendo-grid-column field="ShipmentNumber" title="{{'VPay_ShipmentId'|translate}}" [width]="150" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column field="DeliveryDate" title="{{'SO_DeliveryDate'|translate}}" [width]="150" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
 
-                    <kendo-grid-column field="" title="Action" [width]="50" [filterable]="false" [sortable]="false" class="text-center">
+                    <kendo-grid-column field="" title="{{'VASN_Action'|translate}}" [width]="50" [filterable]="false" [sortable]="false" class="text-center">
                             <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex"> 
                                 <svg-icon  src="{{imgPath}}/common/edit.svg" (click)="edit()" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
                             </ng-template>

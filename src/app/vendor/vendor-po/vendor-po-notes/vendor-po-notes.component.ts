@@ -12,6 +12,7 @@ import { VendorEntityType } from 'src/app/enums/enums';
 import { VendorNoteModel } from 'src/app/tempmodels/vendor/vendor-note-model';
 import { AppMessages } from 'src/app/helpers/app-messages';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-po-notes',
@@ -20,7 +21,11 @@ import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 })
 export class VendorPoNotesComponent implements OnInit {
 
-  constructor(private vendorService: VendorService, private sharedComponentService: SharedComponentService, private toast: ToastService) { }
+  constructor(private vendorService: VendorService, private sharedComponentService: SharedComponentService, private toast: ToastService,private translate: TranslateService ){
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   /**
   * global variable

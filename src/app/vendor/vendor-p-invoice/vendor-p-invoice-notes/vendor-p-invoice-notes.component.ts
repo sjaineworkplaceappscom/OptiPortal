@@ -13,6 +13,7 @@ import { NotesModel } from '../../../models/purchaserequest/notes';
 import { ISubscription } from '../../../../../node_modules/rxjs/Subscription';
 import { VendorOIModel } from '../../../tempmodels/vendor/vendor-OI-model';
 import { DatePipe } from '@angular/common';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 @Component({
   selector: 'app-vendor-p-invoice-notes',
   templateUrl: './vendor-p-invoice-notes.component.html',
@@ -74,7 +75,11 @@ export class VendorPInvoiceNotesComponent implements OnInit {
 
   public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
   lastnoteText:string;
-  constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private toast: ToastService) {
+  constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private toast: ToastService
+    ,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
   }
 
   @HostListener('window:resize', ['$event'])

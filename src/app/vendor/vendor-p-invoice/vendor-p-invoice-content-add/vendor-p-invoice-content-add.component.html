@@ -4,71 +4,71 @@
     <form class="k-form">
 
       <label class="k-form-field">
-          <span class="opti_form-label">Line#</span>
+          <span class="opti_form-label">{{'DN_LineNO'|translate}}</span>
           <input name="Line" type="text" class="k-textbox" [(ngModel)]="voiContentModel.LineNumber" />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">PO Ref.#</span>
+          <span class="opti_form-label">{{'VASN_PORef'|translate}}</span>
           <input name="PORef" type="text" class="k-textbox" [(ngModel)]="voiContentModel.POReferenceNumber"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Item</span>
+          <span class="opti_form-label">{{'Common_Item'|translate}}</span>
           <input name="Item" type="text" class="k-textbox" [(ngModel)]="voiContentModel.Item"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Quantity</span>
+          <span class="opti_form-label">{{'PI_Quantity'|translate}}</span>
           <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="voiContentModel.Quantity"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Unit Price</span>
+          <span class="opti_form-label">{{'SO_UnitPrice'|translate}}</span>
           <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="voiContentModel.UnitPrice"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">UOM</span>
+          <span class="opti_form-label">{{'DN_UOM'|translate}}</span>
           <input name="UOM" type="text" class="k-textbox" [(ngModel)]="voiContentModel.UOM"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Total Price</span>
+          <span class="opti_form-label">{{'SO_TotalPrice'|translate}}</span>
           <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="voiContentModel.TotalPrice"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Tax Code</span>
+          <span class="opti_form-label">{{'SO_TaxCode'|translate}}</span>
           <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="voiContentModel.TaxCode"  />
       </label>
 
         <label class="k-form-field">
-            <span class="opti_form-label">Ship-To Address</span>
+            <span class="opti_form-label">{{'OP_ShipToAddress'|translate}}</span>
             <!-- <input name="ShipToAddress" type="text" class="k-textbox" [(ngModel)]="ShipToAddress"  /> -->
-            <textarea class="k-textarea" name="addShipToAddress" [(ngModel)]="voiContentModel.ShipToAddress" required>Please enter your Shipping Address</textarea>
+            <textarea class="k-textarea" name="addShipToAddress" [(ngModel)]="voiContentModel.ShipToAddress" required>{{'Common_Cancel'|translate}}Please enter your Shipping Address</textarea>
         </label>
 
     <label class="k-form-field">
-        <span class="opti_form-label">Bill-To Address</span>
+        <span class="opti_form-label">{{'OI_BillToAddress'|translate}}</span>
         <!-- <input name="BillToAddress" type="text" class="k-textbox" [(ngModel)]="BillToAddress"  /> -->
-        <textarea class="k-textarea" name="BillToAddress" [(ngModel)]="voiContentModel.BillToAdress" required>Please enter your Billing Address</textarea>
+        <textarea class="k-textarea" name="BillToAddress" [(ngModel)]="voiContentModel.BillToAdress" required>{{'Common_Cancel'|translate}}Please enter your Billing Address</textarea>
     </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Shipment#</span>
+          <span class="opti_form-label">{{'VPay_ShipmentId'|translate}}</span>
           <input name="Shipment" type="text" class="k-textbox" [(ngModel)]="voiContentModel.ShipmentNumber"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Delivery Date</span>
+          <span class="opti_form-label">{{'SO_DeliveryDate'|translate}}</span>
           <kendo-datepicker name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="voiContentModel.DeliveryDate" required [min]="minValidDate">
           </kendo-datepicker>
       </label>
 
       <div class="text-right">
-          <button type="button" class="k-button k-primary" (click)="AddContent()">Save</button>
-          <button type="button" class="k-button" (click)="closeAddForm()">Cancel</button>
+          <button type="button" class="k-button k-primary" (click)="AddContent()">{{'Common_Save'|translate}}</button>
+          <button type="button" class="k-button" (click)="closeAddForm()">{{'Common_Cancel'|translate}}</button>
       </div>
       
     </form>

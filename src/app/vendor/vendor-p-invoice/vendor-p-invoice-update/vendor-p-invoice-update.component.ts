@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-p-invoice-update',
@@ -11,7 +12,11 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 export class VendorPInvoiceUpdateComponent implements OnInit {
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
-  constructor() { }
+  constructor(private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   tabName: string = 'home';
 

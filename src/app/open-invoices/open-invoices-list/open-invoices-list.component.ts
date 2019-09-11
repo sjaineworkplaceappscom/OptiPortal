@@ -133,7 +133,9 @@ export class OpenInvoicesListComponent implements OnInit {
       this.showLoader = false;
       //alert("Something went wrong");
       console.log("Error: ", error);
+      let lang = localStorage.getItem('appLanguage');      
       localStorage.clear();
+      localStorage.setItem('appLanguage',lang);  
     }
   );
 }

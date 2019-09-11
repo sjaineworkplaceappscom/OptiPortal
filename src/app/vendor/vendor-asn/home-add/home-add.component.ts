@@ -9,6 +9,7 @@ import { VendorOIService } from 'src/app/services/vendor/vendor-o-i.service';
 import { ToastService } from 'src/app/helpers/services/toast.service';
 import { AppMessages } from 'src/app/helpers/app-messages';
 import { ModuleName, ComponentName } from 'src/app/enums/enums';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home-add',
@@ -23,7 +24,10 @@ export class HomeAddComponent implements OnInit {
   deleiveryDate = new Date();
   vendorASNModel: VendorASNModel = new VendorASNModel();
   public addSub: ISubscription;
-  constructor(private commonService: Commonservice, private vendorOpenInvoiceService: VendorOIService, private toast: ToastService) {    
+  constructor(private commonService: Commonservice, private vendorOpenInvoiceService: VendorOIService, private toast: ToastService,private translate: TranslateService) {  
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });  
    }
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 

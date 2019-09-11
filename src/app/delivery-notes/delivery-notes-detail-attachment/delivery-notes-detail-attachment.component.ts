@@ -8,6 +8,7 @@ import { DeliveryNotesService } from '../../services/delivery-notes.service';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { Configuration } from '../../helpers/Configuration';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-delivery-notes-detail-attachment',
@@ -33,7 +34,11 @@ export class DeliveryNotesDetailAttachmentComponent implements OnInit {
   public getDetailAttachsubs: ISubscription;
   public gridData: any[];
 
-  constructor(private deliveryNotesService: DeliveryNotesService, private sharedComponentService: SharedComponentService) { }
+  constructor(private deliveryNotesService: DeliveryNotesService, private sharedComponentService: SharedComponentService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   // UI Section
   @HostListener('window:resize', ['$event'])

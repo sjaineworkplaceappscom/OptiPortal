@@ -11,6 +11,7 @@ import { VendorService } from '../../../services/vendor/vendor.service';
 import { ToastService } from '../../../helpers/services/toast.service';
 import { AppMessages } from '../../../helpers/app-messages';
 import { DateTimeHelper } from '../../../helpers/datetime.helper';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -20,7 +21,11 @@ import { DateTimeHelper } from '../../../helpers/datetime.helper';
 })
 export class VpaymentNotesComponent implements OnInit {
 
-  constructor(private vendorService: VendorService, private sharedComponentService: SharedComponentService, private toast: ToastService) { }
+  constructor(private vendorService: VendorService, private sharedComponentService: SharedComponentService, private toast: ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   /**
   * global variable

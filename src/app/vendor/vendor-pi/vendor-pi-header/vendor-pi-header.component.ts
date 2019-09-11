@@ -6,6 +6,7 @@ import { VendorService } from '../../../services/vendor/vendor.service';
 import { DateTimeHelper } from '../../../helpers/datetime.helper';
 
 import { VendorPurchaseInquiryModel } from 'src/app/tempmodels/vendor/vendor-purchase-inquiry-model';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-pi-header',
@@ -27,7 +28,11 @@ export class VendorPiHeaderComponent implements OnInit {
   VPIModel: VendorPurchaseInquiryModel = new VendorPurchaseInquiryModel();
   showLoader: boolean = false;
   
-  constructor(private commonService: Commonservice, private vendorService:VendorService) { }
+  constructor(private commonService: Commonservice, private vendorService:VendorService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   ngOnInit() {
      

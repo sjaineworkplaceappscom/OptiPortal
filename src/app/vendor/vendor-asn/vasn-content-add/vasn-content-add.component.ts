@@ -8,6 +8,7 @@ import { AppMessages } from 'src/app/helpers/app-messages';
 import { Commonservice } from 'src/app/services/commonservice.service';
 import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 import { ModuleName, ComponentName } from 'src/app/enums/enums';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vasn-content-add',
@@ -23,7 +24,11 @@ export class VasnContentAddComponent implements OnInit {
   vendorASNContentModel: VendorASNContentModel;
   showGridSubs: ISubscription;
 
-  constructor(private commonService: Commonservice, private vendorService: VendorService, private toast: ToastService) { }
+  constructor(private commonService: Commonservice, private vendorService: VendorService, private toast: ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
 
   ngOnInit() {

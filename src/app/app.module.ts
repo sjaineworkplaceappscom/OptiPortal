@@ -13,7 +13,7 @@ import { LeftComponent } from './common/left/left.component';
 
 import { TopComponent } from './common/top/top.component';
 import { MainContentComponent } from './common/main-content/main-content.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common/http';
 import { AuthInterceptor } from './guards/intercepters/authIntercepter';
 import { RightComponent } from './common/right/right.component';
 
@@ -52,7 +52,8 @@ import { PurchaseInquiryModule } from './purchase-inquiry/purchase-inquiry.modul
 import { HttpErrorInterceptor } from './guards/intercepters/errorintercepter'
 import { NotificationModule } from '@progress/kendo-angular-notification'
 import { DialogsModule } from '@progress/kendo-angular-dialog';
-
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // for new Routing for Lazy load
 const routes: Routes = [
@@ -63,7 +64,9 @@ const routes: Routes = [
   { path: '**', component: LandingComponent}
  ];
 
-
+ export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   declarations: [
     
@@ -75,7 +78,7 @@ const routes: Routes = [
     TopComponent,
     MainContentComponent,
     RightComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     CommonModule, 
@@ -84,6 +87,16 @@ const routes: Routes = [
     HttpClientModule,
     ButtonsModule,
     BsDropdownModule.forRoot(),
+
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
+
     ModalModule.forRoot(),
     PerfectScrollbarModule,
     RouterModule.forRoot(routes,{preloadingStrategy: PreloadAllModules}),

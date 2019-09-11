@@ -3,6 +3,7 @@ import { UIHelper } from '../../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -17,7 +18,12 @@ export class VendorPiDetailComponent implements OnInit {
   };
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
-  constructor(private confirmService: ConfirmDialog) { }
+  constructor(private confirmService: ConfirmDialog,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+
+   }
 
   tabName: string = 'home';
 

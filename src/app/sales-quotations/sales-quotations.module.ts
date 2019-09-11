@@ -18,6 +18,15 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 import { SharedModule } from '../shared/shared.module';
 
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+
+
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   imports: [
     CommonModule,
@@ -28,7 +37,15 @@ import { SharedModule } from '../shared/shared.module';
     AngularSvgIconModule,
     PerfectScrollbarModule,
     DropDownsModule,
-    SharedModule
+    SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
   ],
   declarations: [SalesQuotationsComponent, SalesQuotationsListComponent, SalesQuotationsDetailComponent, SalesQuotationsDetailHomeComponent, SalesQuotationsDetailContentComponent, SalesQuotationsDetailAttchmentComponent],
   exports:[SalesQuotationsComponent, SalesQuotationsDetailComponent]

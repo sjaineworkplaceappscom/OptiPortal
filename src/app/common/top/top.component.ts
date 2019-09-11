@@ -50,7 +50,9 @@ export class TopComponent implements OnInit {
   }
 
   signOut() {
+    let lang = localStorage.getItem('appLanguage');      
     localStorage.clear();
+    localStorage.setItem('appLanguage',lang);  
     this.router.navigateByUrl('/login');
   }
 

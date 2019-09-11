@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { UIHelper } from '../helpers/ui.helpers';
 import { PurchaseInquiryService } from '../services/purchase-enquiry.service';
 import { ISubscription } from 'rxjs/Subscription';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,7 +31,12 @@ export class DashboardComponent implements OnInit {
   }
   // End UI Section
 
-  constructor(private purchaseInquiryService: PurchaseInquiryService) { }
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private translate: TranslateService) { 
+     
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   ngOnInit() {
     // check mobile device

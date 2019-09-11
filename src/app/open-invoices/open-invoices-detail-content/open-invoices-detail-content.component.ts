@@ -8,6 +8,7 @@ import { Configuration } from '../../helpers/Configuration';
 import { ISubscription } from 'rxjs/Subscription';
 import { OpenInvoiceListModel } from '../../tempmodels/open-invoice-list-model';
 import { OpenInvoiceService } from '../../services/open-invoice.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-open-invoices-detail-content',
@@ -31,7 +32,11 @@ export class OpenInvoicesDetailContentComponent implements OnInit {
   public getDetailsubs: ISubscription;
   openInvoiceListModel: OpenInvoiceListModel = new OpenInvoiceListModel();
 
-  constructor(private openInvoiceService: OpenInvoiceService) { }
+  constructor(private openInvoiceService: OpenInvoiceService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   // UI Section
   @HostListener('window:resize', ['$event'])

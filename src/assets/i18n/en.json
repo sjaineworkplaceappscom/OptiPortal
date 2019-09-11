@@ -1,0 +1,374 @@
+{
+  "PI_Purchase_Enquiry":"Inquiry#",
+  "PI_CustomerId":"Customer Id",
+  "PI_CustomerName":"Customer Name",
+  "PI_Status":"Status",
+  "PI_CreatedDate":"Created Date",
+  "PI_CreatedBy":"Created By",
+
+  "PI_ValidUntil":"Valid Until",
+  "PI_ReferenceNo":"Reference#",
+  "Common_EnableFilter":"Enable Filter",
+  "Common_EnableGrouping":"Enable Grouping",
+
+
+
+  "Common_Header":"Header",
+  "Common_Items":"Items",
+  "Common_Attachments":"Attachments",
+  "Common_Notes":"Notes",
+  "PI_CustomerCode":"Customer Code",
+
+  "Common_Save":"Save",
+  "Common_SaveAsDraft":"Save as draft",
+  "Common_Cancel":"Cancel",
+
+  "PI_ItemDetails": "Item Details",
+
+  "PI_Quantity": "Quantity",
+  "PI_Unit": "Unit",
+  "PI_Requester":"Requester",
+  "PI_RequestDate":"Request Date",
+  "PI_RequiredDate":"Required Date",
+  "PI_ShipToLocation":"Ship To Location",
+
+
+  "PI_ItemDetailRequired": "Item Details is required.",
+  "PI_ItemQTY": "Item Quantity",
+  "PI_ItemQTYRequired": "Item Quantity is required.",
+  "PI_ItemUnit":"Item Unit",
+  "PI_ItemUnitRequired": "Item Unit is required.",
+  "PI_StatusRequired": "Item Status is required.",
+  "Common_Location": "Location",
+  "Common_SaveAndNew": "Save and New",
+  "Common_Name":"Name",
+  "Common_Size": "Size(In Bytes)",
+  "CommonAttachmentType": "Attachment Type",
+  "PI_Reference":"Reference",
+  "Common_Upload": "Upload",
+ 
+  "Common_NoteOn": "note on",
+  "Common_For": "for",
+  "Common_Has_Created": "has created",
+  "Add_Note": "Add Note",
+  "Common_Note_Required": "Note is required.",
+  "Common_EnterNote": "Please enter your note",
+  "Common_Note_Type": "Note Type",
+  "Common_UpdateNote": "Update Note",
+
+  "SQ_QuotationNumber": "Quotation Number",
+  "SQ_QuotationDate": "Quotation Date",
+  "SQ_Remark": "Remark",
+  "SQ_DueDate": "Due Date",
+  "SQ_SalesEmployee": "Sales Employee",
+  "SQ_Owner": "Owner",
+  "SQ_Total": "Total",
+  "SQ_ItemServiceType":"Item/Service Type",
+  "SQ_DocumentDate": "Document Date",
+  "SQ_Branch":"Branch",
+  
+  "SO_OrderNumber":"Order Number",
+  "SO_OrderDate":"Order Date",
+  "SO_DeliveryDate":"Delivery Date",
+  "SO_SalesOrder": "Sales Order",
+
+  "SO_PlaceOfSupply": "Place of supply",
+  "SO_TotalBeforeDiscount":"Total before discount",
+  "SO_DiscountPercent":"Discount %",
+  "SO_Discount":"Discount",
+  "SO_Freight":"Freight",
+  "SO_Tax":"Tax",
+  
+  "SO_ItemNos": "Item Number",
+  "SO_UnitPrice": "Unit Price",
+  "SO_DiscPercent":"Disc%",
+  "SO_TaxCode":"Tax Code",
+  "SO_TotalLC":"Total (LC)",
+  "SO_UoMCode": "UoM Code",
+  "SO_ShipTo":"Ship To",
+  "SO_BillTo":"Bill To",
+  "SO_ShipType":"Shipping Type",
+
+  "SO_Content":"Content",
+  "SO_DeliveryN":"Delivery Notes",   
+  "SO_FileName": "File Name",
+  "SO_AttachmentDate": "Attachment Date",
+
+  "SO_Delivery#": "Delivery#",
+  "SO_WayBill#": "Way Bill#",
+  "SO_Tracking#": "Tracking#",
+  "SO_ModeOfShipment": "Mode of Shipment",
+  "SO_ShippingMethod": "Shipping Method",
+  "SO_PackingSlip#": "Packing Slip#",
+  "SO_ShipToLocation": "Ship-To Location",
+  "SO_TotalPrice": "Total Price",
+  "SO_DeliveredDate": "Delivered Date",
+  "SO_ShipDate": "Ship Date",
+  "DN_DiscAmt":"Disc Amt",
+
+  "DN_LineNO":"Line#",
+  "DN_ItemCode":"Item Code",
+  "DN_UOM":"UOM",
+  "DN_Price":"Price",
+  "DN_TotalPrice":"Total Price",
+  "DN_SalesOrderNo":"Sales Order#",
+  "DN_SOLNo":"Sales Order Line#",
+  "DN_SNBatch":"Serial/Batch",
+  "ASN_ExpectedDelivery":"Expected Delivery",
+  "ASN#": "ASN#",
+
+  "Common_PurchaseInquiry": "Purachase Inquiry",
+  "Common_PurchaseInquiryNotFount": "Purchase Inquiries No Record Found",
+  "DB_MonthlySales":"Monthly Sales",
+  "DB_YearSales":"Yearly Sales",
+  
+  "CPO_Id":"Id",
+  "CPO_ReferenceType":"Reference Type",
+  "CPO_PurchaseOrderDate ":"Purchase Order Date",
+
+  "OI_Id":"Invoice #",
+  "OI_InvoiceDate":"Invoice Date",
+  "OI_DueDate":"Due Date",
+  "OI_Amount":"Amount",
+  "OI_BillToAddress":"Bill-To Address",
+  "OI_ContactPerson":"Contact Person",
+  "OI_TotalAmount":"Total Amount" ,
+  "OI_PaymentTerms":"Payment Terms" ,
+  "OP_AdvancePaidAmount":"Advance Paid amount",
+  "OP_BalanceDue":"Balance Due",
+  
+  "Common_Item":"Item",
+  "OP_DeliveredQuantity":"Delivered Quantity",
+  "OP_ShipToAddress": "Ship-To Address",
+
+  "C_ContractID": "Contract#",
+  "C_ContractDate": "Contract Date",
+  "C_StartDate": "Start Date",
+  "C_EndDate": "End Date",
+  "C_TotalStatus": "Total Status",
+  "C_ContactPerson": "Contact Person",
+  "Common_Attachment":"Attachment",
+
+  "Contact_ContactName":"Contact Name",
+  "Contact_Phone":"phone",
+  "Contact_Email":"email",
+  "Contact_Address":"Address",
+  "Contact_ActiveStatus":"Active Status",
+
+  "Contact_AddContact":"Add Contact",
+  "Contact_ContactId":"Contact Id",
+  "Contact_PhoneC":"Phone",
+  "Contact_EmailC":"Email",
+  "Contact_IdRequire":"Please enter contact Id.",
+  "Contact_NameRequire":"Please enter contact name.",
+  "Contact_PhoneRequire":"Please enter phone number.",
+  "Contact_EmailRequire":"Please enter emailId.",
+  "Contact_ValidateEmail":"Please enter valid emailId",
+  "Contact_AddressRequire":"Please enter address.",
+  "Contact_UpdateContact":"Update Contact",
+  "CI_start":"Start",
+  "CI_end":"End",
+  "CI_SetFilter":"Set Filter",
+  "CI_From":"From",
+  "CI_To":"To",
+  "CI_SerialOrBatch":"Serial or Batch",
+  "CI_Stock":"Stock",
+  "CI_Available":"Available",
+  "CI_Commited":"Committed",
+  "CI_Bin":"Bin",
+  "CI_WareHouse":"WareHouse",
+  "CI_ItemDescription":"Item Description",
+  "CI_WhseStock":"Whse Stock",
+  "CI_Ordered":"Ordered",
+  "CI_InvUOM":"Inv. UOM",
+  "CI_ToWarehouse":"To Warehouse",
+  "CI_ToBin":"To Bin",
+  "CI_TDN":"Transaction Document Number",
+  "CI_QuantityTransacted":"Quantity Transacted",
+  "CI_TransactionType" :"Quantity Transacted",
+  "CI_TransectionDate": "Transection Date",
+  "CI_SABD":"Serial and Batch Detail",
+  "CI_SNOBatch":"S. No / Batch No",
+
+  "Top_Setting":"Setting",
+  "Top_help":"Help",
+  "Top_Logout":"LogOut",
+  "Top_AboutUs":"About Us",
+  "Top_Alert":"Alert",
+
+
+  
+  "Left_Dashboard":"Dashboard",
+  "Left_PurchaseInquiries":"Purchase Inquiries",
+  "Left_SalesQuotations":"Sales Quotations",
+  "Left_CustomerPurchaseOrder":"Customer Purchase Order",
+  "Left_SalesOrder":"Sales Order",
+  "Left_DeliveryNotes":"Delivery Notes",
+  "Left_AdvanceShipmentNotes":"Advance Shipment Notes",
+  "Left_OpenInvoices":"Open Invoices",
+  "Left_CustomerContracts":"Customer Contracts",
+  "Left_CustomerContacts":"Customer Contacts",
+  "Left_PendingReq":"Pending Requests",
+  "Left_CI": "Consigned Inventory",
+  "Left_PO":"Purchase Orders",
+  "Left_UPO":"Updated Purchase Orders ",
+  "Left_VASN":"Vendor ASN",
+  "Left_VContat":"Vendor Contact",
+  "Left_VInvoice":"Vendor Invoice",
+  "Left_Vpayment":"Vendor Payment",
+
+
+  "Admin_Select":"Select",
+  "Admin_UserName":"User Name",
+  "Admin_Parent":"Parent",
+  "Admin_ParentType":"Parent Type",
+  "Admin_RequestedRole":"Requested Role",
+  "Admin_Approve": "Approve",
+  "Admin_Reject": "Reject",
+  "Admin_Search": "Search",
+  "VInquiry_Date": "Inquiry Date",
+  "VInquiry_Vendor": "Vendor",
+  "VInquiry_Buyer": "Buyer",
+
+  "VInquiry_ReqDate": "Requested Date",
+  "VInquiry_ShipToAddress":"Ship To Address",
+  "VInquiry_BillToAddress":"Bill To Address",
+
+  "VPO_PONo":"PO#",
+  "VPO_PODate":"PO Date",
+  "VPO_DueDate":"Due Date",
+  "VPO_AckYesNo":"Ack Yes/No",
+  "VPO_VPO":"Vendor Purchase Order",
+  
+  "VPO_Acknowledge":"Acknowledge",
+  "VPO_CASN":"Create ASN",
+  
+  "Att_FileType":"File Type",
+
+  "VASN_PORef":"PO Ref.#",
+  "VASN_ShipmentDate":"Shipment Date",
+  "VASN_WayBill":" Way-Bill#",
+  "VASN_ReqTotalPrice":"Please enter your total price.",
+  "VASN_EnterTax":"Please enter your tax.",
+  "VASN_EnterPrice":"Please enter your price.",
+  "VASN_EnterTracking":"Please enter your tracking number.",
+  "VASN_EnterWay": "Please enter your way bill number.",
+  "VASN_EnterPORef": "Please enter PO refrence number.",
+  "VASN_EnterVendorName": "Please enter your vendor name.",
+  "VASN_EnterBillAddress":"Please enter your Billing Address.",
+  "VASN_EnterBillTo":"Please enter bill to address.",
+  "VASN_BillToAddressLbl":"Bill-To Address",
+  "VASN_ShipToAddressLbl":"Ship-To Address",
+  "VASN_EnterSHipping":"Please enter your Shipping Address.",
+  "VASN_EnterShipTo":"Please enter ship to address.",
+  "VASN_EnterTaxCode":"Please enter tax cod.e",
+  "VASN_EnterTotalPrice":"Please enter total price.",
+  "VASN_EnterUOM":"Please enter UOM.",
+  "VASN_EnterUnitPrice":"Please enter unit price.",
+  "VASN_EnterQty":"Please enter quantity.",
+  "VASN_EnterItem":"Please enter item.",
+  "VASN_EnterLineNo":"Please enter your line number",
+  "VASN_Action":"Action",
+
+  "VPay_PaymentRef":"Payment Ref#",
+  "VPay_PaymentMode":"Payment Mode",
+  "VPay_PaymentType":"Payment Type",
+  "VPay_PaymentDetails":"Payment Details",
+  "VPay_PaymentDate":"Payment Date",
+  "VPay_InvoiceLine": "Invoice Line#",
+  "VPay_ShipmentId":"Shipment#",
+
+  "VInvoice_PaymentDueDate":"Payment Due Date",
+  "VInvoice_InvoiceAmount":"Invoice Amount",
+  "VInvoice_EnterPOref":"Please enter PO Ref number.",
+  "VInvoice_EnterVendor":"Please enter Vandor",
+  "VInvoice_EnterInvoiceAmt":"Please enter Invoice amount.",
+  "VInvoice_Invoice":"Invoice",
+
+  "Acc_SignUp":"Sign Up",
+  "Acc_PrivacyPolicy":"privacy policy",
+  "Acc_TermsOfUse":"terms of use ",
+  "Acc_And":"and",
+  "Acc_IAgree":"I agree to the",
+  "Acc_CaptchaReq":"Captcha is required.",
+  "Acc_EnterValidCaptcha":"Please enter valid captcha.",
+  "Acc_BrowserNotSupport":"Your browser does not support the HTML5 canvas tag.",
+  "Acc_SelectRole":"Please select role.",
+  "Acc_EnterPhNo":" Please enter phone number.",
+  "Acc_EnterValidEmail":" Please enter valid emailId.",
+  "Acc_emailAlreadyReg": "Requested email already registered.",
+  "Acc_EnterEmail":"Please enter emailId.",
+  "Acc_yourmail":"Your Email",
+  "Acc_yourname":"Your Name",
+  "Acc_entername":"Please enter your full name.",
+  "Acc_createAcc":"Create Account",
+  "Acc_CustId":"Customer ID",
+  "Acc_validCompID":"Please enter valid company id.",
+  "Acc_CustNotExist":"Customer doesn't exist.",
+  "Acc_CustDetails":"Customer Details",
+  "Acc_Vend_ID":"Vendor ID",
+  "Acc_VendNotExists":"Vendor doesn't exist.",
+  "Acc_VendDetails":"Vendor Details",
+  "Acc_PrimaryCDetails":"Primary Contact Details",
+  "Acc_Login":"Login",
+  "Acc_RememberMe":"Remember Me",
+  "Acc_ForgetPwd":"Forgot your password?",
+  "Acc_InvalidCredentials":"Invalid credentials.",
+  "Acc_PwdReq":"Password is required.",
+  "Acc_PWD":"Password",
+  "Acc_UserNotExists":"User does not exists.",
+  "Acc_EmailReq":"Email is required.",
+  "Acc_InvalidEmail":"Invalid emailId.",
+  "Acc_SendLink":"Send me a link",
+  "Acc_ConfP":"Confirm Password",
+  "Acc_ConfPReq":"Confirm password is required",
+  "Acc_BothPWDSame":"Both passwords should be same",
+  "Acc_SetPwd":"Set Password",
+  "Acc_EnterPWD":"Please enter password",
+  "Acc_PwdMinEightChar":"Please should be minimum 8 characters.",
+  "Acc_SetYourPwd":"Set Your Password",
+  "Acc_CustomerSignUp":"Customer Sign Up",
+  "Acc_VendorSignUp":"Vendor Sign Up",
+  "Common_No_GridRecords":"There are no items to display.",
+  "CI_TransactionDate": "Transaction Date",
+  "Common_SBDetail":"Serial/Batch detail",
+  "Common_OK":"Ok"
+ 
+
+
+  
+  
+
+
+  
+ 
+
+  
+  
+
+ 
+
+
+ 
+
+
+ 
+ 
+
+
+  
+  
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+}

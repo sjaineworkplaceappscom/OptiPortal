@@ -38,7 +38,7 @@
                                 <div class="k-form-field">
                                     <input type="checkbox" id="opti_ColumnFilterattachementID" [(ngModel)]="isColumnFilterAttachementsGrid" class="k-checkbox"
                                         name="columnfilter" />
-                                    <label class="k-checkbox-label" for="opti_ColumnFilterattachementID">Enable Filter</label>
+                                    <label class="k-checkbox-label" for="opti_ColumnFilterattachementID">{{'Common_EnableFilter'|translate}}</label>
                                 </div>
                             </form>
 
@@ -58,8 +58,8 @@
                                 </ng-template>
                         </kendo-grid-column>
 
-                        <kendo-grid-column field="FileName" title="FileName" [width]="160"></kendo-grid-column>
-                        <kendo-grid-column field="AttachmentDate" title="Attachment Date" [width]="140"></kendo-grid-column>
+                        <kendo-grid-column field="FileName" title="{{'SO_FileName'|translate}}" [width]="160"></kendo-grid-column>
+                        <kendo-grid-column field="AttachmentDate" title="{{'SO_AttachmentDate'|translate}}" [width]="140"></kendo-grid-column>
                         
                                                       
                         <!-- xlsx template start -->

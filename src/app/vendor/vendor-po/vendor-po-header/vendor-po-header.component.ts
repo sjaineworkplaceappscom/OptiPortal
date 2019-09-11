@@ -12,6 +12,7 @@ import { ComponentName, ModuleName } from '../../../enums/enums';
 import { Router } from '../../../../../node_modules/@angular/router';
 import * as $ from "jquery";
 import { GlobalResource } from '../../../helpers/global-resource';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 @Component({
   selector: 'app-vendor-po-header',
   templateUrl: './vendor-po-header.component.html',
@@ -28,7 +29,11 @@ export class VendorPoHeaderComponent implements OnInit {
   VPOHeaderModel: VendorPOHeaderModel = new VendorPOHeaderModel();
   IsAck: boolean = false;
 
-  constructor(private commonService: Commonservice, private vendorService: VendorService, private toast: ToastService, private router: Router) { }
+  constructor(private commonService: Commonservice, private vendorService: VendorService, private toast: ToastService, private router: Router,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   ngOnInit() {
 

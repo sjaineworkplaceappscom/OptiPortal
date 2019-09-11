@@ -6,6 +6,7 @@ import { VendorPOContentModel } from 'src/app/tempmodels/vendor/vendor-po-conten
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { UIHelper } from 'src/app/helpers/ui.helpers';
 import { Configuration } from 'src/app/helpers/Configuration';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-po-content',
@@ -21,7 +22,11 @@ export class VendorPoContentComponent implements OnInit {
   VPOContentModel: VendorPOContentModel = new VendorPOContentModel();
   showLoader: boolean = false;
   public getVPIsubs: ISubscription;
-  constructor(private vendorService: VendorService) { }
+  constructor(private vendorService: VendorService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
 
   isMobile: boolean;

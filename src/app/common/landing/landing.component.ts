@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Commonservice } from '../../services/commonservice.service';
 import { Configuration } from '../../helpers/Configuration';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
 @Component({
@@ -13,7 +14,11 @@ export class LandingComponent implements OnInit {
 
   imgPath = Configuration.imagePath;
 
-  constructor(private router: Router, private commonService: Commonservice) { }
+  constructor(private router: Router, private commonService: Commonservice,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   ngOnInit() {
     const element = document.getElementsByTagName("body")[0];

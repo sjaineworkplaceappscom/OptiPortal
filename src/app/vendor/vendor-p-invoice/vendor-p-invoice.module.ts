@@ -22,6 +22,14 @@ import { FileDropModule } from 'ngx-file-drop';
 import { VendorPInvoiceContentAddComponent } from './vendor-p-invoice-content-add/vendor-p-invoice-content-add.component';
 import { VendorPInvoiceContentUpdateComponent } from './vendor-p-invoice-content-update/vendor-p-invoice-content-update.component';
 import { SharedModule } from '../../shared/shared.module';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 const routes: Routes = [
   { path: '',component: VendorPInvoiceListComponent  },
@@ -40,7 +48,16 @@ const routes: Routes = [
     DropDownsModule,
     DateInputsModule,
     FileDropModule,
-    SharedModule
+    SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
+
   ],
   declarations: [ VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent, VendorPInvoiceHomeUpdateComponent,  VendorPInvoiceContentAddComponent, VendorPInvoiceContentUpdateComponent],
   exports:[VendorPInvoiceListComponent, VendorPInvoiceHomeComponent, VendorPInvoiceContentComponent,  VendorPInvoiceAttachmentComponent, VendorPInvoiceNotesComponent, VendorPInvoiceUpdateComponent, VendorPInvoiceAddComponent, VendorPInvoiceDetailComponent]

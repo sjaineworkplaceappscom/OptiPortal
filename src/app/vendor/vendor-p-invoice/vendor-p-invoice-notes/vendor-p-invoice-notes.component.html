@@ -49,8 +49,8 @@
                                                 <!-- <dd *ngIf='dataItem.ParentIdText ===""'> -->
                                                 <span class="opti_note-meta" *ngIf='dataItem.System != true'>
                                                     <strong>{{ dataItem.CreatedByName }}</strong>
-                                                    has created
-                                                    <strong> {{dataItem.NoteText}} </strong> note on
+                                                    {{'Common_Has_Created'|translate}}
+                                                    <strong> {{dataItem.NoteText}} </strong>  {{'Common_NoteOn'|translate}} 
                                                     <strong>{{ dataItem.CreatedDate| date:'dd MMM yy' }} </strong>
                                                     <span *ngIf='dataItem.ParentIdText !=null'> for
                                                         <strong>{{dataItem.ParentIdText}}</strong>
@@ -80,22 +80,22 @@
                             <div (change)="changeDiv($event)" class="card-block">
                                 <form #requestnoteform="ngForm" class="k-form">
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Add Note
-                                            <span *ngIf="note.errors?.required && (note.dirty || note.touched)" class="float-right opti_error-msg">Note is required.</span>
+                                        <span class="opti_form-label">{{'Add_Note'|translate}}
+                                            <span *ngIf="note.errors?.required && (note.dirty || note.touched)" class="float-right opti_error-msg">{{'Common_Note_Required'|translate}}</span>
                                         </span>
-                                        <textarea class="k-textarea" name="addnotestring" #note=ngModel [(ngModel)]="noteModel.Notes" required>Please enter your note</textarea>
+                                        <textarea class="k-textarea" name="addnotestring" #note=ngModel [(ngModel)]="noteModel.Notes" required>{{'Common_EnterNote'|translate}}</textarea>
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Note Type</span>
+                                        <span class="opti_form-label">{{'Note_Type'|translate}}</span>
                                         <kendo-dropdownlist (valueChange)="valueChange($event)" name="formNoteType" [data]="noteTypes" [textField]="'text'" [valueField]="'value'"
                                             [(ngModel)]="selectedNoteItem">
                                         </kendo-dropdownlist>
                                     </label>
 
                                     <div class="text-right">
-                                        <button type="button" class="k-button k-primary" (click)="submitNote($event);" [disabled]="!requestnoteform.form.valid">Save</button>
-                                        <button type="button" class="k-button k-primary" (click)="closeAddNoteWindow($event);">Cancel</button>
+                                        <button type="button" class="k-button k-primary" (click)="submitNote($event);" [disabled]="!requestnoteform.form.valid">{{'Common_Save'|translate}}</button>
+                                        <button type="button" class="k-button k-primary" (click)="closeAddNoteWindow($event);">{{'Common_Cancel'|translate}}</button>
                                     </div>
                                 </form>
                             </div>
@@ -109,23 +109,23 @@
                             <div (change)="changeDiv($event)" class="card-block">
                                 <form class="k-form" #editnoteform="ngForm">
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Update Note
-                                            <span *ngIf="noteEdit.errors?.required && (noteEdit.dirty || noteEdit.touched)" class="float-right opti_error-msg">Note is required.</span>
+                                        <span class="opti_form-label">{{'Common_UpdateNote'|translate}}
+                                            <span *ngIf="noteEdit.errors?.required && (noteEdit.dirty || noteEdit.touched)" class="float-right opti_error-msg">{{'Common_Note_Required'|translate}}</span>
                                         </span>
                                         <!-- <textarea id="notes" name="note" class="k-textarea" #noteValue >{{selectedNote.Notes}}</textarea> -->
                                         <textarea id="notes" name="note" #noteEdit=ngModel class="k-textarea" [(ngModel)]="selectedNote.Notes" required></textarea>
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Note Type</span>
+                                        <span class="opti_form-label">{{'Common_Note_Type'|translate}}</span>
                                         <kendo-dropdownlist (valueChange)="valueChange($event)" name="role" [data]="noteTypes" [textField]="'text'" [valueField]="'value'"
                                             [(ngModel)]="selectedNoteItem">
                                         </kendo-dropdownlist>
                                     </label>
 
                                     <div class="text-right">
-                                        <button type="button" id="updateNote" class="k-button k-primary" (click)="updateNote($event)" [disabled]="!editnoteform.form.valid">Save</button>
-                                        <button type="button" id="addNote" class="k-button k-primary" (click)="closeUpdateNote($event)">Cancel</button>
+                                        <button type="button" id="updateNote" class="k-button k-primary" (click)="updateNote($event)" [disabled]="!editnoteform.form.valid">{{'Common_Save'|translate}}e</button>
+                                        <button type="button" id="addNote" class="k-button k-primary" (click)="closeUpdateNote($event)">{{'Common_Cancel'|translate}}</button>
                                     </div>
                                 </form>
                             </div>

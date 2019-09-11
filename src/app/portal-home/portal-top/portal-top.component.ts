@@ -56,12 +56,14 @@ export class PortalTopComponent implements OnInit {
   receiverMessage($evenet) {
     this.openThemeSetting = $evenet;
   }
-
+    
   signOut() { 
     
     this.accountService.logout().subscribe(
-      data => {        
+      data => {  
+        let lang = localStorage.getItem('appLanguage');      
         localStorage.clear();
+        localStorage.setItem('appLanguage',lang);  
         this.router.navigateByUrl('/login');
       },  
       (error:HttpErrorResponse) => {

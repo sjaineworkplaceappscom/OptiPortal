@@ -10,7 +10,13 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FileDropModule } from 'ngx-file-drop';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { CustomerContractsAttachmentComponent } from './customer-contracts-attachment/customer-contracts-attachment.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   imports: [
     CommonModule,
@@ -21,7 +27,17 @@ import { CustomerContractsAttachmentComponent } from './customer-contracts-attac
     AngularSvgIconModule,
     PerfectScrollbarModule,
     FileDropModule,
-    DropDownsModule
+    DropDownsModule,
+    
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
+
   ],
   declarations: [CustomerContractsListComponent, CustomerContractsAttachmentComponent],
   exports:[CustomerContractsListComponent, CustomerContractsAttachmentComponent]

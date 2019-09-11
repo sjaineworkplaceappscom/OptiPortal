@@ -15,6 +15,7 @@ import { VendorEntityType } from 'src/app/enums/enums';
 import { AttachmentDetail } from 'src/app/models/AttchmentDetail';
 import { AppMessages } from 'src/app/helpers/app-messages';
 import * as $ from "jquery";
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vasn-attatchment',
@@ -37,7 +38,11 @@ export class VasnAttatchmentComponent implements OnInit {
   public progress: number;
   public gridData: any[];
 
-  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private toast: ToastService) { }
+  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private toast: ToastService ,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   // UI Section
   @HostListener('window:resize', ['$event'])

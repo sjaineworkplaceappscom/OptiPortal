@@ -23,6 +23,7 @@ import { Router } from '@angular/router';
 import { GlobalResource } from '../../helpers/global-resource';
 import { ConfirmDialog } from '../../helpers/services/dialog.service';
 import { Configuration } from '../../helpers/Configuration';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-purchase-inq-list',
@@ -58,7 +59,12 @@ export class PurchaseInqListComponent implements OnInit {
   pagination: boolean;
 
   @ViewChild('optirightfixedsection') optirightfixedsection;
-  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe, private router: Router, private confirmService: ConfirmDialog) {
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, public datepipe: DatePipe, private router: Router, private confirmService: ConfirmDialog,translate: TranslateService) {
+
+    //let userLang = "sp";
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
   }
 
   // UI Section

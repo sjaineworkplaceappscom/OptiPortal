@@ -22,6 +22,9 @@
             [selectable]="true" 
             (selectionChange)="openSalesOrderDetailOnSelection($event)"
             #gridItem>
+            <kendo-grid-messages 
+            noRecords="{{'Common_No_GridRecords'|translate}}">
+          </kendo-grid-messages>
                 <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
                 <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
 
@@ -34,12 +37,12 @@
                     <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
                         <div class="k-form-field float-left">
                             <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_SalesOrderListColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
-                            <label class="k-checkbox-label" for="opti_SalesOrderListColumnFilterID">Enable Filter</label>
+                            <label class="k-checkbox-label" for="opti_SalesOrderListColumnFilterID">{{'Common_EnableFilter'|translate}}</label>
                         </div>
 
                         <div class="k-form-field float-left">
                             <input #chkGrp type="checkbox" id="opti_SalesOrderColumnGroupID" (change)="onGroupChange(chkGrp,gridItem)" [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
-                            <label class="k-checkbox-label" for="opti_SalesOrderColumnGroupID">Enable Grouping</label>
+                            <label class="k-checkbox-label" for="opti_SalesOrderColumnGroupID">{{'Common_EnableGrouping'|translate}}</label>
                         </div>
                     </form>
 
@@ -73,41 +76,41 @@
                     <ng-template kendoGridCellTemplate let-dataItem>
                         
                         <dl class="opti_mobile_grid_dl">
-                            <dt>Order Number</dt>
+                            <dt>{{'SO_OrderNumber'|translate}}</dt>
                             <dd>{{ dataItem.OrderNumber }}</dd>
 
-                            <dt>Order Date</dt>
+                            <dt>{{'SO_OrderDate'|translate}}</dt>
                             <dd>{{ dataItem.OrderDate }}</dd>
 
-                            <dt>Remark</dt>
+                            <dt>{{'SQ_Remark'|translate}}</dt>
                             <dd>{{ dataItem.Remark }}</dd>
 
-                            <dt>Delivery Date</dt>
+                            <dt>{{'SO_DeliveryDate'|translate}}</dt>
                             <dd>{{ dataItem.DeliveryDate }}</dd>
 
-                            <dt>Sales Employee</dt>
+                            <dt>{{'SQ_SalesEmployee'|translate}}</dt>
                             <dd>{{ dataItem.SalesEmployee }}</dd>
 
-                            <dt>Owner</dt>
+                            <dt>{{'SQ_Owner'|translate}}</dt>
                             <dd>{{ dataItem.Owner }}</dd>
 
                             
                         </dl>
 
                         <dl class="opti_mobile_grid_dl">
-                            <dt>Total <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
+                            <dt>{{'SQ_Total'|translate}} <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
                             <dd>{{ dataItem.Total }}</dd>
 
-                            <dt>Item/Service Type</dt>
+                            <dt>{{'SQ_ItemServiceType'|translate}}</dt>
                             <dd>{{ dataItem.Servicetype }}</dd>
 
-                            <dt>Document Date</dt>
+                            <dt>{{'SQ_DocumentDate'|translate}}</dt>
                             <dd>{{ dataItem.DocumentDate }}</dd>
 
-                            <dt>Status</dt>
+                            <dt>{{'PI_Status'|translate}}</dt>
                             <dd>{{ dataItem.Status }}</dd>
                             
-                            <dt>Branch</dt>
+                            <dt>{{'SQ_Branch'|translate}}</dt>
                             <dd>{{ dataItem.Branch }}</dd>
                         </dl>
 
@@ -116,17 +119,17 @@
                 <!-- grid for mobile end -->
 
 
-                <kendo-grid-column media="(min-width: 768px)" field="OrderNumber" type="numeric" filter="numeric" title="Order Number" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="OrderDate" title="Order Date" [width]="160" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="Remark" [width]="160" title="Remark"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="DeliveryDate" [width]="160" title="Delivery Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="SalesEmployee" title="Sales Employee" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="Owner" title="Owner" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="Total" title="Total" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="ServiceType" [width]="160" title="Item/Service Type"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="DocumentDate" title="Document Date" [width]="160" filter="date"  type=date format="{0:dd MMM yy}"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="Status" title="Status" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="Branch" title="Branch" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="OrderNumber" type="numeric" filter="numeric" title="{{'SO_OrderNumber'|translate}}" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="OrderDate" title="{{'SO_OrderDate'|translate}}" [width]="160" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="Remark" [width]="160" title="{{'SQ_Remark'|translate}}"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="DeliveryDate" [width]="160" title="{{'SO_DeliveryDate'|translate}}" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="SalesEmployee" title="{{'SQ_SalesEmployee'|translate}}" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="Owner" title="{{'SQ_Owner'|translate}}" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="Total" title="{{'SQ_Total'|translate}}" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="ServiceType" [width]="160" title="{{'SQ_ItemServiceType'|translate}}"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="DocumentDate" title="{{'SQ_DocumentDate'|translate}}" [width]="160" filter="date"  type=date format="{0:dd MMM yy}"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="Status" title="{{'PI_Status'|translate}}" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="Branch" title="{{'SQ_Branch'|translate}}" [width]="160"></kendo-grid-column>
                 
                 <!-- xlsx template start -->
                 <kendo-grid-excel fileName="Sales-order.xlsx"></kendo-grid-excel>

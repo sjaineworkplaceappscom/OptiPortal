@@ -10,6 +10,7 @@ import { CustomerEntityType } from '../../enums/enums';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { AppMessages } from '../../helpers/app-messages';
 import { ToastService } from '../../helpers/services/toast.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
 @Component({
@@ -19,7 +20,11 @@ import { ToastService } from '../../helpers/services/toast.service';
 })
 export class OpenInvoicesDetailNotesComponent implements OnInit {
   
-  constructor(private sharedComponentService: SharedComponentService, private toast:ToastService) { }
+  constructor(private sharedComponentService: SharedComponentService, private toast:ToastService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
  /**
   * global variable

@@ -19,39 +19,39 @@
                         <div class="opti_fprm-inner">
 
                             <div class="text-center">
-                                <h5>Create Account</h5>
+                                <h5>{{'Acc_createAcc'|translate}}</h5>
                             </div>
 
                             <ng-container *ngIf="userType!=1">
 
                                 <ng-container *ngIf="userType == 2">
                                     <label class="k-form-field opti_position-relative">
-                                        <span class="opti_form-label">Customer ID *
-                                            <span *ngIf="compId.errors && (compId.dirty || compId.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter valid company id.</span>
-                                            <span *ngIf="invalidCompanyId == true" class="float-right opti_signup-validation-top-side opti_error-msg">Customer doesn't exist.</span>
+                                        <span class="opti_form-label">{{'Acc_CustId'|translate}} *
+                                            <span *ngIf="compId.errors && (compId.dirty || compId.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'Acc_validCompID'|translate}}</span>
+                                            <span *ngIf="invalidCompanyId == true" class="float-right opti_signup-validation-top-side opti_error-msg">{{'Acc_CustNotExist'|translate}}</span>
                                         </span>
                                         <input #focusID class="k-textbox" required [(ngModel)]="companyId" #compId=ngModel type="text" name="companyId" placeholder="e.g. Cust1032"
                                             (blur)="getCompaneyDetail()" tooltip="{{'Please Enter Id like Cust10325'}}" placement="right"
                                             (input)="resetCompanyIdVariable()" container="body" autocomplete="off" />
                                     </label>
                                     <label class="k-form-field opti_signup-company-label">
-                                        <span class="opti_form-label">Customer Details</span>
+                                        <span class="opti_form-label">{{'Acc_CustDetails'|translate}}</span>
                                     </label>
                                 </ng-container>
 
                                 <ng-container *ngIf="userType == 3">
 
                                     <label class="k-form-field opti_position-relative">
-                                        <span class="opti_form-label">Vendor ID *
-                                            <span *ngIf="compId.errors && (compId.dirty || compId.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter valid company id.</span>
-                                            <span *ngIf="invalidCompanyId == true" class="float-right opti_signup-validation-top-side opti_error-msg">Vendor doesn't exist.</span>
+                                        <span class="opti_form-label">{{'Acc_Vend_ID'|translate}} *
+                                            <span *ngIf="compId.errors && (compId.dirty || compId.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'Acc_validCompID'|translate}}</span>
+                                            <span *ngIf="invalidCompanyId == true" class="float-right opti_signup-validation-top-side opti_error-msg">{{'Acc_VendNotExists'|translate}}</span>
                                         </span>
                                         <input #focusID class="k-textbox" required [(ngModel)]="companyId" #compId=ngModel type="text" name="companyId" placeholder="e.g. V00001"
                                             (blur)="getCompaneyDetail()" tooltip="{{'Please Enter Id like V001'}}" placement="right"
                                             (input)="resetCompanyIdVariable()" container="body" autocomplete="off" />
                                     </label>
                                     <label class="k-form-field opti_signup-company-label">
-                                        <span class="opti_form-label">Vendor Details</span>
+                                        <span class="opti_form-label">{{'Acc_VendDetails'|translate}}</span>
                                     </label>
                                 </ng-container>
 
@@ -67,7 +67,7 @@
                                 </label>
 
                                 <label class="k-form-field opti_signup-primary-label">
-                                    <span class="opti_form-label">Primary Contact Details</span>
+                                    <span class="opti_form-label">{{'Acc_PrimaryCDetails'|translate}}</span>
                                 </label>
 
                                 <label class="k-form-field opti_signup-primary-name">
@@ -87,22 +87,22 @@
                             </ng-container>
 
                             <label class="k-form-field">
-                                <span class="opti_form-label">Your Name *
-                                    <span *ngIf="RequesterName.errors && (RequesterName.dirty || RequesterName.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your full name.</span>
+                                <span class="opti_form-label">{{'Acc_yourname'|translate}} *
+                                    <span *ngIf="RequesterName.errors && (RequesterName.dirty || RequesterName.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'Acc_entername'|translate}}</span>
                                 </span>
                                 <input name="RequesterName" required #RequesterName=ngModel [(ngModel)]="registerReq.RequesterName" type="text" class="k-textbox"
                                     value="" placeholder="e.g. Kevin" autocomplete="off" maxlength="100" />
                             </label>
                             <label class="k-form-field opti_position-relative">
-                                <span class="opti_form-label">Your Email *
+                                <span class="opti_form-label">{{'Acc_yourmail'|translate}} *
                                     <span *ngIf="RequesterEmail.errors?.required && RequesterEmail.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
-                                        Please enter emailId.
+                                        {{'Acc_EnterEmail'|translate}} 
                                     </span>
                                     <span *ngIf="emailAlredayExists==true && !RequesterEmail.errors?.required && !RequesterEmail.errors?.email" class="float-right opti_signup-validation-top-side opti_error-msg">
-                                        Requested email already registered.
+                                        {{'Acc_emailAlreadyReg'|translate}} 
                                     </span>
                                     <span *ngIf="RequesterEmail.errors?.email && RequesterEmail.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
-                                        Please enter valid emailId.
+                                        {{'Acc_EnterValidEmail'|translate}}
                                     </span>
 
                                 </span>
@@ -113,9 +113,9 @@
                             </label>
 
                             <label class="k-form-field">
-                                <span class="opti_form-label">Your Phone *
+                                <span class="opti_form-label">{{'Acc_YourPh'|translate}} *
                                     <span class="float-right opti_signup-validation-top-side opti_error-msg" *ngIf="Phone.errors?.required && Phone.touched">
-                                        Please enter phone number.
+                                        {{'Acc_EnterPhNo'|translate}} 
                                     </span>
                                     <!-- <span *ngIf="Phone.errors?.pattern && Phone.touched" class="opti_error-msg float-right opti_signup-validation-top-side">
                                         Phone number is not valid.
@@ -133,7 +133,7 @@
                                     <li class="opti_role-template">{{ dataItem.text }}</li> 
                                 </ng-template> -->
                                 </kendo-dropdownlist>
-                                <span class="opti_error-msg" *ngIf="invalidRole==true"> Please select role.</span>
+                                <span class="opti_error-msg" *ngIf="invalidRole==true">{{'Acc_SelectRole'|translate}}</span>
                             </label>
 
 
@@ -146,7 +146,7 @@
                                         required autocomplete="off" />
                                 </span>
                                 <span class="float-left opti_captcha-canvas">
-                                    <canvas #myCanvas id="captchaCanvasID" width="70" height="30">Your browser does not support the HTML5 canvas tag.</canvas>
+                                    <canvas #myCanvas id="captchaCanvasID" width="70" height="30">{{'Acc_BrowserNotSupport'|translate}}</canvas>
                                 </span>
                                 <span class="float-left opti_captcha-refresh opti_vertical-align">
                                     <div (click)="changeCaptcha()" class="opti_mouse-pointer">
@@ -155,8 +155,8 @@
                                 </span>
 
                                 <div class="opti_error-msg opti_display-inline-block opti_captcha-error opti_fullwidth">
-                                    <span class="opti_error-msg" *ngIf="invalidCapcha==true">Please enter valid captcha.</span>
-                                    <span class="opti_error-msg" *ngIf="Captcha.errors && (Captcha.dirty || Captcha.touched)">Captcha is required.</span>
+                                    <span class="opti_error-msg" *ngIf="invalidCapcha==true">{{'Acc_EnterValidCaptcha'|translate}}</span>
+                                    <span class="opti_error-msg" *ngIf="Captcha.errors && (Captcha.dirty || Captcha.touched)">{{'Acc_CaptchaReq'|translate}}</span>
                                 </div>
 
                                 <!-- </div> -->
@@ -165,9 +165,9 @@
                             <label class="k-form-field">
                                 <div class="opti_checkbox-container">
                                     <input type="checkbox" required name="turms" #TurmsOfUse=ngModel [(ngModel)]="turmsOfUse" id="auth-2fa" class="k-checkbox">
-                                    <label class="k-checkbox-label opti_agrementtext" for="auth-2fa"> I agree to the &nbsp;
-                                        <a href="https://www.optiproerp.com/terms-of-use/" target="_blank"> terms of use </a> &nbsp; and &nbsp;
-                                        <a href="https://www.optiproerp.com/privacy-policy/" target="_blank"> privacy policy </a>
+                                    <label class="k-checkbox-label opti_agrementtext" for="auth-2fa"> {{'Acc_IAgree'|translate}} &nbsp;
+                                        <a href="https://www.optiproerp.com/terms-of-use/" target="_blank"> {{'Acc_TermsOfUse'|translate}}</a> &nbsp;{{'Acc_And'|translate}}  &nbsp;
+                                        <a href="https://www.optiproerp.com/privacy-policy/" target="_blank"> {{'Acc_PrivacyPolicy'|translate}} </a>
                                     </label>
                                     <!-- <span style="color:red"  class="float-right opti_signup-validation-top-side" *ngIf="turmsOfUse==true" >
                                             Please accept tums of use!
@@ -177,7 +177,7 @@
 
                             <label class="k-form-field">
                                 <div class="text-right">
-                                    <button (click)="submit()" [disabled]="!signUpForm.form.valid || invalidCompanyId==true" type="button" class="k-button k-primary opti_fullwidth opti_signup-button">Sign Up</button>
+                                    <button (click)="submit()" [disabled]="!signUpForm.form.valid || invalidCompanyId==true" type="button" class="k-button k-primary opti_fullwidth opti_signup-button">{{'Acc_SignUp'|translate}}</button>
                                 </div>
                             </label>
                         </div>

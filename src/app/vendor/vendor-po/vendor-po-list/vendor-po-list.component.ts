@@ -11,6 +11,7 @@ import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { Configuration } from 'src/app/helpers/Configuration';
 import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
 import * as $ from "jquery";
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 @Component({
   selector: 'app-vendor-po-list',
   templateUrl: './vendor-po-list.component.html',
@@ -43,7 +44,11 @@ export class VendorPoListComponent implements OnInit {
   getPOlistSubs: ISubscription; 
 
   displayDateformat:string=Configuration.getDisplayDateFormat(true);
-  constructor(private commonService: Commonservice,private vendorService: VendorService, private confirmService: ConfirmDialog) { }
+  constructor(private commonService: Commonservice,private vendorService: VendorService, private confirmService: ConfirmDialog,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
 
   ngOnInit() {

@@ -23,6 +23,9 @@
            [pageable]=pagination 
            (selectionChange)="openInqueryDetailOnSelectInquery($event)"
            #gridItem>
+           <kendo-grid-messages 
+           noRecords="{{'Common_No_GridRecords'|translate}}">
+         </kendo-grid-messages>
            <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
            <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
 
@@ -35,12 +38,12 @@
                <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
                    <div class="k-form-field float-left">
                        <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
-                       <label class="k-checkbox-label" for="opti_ColumnFilterID">Enable Filter</label>
+                       <label class="k-checkbox-label" for="opti_ColumnFilterID">{{'Common_EnableFilter'|translate}}</label>
                    </div>
 
                    <div class="k-form-field float-left">
                        <input #chkGrp type="checkbox" id="opti_ColumnGroupID"  (change)="onGroupChange(chkGrp,gridItem)" [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
-                       <label class="k-checkbox-label" for="opti_ColumnGroupID">Enable Grouping</label>
+                       <label class="k-checkbox-label" for="opti_ColumnGroupID">{{'Common_EnableGrouping'|translate}}</label>
                    </div>
                </form>
 
@@ -71,18 +74,18 @@
                     </h4> -->
                     
                     <dl class="opti_mobile_grid_dl">
-                        <dt>Id</dt>
+                        <dt>{{'CPO_Id'|translate}}</dt>
                         <dd>{{ dataItem.PurchaseOrderNumber }}</dd>
 
-                        <dt>Reference Type </dt>
+                        <dt>{{'CPO_ReferenceType'|translate}}</dt>
                         <dd>{{ dataItem.RefrenceTypeText }}</dd>
                     </dl>
 
                     <dl class="opti_mobile_grid_dl">
-                        <dt>Purchase Order Date <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
+                        <dt>{{'CPO_PurchaseOrderDate'|translate}}<span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
                         <dd>{{ dataItem.PurchaseOrderDate }}</dd>
 
-                        <dt>Reference#</dt>
+                        <dt>{{'PI_ReferenceNo'|translate}}</dt>
                         <dd>{{ dataItem.RefrenceNumber }}</dd>
                     </dl>
 
@@ -91,10 +94,10 @@
            <!-- grid for mobile end -->
 
            <!-- grid template end -->
-           <kendo-grid-column media="(min-width: 768px)" field="PurchaseOrderNumber" title="Id" [width]="160" filter="numeric"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="RefrenceTypeText" [width]="160" title="Reference Type"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="PurchaseOrderDate" [width]="160" title="Purchase Order Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="RefrenceNumber" class="text-right" title="Reference#" filter="numeric" [width]="160"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="PurchaseOrderNumber" title="{{'CPO_Id'|translate}}" [width]="160" filter="numeric"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="RefrenceTypeText" [width]="160" title="{{'CPO_ReferenceType'|translate}}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="PurchaseOrderDate" [width]="160" title="{{'CPO_PurchaseOrderDate'|translate}}" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="RefrenceNumber" class="text-right" title="{{'PI_ReferenceNo'|translate}}" filter="numeric" [width]="160"></kendo-grid-column>
            <!-- xlsx template start -->
            <kendo-grid-excel fileName="customer-purchase-order.xlsx"></kendo-grid-excel>
            <!-- xlsx template end -->

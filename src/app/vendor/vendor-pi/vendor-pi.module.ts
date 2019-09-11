@@ -14,12 +14,17 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { VendorPiContentComponent } from './vendor-pi-content/vendor-pi-content.component';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 const routes: Routes = [
   { path: '',component: VendorPiListComponent  },
   {path: 'list', component: VendorPiListComponent}
 ];
-
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   imports: [
@@ -30,7 +35,16 @@ const routes: Routes = [
     FormsModule,
     AngularSvgIconModule,
     PerfectScrollbarModule,
-    DropDownsModule
+    DropDownsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
+
   ],
   exports: [RouterModule,VendorPiListComponent,VendorPiDetailComponent],
   declarations: [VendorPiListComponent, VendorPiHeaderComponent, VendorPiAttchmentsComponent, VendorPiNotesComponent, VendorPiDetailComponent, VendorPiContentComponent]

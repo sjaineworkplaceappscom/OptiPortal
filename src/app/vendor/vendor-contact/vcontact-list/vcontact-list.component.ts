@@ -9,6 +9,7 @@ import { customerContactsList } from '../../../demodata/customer-contacts';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from '../../../enums/enums';
 import { GridComponent } from '../../../../../node_modules/@progress/kendo-angular-grid';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -54,7 +55,11 @@ export class VcontactListComponent implements OnInit {
 
 
 
-  constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog) { }
+  constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   public gridData: any[];
   refreshContactListSubs: ISubscription;
@@ -110,7 +115,9 @@ export class VcontactListComponent implements OnInit {
         this.showLoader = false;
         alert("Something went wrong");
         console.log("Error: ", error);
+        let lang = localStorage.getItem('appLanguage');      
         localStorage.clear();
+        localStorage.setItem('appLanguage',lang);  
       }
     );
   }

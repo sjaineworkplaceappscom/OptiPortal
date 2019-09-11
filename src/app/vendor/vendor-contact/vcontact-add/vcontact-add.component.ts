@@ -8,6 +8,7 @@ import { GlobalResource } from '../../../helpers/global-resource';
 import { AppMessages } from '../../../helpers/app-messages';
 import { ToastService } from '../../../helpers/services/toast.service';
 import { UserType } from '../../../enums/enums';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vcontact-add',
@@ -31,7 +32,11 @@ export class VcontactAddComponent implements OnInit {
   showLoader: boolean = false;
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   public contactModel: Contact = new Contact();
-  constructor(private contactService: ContactService, private commonService: Commonservice, private toast: ToastService) { }
+  constructor(private contactService: ContactService, private commonService: Commonservice, private toast: ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   ngOnInit() {
     this.setDefaultData();

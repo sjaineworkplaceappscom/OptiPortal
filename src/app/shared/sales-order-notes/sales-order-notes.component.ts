@@ -11,6 +11,7 @@ import { GlobalResource } from '../../helpers/global-resource';
 import { Configuration } from '../../helpers/Configuration';
 import { ToastService } from '../../helpers/services/toast.service';
 import { AppMessages } from '../../helpers/app-messages';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sales-order-notes',
@@ -42,7 +43,11 @@ export class SalesOrderNotesComponent implements OnInit {
   lastnoteText:string;
   salesOrderModel: SalesOrder = new SalesOrder();
   noteModel: SalesNoteModel = new SalesNoteModel();
-  constructor(private sharedComponentService: SharedComponentService,private toast:ToastService) { }
+  constructor(private sharedComponentService: SharedComponentService,private toast:ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   public noteTypes: Array<{ text: string, value: number }> = [
     { text: "General ", value: 1 },

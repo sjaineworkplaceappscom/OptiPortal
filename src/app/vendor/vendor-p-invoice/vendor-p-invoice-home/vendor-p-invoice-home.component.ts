@@ -10,6 +10,7 @@ import { ToastService } from 'src/app/helpers/services/toast.service';
 import { AppMessages } from 'src/app/helpers/app-messages';
 import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 import { Commonservice } from 'src/app/services/commonservice.service';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-p-invoice-home',
@@ -24,7 +25,11 @@ export class VendorPInvoiceHomeComponent implements OnInit {
   vendorOIModel:VendorOIModel = new VendorOIModel();
   public addSub:ISubscription;
   showLoader:boolean=false;
-  constructor(private commonService: Commonservice, private vendorOpenInvoiceService: VendorOIService,private toast:ToastService) { }
+  constructor(private commonService: Commonservice, private vendorOpenInvoiceService: VendorOIService,private toast:ToastService ,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   ngOnInit() {
     this.setDefaultData();

@@ -5,6 +5,7 @@
     "dateFormat": "DD MMM YY",
     "displayDateFormat":"dd MMM yy",
     "appVersion": "1.6", 
+    "appLang": "sp",
     "doccumentPath": "http://localhost/OptiproPortalFiles/Upload/",
     "assetsRootpath": "assets"   
-} 
+}  

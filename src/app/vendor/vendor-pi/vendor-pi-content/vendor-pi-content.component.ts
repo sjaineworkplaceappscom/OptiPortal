@@ -6,6 +6,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { VendorPurchaseInquiryContentModel } from 'src/app/tempmodels/vendor/vendor-pi-content-model';
 import { UIHelper } from 'src/app/helpers/ui.helpers';
 import { Configuration } from 'src/app/helpers/Configuration';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-pi-content',
@@ -22,7 +23,12 @@ export class VendorPiContentComponent implements OnInit {
   VPIContentModel:VendorPurchaseInquiryContentModel = new VendorPurchaseInquiryContentModel();
   showLoader: boolean = false;
   public getVPIsubs: ISubscription;
-  constructor(private vendorService:VendorService) { }
+  constructor(private vendorService:VendorService ,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+
+   }
   gridData = [];
 
 

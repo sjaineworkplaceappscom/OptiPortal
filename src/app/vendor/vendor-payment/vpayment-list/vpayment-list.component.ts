@@ -10,6 +10,7 @@ import { VendorService } from '../../../services/vendor/vendor.service';
 import { ConfirmDialog } from '../../../helpers/services/dialog.service';
 import { ISubscription } from '../../../../../node_modules/rxjs/Subscription';
 import { DateTimeHelper } from '../../../helpers/datetime.helper';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vpayment-list',
@@ -18,7 +19,11 @@ import { DateTimeHelper } from '../../../helpers/datetime.helper';
 })
 export class VpaymentListComponent implements OnInit {
 
-  constructor(private commonService: Commonservice,private vendorService: VendorService, private confirmService: ConfirmDialog) { }
+  constructor(private commonService: Commonservice,private vendorService: VendorService, private confirmService: ConfirmDialog,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   isMobile: boolean;
   isColumnFilter: boolean = false;

@@ -3,16 +3,16 @@
   <div class="opti_position-relative opti_tab-outer">
     <ul #optiTab class="opti_tab opti_position-relative tabs clearfix" id="opti_TabID" [perfectScrollbar]="configX">
         <li class="opti_tablinks active" id="opti_HomeTabVPIID" (click)="openTab($event, 'home')">
-          <a href="javascript:void('0');">Header</a>
+          <a href="javascript:void('0');">{{'Common_Header'|translate}}</a>
         </li>
         <li class="opti_tablinks" (click)="openTab($event, 'content')">
-          <a href="javascript:void('0');">Content</a>
+          <a href="javascript:void('0');">{{'SO_Content'|translate}}</a>
         </li>
         <li class="opti_tablinks" (click)="openTab($event, 'attachement')">
-          <a href="javascript:void('0');">Attachements</a>
+          <a href="javascript:void('0');">{{'Common_Attachment'|translate}}</a>
         </li>
         <li class="opti_tablinks" (click)="openTab($event, 'notes')">
-          <a href="javascript:void('0');">Notes</a>
+          <a href="javascript:void('0');">{{'Common_Notes'|translate}}</a>
         </li>
     </ul>
   </div>

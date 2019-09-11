@@ -12,6 +12,7 @@ import { GlobalResource } from '../../helpers/global-resource';
 import { ConfirmDialog } from '../../helpers/services/dialog.service';
 import { Configuration } from '../../helpers/Configuration';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-purchase-inq-update', 
@@ -25,7 +26,11 @@ export class PurchaseInqUpdateComponent implements OnInit {
   };
   
   @Input() currentSidebarInfo: CurrentSidebarInfo;
-  constructor(private commonService: Commonservice, private purchaseInquiryService: PurchaseInquiryService, private confirmService: ConfirmDialog) { }
+  constructor(private commonService: Commonservice, private purchaseInquiryService: PurchaseInquiryService, private confirmService: ConfirmDialog,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
   dateformat:string=Configuration.getDisplayDateFormat();
   isCancelStatus: boolean = false;
   isHome: boolean = true;

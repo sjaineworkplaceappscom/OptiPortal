@@ -14,6 +14,7 @@ import { CustomerPurchaseOrderService } from '../../services/customer-purchase-o
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { ConfirmDialog } from '../../helpers/services/dialog.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
 
@@ -59,8 +60,11 @@ refreshCPOListSubs: ISubscription;
 
   
 
-  constructor(private customerPurchaseOrderService: CustomerPurchaseOrderService, private commonService: Commonservice, public datepipe: DatePipe, private router: Router, private confirmService: ConfirmDialog) {
+  constructor(private customerPurchaseOrderService: CustomerPurchaseOrderService, private commonService: Commonservice, public datepipe: DatePipe, private router: Router, private confirmService: ConfirmDialog,private translate: TranslateService) {
   
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
   }
 
 

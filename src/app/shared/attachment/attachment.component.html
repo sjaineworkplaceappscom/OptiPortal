@@ -15,7 +15,7 @@
                     <label class="opti_custom-file-upload">
                         <input #file type="file" multiple (change)="upload(file.files)"  />
                         <!-- accept=".png,.jpg" -->
-                        <img src="{{imgPath}}/common/image-upload.svg" width="16px" height="16px" /> Upload
+                        <img src="{{imgPath}}/common/image-upload.svg" width="16px" height="16px" /> {{'Common_Upload'|translate}}
                     </label>
                     <!-- {{selectedFileName}} -->
 
@@ -30,7 +30,7 @@
                     </span>
 
                     <div class="text-right">
-                        <button (click)="back()">Cancel</button>
+                        <button (click)="back()">{{'Common_Cancel'|translate}}</button>
                     </div>
 
                 </ng-container>
@@ -64,7 +64,7 @@
                                 <div class="k-form-field">
                                     <input type="checkbox" id="opti_ColumnFilterattachementID" [(ngModel)]="isColumnFilterAttachementsGrid" class="k-checkbox"
                                         name="columnfilter" />
-                                    <label class="k-checkbox-label" for="opti_ColumnFilterattachementID">Enable Filter</label>
+                                    <label class="k-checkbox-label" for="opti_ColumnFilterattachementID">{{'Common_EnableFilter'|translate}}</label>
                                 </div>
                             </form>
 
@@ -91,11 +91,11 @@
                                 </ng-template>
                         </kendo-grid-column>
 
-                        <kendo-grid-column field="AttachmentName" title="Name" [width]="160"></kendo-grid-column>
-                        <kendo-grid-column field="SizeInKb" title="Size(In Bytes)" [width]="140" filter="numeric"></kendo-grid-column>
-                        <kendo-grid-column field="AttachmentTypeText" title="Attachment Type" [width]="140"></kendo-grid-column>
-                        <kendo-grid-column field="CreatedByName" title="Created By" [width]="150"></kendo-grid-column>
-                        <kendo-grid-column field="ParentIdText" title="Reference" [width]="100"></kendo-grid-column>
+                        <kendo-grid-column field="AttachmentName" title="{{'Common_Name'|translate}}" [width]="160"></kendo-grid-column>
+                        <kendo-grid-column field="SizeInKb" title="{{'Common_Size'|translate}}" [width]="140" filter="numeric"></kendo-grid-column>
+                        <kendo-grid-column field="AttachmentTypeText" title="{{'CommonAttachmentType'|translate}}" [width]="140"></kendo-grid-column>
+                        <kendo-grid-column field="CreatedByName" title="{{'PI_CreatedBy'|translate}}" [width]="150"></kendo-grid-column>
+                        <kendo-grid-column field="ParentIdText" title="{{'PI_Reference'|translate}}" [width]="100"></kendo-grid-column>
 
                         
                         <!-- xlsx template start -->

@@ -7,32 +7,32 @@
             <form class="k-form">
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Payment Ref#</span>
+                  <span class="opti_form-label">{{'VPay_PaymentRef'|translate}}</span>
                   <input name="PaymentRef" type="text" class="k-textbox" [(ngModel)]="paymentModel.PaymentRefNumber" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Payment Mode</span>
+                  <span class="opti_form-label">{{'VPay_PaymentMode'|translate}}</span>
                   <input name="PaymentMode" type="text" class="k-textbox" [(ngModel)]="paymentModel.PaymentMode" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Payment Type</span>
+                  <span class="opti_form-label">{{'VPay_PaymentType'|translate}}</span>
                   <input name="PaymentType" type="text" class="k-textbox" [(ngModel)]="paymentModel.PaymentType" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Payment Details</span>
+                  <span class="opti_form-label">{{'VPay_PaymentDetails'|translate}}</span>
                   <input name="PaymentDetails" type="text" class="k-textbox" [(ngModel)]="paymentModel.PaymentDetails" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Amount</span>
+                  <span class="opti_form-label">{{'OI_Amount'|translate}}</span>
                   <input name="Amount" type="text" class="k-textbox" [(ngModel)]="paymentModel.Amount" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Payment Date</span>
+                  <span class="opti_form-label">{{'VPay_PaymentDate'|translate}}</span>
                   <input name="PaymentDate" type="text" class="k-textbox" (ngModelChange)="paymentModel.PaymentDate" [ngModel]="paymentModel.PaymentDate | date:'dd MMM yy'" readonly />
               </label>
               <!-- <label class="k-form-field">
@@ -41,7 +41,7 @@
               </label> -->
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Status</span>
+                  <span class="opti_form-label">{{'PI_Status'|translate}}</span>
                   <input name="Status" type="text" class="k-textbox" [(ngModel)]="paymentModel.Status" readonly />
               </label>
               

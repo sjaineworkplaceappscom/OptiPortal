@@ -20,8 +20,11 @@
            [columnMenu]="{ columnChooser: false }" 
            [height]=gridHeight 
            [selectable]="false"            
-           
+
            #gridItem>
+           <kendo-grid-messages 
+           noRecords="{{'Common_No_GridRecords'|translate}}">
+         </kendo-grid-messages>
            <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
            <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
 
@@ -34,12 +37,12 @@
                <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
                    <div class="k-form-field float-left">
                        <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
-                       <label class="k-checkbox-label" for="opti_ColumnFilterID">Enable Filter</label>
+                       <label class="k-checkbox-label" for="opti_ColumnFilterID">{{'Common_EnableFilter'|translate}}</label>
                    </div>
 
                    <div class="k-form-field float-left">
                        <input type="checkbox" id="opti_ColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
-                       <label class="k-checkbox-label" for="opti_ColumnGroupID">Enable Grouping</label>
+                       <label class="k-checkbox-label" for="opti_ColumnGroupID">{{'Common_EnableGrouping'|translate}}</label>
                    </div>
                </form>
 
@@ -70,24 +73,24 @@
                         <!-- <dt>Contract Id</dt>
                         <dd>{{ dataItem.ContractId }}</dd> -->
 
-                        <dt>Contract#</dt>
+                        <dt>{{'C_ContractID'|translate}}</dt>
                         <dd>{{ dataItem.ContractNumber }}</dd>
 
-                        <dt>Contract Date</dt>
+                        <dt>{{'C_ContractDate'|translate}}</dt>
                         <dd>{{ dataItem.ContractDate }}</dd>
 
-                        <dt>Start Date</dt>
+                        <dt>{{'C_StartDate'|translate}}</dt>
                         <dd>{{ dataItem.StartDate }}</dd>
                     </dl>
 
                     <dl class="opti_mobile_grid_dl">
-                        <dt>End Date  <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
+                        <dt>{{'C_EndDate'|translate}}  <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
                         <dd>{{ dataItem.EndDate }}</dd>
 
-                        <dt>Total Status</dt>
+                        <dt>{{'C_TotalStatus'|translate}}</dt>
                         <dd>{{ dataItem.Status }}</dd>
 
-                        <dt>Contact Person</dt>
+                        <dt>{{'C_ContactPerson'|translate}}</dt>
                         <dd>{{ dataItem.ContactPerson }}</dd>
                         
                         <!-- <dt>Download link</dt>
@@ -100,17 +103,17 @@
 
            <!-- grid template end -->
            <!-- <kendo-grid-column media="(min-width: 768px)" field="ContractId" title="Contract Id" [width]="160"></kendo-grid-column> -->
-           <kendo-grid-column media="(min-width: 768px)" field="ContractNumber" title="Contract#" [width]="180"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="ContractDate" [width]="180" title="Contract Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="StartDate" [width]="180" title="Start Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="EndDate" title="End Date" [width]="180" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="Status" title="Status" [width]="160"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="ContactPerson" title="Contact Person" [width]="160"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="ContractNumber" title="{{'C_ContractID'|translate}}" [width]="180"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="ContractDate" [width]="180" title="{{'C_ContractDate'|translate}}" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="StartDate" [width]="180" title="{{'C_StartDate'|translate}}" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="EndDate" title="{{'C_EndDate'|translate}}" [width]="180" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="Status" title="{{'C_TotalStatus'|translate}}" [width]="160"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="ContactPerson" title="{{'C_ContactPerson'|translate}}" [width]="160"></kendo-grid-column>
            <!-- <kendo-grid-column media="(min-width: 768px)" field="Downloadlink" title="Download link" [width]="160" ></kendo-grid-column> -->
              <!-- <button (click)="openContractsDetailOnSelection($event)">Attachment</button> -->
              <kendo-grid-column field="ContractNumber" title="Attachments" [width]="100" [filterable]="false" [sortable]="false" class="text-center">
                     <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex"> 
-                         <button (click)="openContractsAttchmentOnSelection(rowIndex)">Attachment</button>
+                         <button (click)="openContractsAttchmentOnSelection(rowIndex)">{{'Common_Attachment'|translate}}</button>
                     </ng-template>
             </kendo-grid-column>
            <!-- xlsx template start -->

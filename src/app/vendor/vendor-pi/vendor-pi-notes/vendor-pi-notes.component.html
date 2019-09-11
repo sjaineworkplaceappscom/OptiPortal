@@ -53,8 +53,8 @@
                             <ng-template kendoGridCellTemplate let-dataItem>
                               <dl>
                                   <span class="opti_note-meta"><strong>{{ dataItem.CreatedByName }}</strong> 
-                                      has created <strong> {{dataItem.NoteText}} </strong>  note
-                                      on <strong>{{ dataItem.CreatedDate| date:'dd MMM yy' }} </strong> 
+                                    {{'Common_Has_Created'|translate}} <strong> {{dataItem.NoteText}} </strong>  {{'Common_NoteOn'|translate}} 
+                                       <strong>{{ dataItem.CreatedDate| date:'dd MMM yy' }} </strong> 
                                   </span>
                                   <span class="float-right opti_note-action-button-sec">
                                       <svg-icon kendoGridEditCommand src="{{imgPath}}/common/edit.svg" (click)="openEditNoteView($event, dataItem)" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':selectedThemeColor}"
@@ -77,10 +77,10 @@
                       <div (change)="changeDiv($event)" class="card-block">
                           <form #requestnoteform = "ngForm" class="k-form">
                               <label class="k-form-field">
-                                  <span class="opti_form-label">Add Note
-                                          <span *ngIf="note.errors?.required && (note.dirty || note.touched)" class="float-right opti_error-msg" >Note is required.</span>
+                                  <span class="opti_form-label">{{'Add_Note'|translate}}
+                                          <span *ngIf="note.errors?.required && (note.dirty || note.touched)" class="float-right opti_error-msg" >{{'Common_Note_Required'|translate}}</span>
                                   </span>
-                                  <textarea class="k-textarea" name="addnotestring" #note = ngModel [(ngModel)]="noteModel.Notes" required>Please enter your note</textarea>
+                                  <textarea class="k-textarea" name="addnotestring" #note = ngModel [(ngModel)]="noteModel.Notes" required>{{'Common_EnterNote'|translate}}</textarea>
                               </label>
 
                               <!-- <label class="k-form-field">
@@ -90,8 +90,8 @@
                               </label> -->
 
                               <div class="text-right">
-                                  <button type="button" class="k-button k-primary" (click)="submitNote($event);" [disabled] = "!requestnoteform.form.valid">Save</button>
-                                  <button type="button" class="k-button k-primary" (click)="closeAddNoteWindow($event);">Cancel</button>
+                                  <button type="button" class="k-button k-primary" (click)="submitNote($event);" [disabled] = "!requestnoteform.form.valid">{{'Common_Save'|translate}}</button>
+                                  <button type="button" class="k-button k-primary" (click)="closeAddNoteWindow($event);">{{'Common_Cancel'|translate}}</button>
                               </div>
                           </form>
                       </div>
@@ -105,8 +105,8 @@
                       <div (change)="changeDiv($event)" class="card-block">
                           <form class="k-form" #editnoteform = "ngForm">
                             <label class="k-form-field">
-                                  <span class="opti_form-label">Update Note dsddd
-                                          <span *ngIf="noteEdit.errors?.required && (noteEdit.dirty || noteEdit.touched)" class="float-right opti_error-msg" >Note is required.</span>
+                                  <span class="opti_form-label">{{'Common_UpdateNote'|translate}}
+                                          <span *ngIf="noteEdit.errors?.required && (noteEdit.dirty || noteEdit.touched)" class="float-right opti_error-msg" >{{'Common_Note_Required'|translate}}</span>
                                   </span>
                                   <!-- <textarea id="notes" name="note" class="k-textarea" #noteValue >{{selectedNote.Notes}}</textarea> -->
                                   <textarea id="" name="note"  #noteEdit = ngModel class="k-textarea" [(ngModel)]="selectedNote.Notes" required></textarea>
@@ -119,8 +119,8 @@
                               </label> -->
 
                               <div class="text-right">
-                                  <button type="button" id="" class="k-button k-primary" (click)="updateNote($event)"  [disabled] = "!editnoteform.form.valid">Save</button>
-                                  <button type="button" id="" class="k-button k-primary" (click)="cancelEditNoteWindow($event)">Cancel</button>
+                                  <button type="button" id="" class="k-button k-primary" (click)="updateNote($event)"  [disabled] = "!editnoteform.form.valid">{{'Common_Save'|translate}}</button>
+                                  <button type="button" id="" class="k-button k-primary" (click)="cancelEditNoteWindow($event)">{{'Common_Cancel'|translate}}</button>
                               </div>
                           </form>
                       </div>

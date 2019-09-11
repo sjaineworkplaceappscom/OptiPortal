@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from '../../helpers/ui.helpers';
 import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-open-invoices-detail',
@@ -10,7 +11,11 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 })
 export class OpenInvoicesDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   public configX: PerfectScrollbarConfigInterface = {
       suppressScrollY:true

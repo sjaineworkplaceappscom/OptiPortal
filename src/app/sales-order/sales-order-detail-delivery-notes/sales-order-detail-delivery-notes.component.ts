@@ -89,7 +89,9 @@ export class SalesOrderDetailDeliveryNotesComponent implements OnInit {
       this.showLoader = false;
       //alert("Something went wrong");
       console.log("Error: ", error);
-      localStorage.clear();
+      let lang = localStorage.getItem('appLanguage');      
+        localStorage.clear();
+        localStorage.setItem('appLanguage',lang);  
     }
   );
 }

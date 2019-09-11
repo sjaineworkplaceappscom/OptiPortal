@@ -11,6 +11,7 @@ import { OpenInvoiceService } from '../../services/open-invoice.service';
 import { SharedComponentService } from '../../services/shared-component.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import * as $ from "jquery";
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 @Component({
   selector: 'app-open-invoices-detail-attachment',
   templateUrl: './open-invoices-detail-attachment.component.html',
@@ -34,7 +35,11 @@ export class OpenInvoicesDetailAttachmentComponent implements OnInit {
   searchRequest: string = '';
   openInvoiceListModel: OpenInvoiceListModel = new OpenInvoiceListModel();
   public getDetailAttachsubs: ISubscription;
-  constructor(private openInvoiceService: OpenInvoiceService, private sharedComponentService: SharedComponentService) { }
+  constructor(private openInvoiceService: OpenInvoiceService, private sharedComponentService: SharedComponentService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
 
   // UI Section

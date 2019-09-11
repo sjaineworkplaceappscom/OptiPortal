@@ -8,6 +8,7 @@ import { ToastService } from 'src/app/helpers/services/toast.service';
 import { VendorOIModel } from 'src/app/tempmodels/vendor/vendor-OI-model';
 import { ISubscription } from 'rxjs/Subscription';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-p-invoice-add',
@@ -21,7 +22,10 @@ export class VendorPInvoiceAddComponent implements OnInit {
   };
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
-  constructor(private vendorOIService: VendorOIService, private commonService: Commonservice, private confirmService: ConfirmDialog,private toast:ToastService) { 
+  constructor(private vendorOIService: VendorOIService, private commonService: Commonservice, private confirmService: ConfirmDialog,private toast:ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
 
 
   }  

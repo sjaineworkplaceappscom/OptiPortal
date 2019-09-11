@@ -102,7 +102,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
         if (resp.text == 'Ok') {
             // clear cache and navigate to landing
+            let lang = localStorage.getItem('appLanguage');      
             localStorage.clear();
+            localStorage.setItem('appLanguage',lang);  
             this.router.navigate(['landing']);
             //  return;
         }

@@ -19,6 +19,7 @@ import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import * as $ from "jquery";
 import { Configuration } from '../../helpers/Configuration';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sales-quotations-list',
@@ -60,7 +61,11 @@ export class SalesQuotationsListComponent implements OnInit {
   }
   // End UI Section
 
-  constructor(private commonService: Commonservice, private salseQuotationService: SalesQuotationService) { }
+  constructor(private commonService: Commonservice, private salseQuotationService: SalesQuotationService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   public gridData: any[];
 
@@ -156,7 +161,9 @@ export class SalesQuotationsListComponent implements OnInit {
         this.showLoader = false;
         //alert("Something went wrong");
         console.log("Error: ", error);
+        let lang = localStorage.getItem('appLanguage');      
         localStorage.clear();
+        localStorage.setItem('appLanguage',lang);  
       }
     );
   }

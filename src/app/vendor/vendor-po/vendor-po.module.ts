@@ -15,12 +15,19 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { VendorPouListComponent } from './vendor-pou-list/vendor-pou-list.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const routes: Routes = [
   { path: '', redirectTo:'vpoulist', pathMatch:'full'  },
   {path: 'vpoulist', component: VendorPouListComponent},
   {path: 'vpolist', component: VendorPoListComponent}
 ];
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   imports: [
@@ -31,7 +38,15 @@ const routes: Routes = [
     FormsModule,
     AngularSvgIconModule,
     PerfectScrollbarModule,
-    DropDownsModule
+    DropDownsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
   ],
   declarations: [ VendorPoHeaderComponent, VendorPoAttchmentsComponent,VendorPoListComponent, VendorPoDetailComponent, VendorPoContentComponent, VendorPoNotesComponent, VendorPouListComponent],
   exports:[VendorPoListComponent, VendorPoDetailComponent]

@@ -24,6 +24,9 @@
                     [selectable]="true" 
                     (selectionChange)="openDeliveryNotesDetailOnSelection($event)"
                     #gridItem>
+                    <kendo-grid-messages 
+                    noRecords="{{'Common_No_GridRecords'|translate}}">
+                  </kendo-grid-messages>
                 <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
                 <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
   
@@ -67,53 +70,53 @@
         <ng-template kendoGridCellTemplate let-dataItem>
             
             <dl class="opti_mobile_grid_dl">
-                <dt>Delivery#</dt>
+                <dt>{{'SO_Delivery#'|translate}}</dt>
                 <dd>{{ dataItem.DeliveryNumber }}</dd>
 
-                <dt>Ship Date</dt>
+                <dt>{{'SO_ShipDate'|translate}}</dt>
                 <dd>{{ dataItem.ShipDate | date: 'dd MMM yy' }}</dd>
 
-                <dt>Delivered Date</dt>
+                <dt>{{'SO_DeliveredDate'|translate}}</dt>
                 <dd>{{ dataItem.DeliveredDate | date: 'dd MMM yy' }}</dd>
 
-                <dt>Way Bill#</dt>
+                <dt>{{'SO_WayBill#'|translate}}</dt>
                 <dd>{{ dataItem.WayBillNumber }}</dd>
 
-                <dt>Tracking#</dt>
+                <dt>{{'SO_Tracking#'|translate}}</dt>
                 <dd>{{ dataItem.TrackingNumber }}</dd>
             </dl>
 
             <dl class="opti_mobile_grid_dl">
-                <dt>Mode of Shipment <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
+                <dt>{{'SO_ModeOfShipment'|translate}}<span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
                 <dd>{{ dataItem.ModeOfShipment }}</dd>
 
-                <dt>Shipping Method</dt>
+                <dt>{{'SO_ShippingMethod'|translate}}</dt>
                 <dd>{{ dataItem.ShippingMethod }}</dd>
 
-                <dt>Packing Slip#</dt>
+                <dt>{{'SO_PackingSlip#'|translate}}</dt>
                 <dd>{{ dataItem.PackingSlipNumber }}</dd>
 
-                <dt>Ship-To Location</dt>
+                <dt>{{'SO_ShipToLocation'|translate}}</dt>
                 <dd>{{ dataItem.ShipToLocation }}</dd>
                 
-                <dt>Total Price</dt>
+                <dt>{{'SO_TotalPrice'|translate}}</dt>
                 <dd>{{ dataItem.TotalPrice }}</dd>
             </dl>
 
         </ng-template>
     </kendo-grid-column>
     <!-- grid for mobile end -->
-                <!-- grid template end -->
-           <kendo-grid-column media="(min-width: 768px)" field="DeliveryNumber" title="Delivery#" [width]="160" filter="numeric"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="ShipDate" title="Ship Date" [width]="140" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="DeliveredDate" [width]="140" title="Delivered Date" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="WayBillNumber" [width]="140" title="Way Bill#" ></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="TrackingNumber" title="Tracking#" [width]="200"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="ModeOfShipment" title="Mode of Shipment" [width]="160"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="ShippingMethod" title="Shipping Method" [width]="200"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="PackingSlipNumber" title="Packing Slip#" [width]="200" ></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="ShipToLocation" title="Ship-To Location" [width]="200"></kendo-grid-column>
-           <kendo-grid-column media="(min-width: 768px)" field="TotalPrice" title="Total Price" [width]="200"></kendo-grid-column>
+                <!-- grid template end -->{{'SO_DeliveredDate#'|translate}} {{'ShipDate#'|translate}}
+           <kendo-grid-column media="(min-width: 768px)" field="DeliveryNumber" title="{{'SO_Delivery#'|translate}}" [width]="160" filter="numeric"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="ShipDate" title="{{'ShipDate#'|translate}}" [width]="140" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="DeliveredDate" [width]="140" title="{{'SO_DeliveredDate#'|translate}}" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="WayBillNumber" [width]="140" title="{{'SO_WayBill#'|translate}}" ></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="TrackingNumber" title="{{'SO_Tracking#'|translate}}" [width]="200"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="ModeOfShipment" title="{{'SO_ModeOfShipment'|translate}}" [width]="160"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="ShippingMethod" title="{{'SO_ShippingMethod'|translate}}" [width]="200"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="PackingSlipNumber" title="{{'SO_PackingSlip#'|translate}}" [width]="200" ></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="ShipToLocation" title="{{'SO_ShipToLocation'|translate}}" [width]="200"></kendo-grid-column>
+           <kendo-grid-column media="(min-width: 768px)" field="TotalPrice" title="{{'SO_TotalPrice'|translate}}" [width]="200"></kendo-grid-column>
            
            <!-- xlsx template start -->
            <kendo-grid-excel fileName="delivery-notes.xlsx"></kendo-grid-excel>

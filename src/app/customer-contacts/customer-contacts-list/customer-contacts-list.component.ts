@@ -12,6 +12,7 @@ import { ContactService } from '../../services/contact.service';
 import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ConfirmDialog } from '../../helpers/services/dialog.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-customer-contacts-list',
@@ -55,7 +56,11 @@ export class CustomerContactsListComponent implements OnInit {
 
 
 
-  constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog) { }
+  constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog ,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   public gridData: any[];
   refreshContactListSubs: ISubscription;
@@ -111,7 +116,9 @@ export class CustomerContactsListComponent implements OnInit {
         this.showLoader = false;
         alert("Something went wrong");
         console.log("Error: ", error);
+        let lang = localStorage.getItem('appLanguage');      
         localStorage.clear();
+        localStorage.setItem('appLanguage',lang);  
       }
     );
   }

@@ -19,7 +19,14 @@ import { AdvanceShipmentNotestabComponent } from './advance-shipment-notestab/ad
 import { SharedModule } from '../shared/shared.module';
 import { deliveryNotesContent } from '../demodata/delivery-notes';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   imports: [
     CommonModule,
@@ -32,7 +39,15 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
     FileDropModule,
     DropDownsModule,
     SharedModule,
-    DialogsModule
+    DialogsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
   ],
   declarations: [DeliveryNotesListComponent, DeliveryNotesDetailComponent, DeliveryNotesDetailHomeComponent, DeliveryNotesDetailContentComponent, DeliveryNotesDetailAttachmentComponent, DeliveryNotesDetailNotesComponent, AdvanceShipmentNotesListComponent, AdvanceShipmentNotestabComponent],
   exports:[DeliveryNotesListComponent, DeliveryNotesDetailComponent, DeliveryNotesDetailHomeComponent, DeliveryNotesDetailContentComponent, DeliveryNotesDetailAttachmentComponent, DeliveryNotesDetailNotesComponent, AdvanceShipmentNotesListComponent, AdvanceShipmentNotestabComponent]

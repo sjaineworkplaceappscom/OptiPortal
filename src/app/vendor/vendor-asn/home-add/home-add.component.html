@@ -6,27 +6,27 @@
           <div class="card-block">
             <form class="k-form"  #addASNForm="ngForm">
               <label class="k-form-field">
-                  <span class="opti_form-label">ASN#</span>
+                  <span class="opti_form-label">{{'ASN#'|translate}}</span>
                   <input name="ASN" type="text" [(ngModel)]="vendorASNModel.ASNId" class="k-textbox" disabled/>
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">PO Ref.#  
-                      <span *ngIf="PORef.errors && (PORef.dirty || PORef.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter PO refrence number.
+                  <span class="opti_form-label">{{'VASN_PORef'|translate}}
+                      <span *ngIf="PORef.errors && (PORef.dirty || PORef.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterPORef'|translate}}
                 </span></span>
                   <input name="PORef" type="text" required #PORef=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.POReferenceNumber"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Vendor
-                        <span *ngIf="Vendor.errors && (Vendor.dirty || Vendor.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your vendor name.
+                  <span class="opti_form-label">{{'VInquiry_Vendor'|translate}}
+                        <span *ngIf="Vendor.errors && (Vendor.dirty || Vendor.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterVendorName'|translate}}
                             </span>
                   </span>
                   <input name="Vendor" type="text" required #Vendor=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.Vendor"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Shipment Date</span>
+                  <span class="opti_form-label">{{'VASN_ShipmentDate'|translate}}</span>
                   <!-- <kendo-datepicker (valueChange)="valueShipmentChange($event)" name="ShipmentDate" [format]="'dd MMM yy'" [(ngModel)]="vendorASNModel.ShipmentDate" required [min]="minValidDate"> -->
 
                     <kendo-datepicker  name="ShipmentDate" [format]="'dd MMM yy'" [(ngModel)]="shipmentDate" required [min]="minValidDate">  
@@ -35,45 +35,45 @@
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Delivery Date</span>
+                <span class="opti_form-label">{{'SO_DeliveryDate'|translate}}</span>
                 <kendo-datepicker (valueChange)="valueDeliveryChange($event)" name="DeliveryDate" [format]="'dd MMM yy'" [(ngModel)]="deleiveryDate" required [min]="minValidDate">
                 </kendo-datepicker>
             </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Way-Bill#
-                        <span *ngIf="WayBill.errors && (WayBill.dirty || WayBill.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your way bill number.
+                  <span class="opti_form-label">{{'VASN_WayBill'|translate}}
+                        <span *ngIf="WayBill.errors && (WayBill.dirty || WayBill.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterWay'|translate}}
                             </span>
                   </span>
                   <input name="WayBill" type="text" required #WayBill=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.WayBillNumber"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Tracking#
-                        <span *ngIf="Tracking.errors && (Tracking.dirty || Tracking.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your tracking number.
+                  <span class="opti_form-label">{{'SO_Tracking'|translate}}
+                        <span *ngIf="Tracking.errors && (Tracking.dirty || Tracking.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterTracking'|translate}}
                             </span>
                   </span>
                   <input name="Tracking" type="text"  required #Tracking=ngModel  class="k-textbox" [(ngModel)]="vendorASNModel.TrackingNumber"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Price
-                        <span *ngIf="Price.errors && (Price.dirty || Price.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your price.
+                  <span class="opti_form-label">{{'DN_Price'|translate}}
+                        <span *ngIf="Price.errors && (Price.dirty || Price.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterPrice'|translate}}
                             </span>
                   </span>
                   <input name="Price" type="text" required #Price=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.Price"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Tax
-                        <span *ngIf="Tax.errors && (Tax.dirty || Tax .touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your tax.
+                  <span class="opti_form-label">{{'SO_Tax'|translate}}    
+                        <span *ngIf="Tax.errors && (Tax.dirty || Tax .touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterTax'|translate}}
                             </span>
                   </span>
                   <input name="Tax" type="text" required  #Tax=ngModel  class="k-textbox" [(ngModel)]="vendorASNModel.Tax"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Freight
+                  <span class="opti_form-label">{{'SO_Freight'|translate}}
                         <span *ngIf="Freight.errors && (Freight.dirty || Freight.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your freight.
                             </span>
                   </span>
@@ -81,24 +81,24 @@
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Discount
-                        <span *ngIf="Discount.errors && (Discount.dirty || Discount.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your discount.
+                  <span class="opti_form-label">{{'SO_Discount'|translate}}
+                        <span *ngIf="Discount.errors && (Discount.dirty || Discount.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VInquiry_Vendor'|translate}}Please enter your discount.
                             </span>
                   </span>
                   <input name="Discount" type="text"  required  #Discount=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.Discount"  />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Total Price
-                        <span *ngIf="TotalPrice.errors && (TotalPrice.dirty || TotalPrice.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your total price.
+                  <span class="opti_form-label">{{'SO_TotalPrice'|translate}}
+                        <span *ngIf="TotalPrice.errors && (TotalPrice.dirty || TotalPrice.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_ReqTotalPrice'|translate}}
                             </span>
                   </span>
                   <input name="TotalPrice" type="text"  required  #TotalPrice=ngModel class="k-textbox" [(ngModel)]="vendorASNModel.TotalPrice"  />
               </label>
 
               <div class="text-right">
-                  <button type="button" class="k-button k-primary" (click)="AddASN()">Save</button>
-                  <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
+                  <button type="button" class="k-button k-primary" (click)="AddASN()">{{'Common_Save'|translate}}</button>
+                  <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">{{'Common_Cancel'|translate}}</button>
               </div>
             </form>
           </div>

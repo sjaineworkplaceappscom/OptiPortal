@@ -9,6 +9,7 @@ import { DeliveryNotesService } from '../../services/delivery-notes.service';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { Configuration } from '../../helpers/Configuration';
 import { ConsignedInventoryService } from 'src/app/services/consigned-inventory.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-delivery-notes-detail-content',
@@ -33,7 +34,12 @@ export class DeliveryNotesDetailContentComponent implements OnInit {
   public srBatchGridData: any[];
   public dialogOpened = false;
 
-  constructor(private deliveryNotesService: DeliveryNotesService, private consignedService: ConsignedInventoryService) { }
+  constructor(private deliveryNotesService: DeliveryNotesService, private consignedService: ConsignedInventoryService ,private translate: TranslateService) { 
+    
+ translate.use(localStorage.getItem('appLanguage'));
+ translate.onLangChange.subscribe((event: LangChangeEvent) => {
+ });
+  }
 
   // UI Section
   @HostListener('window:resize', ['$event'])

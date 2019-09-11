@@ -14,6 +14,9 @@
                     <kendo-grid [kendoGridBinding]="gridData" [resizable]="true" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]=isContentColumnFilter
                         [groupable]=isContentColumnGroup [columnMenu]="{ columnChooser: false }" [height]=gridHeight-67 [selectable]="true"
                         #gridItem>
+                        <kendo-grid-messages 
+                        noRecords="{{'Common_No_GridRecords'|translate}}">
+                      </kendo-grid-messages>
                         <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
                         <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
 
@@ -28,7 +31,7 @@
                                 <div class="k-form-field float-left">
                                     <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_SalesOrderAttachmentColumnFilterID"
                                         [(ngModel)]="isContentColumnFilter" class="k-checkbox" name="columnfilter" />
-                                    <label class="k-checkbox-label" for="opti_SalesOrderAttachmentColumnFilterID">Enable Filter</label>
+                                    <label class="k-checkbox-label" for="opti_SalesOrderAttachmentColumnFilterID">{{'Common_EnableFilter'|translate}}</label>
                                 </div>
 
                                 <!-- <div class="k-form-field float-left">
@@ -62,8 +65,8 @@
                                     <svg-icon  src="{{imgPath}}/common/download.svg" (click)="download(dataItem.FileName)" [svgStyle]="{ 'width.px':16, 'height.px':16}"></svg-icon>
                                 </ng-template>
                         </kendo-grid-column>
-                        <kendo-grid-column field="FileName" title="File Name"></kendo-grid-column>
-                        <kendo-grid-column field="AttachementDate" title="Attachment Date" format="{0:dd MMM yy}"></kendo-grid-column>
+                        <kendo-grid-column field="FileName" title="{{'SO_FileName'|translate}}"></kendo-grid-column>
+                        <kendo-grid-column field="AttachementDate" title="{{'SO_AttachmentDate'|translate}}" format="{0:dd MMM yy}"></kendo-grid-column>
 
                         <!-- xlsx template start -->
                         <kendo-grid-excel fileName="sales-order-attachment.xlsx"></kendo-grid-excel>

@@ -14,7 +14,7 @@ import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { UploadModule } from '@progress/kendo-angular-upload';
 import { InputsModule } from '@progress/kendo-angular-inputs';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -26,11 +26,16 @@ import { PurchaseInqItemAddComponent } from './purchase-inq-item-add/purchase-in
 import { SharedModule } from '../shared/shared.module';
 import { CustomPipeItemPipe } from '../custom-pipe-item.pipe';
 import { ApproveUsersComponent } from '../account/approve-users/approve-users.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+//import { TranslateLazyModule } from 'src/translate-lazy.module';
 // import { CustomFilterPipe } from '../custom-filter.pipe';
 // import { CustomPipeItemPipe } from '../custom-pipe-item.pipe';
 
 
-
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   imports: [
     CommonModule,
@@ -49,13 +54,25 @@ import { ApproveUsersComponent } from '../account/approve-users/approve-users.co
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
+
+    
+    
     PerfectScrollbarModule,
     
      // Angular
      HttpClientModule,         
      FormsModule,
+    // TranslateLazyModule ,
+     SharedModule,
 
-     SharedModule
+     TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
   ],
   declarations: [
     PurchaseInqListComponent,

@@ -15,6 +15,7 @@ import { Configuration } from '../../helpers/Configuration';
 import { GlobalResource } from '../../helpers/global-resource';
 import { Router } from '@angular/router';
 import { SalesOrder } from 'src/app/tempmodels/sales-order';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
 @Component({
@@ -61,7 +62,11 @@ export class DeliveryNotesListComponent implements OnInit {
 
   
 
-  constructor(private router: Router,private commonService:Commonservice,private deliveryNotesService: DeliveryNotesService) { }
+  constructor(private router: Router,private commonService:Commonservice,private deliveryNotesService: DeliveryNotesService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
   salesOrderModel: SalesOrder = new SalesOrder();
   public gridData: any[];
   selectedItem;
@@ -91,7 +96,7 @@ export class DeliveryNotesListComponent implements OnInit {
     }else{
       this.gridHeight = UIHelper.getMainContentHeight();
     }
-    
+    debugger
     // check mobile device
     this.isMobile = UIHelper.isMobile();
     this.getPaginationAttributes();
@@ -139,7 +144,9 @@ export class DeliveryNotesListComponent implements OnInit {
       this.showLoader = false;
       //alert("Something went wrong");
       console.log("Error: ", error);
+      let lang = localStorage.getItem('appLanguage');      
       localStorage.clear();
+      localStorage.setItem('appLanguage',lang);  
     }
   );
 }
@@ -165,7 +172,9 @@ export class DeliveryNotesListComponent implements OnInit {
       this.showLoader = false;
       //alert("Something went wrong");
       console.log("Error: ", error);
-      localStorage.clear();
+      let lang = localStorage.getItem('appLanguage');      
+        localStorage.clear();
+        localStorage.setItem('appLanguage',lang);  
     }
   );
 }

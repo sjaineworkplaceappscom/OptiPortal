@@ -9,6 +9,7 @@ import { ConfirmDialog } from '../../helpers/services/dialog.service';
 import { Configuration } from '../../helpers/Configuration';
 // import { UIHelper } from '../../helpers/ui.helpers';
 import * as $ from "jquery";
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-portal-left',
@@ -18,7 +19,11 @@ import * as $ from "jquery";
 export class PortalLeftComponent implements OnInit {
   imgPath = Configuration.imagePath;
   systemAdmin: string;
-  constructor(private commonService: Commonservice, private router: Router,private confirmService:ConfirmDialog) { }
+  constructor(private commonService: Commonservice, private router: Router,private confirmService:ConfirmDialog,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
   selectedThemeColor: string = 'opticonstants.DEFAULTTHEMECOLOR';
   userType: number = 2;
 

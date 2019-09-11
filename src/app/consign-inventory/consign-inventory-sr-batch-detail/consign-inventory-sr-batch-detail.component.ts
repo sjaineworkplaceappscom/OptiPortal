@@ -10,6 +10,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { ConsignedInventoryService } from 'src/app/services/consigned-inventory.service';
 import { Commonservice } from 'src/app/services/commonservice.service';
 import { ConsignedInventoryModel } from 'src/app/models/ConsignedInventoryModel';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-consign-inventory-sr-batch-detail',
@@ -33,7 +34,11 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
   };
   public BatchSerialSideBarsubs: ISubscription;
   tabName: string = 'home';
-  constructor(private consignedInventoryService: ConsignedInventoryService, private commonService: Commonservice) { }
+  constructor(private consignedInventoryService: ConsignedInventoryService, private commonService: Commonservice,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   // UI Section
   @HostListener('window:resize', ['$event'])
@@ -145,7 +150,9 @@ export class ConsignInventorySRBatchDetailComponent implements OnInit {
         this.showLoader = false;
         //alert("Something went wrong");
         console.log("Error: ", error);
+        let lang = localStorage.getItem('appLanguage');      
         localStorage.clear();
+        localStorage.setItem('appLanguage',lang);  
       }
     );
   }

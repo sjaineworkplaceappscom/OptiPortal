@@ -43,8 +43,8 @@
                                     <div class="opti_label-container-add-item opti_position-relative">
                                         <div class="opti_overrite-section-for-disable" *ngIf="isCancelStatus"></div>
                                         <label class="k-form-field">
-                                            <span class="opti_form-label">Item Details *
-                                                    <span *ngIf="itemDetails.errors?.required && (itemDetails.dirty || itemDetails.touched)" class="float-right opti_error-msg" >Item Details is required.</span>
+                                            <span class="opti_form-label">{{'PI_ItemDetails'|translate}} *
+                                                    <span *ngIf="itemDetails.errors?.required && (itemDetails.dirty || itemDetails.touched)" class="float-right opti_error-msg" >{{'PI_ItemDetailRequired'|translate}}</span>
                                             </span>   
                                                                                      
                                             <input type="text" class="k-textbox" #itemDetails = ngModel name="custId_description" [(ngModel)]="purchaseItemsModel.CustomerItemCode" required value=""
@@ -52,22 +52,22 @@
                                         </label>
 
                                         <label class="k-form-field">
-                                            <span class="opti_form-label">Item Quantity *
-                                                    <span *ngIf="itemQty.errors?.required && (itemQty.dirty || itemQty.touched)" class="float-right opti_error-msg" >Item Quantity is required.</span>
+                                            <span class="opti_form-label">{{'PI_ItemQTY'|translate}} *
+                                                    <span *ngIf="itemQty.errors?.required && (itemQty.dirty || itemQty.touched)" class="float-right opti_error-msg" >{{'PI_ItemQTYRequired'|translate}}</span>
                                             </span>
                                             <input  class="k-textbox" #itemQty = ngModel name="itemQuantity"  [(ngModel)]="purchaseItemsModel.Quantity" type="number" min="0"   value="0" required="true"  [disabled]="IsItemStatusCancel"/>
                                         </label>
 
                                         <label class="k-form-field">
-                                            <span class="opti_form-label">Item Unit *
-                                                    <span *ngIf="itemUnit.errors?.required && (itemUnit.dirty || itemUnit.touched)" class="float-right opti_error-msg" >Item Unit is required.</span>
+                                            <span class="opti_form-label">{{'PI_ItemUnit'|translate}} *
+                                                    <span *ngIf="itemUnit.errors?.required && (itemUnit.dirty || itemUnit.touched)" class="float-right opti_error-msg" >{{'PI_ItemUnitRequired'|translate}}</span>
                                             </span>
                                             <input type="text" class="k-textbox" name="Unit" #itemUnit = ngModel [(ngModel)]="purchaseItemsModel.Unit" value="" required placeholder="Item Unit" [disabled]="IsItemStatusCancel"/>
                                         </label>
 
                                         <label class="k-form-field">
-                                            <span class="opti_form-label">Status *
-                                                <span *ngIf="status.errors?.required && (status.dirty || status.touched)" class="float-right opti_error-msg" >Item Status is required.</span>
+                                            <span class="opti_form-label">{{'PI_Status'|translate}} *
+                                                <span *ngIf="status.errors?.required && (status.dirty || status.touched)" class="float-right opti_error-msg" >{{'PI_StatusRequired'|translate}}</span>
                                             </span>
                                             <kendo-dropdownlist (valueChange)="valueChange($event)" name="status" [data]="statusValues" #status = ngModel [(ngModel)]="purchaseItemsModel.Status" [valuePrimitive]="true"
                                                 [textField]="'text'" [valueField]="'value'" [disabled]="IsStatusDisbale">
@@ -75,32 +75,32 @@
                                         </label>
 
                                         <label class="k-form-field">
-                                            <span class="opti_form-label">Requester</span>
+                                            <span class="opti_form-label">{{'PI_Requester'|translate}}</span>
                                             <input type="text" class="k-textbox" name="requester" [(ngModel)]="purchaseItemsModel.Requester"  value="" placeholder="Requester"
                                             [disabled]="IsItemStatusCancel"/>
                                         </label>
 
                                         <label class="k-form-field">
-                                            <span class="opti_form-label">Request Date</span>
+                                            <span class="opti_form-label">{{'PI_RequestDate'|translate}}</span>
                                             <kendo-datepicker (valueChange)="valueChange($event)"  name="requestDate" [(ngModel)]="purchaseItemsModel.RequestDate"    [format]="'dd MMM yy'"  [disabled]="IsItemStatusCancel"> </kendo-datepicker>
                                         </label>
 
                                         <label class="k-form-field">
-                                            <span class="opti_form-label">Required Date</span>
+                                            <span class="opti_form-label">{{'PI_RequiredDate'|translate}}</span>
                                             <kendo-datepicker (valueChange)="valueChange($event)"  name="requiredDate" [(ngModel)]="purchaseItemsModel.RequiredDate" [format]="'dd MMM yy'" [disabled]="IsItemStatusCancel"> </kendo-datepicker>
                                         </label>
        
                                         <label class="k-form-field">
-                                            <span class="opti_form-label">Ship To location</span>
-                                            <textarea class="k-textarea" name="unit" [(ngModel)]="purchaseItemsModel.ShipToLocation" [disabled]="IsItemStatusCancel">Location</textarea>
+                                            <span class="opti_form-label">{{'PI_ShipToLocation'|translate}}</span>
+                                            <textarea class="k-textarea" name="unit" [(ngModel)]="purchaseItemsModel.ShipToLocation" [disabled]="IsItemStatusCancel">{{'Common_Location'|translate}}</textarea>
                                         </label>
                                     </div>    
 
                                         <div class="text-right">
-                                            <button type="button" class="k-button k-primary" (click)="OnSaveOperationClick(false)" *ngIf="isCancelStatus==false" [disabled] = "!piForm.form.valid">Save</button>
+                                            <button type="button" class="k-button k-primary" (click)="OnSaveOperationClick(false)" *ngIf="isCancelStatus==false" [disabled] = "!piForm.form.valid">{{'Common_Save'|translate}}</button>
                                             <!-- <button type="button" class="k-button" (click)="addItemtagain()">Add Item Again</button> -->
-                                            <button type="button" class="k-button" (click)="OnSaveOperationClick(true)" *ngIf="isCancelStatus==false" [disabled] = "!piForm.form.valid">Save and New</button>
-                                            <button type="button" class="k-button" (click)="closeItemForm()">Cancel</button>
+                                            <button type="button" class="k-button" (click)="OnSaveOperationClick(true)" *ngIf="isCancelStatus==false" [disabled] = "!piForm.form.valid">{{'Common_SaveAndNew'|translate}}</button>
+                                            <button type="button" class="k-button" (click)="closeItemForm()">{{'Common_Cancel'|translate}}</button>
                                         </div>
 
                                     </form>
@@ -144,6 +144,9 @@
                     <kendo-grid [kendoGridBinding]="gridItemsData" [resizable]="true" [pageSize]="50" [pageable]="true" [sortable]="true" [filterable]=isColumnFilterItemsGrid
                         [groupable]="false" [columnMenu]="{ columnChooser: false }" [height]=gridHeight-56 [selectable]="true"
                         (selectionChange)="onItemGridDataSelection($event, true)" #gridItemsValues>
+                        <kendo-grid-messages 
+                        noRecords="{{'Common_No_GridRecords'|translate}}">
+                      </kendo-grid-messages>
 
                         <!-- (click)="openRightSection(true)" -->
 
@@ -157,7 +160,7 @@
                                 <div class="k-form-field">
                                     <input type="checkbox" id="opti_ColumnFilterItemID" [(ngModel)]="isColumnFilterItemsGrid" class="k-checkbox" name="columnfilter"
                                     />
-                                    <label class="k-checkbox-label" for="opti_ColumnFilterItemID">Enable Filter</label>
+                                    <label class="k-checkbox-label" for="opti_ColumnFilterItemID">{{'Common_EnableFilter'|translate}}</label>
                                 </div>
                             </form>
 
@@ -177,14 +180,14 @@
                         <!-- grid column start -->
                         <!-- <kendo-grid-column field="PurchaseInquiryItemId" [width]="160" title="Id" filter="numeric" ></kendo-grid-column>
                                 <kendo-grid-column field="Description" title="Description" [width]="140"></kendo-grid-column> -->
-                        <kendo-grid-column field="CustomerItemCode" title="Item Details" [width]="200"></kendo-grid-column>
-                        <kendo-grid-column field="Quantity" [width]="160" filter="numeric"></kendo-grid-column>
-                        <kendo-grid-column field="Unit" [width]="140"></kendo-grid-column>
-                        <kendo-grid-column field="StatusText" title="Status" [width]="140"></kendo-grid-column>
-                        <kendo-grid-column field="Requester" [width]="140"></kendo-grid-column>
-                        <kendo-grid-column field="RequestDate" title="Request Date" [width]="140" type=date filter="date" format="{0:dd MMM yy}"></kendo-grid-column>
-                        <kendo-grid-column field="RequiredDate" title="Required Date" [width]="140" type=date filter="date" format="{0:dd MMM yy}"></kendo-grid-column>
-                        <kendo-grid-column field="ShipToLocation" title="ShipTo Location" [width]="140"></kendo-grid-column>
+                        <kendo-grid-column field="CustomerItemCode" title="{{'PI_ItemDetails'|translate}}" [width]="200"></kendo-grid-column>
+                        <kendo-grid-column field="Quantity" title="{{'PI_Quantity'|translate}}"  [width]="160" filter="numeric"></kendo-grid-column>
+                        <kendo-grid-column field="Unit"title="{{'PI_Unit'|translate}}" [width]="140"></kendo-grid-column>
+                        <kendo-grid-column field="StatusText" title="{{'PI_Status'|translate}}" [width]="140"></kendo-grid-column>
+                        <kendo-grid-column field="Requester"  title="{{'PI_Requester'|translate}}" [width]="140"></kendo-grid-column>
+                        <kendo-grid-column field="RequestDate" title="{{'PI_RequestDate'|translate}}" [width]="140" type=date filter="date" format="{0:dd MMM yy}"></kendo-grid-column>
+                        <kendo-grid-column field="RequiredDate" title="{{'PI_RequiredDate'|translate}}" [width]="140" type=date filter="date" format="{0:dd MMM yy}"></kendo-grid-column>
+                        <kendo-grid-column field="ShipToLocation" title="{{'PI_ShipToLocation'|translate}}" [width]="140"></kendo-grid-column>
                         <!-- grid column end -->
 
                         <!-- xlsx template start -->

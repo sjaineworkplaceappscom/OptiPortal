@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-reset-password',
@@ -9,7 +10,11 @@ import { AccountService } from '../../services/account.service';
 export class ResetPasswordComponent implements OnInit {
   email:string;
   showLoader:boolean=false;
-  constructor(private accountService:AccountService) { }
+  constructor(private accountService:AccountService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   ngOnInit() {
     const element = document.getElementsByTagName("body")[0];

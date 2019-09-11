@@ -10,6 +10,7 @@ import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ISubscription } from 'rxjs/Subscription';
 import * as $ from "jquery";
 import { Configuration } from '../../helpers/Configuration';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
 @Component({
@@ -55,7 +56,11 @@ export class SalesOrderListComponent implements OnInit {
 
 
 
-  constructor(private commonService: Commonservice, private salseOrderService: SalesOrderService) { }
+  constructor(private commonService: Commonservice, private salseOrderService: SalesOrderService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   public gridData: any[];
 
@@ -155,7 +160,9 @@ export class SalesOrderListComponent implements OnInit {
         this.showLoader = false;
         //alert("Something went wrong");
         console.log("Error: ", error);
+        let lang = localStorage.getItem('appLanguage');      
         localStorage.clear();
+        localStorage.setItem('appLanguage',lang);  
       }
     );
   }

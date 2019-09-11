@@ -24,30 +24,30 @@
               <form class="k-form" #contactForm="ngForm">
 
                 <label class="k-form-field">
-                    <span class="opti_form-label">Contact Id
-                        <span *ngIf="ContactOptiId.errors && (ContactOptiId.dirty || ContactOptiId.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter contact Id.</span>
+                    <span class="opti_form-label">{{'Contact_ContactId'|translate}}
+                        <span *ngIf="ContactOptiId.errors && (ContactOptiId.dirty || ContactOptiId.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >{{'Contact_IdRequire'|translate}}</span>
                     </span>
                     <input name="contactOptiId" required type="text" #ContactOptiId=ngModel placeholder="e.g. Contact@info.com" class="k-textbox" [(ngModel)]="contactModel.ContactOptiId" />
                 </label>
 
                 <label class="k-form-field">
-                    <span class="opti_form-label">Contact Name
-                        <span *ngIf="contactName.errors && (contactName.dirty || contactName.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter contact name.</span>
+                    <span class="opti_form-label">{{'Contact_ContactName'|translate}}
+                        <span *ngIf="contactName.errors && (contactName.dirty || contactName.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >{{'Contact_NameRequire'|translate}}</span>
                     </span>
                     <input name="contactName" required #contactName=ngModel  placeholder="e.g. Kevin Peter" type="text" class="k-textbox" [(ngModel)]="contactModel.ContactName" />
                 </label>
 
                 <label class="k-form-field">
-                    <span class="opti_form-label">Phone
-                        <span *ngIf="phone.errors && (phone.dirty || phone.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter phone number.</span>
+                    <span class="opti_form-label">{{'Contact_PhoneC'|translate}}Phone
+                        <span *ngIf="phone.errors && (phone.dirty || phone.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >{{'Contact_PhoneRequire'|translate}}</span>
                     </span> 
                     <input name="phone" type="text"  placeholder="e.g. +01 321 856 5478" class="k-textbox" required #phone=ngModel [(ngModel)]="contactModel.PhoneNumber"  />
                 </label>
                 <label class="k-form-field">
-                    <span class="opti_form-label">Email
-                        <span *ngIf="RequesterEmail.errors?.required && (RequesterEmail.dirty || RequesterEmail.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter emailId.</span>
+                    <span class="opti_form-label">{{'Contact_EmailC'|translate}}
+                        <span *ngIf="RequesterEmail.errors?.required && (RequesterEmail.dirty || RequesterEmail.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >{{'Contact_EmailRequire'|translate}}</span>
                         <span *ngIf="RequesterEmail.errors?.email && RequesterEmail.touched && !RequesterEmail.errors?.required" class="float-right opti_signup-validation-top-side opti_error-msg">
-                            Please enter valid emailId. 
+                            {{'Contact_ValidateEmail'|translate}} 
                         </span>  
                     </span>
                     <!-- <input name="email" type="text"  placeholder="e.g. kevin@gmail.com"  value="email" required type="email" #RequesterEmail=ngModel class="k-textbox" [(ngModel)]="contactModel.ContactEmail" /> -->
@@ -57,14 +57,14 @@
                 </label>
 
                 <label class="k-form-field">
-                    <span class="opti_form-label">Address
-                            <span *ngIf="Address.errors && (Address.dirty || Address.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter address.</span>
+                    <span class="opti_form-label">{{'Contact_Address'|translate}}
+                            <span *ngIf="Address.errors && (Address.dirty || Address.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >{{'Contact_AddressRequire'|translate}}</span>
                     </span>
                     <textarea class="k-textarea" required #Address=ngModel name="address" [(ngModel)]="contactModel.Address" >Address</textarea>
                 </label>
 
                 <label class="k-form-field">
-                    <span class="opti_form-label">Status</span>
+                    <span class="opti_form-label">{{'PI_Status'|translate}}</span>
                     <!-- <kendo-dropdownlist
                         [data]="listItems"
                         textField="text"
@@ -77,9 +77,9 @@
                 </label>
 
                 <div class="text-right">
-                    <button type="button" class="k-button k-primary" [disabled]="!contactForm.form.valid"  (click)="AddContact()">Save</button>
+                    <button type="button" class="k-button k-primary" [disabled]="!contactForm.form.valid"  (click)="AddContact()">{{'Common_Save'|translate}}</button>
                     
-                    <button type="button" class="k-button" (click)="closeRightSidebar()">Cancel</button>
+                    <button type="button" class="k-button" (click)="closeRightSidebar()">{{'Common_Cancel'|translate}}</button>
                 </div>
 
               </form>

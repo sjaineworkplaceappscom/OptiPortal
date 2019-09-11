@@ -27,6 +27,9 @@
                     [selectable]="true" 
                     (selectionChange)="openInqueryDetailOnSelectInquery($event)"
                     #gridItem>
+                    <kendo-grid-messages 
+                    noRecords="{{'Common_No_GridRecords'|translate}}">
+                  </kendo-grid-messages>
 
                     <!-- grid template start -->
                     <ng-template kendoGridToolbarTemplate>
@@ -37,12 +40,12 @@
                         <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
                             <div class="k-form-field float-left">
                                 <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
-                                <label class="k-checkbox-label" for="opti_ColumnFilterID">Enable Filter</label>
+                                <label class="k-checkbox-label" for="opti_ColumnFilterID">{{'Common_EnableFilter'|translate}}</label>
                             </div>
 
                             <div class="k-form-field float-left">
                                 <input #chkGrp type="checkbox" id="opti_ColumnGroupID" (change)="onGroupChange(chkGrp,gridItem)" [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
-                                <label class="k-checkbox-label" for="opti_ColumnGroupID">Enable Grouping</label>
+                                <label class="k-checkbox-label" for="opti_ColumnGroupID">{{'Common_EnableGrouping'|translate}}</label>
                             </div>
                         </form>
 
@@ -75,32 +78,32 @@
                                 </h4> -->
                                 
                                 <dl class="opti_mobile_grid_dl">
-                                    <dt>Inquiry#</dt>
+                                    <dt>{{'PI_Purchase_Enquiry'|translate}}</dt>
                                     <dd>{{ dataItem.InquiryNumber }}</dd>
 
-                                    <dt>Customer Id</dt>
+                                    <dt>{{'PI_CustomerId'|translate}}</dt>
                                     <dd>{{ dataItem.CustomerCode }}</dd>
 
-                                    <dt>Customer Name</dt>
+                                    <dt>{{'PI_CustomerName'|translate}}</dt>
                                     <dd>{{ dataItem.CustomerName }}</dd>
 
-                                    <dt>Status</dt>
+                                    <dt>{{'PI_Status'|translate}}</dt>
                                     <dd>{{ dataItem.StatusText }}</dd>
 
                                     
                                 </dl>
 
                                 <dl class="opti_mobile_grid_dl">
-                                    <dt>Created Date <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
+                                    <dt>{{'PI_CreatedDate'|translate}} <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
                                     <dd>{{ dataItem.CreatedDate | date:dateformat }} </dd>
 
-                                    <dt>Created By</dt>
+                                    <dt>{{'PI_CreatedBy'|translate}}/dt>
                                     <dd>{{ dataItem.Buyer }}</dd>
 
-                                    <dt>Valid Until</dt>
+                                    <dt>{{'PI_ValidUntil'|translate}}</dt>
                                     <dd>{{ dataItem.ValidTillDate | date:dateformat }}</dd>
 
-                                    <dt>Reference#</dt>
+                                    <dt>{{'PI_ReferenceNo'|translate}}</dt>
                                     <dd>{{ dataItem.ReferenceNumber }}</dd>
                                 </dl>
 
@@ -109,15 +112,15 @@
                     <!-- grid for mobile end -->
 
                     <!-- grid template end -->
-                    <kendo-grid-column media="(min-width: 768px)" field="InquiryNumber" title="Inquiry#" [width]="160" filter="numeric"></kendo-grid-column>
-                    <kendo-grid-column media="(min-width: 768px)" field="CustomerCode" *ngIf="loginUserType==1" title="Customer Id" [width]="140" [hidden]=true></kendo-grid-column>
-                    <kendo-grid-column media="(min-width: 768px)" field="CustomerName" *ngIf="loginUserType==1" [width]="140" title="Customer Name" [hidden]=true></kendo-grid-column>
-                    <kendo-grid-column media="(min-width: 768px)" field="StatusText" [width]="140" title="Status" ></kendo-grid-column>
-                    <kendo-grid-column media="(min-width: 768px)" field="CreatedDate" title="Created Date" [width]="200"  filter="date" type=date [format]="displayDateformat"></kendo-grid-column>
-                    <kendo-grid-column media="(min-width: 768px)" field="Buyer" title="Created By" [width]="140"></kendo-grid-column>
-                    <kendo-grid-column media="(min-width: 768px)" field="ValidTillDate" title="Valid Until" [width]="200" filter="date"  type=date [format]="displayDateformat"></kendo-grid-column>
-                    <kendo-grid-column media="(min-width: 768px)" field="ReferenceNumber" class="text-right" [width]="140" title = "Reference#"></kendo-grid-column>
-
+                    <kendo-grid-column media="(min-width: 768px)" field="InquiryNumber" title="{{'PI_Purchase_Enquiry'|translate}}" [width]="160" filter="numeric"></kendo-grid-column>
+                    <kendo-grid-column media="(min-width: 768px)" field="CustomerCode" *ngIf="loginUserType==1" title="{{'PI_CustomerId'|translate}}" [width]="140" [hidden]=true></kendo-grid-column>
+                    <kendo-grid-column media="(min-width: 768px)" field="CustomerName" *ngIf="loginUserType==1" [width]="140" title="{{'PI_CustomerName'|translate}}" [hidden]=true></kendo-grid-column>
+                    <kendo-grid-column media="(min-width: 768px)" field="StatusText" [width]="140" title="{{'PI_Status'|translate}}" ></kendo-grid-column>
+                    <kendo-grid-column media="(min-width: 768px)" field="CreatedDate" title="{{'PI_CreatedDate'|translate}}" [width]="200"  filter="date" type=date [format]="displayDateformat"></kendo-grid-column>
+                    <kendo-grid-column media="(min-width: 768px)" field="Buyer" title="{{'PI_CreatedBy'|translate}}" [width]="140"></kendo-grid-column>
+                    <kendo-grid-column media="(min-width: 768px)" field="ValidTillDate"  title="{{'PI_ValidUntil'|translate}}" [width]="200" filter="date"  type=date [format]="displayDateformat"></kendo-grid-column>
+                    <kendo-grid-column media="(min-width: 768px)"  field="ReferenceNumber" class="text-right" [width]="140" title = "{{'PI_ReferenceNo'|translate}}"></kendo-grid-column>
+                    
                     <!-- xlsx template start -->
                     <kendo-grid-excel fileName="Requests.xlsx"></kendo-grid-excel>
                     <!-- xlsx template end -->

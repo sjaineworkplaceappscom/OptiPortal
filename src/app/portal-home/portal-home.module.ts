@@ -19,7 +19,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { PurchaseInquiryModule } from '../purchase-inquiry/purchase-inquiry.module';
@@ -40,8 +40,12 @@ import { VendorPiModule } from '../vendor/vendor-pi/vendor-pi.module';
 import { VendorContactModule } from '../vendor/vendor-contact/vendor-contact.module';
 import { VendorAsnModule } from '../vendor/vendor-asn/vendor-asn.module';
 import { ConsignInventoryModule } from '../consign-inventory/consign-inventory.module';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   imports: [
@@ -85,7 +89,15 @@ import { ConsignInventoryModule } from '../consign-inventory/consign-inventory.m
     VendorPiModule,
     VendorContactModule,
     VendorAsnModule ,
-    ConsignInventoryModule  
+    ConsignInventoryModule  ,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
     ],
   declarations: [
     PortalHomeComponent, PortalLeftComponent, PortalTopComponent, PortalRightComponent, DashboardComponent,ThemeManagerComponent 

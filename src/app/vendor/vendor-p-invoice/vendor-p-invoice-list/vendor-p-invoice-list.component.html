@@ -34,12 +34,12 @@
                     <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
                         <div class="k-form-field float-left">
                             <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_PaymentListColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
-                            <label class="k-checkbox-label" for="opti_PaymentListColumnFilterID">Enable Filter</label>
+                            <label class="k-checkbox-label" for="opti_PaymentListColumnFilterID">{{'Common_Cancel'|translate}}Enable Filter</label>
                         </div>
 
                         <div class="k-form-field float-left">
                             <input #chkGrp type="checkbox" id="opti_PaymentColumnGroupID"  (change)="onGroupChange(chkGrp,gridItem)"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
-                            <label class="k-checkbox-label" for="opti_PaymentColumnGroupID">Enable Grouping</label>
+                            <label class="k-checkbox-label" for="opti_PaymentColumnGroupID">{{'Common_Cancel'|translate}}Enable Grouping</label>
                         </div>
                     </form>
 
@@ -66,27 +66,27 @@
                 <kendo-grid-column media="(max-width: 767px)" title="Payment List" class="opti_mobile-grid-td">
                     <ng-template kendoGridCellTemplate let-dataItem>
                         <dl class="opti_mobile_grid_dl">
-                            <dt>Invoice#</dt>
+                            <dt>{{'OI_Id'|translate}}</dt>
                             <dd>{{ dataItem.InvoiceNumber }}</dd>
 
-                            <dt>PO Ref.#</dt>
+                            <dt>{{'VASN_PORef'|translate}}</dt>
                             <dd>{{ dataItem.POReferenceNumber }}</dd>
 
-                            <dt>Vendor</dt>
+                            <dt>{{'VInquiry_Vendor'|translate}}</dt>
                             <dd>{{ dataItem.Vendor }}</dd>
 
-                            <dt>Invoice Date</dt>
+                            <dt>{{'OI_InvoiceDate'|translate}}</dt>
                             <dd>{{ dataItem.InvoiceDate }}</dd>
                         </dl>
 
                         <dl class="opti_mobile_grid_dl">
-                            <dt>Invoice Amount <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
+                            <dt>{{'VInvoice_InvoiceAmount'|translate}} <span class="opti_arrow-grid-detail float-right text-center opti_vertical-align">&rsaquo;</span></dt>
                             <dd>{{ dataItem.InvoiceAmount }}</dd>
 
-                            <dt>Payment Due Date</dt>
+                            <dt>{{'VInvoice_PaymentDueDate'|translate}}</dt>
                             <dd>{{ dataItem.PaymentDueDate }}</dd>
 
-                            <dt>Status</dt>
+                            <dt>{{'PI_Status'|translate}}</dt>
                             <dd>{{ dataItem.Status }}</dd>
                         </dl>
                     </ng-template>
@@ -94,13 +94,13 @@
                 <!-- grid for mobile end -->
 
 
-                <kendo-grid-column media="(min-width: 768px)" field="InvoiceNumber"  filter="numeric" title="Invoice#" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="POReferenceNumber" class="text-right" title="PO Ref.#" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="Vendor" title="Vendor" [width]="160" ></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="InvoiceDate" title="Invoice Date" [width]="160" filter="date" type=date format="{0:dd MMM yy}" ></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="InvoiceAmount" title="Invoice Amount" [width]="160"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="PaymentDueDate" title="Payment Due Date" [width]="160" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
-                <kendo-grid-column media="(min-width: 768px)" field="Status" title="Status" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="InvoiceNumber"  filter="numeric" title="{{'OI_Id'|translate}}" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="POReferenceNumber" class="text-right" title="{{'VASN_PORef'|translate}}" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="Vendor" title="{{'VInquiry_Vendor'|translate}}" [width]="160" ></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="InvoiceDate" title="{{'OI_InvoiceDate'|translate}}" [width]="160" filter="date" type=date format="{0:dd MMM yy}" ></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="InvoiceAmount" title="{{'VInvoice_InvoiceAmount'|translate}}" [width]="160"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="PaymentDueDate" title="{{'VInvoice_PaymentDueDate'|translate}}" [width]="160" filter="date" type=date format="{0:dd MMM yy}"></kendo-grid-column>
+                <kendo-grid-column media="(min-width: 768px)" field="Status" title="{{'PI_Status'|translate}}" [width]="160"></kendo-grid-column>
                 
                 <!-- xlsx template start -->
                 <kendo-grid-excel fileName="vendor-invoice-list.xlsx"></kendo-grid-excel>

@@ -8,6 +8,7 @@ import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { VendorService } from 'src/app/services/vendor/vendor.service';
 import { ToastService } from 'src/app/helpers/services/toast.service';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vasn-update',
@@ -22,7 +23,11 @@ export class VasnUpdateComponent implements OnInit {
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
 
-  constructor(private commonService: Commonservice, private vendorService: VendorService, private toast:ToastService) {}
+  constructor(private commonService: Commonservice, private vendorService: VendorService, private toast:ToastService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
   
   showLoader: boolean = false;
   tabName: string = 'home';

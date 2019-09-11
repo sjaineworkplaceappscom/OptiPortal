@@ -13,68 +13,68 @@
             <form class="k-form">
 
               <label class="k-form-field">
-                  <span class="opti_form-label">PO#</span>
+                  <span class="opti_form-label">{{'VPO_PONo'|translate}}</span>
                   <input name="POID" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.PONumber" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Vendor</span>
+                <span class="opti_form-label">{{'VInquiry_Vendor'|translate}}</span>
                 <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Vendor" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">PO Date</span>
+                <span class="opti_form-label">{{'VPO_PODate'|translate}}</span>
                 <input name="PODate" type="text" class="k-textbox" (ngModelChange)="VPOHeaderModel.PODate" [ngModel]="VPOHeaderModel.PODate | date:'dd MMM yy'" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Due Date</span>
+                <span class="opti_form-label">{{'SQ_DueDate'|translate}}</span>
                 <input name="DUEDate" type="text" class="k-textbox" (ngModelChange)="VPOHeaderModel.DueDate" [ngModel]="VPOHeaderModel.DueDate | date:'dd MMM yy'" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Status</span>
+                <span class="opti_form-label">{{'PI_Status'|translate}}</span>
                 <input name="Status" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Status" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Ack Yes/No</span>
+                <span class="opti_form-label">{{'VPO_AckYesNo'|translate}}</span>
                 <input name="Ack" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Ack" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Buyer</span>
+                <span class="opti_form-label">{{'VInquiry_Buyer'|translate}}</span>
                 <input name="Buyer" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Buyer" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Price</span>
+                <span class="opti_form-label">{{'DN_Price'|translate}}</span>
                 <input name="Price" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Price" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Tax</span>
+                <span class="opti_form-label">{{'SO_Tax'|translate}}</span>
                 <input name="Tax" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Tax" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Freight</span>
+                <span class="opti_form-label">{{'SO_Freight'|translate}}</span>
                 <input name="Freight" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Freight" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Discount</span>
+                <span class="opti_form-label">{{'SO_Discount'|translate}}</span>
                 <input name="Discount" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.Discount" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Total Price</span>
+                <span class="opti_form-label">{{'SO_TotalPrice'|translate}}</span>
                 <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="VPOHeaderModel.TotalPrice" readonly />
               </label>
 
               <div class="text-right">
-                  <button type="button" class="k-button k-primary" (click)="acknowledge();" [(disabled)] = "IsAck">Acknowledge</button>
-                  <button type="button" class="k-button k-primary" (click)="createasn($event);">Create ASN</button>
+                  <button type="button" class="k-button k-primary" (click)="acknowledge();" [(disabled)] = "IsAck">{{'VPO_Acknowledge'|translate}}</button>
+                  <button type="button" class="k-button k-primary" (click)="createasn($event);">{{'VPO_CASN'|translate}}</button>
               </div>
               
             </form>

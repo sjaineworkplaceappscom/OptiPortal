@@ -11,7 +11,14 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { DeliveryNotesModule } from '../delivery-notes/delivery-notes.module';
 import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +31,16 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
     DropDownsModule,
     DeliveryNotesModule,
     DateInputsModule ,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
+
   ],
   declarations: [ConsignInventoryListComponent, ConsignInventorySRBatchDetailComponent, ConsignInventoryDetailComponent],
   exports:[ConsignInventoryListComponent,ConsignInventorySRBatchDetailComponent, ConsignInventoryDetailComponent]

@@ -5,6 +5,7 @@ import { SalesQuotation } from '../../tempmodels/sales-quotation';
 import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { SalesQuotationDetail } from '../../tempmodels/sales-quotation-detail';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 @Component({
   selector: 'app-sales-quotations-detail-home',
   templateUrl: './sales-quotations-detail-home.component.html',
@@ -18,7 +19,11 @@ export class SalesQuotationsDetailHomeComponent implements OnInit {
   showLoader: boolean = false;
   salesQuotationModel: SalesQuotation = new SalesQuotation();
   salesQuotationDetailModel: SalesQuotationDetail = new SalesQuotationDetail();
-  constructor(private commonService: Commonservice, private salseQuotationService: SalesQuotationService) { }
+  constructor(private commonService: Commonservice, private salseQuotationService: SalesQuotationService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   ngOnInit() {
     this.getSidebarsubs = this.commonService.currentSidebarInfo.subscribe(

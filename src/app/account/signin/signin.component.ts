@@ -12,6 +12,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { Configuration } from '../../helpers/Configuration';
 import { DialogService } from '@progress/kendo-angular-dialog';
 import { DialogContainerService } from '@progress/kendo-angular-dialog/dist/es2015/dialog/dialog-container.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
 
@@ -35,7 +36,11 @@ export class SigninComponent implements OnInit {
 
   isRemember: boolean = false;
   userType:number=2;
-  constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: Commonservice) { }
+  constructor(private httpHelper: HttpHelper, private accountService: AccountService, private router: Router, private commonService: Commonservice,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   @ViewChild('myCanvas') myCanvas;
 
@@ -188,7 +193,7 @@ export class SigninComponent implements OnInit {
         this.closeRightSidebar();
         
         if(this.userType==2){
-        this.router.navigateByUrl(Configuration.firstHomePage);
+        this.router.navigateByUrl(Configuration.defaultCustomerPage);
         }
         else if(this.userType==3){
           this.router.navigateByUrl(Configuration.firstHomePageVendor);

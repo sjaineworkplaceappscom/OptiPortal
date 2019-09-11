@@ -14,7 +14,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -26,9 +26,14 @@ import { SalesQuotationsNotesComponent } from './sales-quotations-notes/sales-qu
 import { SalesOrderNotesComponent } from './sales-order-notes/sales-order-notes.component';
 import { FileDropModule } from 'ngx-file-drop';
 import { SharedComponent } from './shared.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   imports: [
@@ -56,7 +61,15 @@ import { SharedComponent } from './shared.component';
      // Angular
      HttpClientModule,         
      FormsModule, 
-     FileDropModule
+     FileDropModule,
+     TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
   ],
   declarations: [AttachmentComponent,NotesComponent, NotesItemComponent, AttachmentItemComponent, CustomFilterPipe,SalesQuotationsNotesComponent,SalesOrderNotesComponent,CustomFilterPipe,SharedComponent],
   exports:[AttachmentComponent,NotesComponent,NotesItemComponent,AttachmentItemComponent,SalesQuotationsNotesComponent,SalesOrderNotesComponent,CustomFilterPipe],

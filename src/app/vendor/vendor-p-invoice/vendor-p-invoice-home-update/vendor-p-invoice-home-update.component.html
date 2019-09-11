@@ -8,38 +8,38 @@
                         <form class="k-form" #openInvoiceForm="ngForm">
 
                             <label class="k-form-field">
-                                <span class="opti_form-label">Invoice</span>
+                                <span class="opti_form-label">{{'VInvoice_Invoice'|translate}}</span>
                                 <input name="Invoice" type="text" class="k-textbox" [(ngModel)]="vendorOIModel.InvoiceNumber" />
                             </label>
 
                             <label class="k-form-field">
-                                <span class="opti_form-label">PO Ref.#
+                                <span class="opti_form-label">{{'VASN_PORef'|translate}}
                                     <span *ngIf="PORef.errors?.required && PORef.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
-                                        Please enter PO Ref number.
+                                        {{'VInvoice_EnterPOref'|translate}} 
                                     </span></span>
                                 <input name="PORef" type="text" #PORef=ngModel required class="k-textbox" [(ngModel)]="vendorOIModel.POReferenceNumber" />
                             </label>
 
                             <label class="k-form-field">
-                                <span class="opti_form-label">Vendor
+                                <span class="opti_form-label">{{'VInquiry_Vendor'|translate}}
                                     <span *ngIf="Vendor.errors?.required && Vendor.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
-                                        Please enter Vandor.
+                                        {{'VInvoice_InvoiceAmount'|translate}} Please enter Vandor.
                                     </span>
                                 </span>
                                 <input name="Vendor" type="text" #Vendor=ngModel required class="k-textbox" [(ngModel)]="vendorOIModel.Vendor" />
                             </label>
 
                             <label class="k-form-field">
-                                <span class="opti_form-label">Invoice Date</span>
+                                <span class="opti_form-label">{{'OI_InvoiceDate'|translate}}</span>
                                 <kendo-datepicker (valueChange)="valueChange($event)" name="invoiceDate" [format]="'dd MMM yy'"
                                     [(ngModel)]="vendorOIModel.InvoiceDate" required [min]="minValidDate">
                                 </kendo-datepicker>
                             </label>
 
                             <label class="k-form-field">
-                                <span class="opti_form-label">Invoice Amount
+                                <span class="opti_form-label">{{'VInvoice_InvoiceAmount'|translate}}
                                     <span *ngIf="InvoiceAmount.errors?.required && InvoiceAmount.touched" class="float-right opti_signup-validation-top-side opti_error-msg">
-                                        Please enter Invoice amount.
+                                        {{'VInvoice_EnterInvoiceAmt'|translate}}   
                                     </span>
                                 </span>
                                 <input name="InvoiceAmount" type="text" #InvoiceAmount=ngModel required class="k-textbox"
@@ -47,14 +47,14 @@
                             </label>
 
                             <label class="k-form-field">
-                                <span class="opti_form-label">Payment Due Date</span>
+                                <span class="opti_form-label">{{'VInvoice_PaymentDueDate'|translate}}</span>
                                 <kendo-datepicker (valueChange)="valueChange($event)" name="PaymentDueDate" [format]="'dd MMM yy'"
                                     [(ngModel)]="vendorOIModel.PaymentDueDate" required [min]="minValidDate">
                                 </kendo-datepicker>
                             </label>
 
                             <label class="k-form-field">
-                                <span class="opti_form-label">Status</span>
+                                <span class="opti_form-label">{{'PI_Status'|translate}}</span>
                                 <kendo-dropdownlist name="status" class="form-control form-control-sm" [valuePrimitive]="true"
                                     [(ngModel)]="vendorOIModel.Status" [data]="listItems" [textField]="'text'"
                                     [valueField]="'value'"></kendo-dropdownlist>
@@ -62,8 +62,8 @@
                             </label>
                              
                             <div class="text-right">
-                                <button type="button" class="k-button k-primary"  (click)="UpdateInvoice()">Save</button>
-                                <button type="button" class="k-button" (click)="closeRightSidebar()">Cancel</button>
+                                <button type="button" class="k-button k-primary"  (click)="UpdateInvoice()">{{'Common_Save'|translate}}</button>
+                                <button type="button" class="k-button" (click)="closeRightSidebar()">{{'Common_Cancel'|translate}}</button>
                             </div>
                         </form>
                     </div>

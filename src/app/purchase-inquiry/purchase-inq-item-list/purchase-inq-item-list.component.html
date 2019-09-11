@@ -16,6 +16,9 @@
 [height]=gridHeight-56
 [selectable]="true"
 (selectionChange)="onItemGridDataSelection($event, true)" #gridItemsValues>
+<kendo-grid-messages 
+noRecords="{{'Common_No_GridRecords'|translate}}">
+</kendo-grid-messages>
 
     <!-- (click)="openRightSection(true)" -->
 
@@ -29,7 +32,7 @@
             <div class="k-form-field">
                 <input type="checkbox" id="opti_ColumnFilterItemID" class="k-checkbox" name="columnfilter"
                 />
-                <label class="k-checkbox-label" for="opti_ColumnFilterItemID">Enable Filter</label>
+                <label class="k-checkbox-label" for="opti_ColumnFilterItemID">{{'Common_EnableFilter'|translate}}</label>
             </div>
         </form>
 
@@ -49,13 +52,13 @@
     <!-- grid column start -->
     <!-- <kendo-grid-column field="PurchaseInquiryItemId" [width]="160" title="Id" filter="numeric" ></kendo-grid-column>
     <kendo-grid-column field="Description" title="Description" [width]="140"></kendo-grid-column> -->
-    <kendo-grid-column field="CustomerItemCode" title="Item Details" [width]="200"></kendo-grid-column>
-    <kendo-grid-column field="Quantity" [width]="160" filter="numeric"></kendo-grid-column>
-    <kendo-grid-column field="Unit" [width]="140" filter="numeric"></kendo-grid-column>
-    <kendo-grid-column field="Requester" [width]="140"></kendo-grid-column>
-    <kendo-grid-column field="RequestDate" title="Request Date" [width]="140" type=date filter="date" format="displayDateformat"></kendo-grid-column>
-    <kendo-grid-column field="RequiredDate" title="Required Date" [width]="140" type=date filter="date" format="displayDateformat"></kendo-grid-column>
-    <kendo-grid-column field="ShipToLocation" title="Ship To Location" [width]="140"></kendo-grid-column>
+    <kendo-grid-column field="CustomerItemCode" title="{{'PI_ItemDetails'|translate}}" [width]="200"></kendo-grid-column>
+    <kendo-grid-column field="Quantity"  title="{{'PI_Quantity'|translate}}" [width]="160" filter="numeric"></kendo-grid-column>
+    <kendo-grid-column field="Unit" title="{{'PI_Unit'|translate}}" [width]="140" filter="numeric"></kendo-grid-column>
+    <kendo-grid-column field="Requester" title="{{'PI_Requester'|translate}}" [width]="140"></kendo-grid-column>
+    <kendo-grid-column field="RequestDate" title="{{'PI_RequestDate'|translate}}" [width]="140" type=date filter="date" format="displayDateformat"></kendo-grid-column>
+    <kendo-grid-column field="RequiredDate" title="{{'PI_RequiredDate'|translate}}" [width]="140" type=date filter="date" format="displayDateformat"></kendo-grid-column>
+    <kendo-grid-column field="ShipToLocation" title="{{'PI_ShipToLocation'|translate}}" [width]="140"></kendo-grid-column>
     <!-- grid column end -->
 
     <!-- xlsx template start -->

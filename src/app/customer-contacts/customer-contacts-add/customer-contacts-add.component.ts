@@ -9,6 +9,7 @@ import { ContactModel } from '../../tempmodels/contact-model';
 import { AppMessages } from '../../helpers/app-messages';
 import { Contact } from '../../tempmodels/contact';
 import { EntityType, UserType } from '../../enums/enums';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-customer-contacts-add',
@@ -32,7 +33,11 @@ export class CustomerContactsAddComponent implements OnInit {
   showLoader: boolean = false;
   @Input() currentSidebarInfo: CurrentSidebarInfo;
   public contactModel: Contact = new Contact();
-  constructor(private contactService: ContactService, private commonService: Commonservice, private toast: ToastService) { }
+  constructor(private contactService: ContactService, private commonService: Commonservice, private toast: ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   ngOnInit() {
     this.setDefaultData();

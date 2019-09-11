@@ -16,7 +16,13 @@ import { FileDropModule } from 'ngx-file-drop';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { CustomFilterPipe } from '../custom-filter.pipe';
 import { SharedModule } from '../shared/shared.module';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   imports: [
@@ -29,7 +35,15 @@ import { SharedModule } from '../shared/shared.module';
     PerfectScrollbarModule,
     FileDropModule,
     DropDownsModule,
-    SharedModule    
+    SharedModule ,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),  
 
   ],
   declarations: [OpenInvoicesListComponent, OpenInvoicesDetailComponent, OpenInvoicesDetailHomeComponent, OpenInvoicesDetailContentComponent, OpenInvoicesDetailAttachmentComponent, OpenInvoicesDetailNotesComponent],

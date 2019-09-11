@@ -8,6 +8,7 @@ import { VendorPOContentModel } from 'src/app/tempmodels/vendor/vendor-po-conten
 import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { SharedComponentService } from 'src/app/services/shared-component.service';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-po-attchments',
@@ -30,7 +31,11 @@ export class VendorPoAttchmentsComponent implements OnInit {
   VPOModel: VendorPOContentModel = new VendorPOContentModel();
   public getVPIsubs: ISubscription;
 
-  constructor(private vendorService: VendorService, private sharedComponentService: SharedComponentService) { }
+  constructor(private vendorService: VendorService, private sharedComponentService: SharedComponentService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   // UI Section
   @HostListener('window:resize', ['$event'])

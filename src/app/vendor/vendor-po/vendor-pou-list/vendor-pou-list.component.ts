@@ -9,6 +9,7 @@ import { vpoList } from '../../../DemoData/vendor-data';
 import { VendorService } from '../../../services/vendor/vendor.service';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import * as $ from "jquery";
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-vendor-pou-list',
   templateUrl: './vendor-pou-list.component.html',
@@ -41,7 +42,11 @@ export class VendorPouListComponent implements OnInit {
   getPIlistSubs: ISubscription;
   refreshVPIListSubs: ISubscription;
 
-  constructor(private commonService: Commonservice,private vendorService: VendorService) { }
+  constructor(private commonService: Commonservice,private vendorService: VendorService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
 
   ngOnInit() {

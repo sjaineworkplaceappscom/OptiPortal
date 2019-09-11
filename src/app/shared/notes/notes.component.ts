@@ -14,6 +14,7 @@ import { GlobalResource } from '../../helpers/global-resource';
 import { Configuration } from '../../helpers/Configuration';
 import { ToastService } from '../../helpers/services/toast.service';
 import { AppMessages } from '../../helpers/app-messages';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-notes',
@@ -76,7 +77,11 @@ export class NotesComponent implements OnInit {
 
     public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
 
-    constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private purchaseInquiryService: PurchaseInquiryService,private toast:ToastService) {
+    constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private purchaseInquiryService: PurchaseInquiryService,private toast:ToastService,private translate: TranslateService) 
+    {
+        translate.use(localStorage.getItem('appLanguage'));
+        translate.onLangChange.subscribe((event: LangChangeEvent) => {
+        });
     }
 
     @HostListener('window:resize', ['$event'])

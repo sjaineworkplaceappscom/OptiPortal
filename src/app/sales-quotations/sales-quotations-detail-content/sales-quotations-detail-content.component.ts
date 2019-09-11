@@ -8,6 +8,7 @@ import { SalesQuotationService } from '../../services/sales-quotation.service';
 import { SalesQuotationDetailContent } from '../../tempmodels/sales-quotation-detail-content';
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { Configuration } from '../../helpers/Configuration';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
 @Component({
@@ -29,7 +30,11 @@ export class SalesQuotationsDetailContentComponent implements OnInit {
   public gridData: any[];
   salesQuotationModel: SalesQuotation = new SalesQuotation();
   
-  constructor( private salseQuotationService: SalesQuotationService) { }
+  constructor( private salseQuotationService: SalesQuotationService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   // UI Section
   @HostListener('window:resize', ['$event'])

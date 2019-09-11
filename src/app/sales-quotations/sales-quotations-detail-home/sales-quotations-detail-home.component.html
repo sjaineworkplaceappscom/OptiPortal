@@ -18,72 +18,72 @@
             <form class="k-form">
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Quotation Number</span>
+                  <span class="opti_form-label">{{'SQ_QuotationNumber'|translate}}</span>
                   <input name="quotationnumber" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.QuotationNumber" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Status</span>
+                  <span class="opti_form-label">{{'SQ_QuotationNumber'|translate}}</span>
                   <input name="status" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.Status" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Valid Until</span>
+                  <span class="opti_form-label">{{'SQ_QuotationNumber'|translate}}</span>
                   <input name="validuntil" type="text" class="k-textbox"(ngModelChange)="salesQuotationDetailModel.ValidUntil= $event" [ngModel]="salesQuotationDetailModel.ValidUntil | date:'dd MMM yy'" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Document Date</span>
+                  <span class="opti_form-label">{{'SQ_DocumentDate'|translate}}</span>
                   <input name="documentdate" type="text" class="k-textbox" (ngModelChange)="salesQuotationDetailModel.DocumentDate= $event" [ngModel]="salesQuotationDetailModel.DocumentDate | date:'dd MMM yy'" readonly />
               </label> 
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Sales Employee</span>
+                  <span class="opti_form-label">{{'SQ_SalesEmployee'|translate}}</span>
                   <input name="salesemployee" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.SalesEmployee" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Owner</span>
+                  <span class="opti_form-label">{{'SQ_Owner'|translate}}</span>
                   <input name="owner" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.Owner" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Remark</span>
+                  <span class="opti_form-label">{{'SQ_Remark'|translate}}</span>
                   <input name="remark" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.Remark" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Place of supply</span>
+                  <span class="opti_form-label">{{'SO_PlaceOfSupply'|translate}}</span>
                   <input name="placeofsupply" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.PlaceOfSupply" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Total before discount</span>
+                  <span class="opti_form-label">{{'SO_TotalBeforeDiscount'|translate}}</span>
                   <input name="beforediscount" type="text" class="k-textbox"  [(ngModel)]="salesQuotationDetailModel.TotalBeforeDisc" readonly />
               </label>
 
-              <label class="k-form-field">
-                  <span class="opti_form-label">Discount %</span>
+              <label class="k-form-field"> 
+                  <span class="opti_form-label">{{'SO_DiscountPercent'|translate}}</span>
                   <input name="discountpercentage" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.DiscountPercentage" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Discount</span>
+                  <span class="opti_form-label">{{'SO_Discount'|translate}}</span>
                   <input name="discount" type="text" class="k-textbox"  [(ngModel)]="salesQuotationDetailModel.Discount" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Freight</span>
+                  <span class="opti_form-label">{{'SO_Freight'|translate}}</span>
                   <input name="freight" type="text" class="k-textbox"  [(ngModel)]="salesQuotationDetailModel.Freight" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Tax</span>
+                  <span class="opti_form-label">{{'SO_Tax'|translate}}</span>
                   <input name="tax" type="text" class="k-textbox" [(ngModel)]="salesQuotationDetailModel.Tax" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Total</span>
+                  <span class="opti_form-label">{{'SQ_Total'|translate}}</span>
                   <input name="total" type="text" class="k-textbox"  [(ngModel)]="salesQuotationDetailModel.Total" readonly />
               </label>
               

@@ -4,16 +4,16 @@
     <div class="opti_position-relative opti_tab-outer" >
         <ul #optiTab class="opti_tab opti_position-relative tabs clearfix" id="opti_TabID" [perfectScrollbar]="configX">
             <li class="opti_tablinks" id="opti_HomeTabPurchaseInquiry" (click)="openTab($event, 'home')">
-                <a href="javascript:void('0');">Header</a>
+                <a href="javascript:void('0');">{{'Common_Header'|translate}}</a>
             </li> 
             <li class="opti_tablinks"  (click)="openTab($event, 'items')">
-                <a href="javascript:void('0');">Items</a>
+                <a href="javascript:void('0');">{{'Common_Items'|translate}}</a>
             </li>
             <li class="opti_tablinks" (click)="openTab($event, 'attachement')">
-                <a href="javascript:void('0');">Attachments</a>
+                <a href="javascript:void('0');">{{'Common_Attachments'|translate}}</a>
             </li>
             <li class="opti_tablinks" (click)="openTab($event, 'notes')">
-                <a href="javascript:void('0');">Notes</a>
+                <a href="javascript:void('0');">{{'Common_Notes'|translate}}</a>
             </li>
         </ul>
     </div>
@@ -42,25 +42,25 @@
                             <div class="card-block">
                                 <form class="k-form" #InquiryForm = "ngForm">
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Inquiry#</span>
-                                        <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInquiryDetail.InquiryNumber" value="" placeholder="Inquiry"
+                                        <span class="opti_form-label">{{'PI_Purchase_Enquiry'|translate}}</span>
+                                        <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInquiryDetail.InquiryNumber" value="" placeholder="{{'PI_Purchase_Enquiry'|translate}}"
                                             disabled />
                                     </label>
 
                                     <label class="k-form-field" *ngIf="loginUserType==1">
-                                        <span class="opti_form-label" >Customer Code</span>
-                                        <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInquiryDetail.CustomerCode" placeholder="Customer"
+                                        <span class="opti_form-label" >{{'PI_CustomerCode'|translate}}</span>
+                                        <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInquiryDetail.CustomerCode" placeholder="{{'PI_CustomerCode'|translate}}"
                                         disabled/>
                                     </label>
 
                                     <label class="k-form-field" *ngIf="loginUserType==1">
-                                        <span class="opti_form-label">Customer Name</span>
-                                        <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInquiryDetail.CustomerName" placeholder="Name"
+                                        <span class="opti_form-label">{{'PI_CustomerName'|translate}}</span>
+                                        <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInquiryDetail.CustomerName" placeholder="{{'PI_CustomerName'|translate}}"
                                         disabled/>
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Status</span>
+                                        <span class="opti_form-label">{{'PI_Status'|translate}}</span>
                                         <kendo-dropdownlist name="status" [data]="status" 
                                         (valueChange)="valueChange($event)"  
                                         [(ngModel)]="purchaseInquiryDetail.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
@@ -68,32 +68,32 @@
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Created Date</span>
+                                        <span class="opti_form-label">{{'PI_CreatedDate'|translate}}</span>
                                         <kendo-datepicker name="createdDate" [format]="dateformat" [(ngModel)]="purchaseInquiryDetail.CreatedDate" disabled> </kendo-datepicker>
                                     </label>
 
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Created By</span>
-                                        <input type="text" name="createdBy"  class="k-textbox" value="" [(ngModel)]="purchaseInquiryDetail.Buyer" placeholder="Created By" disabled
+                                        <span class="opti_form-label">{{'PI_CreatedBy'|translate}}</span>
+                                        <input type="text" name="createdBy"  class="k-textbox" value="" [(ngModel)]="purchaseInquiryDetail.Buyer" placeholder="{{'PI_CreatedBy'|translate}}" disabled
                                         />
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Valid Until</span>
+                                        <span class="opti_form-label">{{'PI_ValidUntil'|translate}}</span>
                                         <kendo-datepicker (valueChange)="valueChange($event)" name="validUntil" [format]="dateformat" [(ngModel)]="purchaseInquiryDetail.ValidTillDate" [min]="minValidDate" [disabled] = "isCancelStatus"> </kendo-datepicker>
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Reference#</span>
-                                        <input type="text" name="reference" class="k-textbox" value="" placeholder="Reference" [(ngModel)]="purchaseInquiryDetail.ReferenceNumber"
+                                        <span class="opti_form-label">{{'PI_ReferenceNo'|translate}}</span>
+                                        <input type="text" name="reference" class="k-textbox" value="" placeholder="{{'PI_ReferenceNo'|translate}}" [(ngModel)]="purchaseInquiryDetail.ReferenceNumber"
                                         [disabled] = "!isEnableRefField"  /> 
-                                    </label>
+                                    </label> 
 
                                     <div class="text-right">
-                                        <button type="button" class="k-button k-primary" [disabled] ="isDisableSave==true ||!InquiryForm.dirty" (click)="UpdatePurchaseInquiry(false,InquiryForm.dirty)">Save</button>
-                                        <button type="button" class="k-button" [disabled] ="isDisableSaveAsDraft==true" (click)="UpdatePurchaseInquiry(true,InquiryForm.dirty)"> Save as draft</button>
-                                        <button type="button" class="k-button"  (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
+                                        <button type="button" class="k-button k-primary" [disabled] ="isDisableSave==true ||!InquiryForm.dirty" (click)="UpdatePurchaseInquiry(false,InquiryForm.dirty)">{{'Common_Save'|translate}}</button>
+                                        <button type="button" class="k-button" [disabled] ="isDisableSaveAsDraft==true" (click)="UpdatePurchaseInquiry(true,InquiryForm.dirty)"> {{'Common_SaveAsDraft'|translate}}</button>
+                                        <button type="button" class="k-button"  (click)="closeRightSidebar(currentSidebarInfo)">{{'Common_Cancel'|translate}}</button>
                                     </div>
                                 </form>
                             </div>

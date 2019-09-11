@@ -11,6 +11,9 @@
 [columnMenu]="{ columnChooser: false }" 
 [height]=gridHeight 
 [selectable]="true" >
+<kendo-grid-messages 
+noRecords="{{'Common_No_GridRecords'|translate}}">
+</kendo-grid-messages>
 
                 <!-- (click)="openRightSection(true)" -->
 
@@ -23,12 +26,12 @@
                     <form class="k-form opti_show-hide-grid-column-filter float-left">
                         <div class="k-form-field float-left">
                             <input type="checkbox" id="opti_ColumnApprovedUserFilterID" [(ngModel)]="isColumnApprovedUserFilter" class="k-checkbox" name="columnfilter" />
-                            <label class="k-checkbox-label" for="opti_ColumnApprovedUserFilterID">Enable Filter</label>
+                            <label class="k-checkbox-label" for="opti_ColumnApprovedUserFilterID">{{'Common_EnableFilter'|translate}}</label>
                         </div>
 
                         <div class="k-form-field float-left">
                             <input type="checkbox" id="opti_ColumnApprovedUserGroupID" [(ngModel)]="isColumnApprovedUserGroup" class="k-checkbox" name="columnGroup" />
-                            <label class="k-checkbox-label" for="opti_ColumnApprovedUserGroupID">Enable Grouping</label>
+                            <label class="k-checkbox-label" for="opti_ColumnApprovedUserGroupID">{{'Common_EnableGrouping'|translate}}</label>
                         </div>
                         
                     </form>
@@ -45,8 +48,8 @@
 
                         <div class="opti_approved-user-msg">                            
                             <!-- <span style="font-size: 12px;">User Requets Pending for Approval </span> -->
-                            <button [disabled]="disableBtn" (click)="approveUsers()">Approve</button>
-                            <button [disabled]="disableBtn" (click)="rejectUsers()">Reject</button>
+                            <button [disabled]="disableBtn" (click)="approveUsers()">{{'Admin_Approve'|translate}}</button>
+                            <button [disabled]="disableBtn" (click)="rejectUsers()">{{'Admin_Reject'|translate}}</button>
                         </div>
 
                         <!-- <form class="k-form opti_common-search-form float-left opti_padding-zero">
@@ -59,13 +62,13 @@
                 </ng-template>
 
                 <!-- grid template end -->
-                <kendo-grid-checkbox-column title="Select" [width]="50"></kendo-grid-checkbox-column>
-                <kendo-grid-column field="FullName" title="User Name" [width]="80"></kendo-grid-column>
+                <kendo-grid-checkbox-column title="{{'Admin_Select'|translate}}" [width]="50"></kendo-grid-checkbox-column>
+                <kendo-grid-column field="FullName" title="{{'Admin_UserName'|translate}}" [width]="80"></kendo-grid-column>
                 <kendo-grid-column field="UserId" hidden=true [width]="80"></kendo-grid-column>
-                <kendo-grid-column field="LoginEmail" title="Email" [width]="80"></kendo-grid-column>
-                <kendo-grid-column field="ParentName" title="Parent" [width]="80"></kendo-grid-column>
-                <kendo-grid-column field="ParentTypeString" title="Parent Type" [width]="80"></kendo-grid-column>
-                <kendo-grid-column field="RequestedRole" [width]="80" title="Requested Role" [width]="140"></kendo-grid-column>
+                <kendo-grid-column field="LoginEmail" title="{{'Contact_Email'|translate}}" [width]="80"></kendo-grid-column>
+                <kendo-grid-column field="ParentName" title="{{'Admin_Parent'|translate}}" [width]="80"></kendo-grid-column>
+                <kendo-grid-column field="ParentTypeString" title="{{'Admin_ParentType'|translate}}" [width]="80"></kendo-grid-column>
+                <kendo-grid-column field="RequestedRole" [width]="80" title="{{'Admin_RequestedRole'|translate}}" [width]="140"></kendo-grid-column>
 
                 <!-- xlsx template start -->
                 <kendo-grid-excel fileName="ApprovedUser.xlsx"></kendo-grid-excel>

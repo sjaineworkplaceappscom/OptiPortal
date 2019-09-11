@@ -28,7 +28,7 @@ export class DeliveryNotesService {
     let url: string = this.baseUrl + "salesorder/deliverybyso/"+soNumber+"/"+soID;
     return this.httpHelper.get(url, null);
     //return null;
-  }
+  } 
 
   /**
    * getSalesQuotationDetail from server.

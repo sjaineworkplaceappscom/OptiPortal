@@ -11,6 +11,7 @@ import { DeliveryNoteListModel } from '../../tempmodels/delivery-note-list-model
 import { Configuration } from '../../helpers/Configuration';
 import { AppMessages } from '../../helpers/app-messages';
 import { ToastService } from '../../helpers/services/toast.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-delivery-notes-detail-notes',
@@ -68,7 +69,11 @@ export class DeliveryNotesDetailNotesComponent implements OnInit {
     }, 1000);
   }
 
-  constructor(private sharedComponentService: SharedComponentService,private toast:ToastService) { }
+  constructor(private sharedComponentService: SharedComponentService,private toast:ToastService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   ngOnInit() {
     //Apply Grid Height

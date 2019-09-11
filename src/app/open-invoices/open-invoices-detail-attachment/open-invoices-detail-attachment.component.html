@@ -32,6 +32,9 @@
                           [selectable]="true" 
                           name="gridAttachmentData" 
                           #AttachementsTab>
+                          <kendo-grid-messages 
+                          noRecords="{{'Common_No_GridRecords'|translate}}">
+                        </kendo-grid-messages>
 
                               <!-- grid template start -->
                               <ng-template kendoGridToolbarTemplate>
@@ -43,7 +46,7 @@
                                       <div class="k-form-field">
                                           <input type="checkbox" id="opti_ColumnFilterattachementID" [(ngModel)]="isColumnFilterAttachementsGrid" class="k-checkbox"
                                               name="columnfilter" />
-                                          <label class="k-checkbox-label" for="opti_ColumnFilterattachementID">Enable Filter</label>
+                                          <label class="k-checkbox-label" for="opti_ColumnFilterattachementID">{{'Common_EnableFilter'|translate}}</label>
                                       </div>
                                   </form>
 
@@ -73,8 +76,8 @@
                               <kendo-grid-column field="AttachmentTypeText" title="Attachment Type" [width]="140"></kendo-grid-column>
                               <kendo-grid-column field="CreatedByName" title="Created By" [width]="150"></kendo-grid-column> -->
 
-                              <kendo-grid-column field="FileName" title="File Name"></kendo-grid-column>
-                              <kendo-grid-column field="AttachementDate" title="Attachment Date" format="{0:dd MMM yy}"></kendo-grid-column>
+                              <kendo-grid-column field="FileName" title="{{'SO_FileName'|translate}}"></kendo-grid-column>
+                              <kendo-grid-column field="AttachementDate" title="{{'SO_AttachmentDate'|translate}}" format="{0:dd MMM yy}"></kendo-grid-column>
                                                             
                               <!-- xlsx template start -->
                               <kendo-grid-excel fileName="open-voices-attachments.xlsx"></kendo-grid-excel>

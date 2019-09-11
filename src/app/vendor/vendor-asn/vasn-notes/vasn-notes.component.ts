@@ -14,6 +14,7 @@ import { ToastService } from 'src/app/helpers/services/toast.service';
 import { SharedComponentService } from 'src/app/services/shared-component.service';
 import { GlobalResource } from 'src/app/helpers/global-resource';
 import { AppMessages } from 'src/app/helpers/app-messages';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vasn-notes',
@@ -22,7 +23,11 @@ import { AppMessages } from 'src/app/helpers/app-messages';
 })
 export class VasnNotesComponent implements OnInit {
 
-  constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private toast: ToastService) { }
+  constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private toast: ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   /**
   * global variable

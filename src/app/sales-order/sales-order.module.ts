@@ -16,7 +16,15 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { SharedModule } from '../shared/shared.module';
 import { SalesOrderDetailDeliveryNotesComponent } from './sales-order-detail-delivery-notes/sales-order-detail-delivery-notes.component';
 import { DeliveryNotesModule } from '../delivery-notes/delivery-notes.module';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
+
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   imports: [
     CommonModule,
@@ -29,7 +37,15 @@ import { DeliveryNotesModule } from '../delivery-notes/delivery-notes.module';
     PerfectScrollbarModule,
     DropDownsModule,
     SharedModule,
-    DeliveryNotesModule
+    DeliveryNotesModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
   
   ],
   declarations: [SalesOrderListComponent, SalesOrderDetailComponent, SalesOrderDetailHomeComponent, SalesOrderDetailContentComponent, SalesOrderDetailAttachmentComponent, SalesOrderDetailDeliveryNotesComponent],

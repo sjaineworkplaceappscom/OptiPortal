@@ -12,6 +12,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { VendorASNContentModel } from 'src/app/tempmodels/vendor/vendor-asn-content-model';
 import { AppMessages } from 'src/app/helpers/app-messages';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vasn-content',
@@ -39,7 +40,11 @@ export class VasnContentComponent implements OnInit {
   refreshVASNContentlistSubs: ISubscription;
   updateSub:ISubscription;
   minValidDate:Date = new Date();
-  constructor(private commonService: Commonservice, private vendorService: VendorService, private toast: ToastService) { }
+  constructor(private commonService: Commonservice, private vendorService: VendorService, private toast: ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
 
 

@@ -1,7 +1,7 @@
 <div class="opti_position-relative opti_tab-outer">
     <ul #optiTab class="opti_tab tabs clearfix" id="opti_TabID">
         <li class="opti_tablinks active">
-            <a href="javascript:void('0');">Update Contact </a>
+            <a href="javascript:void('0');">{{'Contact_UpdateContact'|translate}} </a>
         </li>
     </ul>
 </div>
@@ -24,45 +24,45 @@
                 <form class="k-form"  #contactForm="ngForm">
   
                     <label class="k-form-field">
-                        <span class="opti_form-label">Contact Id
-                            <span *ngIf="ContactOptiId.errors && (ContactOptiId.dirty || ContactOptiId.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter contact Id.</span>
+                        <span class="opti_form-label">{{'Contact_ContactId'|translate}}
+                            <span *ngIf="ContactOptiId.errors && (ContactOptiId.dirty || ContactOptiId.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >{{'Contact_IdRequire'|translate}}</span>
                         </span>
                         <input name="contactOptiId" required type="text" #ContactOptiId=ngModel placeholder="e.g. Contact@info.com" class="k-textbox" [(ngModel)]="contactModel.ContactOptiId" />
                     </label>
   
                   <label class="k-form-field">
-                      <span class="opti_form-label">Contact Name
-                            <span *ngIf="contactName.errors && (contactName.dirty || contactName.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter contact name.</span>
+                      <span class="opti_form-label">{{'Contact_ContactName'|translate}}
+                            <span *ngIf="contactName.errors && (contactName.dirty || contactName.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >{{'Contact_NameRequire'|translate}}</span>
                       </span>
                       <input name="contactName" required #contactName=ngModel type="text" class="k-textbox" [(ngModel)]="contactModel.ContactName" />
                   </label>
   
                   <label class="k-form-field">
-                      <span class="opti_form-label">Phone
-                            <span *ngIf="phone.errors && (phone.dirty || phone.touched)"  class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter phone number.</span>
+                      <span class="opti_form-label">{{'Contact_PhoneC'|translate}}
+                            <span *ngIf="phone.errors && (phone.dirty || phone.touched)"  class="float-right opti_signup-validation-top-side opti_error-msg" >{{'Contact_PhoneRequire'|translate}}</span>
                       </span>
                       <input name="phone" type="text" class="k-textbox"  #phone=ngModel [(ngModel)]="contactModel.PhoneNumber"  />
                   </label>
   
                   <label class="k-form-field">
-                      <span class="opti_form-label">Email
-                            <span *ngIf="RequesterEmail.errors?.required && (RequesterEmail.dirty || RequesterEmail.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter emailId.</span>
+                      <span class="opti_form-label">{{'Contact_EmailC'|translate}
+                            <span *ngIf="RequesterEmail.errors?.required && (RequesterEmail.dirty || RequesterEmail.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >{{'Contact_EmailRequire'|translate}</span>
                             <span *ngIf="RequesterEmail.errors?.email && RequesterEmail.touched && !RequesterEmail.errors?.required" class="float-right opti_signup-validation-top-side opti_error-msg">
-                                Please enter valid emailId. 
+                                {{'Contact_ValidateEmail'|translate}
                             </span>  
                       </span>
                       <input name="email" type="text" email  #RequesterEmail=ngModel  class="k-textbox" [(ngModel)]="contactModel.ContactEmail" />
                   </label>
   
                   <label class="k-form-field">
-                      <span class="opti_form-label">Address
-                            <span *ngIf="Address.errors && (Address.dirty || Address.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >Please enter address.</span>
+                      <span class="opti_form-label">{{'Contact_Address'|translate}
+                            <span *ngIf="Address.errors && (Address.dirty || Address.touched)" class="float-right opti_signup-validation-top-side opti_error-msg" >{{'Contact_AddressRequire'|translate}</span>
                       </span>
-                      <textarea class="k-textarea"  #Address=ngModel name="address" [(ngModel)]="contactModel.Address" >Address</textarea>
+                      <textarea class="k-textarea"  #Address=ngModel name="address" [(ngModel)]="contactModel.Address" >{{'Contact_Address'|translate}</textarea>
                   </label>
 
                   <label class="k-form-field">
-                      <span class="opti_form-label">Status</span>
+                      <span class="opti_form-label">{{'PI_Status'|translate}</span>
                       
                       <kendo-dropdownlist name="status" [data]="listItems" (valueChange)="valueChange($event)"  [(ngModel)]="contactModel.Status" [valuePrimitive]="true" [textField]="'text'" [valueField]="'value'" [disabled]="isDisableStatusField==true">
                       </kendo-dropdownlist>
@@ -71,8 +71,8 @@
                   
                   <div class="text-right">
                       
-                      <button type="button" class="k-button k-primary" [disabled]="!contactForm.dirty ||  (contactForm.dirty && !contactForm.form.valid)"  (click)="UpdateContactData()">Save</button>
-                      <button type="button" class="k-button" (click)="closeRightSidebar()">Cancel</button>
+                      <button type="button" class="k-button k-primary" [disabled]="!contactForm.dirty ||  (contactForm.dirty && !contactForm.form.valid)"  (click)="UpdateContactData()">{{'Common_Save'|translate}</button>
+                      <button type="button" class="k-button" (click)="closeRightSidebar()">{{'Common_Cancel'|translate}</button>
                   </div>
                 </form>
               </div>

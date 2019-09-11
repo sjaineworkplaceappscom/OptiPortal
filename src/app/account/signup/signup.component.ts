@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Commonservice } from '../../services/commonservice.service';
 import { Configuration } from '../../helpers/Configuration';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
 
@@ -56,7 +57,10 @@ export class SignupComponent implements OnInit {
 
   UserRegData: string = '';
 
-  constructor(private accountService: AccountService, private router: Router, private commonService: Commonservice, ) {
+  constructor(private accountService: AccountService, private router: Router, private commonService: Commonservice,private translate: TranslateService ) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
     //this.generatePurchaseRequestData();
   }
 

@@ -3,79 +3,79 @@
     <form class="k-form">
      
       <label class="k-form-field">
-          <span class="opti_form-label">Line#
-                <span *ngIf="Line.errors && (Line.dirty || Line.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter your line number.
+          <span class="opti_form-label">{{'DN_LineNO'|translate}}Line#
+                <span *ngIf="Line.errors && (Line.dirty || Line.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterLineNo'|translate}}
                     </span>
           </span>
           <input name="Line" type="text" required #Line=ngModel class="k-textbox" [(ngModel)]="vendorASNContentModel.LineNumber" />
       </label> 
      
       <label class="k-form-field">
-          <span class="opti_form-label">Item
-                <span *ngIf="Item.errors && (Item.dirty || Item.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter item.
+          <span class="opti_form-label">{{'Common_Item'|translate}}
+                <span *ngIf="Item.errors && (Item.dirty || Item.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterItem'|translate}}
                     </span>
           </span>
           <input name="Item" type="text" required #Item=ngModel class="k-textbox" [(ngModel)]="vendorASNContentModel.Item"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Quantity
-                <span *ngIf="quantity.errors && (quantity.dirty || quantity.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter quantity.
+          <span class="opti_form-label">{{'PI_Quantity'|translate}}
+                <span *ngIf="quantity.errors && (quantity.dirty || quantity.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterQty'|translate}}
                     </span>
           </span>
           <input name="Quantity" type="text" required #quantity=ngModel  class="k-textbox" [(ngModel)]="vendorASNContentModel.Quantity"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Unit Price
-                <span *ngIf="UnitPrice.errors && (UnitPrice.dirty || UnitPrice.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter unit price.
+          <span class="opti_form-label">{{'SO_UnitPrice'|translate}}
+                <span *ngIf="UnitPrice.errors && (UnitPrice.dirty || UnitPrice.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterUnitPrice'|translate}}
                     </span>
           </span>
           <input name="UnitPrice" type="text" required #UnitPrice=ngModel class="k-textbox" [(ngModel)]="vendorASNContentModel.UnitPrice"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">UOM
-                <span *ngIf="UOM.errors && (UOM.dirty || UOM.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter UOM.
+          <span class="opti_form-label">{{'DN_UOM'|translate}}
+                <span *ngIf="UOM.errors && (UOM.dirty || UOM.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterUOM'|translate}}
                     </span>
           </span>
           <input name="UOM" type="text" required #UOM=ngModel class="k-textbox" [(ngModel)]="vendorASNContentModel.UOM"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Total Price
-                <span *ngIf="TotalPrice.errors && (TotalPrice.dirty || TotalPrice.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter total price.
+          <span class="opti_form-label">{{'SO_TotalPrice'|translate}}
+                <span *ngIf="TotalPrice.errors && (TotalPrice.dirty || TotalPrice.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterTotalPrice'|translate}}
                     </span>
           </span>
           <input name="TotalPrice" type="text" required #TotalPrice=ngModel class="k-textbox" [(ngModel)]="vendorASNContentModel.TotalPrice"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Tax Code
-                <span *ngIf="TaxCode.errors && (TaxCode.dirty || TaxCode.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter tax code.
+          <span class="opti_form-label">{{'SO_TaxCode'|translate}}
+                <span *ngIf="TaxCode.errors && (TaxCode.dirty || TaxCode.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterTaxCode'|translate}}
                     </span>
           </span>
           <input name="TaxCode" type="text"  required #TaxCode=ngModel class="k-textbox" [(ngModel)]="vendorASNContentModel.TaxCode"  />
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Ship-To Address
-                <span *ngIf="ShipToAddress.errors && (ShipToAddress.dirty || ShipToAddress.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter ship to address.
+          <span class="opti_form-label">{{'VASN_ShipToAddressLbl'|translate}}
+                <span *ngIf="ShipToAddress.errors && (ShipToAddress.dirty || ShipToAddress.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterShipTo'|translate}}
                     </span>
           </span>
-          <textarea class="k-textarea" name="ShipToAddress" required #ShipToAddress=ngModel [(ngModel)]="vendorASNContentModel.ShipToAddress" required>Please enter your Shipping Address</textarea>
+          <textarea class="k-textarea" name="ShipToAddress" required #ShipToAddress=ngModel [(ngModel)]="vendorASNContentModel.ShipToAddress" required>{{'VASN_EnterSHipping'|translate}}</textarea>
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Bill-To Address
-                <span *ngIf="BillToAddress.errors && (BillToAddress.dirty || BillToAddress.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">Please enter bill to address.
+          <span class="opti_form-label">{{'VASN_BillToAddressLbl'|translate}}
+                <span *ngIf="BillToAddress.errors && (BillToAddress.dirty || BillToAddress.touched)" class="float-right opti_signup-validation-top-side opti_error-msg">{{'VASN_EnterBillTo'|translate}}
                     </span>
           </span>
-          <textarea class="k-textarea" name="BillToAddress"  required #BillToAddress=ngModel  [(ngModel)]="vendorASNContentModel.BillToAddress" required>Please enter your Billing Address</textarea>
+          <textarea class="k-textarea" name="BillToAddress"  required #BillToAddress=ngModel  [(ngModel)]="vendorASNContentModel.BillToAddress" required>{{'VASN_EnterBillAddress'|translate}}</textarea>
       </label>
 
       <label class="k-form-field">
-          <span class="opti_form-label">Delivery Date
+          <span class="opti_form-label">{{'SO_DeliveryDate'|translate}}
                 
           </span>
           <kendo-datepicker  name="DeliveryDate" [format]="'dd MMM yy'"  [(ngModel)]="vendorASNContentModel.DeliveryDate" required [min]="minValidDate">
@@ -83,8 +83,8 @@
       </label>
 
       <div class="text-right">
-          <button type="button" class="k-button k-primary" (click)="addContentData()">Save</button>
-          <button type="button" class="k-button" (click)="back()">Cancel</button>
+          <button type="button" class="k-button k-primary" (click)="addContentData()">{{'Common_Save'|translate}}</button>
+          <button type="button" class="k-button" (click)="back()">{{'Common_Cancel'|translate}}</button>
       </div>
       
     </form>

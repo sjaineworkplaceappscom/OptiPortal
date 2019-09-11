@@ -19,6 +19,7 @@ import { Configuration } from '../../helpers/Configuration';
 import { ToastService } from '../../helpers/services/toast.service';
 import { AppMessages } from '../../helpers/app-messages';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-purchase-inq-item-add',
@@ -90,7 +91,10 @@ export class PurchaseInqItemAddComponent implements OnInit {
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
-  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, private confirmService: ConfirmDialog,private toast:ToastService) {
+  constructor(private purchaseInquiryService: PurchaseInquiryService, private commonService: Commonservice, private confirmService: ConfirmDialog,private toast:ToastService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
   }
 
   ngOnDestroy() {

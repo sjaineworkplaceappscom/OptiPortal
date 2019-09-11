@@ -6,6 +6,7 @@ import { vpiAttachment } from '../../../DemoData/vendor-data';
 import { VendorPurchaseInquiryModel } from 'src/app/tempmodels/vendor/vendor-purchase-inquiry-model';
 import { ISubscription } from 'rxjs/Subscription';
 import { VendorService } from 'src/app/services/vendor/vendor.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-pi-attchments',
@@ -29,7 +30,11 @@ export class VendorPiAttchmentsComponent implements OnInit {
   VPIModel: VendorPurchaseInquiryModel = new VendorPurchaseInquiryModel();
   public getVPIsubs: ISubscription;
 
-  constructor(private vendorService:VendorService) { }
+  constructor(private vendorService:VendorService ,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   // UI Section
   @HostListener('window:resize', ['$event'])

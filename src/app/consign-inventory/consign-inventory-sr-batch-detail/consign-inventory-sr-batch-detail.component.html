@@ -3,7 +3,7 @@
   <div class="position-relative opti_tab-outer">
     <ul #optiTab class="opti_tab position-relative tabs clearfix" id="opti_TabID" [perfectScrollbar]="configX">
         <li class="opti_tablinks active opti_tablinksExtraWidth" (click)="openTab($event, 'home', 'horizontal')">
-          <a href="javascript:void('0');">Serial and Batch Detail</a>
+          <a href="javascript:void('0');">{{'CI_SABD'|translate}}</a>
         </li>
     </ul>
   </div>
@@ -34,6 +34,9 @@
               [height]=gridHeight-67 
               [selectable]="true" 
               #gridItem>
+              <kendo-grid-messages 
+              noRecords="{{'Common_No_GridRecords'|translate}}">
+            </kendo-grid-messages>
 
               <!-- grid template start -->
               <ng-template kendoGridToolbarTemplate>
@@ -45,7 +48,7 @@
                   <form class="k-form opti_show-hide-grid-column-filter float-left">
                       <div class="k-form-field float-left">
                           <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_SrBatchColumnFilterID" [(ngModel)]="isSrBatchColumnFilter" class="k-checkbox" name="columnfilter" />
-                          <label class="k-checkbox-label" for="opti_SrBatchColumnFilterID">Enable Filter</label>
+                          <label class="k-checkbox-label" for="opti_SrBatchColumnFilterID">{{'CI_SetFilter'|translate}}</label>
                       </div>
                   </form>
 
@@ -55,8 +58,8 @@
                   </button>
               </ng-template>
 
-              <kendo-grid-column field="ItemNumber" title="S. No / Batch No" [width]="160"></kendo-grid-column>
-              <kendo-grid-column field="Quantity" title="Quantity" [width]="160"></kendo-grid-column>
+              <kendo-grid-column field="ItemNumber" title="{{'CI_SNOBatch'|translate}}" [width]="160"></kendo-grid-column>
+              <kendo-grid-column field="Quantity" title="{{'PI_Quantity'|translate}}" [width]="160"></kendo-grid-column>
 
               <!-- xlsx template start -->
               <kendo-grid-excel fileName="consign-inventory-sr-batch-detail.xlsx"></kendo-grid-excel>

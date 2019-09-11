@@ -13,32 +13,32 @@
             <form class="k-form">
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Inquiry#</span>
+                  <span class="opti_form-label">{{'PI_Purchase_Enquiry'|translate}}</span>
                   <input name="InquiryID" type="text" class="k-textbox" [(ngModel)]="VPIModel.InquiryId" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Inquiry Date</span>
+                <span class="opti_form-label">{{'VInquiry_Date'|translate}}</span>
                 <input name="InquiryDate" type="text" class="k-textbox" (ngModelChange)="VPIModel.InquiryDate" [ngModel]="VPIModel.InquiryDate | date:'dd MMM yy'" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Vendor</span>
+                <span class="opti_form-label">{{'VInquiry_Vendor'|translate}}</span>
                 <input name="Vendor" type="text" class="k-textbox" [(ngModel)]="VPIModel.Vendor" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Status</span>
+                <span class="opti_form-label">{{'PI_Status'|translate}}</span>
                 <input name="Status" type="text" class="k-textbox" [(ngModel)]="VPIModel.Status" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">Buyer</span>
+                <span class="opti_form-label">{{'VInquiry_Buyer'|translate}}</span>
                 <input name="Buyer" type="text" class="k-textbox" [(ngModel)]="VPIModel.Buyer" readonly />
               </label>
   
               <label class="k-form-field">
-                <span class="opti_form-label">Valid Until</span>
+                <span class="opti_form-label">{{'PI_ValidUntil'|translate}}</span>
                 <input name="ValidUntil" type="text" class="k-textbox" (ngModelChange)="VPIModel.ValidUntil" [ngModel]="VPIModel.ValidUntil | date:'dd MMM yy'" readonly />
               </label>
               

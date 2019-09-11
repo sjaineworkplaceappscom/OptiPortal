@@ -8,6 +8,7 @@ import { ConfirmDialog } from '../../../helpers/services/dialog.service';
 import { ToastService } from '../../../helpers/services/toast.service';
 import { AppMessages } from '../../../helpers/app-messages';
 import { GlobalResource } from '../../../helpers/global-resource';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vcontact-update',
@@ -39,7 +40,11 @@ export class VcontactUpdateComponent implements OnInit {
   public contactModel: Contact = new Contact();
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
-  constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog,private toast:ToastService) { }
+  constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog,private toast:ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   ngOnInit() {
     

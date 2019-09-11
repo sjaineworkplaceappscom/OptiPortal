@@ -6,6 +6,7 @@ import { paymentAttachment } from '../../../DemoData/vendor-data';
 import { PaymentContentModel } from '../../../tempmodels/vendor/payment-content-model';
 import { ISubscription } from '../../../../../node_modules/rxjs/Subscription';
 import { VendorService } from '../../../services/vendor/vendor.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vpayment-attachment',
@@ -30,7 +31,12 @@ export class VpaymentAttachmentComponent implements OnInit {
   paymentModel: PaymentContentModel = new PaymentContentModel();
   public getVPIsubs: ISubscription;
 
-  constructor(private vendorService: VendorService) { }
+  constructor(private vendorService: VendorService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+    
+   }
 
   // UI Section
   @HostListener('window:resize', ['$event'])

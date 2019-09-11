@@ -10,6 +10,7 @@ import * as $ from "jquery";
 import { VendorOIService } from 'src/app/services/vendor/vendor-o-i.service';
 import { ISubscription } from 'rxjs/Subscription';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-p-invoice-list',
@@ -18,7 +19,11 @@ import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 })
 export class VendorPInvoiceListComponent implements OnInit {
 
-  constructor(private commonService: Commonservice, private vendorOIService: VendorOIService) { }
+  constructor(private commonService: Commonservice, private vendorOIService: VendorOIService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
   imgPath = Configuration.imagePath;
   isMobile: boolean;
   isColumnFilter: boolean = false;

@@ -3,6 +3,7 @@ import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info
 import { UIHelper } from '../../../helpers/ui.helpers';
 import { VendorAsnModule } from '../vendor-asn.module';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vasn-add',
@@ -17,7 +18,11 @@ export class VasnAddComponent implements OnInit {
       suppressScrollY:true
   };
  
-  constructor() {}
+  constructor( private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
   
   showLoader: boolean = false;
   tabName: string = 'home';

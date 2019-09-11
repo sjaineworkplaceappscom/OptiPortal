@@ -3,16 +3,16 @@
     <div class="opti_position-relative opti_tab-outer" >
         <ul #optiTab class="opti_tab opti_position-relative tabs clearfix" id="opti_TabID" [perfectScrollbar]="configX">
             <li class="opti_tablinks" (click)="openTab($event, 'home',tabStatus)">
-                <a href="javascript:void('0');">Header</a>
+                <a href="javascript:void('0');">{{'Common_Header'|translate}}</a>
             </li>
             <li class="opti_tablinks" [ngClass]="{'opti_disable-tab':tabStatus === false}" (click)="openTab($event, 'items', tabStatus)">
-                <a href="javascript:void('0');">Items</a>
+                <a href="javascript:void('0');">{{'Common_Items'|translate}}</a>
             </li>
             <li class="opti_tablinks" [ngClass]="{'opti_disable-tab':tabStatus === false}" (click)="openTab($event, 'attachement', tabStatus)">
-                <a href="javascript:void('0');">Attachments</a>
+                <a href="javascript:void('0');">{{'Common_Attachments'|translate}}</a>
             </li>
             <li class="opti_tablinks" [ngClass]="{'opti_disable-tab':tabStatus === false}" (click)="openTab($event, 'notes', tabStatus)">
-                <a href="javascript:void('0');">Notes</a>
+                <a href="javascript:void('0');">{{'Common_Notes'|translate}}</a>
             </li>
         </ul>
     </div>
@@ -32,58 +32,58 @@
                             <div class="card-block">
                                 <form class="k-form">
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Inquiry#</span>
-                                        <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInqueryAdd.InquiryNumber" value="" placeholder="Inquiry number"
+                                        <span class="opti_form-label">{{'PI_Purchase_Enquiry'|translate}}</span>
+                                        <input name="Inquiry#" type="text" class="k-textbox" [(ngModel)]="purchaseInqueryAdd.InquiryNumber" value="" placeholder="{{'PI_Purchase_Enquiry'|translate}}"
                                             disabled /> 
                                     </label>
 
                                     <label class="k-form-field" *ngIf="loginUserType==1">
-                                        <span class="opti_form-label">Customer Code</span>
-                                        <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.CustomerCode" placeholder="Customer code"
+                                        <span class="opti_form-label">{{'PI_CustomerCode'|translate}}</span>
+                                        <input type="text" name="customer" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.CustomerCode" placeholder="{{'PI_CustomerCode'|translate}}"
                                             disabled />
                                     </label>
 
                                     <label class="k-form-field" *ngIf="loginUserType==1">
-                                        <span class="opti_form-label">Customer Name</span>
-                                        <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.CustomerName" placeholder="Customer name"
+                                        <span class="opti_form-label">{{'PI_CustomerName'|translate}}</span>
+                                        <input type="text" name="name" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.CustomerName" placeholder="{{'PI_CustomerName'|translate}}"
                                             disabled />
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Status</span>
+                                        <span class="opti_form-label">{{'PI_Status'|translate}}</span>
                                         <kendo-dropdownlist name="status" [data]="defaultStatus" [(ngModel)]="purchaseInqueryAdd.Status" [valuePrimitive]="true"
                                             [textField]="'text'" [valueField]="'value'" disabled>
                                         </kendo-dropdownlist>
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Created Date</span>
+                                        <span class="opti_form-label">{{'PI_CreatedDate'|translate}}</span>
                                         <kendo-datepicker name="createdDate" [format]="'dd MMM yy'" [(ngModel)]="purchaseInqueryAdd.CreatedDate" disabled> </kendo-datepicker>
                                     </label>
 
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Created By</span>
-                                        <input type="text" name="createdBy" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.Buyer" placeholder="Created by"
+                                        <span class="opti_form-label">{{'PI_CreatedBy'|translate}}</span>
+                                        <input type="text" name="createdBy" class="k-textbox" value="" [(ngModel)]="purchaseInqueryAdd.Buyer" placeholder="{{'PI_CreatedBy'|translate}}"
                                             disabled/>
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Valid Until</span>
+                                        <span class="opti_form-label">{{'PI_ValidUntil'|translate}}</span>
                                         <kendo-datepicker (valueChange)="valueChange($event)" name="validUntil" [format]="'dd MMM yy'" [(ngModel)]="purchaseInqueryAdd.ValidTillDate" required [min]="minValidDate">
                                         </kendo-datepicker>
                                     </label>
 
                                     <label class="k-form-field">
-                                        <span class="opti_form-label">Reference#</span>
-                                        <input type="text" name="reference" class="k-textbox" value="" placeholder="Reference number" [(ngModel)]="purchaseInqueryAdd.ReferenceNumber"
+                                        <span class="opti_form-label">{{'PI_ReferenceNo'|translate}}</span>
+                                        <input type="text" name="reference" class="k-textbox" value="" placeholder="{{'PI_ReferenceNo'|translate}}" [(ngModel)]="purchaseInqueryAdd.ReferenceNumber"
                                             disabled />
                                     </label>
 
                                     <div class="text-right">
-                                        <button type="button" class="k-button k-primary" (click)="AddPurchaseInquiry(false)">Save</button>
-                                        <button type="button" class="k-button" (click)="AddPurchaseInquiry(true)">Save as draft</button>
-                                        <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">Cancel</button>
+                                        <button type="button" class="k-button k-primary" (click)="AddPurchaseInquiry(false)">{{'Common_Save'|translate}}</button>
+                                        <button type="button" class="k-button" (click)="AddPurchaseInquiry(true)">{{'Common_SaveAsDraft'|translate}}</button>
+                                        <button type="button" class="k-button" (click)="closeRightSidebar(currentSidebarInfo)">{{'Common_Cancel'|translate}}</button>
                                     </div>
                                 </form>
                             </div>

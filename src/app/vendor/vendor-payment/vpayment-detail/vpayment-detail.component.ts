@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { UIHelper } from 'src/app/helpers/ui.helpers';
 import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vpayment-detail',
@@ -15,7 +16,11 @@ export class VpaymentDetailComponent implements OnInit {
   };
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
-  constructor() { }
+  constructor(private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   tabName: string = 'home';
 

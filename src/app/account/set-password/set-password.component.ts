@@ -4,6 +4,7 @@ import { AccountService } from '../../services/account.service';
 import { UserModel } from '../../models/account/user-model';
 import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
 @Component({
@@ -18,7 +19,11 @@ export class SetPasswordComponent implements OnInit {
   resetPassword: string;
   userModel: UserModel = new UserModel();
   passwordStrengthStatus: number = 0;
-  constructor(private route: ActivatedRoute, private accountService: AccountService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private accountService: AccountService, private router: Router,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   ngOnInit() {
 
@@ -47,7 +52,10 @@ export class SetPasswordComponent implements OnInit {
         data => {
           alert('Your password set successfully.');
           this1.showLoader = false;
+          
+          let lang = localStorage.getItem('appLanguage');      
           localStorage.clear();
+          localStorage.setItem('appLanguage',lang);  
           this.router.navigateByUrl('account/login');
         },        
         (err:HttpErrorResponse) => {

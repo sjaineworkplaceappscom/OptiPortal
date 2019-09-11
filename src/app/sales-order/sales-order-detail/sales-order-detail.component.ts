@@ -4,6 +4,7 @@ import { UIHelper } from '../../helpers/ui.helpers';
 import { GlobalResource } from '../../helpers/global-resource';
 import { ConfirmDialog } from '../../helpers/services/dialog.service';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sales-order-detail',
@@ -18,7 +19,11 @@ export class SalesOrderDetailComponent implements OnInit {
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
 
-  constructor(private confirmService: ConfirmDialog) { }
+  constructor(private confirmService: ConfirmDialog,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   tabName: string = 'home';
 

@@ -7,6 +7,7 @@ import { CurrentSidebarInfo } from '../../models/sidebar/current-sidebar-info';
 import { ComponentName, ModuleName } from '../../enums/enums';
 import { ISubscription } from 'rxjs/Subscription';
 import { Configuration } from '../../helpers/Configuration';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
 @Component({
@@ -39,7 +40,12 @@ export class PurchaseInqItemListComponent implements OnInit {
   getPIitemlistSubs:ISubscription;
   
   purchaseItemsModel: TempPurchaseInquiryItemModel = new TempPurchaseInquiryItemModel();
-  constructor(private purchaseInquiryService: PurchaseInquiryService) { }
+  constructor(private purchaseInquiryService: PurchaseInquiryService,private translate: TranslateService) {
+
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   
   @HostListener('window:resize', ['$event'])

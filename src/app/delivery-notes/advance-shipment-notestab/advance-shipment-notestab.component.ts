@@ -11,6 +11,7 @@ import { SharedComponentService } from '../../services/shared-component.service'
 import { DateTimeHelper } from '../../helpers/datetime.helper';
 import { ToastService } from '../../helpers/services/toast.service';
 import { AppMessages } from '../../helpers/app-messages';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-advance-shipment-notestab',
@@ -49,7 +50,11 @@ export class AdvanceShipmentNotestabComponent implements OnInit {
   ];
 
   public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
-  constructor(private sharedComponentService: SharedComponentService, private toast:ToastService) { }
+  constructor(private sharedComponentService: SharedComponentService, private toast:ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
 
   @HostListener('window:resize', ['$event'])

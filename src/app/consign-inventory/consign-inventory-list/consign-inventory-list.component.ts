@@ -19,6 +19,7 @@ import { ConsignedInventoryModel } from 'src/app/models/ConsignedInventoryModel'
 import { AppMessages } from 'src/app/helpers/app-messages';
 import { ToastService } from 'src/app/helpers/services/toast.service';
 import { GroupDescriptor } from '@progress/kendo-data-query';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-consign-inventory-list',
@@ -72,7 +73,10 @@ export class ConsignInventoryListComponent implements OnInit {
 
 
 
-  constructor(private commonService: Commonservice, private consignedInventoryService: ConsignedInventoryService, private salseOrderService: SalesOrderService, private deliveryNotesService: DeliveryNotesService, public datepipe: DatePipe, private toast: ToastService) {
+  constructor(private commonService: Commonservice, private consignedInventoryService: ConsignedInventoryService, private salseOrderService: SalesOrderService, private deliveryNotesService: DeliveryNotesService, public datepipe: DatePipe, private toast: ToastService ,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
     this.maxDate.setDate(this.maxDate.getDate() + 30);
     this.bsRangeValue = [this.bsValue, this.maxDate];
     //this.displayDateRange = DateTimeHelper.ParseDate(this.range.start) + ' to '+ DateTimeHelper.ParseDate(this.range.end);
@@ -135,7 +139,9 @@ export class ConsignInventoryListComponent implements OnInit {
       error => {
         this.showLoader = false;
         console.log("Error: ", error);
+        let lang = localStorage.getItem('appLanguage');      
         localStorage.clear();
+        localStorage.setItem('appLanguage',lang);  
       },
       () => {
         this.showLoader = false;
@@ -233,7 +239,7 @@ export class ConsignInventoryListComponent implements OnInit {
     console.log("Data", childData);
     let data: any = collection[index];
     let chData: any = childData[index];
-    debugger
+    
     let model: ConsignedInventoryModel = collection[index];
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
     currentsideBarInfo.RequesterData = childData;
@@ -355,7 +361,7 @@ export class ConsignInventoryListComponent implements OnInit {
     consignedInventoryItemModel.Bin = e.dataItem.Bin;
     consignedInventoryItemModel.FromDate = this.fromDate;//DateTimeHelper.ParseDate(this.fromDate);
     consignedInventoryItemModel.ToDate = this.toDate;//DateTimeHelper.ParseDate(this.toDate);
-    debugger;
+    
     
     let userDetail: string = localStorage.getItem("LoginUserDetail");   
     let userData: any[] = JSON.parse(userDetail);

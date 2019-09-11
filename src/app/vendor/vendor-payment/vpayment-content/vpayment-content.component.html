@@ -7,72 +7,72 @@
             <form class="k-form">
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Line#</span>
+                  <span class="opti_form-label">{{'DN_LineNO'|translate}}</span>
                   <input name="Line" type="text" class="k-textbox" [(ngModel)]="contentModel.LineNumber" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">PO Ref.#</span>
+                  <span class="opti_form-label">{{'VASN_PORef'|translate}}</span>
                   <input name="PORef" type="text" class="k-textbox" [(ngModel)]="contentModel.PORefNumber" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Invoice#</span>
+                  <span class="opti_form-label">{{'OI_Id'|translate}}</span>
                   <input name="Invoice" type="text" class="k-textbox" [(ngModel)]="contentModel.InvoiceNumber" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Invoice Line#</span>
+                  <span class="opti_form-label">{{'VPay_InvoiceLine'|translate}}</span>
                   <input name="InvoiceLine" type="text" class="k-textbox" [(ngModel)]="contentModel.InvoiceLineNumber" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Item</span>
+                  <span class="opti_form-label">{{'Common_Item'|translate}}</span>
                   <input name="Item" type="text" class="k-textbox" [(ngModel)]="contentModel.Item" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Quantity</span>
+                  <span class="opti_form-label">{{'PI_Quantity'|translate}}</span>
                   <input name="Quantity" type="text" class="k-textbox" [(ngModel)]="contentModel.Quantity" readonly />
               </label>
 
               <label class="k-form-field">
-                  <span class="opti_form-label">Unit Price</span>
+                  <span class="opti_form-label">{{'SO_UnitPrice'|translate}}</span>
                   <input name="UnitPrice" type="text" class="k-textbox" [(ngModel)]="contentModel.UnitPrice" readonly />
               </label>
 
               <label class="k-form-field">
-                <span class="opti_form-label">UOM</span>
+                <span class="opti_form-label">{{'DN_UOM'|translate}}</span>
                 <input name="UOM" type="text" class="k-textbox" [(ngModel)]="contentModel.UOM" readonly />
             </label>
 
             <label class="k-form-field">
-                <span class="opti_form-label">Total Price</span>
+                <span class="opti_form-label">{{'DN_TotalPrice'|translate}}</span>
                 <input name="TotalPrice" type="text" class="k-textbox" [(ngModel)]="contentModel.TotalPrice" readonly />
             </label>
 
             <label class="k-form-field">
-                <span class="opti_form-label">Tax Code</span>
+                <span class="opti_form-label">{{'SO_TaxCode'|translate}}</span>
                 <input name="TaxCode" type="text" class="k-textbox" [(ngModel)]="contentModel.TaxCode" readonly />
             </label>
 
             <label class="k-form-field">
-                <span class="opti_form-label">Ship-To Address</span>
+                <span class="opti_form-label">{{'OP_ShipToAddress'|translate}}</span>
                 <textarea name="ShipToAddress" class="k-textarea" [(ngModel)]="contentModel.ShipToAddress" readonly >text area</textarea>
             </label>
 
             <label class="k-form-field">
-                <span class="opti_form-label">Bill-To Address</span>
+                <span class="opti_form-label">{{'VASN_BillToAddressLbl'|translate}}</span>
                 <textarea name="BillToAddress" class="k-textarea" [(ngModel)]="contentModel.BillToAddress" readonly >text area</textarea>
             </label>
 
             <label class="k-form-field">
-                <span class="opti_form-label">Shipment#</span>
+                <span class="opti_form-label">{{'VPay_ShipmentId'|translate}}</span>
                 <input name="Shipment" type="text" class="k-textbox" [(ngModel)]="contentModel.ShipmentNumber" readonly />
             </label>
 
             <label class="k-form-field">
-                <span class="opti_form-label">Delivery Date</span>
+                <span class="opti_form-label">{{'SO_DeliveryDate'|translate}}</span>
                 <input name="DeliveryDate" type="text" class="k-textbox" (ngModelChange)="contentModel.DeliveryDate" [ngModel]="contentModel.DeliveryDate | date:'dd MMM yy'" readonly />
             </label>
               

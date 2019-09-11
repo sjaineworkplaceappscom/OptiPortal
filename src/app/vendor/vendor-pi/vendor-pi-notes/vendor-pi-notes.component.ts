@@ -13,6 +13,7 @@ import { VendorEntityType } from 'src/app/enums/enums';
 import { AppMessages } from 'src/app/helpers/app-messages';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { GlobalResource } from 'src/app/helpers/global-resource';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-pi-notes',
@@ -29,7 +30,11 @@ export class VendorPiNotesComponent implements OnInit {
   getnotessub: ISubscription;
   addnotessub: ISubscription;
   updatenotessub: ISubscription;
-  constructor(private vendorService:VendorService,private sharedComponentService: SharedComponentService,private toast:ToastService) { }
+  constructor(private vendorService:VendorService,private sharedComponentService: SharedComponentService,private toast:ToastService,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   /**
   * global variable

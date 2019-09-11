@@ -2,6 +2,7 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { CurrentSidebarInfo } from '../../../models/sidebar/current-sidebar-info';
 import { UIHelper } from '../../../helpers/ui.helpers';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vendor-po-detail',
@@ -15,7 +16,11 @@ export class VendorPoDetailComponent implements OnInit {
   };
 
   @Input() currentSidebarInfo:CurrentSidebarInfo;
-  constructor() { }
+  constructor(private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+   }
 
   tabName: string = 'home';
 

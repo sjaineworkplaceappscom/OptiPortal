@@ -25,8 +25,8 @@
                                 <div class="k-form-field">
                                     <input type="checkbox" id="opti_ColumnFiltervpoattachementID" [(ngModel)]="isColumnFilterAttachementsGrid"
                                         class="k-checkbox" name="columnfilter" />
-                                    <label class="k-checkbox-label" for="opti_ColumnFiltervpoattachementID">Enable
-                                        Filter</label>
+                                    <label class="k-checkbox-label" for="opti_ColumnFiltervpoattachementID">{{'Common_EnableFilter'|translate}}
+                                        </label>
                                 </div>
                             </form>
 
@@ -48,17 +48,17 @@
                             </ng-template>
                         </kendo-grid-column>
 
-                        <kendo-grid-column field="FileName" title="File Name" [width]="160"></kendo-grid-column>
+                        <kendo-grid-column field="FileName" title="{{'SO_FileName'|translate}}" [width]="160"></kendo-grid-column>
 
-                        <kendo-grid-column field="FileExt" title="File Type"></kendo-grid-column>
-                        <kendo-grid-column field="AttachementDate" title="Attachment Date" format="{0:dd MMM yy}"></kendo-grid-column>
+                        <kendo-grid-column field="FileExt" title="{{'Att_FileType'|translate}}"></kendo-grid-column>
+                        <kendo-grid-column field="AttachementDate" title="{{'SO_AttachmentDate'|translate}}" format="{0:dd MMM yy}"></kendo-grid-column>
                         <!-- 
                         <kendo-grid-column field="SizeInKb" title="Size(In Bytes)" [width]="140" filter="numeric"></kendo-grid-column>
                         <kendo-grid-column field="AttachmentTypeText" title="Attachment Type" [width]="140"></kendo-grid-column>
                         <kendo-grid-column field="CreatedByName" title="Created By" [width]="150"></kendo-grid-column> -->
 
                         <!-- xlsx template start -->
-                        <kendo-grid-excel fileName="attachements.xlsx"></kendo-grid-excel>
+                        <kendo-grid-excel fileName="attachments.xlsx"></kendo-grid-excel>
                         <!-- xlsx template end -->
 
                     </kendo-grid>

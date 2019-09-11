@@ -10,6 +10,7 @@ import { Contact } from '../../tempmodels/contact';
 import { ToastService } from '../../helpers/services/toast.service';
 import { AppMessages } from '../../helpers/app-messages';
 import { UserType } from '../../enums/enums';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-customer-contacts-update',
@@ -41,7 +42,11 @@ export class CustomerContactsUpdateComponent implements OnInit {
   public contactModel: Contact = new Contact();
 
   @Input() currentSidebarInfo: CurrentSidebarInfo;
-  constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog,private toast:ToastService) { }
+  constructor(private commonService: Commonservice, private contactService: ContactService, private confirmService: ConfirmDialog,private toast:ToastService ,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   ngOnInit() {
     this.sideBarsubs = this.commonService.currentSidebarInfo.subscribe(

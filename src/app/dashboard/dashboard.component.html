@@ -1,7 +1,9 @@
+
 <div id="opti_DashboardID" class="opti_dashboard opti_position-relative" [perfectScrollbar]=" ">   
   <div class="container-fluid">
+      
     <div class="row">
-
+        
         <!-- loader start -->
         <div class="opti_loader opti_loader-module-grid-list" *ngIf="showLoader==true">
             <div class="opti_spinner"></div>
@@ -18,37 +20,44 @@
           
 
           <ng-container *ngIf="systemAdmin!='true'">  
-            <div class="col-md-6 opti_zoom-donut-only-mobile">
-                <kendo-chart>
+            <div class="col-md-12">
+                <p>
+                        {{'Common_No_GridRecords'|translate}}
+                      
+                      </p>
+                    </div>
+           
+            <div class="col-md-12 opti_zoom-donut-only-mobile">
+                <!-- <kendo-chart>
 
-                    <kendo-chart-title *ngIf="showDefaultMsg==true" text="Purchase Inquiries
-                    No Record Found"></kendo-chart-title>
+                    <kendo-chart-title *ngIf="showDefaultMsg==true" 
+                    text="{{'Common_PurchaseInquiryNotFount'|translate}}"></kendo-chart-title>
 
-                    <kendo-chart-title *ngIf="showDefaultMsg==false" text="Purchase Inquiries"></kendo-chart-title>
+                    <kendo-chart-title *ngIf="showDefaultMsg==false" text="{{'Common_PurchaseInquiry'|translate}}"></kendo-chart-title>
                     
                     <kendo-chart-series>
                       <kendo-chart-series-item
                           type="donut" [data]="pidashboardResp"
                           categoryField="StatusText" field="StatusCount">
-                         <!-- label start -->
+                    
                       <kendo-chart-series-item-labels 
                       position="outsideEnd" 
                       background="none" 
                       [content]="labelContent">
                       </kendo-chart-series-item-labels>
-                    <!-- label end -->
+                    
                       </kendo-chart-series-item>
                     </kendo-chart-series>
                     <kendo-chart-legend [visible]="false"></kendo-chart-legend>
 
-                </kendo-chart>
+                </kendo-chart> -->
 
               
             </div>
 
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
                 <kendo-chart>
-                    <kendo-chart-title text="Monthly Sales"></kendo-chart-title>
+                    <kendo-chart-title text="{{'DB_MonthlySales'|translate}}"></kendo-chart-title>
                     <kendo-chart-category-axis>
                         <kendo-chart-category-axis-item
                             [categories]="['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']"
@@ -66,11 +75,11 @@
                       </kendo-chart-series-item>
                     </kendo-chart-series>
                   </kendo-chart>
-            </div>
+            </div> -->
           
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
               <kendo-chart [categoryAxis]="{ categories: categories }">
-                <kendo-chart-title text="Yearly Sales"></kendo-chart-title>
+                <kendo-chart-title text="{{'DB_YearSales'|translate}}"></kendo-chart-title>
                 <kendo-chart-legend position="top" orientation="horizontal"></kendo-chart-legend>
                 <kendo-chart-tooltip [shared]="true"></kendo-chart-tooltip>
                 <kendo-chart-series>
@@ -79,7 +88,7 @@
                     </kendo-chart-series-item>
                 </kendo-chart-series>
               </kendo-chart>
-            </div>
+            </div> -->
           </ng-container>  
 
         </ng-container>

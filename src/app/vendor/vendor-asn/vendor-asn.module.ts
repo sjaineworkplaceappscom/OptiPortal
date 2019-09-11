@@ -19,6 +19,9 @@ import { ExcelModule, GridModule } from '@progress/kendo-angular-grid';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { FileDropModule } from 'ngx-file-drop';
 import { VasnContentAddComponent } from './vasn-content-add/vasn-content-add.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 
 const routes: Routes = [
@@ -26,6 +29,9 @@ const routes: Routes = [
   {path: 'vasnlist', component: VasnListComponent}
 ];
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   imports: [
@@ -39,7 +45,15 @@ const routes: Routes = [
     DateInputsModule,
     DateInputsModule,
     DropDownsModule,
-    FileDropModule
+    FileDropModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: false
+    }),
   ],
   declarations: [VasnListComponent, VasnDetailComponent, VasnHomeComponent, VasnContentComponent, VasnAttatchmentComponent, VasnNotesComponent, VasnAddComponent, VasnUpdateComponent, HomeAddComponent, VasnContentAddComponent],
   exports:[VasnListComponent, VasnDetailComponent, VasnHomeComponent, VasnContentComponent, VasnAttatchmentComponent, VasnNotesComponent, VasnAddComponent, VasnUpdateComponent, HomeAddComponent]

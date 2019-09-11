@@ -6,6 +6,7 @@ import { VendorASNModel } from 'src/app/tempmodels/vendor/vendor-asn-model';
 import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { VendorService } from 'src/app/services/vendor/vendor.service';
 import { AppMessages } from 'src/app/helpers/app-messages';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vasn-home',
@@ -23,7 +24,11 @@ export class VasnHomeComponent implements OnInit {
   public minValidDate: Date = new Date();
   public getSub: ISubscription;
   vendorASNModel:VendorASNModel;
-  constructor(private commonService: Commonservice, private toast:ToastService,private vendorService:VendorService ) { }
+  constructor(private commonService: Commonservice, private toast:ToastService,private vendorService:VendorService ,private translate: TranslateService) { 
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
+  }
 
   ngOnInit() {
     
