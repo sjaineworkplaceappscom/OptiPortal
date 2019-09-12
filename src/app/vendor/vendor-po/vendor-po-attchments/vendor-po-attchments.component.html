@@ -15,6 +15,9 @@
                         [sortable]="true" [filterable]=isColumnFilterAttachementsGrid [groupable]="false" [columnMenu]="{ columnChooser: false }"
                         [height]=gridHeight-67 [selectable]="true" name="gridAttachmentData" #AttachementsTab>
 
+                        <kendo-grid-messages 
+                        noRecords="{{'Common_No_GridRecords'|translate}}">
+                      </kendo-grid-messages>
                         <!-- grid template start -->
                         <ng-template kendoGridToolbarTemplate>
                             <!-- show hide column start show hide -->

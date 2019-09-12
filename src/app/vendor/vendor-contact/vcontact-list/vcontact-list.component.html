@@ -22,6 +22,9 @@
            [selectable]="true" 
            (selectionChange)="openContactsDetailOnSelection($event)"
            #gridItem>
+           <kendo-grid-messages 
+           noRecords="{{'Common_No_GridRecords'|translate}}">
+         </kendo-grid-messages>
            <!-- [kendoGridBinding]="gridData | customPipeItem:searchRequest"  -->
            <!-- (selectionChange)="openInqueryDetailOnSelectInquery(gridItem, $event, true, gridItem)" -->
 

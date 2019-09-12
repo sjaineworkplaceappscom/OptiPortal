@@ -13,6 +13,7 @@ import { PurchaseInquiryService } from '../../services/purchase-enquiry.service'
 import { Configuration } from '../../helpers/Configuration';
 import { AppMessages } from '../../helpers/app-messages';
 import { ToastService } from '../../helpers/services/toast.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
 @Component({
@@ -73,7 +74,10 @@ export class NotesItemComponent implements OnInit {
 
 
     public selectedNoteItem: { text: string, value: number } = this.noteTypes[0];
-    constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private purchaseInquiryService: PurchaseInquiryService,private toast:ToastService) {
+    constructor(private sharedComponentService: SharedComponentService, private commonService: Commonservice, public datepipe: DatePipe, private purchaseInquiryService: PurchaseInquiryService,private toast:ToastService,private translate: TranslateService) {
+        translate.use(localStorage.getItem('appLanguage'));
+        translate.onLangChange.subscribe((event: LangChangeEvent) => {
+        });
         // Subscriber for Load data.
 
         this.notessub = this.commonService.currentNotesItemData.subscribe(

@@ -28,7 +28,10 @@
                     [filterable]="false"
                     [groupable]="false" 
                     [height]=gridHeight-67 
-                    (remove)="deleteNotes($event)">
+                    (remove)="deleteNotes($event)">  
+                    <kendo-grid-messages 
+                    noRecords="{{'Common_No_GridRecords'|translate}}">
+                  </kendo-grid-messages>
 
                         <!-- grid toolbar start -->
                         <ng-template kendoGridToolbarTemplate>

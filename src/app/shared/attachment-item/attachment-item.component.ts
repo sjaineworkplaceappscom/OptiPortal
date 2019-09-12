@@ -14,6 +14,7 @@ import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry 
 import { Configuration } from '../../helpers/Configuration';
 import { AppMessages } from '../../helpers/app-messages';
 import { ToastService } from '../../helpers/services/toast.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-attachment-item',
@@ -62,8 +63,10 @@ export class AttachmentItemComponent implements OnInit {
     this.isMobile = UIHelper.isMobile();
   }
 
-  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private purchaseInquiryService: PurchaseInquiryService,private toast:ToastService) {
-
+  constructor(private commonService: Commonservice, private http: HttpClient, private sharedComponentService: SharedComponentService, private purchaseInquiryService: PurchaseInquiryService,private toast:ToastService,private translate: TranslateService) {
+    translate.use(localStorage.getItem('appLanguage'));
+    translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    });
     this.attachmentsub = this.commonService.currentAttachmentItemData.subscribe(
       (data: AttachmentDetail) => {
         if (data != undefined && data != null) {

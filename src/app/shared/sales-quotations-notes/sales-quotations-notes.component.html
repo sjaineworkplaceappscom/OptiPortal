@@ -24,6 +24,9 @@
               [groupable]="false" 
               [height]=gridHeight-67 
               (remove)="deleteNotes($event)">
+              <kendo-grid-messages 
+              noRecords="{{'Common_No_GridRecords'|translate}}">
+            </kendo-grid-messages>
 
               <!-- [kendoGridBinding]="noteItemsData | customFilter:notesSearchValue"  -->
 
