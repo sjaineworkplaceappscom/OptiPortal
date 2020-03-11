@@ -76,7 +76,7 @@ export class VendorPInvoiceHomeUpdateComponent implements OnInit {
   this.updateSub=this.vendorOpenInvoiceService.UdpateOpenInvoice(this.vendorOIModel).subscribe(
     (data: any) => {  
       this.showLoader=false;
-      this.toast.showSuccess(AppMessages.PurchaseInqAddedSuccessMsg);
+      this.toast.showSuccess(AppMessages.VendorInvoiceUpdated);
       this.commonService.refreshVOIList(true);
       localStorage.setItem("SelectedVOI",JSON.stringify(data));         
      // this.openUpdateSideBar(data); 

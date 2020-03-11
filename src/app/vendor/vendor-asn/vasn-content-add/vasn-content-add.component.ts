@@ -9,6 +9,7 @@ import { Commonservice } from 'src/app/services/commonservice.service';
 import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 import { ModuleName, ComponentName } from 'src/app/enums/enums';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-vasn-content-add',
@@ -29,7 +30,9 @@ export class VasnContentAddComponent implements OnInit {
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
     });
   }
-
+  public configX: PerfectScrollbarConfigInterface = {
+    suppressScrollY:true
+};
 
   ngOnInit() {
     //get status of selected inquiry for disabling or enabling  forms

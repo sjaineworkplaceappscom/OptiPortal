@@ -37,12 +37,12 @@
                <form class="k-form opti_show-hide-grid-column-filter float-left opti_hide-in-mobile">
                    <div class="k-form-field float-left">
                        <input #chkFilter type="checkbox" (change)="onFilterChange(chkFilter,gridItem)" id="opti_ColumnFilterID" [(ngModel)]="isColumnFilter" class="k-checkbox" name="columnfilter" />
-                       <label class="k-checkbox-label" for="opti_ColumnFilterID">{{'SO_Tracking'|translate}}Enable Filter</label>
+                       <label class="k-checkbox-label" for="opti_ColumnFilterID">{{'Common_EnableFilter'|translate}}</label>
                    </div>
 
                    <div class="k-form-field float-left">
                        <input type="checkbox" id="opti_ColumnGroupID"  [(ngModel)]="isColumnGroup" class="k-checkbox" name="columnGroup" />
-                       <label class="k-checkbox-label" for="opti_ColumnGroupID">{{'SO_Tracking'|translate}}Enable Grouping</label>
+                       <label class="k-checkbox-label" for="opti_ColumnGroupID">{{'Common_EnableGrouping'|translate}}</label>
                    </div>
                </form>
 

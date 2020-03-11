@@ -100,10 +100,7 @@ export class PurchaseInqListComponent implements OnInit {
     this.loginUserType = userData[0].LoginUserType;
     this.gridHeight = UIHelper.getMainContentHeight();
     this.systemAdmin = localStorage.getItem('SystemAdmin');
-
     this.getPaginationAttributes();
-
-
     this.refreshPIListSubs = this.commonService.refreshPIListSubscriber.subscribe(data => {
       if (data != undefined && data != null)
         this.getInquiryList();

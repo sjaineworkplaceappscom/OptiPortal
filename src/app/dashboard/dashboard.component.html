@@ -20,15 +20,15 @@
           
 
           <ng-container *ngIf="systemAdmin!='true'">  
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
                 <p>
                         {{'Common_No_GridRecords'|translate}}
                       
                       </p>
-                    </div>
+                    </div> -->
            
             <div class="col-md-12 opti_zoom-donut-only-mobile">
-                <!-- <kendo-chart>
+                <kendo-chart>
 
                     <kendo-chart-title *ngIf="showDefaultMsg==true" 
                     text="{{'Common_PurchaseInquiryNotFount'|translate}}"></kendo-chart-title>
@@ -50,7 +50,7 @@
                     </kendo-chart-series>
                     <kendo-chart-legend [visible]="false"></kendo-chart-legend>
 
-                </kendo-chart> -->
+                </kendo-chart>
 
               
             </div>

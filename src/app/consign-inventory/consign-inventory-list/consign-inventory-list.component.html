@@ -151,7 +151,7 @@
                 <kendo-grid-column media="(min-width: 768px)" field="ItemType" [width]="160" title="{{'CI_SerialOrBatch'|translate}}">
                     <ng-template kendoGridCellTemplate let-row let-childDataItem let-rowIndex="rowIndex">
 
-                        <a *ngIf="childDataItem.ItemType!='None'" href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData,childDataItem,false)"
+                        <a *ngIf="childDataItem.ItemType!='None'" href="javascript:void('0')" (click)="openSBDetail($event,rowIndex,gridData,childDataItem,false,row)"
                             class="text-underline alpha"> <u>{{childDataItem.ItemType}}</u> </a>
                         <a *ngIf="childDataItem.ItemType=='None'" href="javascript:void('0')" class="text-underline alpha">
                             {{childDataItem.ItemType}} </a>

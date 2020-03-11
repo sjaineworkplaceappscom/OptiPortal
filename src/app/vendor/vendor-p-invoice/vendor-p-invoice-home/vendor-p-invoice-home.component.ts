@@ -73,7 +73,7 @@ public AddOpenInvoice() {
   this.addSub=this.vendorOpenInvoiceService.AddOpenInvoice(this.vendorOIModel).subscribe(
     (data: any) => {  
       this.showLoader=false;
-      this.toast.showSuccess(AppMessages.PurchaseInqAddedSuccessMsg);
+      this.toast.showSuccess(AppMessages.VendorInvoice);
       this.commonService.refreshVOIList(true);
       localStorage.setItem("SelectedVOI",JSON.stringify(data));         
       this.openUpdateSideBar(data); 

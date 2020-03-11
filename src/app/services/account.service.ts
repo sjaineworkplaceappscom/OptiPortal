@@ -136,4 +136,8 @@ export class AccountService {
     return this.httpHelper.put(this.baseUrl + 'user/sendresetpasswordlink', email, null);
   }
 
+  public getCompanyList() {
+    return this.httpHelper.get(this.baseUrl + 'user/companylist', null, null);
+  }
+
 }

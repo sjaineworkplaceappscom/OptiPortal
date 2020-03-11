@@ -13,6 +13,7 @@ import { Commonservice } from 'src/app/services/commonservice.service';
 import { ConfirmDialog } from 'src/app/helpers/services/dialog.service';
 import { ToastService } from 'src/app/helpers/services/toast.service';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-vendor-p-invoice-content',
@@ -42,7 +43,10 @@ export class VendorPInvoiceContentComponent implements OnInit {
     translate.use(localStorage.getItem('appLanguage'));
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
     });
-  }
+  } 
+  public configX: PerfectScrollbarConfigInterface = {
+    suppressScrollY:true
+};
 
   // UI Section
   @HostListener('window:resize', ['$event'])

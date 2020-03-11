@@ -10,6 +10,7 @@ import { DateTimeHelper } from 'src/app/helpers/datetime.helper';
 import { AppMessages } from 'src/app/helpers/app-messages';
 import { CurrentSidebarInfo } from 'src/app/models/sidebar/current-sidebar-info';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-vendor-p-invoice-content-add',
@@ -41,6 +42,10 @@ export class VendorPInvoiceContentAddComponent implements OnInit {
     }
     this.setDefaultValues();
   }
+
+  public configX: PerfectScrollbarConfigInterface = {
+    suppressScrollY:true
+};
 
   ngOnDestroy() {
     if (this.addSub != undefined)

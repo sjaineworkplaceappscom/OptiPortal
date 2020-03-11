@@ -13,6 +13,7 @@ export class AppMessages {
     public static ContactUpdateSuccessMsg:string="Contact updated successfully."; 
     public static VendorPOAck: string = "Purchase Order acknowledged successfully.";
     public static VendorInvoice: string = "Invoice added successfully.";
+    public static VendorInvoiceUpdated: string = "Invoice updated successfully.";
     public static VendorInvContent: string = "Invoice content added successfully.";
     public static VendorInvContentUpdate: string = "Invoice content updated successfully.";
     public static VendorInvASNUpdate: string = "ASN updated successfully.";
@@ -21,4 +22,5 @@ export class AppMessages {
     public static VendorInvASNContentUpdated: string = "ASN Content updated successfully.";
 
     public static UnderDevelopementMode: string = "This section under developement mode.";
+    public static SelectCompanyValidation: string = "Select company for selected users!";
 }

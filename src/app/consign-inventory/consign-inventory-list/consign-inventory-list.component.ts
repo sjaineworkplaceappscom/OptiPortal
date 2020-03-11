@@ -208,7 +208,7 @@ export class ConsignInventoryListComponent implements OnInit {
   // }
 
   // Open Serial And Batch detail sidebar
-  public openSBDetail(e, index, parentCollection: any, childCollection: any, childCall: boolean = false) {
+  public openSBDetail(e, index, parentCollection: any, childCollection: any, childCall: boolean = false, row) {
     let currentsideBarInfo: CurrentSidebarInfo = new CurrentSidebarInfo();
 
     currentsideBarInfo.ComponentName = ComponentName.CISBDetail;
@@ -222,7 +222,7 @@ export class ConsignInventoryListComponent implements OnInit {
       currentsideBarInfo.RequesterId = "SBTrans";
     }
     else {
-      let collection = parentCollection[index];
+      let collection = row;
       currentsideBarInfo.RequesterData = collection;
       currentsideBarInfo.SideBarStatus = true;
       currentsideBarInfo.RequesterId = "SBDetail";
